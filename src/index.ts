@@ -31,16 +31,18 @@ type Item = {
 export const search = ({
     query,
     TYPE,
-    GITHUB_TOKEN
+    GITHUB_TOKEN,
+    SIZE = 20
 }: {
     query: string;
     TYPE: SearchType;
     GITHUB_TOKEN: string;
+    SIZE: number;
 }): Promise<Item[]> => {
     return graphql<{ search: SearchResultItemConnection }>(
         `
-            query($QUERY: String!, $TYPE: SearchType!) {
-                search(query: $QUERY, type: $TYPE, first: 20) {
+            query($QUERY: String!, $TYPE: SearchType!, $SIZE: Int!) {
+                search(query: $QUERY, type: $TYPE, first: $SIZE) {
                     edges {
                         node {
                             __typename
@@ -88,6 +90,7 @@ export const search = ({
         {
             QUERY: query,
             TYPE,
+            SIZE,
             headers: {
                 authorization: `token ${GITHUB_TOKEN}`
             }
@@ -172,6 +175,7 @@ export const generateRSS = (items: Item[], options: GenerateRSSOptions) => {
 export type RSSItem = {
     query: string;
     TYPE: SearchType;
+    SIZE?: number;
 } & Omit<GenerateRSSOptions, "updated" | "description">;
 if (require.main === module) {
     const distDir = path.join(__dirname, "../dist");
@@ -184,11 +188,12 @@ if (require.main === module) {
             recursive: true
         });
         for (const item of SEARCH_ITEMS) {
-            const { query, TYPE, ...options } = item;
+            const { query, TYPE, SIZE, ...options } = item;
             const items = await search({
                 query,
                 TYPE,
-                GITHUB_TOKEN: GITHUB_TOKEN
+                GITHUB_TOKEN: GITHUB_TOKEN,
+                SIZE: SIZE ?? 20
             });
             if (!items) {
                 throw new Error("Can not search:" + query);
