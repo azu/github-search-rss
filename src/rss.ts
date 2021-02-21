@@ -5,7 +5,7 @@
 import { RSSItem } from "./index";
 
 const BASE_URL = "https://azu.github.io/github-search-rss";
-export const BOOK_FEEDS: RSSItem[] = [
+export const SEARCH_ITEMS: RSSItem[] = [
     {
         title: "microsoft/TypeScript Iteration Plan",
         query: "repo:microsoft/TypeScript is:issue label:Planning",

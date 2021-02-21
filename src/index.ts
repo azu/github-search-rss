@@ -1,6 +1,6 @@
 import { Feed } from "feed";
 import dayjs from "dayjs";
-import { BOOK_FEEDS } from "./rss";
+import { SEARCH_ITEMS } from "./rss";
 import * as fs from "fs/promises";
 import path from "path";
 import { graphql } from "@octokit/graphql";
@@ -145,18 +145,20 @@ export const generateRSS = (items: Item[], options: GenerateRSSOptions) => {
     const filteredItems = filter ? items.filter((item) => filter(item)) : items;
     filteredItems.forEach((item) => {
         const description = item.bodyHTML ?? "";
+        const image = item.author.avatarUrl
+            ? `<img src="${item.author.avatarUrl}" width="64" height="64" alt=""/><br/>`
+            : "";
         feed.addItem({
             title: item.title,
-            content: description,
+            content: image + description,
             link: item.url,
             author: [
                 {
                     name: item.author.login,
                     link: item.author.url,
-                    email: `${item.author.login}noreply.github.com`
+                    email: `${item.author.login}@noreply.github.com`
                 }
             ],
-            image: item.author.avatarUrl,
             date: dayjs(item.createdAt).toDate()
         });
     });
@@ -181,7 +183,7 @@ if (require.main === module) {
         await fs.mkdir(distDir, {
             recursive: true
         });
-        for (const item of BOOK_FEEDS) {
+        for (const item of SEARCH_ITEMS) {
             const { query, TYPE, ...options } = item;
             const items = await search({
                 query,
@@ -199,9 +201,9 @@ if (require.main === module) {
             const fileName = path.basename(item.link);
             await fs.writeFile(path.join(distDir, fileName), rss, "utf-8");
         }
-        const opml = convertJsonToOPML(BOOK_FEEDS);
+        const opml = convertJsonToOPML(SEARCH_ITEMS);
         await fs.writeFile(path.join(distDir, "index.opml"), opml, "utf-8");
-        const links = BOOK_FEEDS.map((feed) => {
+        const links = SEARCH_ITEMS.map((feed) => {
             return `<li><code>${escapeSpecialChars(feed.query)}</code>: <a href="${feed.link}">${feed.link}</a></li>`;
         }).join("\n");
         const index = {
