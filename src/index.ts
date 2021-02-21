@@ -215,7 +215,7 @@ if (require.main === module) {
     <title>github-search-rss</title>
 </head>
 <body>
-<p>These RSS Feed is search result of Google Books. Your RSS reader need to support JSON RSS.</p>
+<p>These RSS Feed is search result of GitHub. Your RSS reader need to support JSON RSS.</p>
 <p><a href="./index.opml">OPML Feeds</a></p>
 <ul>
 ${links}
