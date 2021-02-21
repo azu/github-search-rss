@@ -15,7 +15,7 @@ export const convertJsonToOPML = (items: RSSItem[]) => {
     const head = {
         head: [
             {
-                title: "LDR Subscriptions"
+                title: "GitHub Search Subscriptions"
             },
             {
                 dateCreated: new Date().toDateString()
