@@ -1,0 +1,27 @@
+name: book-rss
+on:
+  push:
+    branches:
+      - main  # Set a branch name to trigger deployment
+  schedule:
+    - cron:  '0 0 * * *'
+jobs:
+  book-rss:
+    name: "Generate RSS"
+    runs-on: ubuntu-18.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install
+        run: yarn install
+      - name: Generate RSS
+        run: yarn run main
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
