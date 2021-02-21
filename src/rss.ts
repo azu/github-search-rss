@@ -11,11 +11,18 @@ const BASE_URL = "https://azu.github.io/github-search-rss";
 // TYPE references
 // https://docs.github.com/en/graphql/reference/queries#searchresultitemconnection
 export const SEARCH_ITEMS: RSSItem[] = [
+    // Issue
     {
         title: "microsoft/TypeScript Iteration Plan",
         query: "repo:microsoft/TypeScript is:issue label:Planning",
         TYPE: "ISSUE",
         link: `${BASE_URL}/typescript-iterator-plan.json`
+    },
+    {
+        title: "w3ctag/design-reviews Design Issues",
+        query: "repo:w3ctag/design-reviews is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/w3ctag-design-reviews.json`
     },
     // Repository
     {
