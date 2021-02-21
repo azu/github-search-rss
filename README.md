@@ -6,6 +6,10 @@ GitHub Search Results as RSS Feeds via GitHub Actions.
 
 - Visit: https://azu.github.io/github-search-rss/
 
+:memo: Inoreader support OPML subscripions. Its useful for subscribe all at once.
+
+- [OPML subscriptions | Inoreader blog](https://www.inoreader.com/blog/2014/05/opml-subscriptions.html)
+
 ## Add new feeds
 
 - Edit: [rss.ts](src/rss.ts)
