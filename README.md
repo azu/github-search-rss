@@ -2,15 +2,14 @@
 
 GitHub Search Results as RSS Feeds via GitHub Actions.
 
-## Install
-
-Install with [npm](https://www.npmjs.com/):
-
-    npm install github-search-rss
-
 ## Usage
 
-- [ ] Write usage instructions
+- Visit: https://azu.github.io/github-search-rss/
+
+## Add new feeds
+
+- Edit: [rss.ts](src/rss.ts)
+
 
 ## Changelog
 
