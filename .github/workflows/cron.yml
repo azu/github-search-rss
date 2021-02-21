@@ -1,4 +1,4 @@
-name: book-rss
+name: rss
 on:
   push:
     branches:
@@ -20,6 +20,8 @@ jobs:
         run: yarn install
       - name: Generate RSS
         run: yarn run main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
