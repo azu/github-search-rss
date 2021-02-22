@@ -48,7 +48,8 @@ export const search = ({
                             __typename
                             ... on Repository {
                                 url
-                                title: name
+                                name
+                                nameWithOwner
                                 createdAt
                                 updatedAt
                                 owner {
@@ -56,6 +57,7 @@ export const search = ({
                                     login
                                     url
                                 }
+                                description
                                 descriptionHTML
                             }
                             ... on PullRequest {
@@ -103,11 +105,22 @@ export const search = ({
                 return node.__typename === "Issue" || node.__typename === "PullRequest";
             };
             if (isIssue(node)) {
-                return node as Item;
+                return {
+                    url: node.url,
+                    title: node.title,
+                    createdAt: node.createdAt,
+                    updatedAt: node.updatedAt,
+                    author: {
+                        avatarUrl: node.author?.avatarUrl,
+                        login: node.author?.login,
+                        url: node.author?.url
+                    },
+                    bodyHTML: node.bodyHTML
+                } as Item;
             } else {
                 return {
                     url: node.url,
-                    title: node.name,
+                    title: node.description ? `${node.nameWithOwner}: ${node.description}` : node.nameWithOwner,
                     createdAt: node.createdAt,
                     updatedAt: node.updatedAt,
                     author: {
@@ -147,13 +160,13 @@ export const generateRSS = (items: Item[], options: GenerateRSSOptions) => {
     const filter = options.filter;
     const filteredItems = filter ? items.filter((item) => filter(item)) : items;
     filteredItems.forEach((item) => {
-        const description = item.bodyHTML ?? "";
+        const body = item.bodyHTML ?? "";
         const image = item.author.avatarUrl
             ? `<img src="${item.author.avatarUrl}" width="64" height="64" alt=""/><br/>`
             : "";
         feed.addItem({
             title: item.title,
-            content: image + description,
+            content: image + body,
             link: item.url,
             author: [
                 {
