@@ -35,6 +35,13 @@ export const SEARCH_ITEMS: RSSItem[] = [
             return item.labels.some((label) => label.startsWith("data:"));
         }
     },
+    {
+        // label:data:
+        title: "mdn/content update content",
+        query: "repo:mdn/content is:pr is:open",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/mdn-content.json`
+    },
     // Repository
     {
         title: "LightWeight JavaScript repositories",
