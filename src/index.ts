@@ -27,6 +27,7 @@ type Item = {
         url: string;
     };
     bodyHTML: string;
+    labels: string[];
 };
 export const search = ({
     query,
@@ -59,6 +60,15 @@ export const search = ({
                                 }
                                 description
                                 descriptionHTML
+                                repositoryTopics(first: 10) {
+                                    edges {
+                                        node {
+                                            topic {
+                                                name
+                                            }
+                                        }
+                                    }
+                                }
                             }
                             ... on PullRequest {
                                 url
@@ -71,6 +81,13 @@ export const search = ({
                                     url
                                 }
                                 bodyHTML
+                                labels(first: 10) {
+                                    edges {
+                                        node {
+                                            name
+                                        }
+                                    }
+                                }
                             }
                             ... on Issue {
                                 url
@@ -83,6 +100,13 @@ export const search = ({
                                     url
                                 }
                                 bodyHTML
+                                labels(first: 10) {
+                                    edges {
+                                        node {
+                                            name
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -115,7 +139,11 @@ export const search = ({
                         login: node.author?.login,
                         url: node.author?.url
                     },
-                    bodyHTML: node.bodyHTML
+                    bodyHTML: node.bodyHTML,
+                    labels:
+                        node.labels?.edges?.map((edge) => {
+                            return edge?.node?.name;
+                        }) ?? []
                 } as Item;
             } else {
                 return {
@@ -128,7 +156,11 @@ export const search = ({
                         login: node.owner?.login,
                         url: node.owner?.url
                     },
-                    bodyHTML: node.descriptionHTML
+                    bodyHTML: node.descriptionHTML,
+                    labels:
+                        node.repositoryTopics?.edges?.map((edge) => {
+                            return edge?.node?.topic.name;
+                        }) ?? []
                 } as Item;
             }
         });

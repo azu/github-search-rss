@@ -24,6 +24,17 @@ export const SEARCH_ITEMS: RSSItem[] = [
         TYPE: "ISSUE",
         link: `${BASE_URL}/w3ctag-design-reviews.json`
     },
+    // Pull Request
+    {
+        // label:data:
+        title: "mdn/browser-compat-data update data",
+        query: "repo:mdn/browser-compat-data is:pr is:open",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/mdn-browser-compat-data.json`,
+        filter: (item) => {
+            return item.labels.some((label) => label.startsWith("data:"));
+        }
+    },
     // Repository
     {
         title: "LightWeight JavaScript repositories",
