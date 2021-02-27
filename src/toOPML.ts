@@ -3,11 +3,13 @@ import { RSSItem } from "./index";
 
 const convertItemToOutline = (item: RSSItem) => {
     return {
-        _attr: {
-            type: "rss",
-            title: item.title,
-            htmlUrl: item.link,
-            xmlUrl: item.link
+        outline: {
+            _attr: {
+                type: "rss",
+                title: item.title,
+                htmlUrl: item.link,
+                xmlUrl: item.link
+            }
         }
     };
 };
