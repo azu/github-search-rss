@@ -20,7 +20,7 @@ export const convertJsonToOPML = (items: RSSItem[]) => {
                 title: "GitHub Search Subscriptions"
             },
             {
-                dateCreated: new Date().toDateString()
+                dateCreated: new Date().toISOString()
             }
         ]
     };
