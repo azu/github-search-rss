@@ -5,13 +5,63 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/content/pull/2843",
-            "title": "fix: HTML validation issue",
-            "date_modified": "2021-03-04T00:13:30.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2692.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"816632242\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2692\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2692/hovercard\" href=\"https://github.com/mdn/content/issues/2692\">#2692</a>.</p>\n<p>As far as I can tell there are 7 pages that need updating here:</p>\n<ul>\n<li>\n<p>Beacon API:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API/Using_the_Beacon_API\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API/Using_the_Beacon_API</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon</a></li>\n</ul>\n</li>\n<li>\n<p>Events:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event</a></li>\n</ul>\n</li>\n</ul>\n<h2>Beacon API</h2>\n<p>Here I think there are a couple of things to emphasise, which are quite independent:</p>\n<ul>\n<li>why people should use the Beacon API for analytics, rather than XHR: because it enables reliable delivery of the data without resorting to hacks that hurt performance</li>\n<li>which events people should use if they want to send analytics at the end of a user's session (without implying that this is the only use case for the Beacon API, <a href=\"https://github.com/mdn/content/issues/2692#issuecomment-700381580\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2692/hovercard\">as Krinkle notes in the issue</a>). Basically: use <code>visibilitychange</code>, or <code>pagehide</code> if the browsers you are targeting don't support <code>visibilitychange</code>.</li>\n</ul>\n<p>The main problem here is that we have three pages describing just one method. This is because for our APIs we have an overview page, and a \"Using...\" page, and a page for each API method. That makes sense for bigger APIs but for this it makes it impossible not to duplicate guidance, I <em>really</em> don't want to do that, because it will get updated in one page and not the other, then our docs will be inconsistent and misleading.</p>\n<p>So what I've tried here is:</p>\n<ul>\n<li>make the overview page pretty minimal,</li>\n<li>delete \"Using the Beacon API\" and make it redirect to the overview page,</li>\n<li>keep all the details in the <code>sendBeacon()</code> page. The big change here is a new \"Sending analytics at the end of a session\" section. Note that although I've listed <code>pagehide</code> as a fallback. I've not explicitly called out Safari here, because I think we should keep compat info in the compat section, or it'll get out of date. Note also that the Safari bug seems to be fixed (<a href=\"https://bugs.webkit.org/show_bug.cgi?id=151234\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=151234</a>) although I don't know which release it's in - it doesn't seem to be in my 14.0.3.</li>\n</ul>\n<p>I'm not sure if deleting \"Using the Beacon API\" worked properly :/. I used this command:</p>\n<pre><code>yarn tool delete /Web/API/Beacon_API/Using_the_Beacon_API --redirect /en-US/docs/Web/API/Beacon_API\n</code></pre>\n<p>...but when I try to load \"Using the Beacon API\" in my local Yari I get:</p>\n<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/432915/110047918-99953b00-7d03-11eb-9aed-3232e71e45a4.png\"><img width=\"1413\" alt=\"Screen Shot 2021-03-04 at 3 24 31 PM\" src=\"https://user-images.githubusercontent.com/432915/110047918-99953b00-7d03-11eb-9aed-3232e71e45a4.png\" style=\"max-width:100%;\"></a></p>\n<p>...but if I click that \"Try reloading the page\" link, the \"Beacon API\" appears as expected. I'm kinda hoping this is some kind of local caching issue, but if you see it as well we'll need to address that.</p>\n<h2>Page Lifecycle</h2>\n<p>I updated all four relevant pages:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event</a></li>\n</ul>\n<p>...mostly by adding \"Usage notes\" sections, which seems to be a fairly conventional way to include this kind of stuff in event pages. I wonder if we should explicitly deprecate <code>unload</code> though, since the guidance here is \"don't use it, no exceptions\".</p>",
+            "url": "https://github.com/mdn/content/pull/2866",
+            "title": "Fix Beacon API and page lifecycle event guidance",
+            "date_modified": "2021-03-05T00:16:32.000Z",
             "author": {
-                "name": "nschonni",
-                "url": "https://github.com/nschonni"
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/66655515?u=d38da9fafbecab89f82da373afc8656e4b36519f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/66655515/110045606-cb0c0780-7cff-11eb-96da-a4e39c013faf.png\"><img src=\"https://user-images.githubusercontent.com/66655515/110045606-cb0c0780-7cff-11eb-96da-a4e39c013faf.png\" alt=\"image\" style=\"max-width:100%;\"></a><br>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/66655515/110045632-d19a7f00-7cff-11eb-8d88-18a81d508311.png\"><img src=\"https://user-images.githubusercontent.com/66655515/110045632-d19a7f00-7cff-11eb-8d88-18a81d508311.png\" alt=\"image\" style=\"max-width:100%;\"></a></p>\n<p><code>javaEnabled()</code> isn't read only be spec while it is marked as read only here.</p>",
+            "url": "https://github.com/mdn/content/pull/2865",
+            "title": "Remove read only from java enabled",
+            "date_modified": "2021-03-04T23:39:58.000Z",
+            "author": {
+                "name": "shadowtime2000",
+                "url": "https://github.com/shadowtime2000"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17770407?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Adds pages for the <code>AsyncGenerator</code> and <code>AsyncGeneratorFunction</code><br>\nstandard built-in global objects that had been missing from the<br>\n“Control abstraction objects” section.</p>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2803.\">Fixes</span>: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"819976827\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2803\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2803/hovercard\" href=\"https://github.com/mdn/content/issues/2803\">#2803</a></p>\n<p>/cc <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/sideshowbarker/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/sideshowbarker\">@sideshowbarker</a> <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Ryuno-Ki/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Ryuno-Ki\">@Ryuno-Ki</a> <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a></p>",
+            "url": "https://github.com/mdn/content/pull/2861",
+            "title": "Document “AsyncGenerator” & “AsyncGeneratorFunction”",
+            "date_modified": "2021-03-04T20:00:37.000Z",
+            "author": {
+                "name": "DerekNonGeneric",
+                "url": "https://github.com/DerekNonGeneric"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/939727?u=2e25f47c213a7e8f2e4e57ddd4ee59ba6601eae3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Upgraded the examples to be more clear and brushed up parts of the copy</p>",
+            "url": "https://github.com/mdn/content/pull/2859",
+            "title": "Changes to margin-block and margin-inline",
+            "date_modified": "2021-03-04T15:08:41.000Z",
+            "author": {
+                "name": "meyerweb",
+                "url": "https://github.com/meyerweb"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/302715?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"812286920\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2514\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2514/hovercard\" href=\"https://github.com/mdn/content/issues/2514\">#2514</a></p>",
+            "url": "https://github.com/mdn/content/pull/2857",
+            "title": "Adding clipboarditem to experimental notes",
+            "date_modified": "2021-03-04T14:10:27.000Z",
+            "author": {
+                "name": "Rumyra",
+                "url": "https://github.com/Rumyra"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>...and push the “fixable flaws” button. Also <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2840.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"821424850\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2840\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2840/hovercard\" href=\"https://github.com/mdn/content/issues/2840\">#2840</a></p>",
+            "url": "https://github.com/mdn/content/pull/2856",
+            "title": "Clarify what gets percent-encoded in data URLs",
+            "date_modified": "2021-03-04T10:41:43.000Z",
+            "author": {
+                "name": "sideshowbarker",
+                "url": "https://github.com/sideshowbarker"
             }
         },
         {
@@ -22,16 +72,6 @@
             "author": {
                 "name": "jpmedley",
                 "url": "https://github.com/jpmedley"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>The figcaptions were empty, so unwrapped the images from the <code>&lt;figure&gt;</code></p>",
-            "url": "https://github.com/mdn/content/pull/2841",
-            "title": "fix: Empty figure/figcaption",
-            "date_modified": "2021-03-03T20:40:26.000Z",
-            "author": {
-                "name": "nschonni",
-                "url": "https://github.com/nschonni"
             }
         },
         {
@@ -52,16 +92,6 @@
             "author": {
                 "name": "Rumyra",
                 "url": "https://github.com/Rumyra"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/24815820?u=02fee926f0c2ecf101bfc015fb6ad492d5fb11dc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul>\n<li>match the \"mid-air collisions\" to the corresponding reference</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/2828",
-            "title": "Update href to correct section",
-            "date_modified": "2021-03-03T12:03:24.000Z",
-            "author": {
-                "name": "albihasani94",
-                "url": "https://github.com/albihasani94"
             }
         },
         {
@@ -92,16 +122,6 @@
             "author": {
                 "name": "jchimene",
                 "url": "https://github.com/jchimene"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/content/pull/2807",
-            "title": "Mark XPathException deprecated (ersatz obsolete)",
-            "date_modified": "2021-03-02T14:49:27.000Z",
-            "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
             }
         },
         {
@@ -182,26 +202,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1149470?u=02f7ebda5ce28d3da57d40b1977c3e8b5382a9b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This page currently lists Ajax solutions as the only option for read files by pathname, but it should also reference the File System Access API.</p>",
-            "url": "https://github.com/mdn/content/pull/2574",
-            "title": "Added reference to the File System Access API",
-            "date_modified": "2021-02-22T16:13:24.000Z",
-            "author": {
-                "name": "jgentes",
-                "url": "https://github.com/jgentes"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"812287553\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2515\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2515/hovercard\" href=\"https://github.com/mdn/content/issues/2515\">#2515</a> removes links to features, and adds a release note.</p>",
-            "url": "https://github.com/mdn/content/pull/2567",
-            "title": "FF87 removing -moz media features",
-            "date_modified": "2021-02-22T09:43:10.000Z",
-            "author": {
-                "name": "rachelandrew",
-                "url": "https://github.com/rachelandrew"
             }
         }
     ]
