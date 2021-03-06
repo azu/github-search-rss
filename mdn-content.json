@@ -5,23 +5,123 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2692.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"816632242\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2692\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2692/hovercard\" href=\"https://github.com/mdn/content/issues/2692\">#2692</a>.</p>\n<p>As far as I can tell there are 7 pages that need updating here:</p>\n<ul>\n<li>\n<p>Beacon API:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API/Using_the_Beacon_API\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API/Using_the_Beacon_API</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon</a></li>\n</ul>\n</li>\n<li>\n<p>Events:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event</a></li>\n</ul>\n</li>\n</ul>\n<h2>Beacon API</h2>\n<p>Here I think there are a couple of things to emphasise, which are quite independent:</p>\n<ul>\n<li>why people should use the Beacon API for analytics, rather than XHR: because it enables reliable delivery of the data without resorting to hacks that hurt performance</li>\n<li>which events people should use if they want to send analytics at the end of a user's session (without implying that this is the only use case for the Beacon API, <a href=\"https://github.com/mdn/content/issues/2692#issuecomment-700381580\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2692/hovercard\">as Krinkle notes in the issue</a>). Basically: use <code>visibilitychange</code>, or <code>pagehide</code> if the browsers you are targeting don't support <code>visibilitychange</code>.</li>\n</ul>\n<p>The main problem here is that we have three pages describing just one method. This is because for our APIs we have an overview page, and a \"Using...\" page, and a page for each API method. That makes sense for bigger APIs but for this it makes it impossible not to duplicate guidance, I <em>really</em> don't want to do that, because it will get updated in one page and not the other, then our docs will be inconsistent and misleading.</p>\n<p>So what I've tried here is:</p>\n<ul>\n<li>make the overview page pretty minimal,</li>\n<li>delete \"Using the Beacon API\" and make it redirect to the overview page,</li>\n<li>keep all the details in the <code>sendBeacon()</code> page. The big change here is a new \"Sending analytics at the end of a session\" section. Note that although I've listed <code>pagehide</code> as a fallback. I've not explicitly called out Safari here, because I think we should keep compat info in the compat section, or it'll get out of date. Note also that the Safari bug seems to be fixed (<a href=\"https://bugs.webkit.org/show_bug.cgi?id=151234\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=151234</a>) although I don't know which release it's in - it doesn't seem to be in my 14.0.3.</li>\n</ul>\n<p>I'm not sure if deleting \"Using the Beacon API\" worked properly :/. I used this command:</p>\n<pre><code>yarn tool delete /Web/API/Beacon_API/Using_the_Beacon_API --redirect /en-US/docs/Web/API/Beacon_API\n</code></pre>\n<p>...but when I try to load \"Using the Beacon API\" in my local Yari I get:</p>\n<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/432915/110047918-99953b00-7d03-11eb-9aed-3232e71e45a4.png\"><img width=\"1413\" alt=\"Screen Shot 2021-03-04 at 3 24 31 PM\" src=\"https://user-images.githubusercontent.com/432915/110047918-99953b00-7d03-11eb-9aed-3232e71e45a4.png\" style=\"max-width:100%;\"></a></p>\n<p>...but if I click that \"Try reloading the page\" link, the \"Beacon API\" appears as expected. I'm kinda hoping this is some kind of local caching issue, but if you see it as well we'll need to address that.</p>\n<h2>Page Lifecycle</h2>\n<p>I updated all four relevant pages:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event</a></li>\n</ul>\n<p>...mostly by adding \"Usage notes\" sections, which seems to be a fairly conventional way to include this kind of stuff in event pages. I wonder if we should explicitly deprecate <code>unload</code> though, since the guidance here is \"don't use it, no exceptions\".</p>",
-            "url": "https://github.com/mdn/content/pull/2866",
-            "title": "Fix Beacon API and page lifecycle event guidance",
-            "date_modified": "2021-03-05T00:16:32.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1149470?u=02f7ebda5ce28d3da57d40b1977c3e8b5382a9b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>The documentation for file system access is missing an important mention about permissions that are implicitly granted when the user is prompted to select a file, and that those permissions are lost after a page refresh and must be re-acquired before the file can be accessed again.</p>",
+            "url": "https://github.com/mdn/content/pull/2891",
+            "title": "Added a note regarding permissions",
+            "date_modified": "2021-03-06T00:00:14.000Z",
             "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
+                "name": "jgentes",
+                "url": "https://github.com/jgentes"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/66655515?u=d38da9fafbecab89f82da373afc8656e4b36519f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/66655515/110045606-cb0c0780-7cff-11eb-96da-a4e39c013faf.png\"><img src=\"https://user-images.githubusercontent.com/66655515/110045606-cb0c0780-7cff-11eb-96da-a4e39c013faf.png\" alt=\"image\" style=\"max-width:100%;\"></a><br>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/66655515/110045632-d19a7f00-7cff-11eb-8d88-18a81d508311.png\"><img src=\"https://user-images.githubusercontent.com/66655515/110045632-d19a7f00-7cff-11eb-8d88-18a81d508311.png\" alt=\"image\" style=\"max-width:100%;\"></a></p>\n<p><code>javaEnabled()</code> isn't read only be spec while it is marked as read only here.</p>",
-            "url": "https://github.com/mdn/content/pull/2865",
-            "title": "Remove read only from java enabled",
-            "date_modified": "2021-03-04T23:39:58.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/25801283?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>The <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading#browser_compatibility\" rel=\"nofollow\">MDN page for <code>HTMLImageElement</code></a> marks the <code>loading</code> attribute as experimental.</p>",
+            "url": "https://github.com/mdn/content/pull/2890",
+            "title": "Add inline experimental icon to the `loading` attribute",
+            "date_modified": "2021-03-05T23:22:31.000Z",
             "author": {
-                "name": "shadowtime2000",
-                "url": "https://github.com/shadowtime2000"
+                "name": "KartikSoneji",
+                "url": "https://github.com/KartikSoneji"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8204171?u=6f2a08fb80e2aaec862b0d5df86ad846d77013cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/mdn/content/pull/2889",
+            "title": "Note that argument passed to Map() is optional.",
+            "date_modified": "2021-03-05T22:58:26.000Z",
+            "author": {
+                "name": "jpmedley",
+                "url": "https://github.com/jpmedley"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/25801283?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>The readme currently links to the the KumaScript macro folder on the <code>master</code> branch, but the Yari repo uses <code>main</code> as the default branch.</p>",
+            "url": "https://github.com/mdn/content/pull/2888",
+            "title": "Update links to KumaScript macros from master to main",
+            "date_modified": "2021-03-05T22:51:00.000Z",
+            "author": {
+                "name": "KartikSoneji",
+                "url": "https://github.com/KartikSoneji"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19933707?u=38bbc26a8bc678a70ce78f73c165d9b2d04a0578&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Fixed the spelling of \"follow\" from \"follw\" in the \"HTML attribute: step\" documentation page.<br>\nURL: <a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step\">https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/step</a></p>",
+            "url": "https://github.com/mdn/content/pull/2885",
+            "title": "Spelling fix",
+            "date_modified": "2021-03-05T17:35:01.000Z",
+            "author": {
+                "name": "badralshaer",
+                "url": "https://github.com/badralshaer"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/52647469?u=a5232fd12971f69850ce097a7673e116cbc324cf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Reverts <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"822220984\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2859\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/2859/hovercard\" href=\"https://github.com/mdn/content/pull/2859\">#2859</a></p>",
+            "url": "https://github.com/mdn/content/pull/2884",
+            "title": "Revert \"Changes to margin-block and margin-inline\"",
+            "date_modified": "2021-03-05T16:53:09.000Z",
+            "author": {
+                "name": "hafixo",
+                "url": "https://github.com/hafixo"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Overview page for the API: <a rel=\"nofollow\" href=\"https://w3c.github.io/webappsec-trusted-types/dist/spec/\">https://w3c.github.io/webappsec-trusted-types/dist/spec/</a></p>\n<p>Reviewer: <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/jpmedley/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/jpmedley\">@jpmedley</a></p>\n<p>I added a bit of explanation about injection sinks and policies in the description, as they will be referred to a lot in the individual interfaces, but perhaps these should be (or also be) a Glossary entry?</p>",
+            "url": "https://github.com/mdn/content/pull/2883",
+            "title": "Trusted Types API Overview",
+            "date_modified": "2021-03-05T15:56:22.000Z",
+            "author": {
+                "name": "rachelandrew",
+                "url": "https://github.com/rachelandrew"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/44900696?u=6c92ede0914059c11087203c060d5cb13f898d32&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Fixed typo in href attribute</p>",
+            "url": "https://github.com/mdn/content/pull/2879",
+            "title": "Fixes #2878",
+            "date_modified": "2021-03-05T12:34:18.000Z",
+            "author": {
+                "name": "CreaTorAlexander",
+                "url": "https://github.com/CreaTorAlexander"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/53560276?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/mdn/content/pull/2877",
+            "title": "Tiny emphasizing mistake? \"is\" should be emphasized.",
+            "date_modified": "2021-03-05T10:31:02.000Z",
+            "author": {
+                "name": "Yug34",
+                "url": "https://github.com/Yug34"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/mdn/content/pull/2874",
+            "title": "adding complete beginner starter guides",
+            "date_modified": "2021-03-05T09:46:29.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a rel=\"nofollow\" href=\"https://html.spec.whatwg.org/multipage/obsolete.html#navigatorplugins\">https://html.spec.whatwg.org/multipage/obsolete.html#navigatorplugins</a></p>\n<p>Related BCD change: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"822671268\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9338\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/9338/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/9338\">mdn/browser-compat-data#9338</a></p>",
+            "url": "https://github.com/mdn/content/pull/2869",
+            "title": "Deprecate NavigatorPlugins, its subfeatures, and related objects",
+            "date_modified": "2021-03-05T01:58:46.000Z",
+            "author": {
+                "name": "sideshowbarker",
+                "url": "https://github.com/sideshowbarker"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a rel=\"nofollow\" href=\"https://html.spec.whatwg.org/multipage/obsolete.html#dom-navigator-javaenabled\">https://html.spec.whatwg.org/multipage/obsolete.html#dom-navigator-javaenabled</a></p>",
+            "url": "https://github.com/mdn/content/pull/2867",
+            "title": "Doc that navigator.javaEnabled() is always false",
+            "date_modified": "2021-03-05T00:38:52.000Z",
+            "author": {
+                "name": "sideshowbarker",
+                "url": "https://github.com/sideshowbarker"
             }
         },
         {
@@ -32,16 +132,6 @@
             "author": {
                 "name": "DerekNonGeneric",
                 "url": "https://github.com/DerekNonGeneric"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/939727?u=2e25f47c213a7e8f2e4e57ddd4ee59ba6601eae3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Upgraded the examples to be more clear and brushed up parts of the copy</p>",
-            "url": "https://github.com/mdn/content/pull/2859",
-            "title": "Changes to margin-block and margin-inline",
-            "date_modified": "2021-03-04T15:08:41.000Z",
-            "author": {
-                "name": "meyerweb",
-                "url": "https://github.com/meyerweb"
             }
         },
         {
@@ -85,26 +175,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/302715?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>These include:</p>\n<ul>\n<li>Removal of draft from pages</li>\n<li>Updating constructor to include options and more info</li>\n<li>Adding <code>presentationStyle</code> property</li>\n<li>Adding additional members to interface page</li>\n</ul>\n<p><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"812286920\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2514\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2514/hovercard\" href=\"https://github.com/mdn/content/issues/2514\">#2514</a></p>",
-            "url": "https://github.com/mdn/content/pull/2829",
-            "title": "clipboarditem updates",
-            "date_modified": "2021-03-03T13:55:03.000Z",
-            "author": {
-                "name": "Rumyra",
-                "url": "https://github.com/Rumyra"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55234838?u=50d8f632f19cc8e2cc244cc8766cd43c0d960920&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This fixes typo for one of the web page as mentioned in the issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"782693940\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1136\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1136/hovercard\" href=\"https://github.com/mdn/content/issues/1136\">#1136</a></p>",
-            "url": "https://github.com/mdn/content/pull/2826",
-            "title": "Fixed typo .",
-            "date_modified": "2021-03-03T11:02:44.000Z",
-            "author": {
-                "name": "NegiAkash890",
-                "url": "https://github.com/NegiAkash890"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7452994?u=00535859b3bc73e5ae72d79e990994e9b3a0562c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Updates the list of properties that are forced.</p>\n<p>Adds guidance around system color usage and the fact that they are respected in forced colors mode.</p>\n<p>Explains that forced colors are chosen based on element, not role.</p>\n<p>Adds an example of using a system color (previous example wouldn't have worked without <code>forced-color-adjust: none</code>).</p>",
             "url": "https://github.com/mdn/content/pull/2819",
             "title": "Update documentation for forced colors mode",
@@ -132,76 +202,6 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2337.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"807785898\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2337\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2337/hovercard\" href=\"https://github.com/mdn/content/issues/2337\">#2337</a></p>",
-            "url": "https://github.com/mdn/content/pull/2737",
-            "title": "Fix spec link in showOpenFilePicker doc",
-            "date_modified": "2021-02-27T04:30:53.000Z",
-            "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3097194?u=123219e7a13192126bf63b5443369dc09329a9f2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>More to come :-)</p>\n<p>Signed-off-by: André Jaenisch <a href=\"mailto:andre.jaenisch@posteo.de\">andre.jaenisch@posteo.de</a></p>",
-            "url": "https://github.com/mdn/content/pull/2731",
-            "title": "Clean up flaws and indents of SVG/attributes/a",
-            "date_modified": "2021-02-26T21:52:15.000Z",
-            "author": {
-                "name": "Ryuno-Ki",
-                "url": "https://github.com/Ryuno-Ki"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This change updates the <code>RegExp</code> article to correct a misclassification of <code>lastIndex</code> as a static property; it’s not a static property, but instead an instance property.</p>\n<p>However, it’s not a property of <code>RegExp.prototype</code> but instead is only exposed from <code>RegExp</code> instances — so this change adds some special-casing for that in the article for <code>lastIndex</code> itself, as well as in the <code>RegExp</code> article.</p>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2708.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"817268564\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2708\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2708/hovercard\" href=\"https://github.com/mdn/content/issues/2708\">#2708</a></p>",
-            "url": "https://github.com/mdn/content/pull/2725",
-            "title": "Clarify that lastIndex is RegExp instance property, not a static property",
-            "date_modified": "2021-02-26T18:56:53.000Z",
-            "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1907525?u=ad0fbd9bb3501bf85e1b77c60a43229929e8a269&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>I was searching myself crazy on how to set the resolution and frame rate, and even thought that it's impossible to control,<br>\nuntil I found that they are set in getUserMedia().<br>\nMake a note where this is set, to save others the headache.</p>",
-            "url": "https://github.com/mdn/content/pull/2698",
-            "title": "Show how to set resolution and frame rate",
-            "date_modified": "2021-02-25T20:46:50.000Z",
-            "author": {
-                "name": "benbucksch",
-                "url": "https://github.com/benbucksch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/44900696?u=6c92ede0914059c11087203c060d5cb13f898d32&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>My First Site, Added Glossary Site and fixed the link to device_pixel instead of device_pixels, <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2682.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"816193957\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2682\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2682/hovercard\" href=\"https://github.com/mdn/content/issues/2682\">#2682</a></p>",
-            "url": "https://github.com/mdn/content/pull/2695",
-            "title": "New Glossary Page Fixes #2682",
-            "date_modified": "2021-02-25T18:50:12.000Z",
-            "author": {
-                "name": "CreaTorAlexander",
-                "url": "https://github.com/CreaTorAlexander"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is the Service Worker version of <code>CookieChangeEvent</code> so it may require changed based on what we decide with that one.</p>\n<p><a rel=\"nofollow\" href=\"https://wicg.github.io/cookie-store/#ExtendableCookieChangeEvent\">https://wicg.github.io/cookie-store/#ExtendableCookieChangeEvent</a></p>\n<p>Reviewer: <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/jpmedley/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/jpmedley\">@jpmedley</a></p>",
-            "url": "https://github.com/mdn/content/pull/2613",
-            "title": "Adds ExtendableCookieChangeEvent",
-            "date_modified": "2021-02-23T11:43:59.000Z",
-            "author": {
-                "name": "rachelandrew",
-                "url": "https://github.com/rachelandrew"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2593.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"813993530\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2593\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2593/hovercard\" href=\"https://github.com/mdn/content/issues/2593\">#2593</a></p>\n<p>The Three.js docs structure has changed at some point, resulting in broken links. I've fixed all of those in this PR.</p>",
-            "url": "https://github.com/mdn/content/pull/2604",
-            "title": "fixing broken Three.js links",
-            "date_modified": "2021-02-23T07:31:15.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
