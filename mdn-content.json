@@ -5,23 +5,43 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/content/pull/3087",
-            "title": "fix: mismatched heading tag",
-            "date_modified": "2021-03-12T22:48:44.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/20882431?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Checklist — To help your pull request get merged faster, please do the following:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a summary of your changes — say what problem you are fixing, what files are changed, and what you've done. This doesn't need to be hugely detailed, as we can see exact changes in the \"Files changed\" tab.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a link to the issue(s) you are fixing, if appropriate, in the form \"Fixes <em>url-of-issue</em>\". GitHub will render this in the form \"<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #1234.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"784605070\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1234\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/1234/hovercard\" href=\"https://github.com/mdn/content/pull/1234\">#1234</a>\", with the issue number linked to the issue. Doing this allows us to figure out what issues you are fixing, as well as helping to automate things (for example the issue will be closed once the PR that fixed it has been merged).</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Review the results of the automated checking we run on every PR and fix any problems reported (see the list of checks near the bottom of the PR page). If you need help, please ask in a comment!</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Link to any other resources that you think might be useful in reviewing your PR.</li>\n</ul>\n</li>\n</ol>",
+            "url": "https://github.com/mdn/content/pull/3100",
+            "title": "Fixed YouTube video ID",
+            "date_modified": "2021-03-13T19:04:48.000Z",
             "author": {
-                "name": "nschonni",
-                "url": "https://github.com/nschonni"
+                "name": "Alien426",
+                "url": "https://github.com/Alien426"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/26739?u=a88c9c6e908b2fa16d426405fd7aaf027c8382c2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"830467901\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/translated-content/issues/124\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/translated-content/issues/124/hovercard\" href=\"https://github.com/mdn/translated-content/issues/124\">mdn/translated-content#124</a></p>",
-            "url": "https://github.com/mdn/content/pull/3086",
-            "title": "Mentions for the whatsdeployed link for translated-content",
-            "date_modified": "2021-03-12T21:14:21.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17109817?u=b6d3a8f6e6126a413140a3ec4b573e8226fc7e96&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><blockquote>\n<p>The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON.</p>\n</blockquote>\n<p>can read like \"It returns a promise that resolves ... as JSON\"</p>\n<p>but in fact, it means \"It returns a promise that resolves with (the result of parsing the body text as JSON)\"</p>\n<p>So it is: by parsing the body text as JSON, return the result in the form of a JavaScript object.</p>\n<p>It is mentioned as such down below the docs, but the title can give people wrong impressions that it is returning \"JSON\".</p>\n<p>There are so many places where people think it is \"JSON\", when it is JavaScript object.</p>\n<p><a href=\"https://github.com/mdn/fetch-examples/blob/e59e035214d21926eb7fc474e0cea88b33199b00/fetch-json/index.html\">https://github.com/mdn/fetch-examples/blob/e59e035214d21926eb7fc474e0cea88b33199b00/fetch-json/index.html</a></p>\n<p>and the pull request to correct it: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"830957588\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/fetch-examples/issues/16\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/fetch-examples/pull/16/hovercard\" href=\"https://github.com/mdn/fetch-examples/pull/16\">mdn/fetch-examples#16</a></p>\n<p><a rel=\"nofollow\" href=\"https://jsonplaceholder.typicode.com/\">https://jsonplaceholder.typicode.com/</a></p>\n<pre><code>fetch('https://jsonplaceholder.typicode.com/todos/1')\n  .then(response =&gt; response.json())\n  .then(json =&gt; console.log(json))\n</code></pre>\n<p>You see, we have a string <code>s</code>, we use <code>parseInt(s)</code> to get back an integer.  We would not call that integer a string, would we?</p>\n<p>So, we have JSON, we use <code>.json()</code> to parse it and get back a JavaScript object, and we call this JavaScript object a \"JSON\".  That is very wrong.</p>\n<p>Checklist — To help your pull request get merged faster, please do the following:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a summary of your changes — say what problem you are fixing, what files are changed, and what you've done. This doesn't need to be hugely detailed, as we can see exact changes in the \"Files changed\" tab.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a link to the issue(s) you are fixing, if appropriate, in the form \"Fixes <em>url-of-issue</em>\". GitHub will render this in the form \"<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #1234.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"784605070\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1234\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/1234/hovercard\" href=\"https://github.com/mdn/content/pull/1234\">#1234</a>\", with the issue number linked to the issue. Doing this allows us to figure out what issues you are fixing, as well as helping to automate things (for example the issue will be closed once the PR that fixed it has been merged).</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Review the results of the automated checking we run on every PR and fix any problems reported (see the list of checks near the bottom of the PR page). If you need help, please ask in a comment!</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Link to any other resources that you think might be useful in reviewing your PR.</li>\n</ul>\n</li>\n</ol>",
+            "url": "https://github.com/mdn/content/pull/3098",
+            "title": "It is very confusing",
+            "date_modified": "2021-03-13T18:38:30.000Z",
             "author": {
-                "name": "peterbe",
-                "url": "https://github.com/peterbe"
+                "name": "KennethKinLum",
+                "url": "https://github.com/KennethKinLum"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/426713?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a href=\"https://github.com/dorukeker/gyronorm.js\">gyronorm.js</a> is not maintained anymore, so replaced it with <a href=\"https://github.com/wagerfield/parallax\">parallax</a>.</p>\n<blockquote>\n<p>Dear All, It has been almost 5 years since I first wrote this library. In the mean time JS evolved a lot; and parallel to this I grow apart from the JS world. Therefore I dont have the resources to go on maintaining this library and make sure it runs as expercted on latest devices. Gyronorm library will stay opensource in GitHub however I wont be merging any PR; and I wont look actively into any issues. I created an issue for alternatives here: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"417192112\" data-permission-text=\"Title is private\" data-url=\"https://github.com/dorukeker/gyronorm.js/issues/61\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dorukeker/gyronorm.js/issues/61/hovercard\" href=\"https://github.com/dorukeker/gyronorm.js/issues/61\">dorukeker/gyronorm.js#61</a> So if any one finds an up-to-date alternative please feel free to share it. Cheers!</p>\n</blockquote>",
+            "url": "https://github.com/mdn/content/pull/3093",
+            "title": "replaced obsolete gyronorm.js with parallax",
+            "date_modified": "2021-03-13T11:58:08.000Z",
+            "author": {
+                "name": "pooyaGames",
+                "url": "https://github.com/pooyaGames"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/59782978?u=ab2d53f9fcd964dba5d53ea3e0062f55e29780be&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Checklist — To help your pull request get merged faster, please do the following:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Node.js is also mentioned to be spelled NodeJS as well. npm is also mentioned to be spelled NPM as well.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes nil.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Auto-merge skipped, all successful.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> No links, but previously added the \"Node Package Manager (npm)\" section.</li>\n</ul>\n</li>\n</ol>",
+            "url": "https://github.com/mdn/content/pull/3090",
+            "title": "Node.js Aliases",
+            "date_modified": "2021-03-13T03:42:29.000Z",
+            "author": {
+                "name": "JavascriptLearner815",
+                "url": "https://github.com/JavascriptLearner815"
             }
         },
         {
@@ -32,16 +52,6 @@
             "author": {
                 "name": "nschonni",
                 "url": "https://github.com/nschonni"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36935593?u=c9cf05422d6e9fa315b2051a46e79642c863677b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Checklist — To help your pull request get merged faster, please do the following:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Provide a summary of your changes — say what problem you are fixing, what files are changed, and what you've done. This doesn't need to be hugely detailed, as we can see exact changes in the \"Files changed\" tab.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Provide a link to the issue(s) you are fixing, if appropriate, in the form \"Fixes <em>url-of-issue</em>\". GitHub will render this in the form \"<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #1234.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"784605070\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1234\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/1234/hovercard\" href=\"https://github.com/mdn/content/pull/1234\">#1234</a>\", with the issue number linked to the issue. Doing this allows us to figure out what issues you are fixing, as well as helping to automate things (for example the issue will be closed once the PR that fixed it has been merged).</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Review the results of the automated checking we run on every PR and fix any problems reported (see the list of checks near the bottom of the PR page). If you need help, please ask in a comment!</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Link to any other resources that you think might be useful in reviewing your PR.</li>\n</ul>\n</li>\n</ol>",
-            "url": "https://github.com/mdn/content/pull/3083",
-            "title": "Fix typo",
-            "date_modified": "2021-03-12T20:44:06.000Z",
-            "author": {
-                "name": "buondevid",
-                "url": "https://github.com/buondevid"
             }
         },
         {
@@ -65,26 +75,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/20882431?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Fixed plenking, some capitalization, missing images.</p>\n<p>Checklist — To help your pull request get merged faster, please do the following:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a summary of your changes — say what problem you are fixing, what files are changed, and what you've done. This doesn't need to be hugely detailed, as we can see exact changes in the \"Files changed\" tab.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a link to the issue(s) you are fixing, if appropriate, in the form \"Fixes <em>url-of-issue</em>\". GitHub will render this in the form \"<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #1234.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"784605070\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1234\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/1234/hovercard\" href=\"https://github.com/mdn/content/pull/1234\">#1234</a>\", with the issue number linked to the issue. Doing this allows us to figure out what issues you are fixing, as well as helping to automate things (for example the issue will be closed once the PR that fixed it has been merged).</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Review the results of the automated checking we run on every PR and fix any problems reported (see the list of checks near the bottom of the PR page). If you need help, please ask in a comment!</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Link to any other resources that you think might be useful in reviewing your PR.</li>\n</ul>\n</li>\n</ol>",
-            "url": "https://github.com/mdn/content/pull/3079",
-            "title": "Fixed plenking, removed missing images.",
-            "date_modified": "2021-03-12T19:58:13.000Z",
-            "author": {
-                "name": "Alien426",
-                "url": "https://github.com/Alien426"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/20882431?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Checklist — To help your pull request get merged faster, please do the following:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a summary of your changes — say what problem you are fixing, what files are changed, and what you've done. This doesn't need to be hugely detailed, as we can see exact changes in the \"Files changed\" tab.</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Provide a link to the issue(s) you are fixing, if appropriate, in the form \"Fixes <em>url-of-issue</em>\". GitHub will render this in the form \"<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #1234.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"784605070\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1234\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/1234/hovercard\" href=\"https://github.com/mdn/content/pull/1234\">#1234</a>\", with the issue number linked to the issue. Doing this allows us to figure out what issues you are fixing, as well as helping to automate things (for example the issue will be closed once the PR that fixed it has been merged).</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Review the results of the automated checking we run on every PR and fix any problems reported (see the list of checks near the bottom of the PR page). If you need help, please ask in a comment!</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Link to any other resources that you think might be useful in reviewing your PR.</li>\n</ul>\n</li>\n</ol>",
-            "url": "https://github.com/mdn/content/pull/3078",
-            "title": "Removed missing images.",
-            "date_modified": "2021-03-12T19:55:59.000Z",
-            "author": {
-                "name": "Alien426",
-                "url": "https://github.com/Alien426"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64042475?u=6bb021959a397b76b4f6a2c7f6f0f3527155d599&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>I made text revisions for clarity and one edit for US English spelling (dialogue -&gt; dialog). For readability, I shortened some sentences and eliminated some extraneous wording.</p>\n<p>The styling for the unordered lists could use some attention too, but I am focusing on content editing for this PR.</p>",
             "url": "https://github.com/mdn/content/pull/3075",
             "title": "Update index.html",
@@ -92,16 +82,6 @@
             "author": {
                 "name": "timohaver",
                 "url": "https://github.com/timohaver"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/24497353?u=e072a3702005bd625cb16c2b9c547edc51251ffd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>A note about rel=\"alternate\" was placed under the definition for rel=\"author\" instead.</p>",
-            "url": "https://github.com/mdn/content/pull/3072",
-            "title": "Fix incorrectly placed note in rel attribute page",
-            "date_modified": "2021-03-12T16:32:08.000Z",
-            "author": {
-                "name": "flyingpimonster",
-                "url": "https://github.com/flyingpimonster"
             }
         },
         {
@@ -202,6 +182,26 @@
             "author": {
                 "name": "cpeterso",
                 "url": "https://github.com/cpeterso"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This adds back information about firefox preferences that can be used to set the default referrer-policy, which were removed in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"819493457\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2792\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/2792/hovercard\" href=\"https://github.com/mdn/content/pull/2792\">#2792</a>. It contributes to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"812288953\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2516\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2516/hovercard\" href=\"https://github.com/mdn/content/issues/2516\">#2516</a></p>\n<p>My intent was to include this information in the BCD (<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"818530387\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9303\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/9303/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/9303\">mdn/browser-compat-data#9303</a>). However the position taken is that these preferences are not \"compatibility information\" and shouldn't be in BCD. If you agree with that position it isn't clear where the information should go.</p>\n<p><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/chrisdavidmills/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/chrisdavidmills\">@chrisdavidmills</a> What I have done is put this in its own section Firefox preferences. That removes it from the BCD and makes it very clear that this is Firefox only. I am not particularly happy with this, but I don't want to throw away the information about there is no better place for it (?). Perhaps we could make this section \"Browser preferences\" and then anyone who wants to add info about other browsers could do so?</p>\n<p>Anyway, I consider this \"open for discussion\"</p>",
+            "url": "https://github.com/mdn/content/pull/2954",
+            "title": "Add information about firefox default preferences",
+            "date_modified": "2021-03-08T22:51:09.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2555.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"812966922\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2555\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2555/hovercard\" href=\"https://github.com/mdn/content/issues/2555\">#2555</a><br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2836.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"821395167\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2836\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2836/hovercard\" href=\"https://github.com/mdn/content/issues/2836\">#2836</a></p>\n<p>The authentication code relies on an OS import, which this adds into instructions. Note that the module is imported in the deployment module too which occurs later. I have made a conscious decision NOT to change that doc - multiple imports of that same module will do not harm to the tutorial, and this simplifies the instructions.</p>",
+            "url": "https://github.com/mdn/content/pull/2919",
+            "title": "Django server tutorial - as os module import",
+            "date_modified": "2021-03-08T05:38:20.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
             }
         }
     ]
