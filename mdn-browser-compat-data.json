@@ -5,6 +5,16 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/49615?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Updates the browser compatibility data to show Safari mostly supports the Service Worker Client/WindowClient APIs.</p>\n<p>It appears that support was included with the initial release of Service Workers support in macOS Safari 11.1 and iOS Safari 11.3 (Changeset: <a rel=\"nofollow\" href=\"https://trac.webkit.org/changeset/224880/webkit\">https://trac.webkit.org/changeset/224880/webkit</a>)</p>\n<p>Based on this line in one of the modified files, it does seem that this changeset was included in 11.1: <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/releases/Apple/Safari%2011.1/WebCore/workers/service/ServiceWorker.cpp#L38\">https://trac.webkit.org/browser/webkit/releases/Apple/Safari%2011.1/WebCore/workers/service/ServiceWorker.cpp#L38</a></p>\n<p>iOS Safari 11.3: <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/releases/Apple/iOS%2011.3/WebCore/workers/service/ServiceWorker.cpp#L38\">https://trac.webkit.org/browser/webkit/releases/Apple/iOS%2011.3/WebCore/workers/service/ServiceWorker.cpp#L38</a></p>\n<h3>Testing</h3>\n<p>I was able to verify that it at least works in Safari 14.0.3 (macOS 11.2.3). Here's a screenshot of the dev tools showing a <code>WindowClient</code> object returned by <code>clients.matchAll</code> in the service worker.</p>\n<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/49615/115150650-54209900-a037-11eb-85b0-4ac510030b4c.png\"><img width=\"433\" alt=\"Screen Shot 2021-04-18 at 10 40 02 AM\" src=\"https://user-images.githubusercontent.com/49615/115150650-54209900-a037-11eb-85b0-4ac510030b4c.png\" style=\"max-width:100%;\"></a></p>\n<p>I was also able to send a message back to the client tab with <code>client.postMessage(...)</code>.</p>\n<p><strong>Not marked as supported:</strong> <code>.focus(...)</code> and <code>.navigate(...)</code> on WindowClient throw a \"not implemented\" exception. Everything else appears to work as expected.</p>\n<p>I have not had a chance to dig up an older version (or test in iOS) to verify exactly when this started working. If that's a blocker I'll see what I can come up with.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9904",
+            "title": "Update Safari Service Worker Client/WindowClient support data",
+            "date_modified": "2021-04-18T15:22:15.000Z",
+            "author": {
+                "name": "tgecho",
+                "url": "https://github.com/tgecho"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17712401?u=2a7936330619008115f08829a491be81d8c6b685&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Hello everyone, everything good?</p>\n<p>In that PR, I updated the docs to version 90 of Chrome.</p>\n<p>According to <a href=\"https://www.chromestatus.com/features/schedule\" rel=\"nofollow\">Chrome Status</a>, 92 is the nightly version.</p>\n<p><g-emoji class=\"g-emoji\" alias=\"wink\" fallback-src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f609.png\">😉</g-emoji></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/9894",
             "title": "Updates chrome to version 90",
@@ -132,16 +142,6 @@
             "author": {
                 "name": "ddbeck",
                 "url": "https://github.com/ddbeck"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>These are curious, because the ability to access the members of these<br>\nArray-like interfaces is the whole point of them. There are many<br>\ninterfaces like this, but only these few have entries for [].</p>\n<p>These pages exist and will need to be removed:<br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/DataTransferItemList/DataTransferItem\">https://developer.mozilla.org/docs/Web/API/DataTransferItemList/DataTransferItem</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/SourceBufferList/SourceBuffer\">https://developer.mozilla.org/docs/Web/API/SourceBufferList/SourceBuffer</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/TrackDefaultList/TrackDefault\">https://developer.mozilla.org/docs/Web/API/TrackDefaultList/TrackDefault</a></p>\n<p>These pages do not exist:<br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/CSSNumericArray/CSSNumericValue\">https://developer.mozilla.org/docs/Web/API/CSSNumericArray/CSSNumericValue</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue/CSSUnparsedSegment\">https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue/CSSUnparsedSegment</a></p>\n<p>The interface pages do exist and show that support is largely identical<br>\nto the parent feature:<br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/CSSNumericArray#Browser_compatibility\">https://developer.mozilla.org/docs/Web/API/CSSNumericArray#Browser_compatibility</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue#Browser_compatibility\">https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue#Browser_compatibility</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/DataTransferItemList#Browser_compatibility\">https://developer.mozilla.org/docs/Web/API/DataTransferItemList#Browser_compatibility</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/SourceBufferList#Browser_compatibility\">https://developer.mozilla.org/docs/Web/API/SourceBufferList#Browser_compatibility</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/docs/Web/API/TrackDefaultList#Browser_compatibility\">https://developer.mozilla.org/docs/Web/API/TrackDefaultList#Browser_compatibility</a></p>\n<p>The exception is SourceBufferList, but that must be an error in the data.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9464",
-            "title": "Remove entries representing indexed property getters",
-            "date_modified": "2021-03-15T12:52:26.000Z",
-            "author": {
-                "name": "foolip",
-                "url": "https://github.com/foolip"
             }
         }
     ]
