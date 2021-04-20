@@ -5,143 +5,203 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/49615?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Updates the browser compatibility data to show Safari mostly supports the Service Worker Client/WindowClient APIs.</p>\n<p>It appears that support was included with the initial release of Service Workers support in macOS Safari 11.1 and iOS Safari 11.3 (Changeset: <a rel=\"nofollow\" href=\"https://trac.webkit.org/changeset/224880/webkit\">https://trac.webkit.org/changeset/224880/webkit</a>)</p>\n<p>Based on this line in one of the modified files, it does seem that this changeset was included in 11.1: <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/releases/Apple/Safari%2011.1/WebCore/workers/service/ServiceWorker.cpp#L38\">https://trac.webkit.org/browser/webkit/releases/Apple/Safari%2011.1/WebCore/workers/service/ServiceWorker.cpp#L38</a></p>\n<p>iOS Safari 11.3: <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/releases/Apple/iOS%2011.3/WebCore/workers/service/ServiceWorker.cpp#L38\">https://trac.webkit.org/browser/webkit/releases/Apple/iOS%2011.3/WebCore/workers/service/ServiceWorker.cpp#L38</a></p>\n<h3>Testing</h3>\n<p>I was able to verify that it at least works in Safari 14.0.3 (macOS 11.2.3). Here's a screenshot of the dev tools showing a <code>WindowClient</code> object returned by <code>clients.matchAll</code> in the service worker.</p>\n<p><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/49615/115150650-54209900-a037-11eb-85b0-4ac510030b4c.png\"><img width=\"433\" alt=\"Screen Shot 2021-04-18 at 10 40 02 AM\" src=\"https://user-images.githubusercontent.com/49615/115150650-54209900-a037-11eb-85b0-4ac510030b4c.png\" style=\"max-width:100%;\"></a></p>\n<p>I was also able to send a message back to the client tab with <code>client.postMessage(...)</code>.</p>\n<p><strong>Not marked as supported:</strong> <code>.focus(...)</code> and <code>.navigate(...)</code> on WindowClient throw a \"not implemented\" exception. Everything else appears to work as expected.</p>\n<p>I have not had a chance to dig up an older version (or test in iOS) to verify exactly when this started working. If that's a blocker I'll see what I can come up with.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9904",
-            "title": "Update Safari Service Worker Client/WindowClient support data",
-            "date_modified": "2021-04-18T15:22:15.000Z",
-            "author": {
-                "name": "tgecho",
-                "url": "https://github.com/tgecho"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17712401?u=2a7936330619008115f08829a491be81d8c6b685&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Hello everyone, everything good?</p>\n<p>In that PR, I updated the docs to version 90 of Chrome.</p>\n<p>According to <a href=\"https://www.chromestatus.com/features/schedule\" rel=\"nofollow\">Chrome Status</a>, 92 is the nightly version.</p>\n<p><g-emoji class=\"g-emoji\" alias=\"wink\" fallback-src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f609.png\">😉</g-emoji></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9894",
-            "title": "Updates chrome to version 90",
-            "date_modified": "2021-04-17T06:59:01.000Z",
-            "author": {
-                "name": "lucalves",
-                "url": "https://github.com/lucalves"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/45960703?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This interface is officially called DOMHighResTimeStamp.</p>\n<p>Specification:<br>\n<a rel=\"nofollow\" href=\"https://www.w3.org/TR/hr-time-2/#dom-domhighrestimestamp\">https://www.w3.org/TR/hr-time-2/#dom-domhighrestimestamp</a><br>\nFirefox source:<br>\n<a href=\"https://github.com/mozilla/gecko-dev/blob/master/dom/webidl/Performance.webidl\">https://github.com/mozilla/gecko-dev/blob/master/dom/webidl/Performance.webidl</a><br>\nWebKit source:<br>\n<a href=\"https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/PerformanceResourceTiming.idl\">https://github.com/WebKit/WebKit/blob/main/Source/WebCore/page/PerformanceResourceTiming.idl</a><br>\nChromium:<br>\n<a href=\"https://github.com/chromium/chromium/blob/master/third_party/blink/renderer/core/timing/dom_high_res_time_stamp.idl\">https://github.com/chromium/chromium/blob/master/third_party/blink/renderer/core/timing/dom_high_res_time_stamp.idl</a></p>\n<p>Edit: removed unnecessary reference to another bug.</p>\n<p>A checklist to help your pull request get merged faster:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Summarize your changes</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Data: link to resources that verify support information (such as browser's docs, changelogs, source control, bug trackers, and tests)</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Data: if you tested something, describe how you tested with details like browser and version</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Review the results of the linter and fix problems reported (If you need help, please ask in a comment!)</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Link to related issues or pull requests, if any</li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9892",
-            "title": "Rename DOMHighResTimestamp to DOMHighResTimeStamp",
-            "date_modified": "2021-04-16T12:20:54.000Z",
-            "author": {
-                "name": "bershanskiy",
-                "url": "https://github.com/bershanskiy"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This creates subfeature <code>ServiceWorkerGlobalScope.periodsync_event</code>, copying the compatibility from <code>onperiodsync</code>. This was discussed with <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> in <a href=\"https://github.com/mdn/content/pull/4057/files#r612190663\">https://github.com/mdn/content/pull/4057/files#r612190663</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9887",
-            "title": "Add docs for ServiceWorkerGlobalScope.periodsync_event",
-            "date_modified": "2021-04-16T04:45:39.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4225330?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This updates the data for Samsung Internet, it uses the mirror script to generate the changes.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9868",
-            "title": "Update for Samsung Internet 14.0 (and one at 14.2)",
-            "date_modified": "2021-04-14T17:19:25.000Z",
-            "author": {
-                "name": "AdaRoseCannon",
-                "url": "https://github.com/AdaRoseCannon"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Chrome 91 adds support for most of <code>@counter-style</code>, so I've updated BCD. Also clarified that no browser (including Firefox) implements <code>&lt;image&gt;</code> for the <code>symbols</code> descriptor.</p>\n<p><a rel=\"nofollow\" href=\"https://chromestatus.com/features/5692693659254784\">https://chromestatus.com/features/5692693659254784</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9857",
-            "title": "Chrome 91 support for at-rule counter-style",
-            "date_modified": "2021-04-14T12:15:38.000Z",
-            "author": {
-                "name": "rachelandrew",
-                "url": "https://github.com/rachelandrew"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>cc: <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Elchi3/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Elchi3\">@Elchi3</a>, <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/sideshowbarker/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/sideshowbarker\">@sideshowbarker</a></p>\n<p>This PR is in draft status, until there's another set of breaking changes we can roll this up with.</p>\n<p>This PR drops XPath and XSLT data, as well as associated schema, linting, docs, etc. This data is very incomplete. We're not foreclosing on this data returning at some point, but if it comes back, it needs to be in the context of an intentional effort.</p>\n<details>\n<summary>Potentially affected MDN URLs</summary>\n<ul>\n<li><a href=\"https://developer.mozilla.org/docs/Web/XSLT/Element/stylesheet\" rel=\"nofollow\"><code>xslt.elements.stylesheet</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/XSLT/Element/stylesheet#attr-exclude-result-prefixes\" rel=\"nofollow\"><code>xslt.elements.stylesheet.exclude-result-prefixes</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/XSLT/Element/stylesheet#attr-extension-element-prefixes\" rel=\"nofollow\"><code>xslt.elements.stylesheet.extension-element-prefixes</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/XSLT/Element/stylesheet#attr-id\" rel=\"nofollow\"><code>xslt.elements.stylesheet.id</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/XSLT/Element/stylesheet#attr-version\" rel=\"nofollow\"><code>xslt.elements.stylesheet.version</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/exsl/node-set\" rel=\"nofollow\"><code>xslt.exslt.exsl.node-set</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/exsl/object-type\" rel=\"nofollow\"><code>xslt.exslt.exsl.object-type</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/math/highest\" rel=\"nofollow\"><code>xslt.exslt.math.highest</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/math/lowest\" rel=\"nofollow\"><code>xslt.exslt.math.lowest</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/math/max\" rel=\"nofollow\"><code>xslt.exslt.math.max</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/math/min\" rel=\"nofollow\"><code>xslt.exslt.math.min</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/regexp/match\" rel=\"nofollow\"><code>xslt.exslt.regexp.match</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/regexp/replace\" rel=\"nofollow\"><code>xslt.exslt.regexp.replace</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/regexp/test\" rel=\"nofollow\"><code>xslt.exslt.regexp.test</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/set/difference\" rel=\"nofollow\"><code>xslt.exslt.set.difference</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/set/distinct\" rel=\"nofollow\"><code>xslt.exslt.set.distinct</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/set/has-same-node\" rel=\"nofollow\"><code>xslt.exslt.set.has-same-node</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/set/intersection\" rel=\"nofollow\"><code>xslt.exslt.set.intersection</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/set/leading\" rel=\"nofollow\"><code>xslt.exslt.set.leading</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/set/trailing\" rel=\"nofollow\"><code>xslt.exslt.set.trailing</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/str/concat\" rel=\"nofollow\"><code>xslt.exslt.str.concat</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/str/split\" rel=\"nofollow\"><code>xslt.exslt.str.split</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/EXSLT/str/tokenize\" rel=\"nofollow\"><code>xslt.exslt.str.tokenize</code></a></li>\n<li><a href=\"https://developer.mozilla.org/docs/Web/XPath/Axes/self\" rel=\"nofollow\"><code>xpath.axes.self</code></a></li>\n</ul>\n</details><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #9589.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"839664466\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9589\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/9589/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/9589\">#9589</a> and <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #9826.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"855839953\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9826\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/9826/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/9826\">#9826</a>.<p></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9830",
-            "title": "Remove XPath and XSLT data",
-            "date_modified": "2021-04-12T14:05:22.000Z",
-            "author": {
-                "name": "ddbeck",
-                "url": "https://github.com/ddbeck"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes the now-irrelevant <code>dom.animations-api.core.enabled</code> flag from API data.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9810",
-            "title": "Remove irrelevant \"dom.animations-api.core.enabled\" flag",
-            "date_modified": "2021-04-09T09:50:28.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Microsoft Edge for the <code>BackgroundFetch*</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.0.1).  Results are manually confirmed for accuracy.</p>\n<p>Tests Used:<br>\n<a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchEvent\">https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchEvent</a><br>\n<a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchManager\">https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchManager</a><br>\n<a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchRecord\">https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchRecord</a><br>\n<a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchRegistration\">https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchRegistration</a><br>\n<a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchUpdateUIEvent\">https://mdn-bcd-collector.appspot.com/tests/API/BackgroundFetchUpdateUIEvent</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9963",
+            "title": "Update Edge versions for BackgroundFetch* API",
+            "date_modified": "2021-04-19T19:30:49.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for all browsers for the <code>Headers</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9751",
-            "title": "Remove irrelevant flags in all browsers for Headers API",
-            "date_modified": "2021-04-04T19:14:52.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for <code>extensions.webextensions.tabhide.enabled</code> as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9961",
+            "title": "Remove irrelevant \"extensions.webextensions.tabhide.enabled\" flag",
+            "date_modified": "2021-04-19T17:01:55.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Investigating <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"834416272\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9499\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/9499/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/9499\">#9499</a> uncovered a complex problem relating to <code>Feature-Policy</code> features reported to be behind flags. This mostly cleans up after the mess.</p>\n<p>The story thus far:</p>\n<ol>\n<li>\n<p><a href=\"https://storage.googleapis.com/chromium-find-releases-static/198.html#19853a06c5b767f2ec26dc17de209757e5877d5e\" rel=\"nofollow\">As of Chrome 89</a>, there's no more <em>Experimental productivity features</em> flag. This suggested that any entry with this flag still supported was suspect. It turned out these were all features of <code>http.headers.Feature-Policy</code>.</p>\n</li>\n<li>\n<p>The permissions for <code>accelerometer</code>, <code>ambient-light-sensor</code>, and <code>gyroscope</code> were all reported as being behind flags, even though they were <a href=\"https://storage.googleapis.com/chromium-find-releases-static/b90.html#b90312615c24b59834bfbb2f648bf1e3e9187065\" rel=\"nofollow\">enabled in Chrome 67</a> (the corresponding APIs were already up-to-date). I've corrected those.</p>\n</li>\n<li>\n<p>Some other permissions were like <code>legacy-image-format</code>: reportedly behind a flag according to Chrome Platform Status, but no further public information provided (see individual commits for details). These features have been dropped from the Permissions Policy (former Feature Policy) spec. Since I could not substantiate any sort of support for them, I decided to mark them as wholly unsupported.</p>\n<p>As a consequence, these features are now all-<code>false</code>. These now-fictitious features should also be dropped from MDN, so I thought I'd take care of both BCD and MDN removals in follow-up PRs.</p>\n</li>\n</ol>\n<p>I expect much of this stuff to change when the renaming for Permissions Policy is done (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"837937580\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9556\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/9556/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/9556\">#9556</a>), but hopefully this will make the alt name stuff apply more gracefully.</p>\n<p>Merging this will <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #9499.\">fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"834416272\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9499\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/9499/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/9499\">#9499</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9707",
-            "title": "Fix phantom \"Experimental productivity features\" in Chrome",
-            "date_modified": "2021-04-01T13:12:40.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>nel</code> HTTP feature as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9960",
+            "title": "Remove irrelevant Chromium flag data for nel HTTP feature",
+            "date_modified": "2021-04-19T16:50:19.000Z",
             "author": {
-                "name": "ddbeck",
-                "url": "https://github.com/ddbeck"
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/438112?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h1>Summary</h1>\n<p>Safari has supported <code>font-variant-caps</code> for around 6 years. I updated the compatibility table accordingly.<br>\nThis is my first time updating a browser support compatibility table, so I'd appreciate someone double-checking my findings.</p>\n<h1>Data</h1>\n<p>This patch: <a rel=\"nofollow\" href=\"https://trac.webkit.org/changeset/190192/webkit/trunk/Source/WebCore/css/CSSComputedStyleDeclaration.cpp\">https://trac.webkit.org/changeset/190192/webkit/trunk/Source/WebCore/css/CSSComputedStyleDeclaration.cpp</a><br>\nseems to be when these properties were added to WebKit:</p>\n<ul>\n<li>font-variant-ligatures</li>\n<li>font-variant-position</li>\n<li>font-variant-caps</li>\n<li>font-variant-numeric</li>\n<li>font-variant-alternates</li>\n<li>font-variant-east-asian</li>\n</ul>\n<p>Per <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/trunk/Source/WebCore/Configurations/Version.xcconfig?rev=190192\">https://trac.webkit.org/browser/webkit/trunk/Source/WebCore/Configurations/Version.xcconfig?rev=190192</a> it appears that this is from webkit version 602.1.5.0.</p>\n<p>According to the release notes, Mac Safari 9.1 added <code>font-variant-caps</code>: <a rel=\"nofollow\" href=\"https://developer.apple.com/library/archive/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_1.html#//apple_ref/doc/uid/TP40014305-CH10-SW1\">https://developer.apple.com/library/archive/releasenotes/General/WhatsNewInSafari/Articles/Safari_9_1.html#//apple_ref/doc/uid/TP40014305-CH10-SW1</a></p>\n<p>Wikipedia's Safari version table (<a rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Safari_version_history#Safari_9\">https://en.wikipedia.org/wiki/Safari_version_history#Safari_9</a>) claims that Mac Safari 9.1 corresponds to webkit version 601.5.17 and iOS Safari 10 corresponds to WebKit versions 602.1.38 - 603.2.4. Note that the patch webkit version seems to be newer than the ones in the version table.</p>\n<p>However, <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/tags/Safari-601.5.7/Source/WebCore/css/CSSComputedStyleDeclaration.cpp?rev=194199\">https://trac.webkit.org/browser/webkit/tags/Safari-601.5.7/Source/WebCore/css/CSSComputedStyleDeclaration.cpp?rev=194199</a> from Webkit version 601.5.7 does include the changes, as does <a rel=\"nofollow\" href=\"https://trac.webkit.org/browser/webkit/tags/Safari-602.1.38/Source/WebCore/css/CSSComputedStyleDeclaration.cpp?rev=202385\">https://trac.webkit.org/browser/webkit/tags/Safari-602.1.38/Source/WebCore/css/CSSComputedStyleDeclaration.cpp?rev=202385</a>. Therefore, I'm reasonably confident in the versions I included in the PR.</p>\n<h1>Related</h1>\n<p><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"611562779\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/6070\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/6070/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/6070\">#6070</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9680",
-            "title": "Update Safari support for font-variant-caps",
-            "date_modified": "2021-03-30T16:48:16.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for <code>dom.clearSiteData.enabled</code> as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9959",
+            "title": "Remove irrelevant \"dom.clearSiteData.enabled\" flag",
+            "date_modified": "2021-04-19T16:49:22.000Z",
             "author": {
-                "name": "jceipek",
-                "url": "https://github.com/jceipek"
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"796447600\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/8891\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/8891/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/8891\">#8891</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9666",
-            "title": "Mark originAgentCluster as shipped in Chromium 90 for non-Chrome",
-            "date_modified": "2021-03-29T17:14:40.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>image</code> CSS type as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9958",
+            "title": "Remove irrelevant Chromium flag data for image CSS type",
+            "date_modified": "2021-04-19T16:45:24.000Z",
             "author": {
-                "name": "foolip",
-                "url": "https://github.com/foolip"
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/28392989?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Adjusting the page to reflect the SAB support in Chrome on Android starting M89</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9600",
-            "title": "Adjusting SAB support for Chrome on Android",
-            "date_modified": "2021-03-25T08:52:45.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>color</code> CSS type as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9957",
+            "title": "Remove irrelevant Chromium flag data for color CSS type",
+            "date_modified": "2021-04-19T16:44:45.000Z",
             "author": {
-                "name": "lutzvahl",
-                "url": "https://github.com/lutzvahl"
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #8709.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"784003637\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/8709\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/8709/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/8709\">#8709</a>.</p>\n<p>This PR does three main things:</p>\n<ul>\n<li>Add Safari version numbers for the <code>pointercancel</code> event</li>\n<li>Add Safari version numbers for the <code>pointerdown</code> event</li>\n<li>Adds features for the <code>pointerrawupdate</code> event. <a href=\"https://chromestatus.com/feature/6041426311774208\" rel=\"nofollow\">Except Chrome</a>, no browser supports this event.</li>\n</ul>\n<p>This completes the Pointer Events data for Safari and ensures we have the complete set of event features needed for <a href=\"https://w3c.github.io/pointerevents/#pointer-event-types\" rel=\"nofollow\">the Pointer Events spec</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/9596",
-            "title": "Complete Pointer Events data for Safari (and add `pointerrawupdate`)",
-            "date_modified": "2021-03-24T21:37:43.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>scope</code> CSS selector as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9956",
+            "title": "Remove irrelevant Firefox flag data for scope CSS selector",
+            "date_modified": "2021-04-19T16:44:12.000Z",
             "author": {
-                "name": "ddbeck",
-                "url": "https://github.com/ddbeck"
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>is</code> CSS selector as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9955",
+            "title": "Remove irrelevant Chromium flag data for is CSS selector",
+            "date_modified": "2021-04-19T16:42:36.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for <code>dom.webcomponents.shadowdom.enabled</code> as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9954",
+            "title": "Remove irrelevant \"dom.webcomponents.shadowdom.enabled\" flag",
+            "date_modified": "2021-04-19T16:40:39.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>will-change</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9953",
+            "title": "Remove irrelevant Firefox flag data for will-change CSS property",
+            "date_modified": "2021-04-19T16:39:35.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>transform-origin</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9952",
+            "title": "Remove irrelevant Firefox flag data for transform-origin CSS property",
+            "date_modified": "2021-04-19T16:38:46.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>transform-box</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9951",
+            "title": "Remove irrelevant Firefox flag data for transform-box CSS property",
+            "date_modified": "2021-04-19T16:38:05.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>touch-action</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9950",
+            "title": "Remove irrelevant Firefox flag data for touch-action CSS property",
+            "date_modified": "2021-04-19T16:36:52.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>text-justify</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9949",
+            "title": "Remove irrelevant Firefox flag data for text-justify CSS property",
+            "date_modified": "2021-04-19T16:33:29.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>text-combine-upright</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9948",
+            "title": "Remove irrelevant Firefox flag data for text-combine-upright CSS property",
+            "date_modified": "2021-04-19T16:32:37.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>text-align-last</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9947",
+            "title": "Remove irrelevant Chromium flag data for text-align-last CSS property",
+            "date_modified": "2021-04-19T16:32:00.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for <code>layout.css.shape-outside.enabled</code> as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9946",
+            "title": "Remove irrelevant \"layout.css.shape-outside.enabled\" flag",
+            "date_modified": "2021-04-19T16:30:26.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>scrollbar-width</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9945",
+            "title": "Remove irrelevant Firefox flag data for scrollbar-width CSS property",
+            "date_modified": "2021-04-19T16:28:48.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>scrollbar-color</code> CSS property as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9944",
+            "title": "Remove irrelevant Firefox flag data for scrollbar-color CSS property",
+            "date_modified": "2021-04-19T16:28:16.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for <code>layout.css.text-emphasis.enabled</code> as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/9943",
+            "title": "Remove irrelevant \"layout.css.text-emphasis.enabled\" flag",
+            "date_modified": "2021-04-19T16:26:09.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
             }
         }
     ]
