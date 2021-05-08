@@ -5,43 +5,83 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #4747.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"876945933\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/4747\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/4747/hovercard\" href=\"https://github.com/mdn/content/issues/4747\">#4747</a></p>\n<p>The link to the PDF was broken. I found a better link on the owasp site.</p>",
-            "url": "https://github.com/mdn/content/pull/4775",
-            "title": "Fix link to owasp security report 2017",
-            "date_modified": "2021-05-07T00:08:52.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/58726892?u=cb893b93015c39fcec7005d61aaceb6a4c17a19c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)<br>\nIn the section \"The downsides of async/await\", it recommends a pattern of using async/await with promises. However, this pattern could lead to an unhandled promise rejection, as explained in Issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"788351617\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1445\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1445/hovercard\" href=\"https://github.com/mdn/content/issues/1445\">#1445</a>. It's not recommended to use this pattern, as explained in the link to stackoverflow provided on Issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"788351617\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1445\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1445/hovercard\" href=\"https://github.com/mdn/content/issues/1445\">#1445</a>.</p>\n</blockquote>\n<blockquote>\n<p>MDN URL of main page changed<br>\n<a href=\"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await</a><br>\nIssue number (if there is an associated issue)<br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #1445.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"788351617\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1445\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1445/hovercard\" href=\"https://github.com/mdn/content/issues/1445\">#1445</a><br>\nAnything else that could help us review it<br>\nI change the title \"The downsides of async/await\" to \"A remark when rewritting code using async/await\". I also modified the examples, adding a rejected promise, so that the readers could see immediately in the console that there's an unhandled error. I gave a fix using Promise.all() and add a link to use Promise.allSettled() in case one wants to wait for all promises to settle.</p>\n</blockquote>",
+            "url": "https://github.com/mdn/content/pull/4802",
+            "title": "add a warning and fix the example using Promise.all()",
+            "date_modified": "2021-05-07T21:39:34.000Z",
+            "author": {
+                "name": "longm89",
+                "url": "https://github.com/longm89"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR moves the BCD query from being an argument to {{Compat}} into the page's front matter. This means it's possible to use the BCD query for other page elements, like the specifications table.</p>\n<p>See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"869428404\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/4537\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/4537/hovercard\" href=\"https://github.com/mdn/content/pull/4537\">#4537</a> for the equivalent PR for the JS docs, and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"875054656\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/4691\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/4691/hovercard\" href=\"https://github.com/mdn/content/pull/4691\">#4691</a> for the next change that this PR unlocks.</p>\n<p>This PR doesn't move the query for all pages:</p>\n<ul>\n<li>\n<p>some pages don't include BCD at all.</p>\n</li>\n<li>\n<p>a few pages contain more than one BCD table, and these are excluded. For example, <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/gap#browser_compatibility\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/CSS/gap#browser_compatibility</a>. We might want to try to invent a way around this at some point (e.g. letting a reference page list &gt;1 query in the BCD). That excludes the following:</p>\n</li>\n</ul>\n<p><a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/justify-content\">https://developer.mozilla.org/en-us/web/css/justify-content</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_color\">https://developer.mozilla.org/en-us/web/css/css_color</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_scrollbars\">https://developer.mozilla.org/en-us/web/css/css_scrollbars</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/align-content\">https://developer.mozilla.org/en-us/web/css/align-content</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/justify-self\">https://developer.mozilla.org/en-us/web/css/justify-self</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/justify-items\">https://developer.mozilla.org/en-us/web/css/justify-items</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/align-self\">https://developer.mozilla.org/en-us/web/css/align-self</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/break-after\">https://developer.mozilla.org/en-us/web/css/break-after</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/row-gap\">https://developer.mozilla.org/en-us/web/css/row-gap</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/_doublecolon_-webkit-scrollbar\">https://developer.mozilla.org/en-us/web/css/_doublecolon_-webkit-scrollbar</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/gap\">https://developer.mozilla.org/en-us/web/css/gap</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/align-items\">https://developer.mozilla.org/en-us/web/css/align-items</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/filter_effects\">https://developer.mozilla.org/en-us/web/css/filter_effects</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/color_value/rgb()\">https://developer.mozilla.org/en-us/web/css/color_value/rgb()</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/color_value/hsl()\">https://developer.mozilla.org/en-us/web/css/color_value/hsl()</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/color_value/hsla()\">https://developer.mozilla.org/en-us/web/css/color_value/hsla()</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/color_value/rgba()\">https://developer.mozilla.org/en-us/web/css/color_value/rgba()</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/break-before\">https://developer.mozilla.org/en-us/web/css/break-before</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_counter_styles\">https://developer.mozilla.org/en-us/web/css/css_counter_styles</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_conditional_rules\">https://developer.mozilla.org/en-us/web/css/css_conditional_rules</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/fit-content()\">https://developer.mozilla.org/en-us/web/css/fit-content()</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/column-gap\">https://developer.mozilla.org/en-us/web/css/column-gap</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/compositing_and_blending\">https://developer.mozilla.org/en-us/web/css/compositing_and_blending</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_containment\">https://developer.mozilla.org/en-us/web/css/css_containment</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/pagination\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/pagination</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/card\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/card</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/center_an_element\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/center_an_element</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/list_group_with_badges\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/list_group_with_badges</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/sticky_footers\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/sticky_footers</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/column_layouts\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/column_layouts</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/media_objects\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/media_objects</a></p>\n<ul>\n<li>a few pages that are not reference pages still include compat tables, and we really only want BCD front matter for reference pages. It's a bit tricky to figure out which are reference pages in CSS, but a reasonably accurate heuristic is: if the page title contains a space then it is probably either a guide page or a selectors reference page (like <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors\" rel=\"nofollow\">\"Attribute selectors\"</a>). That excludes the following:</li>\n</ul>\n<p><a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_device_adaptation\">https://developer.mozilla.org/en-us/web/css/css_device_adaptation</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_charsets\">https://developer.mozilla.org/en-us/web/css/css_charsets</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/using_css_custom_properties\">https://developer.mozilla.org/en-us/web/css/using_css_custom_properties</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/alternative_style_sheets\">https://developer.mozilla.org/en-us/web/css/alternative_style_sheets</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_motion_path\">https://developer.mozilla.org/en-us/web/css/css_motion_path</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_namespaces\">https://developer.mozilla.org/en-us/web/css/css_namespaces</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/overflow-anchor/guide_to_scroll_anchoring\">https://developer.mozilla.org/en-us/web/css/overflow-anchor/guide_to_scroll_anchoring</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_grid_layout/subgrid\">https://developer.mozilla.org/en-us/web/css/css_grid_layout/subgrid</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/media_queries/testing_media_queries\">https://developer.mozilla.org/en-us/web/css/media_queries/testing_media_queries</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/cssom_view\">https://developer.mozilla.org/en-us/web/css/cssom_view</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/css_animations\">https://developer.mozilla.org/en-us/web/css/css_animations</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/breadcrumb_navigation\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/breadcrumb_navigation</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/split_navigation\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/split_navigation</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/grid_wrapper\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/grid_wrapper</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-us/web/css/layout_cookbook/contribute_a_recipe/cookbook_template\">https://developer.mozilla.org/en-us/web/css/layout_cookbook/contribute_a_recipe/cookbook_template</a></p>",
+            "url": "https://github.com/mdn/content/pull/4798",
+            "title": "Move BCD query into front matter in CSS pages",
+            "date_modified": "2021-05-07T17:32:48.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/50193156?u=c5940b0b075fddd58e837b97284cd77372dfcb11&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)</p>\n</blockquote>\n<p>The current return link at the end of the page <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/BookInstance_detail_page_and_challenge\" rel=\"nofollow\">BookInstance Detail page and challenge</a> points to the top of the <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data\" rel=\"nofollow\">Express Tutorial Part 5: Displaying library data</a> page. If readers are at the end of <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/BookInstance_detail_page_and_challenge\" rel=\"nofollow\">BookInstance Detail page and challenge</a> page, it means that they've finished the tutorial and the backlink they are expecting is <strong>Summary</strong> section of <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data\" rel=\"nofollow\">Express Tutorial Part 5: Displaying library data</a> page.</p>\n<p>By updating the link at the end of the BookInstance tutorial page to directly point to the Summary section (the section which is followed just after the BookInstance tutorial) in <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data\" rel=\"nofollow\">Express Tutorial Part 5: Displaying library data</a> page, it better suits to a reader's expectations.</p>\n<blockquote>\n<p>MDN URL of main page changed: <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/BookInstance_detail_page_and_challenge\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/BookInstance_detail_page_and_challenge</a></p>\n</blockquote>\n<blockquote>\n<p>Issue number (if there is an associated issue)</p>\n</blockquote>\n<blockquote>\n<p>Anything else that could help us review it</p>\n</blockquote>",
+            "url": "https://github.com/mdn/content/pull/4797",
+            "title": "Updated return link to point to Summary",
+            "date_modified": "2021-05-07T17:04:00.000Z",
+            "author": {
+                "name": "mformihir",
+                "url": "https://github.com/mformihir"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>I created some Interactive Examples for the <code>border-block</code>, <code>border-inline</code> and longhand versions of these, this PR adds them in.</p>",
+            "url": "https://github.com/mdn/content/pull/4796",
+            "title": "adds border-block and inline interactive examples",
+            "date_modified": "2021-05-07T16:13:39.000Z",
+            "author": {
+                "name": "rachelandrew",
+                "url": "https://github.com/rachelandrew"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64042475?u=6bb021959a397b76b4f6a2c7f6f0f3527155d599&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>relocate a  tag in the intro to be consistent with more common MDN styling</p>\n<p>MDN URL<br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button\">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button</a></p>",
+            "url": "https://github.com/mdn/content/pull/4792",
+            "title": "format fix for HTML button doc",
+            "date_modified": "2021-05-07T13:30:03.000Z",
+            "author": {
+                "name": "timohaver",
+                "url": "https://github.com/timohaver"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/80623482?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Instructions to make it clearer</p>\n\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)<br>\nInstructions werent clear enough and caused unnecessary Problems for me<br>\nMDN URL of main page changed<br>\n<a href=\"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values</a><br>\nIssue number (if there is an associated issue)<br>\nmy last report<br>\nAnything else that could help us review it</p>\n</blockquote>",
+            "url": "https://github.com/mdn/content/pull/4789",
+            "title": "Update index.html",
+            "date_modified": "2021-05-07T09:47:15.000Z",
+            "author": {
+                "name": "nochill-1",
+                "url": "https://github.com/nochill-1"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16485763?u=d9633bdec265893c78e576c2073e6a67ada3d7a0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)</p>\n</blockquote>\n<p><code>wss:</code> (WebSocket secure) isn't included in the list of allowed schemes for CSP sources. However this scheme can be used in CSP directives for Web Extensions.</p>\n<blockquote>\n<p>MDN URL of main page changed</p>\n</blockquote>\n<p><a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_security_policy\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_security_policy</a></p>\n<blockquote>\n<p>Issue number (if there is an associated issue)</p>\n</blockquote>\n<blockquote>\n<p>Anything else that could help us review it</p>\n</blockquote>\n<p>This scheme only works in chromium-based browsers and Firefox. So I've opened up another PR to have a browser compatibility note added here: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"878698023\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/10373\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/10373/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/10373\">mdn/browser-compat-data#10373</a></p>",
+            "url": "https://github.com/mdn/content/pull/4787",
+            "title": "Add wss to permitted schemes for Web Extensions CSP sources",
+            "date_modified": "2021-05-07T09:34:01.000Z",
+            "author": {
+                "name": "beyera",
+                "url": "https://github.com/beyera"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/SVGStylable\">https://developer.mozilla.org/en-US/docs/Web/API/SVGStylable</a></p>\n<p>This is marked as deprecated on MDN but not in BCD. I did a search and found <code>SVGStylable.getPresentationAttribute()</code> is deprecated - see <a rel=\"nofollow\" href=\"https://www.w3.org/Graphics/SVG/WG/track/actions/2696\">https://www.w3.org/Graphics/SVG/WG/track/actions/2696</a> and the spec <a rel=\"nofollow\" href=\"https://www.w3.org/TR/SVG11/types.html#InterfaceSVGStylable\">https://www.w3.org/TR/SVG11/types.html#InterfaceSVGStylable</a> - but not whole of <code>SVGStylable</code>.</p>\n<p>So what this does is remove the top level deprecation macro and add the inline deprecation for <code>SVGStylable.getPresentationAttribute()</code></p>\n<p>While here I added the bcd compatibility tag/macro, and tidied up the methods section to match MDN standards.</p>\n<p>Before I go update BCD, any suggestions on how I can confirm this?</p>",
+            "url": "https://github.com/mdn/content/pull/4782",
+            "title": "SVGStylable - deprecated or not?",
+            "date_modified": "2021-05-07T06:25:07.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #4758.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"877397764\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/4758\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/4758/hovercard\" href=\"https://github.com/mdn/content/issues/4758\">#4758</a></p>\n<p>The example <a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE#example\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE#example</a> is an HTTP/1.1 request to delete a file. All HTTP/1.1 requests must have the header, so it makes sense to include it in the example.</p>",
-            "url": "https://github.com/mdn/content/pull/4774",
-            "title": "HTTP DELETE example: add host header",
-            "date_modified": "2021-05-06T23:54:31.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>The <code>URLUtilsReadOnly</code> mixin is no longer part of any spec. It’s now just <code>URL</code>, and we already have a <code>URL</code> article, so this change deletes all the <code>URLUtilsReadOnly</code> docs, and redirects them to the <code>URL</code> docs.</p>",
-            "url": "https://github.com/mdn/content/pull/4772",
-            "title": "Delete URLUtilsReadOnly docs, redirect to URL docs",
-            "date_modified": "2021-05-06T22:43:32.000Z",
-            "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8887593?u=66b50b686cbd094bb7d26349f272959df443fb73&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Add 2 missed links on aria page</p>\n\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)</p>\n</blockquote>\n<blockquote>\n<p>MDN URL of main page changed</p>\n</blockquote>\n<blockquote>\n<p>Issue number (if there is an associated issue)</p>\n</blockquote>\n<blockquote>\n<p>Anything else that could help us review it</p>\n</blockquote>",
-            "url": "https://github.com/mdn/content/pull/4769",
-            "title": "Add links for aria-expended and aria-haspopup",
-            "date_modified": "2021-05-06T20:29:57.000Z",
-            "author": {
-                "name": "merciermk",
-                "url": "https://github.com/merciermk"
             }
         },
         {
@@ -52,16 +92,6 @@
             "author": {
                 "name": "rachelandrew",
                 "url": "https://github.com/rachelandrew"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/53560276?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)<br>\nCopying and pasting the code for bookController.js gave me a faulty output. Fixed it in the PR. Check the images I've linked below at the end of this PR message!</p>\n</blockquote>\n<blockquote>\n<p>MDN URL of main page changed<br>\n<a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Book_detail_page\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Book_detail_page</a></p>\n</blockquote>\n<blockquote>\n<p>Issue number (if there is an associated issue)<br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"876868715\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/4745\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/4745/hovercard\" href=\"https://github.com/mdn/content/issues/4745\">#4745</a></p>\n</blockquote>\n<blockquote>\n<p>Anything else that could help us review it</p>\n</blockquote>\n<ul>\n<li><a href=\"https://ibb.co/y42dPN5\" rel=\"nofollow\">Current version of the code</a></li>\n<li><a href=\"https://ibb.co/QMXX6cM\" rel=\"nofollow\">After fix</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/4746",
-            "title": "Fixes #4745",
-            "date_modified": "2021-05-05T21:40:43.000Z",
-            "author": {
-                "name": "Yug34",
-                "url": "https://github.com/Yug34"
             }
         },
         {
@@ -135,16 +165,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>As per <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"833092031\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/3196\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/3196/hovercard\" href=\"https://github.com/mdn/content/issues/3196\">#3196</a> we are removing the Page macro (transclusion).</p>\n<p>Prior to this change, <a href=\"https://developer.mozilla.org/en-US/docs/Tools/Keyboard_shortcuts\" rel=\"nofollow\">All keyboard shortcuts</a> contains all shortcuts, parts of which are transcluded into other docs - e.g. <a href=\"https://developer.mozilla.org/en-US/docs/Tools/Debugger/Keyboard_shortcuts\" rel=\"nofollow\">Debugger Keyboard shortcuts</a> and <a href=\"https://developer.mozilla.org/en-US/docs/Tools/Eyedropper\" rel=\"nofollow\">Eyedropper</a></p>\n<p>Where possible, this PR <strong>moves</strong> the content from the  <a href=\"https://developer.mozilla.org/en-US/docs/Tools/Keyboard_shortcuts\" rel=\"nofollow\">All keyboard shortcuts</a> and then links from the old page to the new page.</p>\n<p>I went back and forth a few times considering perhaps:</p>\n<ul>\n<li>just duplicating the content in both place</li>\n<li>Just linking from the location where the macro was to the sll keyboard shortcut docs. In the end I decided that while it is nice to have a single page with all the keyboard shortcuts, it is more useful for end users to have that information on hand when they are using the tool.</li>\n</ul>\n<p>I am not certain this was the best decision, mostly because now the shortcuts are scattered. I do think that that if you're using web console, page inspector etc you probably are happy enough with the current way. If you think I'd be better off duplicating or linking to the All ... doc instead let me know - relatively easy fix.</p>",
-            "url": "https://github.com/mdn/content/pull/4690",
-            "title": "Pagemacro keyboard shortcuts",
-            "date_modified": "2021-05-04T02:01:46.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1149904?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Users attempting to put requestPostAnimationFrame into production<br>\nusing polyfills are running into performance problems. Turn this best<br>\npractice into a suggestion and add a cautionary note about it.</p>\n\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)</p>\n</blockquote>\n<p>Users are encountering performance problems on some browsers when using this best practice.</p>\n<blockquote>\n<p>MDN URL of main page changed</p>\n</blockquote>\n<p><a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices\">https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices</a></p>\n<blockquote>\n<p>Issue number (if there is an associated issue)</p>\n</blockquote>\n<p>None</p>\n<blockquote>\n<p>Anything else that could help us review it</p>\n</blockquote>",
             "url": "https://github.com/mdn/content/pull/4688",
             "title": "Downgrade requestPostAnimationFrame rule to a suggestion.",
@@ -182,26 +202,6 @@
             "author": {
                 "name": "Blakelist7",
                 "url": "https://github.com/Blakelist7"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1549069?u=a6cac0758a62eaf8023c1d6ce112385e1413f7a6&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Title is clear :)</p>",
-            "url": "https://github.com/mdn/content/pull/4614",
-            "title": "fix: replace TypedArray.from polyfill with external link",
-            "date_modified": "2021-04-30T05:27:15.000Z",
-            "author": {
-                "name": "behnammodi",
-                "url": "https://github.com/behnammodi"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/53435435?u=9770b139090faf41c3f94448a2e3ed8478ad8e40&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)<br>\nThe num_visits already has a +1 on the next line. Therefore, the default for the first visit (when the key does not exist) should be 0 as the next line will make the num_visits = 1.</p>\n</blockquote>\n<blockquote>\n<p>MDN URL of main page changed<br>\n<a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Sessions</a></p>\n</blockquote>\n<blockquote>\n<p>Issue number (if there is an associated issue)<br>\nN/A</p>\n</blockquote>\n<blockquote>\n<p>Anything else that could help us review it<br>\nThe document demonstrates how to show the users the number of visits on the page. When the num_visits key exists in the session, the value is extracted and saved in a variable. However, when the num_visits key does not exist (potentially user's first visit), the value returned to the user is 2 instead of 1 as the default value extracted is 1 and 1 more is added on the next line.</p>\n</blockquote>",
-            "url": "https://github.com/mdn/content/pull/4593",
-            "title": "Changed default num_visits to 0 to to be added by one on the next line",
-            "date_modified": "2021-04-29T09:52:04.000Z",
-            "author": {
-                "name": "nathnet",
-                "url": "https://github.com/nathnet"
             }
         }
     ]
