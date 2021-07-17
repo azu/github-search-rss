@@ -5,13 +5,83 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>It has been lowercases on MDN:<br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"945042460\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/6908\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/6908/hovercard\" href=\"https://github.com/mdn/content/pull/6908\">mdn/content#6908</a></p>\n<p>The BCD paths on MDN will also need updating.</p>\n<p>All of the updated URLs were manually checked, and the one for exception<br>\nremoved since it's a 404.</p>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #7361.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"743056571\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/7361\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/7361/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/7361\">#7361</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/11534",
-            "title": "Lowercase console to match the name of the namespace and MDN",
-            "date_modified": "2021-07-15T09:18:16.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR is a part of a project to add missing interfaces and interface features to BCD that are from an active spec (including WICG specs) and is supported in at least one browser.  This particular PR adds the missing features of the CloseEvent API, populating the results using data from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.1.10).</p>\n<p>Spec: <a rel=\"nofollow\" href=\"https://html.spec.whatwg.org/multipage/web-sockets.html#the-closeevent-interface\">https://html.spec.whatwg.org/multipage/web-sockets.html#the-closeevent-interface</a></p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/CloseEvent\">https://mdn-bcd-collector.appspot.com/tests/api/CloseEvent</a></p>\n<p>Note: Chrome/Safari data was derived from commit history instead -- see <a rel=\"nofollow\" href=\"https://source.chromium.org/chromium/chromium/src/+/63fc605d4f4d52aafa6f568b096c44ff9dd55021\">https://source.chromium.org/chromium/chromium/src/+/63fc605d4f4d52aafa6f568b096c44ff9dd55021</a> and <a rel=\"nofollow\" href=\"https://source.chromium.org/chromium/chromium/src/+/cb8badea0d665f6bb1107f88626e38edf820767d\">https://source.chromium.org/chromium/chromium/src/+/cb8badea0d665f6bb1107f88626e38edf820767d</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11558",
+            "title": "Add missing features for CloseEvent API",
+            "date_modified": "2021-07-16T17:44:30.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>There are close() methods on both<br>\nDedicatedWorkerGlobalScope and SharedWorkerGlobalScope in BCD and MDN<br>\nalready:<br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/close\">https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/close</a><br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close\">https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close</a></p>\n<p>There's a note here that explains how this came about:<br>\n<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close#browser_compatibility\">https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close#browser_compatibility</a></p>\n<p>However, we need not keep this data or even have notes about it:<br>\n<a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#apis-moved-on-the-prototype-chain\">https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#apis-moved-on-the-prototype-chain</a></p>\n<p>Furthermore, there is no close event or onclose property. It's not clear<br>\nwhen this was removed from browsers, but the onclose property is at<br>\nleast not supported anywhere today.</p>\n<p>This also updates some existing data:</p>\n<p>Verified supported in Opera 10.6:<br>\n<a rel=\"nofollow\" href=\"http://mdn-bcd-collector.appspot.com/tests/api/DedicatedWorkerGlobalScope/close\">http://mdn-bcd-collector.appspot.com/tests/api/DedicatedWorkerGlobalScope/close</a><br>\n<a rel=\"nofollow\" href=\"http://mdn-bcd-collector.appspot.com/tests/api/SharedWorkerGlobalScope/close\">http://mdn-bcd-collector.appspot.com/tests/api/SharedWorkerGlobalScope/close</a></p>\n<p>Firefox for Android data was also bumped to 29, it's implausible that it<br>\nwas supported much earlier on Android. It's probably the result of<br>\ncopying data from DedicatedWorkerGlobalScope, which is marked as<br>\nsupported since firefox for Android 4.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11557",
+            "title": "Remove obsolete worker.close() and related entries",
+            "date_modified": "2021-07-16T15:34:33.000Z",
             "author": {
                 "name": "foolip",
                 "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>We accidentally added both:<br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"772573926\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/8112\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/8112/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/8112\">#8112</a><br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"930243514\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11245\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/11245/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/11245\">#11245</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11556",
+            "title": "Remove duplicate/misplaced api.Element.attachInternals entry",
+            "date_modified": "2021-07-16T15:02:32.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>It should be \"id\":<br>\n<a rel=\"nofollow\" href=\"https://wicg.github.io/content-index/spec/#content-index-event\">https://wicg.github.io/content-index/spec/#content-index-event</a><br>\n<a rel=\"nofollow\" href=\"https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/content_index/content_index_event.idl;l=12;drc=c2e7d4f0b24814b0d1c51a964db34ec5b4930756\">https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/content_index/content_index_event.idl;l=12;drc=c2e7d4f0b24814b0d1c51a964db34ec5b4930756</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11555",
+            "title": "Fix typo of ContentIndexEvent's \"id\" property (was \"in\")",
+            "date_modified": "2021-07-16T14:54:39.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3654180?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>The latest version of Safari supports the promise-based version of <code>decodeAudioData()</code>.</p>\n<h4>Test results and supporting details</h4>\n\n\n<p>I think it is supported since <a rel=\"nofollow\" href=\"https://developer.apple.com/documentation/safari-release-notes/safari-14_1-release-notes\">https://developer.apple.com/documentation/safari-release-notes/safari-14_1-release-notes</a></p>\n<blockquote>\n<p>Added support for Web Audio API, now unprefixed, compliant, and including Audio Worklets. This enables better compatibility for advanced audio processing, see Web Audio API for more information.</p>\n</blockquote>\n<p>Though I didn't verify if it started from this exact version.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11553",
+            "title": "Update Safari compatibility for BaseAudioContext.decodeAudioData()",
+            "date_modified": "2021-07-16T12:33:50.000Z",
+            "author": {
+                "name": "pioug",
+                "url": "https://github.com/pioug"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Confirmed by testing in Edge 18 and 79 on Sauce using these tests:<br>\n<a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/javascript/builtins/String\">https://mdn-bcd-collector.appspot.com/tests/javascript/builtins/String</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11552",
+            "title": "Update Edge support from String.prototype.trimStart/trimEnd",
+            "date_modified": "2021-07-16T12:12:21.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>FF91 adds a new method <code>Object.hasOwn()</code> which is a safer/more convenient alternative to <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty\" rel=\"nofollow\">Object.prototype.hasOwnProperty()</a>.</p>\n<ul>\n<li>Bug report is here: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1711872\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1711872</a></li>\n<li>MDN tracking for docs here:</li>\n<li>Spec: <a href=\"https://github.com/tc39/proposal-accessible-object-hasownproperty\">https://github.com/tc39/proposal-accessible-object-hasownproperty</a></li>\n</ul>\n<p>I tested for existence by running</p>\n<div class=\"snippet-clipboard-content position-relative\" data-snippet-clipboard-copy-content=\"let object = { foo: false }\nconsole.log(Object.hasOwn(object, &quot;foo&quot;))  // true\n\"><pre><code>let object = { foo: false }\nconsole.log(Object.hasOwn(object, \"foo\"))  // true\n</code></pre></div>\n<p>This works in FF91 but not chrome 91 and friends. Did not test in other browsers.</p>\n<ol>\n<li>Apparently this works in v8 - <a href=\"https://github.com/tc39/proposal-accessible-object-hasownproperty#implementations\">see here</a> - what's best way to find the matching release version?</li>\n<li>I put the method at the same level as hasOwnProperties, even though this new method is on Object and the other is on prototype (i.e. I assume we don't have to have as subfeature of prototype.)</li>\n<li>This fails locally on the spec_url. Can you advise on how to fix?</li>\n<li>Note the MDN URL does not exist. Doing this as first step.</li>\n</ol>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11548",
+            "title": "Object.hasOwn added",
+            "date_modified": "2021-07-16T06:59:46.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This follows on from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"943073253\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11501\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/11501/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/11501\">#11501</a></p>\n<p>This is just the first step - restructure the constructor to use subfeatures for parameters, and subfeatures of those for options.</p>\n<p>I am in no way sure this is \"correct\" so this is a first step.</p>\n<p>Following on from this I will need to add the new values for <strong>timeZoneName</strong> added in FF91 - see <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1710429\">https://bugzilla.mozilla.org/show_bug.cgi?id=1710429</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/11544",
+            "title": "DateTimeFormat - restructure constructor parameters",
+            "date_modified": "2021-07-16T03:00:20.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
             }
         },
         {
@@ -37,7 +107,7 @@
         {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR illustrates unifying Window and WorkerGlobalScope in a globals.json file and marking worker support in sub features.</p>\n<p>The alternate approach is a split, see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"944278268\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11517\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/11517/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/11517\">#11517</a></p>\n<p>Context: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"808368991\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/9127\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/9127/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/9127\">#9127</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/11518",
-            "title": "Unify Window and WorkerGlobalScope",
+            "title": "Move WindowOrWorkerGlobalScope features to api.* (_globals folder)",
             "date_modified": "2021-07-14T10:29:13.000Z",
             "author": {
                 "name": "Elchi3",
@@ -52,26 +122,6 @@
             "author": {
                 "name": "Elchi3",
                 "url": "https://github.com/Elchi3"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Various updates to <code>font-size-adjust</code></p>\n<p>I am working on <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"940595752\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/6720\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/6720/hovercard\" href=\"https://github.com/mdn/content/issues/6720\">mdn/content#6720</a></p>\n<p>This PR adds a section for the two-value syntax now supported in Firefox.</p>\n<p>While testing I realized the single value did not work in Chrome. It was behind a flag, however has been moved to test and therefore does not seem to be accessible using Experimental Web Platform Features now. <a rel=\"nofollow\" href=\"https://bugs.chromium.org/p/chromium/issues/detail?id=451346#c33\">https://bugs.chromium.org/p/chromium/issues/detail?id=451346#c33</a> I have tested this and the removal seems to apply from Chrome 91.</p>\n<p>I also updated the spec to point to the level 5 spec, as the level 4 spec does not include the two-value syntax.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/11516",
-            "title": "Updates to font-size-adjust",
-            "date_modified": "2021-07-14T10:23:09.000Z",
-            "author": {
-                "name": "rachelandrew",
-                "url": "https://github.com/rachelandrew"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Adds spec URLs to the MIDI interfaces as I'm creating the documentation pages.</p>\n<p>I also removed a duplicate statechange event from MIDIAccess, as this seemed to be a duplicate of onstatechange.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/11505",
-            "title": "adds spec data to MIDI interfaces",
-            "date_modified": "2021-07-13T12:53:43.000Z",
-            "author": {
-                "name": "rachelandrew",
-                "url": "https://github.com/rachelandrew"
             }
         },
         {
@@ -129,36 +179,6 @@
             "url": "https://github.com/mdn/browser-compat-data/pull/11354",
             "title": "Fix multi display mode css",
             "date_modified": "2021-07-02T09:18:08.000Z",
-            "author": {
-                "name": "teoli2003",
-                "url": "https://github.com/teoli2003"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR simplifies the engine version for Safari 14.1 in our data, stripping out the micro and nano version numbers.  Not only does this fine of information not really matter to us, but <code>compareVersions</code> doesn't like them, and the micro/nano versions have already changed in 14.1.1.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/11333",
-            "title": "Simplify engine version for Safari 14.1",
-            "date_modified": "2021-06-30T23:36:29.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8204171?u=6f2a08fb80e2aaec862b0d5df86ad846d77013cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><strong>PLEASE READ CAREFULLY. A unique problem requires a unique approach, which is described below.</strong></p>\n<p>The rename of 'Feature Policy' to 'Permissions Policy' requires that BCD be moved as well. Regardless of whether BCD is changed before MDN content or vice-versa, there will be a stage where BCD keys in MDN documents will point to data that isn't there. To get around this, I have duplicated the data. In other words, when this is deployed there will be data under the keys <code>Feature-Policy</code> and <code>Permissions-Policy</code>. This is by design. When the new MDN pages are deployed, I'll come back remove the data recorded under <code>Feature-Policy</code>.</p>\n<p><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"795458119\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1831\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1831/hovercard\" href=\"https://github.com/mdn/content/issues/1831\">mdn/content#1831</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/11332",
-            "title": "Part 1 of 2: copy feature policy to permissions policy.",
-            "date_modified": "2021-06-30T20:26:23.000Z",
-            "author": {
-                "name": "jpmedley",
-                "url": "https://github.com/jpmedley"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is the first part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"932553381\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11301\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/11301/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/11301\">#11301</a>.</p>\n<p>It deals with the CSS type <code>&lt;transform-function&gt;</code> and the CSS functions it defines.</p>\n<p>What Is done in this PR:</p>\n<ol>\n<li>I added entries for the different transform functions, including the <code>mdn_url </code>and <code>bcd_url</code> clauses. (I had to update 1 mdn url in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"932695004\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/6453\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/6453/hovercard\" href=\"https://github.com/mdn/content/pull/6453\">mdn/content#6453</a> ). The <code>support</code> data is taken from the original data (<code>css.types.transform-function</code> for 2d functions, <code>css.types.transform-function.3d</code> for 3d functions).</li>\n<li>I adapted the notes so only pertinent ones appear inside each CSS function.</li>\n<li>I removed <code>css.types.transform-function.3d</code> that is of no more use now that each CSS function has its own entry. (Does this need an entry in the release notes?)</li>\n<li>I updated the <code>spec_url</code> entry of <code>css.types.transform-function</code> as <a href=\"https://drafts.csswg.org/css-transforms/#transform-functions\" rel=\"nofollow\">CSS Transforms Module Level 1</a> is not superseded by <a href=\"https://drafts.csswg.org/css-transforms-2/#transform-functions\" rel=\"nofollow\">CSS Transform Level 2</a>. The latter only describes the new features. This was not necessary for the subfeatures as they are described either in the first one, either in the latter (at least for the moment).</li>\n</ol>\n<p>Once this lands, I'll update the mdn pages to link to the right keys added here.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/11304",
-            "title": "Distribute bcd of css.types.transform-function inside the different functions",
-            "date_modified": "2021-06-29T15:20:30.000Z",
             "author": {
                 "name": "teoli2003",
                 "url": "https://github.com/teoli2003"
