@@ -5,33 +5,33 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1166814?u=c2ce4613f7adec95f26f92cb53da1363ccc37795&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Documentation currently states <code>navigator.credentials.store(credential)</code> returns a Promise that resolves with <code>credential</code>, but it actually resolves with <code>undefined</code>.</p>\n<p>Implementations match the spec:</p>\n<blockquote>\n<p>When store() is called, the user agent MUST return the result of executing Store a Credential on credential.<br>\n... The Store a Credential algorithm accepts a Credential (credential), and returns a Promise which resolves once the object is persisted to the credential store</p>\n</blockquote>\n<p>The Promise resolves with</p>\n<blockquote>\n<p>... the result of executing credential’s interface object's [[Store]](credential, sameOriginWithAncestors)</p>\n</blockquote>\n<p>and</p>\n<blockquote>\n<p>Credential's default implementation of [[Store]](credential, sameOriginWithAncestors):<br>\nReturn undefined.</p>\n</blockquote>\n<p>References:</p>\n<ul>\n<li><a href=\"https://w3c.github.io/webappsec-credential-management/#abstract-opdef-store-a-credential\" rel=\"nofollow\">https://w3c.github.io/webappsec-credential-management/#abstract-opdef-store-a-credential</a></li>\n<li><a href=\"https://w3c.github.io/webappsec-credential-management/#dom-credential-store-slot\" rel=\"nofollow\">https://w3c.github.io/webappsec-credential-management/#dom-credential-store-slot</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/8065",
-            "title": "Correct navigator.credentials.store to match implementations and spec",
-            "date_modified": "2021-08-18T19:37:38.000Z",
-            "author": {
-                "name": "ashsearle",
-                "url": "https://github.com/ashsearle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is a follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"973480751\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/8038\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/8038/hovercard\" href=\"https://github.com/mdn/content/pull/8038\">#8038</a> that makes some minor wording changes to the PWD Intro page to align it with the wording of the PWD landing page.</p>",
-            "url": "https://github.com/mdn/content/pull/8062",
-            "title": "Refine some PWA terms to match PWA landing page",
-            "date_modified": "2021-08-18T18:28:18.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>The existing “Order in which component files are parsed” section of the “How the Web works” article had a confused description that didn’t align with how things actually work. This change corrects it.</p>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #8096.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"974683990\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/8096\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/8096/hovercard\" href=\"https://github.com/mdn/content/issues/8096\">#8096</a></p>",
+            "url": "https://github.com/mdn/content/pull/8108",
+            "title": "Clarify “How the Web works” section describing parse order",
+            "date_modified": "2021-08-19T18:42:17.000Z",
             "author": {
                 "name": "sideshowbarker",
                 "url": "https://github.com/sideshowbarker"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #8039.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"973481511\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/8039\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/8039/hovercard\" href=\"https://github.com/mdn/content/issues/8039\">#8039</a></p>",
-            "url": "https://github.com/mdn/content/pull/8059",
-            "title": "Update the explanation about location.reload(true)",
-            "date_modified": "2021-08-18T17:19:08.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Changes adding cookieStoreId to browser.download.download, downloads.DownloadQuery (browser.download.search), and downloads.DownloadItem (browser.download.erase). This provides documentation for  <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1669566\" rel=\"nofollow\">Bug 1669566</a>.</p>\n<p>Corresponding changes to browser-compat-data Are in <a href=\"https://github.com/mdn/browser-compat-data/pull/12069\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/12069/hovercard\">Bug-1669566-Add-cookieStoreId-to-browser.downloads #12069</a> .</p>",
+            "url": "https://github.com/mdn/content/pull/8106",
+            "title": "Bug 1669566 add cookie store id to browser.downloads",
+            "date_modified": "2021-08-19T17:58:56.000Z",
             "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Adds the <code>CustomStateSet</code> interface in Markdown. As this is an addition to <code>ElementInternals</code> this also adds the property page and link to that Interface in HTML.</p>\n<p>Reviewer <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/jpmedley/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/jpmedley\">@jpmedley</a></p>",
+            "url": "https://github.com/mdn/content/pull/8093",
+            "title": "Adds CustomStateSet",
+            "date_modified": "2021-08-19T12:13:48.000Z",
+            "author": {
+                "name": "rachelandrew",
+                "url": "https://github.com/rachelandrew"
             }
         },
         {
@@ -72,26 +72,6 @@
             "author": {
                 "name": "AnilSeervi",
                 "url": "https://github.com/AnilSeervi"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/61609033?u=ad0d8a5dcb28c15342f9bc70ad8609cd8663e381&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/content/pull/8043",
-            "title": "update with links to articles and fix settings page link",
-            "date_modified": "2021-08-18T12:36:24.000Z",
-            "author": {
-                "name": "AnilSeervi",
-                "url": "https://github.com/AnilSeervi"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This talks about Hit testing initialization and adds reference pages for <code>XRSession.requestHitTestSource()</code> and <code>XRSession.requestHitTestSourceForTransientInput()</code>.</p>\n<p>Spec: <a rel=\"nofollow\" href=\"https://immersive-web.github.io/hit-test\">https://immersive-web.github.io/hit-test</a></p>",
-            "url": "https://github.com/mdn/content/pull/8042",
-            "title": "Add WebXR Hit Test reference docs - pt 1",
-            "date_modified": "2021-08-18T11:10:39.000Z",
-            "author": {
-                "name": "Elchi3",
-                "url": "https://github.com/Elchi3"
             }
         },
         {
@@ -165,16 +145,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/34934510?u=cc9b7e4f4338295606f75b6f532d925e994264ab&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>Issue number that this PR fixes (if any). For example: 'Fixes #987654321'</p>\n</blockquote>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)</p>\n</blockquote>\n<div class=\"highlight highlight-source-js position-relative\" data-snippet-clipboard-copy-content=\"self.addEventListener('activate', (e) =&gt; {\n  e.waitUntil(caches.keys().then((keyList) =&gt; {\n    Promise.all(keyList.map((key) =&gt; {\n      if (key === cacheName) { return; }\n      caches.delete(key);\n    }))\n  })());\n});\n\"><pre><span class=\"pl-s1\">self</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'activate'</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">e</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-s1\">e</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">waitUntil</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">caches</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">keys</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">then</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">keyList</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-v\">Promise</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">all</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">keyList</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">map</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">key</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n      <span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">key</span> <span class=\"pl-c1\">===</span> <span class=\"pl-s1\">cacheName</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span> <span class=\"pl-k\">return</span><span class=\"pl-kos\">;</span> <span class=\"pl-kos\">}</span>\n      <span class=\"pl-s1\">caches</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">delete</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">key</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span>\n  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p>The above code is not IIFE, but parentheses are placed after calling <code>then(() =&gt; ...)</code>.<br>\nI think these parentheses are unnecessary.</p>\n<blockquote>\n<p>Anything else that could help us review it</p>\n</blockquote>",
-            "url": "https://github.com/mdn/content/pull/7928",
-            "title": "remove unnecessary parentheses",
-            "date_modified": "2021-08-14T14:37:42.000Z",
-            "author": {
-                "name": "keiya01",
-                "url": "https://github.com/keiya01"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16485763?u=d9633bdec265893c78e576c2073e6a67ada3d7a0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Edge no longer supports <code>browser_action_next_to_addressbar</code></p>\n<p>Edge does not support the <code>browser_specific_settings</code> key in the manifest</p>",
             "url": "https://github.com/mdn/content/pull/7924",
             "title": "Update BSS example to match what Edge supports",
@@ -202,6 +172,36 @@
             "author": {
                 "name": "mandip1213",
                 "url": "https://github.com/mandip1213"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Documentation updates for the addition of support for colorManagement in browserSettings. Also aligned the title of contextMenuShowEvent to include browserSettings. as it is with the other browserSettings objects.</p>\n<p>See  <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1714428\" rel=\"nofollow\">Bug 1714428</a></p>",
+            "url": "https://github.com/mdn/content/pull/7893",
+            "title": "colorManagement in browserSettings",
+            "date_modified": "2021-08-13T16:49:19.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2392803?u=592fed23ae28e14a8222f9e1121119898ba4b72a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>I have removed the problem section because</p>\n<ol>\n<li>A section titled <code>Instance Properties</code> shouldn't illustrate <code>static</code> especially when</li>\n<li>There is a dedicated section for it above</li>\n</ol>\n\n<blockquote>\n<p>Issue number that this PR fixes (if any). For example: 'Fixes #987654321'<br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #6339.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"930261957\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/6339\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/6339/hovercard\" href=\"https://github.com/mdn/content/issues/6339\">#6339</a></p>\n</blockquote>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)<br>\nThe code block illustrate old style static definitions under a section for Instance properties. There is already a dedicated section above for static.</p>\n</blockquote>\n<blockquote>\n<p>Anything else that could help us review it<br>\nNo</p>\n</blockquote>",
+            "url": "https://github.com/mdn/content/pull/7885",
+            "title": "Fixes #6339 by removing the problem section",
+            "date_modified": "2021-08-13T12:48:13.000Z",
+            "author": {
+                "name": "himanshugarg",
+                "url": "https://github.com/himanshugarg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55234838?u=50d8f632f19cc8e2cc244cc8766cd43c0d960920&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<blockquote>\n<p>Issue number that this PR fixes (if any). For example: 'Fixes #987654321'</p>\n</blockquote>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #7840.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"968059333\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/7840\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/7840/hovercard\" href=\"https://github.com/mdn/content/issues/7840\">#7840</a></p>\n<blockquote>\n<p>What was wrong/why is this fix needed? (quick summary only)</p>\n</blockquote>\n<p>Example update</p>",
+            "url": "https://github.com/mdn/content/pull/7874",
+            "title": "Updated example for classes inheritance",
+            "date_modified": "2021-08-13T06:19:12.000Z",
+            "author": {
+                "name": "NegiAkash890",
+                "url": "https://github.com/NegiAkash890"
             }
         }
     ]
