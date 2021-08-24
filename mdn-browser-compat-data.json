@@ -5,203 +5,193 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/445650?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Add Input Events Level 2 <code>insertFromComposition</code> and <code>deleteByComposition</code> inputType events</p>\n<h4>Test results and supporting details</h4>\n\n<p>For each browser, on macOS pinyin IME input <kbd>a 1</kbd> (inserting 啊), then selecting the inserted text and input <kbd>b 1</kbd> (deleting 啊 and replacing it with 不). According to <a rel=\"nofollow\" href=\"https://w3c.github.io/input-events/#event-order-during-ime-composition\">https://w3c.github.io/input-events/#event-order-during-ime-composition</a> we should see</p>\n<ul>\n<li>deleteByComposition beforeInput and input events for the second test since 啊 is being deleted</li>\n<li>insertFromComposition beforeInput and input events for both cases</li>\n</ul>\n<p>Firefox: <a rel=\"nofollow\" href=\"https://input-inspector.vercel.app/profiles/8n74DRvc3g5dhl6pMYQo\">https://input-inspector.vercel.app/profiles/8n74DRvc3g5dhl6pMYQo</a> - neither event fires<br>\nChrome: <a rel=\"nofollow\" href=\"https://input-inspector.vercel.app/profiles/AXWWGKNTootDNMo6pXcY\">https://input-inspector.vercel.app/profiles/AXWWGKNTootDNMo6pXcY</a> - neither event fires<br>\nSafari: <a rel=\"nofollow\" href=\"https://input-inspector.vercel.app/profiles/Hocw2xtbGkIbqgFwXzQP\">https://input-inspector.vercel.app/profiles/Hocw2xtbGkIbqgFwXzQP</a> - insertFromComposition fires but deleteByComposition does not. I don't know when this was added, so this is just left as <code>true</code></p>\n\n<p>Firefox - the original bug for supporting inputEvent notes both these level 2 events will not be implemented yet <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1447239\">https://bugzilla.mozilla.org/show_bug.cgi?id=1447239</a></p>\n<h4>Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12125",
-            "title": "Add insertFromComposition and deleteByComposition inputTypes",
-            "date_modified": "2021-08-22T22:20:22.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/952783?u=2fc90fed173d5ef5e780f3b4417536a808601ef8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n<p>Deno 1.13 is running v8 9.3 which supports <code>Object.hasOwn</code></p>\n<div class=\"highlight highlight-source-shell position-relative\" data-snippet-clipboard-copy-content=\"$ deno\nDeno 1.13.0\nexit using ctrl+d or close()\n&gt; Object.hasOwn\n[Function: hasOwn]\n\"><pre>$ deno\nDeno 1.13.0\n<span class=\"pl-c1\">exit</span> using ctrl+d or <span class=\"pl-en\">close</span>()\n<span class=\"pl-k\">&gt;</span> Object.hasOwn\n[Function: hasOwn]</pre></div>\n<p>Also, the upcoming version of Chrome 93 supports <code>Object.hasOwn</code> as well</p>\n<h4>Test results and supporting details</h4>\n\n\n<h4>Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12160",
+            "title": "Object.hasOwn() is supported in Deno 1.13",
+            "date_modified": "2021-08-23T18:35:52.000Z",
             "author": {
-                "name": "ZhangYiJiang",
-                "url": "https://github.com/ZhangYiJiang"
+                "name": "jamiebuilds",
+                "url": "https://github.com/jamiebuilds"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>TextMetrics</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12123",
-            "title": "Remove irrelevant Chromium flag data for TextMetrics API",
-            "date_modified": "2021-08-22T12:18:12.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7829205?u=5a9294123bdf7301054aacbc88fda275f72ad4cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>These interfaces are exposed in at least two browsers (usually Chromium + WebKit + Deno). Interfaces which are not yet implemented in both of WebKit and Firefox, or which are mistakenly not exposed (<code>ReadableStreamDefaultReader</code>, <code>ReadableStreamDefaultController</code>) are still marked as experimental.</p>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #11915.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"961688258\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11915\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/11915/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/11915\">#11915</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12159",
+            "title": "WHATWG streams are partially not experimental",
+            "date_modified": "2021-08-23T17:47:47.000Z",
+            "author": {
+                "name": "lucacasonato",
+                "url": "https://github.com/lucacasonato"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7829205?u=5a9294123bdf7301054aacbc88fda275f72ad4cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>Implemented in all browsers + Deno + Node.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12158",
+            "title": "AbortController is not experimental",
+            "date_modified": "2021-08-23T17:39:39.000Z",
+            "author": {
+                "name": "lucacasonato",
+                "url": "https://github.com/lucacasonato"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7829205?u=5a9294123bdf7301054aacbc88fda275f72ad4cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>I removed the \"experimental\" flag from all <code>fetch</code> related features that are implemented in more than one browser engine.</p>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #11540.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"945456785\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11540\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/11540/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/11540\">#11540</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12157",
+            "title": "Fetch is not experimental",
+            "date_modified": "2021-08-23T17:38:20.000Z",
+            "author": {
+                "name": "lucacasonato",
+                "url": "https://github.com/lucacasonato"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7829205?u=5a9294123bdf7301054aacbc88fda275f72ad4cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Has been around forever, and is implemented in all browsers + Deno + Node.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12156",
+            "title": "TextEncoder is not experimental",
+            "date_modified": "2021-08-23T17:09:29.000Z",
+            "author": {
+                "name": "lucacasonato",
+                "url": "https://github.com/lucacasonato"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Adds nativeMessaging to the list of supported optional permission as per <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1630415\" rel=\"nofollow\">Bug 1630415 </a>.</p>\n<p>npm test run with no errors</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12155",
+            "title": "Bug-1630415-Make-nativeMessaging-an-optional-permission",
+            "date_modified": "2021-08-23T16:44:18.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/439929?u=88483145a53c3d594ab68146c1a8bdecc3bcd1d3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>Updates various Node.js Web API compatibilities</p>\n<h4>Test results and supporting details</h4>\n<h4>Related issues</h4>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12154",
+            "title": "Node.js SubtleCrypto does not require Secure context",
+            "date_modified": "2021-08-23T15:56:27.000Z",
+            "author": {
+                "name": "jasnell",
+                "url": "https://github.com/jasnell"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>Window</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/Window\">https://mdn-bcd-collector.appspot.com/tests/api/Window</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12152",
+            "title": "Update Safari versions for Window API",
+            "date_modified": "2021-08-23T12:47:46.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Safari (Desktop and iOS/iPadOS) for the <code>ProcessingInstruction</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/ProcessingInstruction\">https://mdn-bcd-collector.appspot.com/tests/api/ProcessingInstruction</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12122",
-            "title": "Add Safari versions for ProcessingInstruction API",
-            "date_modified": "2021-08-22T12:14:29.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>TextTrackCue</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/TextTrackCue\">https://mdn-bcd-collector.appspot.com/tests/api/TextTrackCue</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12148",
+            "title": "Update Safari versions for TextTrackCue API",
+            "date_modified": "2021-08-23T12:38:58.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>ProcessingInstruction</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/ProcessingInstruction\">https://mdn-bcd-collector.appspot.com/tests/api/ProcessingInstruction</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12121",
-            "title": "Add Firefox versions for ProcessingInstruction API",
-            "date_modified": "2021-08-22T12:12:36.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>HTMLTemplateElement</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/HTMLTemplateElement\">https://mdn-bcd-collector.appspot.com/tests/api/HTMLTemplateElement</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12146",
+            "title": "Update Safari versions for HTMLTemplateElement API",
+            "date_modified": "2021-08-23T12:36:50.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for all browsers for the <code>CDATASection</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/CDATASection\">https://mdn-bcd-collector.appspot.com/tests/api/CDATASection</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12120",
-            "title": "Add all browsers versions for CDATASection API",
-            "date_modified": "2021-08-22T12:09:38.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>HTMLInputElement</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/HTMLInputElement\">https://mdn-bcd-collector.appspot.com/tests/api/HTMLInputElement</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12144",
+            "title": "Update Safari versions for HTMLInputElement API",
+            "date_modified": "2021-08-23T12:34:56.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Chrome and Safari for the <code>SVGTransformList</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGTransformList\">https://mdn-bcd-collector.appspot.com/tests/api/SVGTransformList</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12119",
-            "title": "Update Chrome/Safari versions for SVGTransformList API",
-            "date_modified": "2021-08-22T12:04:01.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>FileReader</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/FileReader\">https://mdn-bcd-collector.appspot.com/tests/api/FileReader</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12142",
+            "title": "Update Safari versions for FileReader API",
+            "date_modified": "2021-08-23T12:29:36.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Chrome and Safari for the <code>SVGStringList</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGStringList\">https://mdn-bcd-collector.appspot.com/tests/api/SVGStringList</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12118",
-            "title": "Update Chrome/Safari versions for SVGStringList API",
-            "date_modified": "2021-08-22T12:03:12.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Safari (Desktop and iOS/iPadOS) for the <code>Element</code> API.  The data was copied from their event handler counterparts (in <code>GlobalEventHandlers</code>).</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12141",
+            "title": "Add Safari versions for Element API",
+            "date_modified": "2021-08-23T12:27:34.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Safari (Desktop and iOS/iPadOS) for the <code>SVGRenderingIntent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGRenderingIntent\">https://mdn-bcd-collector.appspot.com/tests/api/SVGRenderingIntent</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12117",
-            "title": "Add Safari versions for SVGRenderingIntent API",
-            "date_modified": "2021-08-22T12:01:56.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>Document</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/Document\">https://mdn-bcd-collector.appspot.com/tests/api/Document</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12140",
+            "title": "Update Safari versions for Document API",
+            "date_modified": "2021-08-23T12:24:15.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Safari (Desktop and iOS/iPadOS) for the <code>SVGRect</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGRect\">https://mdn-bcd-collector.appspot.com/tests/api/SVGRect</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12116",
-            "title": "Add Safari versions for SVGRect API",
-            "date_modified": "2021-08-22T12:00:57.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Safari (Desktop and iOS/iPadOS) for the <code>toggle.force_parameter</code> member of the <code>DOMTokenList</code> API, based upon manual testing.</p>\n<p>Test Code Used:</p>\n<div class=\"highlight highlight-source-js position-relative\" data-snippet-clipboard-copy-content=\"var elm = document.createElement('b');\nelm.className = 'foo bar';\nelm.classList.toggle('foo', true);\nreturn elm.className === 'foo bar';\n\"><pre><span class=\"pl-k\">var</span> <span class=\"pl-s1\">elm</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">createElement</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'b'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">elm</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">className</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s\">'foo bar'</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">elm</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">classList</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toggle</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'foo'</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">true</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-k\">return</span> <span class=\"pl-s1\">elm</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">className</span> <span class=\"pl-c1\">===</span> <span class=\"pl-s\">'foo bar'</span><span class=\"pl-kos\">;</span></pre></div>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12139",
+            "title": "Add Safari versions for api.DOMTokenList.toggle.force_parameter",
+            "date_modified": "2021-08-23T12:20:39.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Chrome and Safari for the <code>SVGPointList</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGPointList\">https://mdn-bcd-collector.appspot.com/tests/api/SVGPointList</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12115",
-            "title": "Update Chrome/Safari versions for SVGPointList API",
-            "date_modified": "2021-08-22T11:59:55.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>DOMTokenList</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/DOMTokenList\">https://mdn-bcd-collector.appspot.com/tests/api/DOMTokenList</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12138",
+            "title": "Update Safari versions for DOMTokenList API",
+            "date_modified": "2021-08-23T12:12:04.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Chrome and Safari for the <code>SVGPoint</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGPoint\">https://mdn-bcd-collector.appspot.com/tests/api/SVGPoint</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12114",
-            "title": "Update Chrome/Safari versions for SVGPoint API",
-            "date_modified": "2021-08-22T11:58:24.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>CustomEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/CustomEvent\">https://mdn-bcd-collector.appspot.com/tests/api/CustomEvent</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12135",
+            "title": "Update Safari versions for CustomEvent API",
+            "date_modified": "2021-08-23T11:48:24.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>SVGAnimationElement</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGAnimationElement\">https://mdn-bcd-collector.appspot.com/tests/api/SVGAnimationElement</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12113",
-            "title": "Add Firefox versions for SVGAnimationElement API",
-            "date_modified": "2021-08-22T11:56:55.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>Crypto</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/Crypto\">https://mdn-bcd-collector.appspot.com/tests/api/Crypto</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12134",
+            "title": "Update Safari versions for Crypto API",
+            "date_modified": "2021-08-23T11:43:24.000Z",
             "author": {
                 "name": "vinyldarkscratch",
                 "url": "https://github.com/vinyldarkscratch"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR updates and corrects the real values for Safari (Desktop and iOS/iPadOS) for the <code>Selection</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/Selection\">https://mdn-bcd-collector.appspot.com/tests/api/Selection</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12112",
-            "title": "Update Safari versions for Selection API",
-            "date_modified": "2021-08-22T11:50:52.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2764898?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Working on <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"963831493\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/7745\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/7745/hovercard\" href=\"https://github.com/mdn/content/issues/7745\">mdn/content#7745</a></p>\n<p>I wasn't altogether sure where to note this. So tell me if you think it should be elsewhere and I'll re-do it.</p>\n<p>The spec is here: <a rel=\"nofollow\" href=\"https://html.spec.whatwg.org/multipage/custom-elements.html#dom-customelementregistry-define-dev\">https://html.spec.whatwg.org/multipage/custom-elements.html#dom-customelementregistry-define-dev</a> (step 6 mentions it). So that's why I've added it to define.</p>\n<p>I found the Chromium information here <a rel=\"nofollow\" href=\"https://bugs.chromium.org/p/chromium/issues/detail?id=972951&amp;q=disabledFeatures&amp;can=1\">https://bugs.chromium.org/p/chromium/issues/detail?id=972951&amp;q=disabledFeatures&amp;can=1</a> and tested that it is in 77. I also checked Safari where it does not appear to be implemented.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12130",
+            "title": "Adding note about disabledFeatures static property",
+            "date_modified": "2021-08-23T10:53:34.000Z",
             "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>RTCRtpReceiver</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/RTCRtpReceiver\">https://mdn-bcd-collector.appspot.com/tests/api/RTCRtpReceiver</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12111",
-            "title": "Add Firefox versions for RTCRtpReceiver API",
-            "date_modified": "2021-08-22T11:48:21.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>vibrate</code> member of the <code>Navigator</code> API, based upon manual testing.</p>\n<p>Test Code Used: <code>navigator.mozVibrate</code></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12110",
-            "title": "Add Firefox versions for api.Navigator.vibrate",
-            "date_modified": "2021-08-22T10:44:23.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>connection</code> member of the <code>Navigator</code> API.  The data was collected by looking for the mentioned flag in various Firefox versions in BrowserStack, looking for the first version it was added in, and checking to see if <code>connection</code> is present in that version (which it was).</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12109",
-            "title": "Add Firefox versions for api.Navigator.connection",
-            "date_modified": "2021-08-22T10:41:41.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for all browsers for the <code>TrackEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/TrackEvent\">https://mdn-bcd-collector.appspot.com/tests/api/TrackEvent</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12108",
-            "title": "Add all browsers versions for TrackEvent API",
-            "date_modified": "2021-08-22T10:29:44.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for all browsers for the <code>MediaStreamTrackEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/MediaStreamTrackEvent\">https://mdn-bcd-collector.appspot.com/tests/api/MediaStreamTrackEvent</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12107",
-            "title": "Add all browsers versions for MediaStreamTrackEvent API",
-            "date_modified": "2021-08-22T10:27:19.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for all browsers for the <code>MediaStreamEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/MediaStreamEvent\">https://mdn-bcd-collector.appspot.com/tests/api/MediaStreamEvent</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12106",
-            "title": "Add all browsers versions for MediaStreamEvent API",
-            "date_modified": "2021-08-22T10:23:44.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=825a82f8ce49f10d5e309b8a96da0ef8e0fd67bc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Safari (Desktop and iOS/iPadOS) for the <code>MediaKeyMessageEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v3.2.9).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/MediaKeyMessageEvent\">https://mdn-bcd-collector.appspot.com/tests/api/MediaKeyMessageEvent</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12105",
-            "title": "Add Safari versions for MediaKeyMessageEvent API",
-            "date_modified": "2021-08-22T10:18:43.000Z",
-            "author": {
-                "name": "vinyldarkscratch",
-                "url": "https://github.com/vinyldarkscratch"
+                "name": "rachelandrew",
+                "url": "https://github.com/rachelandrew"
             }
         }
     ]
