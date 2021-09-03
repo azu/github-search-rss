@@ -5,6 +5,16 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Added line for <code>windowId</code> with a note on matching sidebars and Firefox for Android support</p>\n<p>Addresses  <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1612390\" rel=\"nofollow\">Bug 1612390</a></p>\n<p>Tested and passed <code>npm test</code></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12246",
+            "title": "Bug 1612390 Sidebars inc in extension.getViews when windowId specified",
+            "date_modified": "2021-09-02T18:54:40.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Yay, mixins.</p>\n<p>Apparently the IDL was this:</p>\n<div class=\"highlight highlight-source-webidl position-relative\" data-snippet-clipboard-copy-content=\"interface mixin IDBEnvironment {\n  [SameObject] readonly attribute IDBFactory indexedDB;\n};\n\"><pre><span class=\"pl-k\">interface</span> <span class=\"pl-en\">mixin</span> IDBEnvironment {\n  [<span class=\"pl-k\">SameObject</span>] readonly attribute IDBFactory indexedDB;\n};</pre></div>\n<p>and it is now this:</p>\n<div class=\"highlight highlight-source-webidl position-relative\" data-snippet-clipboard-copy-content=\"partial interface mixin WindowOrWorkerGlobalScope {\n  [SameObject] readonly attribute IDBFactory indexedDB;\n};\n\"><pre>partial <span class=\"pl-k\">interface</span> <span class=\"pl-en\">mixin</span> WindowOrWorkerGlobalScope {\n  [<span class=\"pl-k\">SameObject</span>] readonly attribute IDBFactory indexedDB;\n};</pre></div>\n<p>So, BCD shouldn't have IDBEnvironment and also not WindowOrWorkerGlobalScope.indexeddb as that will soon be in a _globals folder. Proposing to just remove this file then.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/12230",
             "title": "Remove IDBEnvironment mixin",
@@ -132,6 +142,16 @@
             "author": {
                 "name": "ZhangYiJiang",
                 "url": "https://github.com/ZhangYiJiang"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>TextMetrics</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/vinyldarkscratch/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12123",
+            "title": "Remove irrelevant Chromium flag data for TextMetrics API",
+            "date_modified": "2021-08-22T12:18:12.000Z",
+            "author": {
+                "name": "vinyldarkscratch",
+                "url": "https://github.com/vinyldarkscratch"
             }
         }
     ]
