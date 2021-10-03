@@ -5,13 +5,33 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/22066503?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Fixes the following broken link flaws:</p>\n<ul>\n<li>Can't resolve /en-US/docs/Mozilla/Tech/XUL/tabbrowser</li>\n<li>Can't resolve /en-US/docs/Mozilla/Tech/XUL/Method/getTabForBrowser</li>\n<li>Can't resolve /en-US/docs/Mozilla/Tech/XUL/tab</li>\n<li>Can't resolve /en-US/docs/Mozilla/Tech/XUL/browser</li>\n<li>Can't resolve /en-US/docs/Mozilla/Add-ons/SDK/Tutorials/Add_a_Context_Menu_Item#adding_an_access_key</li>\n<li>Can't resolve /en-US/docs/Mozilla/Add-ons/SDK/High-Level_APIs/windows#browserwindow</li>\n<li>Can't resolve /en-US/docs/Mozilla/Add-ons/SDK/High-Level_APIs/url</li>\n</ul>\n<p>Fixes the following macro flaws:</p>\n<ul>\n<li>/en-US/docs/Web/API/NavigatorLanguage redirects to /en-US/docs/Web/API/Navigator</li>\n<li>/en-US/docs/Web/API/Animation/target does not exist</li>\n<li>/en-US/docs/Web/API/File/mozFullPath does not exist</li>\n<li>/en-US/docs/Web/API/AbortablePromise does not exist</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/9432",
-            "title": "Fix link flaws on Firefox 35 release notes",
-            "date_modified": "2021-10-01T22:20:59.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/24496417?u=637ac1ef038269bd0d03734a48fa642330e93598&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Update the description of the <code>window.fetch()</code> page to detail that a <code>TypeError</code> throwed by fetch can be a <code>NetworkError</code>, and possibly a CORS-linked issue.</p>\n\n<h4>Summary</h4>\n\n<p>Update the description to detail that a <code>TypeError</code> throwed by window.fetch() can be a <code>NetworkError</code>, and possibly a CORS-linked issue.</p>\n<h4>Motivation</h4>\n\n<p>Reading the MDN page I was under the impression that Fetch would never throw as long as the arguments were right. It would have helped me to know that network issues, and CORS specifically, could result in a throwed error.</p>\n<h4>Supporting details</h4>\n\n<p>Sample test code:</p>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const uri = &quot;https://xxxxxxxxx.com/test.pdf&quot;;\ntry {\n  const response = await window.fetch(uri, {\n    method: &quot;GET&quot;,\n    mode: &quot;cors&quot;,\n    credentials: &quot;omit&quot;,\n    cache: &quot;reload&quot;,\n  });\n\n  if (!response.ok) {\n    throw new Error(&quot;Fetch fail&quot;);\n  }\n} catch(e) {\n  console.error(e);\n}\n\"><pre><span class=\"pl-k\">const</span> <span class=\"pl-s1\">uri</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s\">\"https://xxxxxxxxx.com/test.pdf\"</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-k\">try</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-k\">const</span> <span class=\"pl-s1\">response</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-smi\">window</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">fetch</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">uri</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-c1\">method</span>: <span class=\"pl-s\">\"GET\"</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-c1\">mode</span>: <span class=\"pl-s\">\"cors\"</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-c1\">credentials</span>: <span class=\"pl-s\">\"omit\"</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-c1\">cache</span>: <span class=\"pl-s\">\"reload\"</span><span class=\"pl-kos\">,</span>\n  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n  <span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-c1\">!</span><span class=\"pl-s1\">response</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">ok</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">throw</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Error</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"Fetch fail\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-kos\">}</span>\n<span class=\"pl-kos\">}</span> <span class=\"pl-k\">catch</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">e</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">error</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">e</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<p>Resulting error log in Firefox devtools console:<br>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/24496417/135731880-5ae59831-ab30-4247-9344-706271922b25.png\"><img width=\"444\" alt=\"image\" src=\"https://user-images.githubusercontent.com/24496417/135731880-5ae59831-ab30-4247-9344-706271922b25.png\" style=\"max-width: 100%;\"></a></p>\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/9449",
+            "title": "chore: update desc of possible window.fetch() exceptions",
+            "date_modified": "2021-10-02T21:15:23.000Z",
             "author": {
-                "name": "mathewhodson",
-                "url": "https://github.com/mathewhodson"
+                "name": "GitSquared",
+                "url": "https://github.com/GitSquared"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11516302?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>There are some links to /docs/CSS which should be /docs/Web/CSS.</p>\n<h4>Motivation</h4>\n\n<p>To reduce redirects.</p>\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/9441",
+            "title": "Fix links /docs/CSS as /docs/Web/CSS",
+            "date_modified": "2021-10-02T15:37:19.000Z",
+            "author": {
+                "name": "mfuji09",
+                "url": "https://github.com/mfuji09"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/73233801?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>Used the mongodb sort method instead of using array.sort to sort the results of the qurery</p>\n<h4>Motivation</h4>\n<p>Reinventing the wheel by  using array.sort with a custom comparator function to sort the results of a query seems redundant, since there is already a built in method to sort the  results of the query</p>\n<h4>Metadata</h4>\n<p>This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/9440",
+            "title": "Used mongoose sort instead of array.sort",
+            "date_modified": "2021-10-02T15:36:22.000Z",
+            "author": {
+                "name": "griitch",
+                "url": "https://github.com/griitch"
             }
         },
         {
@@ -125,16 +145,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR prettifies the HTML docs:</p>\n<div class=\"snippet-clipboard-content position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"npx prettier --write --embedded-language-formatting=off ./files/en-us/web/html\n\"><pre><code>npx prettier --write --embedded-language-formatting=off ./files/en-us/web/html\n</code></pre></div>\n<p>The main effect is:</p>\n<ul>\n<li>add a blank line after front matter</li>\n<li>use the <code>- </code> style for lists, rather than <code>*  </code></li>\n<li>use <code>_</code> style for <code>&lt;em&gt;</code>, rather than <code>*</code></li>\n</ul>\n<p>I've checked it quite carefully and can't find any errors it's introduced. I did find a few inline Markdown issues that were already present, and fixed them in <a class=\"commit-link\" data-hovercard-type=\"commit\" data-hovercard-url=\"https://github.com/mdn/content/commit/652f724c5dfb45583fd150ebf1c6dfd48879c051/hovercard\" href=\"https://github.com/mdn/content/commit/652f724c5dfb45583fd150ebf1c6dfd48879c051\"><tt>652f724</tt></a>.</p>",
-            "url": "https://github.com/mdn/content/pull/9395",
-            "title": "Prettify HTML documentation",
-            "date_modified": "2021-09-30T23:47:14.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1140844?u=9a5d5dcb7a8eacf535982109b1e2b8118852e1ef&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Digest header is not related to Digest authentication.</p>\n<h4>Summary</h4>\n<ul>\n<li>Align content with Digest spec</li>\n<li>improve wording around representation data</li>\n</ul>\n<h4>Motivation</h4>\n<p>Align content to spec</p>\n<h4>Supporting details</h4>\n<p><a href=\"https://github.com/httpwg/http-extensions/blob/main/draft-ietf-httpbis-digest-headers.md#concept-overview\">https://github.com/httpwg/http-extensions/blob/main/draft-ietf-httpbis-digest-headers.md#concept-overview</a> states</p>\n<blockquote>\n<p>This specification does not define means for authentication, authorization or privacy.</p>\n</blockquote>\n<h4>Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/9392",
             "title": "Digest does not cover authentication",
@@ -192,16 +202,6 @@
             "author": {
                 "name": "jonathanstanley",
                 "url": "https://github.com/jonathanstanley"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11516302?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Fix URL fragments in links</p>\n<h4>Motivation</h4>\n\n<p>They are reported as link flaws.</p>\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/9339",
-            "title": "fix URL fragments in links",
-            "date_modified": "2021-09-29T15:16:33.000Z",
-            "author": {
-                "name": "mfuji09",
-                "url": "https://github.com/mfuji09"
             }
         }
     ]
