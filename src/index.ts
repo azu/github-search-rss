@@ -207,7 +207,8 @@ export const generateRSS = (items: Item[], options: GenerateRSSOptions) => {
                     email: `${item.author.login}@noreply.github.com`
                 }
             ],
-            date: dayjs(item.createdAt).toDate()
+            published: dayjs(item.createdAt).toDate(),
+            date: dayjs(item.updatedAt).toDate()
         });
     });
     if (path.extname(options.link) === ".json") {
