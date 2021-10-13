@@ -16,7 +16,8 @@ export const SEARCH_ITEMS: RSSItem[] = [
         title: "microsoft/TypeScript Iteration Plan",
         query: "repo:microsoft/TypeScript is:issue label:Planning",
         TYPE: "ISSUE",
-        link: `${BASE_URL}/typescript-iterator-plan.json`
+        link: `${BASE_URL}/typescript-iterator-plan.json`,
+        homepage: "https://github.com/search?q=repo%3Amicrosoft%2FTypeScript+is%3Aissue+label%3APlanning"
     },
     {
         title: "w3ctag/design-reviews Design Issues",

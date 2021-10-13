@@ -171,6 +171,7 @@ export type GenerateRSSOptions = {
     title: string;
     description: string;
     link: string;
+    homepage?: string;
     image?: string;
     favicon?: string;
     updated: Date;
@@ -182,7 +183,8 @@ export const generateRSS = (items: Item[], options: GenerateRSSOptions) => {
         title: options.title,
         description: options.description,
         id: options.link,
-        link: options.link,
+        link: options.homepage || options.link,
+        feedLinks: { json: options.link },
         image: options.image,
         favicon: options.favicon,
         copyright: "github-search-rss",
