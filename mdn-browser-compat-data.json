@@ -6,10 +6,164 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/22191199?u=17ab72b33047c793b3a17d3b330bb416f6e4911c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n<p>This PR sets Chromium version for font-synthesis CSS property</p>\n<p>font-synthesis property will be supported on Chrome 97 version, this CL has to be merged only after Chrome 97 version reaches the end of the <a href=\"https://chromiumdash.appspot.com/schedule\" rel=\"nofollow\">beta phase</a></p>\n<h4>Test results and supporting details</h4>\n<p>Support in Chrome, Chrome for Android is claimed on <a href=\"https://www.chromestatus.com/feature/5640605355999232\" rel=\"nofollow\">Chromestatus</a></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes the \"On disabled form elements\" subfeature of the Element's <code>click</code> event.  When attempting to run tests to determine what browser versions this behavior was supported in, I couldn't replicate the mentioned behavior in the notes in IE 11, Chrome 94, or Chrome 37.  This behavior is inaccurately marked as non-standard in BCD when there is no mention of it in the spec.</p>\n<p>Test code used:</p>\n<div class=\"highlight highlight-text-html-basic position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;div id=&quot;test&quot;&gt;\n\t&lt;form&gt;\n\t\t&lt;!-- For IE, this was used --&gt;\n\t\t&lt;input id=&quot;input&quot; type=&quot;checkbox&quot; disabled /&gt;\n\t\t&lt;!-- For Chrome, this was used --&gt;\n\t\t&lt;textarea id=&quot;input&quot; disabled&gt;&lt;/textarea&gt;\n\t&lt;/form&gt;\n&lt;/div&gt;\n\n&lt;script&gt;\n\tvar el = document.getElementById('input');\n\tel.addEventListener('click', function() {\n\t\talert('Click!');\n\t});\n&lt;/script&gt;\n\"><pre><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">test</span>\"<span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">form</span><span class=\"pl-kos\">&gt;</span>\n\t\t<span class=\"pl-c\">&lt;!-- For IE, this was used --&gt;</span>\n\t\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">input</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">input</span>\" <span class=\"pl-c1\">type</span>=\"<span class=\"pl-s\">checkbox</span>\" <span class=\"pl-c1\">disabled</span> /&gt;\n\t\t<span class=\"pl-c\">&lt;!-- For Chrome, this was used --&gt;</span>\n\t\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">textarea</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">input</span>\" <span class=\"pl-c1\">disabled</span><span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">textarea</span><span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">form</span><span class=\"pl-kos\">&gt;</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n\n<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">el</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getElementById</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'input'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-s1\">el</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'click'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Click!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span></pre></div>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12963",
+            "title": "Remove api.Element.click_event.on_disabled_form_elements",
+            "date_modified": "2021-10-20T23:43:26.000Z",
+            "date_published": "2021-10-20T23:43:08.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Internet Explorer for the <code>MSManipulationStateChanged_event</code> member of the <code>Element</code> API.  This simply sets the value to \"11\" without any real testing or research, because this feature will be removed around the end of the year and it's not worthwhile to hunt down the exact version number.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12961",
+            "title": "Add IE versions for api.Element.MSManipulationStateChanged_event",
+            "date_modified": "2021-10-20T23:12:44.000Z",
+            "date_published": "2021-10-20T23:12:27.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Internet Explorer for the <code>msContentZoom_event</code> member of the <code>Element</code> API.  This simply sets the value to \"11\" without any real testing or research, because this feature will be removed  around the end of the year and it's not worthwhile to hunt down the exact version number.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12960",
+            "title": "Add IE versions for api.Element.msContentZoom_event",
+            "date_modified": "2021-10-20T23:11:44.000Z",
+            "date_published": "2021-10-20T23:11:21.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/158590?u=64fe10cf9c9fd04360c21d57799c319c2cb25f31&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is my first contribution, so I'd be happy to receive feedback/guidance. I just noticed compat was missing for this new/experimental API.</p>\n<p>Cheers!</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12959",
+            "title": "adding File System Access API compat",
+            "date_modified": "2021-10-20T23:28:17.000Z",
+            "date_published": "2021-10-20T21:16:47.000Z",
+            "author": {
+                "name": "todrobbins",
+                "url": "https://github.com/todrobbins"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32498324?u=508fb2358e5978ec8204066484403484777e1fbd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Added an entry for <code>cross-origin-embedder-policy: credentialless</code>. With support data for Chromium 96.</p>\n<h4>Test results and supporting details</h4>\n\n\n<p><a rel=\"nofollow\" href=\"https://www.chromestatus.com/feature/4918234241302528\">https://www.chromestatus.com/feature/4918234241302528</a></p>\n<p><a rel=\"nofollow\" href=\"https://wicg.github.io/credentiallessness\">https://wicg.github.io/credentiallessness</a></p>\n<h4>Related issues</h4>\n\n\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #12955.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1031713071\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/12955\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/12955/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/12955\">#12955</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12956",
+            "title": "Added entry for coep: credentialless",
+            "date_modified": "2021-10-20T18:44:27.000Z",
+            "date_published": "2021-10-20T18:43:38.000Z",
+            "author": {
+                "name": "lukewarlow",
+                "url": "https://github.com/lukewarlow"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32498324?u=508fb2358e5978ec8204066484403484777e1fbd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Adds Opera 82 and corresponding support data.</p>\n<h4>Test results and supporting details</h4>\n<p><a rel=\"nofollow\" href=\"https://blogs.opera.com/desktop/2021/10/opera-82-developer/\">https://blogs.opera.com/desktop/2021/10/opera-82-developer/</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12954",
+            "title": "Add Opera 82",
+            "date_modified": "2021-10-20T18:28:16.000Z",
+            "date_published": "2021-10-20T18:27:48.000Z",
+            "author": {
+                "name": "lukewarlow",
+                "url": "https://github.com/lukewarlow"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Previous renames:<br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"908205065\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/10695\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/10695/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/10695\">#10695</a><br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"908653952\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/10700\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/10700/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/10700\">#10700</a><br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"933628994\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/11328\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/11328/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/11328\">#11328</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12951",
+            "title": "Rename \"argument\" to \"parameter\" in more places",
+            "date_modified": "2021-10-20T11:32:31.000Z",
+            "date_published": "2021-10-20T11:32:11.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>MediaTrackSupportedConstraints</code> API, based upon commit history and date.</p>\n<p>Commit: <a rel=\"nofollow\" href=\"https://hg.mozilla.org/mozilla-central/rev/728713d8e7c65a41945dcce6c5241e7643d1d77d\">https://hg.mozilla.org/mozilla-central/rev/728713d8e7c65a41945dcce6c5241e7643d1d77d</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12949",
+            "title": "Add Firefox versions for MediaTrackSupportedConstraints API",
+            "date_modified": "2021-10-20T09:37:11.000Z",
+            "date_published": "2021-10-20T09:36:53.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>MediaTrackSettings</code> API.  This simply sets the dictionary's support to the lowest version number in any of its subfeatures as to get to 100% real values without removing this dictionary yet.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12948",
+            "title": "Add Firefox versions for MediaTrackSettings API",
+            "date_modified": "2021-10-20T09:31:45.000Z",
+            "date_published": "2021-10-20T09:31:26.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>MediaTrackConstraints</code> API.  This simply sets the dictionary's support to the lowest version number in any of its subfeatures as to get to 100% real values without removing this dictionary yet.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12947",
+            "title": "Add Firefox versions for MediaTrackConstraints API",
+            "date_modified": "2021-10-20T09:29:42.000Z",
+            "date_published": "2021-10-20T09:29:25.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>MediaTrackSettings</code> API, based upon commit history and date.</p>\n<p>Commit: <a rel=\"nofollow\" href=\"https://storage.googleapis.com/chromium-find-releases-static/aa4.html#aa40992364d32544f7301ad6791b302736f651d5\">https://storage.googleapis.com/chromium-find-releases-static/aa4.html#aa40992364d32544f7301ad6791b302736f651d5</a> / <a rel=\"nofollow\" href=\"https://storage.googleapis.com/chromium-find-releases-static/32f.html#32ff2fb2094b94ad384c99ce508a662a3abb673b\">https://storage.googleapis.com/chromium-find-releases-static/32f.html#32ff2fb2094b94ad384c99ce508a662a3abb673b</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12946",
+            "title": "Add Chromium versions for MediaTrackSettings API",
+            "date_modified": "2021-10-20T09:20:38.000Z",
+            "date_published": "2021-10-20T09:20:19.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>MediaTrackConstraints</code> API, based upon commit history and date.</p>\n<p>Commit: <a rel=\"nofollow\" href=\"https://storage.googleapis.com/chromium-find-releases-static/457.html#457331359e46f16a5b8b45c308d99b8b448e028a\">https://storage.googleapis.com/chromium-find-releases-static/457.html#457331359e46f16a5b8b45c308d99b8b448e028a</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12945",
+            "title": "Add Chromium versions for MediaTrackConstraints API",
+            "date_modified": "2021-10-20T07:23:35.000Z",
+            "date_published": "2021-10-20T07:23:16.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Based on testing with mdn-bcd-collector:<br>\n<a rel=\"nofollow\" href=\"http://mdn-bcd-collector.appspot.com/tests/css/properties/initial-letter\">http://mdn-bcd-collector.appspot.com/tests/css/properties/initial-letter</a><br>\n<a rel=\"nofollow\" href=\"http://mdn-bcd-collector.appspot.com/tests/css/properties/-webkit-initial-letter\">http://mdn-bcd-collector.appspot.com/tests/css/properties/-webkit-initial-letter</a></p>\n<p>Safari 8 and 9.1 were tested to verify the version,<br>\n-webkit-initial-letter wasn't in 8 but was in 9.1.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12944",
+            "title": "Mark initial-letter as prefixed in Safari",
+            "date_modified": "2021-10-20T07:43:26.000Z",
+            "date_published": "2021-10-20T06:51:58.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/59599950?u=a0800c746d15848491e7a550abc90466d1ac802f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>There is no <code>https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/default</code>, and it did go to the <code>switch</code> page.<br>\nI found out that the default is on the <code>export</code> page, so I've fixed it.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/12943",
+            "title": "fix: broken export default link",
+            "date_modified": "2021-10-20T04:14:17.000Z",
+            "date_published": "2021-10-20T04:13:42.000Z",
+            "author": {
+                "name": "SeyyedKhandon",
+                "url": "https://github.com/SeyyedKhandon"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/22191199?u=17ab72b33047c793b3a17d3b330bb416f6e4911c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n<p>This PR sets Chromium version for font-synthesis CSS property and adds font-synthesis longhand</p>\n<p>WARNING: font-synthesis property will be supported on Chrome 97 version, this CL has to be merged only after Chrome 97 version reaches the end of the <a href=\"https://chromiumdash.appspot.com/schedule\" rel=\"nofollow\">beta phase</a></p>\n<h4>Test results and supporting details</h4>\n<p>Support in Chrome, Chrome for Android is claimed on <a href=\"https://www.chromestatus.com/feature/5640605355999232\" rel=\"nofollow\">Chromestatus</a></p>\n<p>Longhand for font-synthesis property, i.e. <a href=\"https://drafts.csswg.org/css-fonts-4/#font-synthesis-weight\" rel=\"nofollow\">font-synthesis-weight</a>, <a href=\"https://drafts.csswg.org/css-fonts-4/#font-synthesis-style\" rel=\"nofollow\">font-synthesis-style</a> and <a href=\"https://drafts.csswg.org/css-fonts-4/#font-synthesis-small-caps\" rel=\"nofollow\">font-synthesis-small-caps</a> not supported on Safari (<a href=\"https://bugs.webkit.org/show_bug.cgi?id=232009\" rel=\"nofollow\">link on bug</a>) and Firefox (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1724892\" rel=\"nofollow\">link on bug</a>)</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/12931",
-            "title": "Add Chromium versions for font-synthesis property",
-            "date_modified": "2021-10-19T10:56:34.000Z",
+            "title": "Updated data for font-synthesis property",
+            "date_modified": "2021-10-20T15:17:47.000Z",
             "date_published": "2021-10-19T09:54:10.000Z",
             "author": {
                 "name": "tursunova",
@@ -66,160 +220,6 @@
             "title": "Add Firefox versions for api.Element.all_elements_selector",
             "date_modified": "2021-10-17T04:21:25.000Z",
             "date_published": "2021-10-17T04:21:07.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>copy</code> and <code>cut</code> events of the <code>Element</code> API, based upon manual testing.</p>\n<p>Test Code Used:</p>\n<div class=\"highlight highlight-text-html-basic position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;div id=&quot;test&quot;&gt;\n\t&lt;div id=&quot;source&quot; contenteditable=&quot;true&quot;&gt;Try copying text from this box...&lt;/div&gt;\n\t&lt;div id=&quot;target&quot; contenteditable=&quot;true&quot;&gt;...and pasting it into this one&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;script&gt;\n\tvar source = document.getElementById('source');\n\tvar target = document.getElementById('target');\n\n\tsource.addEventListener('copy', function() {\n\t\talert('Copy!');\n\t});\n\n\tsource.addEventListener('cut', function() {\n\t\talert('Cut!');\n\t});\n\n\ttarget.addEventListener('paste', function() {\n\t\talert('Paste!');\n\t});\n&lt;/script&gt;\n\"><pre><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">test</span>\"<span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">source</span>\" <span class=\"pl-c1\">contenteditable</span>=\"<span class=\"pl-s\">true</span>\"<span class=\"pl-kos\">&gt;</span>Try copying text from this box...<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">target</span>\" <span class=\"pl-c1\">contenteditable</span>=\"<span class=\"pl-s\">true</span>\"<span class=\"pl-kos\">&gt;</span>...and pasting it into this one<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n\n<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">source</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getElementById</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'source'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">target</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getElementById</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'target'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n\t<span class=\"pl-s1\">source</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'copy'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Copy!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n\t<span class=\"pl-s1\">source</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'cut'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Cut!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n\t<span class=\"pl-s1\">target</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'paste'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Paste!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span></pre></div>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12908",
-            "title": "Add Firefox versions for api.Element.copy/cut_event",
-            "date_modified": "2021-10-17T01:58:48.000Z",
-            "date_published": "2021-10-17T01:58:28.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Internet Explorer for the <code>copy</code>, <code>cut</code>, and <code>paste</code> events of the <code>Element</code> API, based upon manual testing.</p>\n<p>Test Code Used:</p>\n<div class=\"highlight highlight-text-html-basic position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;div id=&quot;test&quot;&gt;\n\t&lt;div id=&quot;source&quot; contenteditable=&quot;true&quot;&gt;Try copying text from this box...&lt;/div&gt;\n\t&lt;div id=&quot;target&quot; contenteditable=&quot;true&quot;&gt;...and pasting it into this one&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;script&gt;\n\tvar source = document.getElementById('source');\n\tvar target = document.getElementById('target');\n\n\tsource.addEventListener('copy', function() {\n\t\talert('Copy!');\n\t});\n\n\tsource.addEventListener('cut', function() {\n\t\talert('Cut!');\n\t});\n\n\ttarget.addEventListener('paste', function() {\n\t\talert('Paste!');\n\t});\n&lt;/script&gt;\n\"><pre><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">test</span>\"<span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">source</span>\" <span class=\"pl-c1\">contenteditable</span>=\"<span class=\"pl-s\">true</span>\"<span class=\"pl-kos\">&gt;</span>Try copying text from this box...<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">target</span>\" <span class=\"pl-c1\">contenteditable</span>=\"<span class=\"pl-s\">true</span>\"<span class=\"pl-kos\">&gt;</span>...and pasting it into this one<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n\n<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">source</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getElementById</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'source'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">target</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getElementById</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'target'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n\t<span class=\"pl-s1\">source</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'copy'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Copy!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n\t<span class=\"pl-s1\">source</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'cut'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Cut!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n\t<span class=\"pl-s1\">target</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'paste'</span><span class=\"pl-kos\">,</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t\t<span class=\"pl-en\">alert</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Paste!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span></pre></div>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12907",
-            "title": "Add IE versions for api.Element.[copy/cut/paste]_event",
-            "date_modified": "2021-10-17T01:52:53.000Z",
-            "date_published": "2021-10-17T01:52:36.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Internet Explorer for the <code>wheel_event</code> member of the <code>Document</code> API, based upon manual testing.</p>\n<p>Test Code Used: <a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document/wheel_event\">https://developer.mozilla.org/en-US/docs/Web/API/Document/wheel_event</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12906",
-            "title": "Add IE versions for api.Document.wheel_event",
-            "date_modified": "2021-10-17T01:39:28.000Z",
-            "date_published": "2021-10-17T01:39:15.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul>\n<li>Add missing features for PointerEvent API</li>\n<li>Add missing api.TrackEvent.TrackEvent feature</li>\n<li>Create WebGLRenderingContextBase mixin file</li>\n<li>Add missing WebGLRenderingContextBase attributes to WebGL2</li>\n<li>Fix styling</li>\n<li>Remove duplicates in WebGL2RenderingContext</li>\n<li>Add missing features for WebGL2RenderingContext</li>\n<li>Remove \"WebGL2\" features from WebGLRenderingContext</li>\n<li>Add all browsers versions for MediaStreamTrackEvent API</li>\n<li>Add all browsers versions for TrackEvent API</li>\n<li>Add Firefox versions for SVGAnimationElement API</li>\n<li>Update flag data for PaymentRequest[UpdateEvent]</li>\n<li>Delete PaymentDetailsUpdate dictionary</li>\n<li>Remove MediaStreamConstraints from dictionary</li>\n<li>Add missing statuses</li>\n<li>Update PaymentMethodChangeEvent and PaymentResponse</li>\n<li>Remove notes</li>\n<li>Remove subfeatures</li>\n<li>Remove EffectTiming dictionary from BCD</li>\n<li>Remove FileSystemFlags dictionary from BCD</li>\n<li>Remove PublicKeyCredential[Creation/Request]Options dict from BCD</li>\n<li>Remove MutationObserverInit API from BCD</li>\n<li>Update notes for attributeFilter parameter based upon testing</li>\n<li>Move notes up to parent property</li>\n<li>Remove redundant subfeatures</li>\n<li>Remove PaymentItem API from BCD</li>\n<li>Remove VRLayerInit API from BCD</li>\n<li>Remove RTCOfferAnswerOptions and RTC[Offer/Answer]Options API from BCD</li>\n<li>Remove non-needed subfeatures</li>\n<li>Add version_removed for Firefox Android</li>\n<li>Remove RTCConfiguration API from BCD</li>\n<li>Fix consistency</li>\n<li>Remove maplike subfeatures from RTCStatsReport (matches parent data)</li>\n<li>Merge RTCIceCandidatePairStats into RTCStatsReport</li>\n<li>Merge RTCIceCandidateStats into RTCStatsReport</li>\n<li>Merge RTCRemoteOutboundRtpStreamStats into RTCStatsReport</li>\n<li>Remove RTCTrackEventInit API from BCD</li>\n<li>Fix identifiers</li>\n<li>Fix consistency</li>\n<li>Remove RTCRtpTransceiverInit API from BCD</li>\n<li>Fix consistency</li>\n<li>Remove MediaCapabilitiesInfo API from BCD</li>\n<li>Remove MediaKeySystemConfiguration API from BCD</li>\n<li>Add Chromium versions for api.MediaStreamEvent.stream</li>\n<li>Add Firefox versions for RTCPeerConnection API</li>\n<li>Update Firefox versions for RTCRtpReceiver API</li>\n<li>Add Chromium versions for api.Window.external</li>\n<li>Add Chromium versions for api.Window.onbeforeinstallprompt</li>\n<li>Add Chrome/Safari versions for api.Window.webkitConvertPointFromPageToNode</li>\n<li>Add Chrome/Safari versions for api.Worker.postMessage</li>\n<li>Add Firefox versions for api.Worker.postMessage</li>\n<li>Update IE/Edge versions for api.WorkerGlobalScope.onlanguagechange</li>\n<li>Add Safari versions for api.WorkerGlobalScope.ononline/onoffline</li>\n<li>Add Chrome/Safari versions for api.XMLHttpRequest.responseXML</li>\n<li>Add Safari versions for api.XMLHttpRequestEventTarget.onloadend</li>\n<li>Add Safari versions for api.XMLHttpRequestEventTarget.ontimeout</li>\n<li>Add Safari versions for api.History.pushState/replaceState.title</li>\n<li>Add Safari versions for api.InputEvent.inputType.insertFromPasteAsQuotation</li>\n<li>Add Firefox versions for api.Document.execCommand.insertBrOnReturn</li>\n<li>Update all versions for api.Document.visibilityState.prerender</li>\n<li>Update IE versions for WebSocket API events</li>\n<li>Add Chromium versions for api.XMLHttpRequest.getAllResponseHeaders.lowercase</li>\n<li>Add Safari versions for api.XMLHttpRequest.getAllResponseHeaders.lowercase</li>\n<li>Add Safari versions for api.Geolocation*.secure_context_required</li>\n<li>Remove api.XMLHttpRequest.readyState.constants from BCD</li>\n<li>Add Safari versions for api.XMLHttpRequest.responseType</li>\n<li>Add Safari versions for api.XMLHttpRequest.send.ArrayBufferView</li>\n<li>Add Chromium versions for api.BaseAudioContext.createPeriodicWave.disableNormalisation_supported</li>\n<li>Update IE versions for HTMLOptionsCollection API</li>\n<li>Add IE versions for RadioNodeList API</li>\n<li>Add Firefox versions for XPathResult API</li>\n<li>Add Firefox versions for api.TouchEvent.TouchEvent</li>\n<li>Add Chromium versions for api.TextMetrics.*Baseline</li>\n<li>Add Chromium versions for api.TextMetrics.*ascent/*descent</li>\n<li>Fix version number</li>\n<li>Fix version number</li>\n<li>Add Chromium versions for api.Touch.force</li>\n<li>Add Firefox versions for Touch API</li>\n<li>Add Firefox versions for api.MediaStreamEvent.stream</li>\n<li>Add Chromium versions for RTCDataChannelEvent API</li>\n<li>Add Chromium versions for RTCSessionDescription API</li>\n<li>Add Firefox versions for RTCSessionDescription API</li>\n<li>Add Firefox versions for api.RTCSessionDescription.toJSON</li>\n<li>Add Chromium versions for api.MediaStream.stop</li>\n<li>Remove irrelevant Chromium flag data for CanvasRenderingContext2D API</li>\n<li>Remove irrelevant Firefox flag data for CSSPseudoElement API</li>\n<li>Remove irrelevant Firefox flag data for api.Document.featurePolicy</li>\n<li>Remove irrelevant Firefox flag data for api.Element.createShadowRoot</li>\n<li>Remove irrelevant Chromium flag data for api.Element.getAnimations</li>\n<li>Add IE versions for api.Document.pointerlock_events</li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12905",
-            "title": "api/Document/pointerlock events/ie",
-            "date_modified": "2021-10-17T01:37:12.000Z",
-            "date_published": "2021-10-17T01:34:39.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>getAnimations</code> member of the <code>Element</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/queengooborg/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12904",
-            "title": "Remove irrelevant Chromium flag data for api.Element.getAnimations",
-            "date_modified": "2021-10-16T19:51:03.000Z",
-            "date_published": "2021-10-16T19:50:49.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>createShadowRoot</code> member of the <code>Element</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/queengooborg/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12903",
-            "title": "Remove irrelevant Firefox flag data for api.Element.createShadowRoot",
-            "date_modified": "2021-10-16T19:48:51.000Z",
-            "date_published": "2021-10-16T19:48:32.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>featurePolicy</code> member of the <code>Document</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/queengooborg/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12902",
-            "title": "Remove irrelevant Firefox flag data for api.Document.featurePolicy",
-            "date_modified": "2021-10-16T19:47:11.000Z",
-            "date_published": "2021-10-16T19:46:52.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Firefox and Firefox Android for the <code>CSSPseudoElement</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/queengooborg/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12901",
-            "title": "Remove irrelevant Firefox flag data for CSSPseudoElement API",
-            "date_modified": "2021-10-16T19:45:44.000Z",
-            "date_published": "2021-10-16T19:45:26.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR removes irrelevant flag data for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>CanvasRenderingContext2D</code> API as per the corresponding <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#removal-of-irrelevant-flag-data\">data guidelines</a>.</p>\n<p>This PR was created from results of a <a href=\"https://github.com/queengooborg/browser-compat-data/blob/scripts/remove-redundant-flags/scripts/remove-redundant-flags.js\">script</a> designed to remove irrelevant flags.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12900",
-            "title": "Remove irrelevant Chromium flag data for CanvasRenderingContext2D API",
-            "date_modified": "2021-10-16T19:44:48.000Z",
-            "date_published": "2021-10-16T19:44:30.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>stop</code> member of the <code>MediaStream</code> API, based upon commit history and date.</p>\n<p>Commit: <a rel=\"nofollow\" href=\"https://source.chromium.org/chromium/chromium/src/+/0821d61b1229606ab650d844807481f5163c3bdd\">https://source.chromium.org/chromium/chromium/src/+/0821d61b1229606ab650d844807481f5163c3bdd</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12899",
-            "title": "Add Chromium versions for api.MediaStream.stop",
-            "date_modified": "2021-10-16T18:49:30.000Z",
-            "date_published": "2021-10-16T18:49:13.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>toJSON</code> member of the <code>RTCSessionDescription</code> API, based upon information in a tracking bug.</p>\n<p>Tracking Bug: <a rel=\"nofollow\" href=\"https://bugzil.la/1375829\">https://bugzil.la/1375829</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12898",
-            "title": "Add Firefox versions for api.RTCSessionDescription.toJSON",
-            "date_modified": "2021-10-16T18:39:04.000Z",
-            "date_published": "2021-10-16T18:38:48.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Firefox and Firefox Android for the <code>RTCSessionDescription</code> API, based upon commit history and date.</p>\n<p>Commit: <a class=\"commit-link\" href=\"https://github.com/mozilla/gecko-dev/commit/98794b08f642c74005534b6aeea968a36dea467b#diff-f1b1b2749655efc720c041322c39d0c64e4643b9ce2be6a726c6b43500386edc\">mozilla/gecko-dev@<tt>98794b0</tt>#diff-f1b1b2749655efc720c041322c39d0c64e4643b9ce2be6a726c6b43500386edc</a> (when RTCSessionDescription is introduced)</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12897",
-            "title": "Add Firefox versions for RTCSessionDescription API",
-            "date_modified": "2021-10-16T18:38:08.000Z",
-            "date_published": "2021-10-16T18:37:48.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>RTCSessionDescription</code> API, based upon commit history and date.</p>\n<p>Commit: <a rel=\"nofollow\" href=\"https://source.chromium.org/chromium/chromium/src/+/ade4eec97f9e7e9da46aaefd36f45f375ffb190a\">https://source.chromium.org/chromium/chromium/src/+/ade4eec97f9e7e9da46aaefd36f45f375ffb190a</a> (when RTCSessionDescription was introduced) / <a rel=\"nofollow\" href=\"https://source.chromium.org/chromium/chromium/src/+/4a6ce1a6ad82c9b9f16bcb136303acadf08422ea\">https://source.chromium.org/chromium/chromium/src/+/4a6ce1a6ad82c9b9f16bcb136303acadf08422ea</a> (44 by date)</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12896",
-            "title": "Add Chromium versions for RTCSessionDescription API",
-            "date_modified": "2021-10-16T18:33:16.000Z",
-            "date_published": "2021-10-16T18:33:00.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This PR adds real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>RTCDataChannelEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p>Tests Used: <a rel=\"nofollow\" href=\"https://mdn-bcd-collector.appspot.com/tests/api/RTCDataChannelEvent\">https://mdn-bcd-collector.appspot.com/tests/api/RTCDataChannelEvent</a></p>\n<p><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/12895",
-            "title": "Add Chromium versions for RTCDataChannelEvent API",
-            "date_modified": "2021-10-16T18:21:34.000Z",
-            "date_published": "2021-10-16T18:21:17.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"

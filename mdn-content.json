@@ -6,10 +6,98 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1027613615\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9842\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9842/hovercard\" href=\"https://github.com/mdn/content/issues/9842\">#9842</a>.</p>\n<p>This PR is all about tables. Specifically, it includes:</p>\n<ul>\n<li>an analysis of how table conversion went in /Mozilla/Add-ons</li>\n<li>a few fixes to make some tables convertible</li>\n</ul>\n<p>The background is that the Markdown syntax for tables is pretty limited (<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/MDN/Contribute/Markdown_in_MDN#tables\">https://developer.mozilla.org/en-US/docs/MDN/Contribute/Markdown_in_MDN#tables</a>), and many of MDN's tables are not convertible to Markdown. So our policy here is basically: convert tables to Markdown when we can, and use HTML otherwise.</p>\n<p>In /Mozilla/Add-ons, we have 77 tables, and zero of them get converted to Markdown.  I've checked through all of these, and:</p>\n<ul>\n<li><em>Most</em> of these tables are in the manifest.json section (e.g. <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/author\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/author</a>) and these tables are inherently non-convertible.</li>\n<li>Most of the rest are also unconvertible for legit reasons (they have header columns, they contain block elements, they are too wide, ...)</li>\n</ul>\n<p>There are a few that would be convertible with a little tweaking,and that's what this PR contains.</p>\n<p>We might decide that, given that so few tables are convertible in this section of the docs, it would be better to keep all tables as HTML, and in that case we should just close this PR.</p>",
+            "url": "https://github.com/mdn/content/pull/9966",
+            "title": "[Markdown][Add-ons] Deal with tables",
+            "date_modified": "2021-10-21T00:35:00.000Z",
+            "date_published": "2021-10-21T00:29:01.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>Fixes for <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1014298441\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9456\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9456/hovercard\" href=\"https://github.com/mdn/content/issues/9456\">#9456</a> to make the format of DOM Exceptions consistent.</p>\n<p>Updated the following files:</p>\n<ol>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/xrsession/requestlightprobe/index.md</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/xrsession/updaterenderstate/index.md</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/mediarecorder/pause/index.md (plus removed contractions like 'can't' and 'it's' and replaced pronouns)</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/mediarecorder/start/index.md (plus minor edits)</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/audioencoder/encode/index.md</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/audioencoder/flush/index.md (plus minor edit)</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/xrwebglbinding/xrwebglbinding/index.md</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction\" rel=\"nofollow\">files/en-us/web/api/idbdatabase/transaction/index.md</a> (minor typo fix, it was already in the required format)</li>\n</ul>\n</li>\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> files/en-us/web/api/idbdatabase/createobjectstore/index.md  (plus minor edits)<br>\nI have converted the Exceptions table to list. In the 'InvalidStateError', there is a link:  {{APIRef(\"IDBVersionChangeRequest.setVersion\")}}. However, the page <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeRequest\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeRequest</a> does not exist. How does this need to be fixed?</li>\n</ul>\n</li>\n</ol>\n<h4>Questions</h4>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/onerror\" rel=\"nofollow\">files/en-us/web/api/mediarecorder/onerror/index.md</a><br>\nShould the 'Value' section be changed to 'Exceptions' and the errors listed be formatted as DOM Exceptions?</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show\" rel=\"nofollow\">files/en-us/web/api/paymentrequest/show/index.md</a><br>\nIn the 'Exceptions' section, should 'Returned' (for all exception descriptions) be updated to 'Thrown' to maintain consistency?</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest\" rel=\"nofollow\">files/en-us/web/api/idbrequest/index.md</a><br>\nThere is no 'Exceptions' section here. Are there any other changes required?</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/error\" rel=\"nofollow\">files/en-us/web/api/idbrequest/error/index.md</a><br>\nThere is no 'Exceptions' section here. Should the 'Value' section be changed to 'Exceptions', the table updated to list, and the errors be formatted as DOM Exceptions?</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/result\" rel=\"nofollow\">files/en-us/web/api/idbrequest/result/index.md</a><br>\nThere is no Exceptions section here. Are there any other changes required?</li>\n</ul>\n<h4>Ok As Is</h4>\n<p>DOM Exceptions in the following files are already in the required format:</p>\n<ul>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder/configure\" rel=\"nofollow\">files/en-us/web/api/audioencoder/configure/index.md</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getDepthInformation\" rel=\"nofollow\">files/en-us/web/api/xrwebglbinding/getdepthinformation/index.md</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/deleteObjectStore\" rel=\"nofollow\">files/en-us/web/api/idbdatabase/deleteobjectstore/index.md</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/9964",
+            "title": "Updated format for DOM Exceptions",
+            "date_modified": "2021-10-20T23:14:21.000Z",
+            "date_published": "2021-10-20T22:30:51.000Z",
+            "author": {
+                "name": "dipikabh",
+                "url": "https://github.com/dipikabh"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/318208?u=c23b088f72e278a09739a14772c436e4f1e5dbfb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>I'm fixing an invalid example that is missing a variable declaration keyword. I chose <code>const</code> but this could as easily be <code>let</code>.</p>\n<h4>Motivation</h4>\n<p>I want to make the example valid for other copy/pasters out there <g-emoji class=\"g-emoji\" alias=\"smile\" fallback-src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f604.png\">😄</g-emoji></p>\n<h4>Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/9963",
+            "title": "Add missing variable declaration keyword",
+            "date_modified": "2021-10-20T20:23:19.000Z",
+            "date_published": "2021-10-20T20:23:03.000Z",
+            "author": {
+                "name": "koddsson",
+                "url": "https://github.com/koddsson"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/9961",
+            "title": "NEW: aria-colspan page",
+            "date_modified": "2021-10-20T22:08:41.000Z",
+            "date_published": "2021-10-20T18:43:52.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Remove PR title linting GitHub Actions workflow and code.</p>\n<h4>Motivation</h4>\n\n<p>This came up during the Write the Docs Prague 2021 Writing Day. It's mostly just a hassle for maintainers and an unwelcoming introduction to the project for new contributors. I don't know if there are better ways to do this, but this is not a good one.</p>\n<h4>Supporting details</h4>\n\n<p>See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1014350876\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9483\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9483/hovercard\" href=\"https://github.com/mdn/content/issues/9483\">#9483</a> for additional description and gripes.</p>\n<h4>Related issues</h4>\n\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #9483.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1014350876\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9483\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9483/hovercard\" href=\"https://github.com/mdn/content/issues/9483\">#9483</a></p>",
+            "url": "https://github.com/mdn/content/pull/9952",
+            "title": "Remove PR title linting",
+            "date_modified": "2021-10-20T11:42:42.000Z",
+            "date_published": "2021-10-20T11:42:40.000Z",
+            "author": {
+                "name": "ddbeck",
+                "url": "https://github.com/ddbeck"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1038267?u=2bdc2da04baac8ac264ee93ae3327b0fa55bca85&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Fix conflicting behavior explanation across browsers for \"homepage_url\" and \"developer.url\".</p>\n\n<h4>Summary</h4>\n<p>Better explained the behavior of conflicting homepage_url with developer.url in manifest.json of webExtensions.</p>\n<h4>Motivation</h4>\n<p>Fix untrue statement about conflicting behavior in Opera.</p>\n<h4>Supporting details</h4>\n<p>The Opera behavior has been tested in the latest Opera Desktop version. While the behavior in Firefox has been taken from what was already mentioned in MDN.</p>\n<p>This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/9950",
+            "title": "WebExtensions: Fix conflicting behavior explanation across browsers for \"homepage_url\" and \"developer.url\".",
+            "date_modified": "2021-10-20T16:23:10.000Z",
+            "date_published": "2021-10-20T10:04:38.000Z",
+            "author": {
+                "name": "carlosjeurissen",
+                "url": "https://github.com/carlosjeurissen"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1027613615\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9842\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9842/hovercard\" href=\"https://github.com/mdn/content/issues/9842\">#9842</a>.</p>\n<p>The \"Chrome incompatibilities\" page (<a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Chrome_incompatibilities\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Chrome_incompatibilities</a>) contained some <code>&lt;dl&gt;</code> elements which would not be convertible into our Markdown <code>&lt;dl&gt;</code>. It would have been possible to hack them so they would be convertible, but I thought this page was quite difficult to understand so I have had a go at reworking the markup at the same time.</p>\n<p>I hope you think it is at least not any worse!</p>",
+            "url": "https://github.com/mdn/content/pull/9948",
+            "title": "[Markdown][Add-ons] Fix chrome incompatibilities page",
+            "date_modified": "2021-10-20T22:21:40.000Z",
+            "date_published": "2021-10-20T04:51:43.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2392803?u=592fed23ae28e14a8222f9e1121119898ba4b72a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>Gulp updated <a href=\"https://gulpjs.com/docs/en/getting-started/creating-tasks\" rel=\"nofollow\">their api</a> and mdn docs became out of date. While I have matched the api, I was unable to verify the note deprecation from the <a href=\"https://gulpjs.com/docs/en/getting-started/watching-files\" rel=\"nofollow\">relevant docs</a>.</p>\n<h4>Motivation</h4>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #9041.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999815368\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9041\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9041/hovercard\" href=\"https://github.com/mdn/content/issues/9041\">#9041</a> , syncs mdn content to official</p>\n<h4>Supporting details</h4>\n<p><a rel=\"nofollow\" href=\"https://gulpjs.com/docs/en/getting-started/creating-tasks\">https://gulpjs.com/docs/en/getting-started/creating-tasks</a></p>\n<h4>Related issues</h4>\n<p><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #9041.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999815368\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9041\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9041/hovercard\" href=\"https://github.com/mdn/content/issues/9041\">#9041</a></p>\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/9942",
+            "title": "Fixes #9041: Updates api and removes obsolete note",
+            "date_modified": "2021-10-20T01:27:14.000Z",
+            "date_published": "2021-10-20T01:25:22.000Z",
+            "author": {
+                "name": "himanshugarg",
+                "url": "https://github.com/himanshugarg"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/27027?u=da86bf11ea5cbc5fa71cef35aa6ccbe2b439f5a1&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>IntersectionObserver is supported on all browsers.</p>\n\n<h4>Summary</h4>\n\n<h4>Motivation</h4>\n\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
             "url": "https://github.com/mdn/content/pull/9941",
             "title": "Remove experimental technology notice.",
-            "date_modified": "2021-10-19T23:33:26.000Z",
+            "date_modified": "2021-10-20T04:38:59.000Z",
             "date_published": "2021-10-19T23:33:11.000Z",
             "author": {
                 "name": "cetinsert",
@@ -20,33 +108,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/427212?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Add page for Array_withSorted_argument type error message</p>\n<h4>Motivation</h4>\n\n<p><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1729563\" rel=\"nofollow\">Bug 1729563</a> adds a new <code>Array.prototype.withSorted()</code> method. This method can throw a type error that is similar to the one thrown by <code>Array.prototype.sort()</code> when the function argument is not callable, but the name is different to reflect that the method being erroneously called is <code>withSorted()</code>.</p>\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
             "url": "https://github.com/mdn/content/pull/9940",
             "title": "Add page for Array_withSorted_argument type error message",
-            "date_modified": "2021-10-19T22:23:36.000Z",
+            "date_modified": "2021-10-20T05:31:02.000Z",
             "date_published": "2021-10-19T22:23:25.000Z",
             "author": {
                 "name": "catamorphism",
                 "url": "https://github.com/catamorphism"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>aria-autocomplete</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/9938",
-            "title": "New File: aria-autocomplete",
-            "date_modified": "2021-10-19T23:57:01.000Z",
-            "date_published": "2021-10-19T21:58:11.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3742559?u=85512029e3a499cbb9458f582c1a2e3015360319&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Fix a syntax error for an inline MarkDown link on the Cognitive Accessibility page so that it will be rendered correctly.</p>\n<h4>Motivation</h4>\n\n<p>This will make the text look normal and the link clickable.</p>\n<h4>Supporting details</h4>\n\n<p>n/a</p>\n<h4>Related issues</h4>\n\n<p>None</p>\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/9937",
-            "title": "Fix ARIA link on Cognitive Accessibility page",
-            "date_modified": "2021-10-19T21:58:56.000Z",
-            "date_published": "2021-10-19T21:54:29.000Z",
-            "author": {
-                "name": "ericcornelissen",
-                "url": "https://github.com/ericcornelissen"
             }
         },
         {
@@ -64,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8204171?u=6f2a08fb80e2aaec862b0d5df86ad846d77013cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<h4>Motivation</h4>\n\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
             "url": "https://github.com/mdn/content/pull/9931",
             "title": "Remove draft status from an API overview page.",
-            "date_modified": "2021-10-19T23:12:35.000Z",
+            "date_modified": "2021-10-20T14:50:09.000Z",
             "date_published": "2021-10-19T19:04:21.000Z",
             "author": {
                 "name": "jpmedley",
@@ -72,21 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/59112785?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<h4>Motivation</h4>\n\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/9921",
-            "title": "No need of variable j",
-            "date_modified": "2021-10-19T10:30:25.000Z",
-            "date_published": "2021-10-19T10:30:09.000Z",
-            "author": {
-                "name": "yashvarshney003",
-                "url": "https://github.com/yashvarshney003"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1023301621\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9740\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9740/hovercard\" href=\"https://github.com/mdn/content/issues/9740\">#9740</a>.</p>\n<ul>\n<li>All properties and methods of <code>CustomEvent</code>are documented in the modern format.</li>\n<li>All are listed in the interface.</li>\n<li>I removed a polyfill for pre-IE9 browsers</li>\n<li>I removed some information about the security risks of using this in <em>privileged code</em>.</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/9920",
-            "title": "Update CustomEvent interface reference",
-            "date_modified": "2021-10-19T15:40:03.000Z",
+            "title": "[DOM Reference] Update CustomEvent interface reference",
+            "date_modified": "2021-10-20T05:41:19.000Z",
             "date_published": "2021-10-19T09:11:17.000Z",
             "author": {
                 "name": "teoli2003",
@@ -96,8 +151,8 @@
         {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5830621?u=299bbbb9de9456aca48c9c5830b5690050235f99&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>sendResponse() is deprecated</p>\n\n<h4>Summary</h4>\n<p>The sendResponse() function is deprecated and should no longer be used. This PR changes the used examples to return a Promise and shows the two possible ways to do it.</p>\n\n<p>I removed usage of sendResponse() in the example and let the handler return a Promise. Once as being an async function and always returning a Promise, which is fine if only one such listener is registered, which is 99% use-case out there, but also pointing out how to do it if multiple listeners are used.</p>\n<h4>Motivation</h4>\n\n<p>I am the lead add-on reviewer for Thunderbird and I get sendResponse() in reviews a lot and developers pointed me to this page showing them the deprecated usage.</p>\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/9918",
-            "title": "Remove deprecated sendResponse() from example code",
-            "date_modified": "2021-10-19T20:44:29.000Z",
+            "title": "Adding a note about the option to return a Promise instead of using the sendResponse() function",
+            "date_modified": "2021-10-20T15:49:04.000Z",
             "date_published": "2021-10-19T08:08:32.000Z",
             "author": {
                 "name": "jobisoft",
@@ -108,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1023301621\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9740\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9740/hovercard\" href=\"https://github.com/mdn/content/issues/9740\">#9740</a>.</p>\n<ul>\n<li>Interface and its children are all documented, and in the modern format.</li>\n<li>All are listed.</li>\n<li>Non-standard msConvertURL old-IE only deleted.</li>\n<li>I kept DOMHighResTimestamp, we will fix these all together.</li>\n<li>Tags have been fixed.</li>\n</ul>\n<p>Not done: guide stayed there (part of phase 2)</p>",
             "url": "https://github.com/mdn/content/pull/9917",
             "title": "[DOM Reference] Update Event interface reference",
-            "date_modified": "2021-10-19T23:07:48.000Z",
+            "date_modified": "2021-10-20T17:58:01.000Z",
             "date_published": "2021-10-19T07:55:14.000Z",
             "author": {
                 "name": "teoli2003",
@@ -116,21 +171,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1027613615\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9842\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9842/hovercard\" href=\"https://github.com/mdn/content/issues/9842\">#9842</a>.</p>\n<p>This PR fixes the remaining unconvertible notes.</p>",
-            "url": "https://github.com/mdn/content/pull/9912",
-            "title": "[Markdown][Add-ons] Fix remaining notes",
-            "date_modified": "2021-10-19T17:54:28.000Z",
-            "date_published": "2021-10-19T04:28:38.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1027613615\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9842\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9842/hovercard\" href=\"https://github.com/mdn/content/issues/9842\">#9842</a>.</p>\n<p>This fixes almost all the <code>&lt;dl&gt;</code> elements in the add-ons docs so that they can be represented with our Markdown <code>&lt;dl&gt;</code>.</p>\n<p>One big piece of this is that our Markdown <code>&lt;dl&gt;</code> doesn't let you have consecutive <code>&lt;dd&gt;</code> elements. Although that is allowed in the HTML <code>&lt;dd&gt;</code>, when we have consecutive <code>&lt;dd&gt;</code> in MDN it is (almost?) always an error (a legacy of the old WYSIWYG editor). This PR aims to fix all of these in the add-ons docs.</p>\n<p>This PR also includes fixes for other things inside <code>&lt;dl&gt;</code> elements, notably some difficulty that the converter has in converting <code>&lt;dd&gt;</code> elements that don't start with a paragraph or text node. Although this is technically a bug in the converter (<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"952453402\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/4307\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/yari/issues/4307/hovercard\" href=\"https://github.com/mdn/yari/issues/4307\">mdn/yari#4307</a>) in practice it either shows us a place where we are not using <code>&lt;dl&gt;</code> properly, or where the content would be improved by having some text at the start of the <code>&lt;dd&gt;</code> element (see also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"953206865\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/7309\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/7309/hovercard\" href=\"https://github.com/mdn/content/pull/7309\">#7309</a>).</p>\n<p>One thing I have excluded from this PR is <a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Chrome_incompatibilities\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Chrome_incompatibilities</a>, which makes very extensive and (IMO) sometimes questionable (semantically) use of <code>&lt;dl&gt;</code>. I will file a separate PR for this since it might warrant its own discussion.</p>",
             "url": "https://github.com/mdn/content/pull/9910",
             "title": "[Markdown][Add-ons] Fix <dl> elements",
-            "date_modified": "2021-10-19T21:23:25.000Z",
+            "date_modified": "2021-10-20T18:32:32.000Z",
             "date_published": "2021-10-19T03:02:54.000Z",
             "author": {
                 "name": "wbamberg",
@@ -149,47 +193,14 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is part of the project to remove page macros: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"833092031\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/3196\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/3196/hovercard\" href=\"https://github.com/mdn/content/issues/3196\">#3196</a></p>\n<p><a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms\" rel=\"nofollow\">Using_CSS_transforms</a> was importing two examples for <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/perspective#setting_perspective\" rel=\"nofollow\">Setting perspective</a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin#changing_the_perspective_origin\" rel=\"nofollow\">Changing the perspective origin</a> from their respective reference docs.</p>\n<p>I have moved the examples under Using_CSS_transforms and they are linked from <code>perspective</code> and <code>perspective-origin</code>.<br>\nMy reasoning is that it is more important to have all the examples of usage together for someone to understand the API than it is to have them in the reference next to the other API docs, and further that duplicating is not a good thing.</p>\n<p>Does this seem reasonable <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a> ?</p>",
-            "url": "https://github.com/mdn/content/pull/9907",
-            "title": "PageMacro: Link rather than include perspective examples",
-            "date_modified": "2021-10-19T02:47:10.000Z",
-            "date_published": "2021-10-19T01:40:57.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p>This is part of the action to remove page macros in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"833092031\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/3196\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/3196/hovercard\" href=\"https://github.com/mdn/content/issues/3196\">#3196</a></p>\n<p>The CSS <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/@media\" rel=\"nofollow\">@media</a> was importing the media types and media features section from <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries\" rel=\"nofollow\">using media queries</a>.</p>\n<p>This copies the text across instead. The big table of media types is converted to a  definition list, which is more in line with other reference docs.</p>\n<p><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a> I hate the duplication here because they really must always be the same for this case ... but anyhow. Do you think I should update the table in \"Using\" docs to match the new definition list format? If I did this I would probably mark the info about spec version things came in as in italic.</p>",
             "url": "https://github.com/mdn/content/pull/9906",
             "title": "PageMacro: Remove from CSS @media",
-            "date_modified": "2021-10-19T01:12:18.000Z",
+            "date_modified": "2021-10-20T01:34:07.000Z",
             "date_published": "2021-10-19T01:10:33.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1521958?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>Adds missing page for <code>HTMLCollection.namedItem</code> method.</p>\n<h4>Supporting details</h4>\n\n<p><a rel=\"nofollow\" href=\"https://dom.spec.whatwg.org/#dom-htmlcollection-nameditem-key\">https://dom.spec.whatwg.org/#dom-htmlcollection-nameditem-key</a></p>\n<h4>Related issues</h4>\n\n<p>Completes <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"950906831\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/7161\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/7161/hovercard\" href=\"https://github.com/mdn/content/issues/7161\">#7161</a></p>\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/9902",
-            "title": "Add HTMLCollection.namedItem documentation page",
-            "date_modified": "2021-10-19T15:14:07.000Z",
-            "date_published": "2021-10-18T21:24:51.000Z",
-            "author": {
-                "name": "LJ1102",
-                "url": "https://github.com/LJ1102"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/58862?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4>Summary</h4>\n<p>The button is automatically labelled by its content. The label element does not change that but, for example in VoiceOver on Safari, attaches the label text to the content, which results in an announcement like “off on Speaker power, on” (the last “on” coming from the ARIA status).</p>\n<h4>Motivation</h4>\n<p>The current example is misleading.</p>\n<h4>Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/9887",
-            "title": "Adding aria-hidden to switch control to avoid confusion",
-            "date_modified": "2021-10-18T23:02:02.000Z",
-            "date_published": "2021-10-18T12:15:02.000Z",
-            "author": {
-                "name": "yatil",
-                "url": "https://github.com/yatil"
             }
         },
         {
@@ -212,17 +223,6 @@
             "author": {
                 "name": "AnilSeervi",
                 "url": "https://github.com/AnilSeervi"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11516302?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4>Summary</h4>\n\n<p>The term looks <code>baseline first baseline</code>, but they are actually separate values.</p>\n<h4>Motivation</h4>\n\n<p>There is a term <code>baseline first baseline</code> in the value list. It misleads it is a property value, but actually they are separate value <code>baseline</code> and <code>first baseline</code>. So it should be separated by commas.</p>\n<h4>Supporting details</h4>\n\n<h4>Related issues</h4>\n\n<h4>Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/9879",
-            "title": "Fix a term in definition list in CSS Box Alignments",
-            "date_modified": "2021-10-18T03:22:17.000Z",
-            "date_published": "2021-10-18T03:20:29.000Z",
-            "author": {
-                "name": "mfuji09",
-                "url": "https://github.com/mfuji09"
             }
         }
     ]
