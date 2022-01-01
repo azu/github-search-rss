@@ -6,10 +6,21 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9573300?u=7d806b96c1801a414e017ef42dae189cdfe21323&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Add a note of Blob Constructor in IE10 to specify a special behaviour.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new Blob([new Uint8Array(0)]); // =&gt; &quot;InvalidStateError&quot;\"><pre><span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">Uint8Array</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">0</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span> <span class=\"pl-c\">// =&gt; \"InvalidStateError\"</span></pre></div>\n<h4 dir=\"auto\">Workaround</h4>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"var bytes = new Uint8Array(0);\n\ntry {\n    new Blob([bytes]); // =&gt; &quot;InvalidStateError&quot;\n} catch (ignore) {\n    var blobBuilder = new MSBlobBuilder();\n    blobBuilder.append(bytes.buffer);\n    blobBuilder.getBlob();\n}\"><pre><span class=\"pl-k\">var</span> <span class=\"pl-s1\">bytes</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Uint8Array</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">0</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-k\">try</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-s1\">bytes</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span> <span class=\"pl-c\">// =&gt; \"InvalidStateError\"</span>\n<span class=\"pl-kos\">}</span> <span class=\"pl-k\">catch</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">ignore</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">var</span> <span class=\"pl-s1\">blobBuilder</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">MSBlobBuilder</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-s1\">blobBuilder</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">append</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">bytes</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">buffer</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-s1\">blobBuilder</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getBlob</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14374",
+            "title": "Add a note of Blob Constructor in IE10",
+            "date_modified": "2021-12-31T11:44:46.000Z",
+            "date_published": "2021-12-31T11:44:26.000Z",
+            "author": {
+                "name": "aleen42",
+                "url": "https://github.com/aleen42"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR uses the mdn-bcd-collector project (v4.0.0) to populate results for WebView Android v3 (I have just obtained an Android 3.2 device to test with).  This PR focuses on changes from <code>≤37</code> to <code>3</code>.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14366",
             "title": "Add data for WebView Android v3.0",
-            "date_modified": "2021-12-30T15:55:22.000Z",
+            "date_modified": "2021-12-31T00:40:18.000Z",
             "date_published": "2021-12-30T15:55:06.000Z",
             "author": {
                 "name": "queengooborg",
@@ -209,17 +220,6 @@
             "title": "Update Firefox Android versions for StaticRange API",
             "date_modified": "2021-12-30T13:27:05.000Z",
             "date_published": "2021-12-30T13:26:47.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Firefox and Firefox Android for the <code>name</code> member of the <code>SharedWorkerGlobalScope</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/SharedWorkerGlobalScope/name\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/SharedWorkerGlobalScope/name</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14344",
-            "title": "Update Firefox versions for api.SharedWorkerGlobalScope.name",
-            "date_modified": "2021-12-30T13:25:09.000Z",
-            "date_published": "2021-12-30T13:24:51.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
