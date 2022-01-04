@@ -6,10 +6,43 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6939381?u=846f7dd054f8efff306982eba21413cd6566653e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The following JS class feature versions are now specified.</p>\n<p dir=\"auto\"><strong>Private In</strong></p>\n<ul dir=\"auto\">\n<li><a href=\"https://chromestatus.com/feature/5006138707804160\" rel=\"nofollow\">Chrome 91</a></li>\n<li><a href=\"https://nodejs.org/en/download/releases/\" rel=\"nofollow\">Node 16.4.0</a> ships V8 9.1</li>\n<li><a href=\"https://bugs.webkit.org/show_bug.cgi?id=221093\" rel=\"nofollow\">Safari 15</a></li>\n</ul>\n<p dir=\"auto\"><strong>Private Methods</strong></p>\n<ul dir=\"auto\">\n<li><a href=\"https://nodejs.org/en/download/releases/\" rel=\"nofollow\">Node 14.6.0</a> ships V8 8.4</li>\n</ul>\n<p dir=\"auto\"><strong>Static Initializer Blocks</strong></p>\n<ul dir=\"auto\">\n<li><a href=\"https://chromestatus.com/feature/6482797915013120\" rel=\"nofollow\">Chrome 91</a></li>\n<li><a href=\"https://nodejs.org/en/download/releases/\" rel=\"nofollow\">Node 16.4.0</a> ships V8 9.1</li>\n</ul>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14416",
+            "title": "More data for JS Class features",
+            "date_modified": "2022-01-03T23:54:31.000Z",
+            "date_published": "2022-01-03T23:54:10.000Z",
+            "author": {
+                "name": "robpalme",
+                "url": "https://github.com/robpalme"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is a case of \"When members are moved down the prototype chain\" and<br>\nshouldn't have any notes, per our guideline:<br>\n<a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#apis-moved-on-the-prototype-chain\">https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines.md#apis-moved-on-the-prototype-chain</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14408",
+            "title": "Remove notes about innerHTML/outHTML prototype move",
+            "date_modified": "2022-01-03T16:19:16.000Z",
+            "date_published": "2022-01-03T16:15:15.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">These APIs are supported in 2 or 3 browser engines.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14406",
+            "title": "Mark parts of BlobEvent and MediaRecorded as not experimental",
+            "date_modified": "2022-01-03T09:28:30.000Z",
+            "date_published": "2022-01-03T09:28:14.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9573300?u=7d806b96c1801a414e017ef42dae189cdfe21323&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Add a note of Blob Constructor in IE10 to specify a special behaviour.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new Blob([new Uint8Array(0)]); // =&gt; &quot;InvalidStateError&quot;\"><pre><span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">Uint8Array</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">0</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span> <span class=\"pl-c\">// =&gt; \"InvalidStateError\"</span></pre></div>\n<h4 dir=\"auto\">Workaround</h4>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"var bytes = new Uint8Array(0);\n\ntry {\n    new Blob([bytes]); // =&gt; &quot;InvalidStateError&quot;\n} catch (ignore) {\n    var blobBuilder = new MSBlobBuilder();\n    blobBuilder.append(bytes.buffer);\n    blobBuilder.getBlob();\n}\"><pre><span class=\"pl-k\">var</span> <span class=\"pl-s1\">bytes</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Uint8Array</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">0</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-k\">try</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-s1\">bytes</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span> <span class=\"pl-c\">// =&gt; \"InvalidStateError\"</span>\n<span class=\"pl-kos\">}</span> <span class=\"pl-k\">catch</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">ignore</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">var</span> <span class=\"pl-s1\">blobBuilder</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">MSBlobBuilder</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-s1\">blobBuilder</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">append</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">bytes</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">buffer</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-s1\">blobBuilder</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getBlob</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14374",
             "title": "Add a note of Blob Constructor in IE10",
-            "date_modified": "2021-12-31T11:44:46.000Z",
+            "date_modified": "2022-01-03T04:35:16.000Z",
             "date_published": "2021-12-31T11:44:26.000Z",
             "author": {
                 "name": "aleen42",
@@ -53,41 +86,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>onmessageerror</code> member of the <code>ServiceWorkerContainer</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/ServiceWorkerContainer/onmessageerror\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/ServiceWorkerContainer/onmessageerror</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14340",
             "title": "Update Chromium versions for api.ServiceWorkerContainer.onmessageerror",
-            "date_modified": "2022-01-02T21:36:16.000Z",
+            "date_modified": "2022-01-03T01:40:59.000Z",
             "date_published": "2021-12-30T13:09:40.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>orientation</code> member of the <code>Screen</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/Screen/orientation\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/Screen/orientation</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14333",
-            "title": "Update Chromium versions for api.Screen.orientation",
-            "date_modified": "2021-12-29T18:20:00.000Z",
-            "date_published": "2021-12-29T18:19:45.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>Scheduling</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/Scheduling\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/Scheduling</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14332",
-            "title": "Update Chromium versions for Scheduling API",
-            "date_modified": "2021-12-29T18:19:14.000Z",
-            "date_published": "2021-12-29T18:18:59.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Firefox and Firefox Android for the <code>getElementById</code> member of the <code>SVGSVGElement</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGSVGElement/getElementById\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/SVGSVGElement/getElementById</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14330",
-            "title": "Update Firefox versions for api.SVGSVGElement.getElementById",
-            "date_modified": "2021-12-29T18:14:26.000Z",
-            "date_published": "2021-12-29T18:14:06.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
@@ -97,19 +97,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for all browsers for the <code>classList</code> member of the <code>SVGElement</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGElement/classList\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/SVGElement/classList</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14329",
             "title": "Update all browsers versions for api.SVGElement.classList",
-            "date_modified": "2021-12-29T18:09:43.000Z",
+            "date_modified": "2022-01-03T13:14:01.000Z",
             "date_published": "2021-12-29T18:09:27.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Firefox and Firefox Android for the <code>SVGComponentTransferFunctionElement</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/SVGComponentTransferFunctionElement\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/SVGComponentTransferFunctionElement</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14328",
-            "title": "Update Firefox versions for SVGComponentTransferFunctionElement API",
-            "date_modified": "2021-12-29T18:07:27.000Z",
-            "date_published": "2021-12-29T18:07:09.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
@@ -121,28 +110,6 @@
             "title": "Update all browsers versions for SVGAnimatedTransformList API",
             "date_modified": "2021-12-29T18:06:06.000Z",
             "date_published": "2021-12-29T18:05:50.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Firefox and Firefox Android for the <code>ResizeObserverEntry</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/ResizeObserverEntry\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/ResizeObserverEntry</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14325",
-            "title": "Update Firefox versions for ResizeObserverEntry API",
-            "date_modified": "2021-12-29T17:58:59.000Z",
-            "date_published": "2021-12-29T17:58:46.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Internet Explorer for the <code>createContextualFragment</code> member of the <code>Range</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/Range/createContextualFragment\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/Range/createContextualFragment</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14321",
-            "title": "Update IE versions for api.Range.createContextualFragment",
-            "date_modified": "2021-12-29T17:48:54.000Z",
-            "date_published": "2021-12-29T17:48:37.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
@@ -220,6 +187,39 @@
             "title": "Update Chromium versions for PresentationRequest API",
             "date_modified": "2021-12-29T15:17:57.000Z",
             "date_published": "2021-12-29T15:17:40.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>PresentationConnectionAvailableEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/PresentationConnectionAvailableEvent\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/PresentationConnectionAvailableEvent</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14309",
+            "title": "Update Chromium versions for PresentationConnectionAvailableEvent API",
+            "date_modified": "2021-12-29T15:15:28.000Z",
+            "date_published": "2021-12-29T15:15:11.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>PresentationAvailability</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/PresentationAvailability\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/PresentationAvailability</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14308",
+            "title": "Update Chromium versions for PresentationAvailability API",
+            "date_modified": "2021-12-29T15:13:13.000Z",
+            "date_published": "2021-12-29T15:12:55.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>Presentation</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/Presentation\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/Presentation</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14307",
+            "title": "Update Chromium versions for Presentation API",
+            "date_modified": "2021-12-29T15:07:42.000Z",
+            "date_published": "2021-12-29T15:07:21.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
