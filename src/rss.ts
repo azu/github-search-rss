@@ -27,7 +27,7 @@ export const SEARCH_ITEMS: RSSItem[] = [
     },
     {
         title: "npm/rfcs Issues",
-        query: "npm/rfcs is:issue",
+        query: "repo:npm/rfcs is:issue",
         TYPE: "ISSUE",
         link: `${BASE_URL}/npm-rfcs.json`
     },
