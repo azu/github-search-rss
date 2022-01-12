@@ -43,7 +43,6 @@ export const SEARCH_ITEMS: RSSItem[] = [
         }
     },
     {
-        // label:data:
         title: "mdn/content update content",
         query: "repo:mdn/content is:pr is:open",
         TYPE: "ISSUE",
