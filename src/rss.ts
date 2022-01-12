@@ -25,6 +25,12 @@ export const SEARCH_ITEMS: RSSItem[] = [
         TYPE: "ISSUE",
         link: `${BASE_URL}/w3ctag-design-reviews.json`
     },
+    {
+        title: "npm/rfcs Issues",
+        query: "npm/rfcs is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/npm-rfcs.json`
+    },
     // Pull Request
     {
         // label:data:
