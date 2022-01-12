@@ -6,10 +6,54 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4757846?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Update release html dialog which is switch on by default in Firefox 98</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1733536\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1733536</a> - the bug which switch on html dialog  by default.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14510",
+            "title": "Update release html dialog which is switch on by default in Firefox 98",
+            "date_modified": "2022-01-11T18:50:44.000Z",
+            "date_published": "2022-01-11T15:36:56.000Z",
+            "author": {
+                "name": "anthony-redFox",
+                "url": "https://github.com/anthony-redFox"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is based on these tests in Edge 13, 18 and 79:<br>\n<a href=\"http://software.hixie.ch/utilities/js/live-dom-viewer/?saved=9958\" rel=\"nofollow\">http://software.hixie.ch/utilities/js/live-dom-viewer/?saved=9958</a><br>\n<a href=\"http://software.hixie.ch/utilities/js/live-dom-viewer/?saved=9956\" rel=\"nofollow\">http://software.hixie.ch/utilities/js/live-dom-viewer/?saved=9956</a></p>\n<p dir=\"auto\">That support was in Edge 12 can be seen in Web API Confluence:<br>\n<a href=\"http://web-confluence.appspot.com/#!/catalog?releases=%5B%22Edge_12.10240_Windows_10.0%22%5D&amp;q=%22CSSStyleDeclaration%23webkit%22\" rel=\"nofollow\">http://web-confluence.appspot.com/#!/catalog?releases=%5B%22Edge_12.10240_Windows_10.0%22%5D&amp;q=%22CSSStyleDeclaration%23webkit%22</a></p>\n<p dir=\"auto\">The notes and removal versions from background-clip and<br>\nbackground-origin had some errors, so fix that to carefully capture that<br>\nEdge supports the keyword aliases from Edge 79 but not in Edge 12-18.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14508",
+            "title": "Mark support for additional -webkit-prefixed properties in Edge 12",
+            "date_modified": "2022-01-11T10:49:34.000Z",
+            "date_published": "2022-01-11T10:43:45.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9573300?u=7d806b96c1801a414e017ef42dae189cdfe21323&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Recently, I found that Chrome had different behaviours when constructing URL with following patter:</p>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new URL('file:///C:/test.png') // =&gt; OK\nnew URL('file://C:/test.png') // =&gt; Throw Error: Invalid URL\"><pre><span class=\"pl-k\">new</span> <span class=\"pl-c1\">URL</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'file:///C:/test.png'</span><span class=\"pl-kos\">)</span> <span class=\"pl-c\">// =&gt; OK</span>\n<span class=\"pl-k\">new</span> <span class=\"pl-c1\">URL</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'file://C:/test.png'</span><span class=\"pl-kos\">)</span> <span class=\"pl-c\">// =&gt; Throw Error: Invalid URL</span></pre></div>\n<p dir=\"auto\">In Windows, both are ok.</p>\n<h4 dir=\"auto\">Polyfill</h4>\n<p dir=\"auto\">A possible workaround: <a href=\"https://github.com/aleen42/core-web/blob/main/lib/stable/URL/index.js\">https://github.com/aleen42/core-web/blob/main/lib/stable/URL/index.js</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14506",
+            "title": "Add a note of URL Constructor in Chrome under MacOS",
+            "date_modified": "2022-01-11T07:49:53.000Z",
+            "date_published": "2022-01-11T07:47:14.000Z",
+            "author": {
+                "name": "aleen42",
+                "url": "https://github.com/aleen42"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF97 ships the bug <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1744599\" rel=\"nofollow\">Ship d property and make SVG path d attribute as the presentation attribute</a> which was implemented behind pref in FF91 <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1340422\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1340422</a></p>\n<p dir=\"auto\">My understanding is that essentially this means you can now call <code>path()</code> on the <code>d</code> property of an SVG path element in CSS. There is a cool little demo here: <a href=\"https://codepen.io/airen/pen/wgNEQo\" rel=\"nofollow\">https://codepen.io/airen/pen/wgNEQo</a></p>\n<p dir=\"auto\">So what I have done here is for <code>path()</code> added a NOTE about the introduction of the feature in FF91 and a new version for FF97 that removes the preference. For FF android the preference does not work from FF79 so I just put that as the end version.</p>\n<blockquote>\n<p dir=\"auto\"><strong>NOTE:</strong> I am not 100% certain about the partial implementation, but I will query that separately. This could go in as \"no worse\".</p>\n</blockquote>\n<blockquote>\n<p dir=\"auto\">NOTE: Chrome also supports this in CSS now too, so that would have to be tested.</p>\n</blockquote>\n<hr>\n<p dir=\"auto\">As a separate PR to follow ...</p>\n<p dir=\"auto\">In addition, I THINK it would be useful to update the <a href=\"https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d\" rel=\"nofollow\"><code>d</code> attribute</a> to indicate that from FF97 it is now a \"presentation attribute\", which is what allows it to be modified in CSS and set to the <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/path()\" rel=\"nofollow\"><code>path()</code></a> or <code>none</code>. Not sure right way to do this - subfeature \"supports_css_path()\" or similar. Or would we do this as a \"reversed\" one - e.g. not_supports_css_path. Note that current chrome does do the right thing.  <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> Advice?</p>\n<p dir=\"auto\">Further, any reason not to add these spec URLs that are currently manually in the page here <a href=\"https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#specifications\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#specifications</a> ?</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14498",
+            "title": "FF97 CSS basic-shape path() function enabled by default",
+            "date_modified": "2022-01-11T16:47:21.000Z",
+            "date_published": "2022-01-11T01:04:19.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF97 puts some SVGPathX.. elements behind a preference in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1388931\" rel=\"nofollow\">bug 1388931</a> on path to removal.</p>\n<p dir=\"auto\">This just adds pref to existing <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement\" rel=\"nofollow\">SVGPathElement.getPathSegAtLength()</a>. The other elements that are also behind pref are <code>SVGPathSegList</code> (including <code>.numberOfItems</code>, <code>getItem()</code> and <code>length</code>) and <code>SVGAnimatedPathData</code> <code>.pathSegList</code> and <code>.animatedPathSegList</code>. These are not in MDN or BCD - I have chosen not to add them as this API is clearly \"on the way out\".</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1091035604\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11597\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11597/hovercard?comment_id=1009447802&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/issues/11597#issuecomment-1009447802\">mdn/content#11597 (comment)</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14497",
             "title": "FF97 SVGPathElement.getPathSegAtLength() behind pref",
-            "date_modified": "2022-01-10T23:29:05.000Z",
+            "date_modified": "2022-01-11T16:18:13.000Z",
             "date_published": "2022-01-10T23:25:43.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -20,7 +64,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/102858?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">scrollbar-gutter is shipped in Firefox 97 in<br>\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1715112\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1715112</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14496",
             "title": "Change Firefox version number supporting scrollbar-gutter",
-            "date_modified": "2022-01-10T22:10:17.000Z",
+            "date_modified": "2022-01-11T19:19:39.000Z",
             "date_published": "2022-01-10T22:09:55.000Z",
             "author": {
                 "name": "aethanyc",
@@ -42,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF97 adds support for the CSS <code>hyphenate-character</code> property <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1746187\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1746187</a> behind a preference. I've added that for FF97, but not for FF97 on android.</p>\n<p dir=\"auto\">Now Chrome supports this with a -webkit extension, so I added that as well. BUT I am not sure exactly what versions to put.<br>\nI found it works fine to specify a value (<code>=</code>) say for back to Chrome 45, but in Chrome 44 the CSS doesn't seem to understand the \"=\" char - so the rendered character appears as a box. In other words it isn't clear if it doesn't work or if = just doesn't work.</p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/5368500/148724761-5420f02d-ea9d-40cf-95b5-5e91eac8cf64.png\"><img src=\"https://user-images.githubusercontent.com/5368500/148724761-5420f02d-ea9d-40cf-95b5-5e91eac8cf64.png\" alt=\"image\" style=\"max-width: 100%;\"></a></p>\n<p dir=\"auto\">Anyway, Safari has the same problem on current versions as the very old chrome, so I put that as false.</p>\n<p dir=\"auto\">I just extended the other things to match chrome versions if appropriate.</p>\n<p dir=\"auto\">Thoughts on next steps?</p>\n<p dir=\"auto\">Rest of work for this can be tracked in  <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1091034355\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11596\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11596/hovercard\" href=\"https://github.com/mdn/content/issues/11596\">mdn/content#11596</a></p>\n<p dir=\"auto\"><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> Would appreciate your advice on this one.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14488",
             "title": "CSS hyphenate-character property - add",
-            "date_modified": "2022-01-10T07:35:30.000Z",
+            "date_modified": "2022-01-11T16:15:37.000Z",
             "date_published": "2022-01-10T06:17:30.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -53,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Support was added in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1531223\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1531223</a> (ic) and <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1702924\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1702924</a> (cap)</p>\n<p dir=\"auto\">Associated docs work can be tracked in: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1091028844\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11592\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11592/hovercard\" href=\"https://github.com/mdn/content/issues/11592\">mdn/content#11592</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14486",
             "title": "FF97 supports cap and ic units for CSS lengths",
-            "date_modified": "2022-01-10T01:11:29.000Z",
+            "date_modified": "2022-01-11T16:04:35.000Z",
             "date_published": "2022-01-10T01:11:11.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -86,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR makes the statuses for the <code>name</code> property of the HTML element APIs consistent.  All of these entries are listed in the current HTML spec, so they are standard and non-deprecated.  <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #6683.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"701092293\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/6683\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/6683/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/6683\">#6683</a>.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14481",
             "title": "Make HTML element \"name\" property statuses consistent",
-            "date_modified": "2022-01-09T08:51:50.000Z",
+            "date_modified": "2022-01-11T18:51:31.000Z",
             "date_published": "2022-01-09T08:51:29.000Z",
             "author": {
                 "name": "queengooborg",
@@ -97,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #8524.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"777788155\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/8524\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/8524/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/8524\">#8524</a></p>\n<p dir=\"auto\">As discussed in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"777788155\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/8524\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/8524/hovercard?comment_id=1004476882&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/browser-compat-data/issues/8524#issuecomment-1004476882\">#8524 (comment)</a> <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/lock\" rel=\"nofollow\">ScreenOrientation.lock()</a> was broken by Fenix rewrite or as part of the Fennec code removal project at around FFv69. As the first release of Android after 68 is FF 79 I have marked removed in that version, and partially supported afterwards - indicating the API exists but does not work.</p>\n<p dir=\"auto\">I have left desktop unchanged - it does not appear to behave differently in those versions. i.e. you can't set desktop orientation anyway, but this is expected.</p>\n<p dir=\"auto\">This relates to docs work in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1091030764\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11594\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11594/hovercard\" href=\"https://github.com/mdn/content/issues/11594\">mdn/content#11594</a> . There is a fix fix for the bug but it requires a preference, and so is not recorded here.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14453",
             "title": "ScreenOrientation.lock - partially supported from 69/79",
-            "date_modified": "2022-01-07T04:06:38.000Z",
+            "date_modified": "2022-01-11T16:01:19.000Z",
             "date_published": "2022-01-07T00:54:19.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -165,50 +209,6 @@
             "title": "Update all browsers versions for RadioNodeList API",
             "date_modified": "2022-01-04T09:17:53.000Z",
             "date_published": "2021-12-29T17:46:07.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3688224?u=f6f5cc7aeb981874288f5d373aedd6c3925d185b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">allow-modals support is currently listed as unknown, this PR will add known support for Chrome and related browsers.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://chromestatus.com/feature/4747009953103872\" rel=\"nofollow\">https://chromestatus.com/feature/4747009953103872</a><br>\n<a href=\"https://googlechrome.github.io/samples/block-modal-dialogs-sandboxed-iframe/index.html\" rel=\"nofollow\">https://googlechrome.github.io/samples/block-modal-dialogs-sandboxed-iframe/index.html</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14295",
-            "title": "Update Chrome versions for iframe sandbox-allow-modals",
-            "date_modified": "2021-12-29T10:33:12.000Z",
-            "date_published": "2021-12-29T10:32:51.000Z",
-            "author": {
-                "name": "felixh10r",
-                "url": "https://github.com/felixh10r"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for all browsers for the <code>OfflineAudioContext</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/OfflineAudioContext\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/OfflineAudioContext</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14291",
-            "title": "Update all browsers versions for OfflineAudioContext API",
-            "date_modified": "2022-01-10T10:20:48.000Z",
-            "date_published": "2021-12-29T10:01:59.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code>Navigator</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/Navigator\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/Navigator</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14287",
-            "title": "Update Chromium versions for Navigator API",
-            "date_modified": "2022-01-10T10:26:35.000Z",
-            "date_published": "2021-12-29T09:43:03.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects the real values for Firefox and Firefox Android for the <code>MessageEvent</code> API, based upon results from the <a href=\"https://mdn-bcd-collector.appspot.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v4.0.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.appspot.com/tests/api/MessageEvent\" rel=\"nofollow\">https://mdn-bcd-collector.appspot.com/tests/api/MessageEvent</a></p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/foolip/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14273",
-            "title": "Update Firefox versions for MessageEvent API",
-            "date_modified": "2022-01-10T10:31:43.000Z",
-            "date_published": "2021-12-28T19:12:23.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
