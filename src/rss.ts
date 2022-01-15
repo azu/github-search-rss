@@ -31,6 +31,12 @@ export const SEARCH_ITEMS: RSSItem[] = [
         TYPE: "ISSUE",
         link: `${BASE_URL}/npm-rfcs.json`
     },
+    {
+        title: "github/roadmap Issues",
+        query: "repo:github/roadmap is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/github-roadmap.json`
+    },
     // Pull Request
     {
         // label:data:
