@@ -6,6 +6,39 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF97 added support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API\" rel=\"nofollow\">WebMidi API</a> backends for desktop platforms in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=836897\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=836897</a> behind a preference: Linux, MacOS, Windows.<br>\n(Android does not have a backend yet, but is by definition <code>false</code> for support because of the preference).</p>\n<p dir=\"auto\">This just updates <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MIDIInputMap\" rel=\"nofollow\">MIDIInputMap</a> - I will roll out to other parts if this is agreed good.</p>\n<p dir=\"auto\"><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> There are a few nuances.</p>\n<ul dir=\"auto\">\n<li>The API consists of a front end and platform-specific backends. The front end including preference has been around since FF60 according to browserstack. This allows you to read files and output to \"local synth\" (your computer speakers) - e.g. run this kind of page: <a href=\"https://blog.karimratib.me/demos/sheetplayer/\" rel=\"nofollow\">https://blog.karimratib.me/demos/sheetplayer/</a>.\n<ul dir=\"auto\">\n<li>This is not considered \"real\" midi by the team (see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=836897#c119\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=836897#c119</a>) - it is referred to as a \"dummy implementation\". It doesn't look all that dummy to me, but I guess that is the team's call.</li>\n<li>My concern is that someone trying this on FF60 to 97 will see the preference, and see that they can call the API. So they will think we got BCD wrong. <strong>Should we perhaps add another note</strong>: \"From version 60 to version 96 a dummy implementation is provided; you can call the API but not route MIDI to an output\"?</li>\n</ul>\n</li>\n<li>There are two other prefs which we can ignore for BCD:\n<ul dir=\"auto\">\n<li><code>dom.webmidi.gated</code> causes the Web MIDI implementation to be gated by a new add-on based security policy. But this is on by default from this first real version 97, so IMO does not need to be mentioned.</li>\n<li><code>midi.tested</code> enables some behavior required for testing - can be ignored.</li>\n</ul>\n</li>\n</ul>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14874",
+            "title": "FF97 WebMidi support - desktop",
+            "date_modified": "2022-02-08T00:03:02.000Z",
+            "date_published": "2022-02-07T23:53:24.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">See <a href=\"https://chromestatus.com/feature/5703317813460992\" rel=\"nofollow\">https://chromestatus.com/feature/5703317813460992</a><br>\nThis adds version support info for Chrome and associated browsers.</p>\n<ul dir=\"auto\">\n<li>MDN docs are already up to date in <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Full-Version-List\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Full-Version-List</a></li>\n<li>Easy to test using <a href=\"https://user-agent-client-hints.glitch.me/?uach=Sec-CH-UA-Full-Version&amp;uach=Sec-CH-UA-Full-Version-List\" rel=\"nofollow\">https://user-agent-client-hints.glitch.me/?uach=Sec-CH-UA-Full-Version&amp;uach=Sec-CH-UA-Full-Version-List</a></li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #14868.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1126073243\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/14868\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/14868/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/14868\">#14868</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14873",
+            "title": "Sec-CH-UA-Full-Version-List supported in Chrome 98 et al",
+            "date_modified": "2022-02-07T23:06:19.000Z",
+            "date_published": "2022-02-07T23:05:54.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/73939538?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Updates Web Share support in macOS for Edge 93.</p>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Updates Web Share support in macOS for Edge 93.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://docs.microsoft.com/en-gb/microsoft-edge/progressive-web-apps-chromium/whats-new/pwa#support-for-the-share-api-on-macos\" rel=\"nofollow\">https://docs.microsoft.com/en-gb/microsoft-edge/progressive-web-apps-chromium/whats-new/pwa#support-for-the-share-api-on-macos</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14871",
+            "title": "Updates Web Share support in macOS for Edge 93.",
+            "date_modified": "2022-02-07T20:14:21.000Z",
+            "date_published": "2022-02-07T20:14:00.000Z",
+            "author": {
+                "name": "diekus",
+                "url": "https://github.com/diekus"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR adds real values to Firefox Android for the WebGL data.  The data is verified using the mdn-bcd-collector project to check for support, and then version numbers come from mirroring the data.</p>\n<p dir=\"auto\">I found a <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=647802#c3\" rel=\"nofollow\">bug that includes a commen</a>t talking about a WebGL feature bugging out in Firefox 4 beta.  Based upon this comment, I believe that WebGL support was introduced to Firefox Android since the very beginning.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14858",
             "title": "Mirror Firefox -> Firefox Android WebGL data",
@@ -86,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Firefox 98 ships form associated custom elements <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1745378\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1745378</a> - essentially turning on <code>dom.webcomponents.formAssociatedCustomElement.enabled</code> all the time (this was added to BCD in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1040822817\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/13223\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/13223/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/13223\">#13223</a>). This adds the new version for FF and also FF for Android.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1101081069\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11969\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11969/hovercard\" href=\"https://github.com/mdn/content/issues/11969\">mdn/content#11969</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14822",
             "title": "FF98 Ship form associated custom elements",
-            "date_modified": "2022-02-04T06:05:56.000Z",
+            "date_modified": "2022-02-07T22:51:08.000Z",
             "date_published": "2022-02-04T06:05:36.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -105,32 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This reverts the relevant FF96 samesite changes that were added in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1070189949\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/13840\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/13840/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/13840\">#13840</a> (it is not a complete reversion, because the updates in that PR affected other browsers, and also fixed some data errors, and those changes are retained).</p>\n<p dir=\"auto\">This is confirmed by <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1750264#c9\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1750264#c9</a></p>\n<p dir=\"auto\">Related docs changes can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1109573953\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12224\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/12224/hovercard\" href=\"https://github.com/mdn/content/issues/12224\">mdn/content#12224</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14817",
-            "title": "FF96 Same-Site - lax changes reverted",
-            "date_modified": "2022-02-03T23:53:18.000Z",
-            "date_published": "2022-02-03T23:52:59.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/in/29110?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Bumps <a href=\"https://github.com/w3c/browser-specs\">browser-specs</a> from 2.26.0 to 2.27.0.</p>\n<details>\n<summary>Release notes</summary>\n<p dir=\"auto\"><em>Sourced from <a href=\"https://github.com/w3c/browser-specs/releases\">browser-specs's releases</a>.</em></p>\n<blockquote>\n<h2 dir=\"auto\">v2.27.0</h2>\n<h3 dir=\"auto\">Merged</h3>\n<ul dir=\"auto\">\n<li>Reflect new URLs of event-timing and largest-contentful-paint <a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/pull/491\" rel=\"nofollow\"><code>[#491](https://github.com/w3c/browser-specs/issues/491)</code></a></li>\n<li>Force title for TC39 Intl proposals <a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/pull/490\" rel=\"nofollow\"><code>[#490](https://github.com/w3c/browser-specs/issues/490)</code></a></li>\n<li>Add TC39 Intl NumberFormat v3 proposal <a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/pull/489\" rel=\"nofollow\"><code>[#489](https://github.com/w3c/browser-specs/issues/489)</code></a></li>\n</ul>\n<h3 dir=\"auto\">Commits</h3>\n<ul dir=\"auto\">\n<li>[data] Update spec info <a href=\"https://github.com/w3c/browser-specs/commit/483d73a8dda153139d3c6b9d1ac7b469af65fafb\"><code>483d73a</code></a></li>\n<li>[data] Update spec info <a href=\"https://github.com/w3c/browser-specs/commit/68019a60a9a94ec373f364ba6a2466dd2dad93c1\"><code>68019a6</code></a></li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Changelog</summary>\n<p dir=\"auto\"><em>Sourced from <a href=\"https://github.com/w3c/browser-specs/blob/main/CHANGELOG.md\">browser-specs's changelog</a>.</em></p>\n<blockquote>\n<h2 dir=\"auto\"><a href=\"https://github.com/w3c/browser-specs/compare/2.26.0...2.27.0\">2.27.0</a></h2>\n<h3 dir=\"auto\">Merged</h3>\n<ul dir=\"auto\">\n<li>Reflect new URLs of event-timing and largest-contentful-paint <a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/pull/491\" rel=\"nofollow\"><code>[#491](https://github.com/w3c/browser-specs/issues/491)</code></a></li>\n<li>Force title for TC39 Intl proposals <a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/pull/490\" rel=\"nofollow\"><code>[#490](https://github.com/w3c/browser-specs/issues/490)</code></a></li>\n<li>Add TC39 Intl NumberFormat v3 proposal <a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/pull/489\" rel=\"nofollow\"><code>[#489](https://github.com/w3c/browser-specs/issues/489)</code></a></li>\n</ul>\n<h3 dir=\"auto\">Commits</h3>\n<ul dir=\"auto\">\n<li>[data] Update spec info <a href=\"https://github.com/w3c/browser-specs/commit/483d73a8dda153139d3c6b9d1ac7b469af65fafb\"><code>483d73a</code></a></li>\n<li>[data] Update spec info <a href=\"https://github.com/w3c/browser-specs/commit/68019a60a9a94ec373f364ba6a2466dd2dad93c1\"><code>68019a6</code></a></li>\n</ul>\n</blockquote>\n</details>\n<details>\n<summary>Commits</summary>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/w3c/browser-specs/commit/032750bf4c18d4ab215501fc702d0ea9de49cc21\"><code>032750b</code></a> v2.27.0</li>\n<li><a href=\"https://github.com/w3c/browser-specs/commit/483d73a8dda153139d3c6b9d1ac7b469af65fafb\"><code>483d73a</code></a> [data] Update spec info</li>\n<li><a href=\"https://github.com/w3c/browser-specs/commit/70a553c2fa14497a4d50b63c4eca913cddb08d27\"><code>70a553c</code></a> Reflect new URLs of event-timing and largest-contentful-paint (<a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/issues/491\" rel=\"nofollow\">#491</a>)</li>\n<li><a href=\"https://github.com/w3c/browser-specs/commit/1a9f0c305d740ccb2d616ee5ecc6b36a4d02900f\"><code>1a9f0c3</code></a> Force title for TC39 Intl proposals (<a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/issues/490\" rel=\"nofollow\">#490</a>)</li>\n<li><a href=\"https://github.com/w3c/browser-specs/commit/68019a60a9a94ec373f364ba6a2466dd2dad93c1\"><code>68019a6</code></a> [data] Update spec info</li>\n<li><a href=\"https://github.com/w3c/browser-specs/commit/cb1a313ab852316011fb294a5664ef710c5b0e86\"><code>cb1a313</code></a> Add TC39 Intl NumberFormat v3 proposal (<a href=\"https://github-redirect.dependabot.com/w3c/browser-specs/issues/489\" rel=\"nofollow\">#489</a>)</li>\n<li>See full diff in <a href=\"https://github.com/w3c/browser-specs/compare/2.26.0...2.27.0\">compare view</a></li>\n</ul>\n</details>\n<br>\n<p dir=\"auto\"><a href=\"https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores\"><img src=\"https://camo.githubusercontent.com/ca3a3ad26aa7973459b196d726bed5ae8d8c3fc035538a700a4ca4503a97f1aa/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d62726f777365722d7370656373267061636b6167652d6d616e616765723d6e706d5f616e645f7961726e2670726576696f75732d76657273696f6e3d322e32362e30266e65772d76657273696f6e3d322e32372e30\" alt=\"Dependabot compatibility score\" data-canonical-src=\"https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=browser-specs&amp;package-manager=npm_and_yarn&amp;previous-version=2.26.0&amp;new-version=2.27.0\" style=\"max-width: 100%;\"></a></p>\n<p dir=\"auto\">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code>@dependabot rebase</code>.</p>\n<hr>\n<details>\n<summary>Dependabot commands and options</summary>\n<br>\n<p dir=\"auto\">You can trigger Dependabot actions by commenting on this PR:</p>\n<ul dir=\"auto\">\n<li><code>@dependabot rebase</code> will rebase this PR</li>\n<li><code>@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>\n<li><code>@dependabot merge</code> will merge this PR after your CI passes on it</li>\n<li><code>@dependabot squash and merge</code> will squash and merge this PR after your CI passes on it</li>\n<li><code>@dependabot cancel merge</code> will cancel a previously requested merge and block automerging</li>\n<li><code>@dependabot reopen</code> will reopen this PR if it is closed</li>\n<li><code>@dependabot close</code> will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually</li>\n<li><code>@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>\n<li><code>@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>\n<li><code>@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>\n</ul>\n</details>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14808",
-            "title": "Bump browser-specs from 2.26.0 to 2.27.0",
-            "date_modified": "2022-02-04T04:57:42.000Z",
-            "date_published": "2022-02-03T11:00:52.000Z",
-            "author": {
-                "name": "dependabot",
-                "url": "https://github.com/apps/dependabot"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Safari 15.4 beta updated support for JavaScript Intl features.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">See <a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-15_4-release-notes\" rel=\"nofollow\">Safari 15.4 Beta Release Notes</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14786",
             "title": "Added Safari 15.4 updates for JavaScript Intl support",
-            "date_modified": "2022-02-02T09:22:03.000Z",
+            "date_modified": "2022-02-07T16:19:20.000Z",
             "date_published": "2022-02-02T00:43:26.000Z",
             "author": {
                 "name": "jdatapple",
@@ -141,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/296445?u=ec7c4112d416f59ed49ec0a78b32894faa0148f4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I think this must be referring to Response.body, which should be supported since 65: <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Response/body\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Response/body</a>.</p>\n\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">\"Streaming response body\" feature of fetch is supported in Firefox</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/65\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/65</a></p>\n<blockquote>\n<p dir=\"auto\">Readable Streams have been enabled by default</p>\n</blockquote>\n<h4 dir=\"auto\">Related issues</h4>\n\n",
             "url": "https://github.com/mdn/browser-compat-data/pull/14775",
             "title": "Mark fetch > Streaming response body as supported in Firefox",
-            "date_modified": "2022-02-03T06:57:54.000Z",
+            "date_modified": "2022-02-07T10:35:22.000Z",
             "date_published": "2022-02-01T13:15:34.000Z",
             "author": {
                 "name": "evilpie",
@@ -171,39 +182,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3136226?u=5d5e6a3ec492970073606b81b1e1f7a307dd1175&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<ul dir=\"auto\">\n<li>Add more supported versions to setLocalDescription's optional description parameter feature</li>\n<li>Add more supported versions to setRemoteDescription's implicit rollback feature</li>\n<li>Remove setRemoteDescription's optional description parameter feature, which is not a thing.</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ul dir=\"auto\">\n<li>SLD optional description test: <a href=\"https://jsfiddle.net/jib1/yxbLvjm6/\" rel=\"nofollow\">https://jsfiddle.net/jib1/yxbLvjm6/</a>\n<ul dir=\"auto\">\n<li>Firefox for Android 79: would normally track desktop, except for 69-78 gap until Fenix <a href=\"https://en.wikipedia.org/wiki/Firefox_for_Android#History\" rel=\"nofollow\">was released</a> in 79</li>\n<li>Opera 64: earliest version I tested, but probably near when it was added.</li>\n<li>Opera 66 for Android: earliest version I tested.</li>\n</ul>\n</li>\n<li>SRD implicit rollback test: <a href=\"https://jsfiddle.net/jib1/hmgdu1rz/\" rel=\"nofollow\">https://jsfiddle.net/jib1/hmgdu1rz/</a>\n<ul dir=\"auto\">\n<li>SRD description argument is not optional <a href=\"https://www.w3.org/TR/webrtc/#idl-def-rtcpeerconnection\" rel=\"nofollow\">spec</a>.</li>\n<li>Firefox for Android 79: would normally track desktop, except for 68-78 gap until Fenix was released in 79</li>\n<li>Opera 67: Confirmed not working in 66 but working in 67.</li>\n<li>Opera 66 for Android: earliest version I tested.</li>\n<li>Safari 15.4: Confirmed not working in Safari 15.3 but working in 15.4 (Safari Tech Preview).</li>\n</ul>\n</li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14698",
-            "title": "Add sub-feature versions on setLocalDescription & setRemoteDescription.",
-            "date_modified": "2022-02-04T23:58:11.000Z",
-            "date_published": "2022-01-27T20:31:59.000Z",
-            "author": {
-                "name": "jan-ivar",
-                "url": "https://github.com/jan-ivar"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/302715?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Adding animation-timeline property as part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1011999234\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9368\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9368/hovercard\" href=\"https://github.com/mdn/content/issues/9368\">mdn/content#9368</a><br>\nSee <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1676791\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1676791</a> and/or <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1676782\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1676782</a></p>\n<p dir=\"auto\">Is availlable in Chrome, but I'm unsure of which version it was released in.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n<p dir=\"auto\">Tests pass</p>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14663",
-            "title": "Adding animation-timeline property",
-            "date_modified": "2022-02-03T14:46:27.000Z",
-            "date_published": "2022-01-25T18:00:16.000Z",
-            "author": {
-                "name": "Rumyra",
-                "url": "https://github.com/Rumyra"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23465488?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">This PR adds the real value for Node.js for the <code>TextDecoder</code> constructor.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Changelog for adding: <a href=\"https://nodejs.org/en/blog/release/v8.3.0/\" rel=\"nofollow\">https://nodejs.org/en/blog/release/v8.3.0/</a></p>\n<blockquote>\n<p dir=\"auto\">The WHATWG Encoding Standard (TextDecoder and TextEncoder) has been implemented as an experimental feature</p>\n</blockquote>\n<p dir=\"auto\">Changelog for making the API global: <a href=\"https://nodejs.org/en/blog/release/v11.0.0/\" rel=\"nofollow\">https://nodejs.org/en/blog/release/v11.0.0/</a></p>\n<blockquote>\n<p dir=\"auto\">The WHATWG TextEncoder and TextDecoder are now globals</p>\n</blockquote>\n<p dir=\"auto\">History section in the documentation: <a href=\"https://nodejs.org/docs/latest-v16.x/api/util.html#new-textdecoderencoding-options\" rel=\"nofollow\">https://nodejs.org/docs/latest-v16.x/api/util.html#new-textdecoderencoding-options</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1039059877\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/13170\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/13170/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/13170\">#13170</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14633",
-            "title": "Add nodejs version for api.TextDecoder.TextDecoder",
-            "date_modified": "2022-02-01T15:54:22.000Z",
-            "date_published": "2022-01-21T20:13:35.000Z",
-            "author": {
-                "name": "vabushkevich",
-                "url": "https://github.com/vabushkevich"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/490294?u=11b2e105d0377fc52c23f73420f6754a1051dabf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Hi folks!</p>\n<p dir=\"auto\">I'm hoping you'll consider adding the Cloudflare Workers runtime to the server compatibility list. Like Node.js and Deno, the Cloudflare Workers runtime uses Google's v8 engine. We have been hard at work adding support for standard APIs and think MDN would be a great resource for people to check on our progress.</p>\n<p dir=\"auto\">I followed along with the Deno PR and thought this would make a good start adding support for two fully-support APIs.</p>\n<h4 dir=\"auto\">Note</h4>\n<p dir=\"auto\">I wanted to note that, if you all feel we'd make a good fit, we'd open PRs for all of the APIs that we support. We don't just support <code>AbortController</code> and <code>AbortSignal</code>!</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14629",
             "title": "Add Cloudflare Workers to MDN compat table",
@@ -212,6 +190,28 @@
             "author": {
                 "name": "jkup",
                 "url": "https://github.com/jkup"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Related MDN change: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1108959122\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12210\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/12210/hovercard\" href=\"https://github.com/mdn/content/pull/12210\">mdn/content#12210</a></p>\n<p dir=\"auto\">Related: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1068605216\" data-permission-text=\"Title is private\" data-url=\"https://github.com/WICG/savedata/issues/3\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/WICG/savedata/pull/3/hovercard\" href=\"https://github.com/WICG/savedata/pull/3\">WICG/savedata#3</a><br>\nRelated: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"953095842\" data-permission-text=\"Title is private\" data-url=\"https://github.com/WICG/client-hints-infrastructure/issues/76\" data-hovercard-type=\"issue\" data-hovercard-url=\"/WICG/client-hints-infrastructure/issues/76/hovercard\" href=\"https://github.com/WICG/client-hints-infrastructure/issues/76\">WICG/client-hints-infrastructure#76</a></p>\n\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14600",
+            "title": "Save-Data renamed to Sec-CH-Save-Data",
+            "date_modified": "2022-02-01T04:00:24.000Z",
+            "date_published": "2022-01-20T07:25:36.000Z",
+            "author": {
+                "name": "sideshowbarker",
+                "url": "https://github.com/sideshowbarker"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4757846?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Update release html dialog which is switch on by default in Firefox 98</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1733536\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1733536</a> - the bug which switch on html dialog  by default.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14510",
+            "title": "Update release html dialog which is switch on by default in Firefox 98",
+            "date_modified": "2022-02-02T17:49:19.000Z",
+            "date_published": "2022-01-11T15:36:56.000Z",
+            "author": {
+                "name": "anthony-redFox",
+                "url": "https://github.com/anthony-redFox"
             }
         }
     ]
