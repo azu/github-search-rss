@@ -6,22 +6,66 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF97 added support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API\" rel=\"nofollow\">WebMidi API</a> backends for desktop platforms in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=836897\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=836897</a> behind a preference: Linux, MacOS, Windows.<br>\n(Android does not have a backend yet, but is by definition <code>false</code> for support because of the preference).</p>\n<p dir=\"auto\">This just updates <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MIDIInputMap\" rel=\"nofollow\">MIDIInputMap</a> - I will roll out to other parts if this is agreed good.</p>\n<p dir=\"auto\"><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> There are a few nuances.</p>\n<ul dir=\"auto\">\n<li>The API consists of a front end and platform-specific backends. The front end including preference has been around since FF60 according to browserstack. This allows you to read files and output to \"local synth\" (your computer speakers) - e.g. run this kind of page: <a href=\"https://blog.karimratib.me/demos/sheetplayer/\" rel=\"nofollow\">https://blog.karimratib.me/demos/sheetplayer/</a>.\n<ul dir=\"auto\">\n<li>This is not considered \"real\" midi by the team (see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=836897#c119\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=836897#c119</a>) - it is referred to as a \"dummy implementation\". It doesn't look all that dummy to me, but I guess that is the team's call.</li>\n<li>My concern is that someone trying this on FF60 to 97 will see the preference, and see that they can call the API. So they will think we got BCD wrong. <strong>Should we perhaps add another note</strong>: \"From version 60 to version 96 a dummy implementation is provided; you can call the API but not route MIDI to an output\"?</li>\n</ul>\n</li>\n<li>There are two other prefs which we can ignore for BCD:\n<ul dir=\"auto\">\n<li><code>dom.webmidi.gated</code> causes the Web MIDI implementation to be gated by a new add-on based security policy. But this is on by default from this first real version 97, so IMO does not need to be mentioned.</li>\n<li><code>midi.tested</code> enables some behavior required for testing - can be ignored.</li>\n</ul>\n</li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14874",
-            "title": "FF97 WebMidi support - desktop",
-            "date_modified": "2022-02-08T00:03:02.000Z",
-            "date_published": "2022-02-07T23:53:24.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">It's been deprecated since it was added in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"265910793\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/513\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/513/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/513\">#513</a>,<br>\nbut shouldn't be. Link the spec to make this clear.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14892",
+            "title": "Mark font-variant-alternates as not deprecated",
+            "date_modified": "2022-02-08T22:46:42.000Z",
+            "date_published": "2022-02-08T22:46:17.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47499687?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">The specification URL was linking to the section of the bitwise OR <code>|</code> operator,<br>\napparently due to a copy-paste error. The unsigned right shift is correct, see<br>\n<div class=\"Box Box--condensed my-2\">\n  <div class=\"Box-header f6\">\n    <p class=\"mb-0 text-bold\">\n      <a href=\"https://github.com/mdn/browser-compat-data/blob/6f71796dc415c5562e857be2312cc79ed6335422/javascript/operators/unsigned_right_shift.json#L8\">browser-compat-data/javascript/operators/unsigned_right_shift.json</a>\n    </p>\n    <p class=\"mb-0 color-fg-muted\">\n         Line 8\n      in\n      <a data-pjax=\"true\" class=\"commit-tease-sha\" href=\"/mdn/browser-compat-data/commit/6f71796dc415c5562e857be2312cc79ed6335422\">6f71796</a>\n    </p>\n  </div>\n  <div itemprop=\"text\" class=\"Box-body p-0 blob-wrapper blob-wrapper-embedded data\">\n    <table class=\"highlight tab-size mb-0 js-file-line-container\" data-tab-size=\"8\" data-paste-markdown-skip=\"\">\n\n        <tbody><tr class=\"border-0\">\n          <td id=\"L8\" class=\"blob-num border-0 px-3 py-0 color-bg-default js-line-number\" data-line-number=\"8\"></td>\n          <td id=\"LC8\" class=\"blob-code border-0 px-3 py-0 color-bg-default blob-code-inner js-file-line\"> <span class=\"pl-ent\">\"spec_url\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-unsigned-right-shift-operator<span class=\"pl-pds\">\"</span></span>, </td>\n        </tr>\n    </tbody></table>\n  </div>\n</div>\n</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n<p dir=\"auto\">I tested the URL <a href=\"https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-signed-right-shift-operator\" rel=\"nofollow\">https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-signed-right-shift-operator</a> that I'm linking, it works.</p>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">I didn't find any - no one seems to have noticed yet.</p>\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14891",
+            "title": "Fix spec_url of \"javascript.operators.right_shift\"",
+            "date_modified": "2022-02-08T20:54:55.000Z",
+            "date_published": "2022-02-08T20:54:28.000Z",
+            "author": {
+                "name": "generalmimon",
+                "url": "https://github.com/generalmimon"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Safari doesn't actually support the <code>browser.tabs.onreplaced</code> event.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Data provided by the Safari engineering team.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14889",
+            "title": "Fix Safari data for the browser.tabs.onreplaced event",
+            "date_modified": "2022-02-08T18:11:41.000Z",
+            "date_published": "2022-02-08T18:11:13.000Z",
+            "author": {
+                "name": "jdatapple",
+                "url": "https://github.com/jdatapple"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15973671?u=a254f43c7d49bbec583298fb7ae07fa722053c0b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Updated structuredClone.json since self.structuredClone() is now supported by Chromium Based Browsers.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://chromestatus.com/feature/5630001077551104\" rel=\"nofollow\">https://chromestatus.com/feature/5630001077551104</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #14885.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1127229523\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/14885\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/14885/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/14885\">#14885</a><br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #14867.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1126027249\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/14867\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/14867/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/14867\">#14867</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14886",
+            "title": "Add support for self.structuredClone() in Chromium Based Browsers",
+            "date_modified": "2022-02-08T14:11:59.000Z",
+            "date_published": "2022-02-08T13:44:04.000Z",
+            "author": {
+                "name": "keita-hino",
+                "url": "https://github.com/keita-hino"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF98 adds support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/createImageBitmap#parameters\" rel=\"nofollow\">createImageBitmap()</a> parameter <code>option</code> properties:  <code>colorSpaceConversion</code>, <code>resizeWidth</code> and <code>resizeHeight</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1748868\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1748868</a> and <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1733559\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1733559</a></p>\n<p dir=\"auto\">As <code>resizeQuality</code> is not supported by FF but is by Chrome, I've removed the subfeature <code>resizeWidth_resizeHeight_resizeQuality</code>, spitting it into three options subfeatures - e.g. <code>options_resizeHeight_parameter</code>. I also added  options subfeatures subfeatures for colorSpaceConversion<code>, </code>resizeWidth<code>and</code>resizeHeight`.</p>\n<p dir=\"auto\">The remaining options are <code>imageOrientation</code> and <code>premultiplyAlpha</code>. These were added to the initial options of both FF and chromium. In theory users should assume this, and these would not need an entry. However in this case I have added one for both because clearly it is quite possible for all of these to be added in different versions, and otherwise this is not obvious. Should I delete these two?</p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1120500453\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12577\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/12577/hovercard\" href=\"https://github.com/mdn/content/issues/12577\">mdn/content#12577</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14876",
+            "title": "Ff98 createImageBitmap() options updates",
+            "date_modified": "2022-02-08T13:40:38.000Z",
+            "date_published": "2022-02-08T03:16:38.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">See <a href=\"https://chromestatus.com/feature/5703317813460992\" rel=\"nofollow\">https://chromestatus.com/feature/5703317813460992</a><br>\nThis adds version support info for Chrome and associated browsers.</p>\n<ul dir=\"auto\">\n<li>MDN docs are already up to date in <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Full-Version-List\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-CH-UA-Full-Version-List</a></li>\n<li>Easy to test using <a href=\"https://user-agent-client-hints.glitch.me/?uach=Sec-CH-UA-Full-Version&amp;uach=Sec-CH-UA-Full-Version-List\" rel=\"nofollow\">https://user-agent-client-hints.glitch.me/?uach=Sec-CH-UA-Full-Version&amp;uach=Sec-CH-UA-Full-Version-List</a></li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #14868.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1126073243\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/14868\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/14868/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/14868\">#14868</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14873",
-            "title": "Sec-CH-UA-Full-Version-List supported in Chrome 98 et al",
-            "date_modified": "2022-02-07T23:06:19.000Z",
-            "date_published": "2022-02-07T23:05:54.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF97 added support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API\" rel=\"nofollow\">WebMidi API</a> backends for desktop platforms in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=836897\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=836897</a> behind a preference: Linux, MacOS, Windows.<br>\n(Android does not have a backend yet, but is by definition <code>false</code> for support because of the preference).</p>\n<p dir=\"auto\">This just updates <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MIDIInputMap\" rel=\"nofollow\">MIDIInputMap</a> - I will roll out to other parts if this is agreed good.</p>\n<p dir=\"auto\"><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> There are a few nuances.</p>\n<ul dir=\"auto\">\n<li>The API consists of a front end and platform-specific backends. The front end including preference has been around since FF60 according to browserstack. This allows you to read files and output to \"local synth\" (your computer speakers) - e.g. run this kind of page: <a href=\"https://blog.karimratib.me/demos/sheetplayer/\" rel=\"nofollow\">https://blog.karimratib.me/demos/sheetplayer/</a>.\n<ul dir=\"auto\">\n<li>This is not considered \"real\" midi by the team (see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=836897#c119\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=836897#c119</a>) - it is referred to as a \"dummy implementation\". It doesn't look all that dummy to me, but I guess that is the team's call.</li>\n<li>My concern is that someone trying this on FF60 to 97 will see the preference, and see that they can call the API. So they will think we got BCD wrong. <strong>Should we perhaps add another note</strong>: \"From version 60 to version 96 a dummy implementation is provided; you can call the API but not route MIDI to an output\"?</li>\n</ul>\n</li>\n<li>There are two other prefs which we can ignore for BCD:\n<ul dir=\"auto\">\n<li><code>dom.webmidi.gated</code> causes the Web MIDI implementation to be gated by a new add-on based security policy. But this is on by default from this first real version 97, so IMO does not need to be mentioned.</li>\n<li><code>midi.tested</code> enables some behavior required for testing - can be ignored.</li>\n</ul>\n</li>\n</ul>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/14874",
+            "title": "FF97 WebMidi support - desktop",
+            "date_modified": "2022-02-08T22:41:57.000Z",
+            "date_published": "2022-02-07T23:53:24.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
@@ -116,21 +160,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Firefox 98 ships form associated custom elements <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1745378\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1745378</a> - essentially turning on <code>dom.webcomponents.formAssociatedCustomElement.enabled</code> all the time (this was added to BCD in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1040822817\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/13223\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/13223/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/13223\">#13223</a>). This adds the new version for FF and also FF for Android.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1101081069\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11969\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11969/hovercard\" href=\"https://github.com/mdn/content/issues/11969\">mdn/content#11969</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14822",
-            "title": "FF98 Ship form associated custom elements",
-            "date_modified": "2022-02-07T22:51:08.000Z",
-            "date_published": "2022-02-04T06:05:36.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">WebVR has been disabled by default in FF98 - <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1750902\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1750902</a> . Other docs work for this in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1120519296\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12582\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/12582/hovercard\" href=\"https://github.com/mdn/content/issues/12582\">mdn/content#12582</a></p>\n<p dir=\"auto\">So Web VR is apparently out of the standards, superseded by WebXR. It was implemented in Chrome Android until v80 and then removed. It is still marked as supported in Samsung Internet. It was implemented on FF in Windows and MacOS from around v55/64, but only on nightly and dev for other platforms.<br>\nThis change turns it off by default on all platforms.</p>\n<p dir=\"auto\">I have made the changes just to <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/VRDisplay\" rel=\"nofollow\">VRDisplay</a>. Once we confirm the right approach I'll role them out widely for the API within this same PR.</p>\n<p dir=\"auto\"><a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> There are questions inline to test changes.<br>\nMAIN question is whether you would instead delete this and all associated MDN documents? I am assuming you don't want to because this will still be supported on Samsung internet.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14821",
             "title": "FF98 WebVR support disabled by default",
-            "date_modified": "2022-02-04T05:27:54.000Z",
+            "date_modified": "2022-02-08T13:20:52.000Z",
             "date_published": "2022-02-04T05:19:51.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -151,8 +184,8 @@
         {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/296445?u=ec7c4112d416f59ed49ec0a78b32894faa0148f4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I think this must be referring to Response.body, which should be supported since 65: <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Response/body\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Response/body</a>.</p>\n\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">\"Streaming response body\" feature of fetch is supported in Firefox</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/65\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/65</a></p>\n<blockquote>\n<p dir=\"auto\">Readable Streams have been enabled by default</p>\n</blockquote>\n<h4 dir=\"auto\">Related issues</h4>\n\n",
             "url": "https://github.com/mdn/browser-compat-data/pull/14775",
-            "title": "Mark fetch > Streaming response body as supported in Firefox",
-            "date_modified": "2022-02-07T10:35:22.000Z",
+            "title": "Remove \"Streaming response body\" compat data",
+            "date_modified": "2022-02-08T10:20:12.000Z",
             "date_published": "2022-02-01T13:15:34.000Z",
             "author": {
                 "name": "evilpie",
@@ -163,7 +196,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">CSS <code>color-adjust</code> has been renamed in the spec to <code>print-color-adjust</code> and <code>color-adjust</code> has been deprecated. This updates the record as suggested by <a class=\"user-mention\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/ddbeck/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/ddbeck\">@ddbeck</a> in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1091039871\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11598\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11598/hovercard?comment_id=1010032627&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/issues/11598#issuecomment-1010032627\">mdn/content#11598 (comment)</a></p>\n<p dir=\"auto\">Note</p>\n<ul dir=\"auto\">\n<li>I also updated the mdn URL as I plan to move the page.</li>\n</ul>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1091039871\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11598\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11598/hovercard\" href=\"https://github.com/mdn/content/issues/11598\">mdn/content#11598</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/14738",
             "title": "CSS color-adjust to print-color-adjust",
-            "date_modified": "2022-02-03T08:00:03.000Z",
+            "date_modified": "2022-02-08T12:43:16.000Z",
             "date_published": "2022-01-31T03:29:37.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -179,39 +212,6 @@
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/490294?u=11b2e105d0377fc52c23f73420f6754a1051dabf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Hi folks!</p>\n<p dir=\"auto\">I'm hoping you'll consider adding the Cloudflare Workers runtime to the server compatibility list. Like Node.js and Deno, the Cloudflare Workers runtime uses Google's v8 engine. We have been hard at work adding support for standard APIs and think MDN would be a great resource for people to check on our progress.</p>\n<p dir=\"auto\">I followed along with the Deno PR and thought this would make a good start adding support for two fully-support APIs.</p>\n<h4 dir=\"auto\">Note</h4>\n<p dir=\"auto\">I wanted to note that, if you all feel we'd make a good fit, we'd open PRs for all of the APIs that we support. We don't just support <code>AbortController</code> and <code>AbortSignal</code>!</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14629",
-            "title": "Add Cloudflare Workers to MDN compat table",
-            "date_modified": "2022-02-03T21:04:09.000Z",
-            "date_published": "2022-01-21T16:00:37.000Z",
-            "author": {
-                "name": "jkup",
-                "url": "https://github.com/jkup"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Related MDN change: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1108959122\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12210\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/12210/hovercard\" href=\"https://github.com/mdn/content/pull/12210\">mdn/content#12210</a></p>\n<p dir=\"auto\">Related: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1068605216\" data-permission-text=\"Title is private\" data-url=\"https://github.com/WICG/savedata/issues/3\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/WICG/savedata/pull/3/hovercard\" href=\"https://github.com/WICG/savedata/pull/3\">WICG/savedata#3</a><br>\nRelated: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"953095842\" data-permission-text=\"Title is private\" data-url=\"https://github.com/WICG/client-hints-infrastructure/issues/76\" data-hovercard-type=\"issue\" data-hovercard-url=\"/WICG/client-hints-infrastructure/issues/76/hovercard\" href=\"https://github.com/WICG/client-hints-infrastructure/issues/76\">WICG/client-hints-infrastructure#76</a></p>\n\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14600",
-            "title": "Save-Data renamed to Sec-CH-Save-Data",
-            "date_modified": "2022-02-01T04:00:24.000Z",
-            "date_published": "2022-01-20T07:25:36.000Z",
-            "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4757846?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Update release html dialog which is switch on by default in Firefox 98</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1733536\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1733536</a> - the bug which switch on html dialog  by default.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/14510",
-            "title": "Update release html dialog which is switch on by default in Firefox 98",
-            "date_modified": "2022-02-02T17:49:19.000Z",
-            "date_published": "2022-01-11T15:36:56.000Z",
-            "author": {
-                "name": "anthony-redFox",
-                "url": "https://github.com/anthony-redFox"
             }
         }
     ]
