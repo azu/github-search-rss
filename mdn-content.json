@@ -6,36 +6,179 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">To add the documentation for the new Scripting API, including:</p>\n<ul dir=\"auto\">\n<li>scripting (pending)</li>\n<li>scripting.executeScript (pending)</li>\n<li>scripting.insertCSS (draft included)</li>\n<li>scripting.removeCSS (draft included)</li>\n<li>scripting.getRegisteredContentScripts (pending)</li>\n<li>scripting.registerContentScripts (pending)</li>\n<li>scripting.unregisterContentScripts (pending)</li>\n<li>scripting.updateContentScripts (pending)</li>\n<li>release note (pending)</li>\n<li>Updates to <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs\" rel=\"nofollow\">tabs</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/insertCSS\" rel=\"nofollow\">tabs.insertCSS()</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/removeCSS\" rel=\"nofollow\">tabs.removeCSS()</a>, and <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript\" rel=\"nofollow\">tabs.executeScript()</a> (pending)</li>\n<li>scripting permission to permissions and optional permissions (pending)</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Addresses the requirements of these Bugzilla tickets:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736579\" rel=\"nofollow\">1736579</a> Implement <code>scripting.insertCSS()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736580\" rel=\"nofollow\">1736580</a> Implement <code>scripting.removeCSS()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736581\" rel=\"nofollow\">1736581</a> Implement <code>scripting.getRegisteredContentScripts()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736582\" rel=\"nofollow\">1736582</a> Initial implementation of <code>scripting.registerContentScripts()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736584\" rel=\"nofollow\">1736584</a> Implement <code>scripting.unregisterContentScripts()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736585\" rel=\"nofollow\">1736585</a> Implement <code>scripting.updateContentScripts()</code></li>\n</ul>\n<h4 dir=\"auto\">Metadata</h4>\n<p dir=\"auto\">This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/14764",
+            "title": "DRAFt: New Document: spinbutton role",
+            "date_modified": "2022-04-07T00:01:42.000Z",
+            "date_published": "2022-04-06T23:59:13.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/904269?u=057387df2be5310a27b7aceebef236def4aacdc5&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">The <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt\" rel=\"nofollow\">BigInt documentation</a> currently contains this example code in order to serialize BigInt objects to JSON:</p>\n<div class=\"highlight highlight-source-js position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"BigInt.prototype.toJSON = function() { return this.toString()  }\"><pre><span class=\"pl-v\">BigInt</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">prototype</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toJSON</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">function</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span> <span class=\"pl-k\">return</span> <span class=\"pl-smi\">this</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toString</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span>  <span class=\"pl-kos\">}</span></pre></div>\n<p dir=\"auto\">This PR replaces that example with one using <code>JSON.stringify(object, replacer)</code> to avoid modifying global prototypes. It also adds a section using <code>JSON.parse(payload, reviver)</code> to demonstrate getting BigInts <em>out</em> of JSON.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<ol dir=\"auto\">\n<li>Docs should not encourage modifying a global object's prototype other than correctly polyfilling behaviour</li>\n<li>Using replacer and reviver allows parsing BigInts from JSON, not only stringifying them</li>\n</ol>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #14676.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1192439905\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14676\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/14676/hovercard\" href=\"https://github.com/mdn/content/issues/14676\">#14676</a></p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/14763",
+            "title": "Use JSON replacer and reviver in BigInt examples",
+            "date_modified": "2022-04-06T23:48:42.000Z",
+            "date_published": "2022-04-06T23:48:31.000Z",
+            "author": {
+                "name": "crabmusket",
+                "url": "https://github.com/crabmusket"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8754?u=4117f9de66cc64afad56334cdfb304bc985f0a5c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\"><a href=\"https://www.html5rocks.com/en/\" rel=\"nofollow\">https://www.html5rocks.com/en/</a> points to <a href=\"https://developers.google.com/web\" rel=\"nofollow\">https://developers.google.com/web</a> now. I'm guessing <a href=\"https://developer.chrome.com/blog/transferable-objects-lightning-fast/\" rel=\"nofollow\">https://developer.chrome.com/blog/transferable-objects-lightning-fast/</a> is the post that was previously pointed to.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">I clicked on the link and it led to an error.</p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/8754/162083848-1d846b0b-c875-4e40-8492-2b54b44d3e85.png\"><img src=\"https://user-images.githubusercontent.com/8754/162083848-1d846b0b-c875-4e40-8492-2b54b44d3e85.png\" alt=\"image\" style=\"max-width: 100%;\"></a></p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\">n/a</p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">n/a</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/14761",
+            "title": "Change html5rocks to web fundamentals",
+            "date_modified": "2022-04-06T22:45:22.000Z",
+            "date_published": "2022-04-06T22:37:58.000Z",
+            "author": {
+                "name": "gpbmike",
+                "url": "https://github.com/gpbmike"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/84404553?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Fixed inaccurate console.log command. Line 140 console.log(myDate.getYear()); produces undefined because myDate.getYear() has a console.log command in it which results in a nested console.log command of console.log(console.log('something else!'))</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">Bug fix</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/14760",
+            "title": "Doc: Fix nested console.log bug in code example",
+            "date_modified": "2022-04-06T21:24:26.000Z",
+            "date_published": "2022-04-06T21:24:12.000Z",
+            "author": {
+                "name": "KrisCollinsMy",
+                "url": "https://github.com/KrisCollinsMy"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/10043369?u=92d55277a84313acb516dbe3f28a37e0c7208623&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Document that constructing a URLSearchParams from a record does not support nested records.</p>\n<p dir=\"auto\">Also fix what the object was creating from in <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams#examples\" rel=\"nofollow\">Examples</a>.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">This was undocumented, and several very popular modules a <a href=\"https://github.com/sindresorhus/query-string/issues/307\" data-hovercard-type=\"issue\" data-hovercard-url=\"/sindresorhus/query-string/issues/307/hovercard\">deprecating themselves</a> in favor of <code>URLSearchParams</code>.</p>\n<h4 dir=\"auto\">Metadata</h4>\n<p dir=\"auto\">This PR…<br>\n--&gt;</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/14759",
+            "title": "URLSearchParams does not support nesting",
+            "date_modified": "2022-04-06T20:27:29.000Z",
+            "date_published": "2022-04-06T19:56:07.000Z",
+            "author": {
+                "name": "tredondo",
+                "url": "https://github.com/tredondo"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>This PR adds reference to <code>revert-layer</code> keyword wherever there is reference to other global property values.</li>\n<li>Also added some language improvement changes.</li>\n<li>In Cascade and Inheritance file, \"!important\" section, changed the text that says we don't recommend to use it to a \"Note\" and also moved up higher up in the section.</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Content issue tracking this work: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1155487000\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/13373\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/13373/hovercard\" href=\"https://github.com/mdn/content/issues/13373\">#13373</a><br>\nPR for the new revert-layer page: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1180668947\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14287\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/14287/hovercard\" href=\"https://github.com/mdn/content/pull/14287\">#14287</a></p>",
+            "url": "https://github.com/mdn/content/pull/14758",
+            "title": "Add revert-layer to CSS inheritance pages",
+            "date_modified": "2022-04-06T20:26:38.000Z",
+            "date_published": "2022-04-06T19:48:12.000Z",
+            "author": {
+                "name": "dipikabh",
+                "url": "https://github.com/dipikabh"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/46266811?u=cd28b2da6906e38215dcee2dbb575bac6e753e23&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">The links are opening in the same tab even though the \"open in new tab\" icon is present, which is kind of annoying especially when you are reading the doc and want to check the link side by side so I added target=\"_blank\" for the links.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">The links are opening in the same tab even though the \"open in new tab\" icon is present.</p>\n<p dir=\"auto\">This PR…<br>\n--&gt;</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds target=\"_blank\" for the links so they can open in new tabs.</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/14754",
+            "title": "Proposed change for opening links in new tabs.",
+            "date_modified": "2022-04-06T17:49:36.000Z",
+            "date_published": "2022-04-06T17:49:24.000Z",
+            "author": {
+                "name": "usaidpeerzada",
+                "url": "https://github.com/usaidpeerzada"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">It's meta meta documentation!</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">Recursion will recurse until morale improves.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">This is more or less the same info as in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1079878016\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11200\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/11200/hovercard\" href=\"https://github.com/mdn/content/pull/11200\">#11200</a>, but made a little more permanent.</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/14753",
+            "title": "Add README for meta site development",
+            "date_modified": "2022-04-06T18:10:18.000Z",
+            "date_published": "2022-04-06T17:19:11.000Z",
+            "author": {
+                "name": "ddbeck",
+                "url": "https://github.com/ddbeck"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1177872715\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/92\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/92/hovercard\" href=\"https://github.com/openwebdocs/project/issues/92\">openwebdocs/project#92</a>.</p>\n<p dir=\"auto\">The idea here is to simplify the page:</p>\n<ul dir=\"auto\">\n<li>Reorganize the different syntaxes in one block as we do elsewhere on MDN. In one glance, all the possible syntaxes are visible.</li>\n<li>Get rid of mentions of CSS Color Level4: the developer only needs to know if this is supported or not</li>\n<li>Describe each parameter separately.</li>\n<li>Add an example</li>\n</ul>\n<p dir=\"auto\">Note that the spec and browser compat sections, although defined correctly, are only partially displayed until <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1191601157\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/15646\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/15646/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/15646\">mdn/browser-compat-data#15646</a> is resolved. (This is also the cause of the flaw reported by our Preview URLs bot)</p>",
+            "url": "https://github.com/mdn/content/pull/14747",
+            "title": "Reorganize hwb()",
+            "date_modified": "2022-04-06T14:43:24.000Z",
+            "date_published": "2022-04-06T14:32:03.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Add a new issue template with form fields, to closely match the revised page report template.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">This new format provides clearer guidance and required fields, which should divert some unneeded issue creation and improve the quality of new issues that do get created.</p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">A follow up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1189867912\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14555\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/14555/hovercard\" href=\"https://github.com/mdn/content/pull/14555\">#14555</a>.</p>",
+            "url": "https://github.com/mdn/content/pull/14745",
+            "title": "Update content bug template to correspond to page report template",
+            "date_modified": "2022-04-06T14:05:10.000Z",
+            "date_published": "2022-04-06T13:52:07.000Z",
+            "author": {
+                "name": "ddbeck",
+                "url": "https://github.com/ddbeck"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/270485?u=80ae303b04c9bc939cffb735b637bbba3df720ca&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">It is still possible to create <code>AudioNode</code>s on <code>\"closed\"</code> <code>AudioContext</code>. It's useless, because it won't render anything, but it won't throw or anything.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">This is simply incorrect. The behaviour changed in 2018.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n<p dir=\"auto\">Source: myself (Web Audio API spec editor), <a href=\"https://github.com/WebAudio/web-audio-api/pull/1704/commits/29db014ddc526f63a58d9352424d17dc0329fed5\">spec change</a>, <a href=\"https://github.com/WebAudio/web-audio-api/issues/1580\" data-hovercard-type=\"issue\" data-hovercard-url=\"/WebAudio/web-audio-api/issues/1580/hovercard\">spec discussion</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">None.</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/14743",
+            "title": "It is still possible to create `AudioNode`s on `\"closed\"` `AudioContext`",
+            "date_modified": "2022-04-06T13:37:11.000Z",
+            "date_published": "2022-04-06T13:36:53.000Z",
+            "author": {
+                "name": "padenot",
+                "url": "https://github.com/padenot"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/59488384?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Workers do have access to XMLHttpRequest, but there are some restrictions as pointed out <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers\" rel=\"nofollow\">here</a>  in the docs. Added those restrictions.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">The information given <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers\" rel=\"nofollow\">here</a> should also be available in this page.</p>\n<h4 dir=\"auto\">Metadata</h4>\n<p dir=\"auto\">This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/14740",
+            "title": "Added Restrictions of XMLHttpRequest",
+            "date_modified": "2022-04-06T12:08:25.000Z",
+            "date_published": "2022-04-06T12:08:03.000Z",
+            "author": {
+                "name": "AtakanTekparmak",
+                "url": "https://github.com/AtakanTekparmak"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">After switch from <code>master</code> to <code>main</code> branch all MDN GitHub links changed. Old links to <code>master</code> are being redirected to <code>main</code>.<br>\nIf GitHub stops the redirection, all the links will break.</p>\n<p dir=\"auto\">So updating the links as follows:<br>\nFor directories,<br>\n<code>/tree/master/</code> -&gt; <code>/tree/main/</code><br>\nFor files,<br>\n<code>/tree/master/</code> -&gt; <code>/blob/main/</code><br>\nTo understand the difference between file and directory links refer <a href=\"https://stackoverflow.com/questions/39400848/in-github-urls-what-is-the-difference-between-a-tree-and-a-blob\" rel=\"nofollow\">this</a> discussion.</p>\n<p dir=\"auto\"><strong>Note:</strong> This PR is not limited to only the branch change. If a URL redirects then the URL will be updated.</p>\n<p dir=\"auto\">Let me know if 100 files per PR are ok.</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Extending <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1174258109\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14055\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/14055/hovercard\" href=\"https://github.com/mdn/content/pull/14055\">#14055</a>.</p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/14738",
+            "title": "Update moved URLs with their new locations (part 1)",
+            "date_modified": "2022-04-06T16:10:17.000Z",
+            "date_published": "2022-04-06T09:36:47.000Z",
+            "author": {
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">As part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1177872715\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/92\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/92/hovercard\" href=\"https://github.com/openwebdocs/project/issues/92\">openwebdocs/project#92</a> and as suggested in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1191830316\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14651\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/14651/hovercard\" href=\"https://github.com/mdn/content/pull/14651\">#14651</a>, this PR adds a simple glossary entry for the color wheel.</p>",
+            "url": "https://github.com/mdn/content/pull/14734",
+            "title": "Add color wheel to the glossary",
+            "date_modified": "2022-04-06T18:47:30.000Z",
+            "date_published": "2022-04-06T07:25:31.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/297678?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">The previous example was not valid JavaScript. Plus this shows how to keep internals internal via private fields.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/14731",
+            "title": "improve readability of web/api/elementinternals/form example",
+            "date_modified": "2022-04-06T04:43:00.000Z",
+            "date_published": "2022-04-06T04:40:29.000Z",
+            "author": {
+                "name": "trusktr",
+                "url": "https://github.com/trusktr"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">To add the documentation for the new Scripting API, including:</p>\n<ul dir=\"auto\">\n<li>scripting (pending)</li>\n<li>scripting.executeScript (pending)</li>\n<li>scripting.insertCSS (draft included)</li>\n<li>scripting.removeCSS (draft included)</li>\n<li>scripting.getRegisteredContentScripts (draft included)</li>\n<li>scripting.registerContentScripts (pending)</li>\n<li>scripting.unregisterContentScripts (pending)</li>\n<li>scripting.updateContentScripts (pending)</li>\n<li>release note (pending)</li>\n<li>Updates to <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs\" rel=\"nofollow\">tabs</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/insertCSS\" rel=\"nofollow\">tabs.insertCSS()</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/removeCSS\" rel=\"nofollow\">tabs.removeCSS()</a>, and <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript\" rel=\"nofollow\">tabs.executeScript()</a> (pending)</li>\n<li>scripting permission to permissions and optional permissions (pending)</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Addresses the requirements of these Bugzilla tickets:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736579\" rel=\"nofollow\">1736579</a> Implement <code>scripting.insertCSS()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736580\" rel=\"nofollow\">1736580</a> Implement <code>scripting.removeCSS()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736581\" rel=\"nofollow\">1736581</a> Implement <code>scripting.getRegisteredContentScripts()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736582\" rel=\"nofollow\">1736582</a> Initial implementation of <code>scripting.registerContentScripts()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736584\" rel=\"nofollow\">1736584</a> Implement <code>scripting.unregisterContentScripts()</code></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736585\" rel=\"nofollow\">1736585</a> Implement <code>scripting.updateContentScripts()</code></li>\n</ul>\n<h4 dir=\"auto\">Metadata</h4>\n<p dir=\"auto\">This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/14725",
             "title": "Scripting API documentation",
-            "date_modified": "2022-04-05T23:56:30.000Z",
+            "date_modified": "2022-04-06T18:41:30.000Z",
             "date_published": "2022-04-05T22:57:52.000Z",
             "author": {
                 "name": "rebloor",
                 "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/68787691?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14724",
-            "title": "Modified aria-pressed link",
-            "date_modified": "2022-04-05T20:54:43.000Z",
-            "date_published": "2022-04-05T20:54:28.000Z",
-            "author": {
-                "name": "Karina-Agliullova",
-                "url": "https://github.com/Karina-Agliullova"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">ARIA was pointing to ARIA 1.1 which has been heavily changed. 1.3, while still in ED, has a lot of features implemented and is the defacto standard.</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14722",
-            "title": "Updated specName: ARIA 1.3",
-            "date_modified": "2022-04-05T20:33:52.000Z",
-            "date_published": "2022-04-05T20:33:51.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
             }
         },
         {
@@ -80,149 +223,6 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1177872715\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/92\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/92/hovercard\" href=\"https://github.com/openwebdocs/project/issues/92\">openwebdocs/project#92</a>.</p>\n<p dir=\"auto\">The idea here is to simplify the page:</p>\n<ul dir=\"auto\">\n<li>Reorganize the different syntaxes in one block as we do elsewhere on MDN. In one glance, all the possible syntaxes are visible.</li>\n<li>Put the modern, space-separated, syntax first.</li>\n<li>Get rid of mentions of CSS Color Level4: the developer only needs to know if this is supported or not</li>\n<li>Get rid of the note saying that <code>hsla()</code> is an alias. I put this in the <em>See also</em> section, this will stay prominent in <code>hsla()</code> as we want to lower its use, but not here.</li>\n<li>Describe each parameter separately.</li>\n</ul>\n<p dir=\"auto\">Note that the spec and browser compat sections, although defined correctly, are only partially displayed until <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1191601157\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/15646\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/15646/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/15646\">mdn/browser-compat-data#15646</a> is resolved. (This is also the cause of the flaw reported by our <em>Preview URLs</em> bot)</p>\n<p dir=\"auto\">This is the first color function to be reorganized. The idea is to do the same for each of the 7 others.</p>",
-            "url": "https://github.com/mdn/content/pull/14651",
-            "title": "Reorganize the hsl() page",
-            "date_modified": "2022-04-05T23:59:10.000Z",
-            "date_published": "2022-04-04T13:55:03.000Z",
-            "author": {
-                "name": "teoli2003",
-                "url": "https://github.com/teoli2003"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36098125?u=8ce7050f9c251055b0c3464b7a3f646a9547fb78&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Document the <code>blocking</code> attribute on <code>script</code>, <code>link</code> and <code>style</code> HTML elements and basic examples for how to use it.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">The attribute was added to HTML spec in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1096698419\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/7474\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/7474/hovercard\" href=\"https://github.com/whatwg/html/pull/7474\">whatwg/html#7474</a></p>\n<h4 dir=\"auto\">Supporting details</h4>\n<p dir=\"auto\">Explainer for the added attribute : <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1011378851\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/7131\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/html/issues/7131/hovercard\" href=\"https://github.com/whatwg/html/issues/7131\">whatwg/html#7131</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1130799879\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12900\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/12900/hovercard\" href=\"https://github.com/mdn/content/issues/12900\">#12900</a></p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14648",
-            "title": "Document blocking attribute for link,script,style elements",
-            "date_modified": "2022-04-04T14:25:21.000Z",
-            "date_published": "2022-04-04T12:09:51.000Z",
-            "author": {
-                "name": "abinpaul1",
-                "url": "https://github.com/abinpaul1"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1177872715\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/92\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/92/hovercard\" href=\"https://github.com/openwebdocs/project/issues/92\">openwebdocs/project#92</a> (revamp our color guide and reference).</p>\n<p dir=\"auto\">This PR moves the system-related color keywords into their own page (taking them off the <code>&lt;color&gt;</code> page).</p>\n<p dir=\"auto\">Note:</p>\n<ul dir=\"auto\">\n<li>There is much more work to be done on the <code>&lt;color&gt;</code> page, I intentionally limited this PR by moving the color keywords only.</li>\n<li>We don't have BCD info for these, so I didn't add a <em>Browser compatibility</em> section to it (I'll see if I have time to come back to this during this project, but this is secondary).</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14647",
-            "title": "Move CSS system color keywords to their own page",
-            "date_modified": "2022-04-04T12:56:45.000Z",
-            "date_published": "2022-04-04T12:08:42.000Z",
-            "author": {
-                "name": "teoli2003",
-                "url": "https://github.com/teoli2003"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/91103690?u=880d1deb06413689d41a24e87323b33fb1a84afa&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">\"targetWindow\" variable was missing from primary example. This may cause confusion.</p>\n\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Include <code>targetWindow</code> variable in primary example. This is part of the syntax and is mentioned in the proceeding syntax explanation, though the fact that the variable is missing may cause confusion to unfamiliar developers.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">To help improve the clarity and effectiveness of the documentation.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\">Further examples show \"targetWindow\" - <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#example\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#example</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li>[<g-emoji class=\"g-emoji\" alias=\"white_check_mark\" fallback-src=\"https://github.githubassets.com/images/icons/emoji/unicode/2705.png\">✅</g-emoji>  ] Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/14642",
-            "title": "Update Window.postMessage() syntax",
-            "date_modified": "2022-04-05T05:43:30.000Z",
-            "date_published": "2022-04-04T06:09:57.000Z",
-            "author": {
-                "name": "achamas-playco",
-                "url": "https://github.com/achamas-playco"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">This creates a form-based template with required fields for prefilling via Yari.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">To improve response rates on new issues and to divert issues before they've opened.</p>",
-            "url": "https://github.com/mdn/content/pull/14555",
-            "title": "Add a new form-based page report template",
-            "date_modified": "2022-04-05T12:51:49.000Z",
-            "date_published": "2022-04-01T14:19:16.000Z",
-            "author": {
-                "name": "ddbeck",
-                "url": "https://github.com/ddbeck"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14534",
-            "title": "Major Revision: combobox role",
-            "date_modified": "2022-04-04T23:40:08.000Z",
-            "date_published": "2022-04-01T04:19:22.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64103?u=06f0d3d9c67df1756585ec2a2929fe2b4f18648a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Migrates the adding images section from the README to the legacy section of the contributors' site.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">Continue the work of consolidating meta documentation in one place.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/14503",
-            "title": "Migrate adding images directions from README to meta site",
-            "date_modified": "2022-04-04T12:22:43.000Z",
-            "date_published": "2022-03-31T11:14:15.000Z",
-            "author": {
-                "name": "ddbeck",
-                "url": "https://github.com/ddbeck"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/26864973?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Fixes a minor doc typo under <code>Parameters</code></p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">First PR and to improve readability of doc</p>\n<h4 dir=\"auto\">Supporting details</h4>\n<p dir=\"auto\">N/A</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">N/A</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/14499",
-            "title": "Minor typo fix",
-            "date_modified": "2022-03-31T07:22:30.000Z",
-            "date_published": "2022-03-31T07:12:44.000Z",
-            "author": {
-                "name": "KRicky13",
-                "url": "https://github.com/KRicky13"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87150472?u=c1b587fedbf7d5d3e9993fd8dd874571f42ce571&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary/Motivation</h4>\n<ul dir=\"auto\">\n<li>Uses HTML tags instead of markdown for text formatting inside HTML tables where applicable (avoids seeing literal text such as <code>**user credentials**</code> on the page)</li>\n<li>Other typography modifications (e.g. using code formatting instead of quotes for attribute names, etc.)</li>\n<li>Slight rewording(s)</li>\n</ul>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/14492",
-            "title": "Slight \"clean-up\" of crossorigin attribute page",
-            "date_modified": "2022-03-31T22:14:11.000Z",
-            "date_published": "2022-03-31T04:30:35.000Z",
-            "author": {
-                "name": "cw118",
-                "url": "https://github.com/cw118"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/166681?u=c980f2c56a1254843f953cae963a8cb2bf7a6a8d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\"><code>min</code> and <code>max</code> can be both a string or a number... right? I don't know how I would represent an iso8601 date as a number. In fact, the examples show all of these are strings <em>except</em> <code>number</code> and <code>range</code></p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">fix an (assumed) error</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\">From <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max\" rel=\"nofollow\">MDN</a>:</p>\n<table role=\"table\">\n<thead>\n<tr>\n<th>Input type</th>\n<th>Example</th>\n<th>Example</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>date</td>\n<td>yyyy-mm-dd</td>\n<td><code>&lt;input type=\"date\" min=\"2019-12-25\" step=\"1\"&gt;</code></td>\n</tr>\n<tr>\n<td>month</td>\n<td>yyyy-mm</td>\n<td><code>&lt;input type=\"month\" min=\"2019-12\" step=\"12\"&gt;</code></td>\n</tr>\n<tr>\n<td>week</td>\n<td>yyyy-W##</td>\n<td><code>&lt;input type=\"week\" min=\"2019-W23\" step=\"\"&gt;</code></td>\n</tr>\n<tr>\n<td>time</td>\n<td>hh:mm</td>\n<td><code>&lt;input type=\"time\" min=\"09:00\" step=\"900\"&gt;</code></td>\n</tr>\n<tr>\n<td>datetime-local</td>\n<td>yyyy-mm-ddThh:mm</td>\n<td><code>&lt;input type=\"datetime-local\" min=\"2019-12-25T19:30\"&gt;</code></td>\n</tr>\n<tr>\n<td>number</td>\n<td><code>&lt;number&gt;</code></td>\n<td><code>&lt;input type=\"number\" min=\"0\" step=\"5\" max=\"100\"&gt;</code></td>\n</tr>\n<tr>\n<td>range</td>\n<td><code>&lt;number&gt;</code></td>\n<td><code>&lt;input type=\"range\" min=\"60\" step=\"5\" max=\"100\"&gt;</code></td>\n</tr>\n</tbody>\n</table>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">n/a</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n\n<p dir=\"auto\">similar PR: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1186960526\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14481\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/14481/hovercard\" href=\"https://github.com/mdn/content/pull/14481\">#14481</a></p>",
-            "url": "https://github.com/mdn/content/pull/14482",
-            "title": "Clarify that min can also be a string",
-            "date_modified": "2022-03-31T23:31:33.000Z",
-            "date_published": "2022-03-30T20:37:06.000Z",
-            "author": {
-                "name": "JasonMFry",
-                "url": "https://github.com/JasonMFry"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/166681?u=c980f2c56a1254843f953cae963a8cb2bf7a6a8d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\"><code>min</code> and <code>max</code> can be both a string or a number... right? I don't know how I would represent an iso8601 date as a number. In fact, the examples show all of these are strings <em>except</em> <code>number</code> and <code>range</code></p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">fix an (assumed) error</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\">From <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max\" rel=\"nofollow\">MDN</a>:</p>\n<table role=\"table\">\n<thead>\n<tr>\n<th>Input type</th>\n<th>Example</th>\n<th>Example</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>date</td>\n<td>yyyy-mm-dd</td>\n<td><code>&lt;input type=\"date\" min=\"2019-12-25\" step=\"1\"&gt;</code></td>\n</tr>\n<tr>\n<td>month</td>\n<td>yyyy-mm</td>\n<td><code>&lt;input type=\"month\" min=\"2019-12\" step=\"12\"&gt;</code></td>\n</tr>\n<tr>\n<td>week</td>\n<td>yyyy-W##</td>\n<td><code>&lt;input type=\"week\" min=\"2019-W23\" step=\"\"&gt;</code></td>\n</tr>\n<tr>\n<td>time</td>\n<td>hh:mm</td>\n<td><code>&lt;input type=\"time\" min=\"09:00\" step=\"900\"&gt;</code></td>\n</tr>\n<tr>\n<td>datetime-local</td>\n<td>yyyy-mm-ddThh:mm</td>\n<td><code>&lt;input type=\"datetime-local\" min=\"2019-12-25T19:30\"&gt;</code></td>\n</tr>\n<tr>\n<td>number</td>\n<td><code>&lt;number&gt;</code></td>\n<td><code>&lt;input type=\"number\" min=\"0\" step=\"5\" max=\"100\"&gt;</code></td>\n</tr>\n<tr>\n<td>range</td>\n<td><code>&lt;number&gt;</code></td>\n<td><code>&lt;input type=\"range\" min=\"60\" step=\"5\" max=\"100\"&gt;</code></td>\n</tr>\n</tbody>\n</table>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">n/a</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n\n<p dir=\"auto\">Similar PR: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1186960908\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/14482\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/14482/hovercard\" href=\"https://github.com/mdn/content/pull/14482\">#14482</a></p>",
-            "url": "https://github.com/mdn/content/pull/14481",
-            "title": "Clarify that max can also be a string",
-            "date_modified": "2022-03-31T23:24:24.000Z",
-            "date_published": "2022-03-30T20:36:42.000Z",
-            "author": {
-                "name": "JasonMFry",
-                "url": "https://github.com/JasonMFry"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14451",
-            "title": "Major revision: menubar role",
-            "date_modified": "2022-04-04T23:42:32.000Z",
-            "date_published": "2022-03-30T00:14:40.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/14447",
-            "title": "Major revision: menuitem role",
-            "date_modified": "2022-04-05T00:31:17.000Z",
-            "date_published": "2022-03-29T21:30:27.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
             }
         }
     ]
