@@ -6,6 +6,17 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/68890552?u=43aeeabba4f888ab80c0b028a67425003f1b693d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Hello world.</p>\n<p dir=\"auto\">I would like to suggest that dark theme support be added on npmjs.com. It would be so relaxing for many sensible eyes !  For some people, screens light represent a great suffering.</p>\n<p dir=\"auto\">I also think that for each package, there should be more statistics available, at least for the author.</p>\n<ul dir=\"auto\">\n<li>Downloads history in author's dashboard  (no need for external services like npm-stats)</li>\n<li>Downloads count updated more often (It currently seems to be updated every 24hrs)<br>\nI think stats should be added in the official website because, external sites maintained by one or two devs, can be abandoned at any time by their authors.</li>\n</ul>\n<p dir=\"auto\">But the most important I think, is to provide an eye-caring theme. Thanks.</p>",
+            "url": "https://github.com/npm/rfcs/issues/577",
+            "title": "Dark theme and better stats on npmjs.com",
+            "date_modified": "2022-04-25T23:12:23.000Z",
+            "date_published": "2022-04-25T22:18:07.000Z",
+            "author": {
+                "name": "archnim",
+                "url": "https://github.com/archnim"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/45469?u=6ab74b3b934f9659a90b588062c2c4328e40c6be&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\"><code>npm link</code> works.</p>\n<p dir=\"auto\"><code>npm unlink</code> doesn't.</p>\n<h3 dir=\"auto\">Example</h3>\n<div class=\"highlight highlight-source-shell position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ npm unlink\nnpm ERR! Must provide a package name to remove\n\nnpm ERR! A complete log of this run can be found in:\nnpm ERR!     $HOME/.npm/_logs/2022-04-21T16_17_37_636Z-debug-0.log\"><pre>$ npm unlink\nnpm ERR<span class=\"pl-k\">!</span> Must provide a package name to remove\n\nnpm ERR<span class=\"pl-k\">!</span> A <span class=\"pl-c1\">complete</span> log of this run can be found in:\nnpm ERR<span class=\"pl-k\">!</span>     <span class=\"pl-smi\">$HOME</span>/.npm/_logs/2022-04-21T16_17_37_636Z-debug-0.log</pre></div>\n<p dir=\"auto\">Seems pretty straightforward to me - if i can <code>npm foo</code> i should be able to <code>npm unfoo</code>.</p>",
             "url": "https://github.com/npm/rfcs/issues/576",
             "title": "[RRFC] bare `npm unlink` should work",
@@ -64,7 +75,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/45469?u=6ab74b3b934f9659a90b588062c2c4328e40c6be&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1047672387\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/4017\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/4017/hovercard?comment_id=1101481619&amp;comment_type=issue_comment\" href=\"https://github.com/npm/cli/issues/4017#issuecomment-1101481619\">npm/cli#4017 (comment)</a> - <code>npm version</code> should be able to work inside workspaces.</p>\n<h3 dir=\"auto\">Example</h3>\n<p dir=\"auto\">See the OP in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1047672387\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/4017\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/4017/hovercard\" href=\"https://github.com/npm/cli/issues/4017\">npm/cli#4017</a>.</p>\n<p dir=\"auto\">I think adding an npm config of <code>workspace-tag-version-prefix</code>, which defaults to <code>[$workspaceName] </code> - which would result in a tag of <code>[foo] v1.2.3</code>, for example - should address the need.</p>",
             "url": "https://github.com/npm/rfcs/issues/570",
             "title": "[RRFC] `workspace-tag-version-prefix` config",
-            "date_modified": "2022-04-20T15:18:43.000Z",
+            "date_modified": "2022-04-25T17:22:08.000Z",
             "date_published": "2022-04-18T17:35:38.000Z",
             "author": {
                 "name": "ljharb",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "ruyadorno",
                 "url": "https://github.com/ruyadorno"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/49113249?u=f4418c6cf440024c83b708f52b59d21cbf6ba050&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<div class=\"highlight highlight-source-json position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"foo: &quot;^0.1.1&quot;\"><pre><span class=\"pl-ii\">foo: \"^0.1.1\"</span></pre></div>\n<p dir=\"auto\">foo@latest -&gt; 0.1.3</p>\n<p dir=\"auto\">exec <code>npm update foo</code></p>\n<div class=\"highlight highlight-source-json position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"foo: &quot;^0.1.3&quot;\"><pre><span class=\"pl-ii\">foo: \"^0.1.3\"</span></pre></div>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<p dir=\"auto\">we need to add <code>--save</code> option now which is verbose, also <code>npm update</code> not support update the <code>devDependencies</code></p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<p dir=\"auto\">there're two solution:</p>\n<ul dir=\"auto\">\n<li><code>npm update</code>, update both <code>dependencies</code> and <code>devDependencies</code></li>\n<li>update <code>denpendencies</code> only and <code>-D or --save-dev</code> update <code>devDependencies</code></li>\n</ul>\n<p dir=\"auto\">by the way, the above has already implemented by <code>npm install</code>, so we can also update dependencies by <code>npm installl</code></p>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/540",
-            "title": "[RRFC] `npm update` update denpendecy semver in package.json by default",
-            "date_modified": "2022-03-02T15:18:07.000Z",
-            "date_published": "2022-02-28T04:54:26.000Z",
-            "author": {
-                "name": "HomyeeKing",
-                "url": "https://github.com/HomyeeKing"
             }
         }
     ]
