@@ -6,6 +6,39 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1152698?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <a href=\"https://github.com/mdn/browser-compat-data/blob/main/browsers/ie.json\">ie.json</a> browser file still says that IE11 is \"current\".</p>\n<p dir=\"auto\">This commit changes the status to \"retired\" given the <a href=\"https://docs.microsoft.com/en-us/lifecycle/announcements/internet-explorer-11-end-of-support\" rel=\"nofollow\">formal desktop app retirement coming up on June 15 2022</a>.</p>\n<p dir=\"auto\">This PR should, in theory, wait until June 15 to get merged, although I don't think there's a risk with merging it earlier than this.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16376",
+            "title": "Marking IE11 as retired",
+            "date_modified": "2022-05-20T08:41:28.000Z",
+            "date_published": "2022-05-20T08:41:05.000Z",
+            "author": {
+                "name": "captainbrosset",
+                "url": "https://github.com/captainbrosset"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF102 removes <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/sidebar\" rel=\"nofollow\"><code class=\"notranslate\">Window.sidebar</code></a> behind a preference in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1768486\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1768486</a></p>\n<p dir=\"auto\">Looking at BCD this is an FF alias for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/external\" rel=\"nofollow\"><code class=\"notranslate\">Window.external</code></a>, which is still supported, albeit deprecated. Note though that <code class=\"notranslate\">sidebar</code> historically had more functionality than <code class=\"notranslate\">external</code> but now they are both equally disabled :-)</p>\n<p dir=\"auto\">Anyway, this PR updates <code class=\"notranslate\">window.external</code> entry to remove the unpreff-ed <code class=\"notranslate\">sidebar</code> alias and add an entry for the pref. For FF android it just removes the alias.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1238931548\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/16149\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/16149/hovercard\" href=\"https://github.com/mdn/content/issues/16149\">mdn/content#16149</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16375",
+            "title": "FF102 window.sidebar alias of window.external moved behind pref",
+            "date_modified": "2022-05-20T02:19:10.000Z",
+            "date_published": "2022-05-20T01:35:41.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">As discussed in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1238942056\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/16152\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/16152/hovercard?comment_id=1129140999&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/issues/16152#issuecomment-1129140999\">mdn/content#16152 (comment)</a> , <code class=\"notranslate\">HTMLCanvasElement.mozGetAsFile</code> has been removed in FF102. It was  behind a flag since FF101 and is not present in any other platform. Therefore it is now old enough (2 years) to remove from BCD.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1238942056\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/16152\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/16152/hovercard\" href=\"https://github.com/mdn/content/issues/16152\">mdn/content#16152</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16372",
+            "title": "HTMLCanvasElement.mozGetAsFile - removed from all platforms",
+            "date_modified": "2022-05-20T01:06:45.000Z",
+            "date_published": "2022-05-20T01:05:21.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Per <a href=\"https://w3c.github.io/selection-api/#selectstart-event\" rel=\"nofollow\">https://w3c.github.io/selection-api/#selectstart-event</a> the event target of \"selectstart\" events is a Node, which will be either an Element or a Text node.</p>\n<p dir=\"auto\">Per <a href=\"https://w3c.github.io/selection-api/#selectionchange-event\" rel=\"nofollow\">https://w3c.github.io/selection-api/#selectionchange-event</a> the event target can be Document, HTMLInputElement or HTMLTextareaElement.</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"753354829\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/7545\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/7545/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/7545\">#7545</a>.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16359",
             "title": "Adapt selectstart/selectionchange events to new event structure",
@@ -20,7 +53,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16358",
             "title": "Link Chromium/WebKit bugs for selectionchange events",
-            "date_modified": "2022-05-19T23:09:23.000Z",
+            "date_modified": "2022-05-20T14:43:17.000Z",
             "date_published": "2022-05-19T07:06:54.000Z",
             "author": {
                 "name": "foolip",
@@ -97,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a> This is my attempt to address the av1 codec string compatibility issues in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1229124802\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/16173\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/16173/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/16173\">#16173</a>.</p>\n<p dir=\"auto\">I abandoned attempt to do this as a subfeature. While we can determine when AV1 is supported (and some subset of the codecs using this test file  <a href=\"https://bug1757861.bmoattachments.org/attachment.cgi?id=9271759\" rel=\"nofollow\">this file</a>), we actually can't determine when/if a system has these particular behaviours with respect to the codec parameter options (or at least I do not have time/ability to write test code.</p>\n<p dir=\"auto\">So this add notes for just the <code class=\"notranslate\">canPlayType()</code> method for FF and Chrome. If you are OK with the approach, I will roll this out to the other chromiums and then the other methods.</p>\n<p dir=\"auto\">Note,</p>\n<ul dir=\"auto\">\n<li>it <em>might</em> be reasonable to add subfeatures just for broad codec/type/container support - e.g. av1 was introduced in Chrome 70. I think that would be somewhat useful to know and could be tested.</li>\n<li>Unlike previous discussions of media features, this is doable because it is specific to a function, not \"across the platform\".</li>\n<li>However I am not sure how <em>useful</em> it is to know that we can use this mime type with this message, if we don't know the detail of the codecs.</li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #16173.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1229124802\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/16173\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/16173/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/16173\">#16173</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16312",
             "title": "FF101 HTMLMediaElement.canPlayType() av1 codec support",
-            "date_modified": "2022-05-17T05:09:39.000Z",
+            "date_modified": "2022-05-20T01:10:39.000Z",
             "date_published": "2022-05-17T01:03:27.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -113,50 +146,6 @@
             "author": {
                 "name": "JoshuaCWebDeveloper",
                 "url": "https://github.com/JoshuaCWebDeveloper"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes `partial_implementation from webextensions.api.Events.event.  It was added in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"308343971\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/1686\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/1686/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/1686\">#1686</a>, but it seems to be due to the fact that some subfeatures weren't supported.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16292",
-            "title": "Remove partial_implementation from webextensions.api.Events.event",
-            "date_modified": "2022-05-14T08:24:59.000Z",
-            "date_published": "2022-05-14T08:24:41.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes the <code class=\"notranslate\">partial_implementation</code> statements from the <code class=\"notranslate\">text-decoration</code> CSS property for Firefox.  They had come from the wiki migration with no explanation.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16291",
-            "title": "Remove partial_implementation statements from text-decoration",
-            "date_modified": "2022-05-14T08:22:15.000Z",
-            "date_published": "2022-05-14T08:21:57.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR simplifies the data for the <code class=\"notranslate\">font-size</code> CSS property for Internet Explorer.  The <code class=\"notranslate\">partial_implementation</code> statement came from the wiki migration, but there's no explanation of why, and other <code class=\"notranslate\">rem</code> value properties in BCD don't have a <code class=\"notranslate\">partial_implementation</code> statement.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16290",
-            "title": "Simplify IE data for font-size rem values",
-            "date_modified": "2022-05-14T08:15:06.000Z",
-            "date_published": "2022-05-14T08:14:49.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes the <code class=\"notranslate\">partial_implementation</code> statements for Safari from the <code class=\"notranslate\">font-feature-settings</code> CSS property.  In my quick manual testing, I didn't find support for this property, prefixed or unprefixed.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16289",
-            "title": "Remove Safari partial_implementation statements for font-feature-settings",
-            "date_modified": "2022-05-14T08:06:00.000Z",
-            "date_published": "2022-05-14T08:05:39.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
             }
         }
     ]
