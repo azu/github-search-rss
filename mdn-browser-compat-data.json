@@ -6,25 +6,58 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">abort</code> global event and separates them into their own interfaces.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16514",
-            "title": "Remove api.GlobalEventHandlers.onabort",
-            "date_modified": "2022-06-02T22:51:31.000Z",
-            "date_published": "2022-06-02T05:25:05.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">animation</code> event handlers from the GlobalEventHandlers mixin.  There were some odd discrepancies between the events already on the interfaces.  Here's what I found:</p>\n<p dir=\"auto\">The <code class=\"notranslate\">animation</code> events were set to <code class=\"notranslate\">43</code>, however the event handlers said they were added in <code class=\"notranslate\">43</code> only on <code class=\"notranslate\">Window</code> then <code class=\"notranslate\">79</code> everywhere else.  After some further research, it appears that the events <em>were</em> added in <code class=\"notranslate\">43</code>, and then the event handlers were added later other than for Window.</p>\n<p dir=\"auto\">Additionally, the <code class=\"notranslate\">Window</code> event had prefixes added to them, which came from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"417075387\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/3563\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/3563/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/3563\">#3563</a>.  However, this appears to have been a mistake; the same PR added the features for <code class=\"notranslate\">Document</code> and <code class=\"notranslate\">HTMLElement</code> which don't have the prefix data, and the description indicates intention to remove it.  I've removed it here.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16531",
+            "title": "Demix animation events from GlobalEventHandlers",
+            "date_modified": "2022-06-03T15:17:15.000Z",
+            "date_published": "2022-06-03T15:02:22.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Follow up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1256507445\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/16509\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/16509/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/16509\">#16509</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16511",
-            "title": "Fix Safari 3 versions that were in Safari 1",
-            "date_modified": "2022-06-01T17:54:00.000Z",
-            "date_published": "2022-06-01T17:40:39.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">blur</code> and <code class=\"notranslate\">focus</code> events from the GlobalEventHandlers mixin.  Note that Window is not modified in this PR because it already has the events.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16530",
+            "title": "Demix blur/focus events from GlobalEventHandlers",
+            "date_modified": "2022-06-03T12:32:48.000Z",
+            "date_published": "2022-06-03T12:32:33.000Z",
             "author": {
-                "name": "foolip",
-                "url": "https://github.com/foolip"
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the click events on the GlobalEventHandlers mixin.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16529",
+            "title": "Demix click events from GlobalEventHandlers",
+            "date_modified": "2022-06-03T12:24:51.000Z",
+            "date_published": "2022-06-03T12:21:03.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">These should be using <a href=\"https://w3c.github.io/largest-contentful-paint\" rel=\"nofollow\">https://w3c.github.io/largest-contentful-paint</a> URLs rather than <a href=\"https://www.w3.org/TR/largest-contentful-paint\" rel=\"nofollow\">https://www.w3.org/TR/largest-contentful-paint</a> URLs.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16527",
+            "title": "Update LargestContentfulPaint spec URLs",
+            "date_modified": "2022-06-03T11:37:35.000Z",
+            "date_published": "2022-06-03T09:04:10.000Z",
+            "author": {
+                "name": "sideshowbarker",
+                "url": "https://github.com/sideshowbarker"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19343?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">I added <code class=\"notranslate\">oklch()</code> and <code class=\"notranslate\">oklab()</code> from <a href=\"https://drafts.csswg.org/css-color/#ok-lab\" rel=\"nofollow\">CSS Colors 4</a> to color types.</p>\n<p dir=\"auto\"><a href=\"https://github.com/mdn/content/pull/15033\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/15033/hovercard\">MDN Pages</a> was recently merged.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">People reports that Safari 15.4 supports <a href=\"https://github.com/Fyrd/caniuse/issues/6124#issuecomment-1105506581\" data-hovercard-type=\"issue\" data-hovercard-url=\"/Fyrd/caniuse/issues/6124/hovercard\"><code class=\"notranslate\">oklch()</code></a>.</p>\n<p dir=\"auto\">I found mention only in Safari TP <a href=\"https://developer.apple.com/safari/technology-preview/release-notes/\" rel=\"nofollow\">release notes</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16526",
+            "title": "Add oklab() and oklch()",
+            "date_modified": "2022-06-03T06:07:43.000Z",
+            "date_published": "2022-06-03T06:04:00.000Z",
+            "author": {
+                "name": "ai",
+                "url": "https://github.com/ai"
             }
         },
         {
@@ -58,17 +91,6 @@
             "author": {
                 "name": "rachelandrew",
                 "url": "https://github.com/rachelandrew"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The prioritychange_event is fired on TaskSignal, but the URL assumed it was global. This fixes the URL for the docs to match where they will actually be.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16467",
-            "title": "TaskSignal: prioritychange_event url fix",
-            "date_modified": "2022-05-30T07:02:05.000Z",
-            "date_published": "2022-05-30T07:01:44.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
             }
         },
         {
