@@ -6,6 +6,39 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/965338?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Safari/iOS supports <code class=\"notranslate\">preventScroll</code> of <code class=\"notranslate\">element.focus()</code>  from 15.5.</p>\n<ul dir=\"auto\">\n<li><a href=\"https://webkit.org/blog/12669/new-webkit-features-in-safari-15-5/\" rel=\"nofollow\">https://webkit.org/blog/12669/new-webkit-features-in-safari-15-5/</a></li>\n<li><a href=\"https://bugs.webkit.org/show_bug.cgi?id=236584\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=236584</a></li>\n</ul>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">I verified this on iOS 15.5 using sample like <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16589",
+            "title": "Update Safari/iOS support for preventScroll option",
+            "date_modified": "2022-06-07T23:40:39.000Z",
+            "date_published": "2022-06-07T23:39:08.000Z",
+            "author": {
+                "name": "makotokato",
+                "url": "https://github.com/makotokato"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/176218?u=f764a6e3a8461379124acf1ce4e5f66f1b1738b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The bulk of this just Safari 16 beta data derived from the mdn-bcd-collector collected data (on both macOS 12 and macOS 13 beta), but in addition:</p>\n<ul dir=\"auto\">\n<li>This adds version_removed for SharedWorkerGlobalScope corresponding to when SharedWorker was previously removed from Safari so that we can then document its addition in 16 beta (compare with the version numbers in SharedWorker.json).</li>\n<li>Adds data for KeyframeEffect, as otherwise we would introduce lint failures from mdn-bcd-collector due to the parent being false. The 13.1/13.4 versions here come straight from mdn-bcd-collector; no further testing has been done there, but given this is when Web Animations support was added this seems highly likely to be correct.</li>\n</ul>\n<p dir=\"auto\">Note this will currently fail the lint:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"Problems in 2 files:\n✖ browsers/safari.json\n  → Browser Data – 1 error:\n    → safari has multiple beta releases (16, 15.5), which is not allowed.\n✖ browsers/safari_ios.json\n  → Browser Data – 1 error:\n    → safari_ios has multiple beta releases (16, 15.5), which is not allowed.\"><pre class=\"notranslate\"><code>Problems in 2 files:\n✖ browsers/safari.json\n  → Browser Data – 1 error:\n    → safari has multiple beta releases (16, 15.5), which is not allowed.\n✖ browsers/safari_ios.json\n  → Browser Data – 1 error:\n    → safari_ios has multiple beta releases (16, 15.5), which is not allowed.\n</code></pre></div>\n<p dir=\"auto\">It's unclear to me what the correct solution here is; both 15.5 and 16 are currently beta releases, so the lint is enforcing a property that isn't true.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16586",
+            "title": "Updates for Safari 16 beta",
+            "date_modified": "2022-06-07T17:07:54.000Z",
+            "date_published": "2022-06-07T17:00:21.000Z",
+            "author": {
+                "name": "gsnedders",
+                "url": "https://github.com/gsnedders"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16578",
+            "title": "Mirror Opera and Samsung Internet support for CSS @layer rule",
+            "date_modified": "2022-06-07T16:29:18.000Z",
+            "date_published": "2022-06-07T14:52:48.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">emptied</code> event from the GlobalEventHandlers mixin.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16559",
             "title": "Demix emptied event from GlobalEventHandlers",
@@ -31,7 +64,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/45960703?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Remove never-implemented WebVR interfaces.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n<p dir=\"auto\">Apparently, these interfaces existed only within WebVR spec drafts and were never actually implemented.</p>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mozilla/gecko-dev/blob/master/dom/webidl/VRDisplay.webidl\">These interfaces within Firefox source code</a> (please also see \"History\" of the file, including history prior to renaming)</li>\n<li><a href=\"https://immersive-web.github.io/webvr/spec/1.1/\" rel=\"nofollow\">WebVR spec</a> (please see IDL and spec history too)</li>\n</ul>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">This is a follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1248079346\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/16429\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/16429/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/16429\">#16429</a>.<br>\nRelated content update: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1261157964\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/17013\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/17013/hovercard\" href=\"https://github.com/mdn/content/pull/17013\">mdn/content#17013</a></p>\n",
             "url": "https://github.com/mdn/browser-compat-data/pull/16557",
             "title": "Remove never-implemented WebVR interfaces",
-            "date_modified": "2022-06-05T21:40:00.000Z",
+            "date_modified": "2022-06-07T20:16:12.000Z",
             "date_published": "2022-06-05T15:21:00.000Z",
             "author": {
                 "name": "bershanskiy",
@@ -143,39 +176,6 @@
             "title": "Demix canplay events from GlobalEventHandlers",
             "date_modified": "2022-06-05T08:03:51.000Z",
             "date_published": "2022-06-05T08:03:32.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">cancel</code> event from GlobalEventHandlers.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16533",
-            "title": "Demix cancel event from GlobalEventHandlers",
-            "date_modified": "2022-06-04T05:00:08.000Z",
-            "date_published": "2022-06-04T04:59:51.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">animation</code> event handlers from the GlobalEventHandlers mixin.  There were some odd discrepancies between the events already on the interfaces.  Here's what I found:</p>\n<p dir=\"auto\">The <code class=\"notranslate\">animation</code> events were set to <code class=\"notranslate\">43</code>, however the event handlers said they were added in <code class=\"notranslate\">43</code> only on <code class=\"notranslate\">Window</code> then <code class=\"notranslate\">79</code> everywhere else.  After some further research, it appears that the events <em>were</em> added in <code class=\"notranslate\">43</code>, and then the event handlers were added later other than for Window.</p>\n<p dir=\"auto\">Additionally, the <code class=\"notranslate\">Window</code> event had prefixes added to them, which came from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"417075387\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/3563\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/3563/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/3563\">#3563</a>.  However, this appears to have been a mistake; the same PR added the features for <code class=\"notranslate\">Document</code> and <code class=\"notranslate\">HTMLElement</code> which don't have the prefix data, and the description indicates intention to remove it.  I've removed it here.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16531",
-            "title": "Demix animation events from GlobalEventHandlers",
-            "date_modified": "2022-06-03T15:17:15.000Z",
-            "date_published": "2022-06-03T15:02:22.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">blur</code> and <code class=\"notranslate\">focus</code> events from the GlobalEventHandlers mixin.  Note that Window is not modified in this PR because it already has the events.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16530",
-            "title": "Demix blur/focus events from GlobalEventHandlers",
-            "date_modified": "2022-06-03T12:32:48.000Z",
-            "date_published": "2022-06-03T12:32:33.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
