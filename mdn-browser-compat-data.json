@@ -6,6 +6,39 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">These are features that are supported \"everywhere\" except Samsung<br>\nInternet. Some will still mirror to false, but mirroring will<br>\nautomtically update the data when there's a new release of Samsung<br>\nInternet.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16602",
+            "title": "Mirror Samsung Internet support for a few features",
+            "date_modified": "2022-06-08T14:08:14.000Z",
+            "date_published": "2022-06-08T14:05:33.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Confirmed supported in Edge 80 with this test:<br>\n<a href=\"http://mdn-bcd-collector.appspot.com/tests/api/RTCRtpTransceiver/currentDirection\" rel=\"nofollow\">http://mdn-bcd-collector.appspot.com/tests/api/RTCRtpTransceiver/currentDirection</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16599",
+            "title": "Mirror Edge support of RTCRtpTransceiver.currentDirection",
+            "date_modified": "2022-06-08T13:13:38.000Z",
+            "date_published": "2022-06-08T12:54:18.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The spec does not have this property value:<br>\n<a href=\"https://drafts.csswg.org/css-break/#break-between\" rel=\"nofollow\">https://drafts.csswg.org/css-break/#break-between</a><br>\n<a href=\"https://drafts.csswg.org/css-break/#break-within\" rel=\"nofollow\">https://drafts.csswg.org/css-break/#break-within</a></p>\n<p dir=\"auto\">Rather, it's a property value of old the page-break-* properties:<br>\n<a href=\"https://drafts.csswg.org/css-break/#page-break-properties\" rel=\"nofollow\">https://drafts.csswg.org/css-break/#page-break-properties</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/16596",
+            "title": "Mark break-before/break-after: always non-standard/deprecated",
+            "date_modified": "2022-06-08T10:21:47.000Z",
+            "date_published": "2022-06-08T10:19:06.000Z",
+            "author": {
+                "name": "foolip",
+                "url": "https://github.com/foolip"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/965338?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Safari/iOS supports <code class=\"notranslate\">preventScroll</code> of <code class=\"notranslate\">element.focus()</code>  from 15.5.</p>\n<ul dir=\"auto\">\n<li><a href=\"https://webkit.org/blog/12669/new-webkit-features-in-safari-15-5/\" rel=\"nofollow\">https://webkit.org/blog/12669/new-webkit-features-in-safari-15-5/</a></li>\n<li><a href=\"https://bugs.webkit.org/show_bug.cgi?id=236584\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=236584</a></li>\n</ul>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">I verified this on iOS 15.5 using sample like <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus</a>.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16589",
             "title": "Update Safari/iOS support for preventScroll option",
@@ -20,22 +53,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/176218?u=f764a6e3a8461379124acf1ce4e5f66f1b1738b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The bulk of this just Safari 16 beta data derived from the mdn-bcd-collector collected data (on both macOS 12 and macOS 13 beta), but in addition:</p>\n<ul dir=\"auto\">\n<li>This adds version_removed for SharedWorkerGlobalScope corresponding to when SharedWorker was previously removed from Safari so that we can then document its addition in 16 beta (compare with the version numbers in SharedWorker.json).</li>\n<li>Adds data for KeyframeEffect, as otherwise we would introduce lint failures from mdn-bcd-collector due to the parent being false. The 13.1/13.4 versions here come straight from mdn-bcd-collector; no further testing has been done there, but given this is when Web Animations support was added this seems highly likely to be correct.</li>\n</ul>\n<p dir=\"auto\">Note this will currently fail the lint:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"Problems in 2 files:\n✖ browsers/safari.json\n  → Browser Data – 1 error:\n    → safari has multiple beta releases (16, 15.5), which is not allowed.\n✖ browsers/safari_ios.json\n  → Browser Data – 1 error:\n    → safari_ios has multiple beta releases (16, 15.5), which is not allowed.\"><pre class=\"notranslate\"><code>Problems in 2 files:\n✖ browsers/safari.json\n  → Browser Data – 1 error:\n    → safari has multiple beta releases (16, 15.5), which is not allowed.\n✖ browsers/safari_ios.json\n  → Browser Data – 1 error:\n    → safari_ios has multiple beta releases (16, 15.5), which is not allowed.\n</code></pre></div>\n<p dir=\"auto\">It's unclear to me what the correct solution here is; both 15.5 and 16 are currently beta releases, so the lint is enforcing a property that isn't true.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16586",
             "title": "Updates for Safari 16 beta",
-            "date_modified": "2022-06-07T17:07:54.000Z",
+            "date_modified": "2022-06-08T16:59:04.000Z",
             "date_published": "2022-06-07T17:00:21.000Z",
             "author": {
                 "name": "gsnedders",
                 "url": "https://github.com/gsnedders"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498917?u=a9115706328a9b324dae9b1f27cbb3bd507a9232&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16578",
-            "title": "Mirror Opera and Samsung Internet support for CSS @layer rule",
-            "date_modified": "2022-06-07T16:29:18.000Z",
-            "date_published": "2022-06-07T14:52:48.000Z",
-            "author": {
-                "name": "foolip",
-                "url": "https://github.com/foolip"
             }
         },
         {
@@ -105,17 +127,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates the Safari Desktop and Mobile release data.  The release date comes from the iOS/iPadOS 15.5 release date, and the engine version from the About pane in Safari.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16553",
-            "title": "Update Safari + Safari iOS/iPadOS release data",
-            "date_modified": "2022-06-05T12:30:46.000Z",
-            "date_published": "2022-06-05T12:28:49.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates the Opera release data per the Opera blog.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/16550",
             "title": "Update Opera release data",
@@ -143,39 +154,6 @@
             "title": "Demix contextmenu from GlobalEventHandlers",
             "date_modified": "2022-06-05T09:10:47.000Z",
             "date_published": "2022-06-05T09:10:29.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">close</code> event from the GlobalEventHandlers mixin.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16545",
-            "title": "Demix close event from GlobalEventHandlers",
-            "date_modified": "2022-06-05T09:03:49.000Z",
-            "date_published": "2022-06-05T09:03:30.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">change</code> event from the GlobalEventHandlers mixin.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16544",
-            "title": "Demix change event from GlobalEventHandlers",
-            "date_modified": "2022-06-05T08:58:33.000Z",
-            "date_published": "2022-06-05T08:58:15.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR demixes the <code class=\"notranslate\">canplay</code> events from the GlobalEventHandlers mixin.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/16541",
-            "title": "Demix canplay events from GlobalEventHandlers",
-            "date_modified": "2022-06-05T08:03:51.000Z",
-            "date_published": "2022-06-05T08:03:32.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
