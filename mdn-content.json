@@ -6,21 +6,131 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/24992665?u=52147528ac9ed39c3dfd796487ad19845064f3d8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Fixes a typo in the \"loading sounds\" section.</p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/19337",
-            "title": "Fix typo in \"loading sounds\" section",
-            "date_modified": "2022-08-09T23:31:30.000Z",
-            "date_published": "2022-08-09T23:31:14.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/155787?u=28cd50dc8819477616eec1ab8419eb57b7d0799e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">In the URLSearchParams page, there are a few examples of use. The last one looks like:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const addSearchParams = (url, params = {}) =&gt;\n  new URL(\n    `${url.origin}${url.pathname}?${new URLSearchParams([\n      ...Array.from(url.searchParams.entries()),\n      ...Object.entries(params),\n    ]).toString()}`\n  );\"><pre><span class=\"pl-k\">const</span> <span class=\"pl-en\">addSearchParams</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">params</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">{</span><span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span>\n  <span class=\"pl-k\">new</span> <span class=\"pl-c1\">URL</span><span class=\"pl-kos\">(</span>\n    <span class=\"pl-s\">`<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">origin</span><span class=\"pl-kos\">}</span></span><span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">pathname</span><span class=\"pl-kos\">}</span></span>?<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">URLSearchParams</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span></span></span>\n<span class=\"pl-s\"><span class=\"pl-s1\">      ...<span class=\"pl-v\">Array</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">from</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">searchParams</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">entries</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">,</span></span></span>\n<span class=\"pl-s\"><span class=\"pl-s1\">      ...<span class=\"pl-v\">Object</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">entries</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">params</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">,</span></span></span>\n<span class=\"pl-s\"><span class=\"pl-s1\">    <span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toString</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">}</span></span>`</span>\n  <span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">That last <code class=\"notranslate\">.toString()</code> is implied and doesn't need to be there, so this could simply be:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const addSearchParams = (url, params = {}) =&gt;\n  new URL(\n    `${url.origin}${url.pathname}?${new URLSearchParams([\n      ...Array.from(url.searchParams.entries()),\n      ...Object.entries(params),\n    ])}`\n  );\"><pre><span class=\"pl-k\">const</span> <span class=\"pl-en\">addSearchParams</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">params</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">{</span><span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span>\n  <span class=\"pl-k\">new</span> <span class=\"pl-c1\">URL</span><span class=\"pl-kos\">(</span>\n    <span class=\"pl-s\">`<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">origin</span><span class=\"pl-kos\">}</span></span><span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">pathname</span><span class=\"pl-kos\">}</span></span>?<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">URLSearchParams</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span></span></span>\n<span class=\"pl-s\"><span class=\"pl-s1\">      ...<span class=\"pl-v\">Array</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">from</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">url</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">searchParams</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">entries</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">,</span></span></span>\n<span class=\"pl-s\"><span class=\"pl-s1\">      ...<span class=\"pl-v\">Object</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">entries</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">params</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">,</span></span></span>\n<span class=\"pl-s\"><span class=\"pl-s1\">    <span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">}</span></span>`</span>\n  <span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">Came up internally: using <code class=\"notranslate\">.toString()</code> when it's implied by string coercion adds verbosity for little gain. This might be a deliberate choice by MDN writers, though: in that case, happy to close.</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/19388",
+            "title": "URLSearchParams example: toString() isn't needed",
+            "date_modified": "2022-08-10T23:41:39.000Z",
+            "date_published": "2022-08-10T23:38:54.000Z",
             "author": {
-                "name": "isaackd",
-                "url": "https://github.com/isaackd"
+                "name": "passcod",
+                "url": "https://github.com/passcod"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/70964765?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Fix expected result, make code more readable</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">Make code more readable and don't be misled</p>\n<p dir=\"auto\">This PR…<br>\n--&gt;</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Make expected result correct</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrite code to make it more readable</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/19377",
+            "title": "Update index.md",
+            "date_modified": "2022-08-10T21:38:11.000Z",
+            "date_published": "2022-08-10T18:23:38.000Z",
+            "author": {
+                "name": "P1GAS",
+                "url": "https://github.com/P1GAS"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/70964765?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Rewrite variable names</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">Make code more readable</p>\n<p dir=\"auto\">This PR makes code more readable by rewriting variable names</p>",
+            "url": "https://github.com/mdn/content/pull/19376",
+            "title": "Update index.md",
+            "date_modified": "2022-08-10T21:41:49.000Z",
+            "date_published": "2022-08-10T18:16:02.000Z",
+            "author": {
+                "name": "P1GAS",
+                "url": "https://github.com/P1GAS"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is the last occurrence on mdn/content.</p>\n<p dir=\"auto\">It will unblock <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1327198131\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/6819\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/yari/pull/6819/hovercard\" href=\"https://github.com/mdn/yari/pull/6819\">mdn/yari#6819</a></p>",
+            "url": "https://github.com/mdn/content/pull/19374",
+            "title": "Remove {{css_key_concepts}}",
+            "date_modified": "2022-08-10T21:05:26.000Z",
+            "date_published": "2022-08-10T17:03:38.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is the last bit of <code class=\"notranslate\">var</code>s to remove!</p>",
+            "url": "https://github.com/mdn/content/pull/19370",
+            "title": "Remove improper uses of var in Learn/",
+            "date_modified": "2022-08-10T22:25:58.000Z",
+            "date_published": "2022-08-10T15:57:36.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/56331036?u=659044a5a97950a6e67f6118d1cb3d9a52ff3148&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<ul dir=\"auto\">\n<li>I have added <code class=\"notranslate\">alt</code> attributes to a handful of items in the content</li>\n</ul>\n<h4 dir=\"auto\">Motivation</h4>\n\n<ul dir=\"auto\">\n<li>Adding the <code class=\"notranslate\">alt</code> attribute to the image displays the value of <code class=\"notranslate\">alt</code> attribute when the respective <code class=\"notranslate\">image fails to load</code> rather than leaving the space blank.</li>\n</ul>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/estelle/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/estelle\">@estelle</a> has collected the list of images from the documentation that do not have the <code class=\"notranslate\">alt</code> attribute. <a href=\"https://docs.google.com/spreadsheets/d/1cDHee6mwDMlY6zANEmg8MjR8tL-wrCS86uawpWZ4XbA/edit#gid=0\" rel=\"nofollow\">link to the spreadsheet</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">N/A</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/19366",
+            "title": "Added: alt attribute to few images",
+            "date_modified": "2022-08-10T22:58:25.000Z",
+            "date_published": "2022-08-10T13:37:39.000Z",
+            "author": {
+                "name": "Chaitanya7666",
+                "url": "https://github.com/Chaitanya7666"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67758926?u=5534c1da7c7056476cb25d4990e7bc031eea8640&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Motivation</h4>\n\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/19359",
+            "title": "Removed the redundancy",
+            "date_modified": "2022-08-10T10:34:09.000Z",
+            "date_published": "2022-08-10T10:33:51.000Z",
+            "author": {
+                "name": "aleemaheer",
+                "url": "https://github.com/aleemaheer"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17169812?u=152dbd815b88690b9e7421507a27674ef37ed133&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Replaces the text \"January 1, 1970 00:00:00 UTC\" on the <code class=\"notranslate\">Date.now()</code> page with a link to the ECMAScript epoch.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">This allows the reader to easily find more information about the epoch and makes this page consistent with <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime\" rel=\"nofollow\"><code class=\"notranslate\">Date.prototype.getTime()</code></a>. I noticed this inconsistency when I was looking at both pages to see if these functions return the same kind of timestamp and had to click through to the epoch page to be sure that they were referencing the same time.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/19355",
+            "title": "Link to ECMAScript epoch from Date.now()",
+            "date_modified": "2022-08-10T10:02:09.000Z",
+            "date_published": "2022-08-10T09:37:05.000Z",
+            "author": {
+                "name": "codyatwork",
+                "url": "https://github.com/codyatwork"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15980863?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Add missing alt texts for images catalogued <a href=\"https://docs.google.com/spreadsheets/d/1cDHee6mwDMlY6zANEmg8MjR8tL-wrCS86uawpWZ4XbA/edit#gid=0\" rel=\"nofollow\">here</a></p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">The changes are meant to improve accessibility.  The content of images that don't have alt text is inaccessible.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\">Changes where motivated by the discussion <a href=\"https://github.com/orgs/mdn/discussions/168#discussioncomment-3361122\">here</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
+            "url": "https://github.com/mdn/content/pull/19354",
+            "title": "Add missing alt text to images",
+            "date_modified": "2022-08-10T09:22:53.000Z",
+            "date_published": "2022-08-10T09:19:42.000Z",
+            "author": {
+                "name": "fanyak",
+                "url": "https://github.com/fanyak"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/70964765?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Change example code to React actual version, made description more correct</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">Want to make code and documentation fresher</p>\n<p dir=\"auto\">This PR changes the current code to fresher and made documentation more correct</p>",
+            "url": "https://github.com/mdn/content/pull/19352",
+            "title": "Update index.md to React new version",
+            "date_modified": "2022-08-10T09:18:36.000Z",
+            "date_published": "2022-08-10T08:44:53.000Z",
+            "author": {
+                "name": "P1GAS",
+                "url": "https://github.com/P1GAS"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/629570?u=3acd641087d07e6c7b727e37e70bc51e8eadc620&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The docs refer to extension_page in the examples. This should be changed to extension_pages</p>",
+            "url": "https://github.com/mdn/content/pull/19343",
+            "title": "Update extension_pages api in docs",
+            "date_modified": "2022-08-10T22:35:33.000Z",
+            "date_published": "2022-08-10T04:07:04.000Z",
+            "author": {
+                "name": "mellisdesigns",
+                "url": "https://github.com/mellisdesigns"
             }
         },
         {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">How to access</h4>\n<p dir=\"auto\">You get the 'Modules' drop-down in the 'Reference' section in the CSS sidebar.</p>\n<h4 dir=\"auto\">Current status</h4>\n\n<p dir=\"auto\">The 'Modules' pages include more or less the following sections and subsections based on whether or not they are applicable for the page (examples: <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images\" rel=\"nofollow\">CSS Images</a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Display\" rel=\"nofollow\">CSS Display</a>):</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"- Reference\n  - Properties\n  - At-rules\n  - Functions\n  - Data types\n- Guides\n- Specifications\n- Browser compatibility\n- See also\"><pre class=\"notranslate\"><code>- Reference\n  - Properties\n  - At-rules\n  - Functions\n  - Data types\n- Guides\n- Specifications\n- Browser compatibility\n- See also\n</code></pre></div>\n<p dir=\"auto\">The subsections under 'Reference' also match the categories in the CSS sidebar (screenshot below).</p>\n<h1 dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://user-images.githubusercontent.com/23019147/183771867-58e62ebf-bb32-4923-91b6-2a13b9e24854.png\"><img src=\"https://user-images.githubusercontent.com/23019147/183771867-58e62ebf-bb32-4923-91b6-2a13b9e24854.png\" alt=\"Screenshot 2022-08-10 at 12 06 34 AM\" style=\"max-width: 100%;\"></a></h1>\n<ul dir=\"auto\">\n<li>On some pages, the section title \"Properties\" is \"CSS Properties\".</li>\n<li>On some pages, the section title \"Alt-rules\" is \"CSS Alt-rules\".</li>\n</ul>\n<h4 dir=\"auto\">What this PR fixes</h4>\n<ul dir=\"auto\">\n<li>Updates the section titles to ensure consistency: \"Properties\", \"Alt-rules\", \"Data types\"</li>\n<li>Updates casing of page and section titles to follow sentence casing</li>\n<li>Moves glossary entries and external resources to \"See also\" section</li>\n<li>Rewrites some sentences to remove the occurrence of the first person \"I\"</li>\n</ul>\n<h4 dir=\"auto\">Question</h4>\n<p dir=\"auto\">Should the \"Types\" drop-down in the sidebar be called \"Data types\"?</p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
             "url": "https://github.com/mdn/content/pull/19336",
             "title": "Fixes titles for consistency and sentence casing",
-            "date_modified": "2022-08-09T22:41:26.000Z",
+            "date_modified": "2022-08-10T14:20:31.000Z",
             "date_published": "2022-08-09T22:37:57.000Z",
             "author": {
                 "name": "dipikabh",
@@ -28,21 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/60889389?u=b18afd92a8af055beda0f2d415e28b6d959d5bb7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">for must learner, this definition is more clear and concise</p>\n\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Motivation</h4>\n\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/19335",
-            "title": "more clear Definition",
-            "date_modified": "2022-08-09T21:45:08.000Z",
-            "date_published": "2022-08-09T21:42:27.000Z",
-            "author": {
-                "name": "aliniko",
-                "url": "https://github.com/aliniko"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/101826623?u=fa604ce16cc9818eff856af46fe7b3868582d197&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Removed backticks from the headings. Made the word \"App\" lowercase when it is intended to mean the to-do list application itself, and wrapped it in backticks when it refers to the <code class=\"notranslate\">App.vue</code> component. Added missing backticks around a <code class=\"notranslate\">&lt;div&gt;</code> tag. As for the <code class=\"notranslate\">aria-labelledby</code> attribute, it should not be there and its addition to the tag isn't even mentioned. Its addition along with its purpose is described elsewhere later on in the guide.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
             "url": "https://github.com/mdn/content/pull/19329",
             "title": "Make several content corrections",
-            "date_modified": "2022-08-09T18:34:46.000Z",
+            "date_modified": "2022-08-10T15:16:51.000Z",
             "date_published": "2022-08-09T18:19:44.000Z",
             "author": {
                 "name": "de-oz",
@@ -50,21 +149,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/12956286?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\"><code class=\"notranslate\">getBytesInUse</code> function was missing a word in a description of its parameters, wrongly implying that passing any array would return a 0 value while in reality only passing an <strong>empty</strong> array return a 0 value, not any array</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">Avoids confusing the readers on how to use this API</p>\n<h4 dir=\"auto\">Supporting details</h4>\n<p dir=\"auto\"><a href=\"https://developer.chrome.com/docs/extensions/reference/storage/#property-session\" rel=\"nofollow\">Chrome API description</a> correctly states that</p>\n<blockquote>\n<p dir=\"auto\">An empty list will return 0.</p>\n</blockquote>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">None</p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/19328",
-            "title": "fix: add a missing word in getBytesInUse",
-            "date_modified": "2022-08-09T16:22:00.000Z",
-            "date_published": "2022-08-09T16:21:43.000Z",
-            "author": {
-                "name": "eugenesvk",
-                "url": "https://github.com/eugenesvk"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2413436?u=3d64a56507b9d1cdc15716cf2cb32f6dfdeb70de&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Changes two links in order for them to be relative and not absolute (as in other docs)</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">Consistency</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1332791753\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/19317\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/19317/hovercard\" href=\"https://github.com/mdn/content/pull/19317\">#19317</a></p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/19327",
             "title": "Switch absolute links to relative ones - follow-up of #19317",
-            "date_modified": "2022-08-09T15:10:13.000Z",
+            "date_modified": "2022-08-10T08:05:48.000Z",
             "date_published": "2022-08-09T14:36:54.000Z",
             "author": {
                 "name": "SphinxKnight",
@@ -94,17 +182,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19520829?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Changed where the Svelte tutorial application will be served at to the correct address.</p>\n\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Changed where Svelte tutorial application will be served when a user tries the commands on this page.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">To help clarify to users what will happen so that they do not think that they made a mistake when their version of the application isn't served at localhost:5042.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/19289",
-            "title": "Corrected local server address",
-            "date_modified": "2022-08-08T15:53:42.000Z",
-            "date_published": "2022-08-08T15:50:44.000Z",
-            "author": {
-                "name": "ShamarYarde",
-                "url": "https://github.com/ShamarYarde"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/98463228?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is for the issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1315912454\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/18735\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/18735/hovercard\" href=\"https://github.com/mdn/content/issues/18735\">#18735</a><br>\nThis sentence should add some clarification to the <code class=\"notranslate\">window.pageYOffset property</code> once it is set.</p>\n\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Motivation</h4>\n\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
             "url": "https://github.com/mdn/content/pull/19264",
             "title": "Added clarification for the window.pageYOffset property",
@@ -113,17 +190,6 @@
             "author": {
                 "name": "najmiehsa",
                 "url": "https://github.com/najmiehsa"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/653608?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">The existing language suggests that one can take a <code class=\"notranslate\">Date</code> object, call <code class=\"notranslate\">toISOString()</code> on it, and use the resulting string as the value for a datetime-local input. This doesn't work, because <code class=\"notranslate\">toISOString()</code> includes a \"<code class=\"notranslate\">Z</code>\" at the end to indicate the timezone, while datetime-local expects the value to have no time-zone offset information.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString</a> describes the behavior of toISOString returning a value ending in Z.<br>\n<a href=\"https://html.spec.whatwg.org/dev/input.html#local-date-and-time-state-(type=datetime-local)\" rel=\"nofollow\">https://html.spec.whatwg.org/dev/input.html#local-date-and-time-state-(type=datetime-local)</a> defines how datetime-local works and specifies that the value (if not empty) must be a valid local date and time string, which doesn't include timezone information (<a href=\"https://html.spec.whatwg.org/dev/common-microsyntaxes.html#valid-local-date-and-time-string\" rel=\"nofollow\">https://html.spec.whatwg.org/dev/common-microsyntaxes.html#valid-local-date-and-time-string</a> defines \"valid local date and time string\").</p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/19249",
-            "title": "Clarify how to format a datetime-local value",
-            "date_modified": "2022-08-08T21:02:56.000Z",
-            "date_published": "2022-08-07T06:58:23.000Z",
-            "author": {
-                "name": "nharper",
-                "url": "https://github.com/nharper"
             }
         },
         {
@@ -138,21 +204,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/68165727?u=612305cf5e70c85a2853b295557ea9f9d91ffffb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">removes redundant csssyntax tag that fails to load at <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/var\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/CSS/var</a></p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/19209",
-            "title": "Update index.md",
-            "date_modified": "2022-08-06T03:11:59.000Z",
-            "date_published": "2022-08-06T00:47:31.000Z",
-            "author": {
-                "name": "deontic",
-                "url": "https://github.com/deontic"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Support for  identifying a content script as persistent in the <code class=\"notranslate\">scripting</code> API is added in Firefox 105. This change removes the note that <code class=\"notranslate\">persistAcrossSessions</code> did not support the \"true\" setting and adds a release note.</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Addresses the documentation needs of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1751436\" rel=\"nofollow\">Bug 1751436</a> Add support for <code class=\"notranslate\">persistAcrossSessions</code> in <code class=\"notranslate\">scripting.RegisteredContentScript</code></p>\n<h4 dir=\"auto\">Metadata</h4>\n<p dir=\"auto\">This PR…</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/19196",
             "title": "Support for persistAcrossSessions",
-            "date_modified": "2022-08-05T17:37:44.000Z",
+            "date_modified": "2022-08-10T17:14:00.000Z",
             "date_published": "2022-08-05T16:31:21.000Z",
             "author": {
                 "name": "rebloor",
@@ -160,69 +215,14 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/890923?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">The ServiceWorker API has been removed inside a Webextension, which should be mentioned in the dev changelog of Firefox 103.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">With Firefox&lt;103, the API was available, but registering a ServiceWorker was failing on a security issue.<br>\nSince Firefox 103, the API is not available at all.</p>\n<p dir=\"auto\">It's a significant change, that broke our kiwix extension (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1328541087\" data-permission-text=\"Title is private\" data-url=\"https://github.com/kiwix/kiwix-js/issues/877\" data-hovercard-type=\"issue\" data-hovercard-url=\"/kiwix/kiwix-js/issues/877/hovercard\" href=\"https://github.com/kiwix/kiwix-js/issues/877\">kiwix/kiwix-js#877</a>).<br>\nSo I think it's worth mentioning it here.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n<p dir=\"auto\">The API availability can be tested with <code class=\"notranslate\">'serviceWorker' in navigator</code></p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1593931\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1593931</a> is the bugzilla issue that triggered the API removal</p>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/19195",
-            "title": "Add an API removal in dev changelog of Firefox 103",
-            "date_modified": "2022-08-05T15:50:25.000Z",
-            "date_published": "2022-08-05T15:50:10.000Z",
-            "author": {
-                "name": "mossroy",
-                "url": "https://github.com/mossroy"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1240208?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I noticed that placeholder was valid, but wouldn’t be applied on , at least in Firefox.</p>\n\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Mention ineffectiveness of some common input attributes for date.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\">I had a doubt placeholder attributes were effective on , so I read in the attributes section, which didn’t mention that at all.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<h4 dir=\"auto\">Related issues</h4>\n\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>\n",
-            "url": "https://github.com/mdn/content/pull/19187",
-            "title": "Document ineffectiveness of some common <input> attributes for date",
-            "date_modified": "2022-08-06T02:26:25.000Z",
-            "date_published": "2022-08-05T10:17:24.000Z",
-            "author": {
-                "name": "andypillip",
-                "url": "https://github.com/andypillip"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Updating syntax code blocks with the new tag. Refer: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1297369772\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/6682\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/yari/pull/6682/hovercard\" href=\"https://github.com/mdn/yari/pull/6682\">mdn/yari#6682</a></p>\n<p dir=\"auto\">For more variety for testing let me know which files we need to add to the PR.</p>\n<hr>\n<p dir=\"auto\">Edit: The yari PR got merged. The PR series is good to go.</p>\n<p dir=\"auto\">cc:/ <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/teoli2003/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/teoli2003\">@teoli2003</a>, <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Josh-Cena/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Josh-Cena\">@Josh-Cena</a></p>",
             "url": "https://github.com/mdn/content/pull/19177",
             "title": "Tag syntax code blocks with `jssyntax`, part 1",
-            "date_modified": "2022-08-09T05:50:08.000Z",
+            "date_modified": "2022-08-10T23:50:19.000Z",
             "date_published": "2022-08-05T04:08:04.000Z",
             "author": {
                 "name": "OnkarRuikar",
                 "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This adds missing docs for <code class=\"notranslate\">SVGStyleElement</code> including examples and the docs for <code class=\"notranslate\">SVGStyleElement.media</code>,  <code class=\"notranslate\">SVGStyleElement.sheet</code> and  <code class=\"notranslate\">SVGStyleElement.title</code> properties. It is part of the tidy I am doing for <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1316642362\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/18775\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/18775/hovercard\" href=\"https://github.com/mdn/content/issues/18775\">#18775</a></p>\n<p dir=\"auto\">Note that most of the properties are not readonly. FF allows them to be written, and if valid values are uses, respects them. Chrome, at least in some case allows you to set the values, but does NOT respect them even if valid - at least for <code class=\"notranslate\">media</code>.<br>\nWhile the fact that are not read-only means that the intent is that they are set, in some cases there are APIs I have run into where they allow values to be set but it is not meaningful to do so. So I am querying that. Upshot, might do a post process of this if <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1329364391\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/svgwg/issues/891\" data-hovercard-type=\"issue\" data-hovercard-url=\"/w3c/svgwg/issues/891/hovercard\" href=\"https://github.com/w3c/svgwg/issues/891\">w3c/svgwg#891</a> confirms the intent (i.e. that chrome is off spec).</p>\n<p dir=\"auto\">When this goes in I will need to update BCD to provide links to the new docs.</p>",
-            "url": "https://github.com/mdn/content/pull/19172",
-            "title": "SVGStyleElement docs",
-            "date_modified": "2022-08-09T07:36:26.000Z",
-            "date_published": "2022-08-05T02:08:19.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/66225076?u=8daa7599a282dbae4d1e91687eff664437212882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">This PR fixes irregularities with the code snipped included on the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API/Using\" rel=\"nofollow\">Using the Storage Access API</a>, that would cause the code to fail on Safari browsers.</p>\n<h4 dir=\"auto\">Motivation</h4>\n\n<p dir=\"auto\">Developers who want to use the Storage Access API in a way that it is compatible with a wide variety of browsers (Including Safari) will find this updated code snippet very useful.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n\n<p dir=\"auto\"><a href=\"https://bugs.webkit.org/show_bug.cgi?id=210298#c8\" rel=\"nofollow\">WebKit Bugzilla</a> (Mentioned on issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1328137386\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/19139\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/19139/hovercard\" href=\"https://github.com/mdn/content/issues/19139\">#19139</a> as well)</p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #19139.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1328137386\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/19139\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/19139/hovercard\" href=\"https://github.com/mdn/content/issues/19139\">#19139</a></p>\n<h4 dir=\"auto\">Metadata</h4>\n\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Fixes a typo, bug, or other error</li>\n</ul>\n\n<p dir=\"auto\">Thank you so much!</p>",
-            "url": "https://github.com/mdn/content/pull/19164",
-            "title": "Update documentation for Storage Access API",
-            "date_modified": "2022-08-06T18:27:45.000Z",
-            "date_published": "2022-08-04T18:23:24.000Z",
-            "author": {
-                "name": "Mr-Camargo",
-                "url": "https://github.com/Mr-Camargo"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Document the CSS <code class=\"notranslate\">tan()</code> functional notation.</p>\n<h4 dir=\"auto\">Motivation</h4>\n<p dir=\"auto\"><a href=\"https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/\" rel=\"nofollow\">Safari/webkit already supports</a> this CSS function. <a href=\"https://bugs.chromium.org/p/chromium/issues/detail?id=1190444\" rel=\"nofollow\">Chromium</a> will follow soon.</p>\n<h4 dir=\"auto\">Supporting details</h4>\n<p dir=\"auto\"><a href=\"https://drafts.csswg.org/css-values/#trig-funcs\" rel=\"nofollow\">https://drafts.csswg.org/css-values/#trig-funcs</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n<h4 dir=\"auto\">Metadata</h4>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Adds a new document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Rewrites (or significantly expands) a document</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Fixes a typo, bug, or other error</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/19145",
-            "title": "`tan()` - New CSS functional notation",
-            "date_modified": "2022-08-08T17:48:56.000Z",
-            "date_published": "2022-08-04T10:08:59.000Z",
-            "author": {
-                "name": "ramiy",
-                "url": "https://github.com/ramiy"
             }
         }
     ]
