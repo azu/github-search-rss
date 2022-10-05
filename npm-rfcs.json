@@ -6,6 +6,17 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/650035?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">At my workplace npm projects have dynamic project specific configuration - such as registry and authentication.<br>\nPrevious internal build tools set this configuration in environment NPM_CONFIG_ variables before executing npm, but we want to move to setting this configuration in a npmrc file so ide's and other tools can read them.</p>\n<p dir=\"auto\">However we want to separate this dynamic configuration from static configuration (like setting legacy-peer-deps) so static config can be checked into source control while dynamic config can be excluded. So we want two project specific npmrc files.</p>\n<h3 dir=\"auto\">Example</h3>\n\n<p dir=\"auto\">There are many ways to implement this idea, a new npmrc location, a .npmrc.d directory of files, but I propose a new npm configuration <code class=\"notranslate\">extends=path/to/file</code> (naming up for discussion) that adds an additional additional npmrc file.</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"# project .npmrc. Checked into source control.\n\n# project settings\nlegacy-peer-deps=true\n\nextends=.private-project-npmrc\"><pre class=\"notranslate\"><code># project .npmrc. Checked into source control.\n\n# project settings\nlegacy-peer-deps=true\n\nextends=.private-project-npmrc\n</code></pre></div>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"# .private-project-npmrc. Ignored in source control.\n\nregistry=https://private.registry\n//private.registry/:_auth=...\"><pre class=\"notranslate\"><code># .private-project-npmrc. Ignored in source control.\n\nregistry=https://private.registry\n//private.registry/:_auth=...\n</code></pre></div>\n<p dir=\"auto\">Ideally npm config would be extended to support arbitrary file paths, either under the —location arg or another.</p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<p dir=\"auto\">Currently there are project, user, global, and built-in npm configurations. Each location has one file. When projects use different registries or authentication there is contention over changes to the project npmrc because some values should be checked into source control while others should not while popular source control systems like git operate on files.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\">Npm has at-least two project specific npmrc file so one can be checked in while the other is not.</p>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
+            "url": "https://github.com/npm/rfcs/issues/641",
+            "title": "[RRFC] Support multiple project npmrc file",
+            "date_modified": "2022-10-04T16:41:48.000Z",
+            "date_published": "2022-10-04T16:41:48.000Z",
+            "author": {
+                "name": "everett1992",
+                "url": "https://github.com/everett1992"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/229881?u=58675cc3f9993517e5f29209ccba960d79b719ad&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">When comparing CI logs, it would be very helpful to see the npm version that was used with <code class=\"notranslate\">npm install</code>, <code class=\"notranslate\">npm run build</code>, or really any npm command.</p>\n<h3 dir=\"auto\">Example</h3>\n<p dir=\"auto\">This came up recently when npm changed the behavior of peer dependencies in <code class=\"notranslate\">npm@8.6.0</code> so that <code class=\"notranslate\">npm install</code> suddenly started failing with <code class=\"notranslate\">npm ERR! Fix the upstream dependency conflict</code>. If the version was printed, a simple diff of the <code class=\"notranslate\">npm install</code> logs before and after would have made it clear that the npm version changed and that it wasn't a change to the <code class=\"notranslate\">package-lock.json</code> that caused the error.</p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ npm install\n\nup to date, audited 228 packages in 577ms\n\n78 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\"><pre class=\"notranslate\"><code>$ npm install\n\nup to date, audited 228 packages in 577ms\n\n78 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n</code></pre></div>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\">Something like yarn where it prints the version on the first line</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ yarn install\n\nyarn install v1.22.17\n[1/4] 🔍  Resolving packages...\nsuccess Already up-to-date.\n✨  Done in 0.10s.\"><pre class=\"notranslate\"><code>$ yarn install\n\nyarn install v1.22.17\n[1/4] 🔍  Resolving packages...\nsuccess Already up-to-date.\n✨  Done in 0.10s.\n</code></pre></div>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
             "url": "https://github.com/npm/rfcs/issues/639",
             "title": "[RRFC] Print npm version for each command",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "EvanCarroll",
                 "url": "https://github.com/EvanCarroll"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/459713?u=584c9167beb0297c958870e824719da9caa385de&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Our team will be on holidays/vacation the week of July 4th &amp; so we won't be running an Open RFC call that Wednesday July 6th.</p>\n<p dir=\"auto\">We'll be back online the following week &amp; hope to see you at our next call, <strong>Wednesday July 13th</strong>.</p>",
-            "url": "https://github.com/npm/rfcs/issues/609",
-            "title": "ℹ️ Cancelling Open RFC Call for July 6th",
-            "date_modified": "2022-07-13T03:32:35.000Z",
-            "date_published": "2022-06-29T18:49:27.000Z",
-            "author": {
-                "name": "darcyclarke",
-                "url": "https://github.com/darcyclarke"
             }
         }
     ]
