@@ -32,6 +32,12 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/npm-rfcs.json`
     },
     {
+        title: "npm/statusboard Issues",
+        query: "repo:npm/statusboard is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/npm-statusboard.json`
+    },
+    {
         title: "github/roadmap Issues",
         query: "repo:github/roadmap is:issue",
         TYPE: "ISSUE",
