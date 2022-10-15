@@ -6,22 +6,88 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Removed examples that would no longer be needed b/c all browsers support the feature.<br>\nAdded an example that is still useful.</p>",
-            "url": "https://github.com/mdn/content/pull/21535",
-            "title": "Legacy example cleanup",
-            "date_modified": "2022-10-13T22:03:38.000Z",
-            "date_published": "2022-10-13T22:00:55.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7119703?u=c4c584a6b981bcc0ce300bef51b1e39f49999020&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I was searching for information on how to pre-load a webassembly binary file so that when it's <code class=\"notranslate\">fetch()</code>'d by a JavaScript later, its download will already be in progress or completed.   By using Ctrl-F (text search within <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload\" rel=\"nofollow\">this page</a>), I was not able to find any information regarding this.  Quickly  i returned to google search results and got my answer from another place, from someones anecdote here:</p>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"828269246\" data-permission-text=\"Title is private\" data-url=\"https://github.com/thedodd/trunk/issues/145\" data-hovercard-type=\"issue\" data-hovercard-url=\"/thedodd/trunk/issues/145/hovercard\" href=\"https://github.com/thedodd/trunk/issues/145\">thedodd/trunk#145</a></p>\n<blockquote>\n<p dir=\"auto\">Preloading can be set up by simply adding one line to the generated <code class=\"notranslate\">index.html</code> file, as in the following example:<br>\n.</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;head&gt;\n  &lt;link rel=&quot;preload&quot; href=&quot;/index-43bbc68f2f0a6cd7_bg.wasm&quot; as=&quot;fetch&quot; crossorigin&gt;\n  &lt;script type=&quot;module&quot;&gt;import init from '/index-43bbc68f2f0a6cd7.js'; init('/index-43bbc68f2f0a6cd7_bg.wasm');&lt;/script&gt;\"><pre class=\"notranslate\"><code>&lt;head&gt;\n  &lt;link rel=\"preload\" href=\"/index-43bbc68f2f0a6cd7_bg.wasm\" as=\"fetch\" crossorigin&gt;\n  &lt;script type=\"module\"&gt;import init from '/index-43bbc68f2f0a6cd7.js'; init('/index-43bbc68f2f0a6cd7_bg.wasm');&lt;/script&gt;\n</code></pre></div>\n</blockquote>\n<p dir=\"auto\">I tested it out in my own project:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;head&gt;\n  &lt;link rel=&quot;preload&quot; href='/test.wasm'  as=&quot;fetch&quot; crossorigin&gt;\n  \n  ...\n \n  &lt;script src=&quot;wasm_exec.js&quot; defer&gt;&lt;/script&gt;\n  &lt;script&gt;\n    ...\n    window.onload = () =&gt; {\n      \tWebAssembly.instantiateStreaming(fetch(WASM_URL), go.importObject).then(function (obj) {\n\"><pre class=\"notranslate\"><code>&lt;head&gt;\n  &lt;link rel=\"preload\" href='/test.wasm'  as=\"fetch\" crossorigin&gt;\n  \n  ...\n \n  &lt;script src=\"wasm_exec.js\" defer&gt;&lt;/script&gt;\n  &lt;script&gt;\n    ...\n    window.onload = () =&gt; {\n      \tWebAssembly.instantiateStreaming(fetch(WASM_URL), go.importObject).then(function (obj) {\n\n</code></pre></div>\n<p dir=\"auto\">And it worked in firefox,  wasm starts downloading early and its not downloaded twice.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I made this change so that the next person coming to this page and searching for \"webassembly\" or \"WASM\" is not left empty handed like I was <g-emoji class=\"g-emoji\" alias=\"slightly_smiling_face\" fallback-src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f642.png\">🙂</g-emoji></p>\n<p dir=\"auto\">Yes technically this information <em>was</em> already present in the docs  however it was not accessible via ctrl-f (text search)</p>\n<p dir=\"auto\">so for people like me who refuse to read walls of text for minutes at a time and would rather go directly to the specific reference or example via search,   I believe this change will make the docs more accessible.</p>",
+            "url": "https://github.com/mdn/content/pull/21557",
+            "title": "flesh out details:  how to pre-load WASM",
+            "date_modified": "2022-10-14T20:00:54.000Z",
+            "date_published": "2022-10-14T19:57:09.000Z",
             "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
+                "name": "ForestJohnson",
+                "url": "https://github.com/ForestJohnson"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/21534",
-            "title": "add :has() to specificity",
-            "date_modified": "2022-10-13T20:37:41.000Z",
-            "date_published": "2022-10-13T20:34:54.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">It's static, see <a href=\"https://w3c.github.io/performance-timeline/#ref-for-dom-performanceobserver-supportedentrytypes-3\" rel=\"nofollow\">https://w3c.github.io/performance-timeline/#ref-for-dom-performanceobserver-supportedentrytypes-3</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Bugfix.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">None.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
+            "url": "https://github.com/mdn/content/pull/21556",
+            "title": "PerformanceObserver.supportedEntryTypes is static",
+            "date_modified": "2022-10-14T14:31:26.000Z",
+            "date_published": "2022-10-14T14:28:12.000Z",
+            "author": {
+                "name": "Elchi3",
+                "url": "https://github.com/Elchi3"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds information from the Event Timing API (<code class=\"notranslate\">PerformanceEventTiming</code>) to its parent <code class=\"notranslate\">PerformanceEntry</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I think we want to take a closer look at the <code class=\"notranslate\">PerformanceEntry</code> pages at a later stage. It seems it is an abstract interface for many performance APIs and we should see how to improve these pages. This PR just adds to what the current structures offer.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1408014793\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21531\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21531/hovercard\" href=\"https://github.com/mdn/content/pull/21531\">#21531</a> documents these properties in a \"Instance properties\" section as well.</p>",
+            "url": "https://github.com/mdn/content/pull/21555",
+            "title": "Add Event Timing info to PerformanceEntry pages",
+            "date_modified": "2022-10-14T14:18:21.000Z",
+            "date_published": "2022-10-14T14:14:39.000Z",
+            "author": {
+                "name": "Elchi3",
+                "url": "https://github.com/Elchi3"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR updates <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/observe\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/observe</a> to add the <code class=\"notranslate\">durationThreshold</code> option from the Event Timing API.</p>\n<p dir=\"auto\">Spec: <a href=\"https://w3c.github.io/event-timing/#sec-modifications-perf-timeline\" rel=\"nofollow\">https://w3c.github.io/event-timing/#sec-modifications-perf-timeline</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I also ordered the options list alphabetically and removed explicit mention of \"<code class=\"notranslate\">PerformanceObserverInit</code> dictionary\" because I believe we don't document dictionaries anymore and all we want readers to know is that it is an options object.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">In <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1408014793\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21531\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21531/hovercard\" href=\"https://github.com/mdn/content/pull/21531\">#21531</a> I'm adding more text to talk about <code class=\"notranslate\">durationThreshold</code> and I've added an example about it on the <code class=\"notranslate\">PerformanceEventTiming</code> page.</p>",
+            "url": "https://github.com/mdn/content/pull/21552",
+            "title": "Document durationThreshold in PerfObserver.observe()",
+            "date_modified": "2022-10-14T13:16:14.000Z",
+            "date_published": "2022-10-14T13:13:37.000Z",
+            "author": {
+                "name": "Elchi3",
+                "url": "https://github.com/Elchi3"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR documents the <code class=\"notranslate\">PerformanceEventTiming</code> API members.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I think very often it is hard to come up with good and sensible content for property pages. In fact, I think many MDN API property pages are thin. I tried to provide examples here for everything, though. I hope it doesn't look all too constructed. I think it just tells that I sometimes don't exactly know the precise use case for a property. If you have better use cases or ideas, let me know and I'm happy to make the example code better.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1408014793\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21531\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21531/hovercard\" href=\"https://github.com/mdn/content/pull/21531\">#21531</a> is the PR that updates the <code class=\"notranslate\">PerformanceEventTiming</code> interface page. <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a> is reviewing it and it might be nice to get his review on this one as well but I won't require it :)</p>",
+            "url": "https://github.com/mdn/content/pull/21551",
+            "title": "Document PerformanceEventTiming members",
+            "date_modified": "2022-10-14T12:53:01.000Z",
+            "date_published": "2022-10-14T12:44:24.000Z",
+            "author": {
+                "name": "Elchi3",
+                "url": "https://github.com/Elchi3"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/mdn/content/pull/21542",
+            "title": "Add missing sidebars",
+            "date_modified": "2022-10-14T04:55:55.000Z",
+            "date_published": "2022-10-14T03:46:38.000Z",
+            "author": {
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15844309?u=008f65848dd592799cd1d72033096baa1cbc88ce&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">chore: remove unreferenced wiki history.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">continue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1402288351\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21419\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21419/hovercard\" href=\"https://github.com/mdn/content/pull/21419\">#21419</a></p>",
+            "url": "https://github.com/mdn/content/pull/21538",
+            "title": "chore: remove unreferenced wiki history (Part 2)",
+            "date_modified": "2022-10-14T00:20:35.000Z",
+            "date_published": "2022-10-14T00:20:33.000Z",
+            "author": {
+                "name": "yin1999",
+                "url": "https://github.com/yin1999"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Removed examples that would no longer be needed b/c all browsers support the feature.<br>\nAdded an example that is still useful.</p>",
+            "url": "https://github.com/mdn/content/pull/21535",
+            "title": "Legacy example cleanup",
+            "date_modified": "2022-10-14T19:38:17.000Z",
+            "date_published": "2022-10-13T22:00:55.000Z",
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
@@ -31,22 +97,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR rewrites the <code class=\"notranslate\">PerformanceEventTiming</code> interface page.</p>\n<p dir=\"auto\">I think the list of exposed events needs to be grouped somehow. At least I don't like how it is just a plain list right now. It just looks very lost (see what's currently live: <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming</a>). So, I made it an HTML table. Not sure if we generally want to avoid HTML tables, but I think this is somewhat tabular data and to my eyes it reads and scans a lot better this way. Open to do it differently, though.</p>\n<p dir=\"auto\">I then added a bit of an intro text to the interface so people can understand what problem this API solves.<br>\nThere is no constructor, but I always like to give people an idea how to get to the information an interface holds.<br>\nI also simplified the first example a bit to be very pure, so it can act as minimal boilerplate code for working with this interface. I think the second example also looks a bit packed, especially because since MDN uses a 3-column layout it doesn't have much space to breathe. I'm not sure what to do about it, though.</p>\n<p dir=\"auto\">Finally, I updated the list of instance properties, one was missing and they are all read-only.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The Performance API docs need to be improved! See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Will have follow-up PRs for the sub pages.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
             "url": "https://github.com/mdn/content/pull/21531",
             "title": "Rewrite PerformanceEventTiming page",
-            "date_modified": "2022-10-13T21:21:18.000Z",
+            "date_modified": "2022-10-14T11:03:16.000Z",
             "date_published": "2022-10-13T15:30:09.000Z",
             "author": {
                 "name": "Elchi3",
                 "url": "https://github.com/Elchi3"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7681999?u=606c727e4e18a579df6304fc50a0f610c1a599e4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Add a note regarding the specificity of the <code class=\"notranslate\">has()</code> pseudo-class.<br>\nThe same way as it is added on the <code class=\"notranslate\">is()</code>, <code class=\"notranslate\">not()</code> and <code class=\"notranslate\">where()</code> pseudo-classes pages.</p>",
-            "url": "https://github.com/mdn/content/pull/21528",
-            "title": "Add note regarding the specificity",
-            "date_modified": "2022-10-13T20:36:07.000Z",
-            "date_published": "2022-10-13T14:52:17.000Z",
-            "author": {
-                "name": "Konrud",
-                "url": "https://github.com/Konrud"
             }
         },
         {
@@ -83,32 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Removed or edited several occurrences of discussions about future support when a feature is actually already well supported.</p>",
-            "url": "https://github.com/mdn/content/pull/21519",
-            "title": "Legacy: remove old \"when supported\" type statements",
-            "date_modified": "2022-10-13T21:34:26.000Z",
-            "date_published": "2022-10-13T01:57:52.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/106732509?u=873a5800dabf0d0cc5e2dc405f41de321002d647&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">I recently came across this definition that someone recently modified in an erroneous and unnecessary way. The previous description of the uses of the initial value was correct according to the specifications.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://www.w3.org/TR/CSS22/cascade.html#specified-value\" rel=\"nofollow\">specifications</a></p>",
-            "url": "https://github.com/mdn/content/pull/21518",
-            "title": "change to the correct uses",
-            "date_modified": "2022-10-13T17:51:29.000Z",
-            "date_published": "2022-10-13T01:54:50.000Z",
-            "author": {
-                "name": "TotopoDEV",
-                "url": "https://github.com/TotopoDEV"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This document expands on the <code class=\"notranslate\">HTMLMetaElement</code> API docs and adds several pages for the associated properties with examples how to use them.</p>\n<p dir=\"auto\"><strong>Notes:</strong><br>\nI've omitted the browser-compat data for <code class=\"notranslate\">HTMLMetaElement.charset</code> as this is missing, I can add in a follow-up to BCD first, then as content PR.</p>\n<p dir=\"auto\"><strong>Related issues:</strong></p>\n<ul dir=\"auto\">\n<li>Parent task: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1379621555\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/20928\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/20928/hovercard\" href=\"https://github.com/mdn/content/issues/20928\">#20928</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/21511",
             "title": "20928 Add details about HTMLMetaElement API usage with media",
-            "date_modified": "2022-10-13T16:58:42.000Z",
+            "date_modified": "2022-10-14T20:24:47.000Z",
             "date_published": "2022-10-12T14:59:18.000Z",
             "author": {
                 "name": "bsmth",
@@ -119,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/792924?u=4321bed4dc4f1622ec3c633b074607dfed63de37&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">WebDriver conformance updates for 106</p>",
             "url": "https://github.com/mdn/content/pull/21507",
             "title": "WebDriver conformance updates for 106",
-            "date_modified": "2022-10-13T21:28:01.000Z",
+            "date_modified": "2022-10-14T08:59:26.000Z",
             "date_published": "2022-10-12T09:15:18.000Z",
             "author": {
                 "name": "bomsy",
@@ -130,19 +163,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Heroku no longer has free plans. MDN team evaluation seems to think Railway is a good option. This is docs update work (currently draft).</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #19987.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1351828565\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/19987\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/19987/hovercard\" href=\"https://github.com/mdn/content/issues/19987\">#19987</a></p>\n<p dir=\"auto\">Associated update to tutorial: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1404067890\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/django-locallibrary-tutorial/issues/109\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/django-locallibrary-tutorial/pull/109/hovercard\" href=\"https://github.com/mdn/django-locallibrary-tutorial/pull/109\">mdn/django-locallibrary-tutorial#109</a></p>",
             "url": "https://github.com/mdn/content/pull/21489",
             "title": "Django move from heroku to railway",
-            "date_modified": "2022-10-11T20:46:37.000Z",
+            "date_modified": "2022-10-14T06:15:03.000Z",
             "date_published": "2022-10-11T20:43:54.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">There are very few links in docs to github example, but those that exist are now pointing to main.</p>\n<p dir=\"auto\">Note, the master branch still exists and is the default. I'm looking for someone to give me rights to make main the default and delete master.</p>",
-            "url": "https://github.com/mdn/content/pull/21466",
-            "title": "Django example source code moved to main branch",
-            "date_modified": "2022-10-11T01:10:00.000Z",
-            "date_published": "2022-10-11T01:07:06.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
@@ -160,21 +182,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This pushes the dictionary content in <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/RsaOaepParams\" rel=\"nofollow\">RsaOaepParams</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/AesCbcParams\" rel=\"nofollow\">AesCbcParams</a>, and <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/AesCtrParams\" rel=\"nofollow\">AesCtrParams</a>  into the methods that use them.</p>\n<p dir=\"auto\">I could not delete these. Got error even though stub is correct and file exists. Advice welcome - can I just delete them?</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ yarn content delete Web/API/RsaOaepParams\nerror: document does not exists: /en-US/docs/Web/API/RsaOaepParams\"><pre class=\"notranslate\"><code>$ yarn content delete Web/API/RsaOaepParams\nerror: document does not exists: /en-US/docs/Web/API/RsaOaepParams\n</code></pre></div>\n<p dir=\"auto\">EDITED. Everything except deletion done. Ready for review.</p>",
-            "url": "https://github.com/mdn/content/pull/21434",
-            "title": "SubtleCrypto algo",
-            "date_modified": "2022-10-13T23:18:00.000Z",
-            "date_published": "2022-10-10T05:24:32.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Opening as a draft, because there are still some links in the <code class=\"notranslate\">meta/</code> site that are pending deletion in another PR</p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds another Markdownlint Search/Replace rule to prevent <code class=\"notranslate\">https://developer.mozilla.org</code> links, since they should be absolute links instead.<br>\nBecause the root Markdownfiles actually need the FQDN links, I swapped them to use Reference links so the regex doesn't catch them. Easier way would be a trailing Markdownlint disable comment, but those haven't been accepted in the past for other PRs, so this is the workaround</p>",
             "url": "https://github.com/mdn/content/pull/21432",
             "title": "fix: don't allow FQDN links",
-            "date_modified": "2022-10-13T08:26:34.000Z",
+            "date_modified": "2022-10-14T14:42:03.000Z",
             "date_published": "2022-10-10T03:34:35.000Z",
             "author": {
                 "name": "nschonni",
@@ -185,22 +196,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9152141?u=7a21dbe90aad8d19aea61191e04e01110a90da76&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This changes the <code class=\"notranslate\">&lt;div /&gt;</code> elements used as buttons in the tutorial to <code class=\"notranslate\">&lt;button /&gt;</code> elements. I know that this is not the scope of this tutorial but as using <code class=\"notranslate\">&lt;div /&gt;</code>s as buttons is considered a bad practice it should not be done here. I also added three lines of css to stick to the old styles.</p>\n<p dir=\"auto\">Read more about the accessibility issues when using <code class=\"notranslate\">&lt;div /&gt;</code>s as buttons here: <a href=\"https://benmyers.dev/blog/clickable-divs/\" rel=\"nofollow\">https://benmyers.dev/blog/clickable-divs/</a></p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/21410",
             "title": "Don't use <div /> as  a button",
-            "date_modified": "2022-10-10T22:23:23.000Z",
+            "date_modified": "2022-10-14T05:18:01.000Z",
             "date_published": "2022-10-09T09:53:38.000Z",
             "author": {
                 "name": "Eik-S",
                 "url": "https://github.com/Eik-S"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7331511?u=e5c461c2ed59b967e0925a515ab00b9a756715e3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add Spanish translate for <a href=\"https://github.com/mdn/content/blob/main/files/jsondata/L10n-Common.json\">L10n-Common.json</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Help fixing Spanish translations</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1383308373\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/translated-content/issues/8749\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/translated-content/issues/8749/hovercard\" href=\"https://github.com/mdn/translated-content/issues/8749\">mdn/translated-content#8749</a></p>",
-            "url": "https://github.com/mdn/content/pull/21402",
-            "title": "Add Spanish translation L10n-Common.json",
-            "date_modified": "2022-10-12T02:30:50.000Z",
-            "date_published": "2022-10-09T02:56:00.000Z",
-            "author": {
-                "name": "JuanVqz",
-                "url": "https://github.com/JuanVqz"
             }
         },
         {
@@ -218,7 +218,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/21235555?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1392079092\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21199\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/21199/hovercard?comment_id=1272189973&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/issues/21199#issuecomment-1272189973\">#21199 (comment)</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Keep documents consistent.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/21386",
             "title": "align content for grid-row/grid-column.",
-            "date_modified": "2022-10-12T11:18:11.000Z",
+            "date_modified": "2022-10-14T09:51:15.000Z",
             "date_published": "2022-10-08T08:30:36.000Z",
             "author": {
                 "name": "zhangenming",
