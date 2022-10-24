@@ -67,7 +67,6 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/mdn-content.json`
     },
     {
-        // label:data:
         title: "Node.js notable changes",
         query: "repo:nodejs/node label:notable-change is:pr is:closed -label:doc",
         TYPE: "ISSUE",
