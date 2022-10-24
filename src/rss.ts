@@ -44,8 +44,8 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/github-roadmap.json`
     },
     {
-        title: "wintercg/fetch Issues",
-        query: "repo:wintercg/fetch is:issue",
+        title: "org:wintercg Issues",
+        query: "org:wintercg is:open is:issue -repo:wintercg/admin",
         TYPE: "ISSUE",
         link: `${BASE_URL}/wintercg-fetch.json`
     },
