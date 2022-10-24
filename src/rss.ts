@@ -47,7 +47,7 @@ export const SEARCH_ITEMS: RSSItem[] = [
         title: "org:wintercg Issues",
         query: "org:wintercg is:open is:issue -repo:wintercg/admin",
         TYPE: "ISSUE",
-        link: `${BASE_URL}/wintercg-fetch.json`
+        link: `${BASE_URL}/wintercg.json`
     },
     // Pull Request
     {
