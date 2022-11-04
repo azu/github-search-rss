@@ -6,14 +6,47 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/in/15368?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">All issues auto-fixed</p>",
-            "url": "https://github.com/mdn/content/pull/22041",
-            "title": "Markdownlint auto-cleanup",
-            "date_modified": "2022-11-04T00:13:45.000Z",
-            "date_published": "2022-11-04T00:13:43.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The PR removes from-to pairs where:</p>\n<ul dir=\"auto\">\n<li>to link is external and it is broken (HTTP 404 etc.)</li>\n<li>from link isn't used anywhere in the content</li>\n</ul>\n<hr>\n<p dir=\"auto\">I've written following simple shell script to find the broken links:</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"#!/usr/bin/env bash\n\n# The script finds broken external URLs in the _redirects.txt\n\nfunction check() {\n    wget --spider -q -O /dev/null -o /dev/null &quot;$1&quot;\n    if [[ $? -ne 0 ]]; then\n  \t    echo -ne '\\r      \\r'; echo $1\n    else\n        echo -ne '\\r      \\r'; echo -n $2\n    fi\n}\n\ncount=0\nurls=( $( grep -oP 'https://.*$' files/en-us/_redirects.txt ) )\necho &quot;Total ${#urls[@]} URLs to verify.&quot;\n\nfor url in ${urls[@]}; do\n    ((count++))\n    check $url $count\ndone\n\necho -e '\\ndone!'\n\"><pre><span class=\"pl-c\"><span class=\"pl-c\">#!</span>/usr/bin/env bash</span>\n\n<span class=\"pl-c\"><span class=\"pl-c\">#</span> The script finds broken external URLs in the _redirects.txt</span>\n\n<span class=\"pl-k\">function</span> <span class=\"pl-en\">check()</span> {\n    wget --spider -q -O /dev/null -o /dev/null <span class=\"pl-s\"><span class=\"pl-pds\">\"</span><span class=\"pl-smi\">$1</span><span class=\"pl-pds\">\"</span></span>\n    <span class=\"pl-k\">if</span> [[ <span class=\"pl-smi\">$?</span> <span class=\"pl-k\">-ne</span> 0 ]]<span class=\"pl-k\">;</span> <span class=\"pl-k\">then</span>\n  \t    <span class=\"pl-c1\">echo</span> -ne <span class=\"pl-s\"><span class=\"pl-pds\">'</span>\\r      \\r<span class=\"pl-pds\">'</span></span><span class=\"pl-k\">;</span> <span class=\"pl-c1\">echo</span> <span class=\"pl-smi\">$1</span>\n    <span class=\"pl-k\">else</span>\n        <span class=\"pl-c1\">echo</span> -ne <span class=\"pl-s\"><span class=\"pl-pds\">'</span>\\r      \\r<span class=\"pl-pds\">'</span></span><span class=\"pl-k\">;</span> <span class=\"pl-c1\">echo</span> -n <span class=\"pl-smi\">$2</span>\n    <span class=\"pl-k\">fi</span>\n}\n\ncount=0\nurls=( <span class=\"pl-s\"><span class=\"pl-pds\">$(</span> grep -oP <span class=\"pl-s\"><span class=\"pl-pds\">'</span>https://.*$<span class=\"pl-pds\">'</span></span> files/en-us/_redirects.txt <span class=\"pl-pds\">)</span></span> )\n<span class=\"pl-c1\">echo</span> <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>Total <span class=\"pl-smi\">${<span class=\"pl-k\">#</span>urls[@]}</span> URLs to verify.<span class=\"pl-pds\">\"</span></span>\n\n<span class=\"pl-k\">for</span> <span class=\"pl-smi\">url</span> <span class=\"pl-k\">in</span> <span class=\"pl-smi\">${urls[@]}</span><span class=\"pl-k\">;</span> <span class=\"pl-k\">do</span>\n    <span class=\"pl-s\"><span class=\"pl-pds\">((</span>count<span class=\"pl-k\">++</span><span class=\"pl-pds\">))</span></span>\n    check <span class=\"pl-smi\">$url</span> <span class=\"pl-smi\">$count</span>\n<span class=\"pl-k\">done</span>\n\n<span class=\"pl-c1\">echo</span> -e <span class=\"pl-s\"><span class=\"pl-pds\">'</span>\\ndone!<span class=\"pl-pds\">'</span></span>\n</pre></div>\n<p dir=\"auto\">We can commit the script under <a href=\"https://github.com/mdn/content/tree/main/scripts\">https://github.com/mdn/content/tree/main/scripts</a> and use it in daily lint cron automation.</p>",
+            "url": "https://github.com/mdn/content/pull/22049",
+            "title": "Clean _redirects.txt file: remove external broken links",
+            "date_modified": "2022-11-04T11:49:28.000Z",
+            "date_published": "2022-11-04T06:49:30.000Z",
             "author": {
-                "name": "github-actions",
-                "url": "https://github.com/apps/github-actions"
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">it was missing</p>",
+            "url": "https://github.com/mdn/content/pull/22047",
+            "title": "added ::marker to generated content",
+            "date_modified": "2022-11-04T05:35:12.000Z",
+            "date_published": "2022-11-04T05:21:35.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF107 ships the <code class=\"notranslate\">contain-intrinsic-*</code> CSS properties, which means that with Chrome existing support the properties are no longer experimental. This removes the tags and compat macro.</p>\n<p dir=\"auto\">In addition, it adds trivial (and repetitive) examples with cross link to the more full example from the long hand to shorthand cases. My understanding is that where possible a trivial example is better than no example. There is not much benefit here to creating a bigger example than the one in the <code class=\"notranslate\">contain-intrinsic-size</code> topic.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1395452725\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21274\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/21274/hovercard\" href=\"https://github.com/mdn/content/issues/21274\">#21274</a></p>",
+            "url": "https://github.com/mdn/content/pull/22046",
+            "title": "CSS contain-intrinsic-* not experimental and add examples",
+            "date_modified": "2022-11-04T05:17:28.000Z",
+            "date_published": "2022-11-04T05:14:45.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">We have two random APIs that have a separate <code class=\"notranslate\">@@toStringTag</code> page, which doesn't seem all that useful. Many, many other APIs that also have <code class=\"notranslate\">@@toStringTag</code> do not get their own pages—in fact, there's no mention of the existence of this property at all. This PR deletes the useless pages (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4445353\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn-community/discussions/251\" data-hovercard-type=\"discussion\" data-hovercard-url=\"/mdn/mdn-community/discussions/251/hovercard\" href=\"https://github.com/orgs/mdn/discussions/251\">mdn/mdn-community#251</a>) and adds a mention of the property to all objects that have it.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/22045",
+            "title": "Remove @@toStringTag pages, add @@toStringTag to all objects that have one",
+            "date_modified": "2022-11-04T05:07:56.000Z",
+            "date_published": "2022-11-04T05:05:17.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
             }
         },
         {
@@ -42,7 +75,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Performance API consists of a few specs, however, web developers don't really need to know about this. Important is that the web platform offers a Performance API to measure web application's performance and we should present all the measurement possibilities at a central place where you can learn about all of them and which one is suitable in which situation.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I updated the list of guides in groupData as well, but note that they will all be rewritten and we will have one guide to all Performance APIs.</p>\n<p dir=\"auto\">There is a weird mix of APIRef and DefaultAPISidebar. Maybe we can fix that some other day, though.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a href=\"https://github.com/mdn/content/pull/21984\">https://github.com/mdn/content/pull/21984</a> updates the main Performance API overview page and will be the new main page for all Performance APIs.</p>",
             "url": "https://github.com/mdn/content/pull/22031",
             "title": "Reduce Performance APIs to a single group",
-            "date_modified": "2022-11-03T23:12:54.000Z",
+            "date_modified": "2022-11-04T09:16:59.000Z",
             "date_published": "2022-11-03T11:28:20.000Z",
             "author": {
                 "name": "Elchi3",
@@ -64,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/292959?u=e268b154ed0d6c914d45985649170b6e4869d800&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">In Safari the example doesn’t render correctly if either or both of these are true:</p>\n<ol dir=\"auto\">\n<li>there is whitespace between the opening <code class=\"notranslate\">&lt;p&gt;</code> tag and the opening quotation mark,</li>\n<li>“dumb” quotation marks are used (<code class=\"notranslate\">\"</code> rather than <code class=\"notranslate\">“</code>/<code class=\"notranslate\">”</code>).</li>\n</ol>\n<p dir=\"auto\">This fixes both.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Allow documentation reader see <code class=\"notranslate\">hanging-punctuation</code> in action.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">To clarify, while the example for <code class=\"notranslate\">hanging-punctuation</code> before this PR may have been technically correct, minor formatting details prevented all users (including those on Safari Technical Preview) from seeing the property in action.</p>\n<ol dir=\"auto\">\n<li><a href=\"https://w3c.github.io/csswg-drafts/css-text-3/#hanging-punctuation-property\" rel=\"nofollow\">The spec</a> seems to assert that the ‘dumb’ quote <code class=\"notranslate\">\"</code> should hang, too, and makes no mention of leading/trailing whitespace.</li>\n<li>However, Safari requires it to be a proper quote (<code class=\"notranslate\">“</code>) and leading whitespace would prevent hanging.</li>\n</ol>\n<p dir=\"auto\">Thus it’s an open question whether this should be fixed or Safari should be fixed.</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/22022",
             "title": "fix(css): `hanging-punctuation` sample",
-            "date_modified": "2022-11-03T05:53:49.000Z",
+            "date_modified": "2022-11-04T05:03:55.000Z",
             "date_published": "2022-11-03T01:49:52.000Z",
             "author": {
                 "name": "strogonoff",
@@ -83,18 +116,7 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11358567?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Add alt text to webaudiomerger.png, webaudiosplitter.png. Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1412437014\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21616\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/21616/hovercard\" href=\"https://github.com/mdn/content/issues/21616\">#21616</a></p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/22017",
-            "title": "Add alt text ",
-            "date_modified": "2022-11-02T22:34:54.000Z",
-            "date_published": "2022-11-02T22:31:41.000Z",
-            "author": {
-                "name": "dawei-wang",
-                "url": "https://github.com/dawei-wang"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As spotted in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1432776261\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21999\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21999/hovercard\" href=\"https://github.com/mdn/content/pull/21999\">#21999</a>. Thanks <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Worldwidebrine/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Worldwidebrine\">@Worldwidebrine</a>!</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As spotted in <a href=\"https://github.com/mdn/content/pull/21999\">https://github.com/mdn/content/pull/21999</a>. Thanks <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Worldwidebrine/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Worldwidebrine\">@Worldwidebrine</a>!</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/22015",
             "title": "Fix Control flow effects of await examples",
             "date_modified": "2022-11-02T21:54:24.000Z",
@@ -119,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The existing example uses polling every 300 millis, it's noted in the linked issue that we can use eventListeners instead.</p>\n<p dir=\"auto\"><strong>Notes:</strong><br>\nThis example could be improved in general as we're using an iframe, so we might not even need to open a new window. We have the demonstrated effect by clicking inside the iframe and the embedding document.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #10312.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1045672621\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/10312\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/10312/hovercard\" href=\"https://github.com/mdn/content/issues/10312\">#10312</a></p>",
             "url": "https://github.com/mdn/content/pull/22008",
             "title": "chore(docs) change example to use eventListener instead of polling",
-            "date_modified": "2022-11-03T18:34:06.000Z",
+            "date_modified": "2022-11-04T08:36:30.000Z",
             "date_published": "2022-11-02T17:19:45.000Z",
             "author": {
                 "name": "bsmth",
@@ -149,21 +171,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">We have the <code class=\"notranslate\">null</code>-prototype object documentation in a weird place (an example of <code class=\"notranslate\">Object.create</code>), while I've often found myself linking to it from descriptions of other APIs. I also use <code class=\"notranslate\">__proto__: null</code> much more often than <code class=\"notranslate\">Object.create(null)</code>, so I think this feature is non-unique to <code class=\"notranslate\">Object.create</code>. In this PR I'm moving it to the root of the <code class=\"notranslate\">Object</code> section, which seems more sensical.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Decided we should do this while working on <a href=\"https://github.com/mdn/content/pull/21966\">https://github.com/mdn/content/pull/21966</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/21967",
-            "title": "Dedicated section for null-prototype objects",
-            "date_modified": "2022-11-03T23:10:19.000Z",
-            "date_published": "2022-10-31T15:04:40.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">This PR adds reference documentation for the <a href=\"https://wicg.github.io/navigation-api/\" rel=\"nofollow\">Navigation API</a>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Readers will want information about this new API.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">Further details can be found in my <a href=\"https://docs.google.com/document/d/1akJu6wbYXwX95FqrdhSiC8tlWDfuQ3FHIZk47prBJOI/edit#\" rel=\"nofollow\">Navigation API research</a> document.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #21909.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1427111821\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21909\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/21909/hovercard\" href=\"https://github.com/mdn/content/issues/21909\">#21909</a></p>\n",
             "url": "https://github.com/mdn/content/pull/21960",
             "title": "add docs for the Navigation API",
-            "date_modified": "2022-11-02T11:04:14.000Z",
+            "date_modified": "2022-11-04T11:16:20.000Z",
             "date_published": "2022-10-31T11:37:04.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -204,7 +215,7 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Document the CSS <code class=\"notranslate\">&lt;calc-sum&gt;</code> data type.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1400999757\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21360\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21360/hovercard\" href=\"https://github.com/mdn/content/pull/21360\">#21360</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1378364834\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/242\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/242/hovercard\" href=\"https://github.com/mdn/mdn/issues/242\">mdn/mdn#242</a></li>\n</ul>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Document the CSS <code class=\"notranslate\">&lt;calc-sum&gt;</code> data type.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/content/pull/21360\">https://github.com/mdn/content/pull/21360</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1378364834\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/242\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/242/hovercard\" href=\"https://github.com/mdn/mdn/issues/242\">mdn/mdn#242</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/21935",
             "title": "`<calc-sum>` - New CSS data type",
             "date_modified": "2022-10-29T12:46:41.000Z",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "ramiy",
                 "url": "https://github.com/ramiy"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Noticed it being used in the Yari repo and found it useful to get the nudge when a PR got a conflict so I could rebase it. It would be nice if GitHub had a first party why of seeing this, but the job seems to work well</p>",
-            "url": "https://github.com/mdn/content/pull/21916",
-            "title": "ci: add Rebase Needed job from mdn/workflows",
-            "date_modified": "2022-10-28T14:56:35.000Z",
-            "date_published": "2022-10-28T14:56:35.000Z",
-            "author": {
-                "name": "nschonni",
-                "url": "https://github.com/nschonni"
             }
         }
     ]
