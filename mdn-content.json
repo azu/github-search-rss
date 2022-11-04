@@ -6,10 +6,43 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Performance API consists of a few specs, however, web developers don't really need to know about this. Important is that the web platform offers a Performance API to measure web application's performance and we should present all the measurement possibilities at a central place where you can learn about all of them and which one is suitable in which situation.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I updated the list of guides in groupData as well, but note that they will all be rewritten and we will have one guide to all Performance APIs.</p>\n<p dir=\"auto\">There is a weird mix of APIRef and DefaultAPISidebar. Maybe we can fix that some other day, though.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1431598263\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21984\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21984/hovercard\" href=\"https://github.com/mdn/content/pull/21984\">#21984</a> updates the main Performance API overview page and will be the new main page for all Performance APIs.</p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/in/15368?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">All issues auto-fixed</p>",
+            "url": "https://github.com/mdn/content/pull/22041",
+            "title": "Markdownlint auto-cleanup",
+            "date_modified": "2022-11-04T00:13:45.000Z",
+            "date_published": "2022-11-04T00:13:43.000Z",
+            "author": {
+                "name": "github-actions",
+                "url": "https://github.com/apps/github-actions"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11358567?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Add alt text to menus-1.png, menus-2.png, menus-3.png, menus-4.png, notification.png, page-action.png, device_manager.png, load_device_driver.png, proxy_register_warning.png, &gt;proxy_unregister_warning.png</p>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1412437014\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21616\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/21616/hovercard\" href=\"https://github.com/mdn/content/issues/21616\">#21616</a></p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/22040",
+            "title": "Add alt texts",
+            "date_modified": "2022-11-04T00:02:36.000Z",
+            "date_published": "2022-11-03T23:43:59.000Z",
+            "author": {
+                "name": "dawei-wang",
+                "url": "https://github.com/dawei-wang"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11298496?u=06402838c9207dce1b9d94a0501af4d12940218c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I recently experienced a cryptic protocol error as a result of an upstream HTTP/2.0 interceptor (envoy mesh network/sidecar) reading a header for <code class=\"notranslate\">Transfer-Encoding</code>. Due to the documentation here only warning about <code class=\"notranslate\">chunked</code> I specified a different value than chunked in case there was a HTTP2 error. Turns out ALL usage of Transfer-Encoding is forbidden very explicitly in the HTTP/2.0 RFC now linked.</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The documentation for the Transfer-Encoding header on MDN incorrectly advised that only <code class=\"notranslate\">\"chunked\"</code> did not work with HTTP/2. In fact all of those headers listed should be indicated as \"HTTP/1.1\"-only.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This misled me into hours of extra debugging as I did not use \"chunked\" value for Transfer-Encoding, but instead used <code class=\"notranslate\">gzip</code> thinking that as long as I use a value other than chunked I'd be safe in case some upstream service used HTTP/2. In fact, I was unsafe in using any value for TransferEncoding and got a cryptic Protocol error which ended up resulting from passing any Transfer-Encoding header.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">In the RFC I found for HTTP/2 Protocol:</p>\n<p dir=\"auto\">It talks about how the Transfer-Encoding (and others) header MUST be removed before sending something with the HTTP/2 protocol:</p>\n<blockquote>\n<p dir=\"auto\">This means that an intermediary transforming an HTTP/1.x message to<br>\nHTTP/2 will need to remove any header fields nominated by the<br>\nConnection header field, along with the Connection header field<br>\nitself.  Such intermediaries SHOULD also remove other connection-<br>\nspecific header fields, such as Keep-Alive, Proxy-Connection,<br>\nTransfer-Encoding, and Upgrade, even if they are not nominated by the<br>\nConnection header field.</p>\n</blockquote>\n<p dir=\"auto\">It then explicitly talks about the Transfer-Encoding header as allowed only if used with the value of <code class=\"notranslate\">trailers</code>.</p>\n<blockquote>\n<p dir=\"auto\">The only exception to this is the TE header field, which MAY be<br>\npresent in an HTTP/2 request; when it is, it MUST NOT contain any<br>\nvalue other than \"trailers\".</p>\n</blockquote>\n<p dir=\"auto\">Indeed, failure to do so with a service using HTTP/2 will result in a protocol error at least in my lived experience.</p>",
+            "url": "https://github.com/mdn/content/pull/22032",
+            "title": "TE Expand warning for using header in HTTP/2",
+            "date_modified": "2022-11-03T15:27:51.000Z",
+            "date_published": "2022-11-03T14:54:20.000Z",
+            "author": {
+                "name": "zargold",
+                "url": "https://github.com/zargold"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Performance API consists of a few specs, however, web developers don't really need to know about this. Important is that the web platform offers a Performance API to measure web application's performance and we should present all the measurement possibilities at a central place where you can learn about all of them and which one is suitable in which situation.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I updated the list of guides in groupData as well, but note that they will all be rewritten and we will have one guide to all Performance APIs.</p>\n<p dir=\"auto\">There is a weird mix of APIRef and DefaultAPISidebar. Maybe we can fix that some other day, though.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a href=\"https://github.com/mdn/content/pull/21984\">https://github.com/mdn/content/pull/21984</a> updates the main Performance API overview page and will be the new main page for all Performance APIs.</p>",
             "url": "https://github.com/mdn/content/pull/22031",
             "title": "Reduce Performance APIs to a single group",
-            "date_modified": "2022-11-03T11:53:27.000Z",
+            "date_modified": "2022-11-03T23:12:54.000Z",
             "date_published": "2022-11-03T11:28:20.000Z",
             "author": {
                 "name": "Elchi3",
@@ -17,25 +50,14 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR does a quick pass over the math skills test page.</p>\n<p dir=\"auto\">The original issue is resolved, in my opinion, it's clear that this page references the reading material needed to complete the assessment. In this case, I'm doing some minor rewording to simplify.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #11058.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1074748251\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11058/hovercard\" href=\"https://github.com/mdn/content/issues/11058\">#11058</a></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR does a quick pass over the math skills test page.</p>\n<p dir=\"auto\">The original issue is resolved, in my opinion, it's clear that this page references the reading material needed to complete the assessment. In this case, I'm doing some minor rewording to simplify.</p>\n<p dir=\"auto\">Fixes #11058</p>",
             "url": "https://github.com/mdn/content/pull/22029",
             "title": "chore(docs) minor refresh on math skills test page",
-            "date_modified": "2022-11-03T09:12:02.000Z",
+            "date_modified": "2022-11-03T16:38:02.000Z",
             "date_published": "2022-11-03T09:09:22.000Z",
             "author": {
                 "name": "bsmth",
                 "url": "https://github.com/bsmth"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/74938858?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds the <code class=\"notranslate\">AccentColor</code> and <code class=\"notranslate\">AccentColorText</code> system color keywords. They're present in <a href=\"https://www.w3.org/TR/css-color-4/#valdef-system-color-accentcolor\" rel=\"nofollow\">the spec</a> but aren't on this page.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Keeping the content accurate and up to date. These keywords <a href=\"https://www.w3.org/TR/css-color-4/#changes-from-20220428\" rel=\"nofollow\">were added</a> to the spec back at the end of April, but this content wasn't updated.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/22023",
-            "title": "Add AccentColor and AccentColorText",
-            "date_modified": "2022-11-03T08:50:21.000Z",
-            "date_published": "2022-11-03T03:17:48.000Z",
-            "author": {
-                "name": "zadeviggers",
-                "url": "https://github.com/zadeviggers"
             }
         },
         {
@@ -52,23 +74,12 @@
         {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/115479152?u=953d346332a06f72a8f3606010feba7ab81af0bf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Related to issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1412437014\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21616\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/21616/hovercard\" href=\"https://github.com/mdn/content/issues/21616\">#21616</a> Added alt text for linear gradient image</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Needed for open issue</p>",
             "url": "https://github.com/mdn/content/pull/22021",
-            "title": "1616Add alt text to mdn-canvas-lineargradient.png",
-            "date_modified": "2022-11-03T01:21:47.000Z",
+            "title": "21616 Add alt text to mdn-canvas-lineargradient.png",
+            "date_modified": "2022-11-03T17:17:03.000Z",
             "date_published": "2022-11-03T01:17:51.000Z",
             "author": {
                 "name": "OGBrisket",
                 "url": "https://github.com/OGBrisket"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds details about the special shortcut <code class=\"notranslate\">_execute_action</code> which became available to MV3 Extensions with the introduction of the action API and manifest key.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Addresses the outstanding documentation needs of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1706398\" rel=\"nofollow\">Bug 1706398</a> Implement \"action\" API / manifest key.</p>",
-            "url": "https://github.com/mdn/content/pull/22018",
-            "title": "Add special shortcut _execute_action",
-            "date_modified": "2022-11-03T00:40:05.000Z",
-            "date_published": "2022-11-02T23:05:48.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
             }
         },
         {
@@ -97,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
             "url": "https://github.com/mdn/content/pull/22012",
             "title": "fix: various typos",
-            "date_modified": "2022-11-03T11:00:25.000Z",
+            "date_modified": "2022-11-03T23:22:41.000Z",
             "date_published": "2022-11-02T20:37:22.000Z",
             "author": {
                 "name": "nschonni",
@@ -108,19 +119,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The existing example uses polling every 300 millis, it's noted in the linked issue that we can use eventListeners instead.</p>\n<p dir=\"auto\"><strong>Notes:</strong><br>\nThis example could be improved in general as we're using an iframe, so we might not even need to open a new window. We have the demonstrated effect by clicking inside the iframe and the embedding document.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #10312.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1045672621\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/10312\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/10312/hovercard\" href=\"https://github.com/mdn/content/issues/10312\">#10312</a></p>",
             "url": "https://github.com/mdn/content/pull/22008",
             "title": "chore(docs) change example to use eventListener instead of polling",
-            "date_modified": "2022-11-02T17:20:00.000Z",
+            "date_modified": "2022-11-03T18:34:06.000Z",
             "date_published": "2022-11-02T17:19:45.000Z",
-            "author": {
-                "name": "bsmth",
-                "url": "https://github.com/bsmth"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The preference <code class=\"notranslate\">layout.css.trig.enabled</code> is actually false by default except for nightly. This will be flipped to true in 108.</p>\n<p dir=\"auto\">Bugzilla: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1787070#c2\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1787070#c2</a><br>\nIncoming changes: <a href=\"https://phabricator.services.mozilla.com/D160653\" rel=\"nofollow\">https://phabricator.services.mozilla.com/D160653</a></p>",
-            "url": "https://github.com/mdn/content/pull/22001",
-            "title": "relnote(105): CSS trig funcs behind pref disabled by default",
-            "date_modified": "2022-11-02T15:08:24.000Z",
-            "date_published": "2022-11-02T13:20:56.000Z",
             "author": {
                 "name": "bsmth",
                 "url": "https://github.com/bsmth"
@@ -130,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/59781940?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Made some minor stylistic changes as well.</p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/21998",
             "title": "Make wording more accurate and concise",
-            "date_modified": "2022-11-02T05:16:26.000Z",
+            "date_modified": "2022-11-04T00:14:54.000Z",
             "date_published": "2022-11-02T05:07:43.000Z",
             "author": {
                 "name": "klu22",
@@ -138,21 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=ca8f61eb69eae8cb8f2d59c8f2120ff02535ebc2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR updates <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Performance_API\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Performance_API</a> to give readers a better overview over all the Performance APIs.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"999447197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/62\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/62/hovercard\" href=\"https://github.com/openwebdocs/project/issues/62\">openwebdocs/project#62</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">No.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None right now.</p>",
-            "url": "https://github.com/mdn/content/pull/21984",
-            "title": "Rewrite Performance API overview",
-            "date_modified": "2022-11-03T10:21:48.000Z",
-            "date_published": "2022-11-01T15:11:55.000Z",
-            "author": {
-                "name": "Elchi3",
-                "url": "https://github.com/Elchi3"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/18360508?u=1761546357f8ba30d67c7b363111db42c710bf28&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">the sample code should be</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"console.log(videoFrame.colorSpace);\"><pre><span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">videoFrame</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">colorSpace</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">it's a simple typo in the example. colorSpace is a property of the videoFrame object, not the VideoFrame class</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/21980",
             "title": "typo in videoFrame.colorSpace example code",
-            "date_modified": "2022-11-02T17:49:07.000Z",
+            "date_modified": "2022-11-03T13:48:57.000Z",
             "date_published": "2022-11-01T13:39:58.000Z",
             "author": {
                 "name": "javadkh2",
@@ -160,25 +149,14 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">We have the <code class=\"notranslate\">null</code>-prototype object documentation in a weird place (an example of <code class=\"notranslate\">Object.create</code>), while I've often found myself linking to it from descriptions of other APIs. I also use <code class=\"notranslate\">__proto__: null</code> much more often than <code class=\"notranslate\">Object.create(null)</code>, so I think this feature is non-unique to <code class=\"notranslate\">Object.create</code>. In this PR I'm moving it to the root of the <code class=\"notranslate\">Object</code> section, which seems more sensical.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Decided we should do this while working on <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1429983228\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21966\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21966/hovercard\" href=\"https://github.com/mdn/content/pull/21966\">#21966</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">We have the <code class=\"notranslate\">null</code>-prototype object documentation in a weird place (an example of <code class=\"notranslate\">Object.create</code>), while I've often found myself linking to it from descriptions of other APIs. I also use <code class=\"notranslate\">__proto__: null</code> much more often than <code class=\"notranslate\">Object.create(null)</code>, so I think this feature is non-unique to <code class=\"notranslate\">Object.create</code>. In this PR I'm moving it to the root of the <code class=\"notranslate\">Object</code> section, which seems more sensical.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Decided we should do this while working on <a href=\"https://github.com/mdn/content/pull/21966\">https://github.com/mdn/content/pull/21966</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/21967",
             "title": "Dedicated section for null-prototype objects",
-            "date_modified": "2022-10-31T15:07:34.000Z",
+            "date_modified": "2022-11-03T23:10:19.000Z",
             "date_published": "2022-10-31T15:04:40.000Z",
             "author": {
                 "name": "Josh-Cena",
                 "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11255912?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Removed incorrect statement and added detail (it doesn't automatically call 'open', for example with an inline call '</p><p dir=\"auto\">&lt;script&gt;document.write(foobar);&lt;/script&gt;</p>' works fine, sending the value of the JavaScript variable  'foobar'  to the cursor (the 'p' element).<p dir=\"auto\"></p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/21964",
-            "title": "Document.write() update",
-            "date_modified": "2022-10-31T16:57:23.000Z",
-            "date_published": "2022-10-31T14:29:11.000Z",
-            "author": {
-                "name": "JonMarkPerry",
-                "url": "https://github.com/JonMarkPerry"
             }
         },
         {
@@ -207,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/58009357?u=2f2550c19578ab326c4b19cf9cb2ce50f3456d3e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updated the one-value syntax section for the <code class=\"notranslate\">flex</code> property to clarify when values are interpreted as <code class=\"notranslate\">&lt;number&gt;</code> vs. <code class=\"notranslate\">&lt;width&gt;</code>, and which of <code class=\"notranslate\">flex-grow</code> and <code class=\"notranslate\">flex-basis</code> will be set based on the interpretation.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When reading this section, I was confused about the differences between <code class=\"notranslate\">&lt;number&gt;</code> and <code class=\"notranslate\">&lt;width&gt;</code> before realizing that the latter needed to be a valid value for the CSS <code class=\"notranslate\">width</code> property (e.g. <code class=\"notranslate\">0</code> would be interpreted as a <code class=\"notranslate\">&lt;number&gt;</code> whereas <code class=\"notranslate\">0px</code> would be interpreted as a <code class=\"notranslate\">&lt;width&gt;</code>). I've added \"unitless\" before the <code class=\"notranslate\">&lt;number&gt;</code> and a link to the <code class=\"notranslate\">width</code> page to clarify this.</p>\n<p dir=\"auto\">It was also not apparent which of the three flex properties would be set based on whether <code class=\"notranslate\">&lt;number&gt;</code> or <code class=\"notranslate\">&lt;width&gt;</code> was provided, so I broke it down into three bullet points to clarify this.</p>\n<p dir=\"auto\">These changes can help readers understand the one-value syntax for <code class=\"notranslate\">flex</code> at first glance (improved skimmability).</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/21949",
             "title": "Clarify flex shorthand one-value syntax cases",
-            "date_modified": "2022-10-31T15:20:29.000Z",
+            "date_modified": "2022-11-03T18:51:04.000Z",
             "date_published": "2022-10-30T17:17:06.000Z",
             "author": {
                 "name": "zengspr",
@@ -223,6 +201,28 @@
             "author": {
                 "name": "dawei-wang",
                 "url": "https://github.com/dawei-wang"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Document the CSS <code class=\"notranslate\">&lt;calc-sum&gt;</code> data type.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1400999757\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/21360\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/21360/hovercard\" href=\"https://github.com/mdn/content/pull/21360\">#21360</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1378364834\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/242\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/242/hovercard\" href=\"https://github.com/mdn/mdn/issues/242\">mdn/mdn#242</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/21935",
+            "title": "`<calc-sum>` - New CSS data type",
+            "date_modified": "2022-10-29T12:46:41.000Z",
+            "date_published": "2022-10-29T12:43:54.000Z",
+            "author": {
+                "name": "ramiy",
+                "url": "https://github.com/ramiy"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1297909?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Noticed it being used in the Yari repo and found it useful to get the nudge when a PR got a conflict so I could rebase it. It would be nice if GitHub had a first party why of seeing this, but the job seems to work well</p>",
+            "url": "https://github.com/mdn/content/pull/21916",
+            "title": "ci: add Rebase Needed job from mdn/workflows",
+            "date_modified": "2022-10-28T14:56:35.000Z",
+            "date_published": "2022-10-28T14:56:35.000Z",
+            "author": {
+                "name": "nschonni",
+                "url": "https://github.com/nschonni"
             }
         }
     ]
