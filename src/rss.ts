@@ -44,6 +44,18 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/github-roadmap.json`
     },
     {
+        title: "mozilla/standards-positions Issues",
+        query: "repo:mozilla/standards-positions is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/mozilla-standards-positions.json`
+    },
+    {
+        title: "WebKit/standards-positions Issues",
+        query: "repo:WebKit/standards-positions is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/WebKit-standards-positions.json`
+    },
+    {
         title: "org:wintercg Issues",
         query: "org:wintercg is:open is:issue -repo:wintercg/admin",
         TYPE: "ISSUE",
