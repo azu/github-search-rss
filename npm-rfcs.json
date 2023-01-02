@@ -6,6 +6,17 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/114147910?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"    Sorry, maybe I missed something, I know there's the RFC meetings, but can't find the calendar for them - when is this going to be discussed? Is it better to wait for the meeting or post the questions now?\"><pre class=\"notranslate\"><code class=\"notranslate\">    Sorry, maybe I missed something, I know there's the RFC meetings, but can't find the calendar for them - when is this going to be discussed? Is it better to wait for the meeting or post the questions now?\n</code></pre></div>\n<p dir=\"auto\"><em>Originally posted by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/dominykas/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/dominykas\">@dominykas</a> in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"553729996\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/rfcs/issues/92\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/npm/rfcs/pull/92/hovercard?comment_id=578555614&amp;comment_type=issue_comment\" href=\"https://github.com/npm/rfcs/pull/92#issuecomment-578555614\">#92 (comment)</a></em></p>",
+            "url": "https://github.com/npm/rfcs/issues/664",
+            "title": "Sorry, maybe I missed something, I know there's the RFC meetings, but can't find the calendar for them - when is this going to be discussed? Is it better to wait for the meeting or post the questions now?",
+            "date_modified": "2023-01-02T10:42:26.000Z",
+            "date_published": "2023-01-02T10:42:26.000Z",
+            "author": {
+                "name": "jameskeyante",
+                "url": "https://github.com/jameskeyante"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/120893153?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"    The net net on this would be:\"><pre class=\"notranslate\"><code class=\"notranslate\">    The net net on this would be:\n</code></pre></div>\n<ul dir=\"auto\">\n<li>Use a staged package: <code class=\"notranslate\">npm install foo@2 --include-staged</code> (as long as <code class=\"notranslate\">2.x</code> versions are all in staging, like if it's a beta or somethign, and 1.x is the published versions).</li>\n<li>When <code class=\"notranslate\">foo@2</code> is promoted, then <code class=\"notranslate\">npm install foo@2 --include-staged</code> will pick up the promoted version.</li>\n<li>If the staged <code class=\"notranslate\">foo@2</code> depends on a staged <code class=\"notranslate\">bar@3</code>, then ok, that'll Just Work, because you're in \"include staged\" mode.</li>\n<li>When the pkg is promoted and the resolved changes, the package lock doesn't break.  (It <em>might</em> get slightly less canonical or cacheable, but then again, it might not.  Maybe we <em>want</em> to have content-addresses in our tarball urls!)</li>\n<li>If the staged version is overwritten with a new staged version, then the build will break (unless Pacote is taught to just handle this, which may be worthwhile, and would be possible.)</li>\n</ul>\n<p dir=\"auto\">I don't see any DX issues that justify restricting the utility of staged packages, but maybe I'm missing something.</p>\n<p dir=\"auto\"><em>Originally posted by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/isaacs/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/isaacs\">@isaacs</a> in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"553729996\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/rfcs/issues/92\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/npm/rfcs/pull/92/hovercard?comment_id=587129658&amp;comment_type=issue_comment\" href=\"https://github.com/npm/rfcs/pull/92#issuecomment-587129658\">#92 (comment)</a></em></p>",
             "url": "https://github.com/npm/rfcs/issues/662",
             "title": "The net net on this would be:",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "darcyclarke",
                 "url": "https://github.com/darcyclarke"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/502396?u=64311873cf31c6c9e5690f3a8a0fba6b5868a4ca&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Motivation (\"The Why\")</h3>\n<p dir=\"auto\">I recently spoke with someone who was trying out overrides for the first time in their product and didn't have any signal as to whether or not an override was being applied.</p>\n<p dir=\"auto\">In them showing me, it was explained that <code class=\"notranslate\">npm ls</code> didn't tell them anything about overrides and that feels like a large missed opportunity.</p>\n<h3 dir=\"auto\">Example</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git clone https://github.com/bnb/repro-overrides-output</code></li>\n<li><code class=\"notranslate\">npm install</code></li>\n<li><code class=\"notranslate\">npm ls --depth=3</code></li>\n<li>find \"@types/prettier\" which will show 2.6.0 without any indication that it was overridden.</li>\n</ul>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<p dir=\"auto\">When you <code class=\"notranslate\">npm ls</code>, no overrides contextual information is shown.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\">When you <code class=\"notranslate\">npm ls</code>, note which modules were overridden as npm currently does with dedupes. Potentially also worth noting direct overrides vs. indirect overrides.</p>\n<h3 dir=\"auto\">References</h3>\n<ul dir=\"auto\">\n<li>N/A</li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/622",
-            "title": "[RRFC] include context that a module is overridden in npm ls",
-            "date_modified": "2022-08-17T17:47:13.000Z",
-            "date_published": "2022-08-05T19:00:18.000Z",
-            "author": {
-                "name": "bnb",
-                "url": "https://github.com/bnb"
             }
         }
     ]
