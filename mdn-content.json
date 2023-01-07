@@ -6,32 +6,54 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41845017?u=104bfafaaf40389b236e9506f563a55b387c29bf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The live example on <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Selection/setBaseAndExtent#examples\" rel=\"nofollow\">setBaseAndExtent</a> is broken.<br>\nLet's</p>\n<ul dir=\"auto\">\n<li>fix the live example</li>\n<li>add a note about the whitespace issue that triggered the error</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Keep example up-to-date</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Test case:</p>\n<ul dir=\"auto\">\n<li>on the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Selection/setBaseAndExtent#examples\" rel=\"nofollow\">MDNpage</a>, type in anchor offset = 1 and focus offset = 0, and press \"capture selection\"\n<ul dir=\"auto\">\n<li>output is \"FishDogCatBird MIDDLE\"</li>\n</ul>\n</li>\n<li>on the <a href=\"https://chrisdavidmills.github.io/selection-api-examples/setBaseAndExtent.html\" rel=\"nofollow\">referenced original live example</a>, type in anchor offset = 1 and focus offset = 0, and press \"capture selection\"\n<ul dir=\"auto\">\n<li>output is \"DogCatBird MIDDLE\"</li>\n</ul>\n</li>\n</ul>\n<p dir=\"auto\">See screenshots below:<br>\n(MDN)<br>\n<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/41845017/211119196-89cee4d5-6ac2-4c8e-aa7e-c26dd1dcea0f.png\"><img src=\"https://user-images.githubusercontent.com/41845017/211119196-89cee4d5-6ac2-4c8e-aa7e-c26dd1dcea0f.png\" alt=\"image\" style=\"max-width: 100%;\"></a><br>\n(Original example)<br>\n<a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/41845017/211119099-76ee6b91-6d3a-4a00-8b8a-92e0a409d4e1.png\"><img src=\"https://user-images.githubusercontent.com/41845017/211119099-76ee6b91-6d3a-4a00-8b8a-92e0a409d4e1.png\" alt=\"image\" style=\"max-width: 100%;\"></a></p>\n<p dir=\"auto\">The reason why it is broken is due to the difference in the HTML formatting. the MDN live example formats the <code class=\"notranslate\">&lt;p class=\"one\"&gt;</code> and <code class=\"notranslate\">&lt;p class=\"two\"&gt;</code> tags and resulted in an extra text node added, hence disturbing the index of child notes.</p>\n\n<p dir=\"auto\">References</p>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild\" rel=\"nofollow\">Node.firstChild</a></li>\n<li><a href=\"https://github.com/chrisdavidmills/selection-api-examples/blob/master/setBaseAndExtent.html\">original example</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Nil</p>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/23441",
-            "title": "Fix setBaseAndExtent live example by removing additional whitespace",
-            "date_modified": "2023-01-07T00:11:19.000Z",
-            "date_published": "2023-01-07T00:09:24.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4174848?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">When separators=(',', ':') is not passed to json.dumps() parameter the length for input from JavaScript (which is serialized to a JSON-like format by the application) port.postMessage(new Array(174763)); is read in Python as</p>\n<p dir=\"auto\">1048578</p>\n<p dir=\"auto\">which is greater than 1024*1024. Essentially space character formatting were being encoded as part of the length of the JSON.</p>\n<p dir=\"auto\">When the length should be</p>\n<p dir=\"auto\">873816</p>\n<p dir=\"auto\">when formatting space characters are excluded from the JSON.</p>\n<p dir=\"auto\">Solved by passing separators=(',', ':') for “compact encoding” json — JSON encoder and decoder — Python 3.11.1 documentation.</p>\n<p dir=\"auto\">Now we can write 1MB with</p>\n<p dir=\"auto\">port.postMessage(new Array(209715));</p>\n<p dir=\"auto\">from JavaScript and omit including and counting formatting space characters as part of encoded message length.</p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/23451",
+            "title": "Eliminate space counted as message length",
+            "date_modified": "2023-01-07T08:18:34.000Z",
+            "date_published": "2023-01-07T07:47:10.000Z",
             "author": {
-                "name": "tlylt",
-                "url": "https://github.com/tlylt"
+                "name": "guest271314",
+                "url": "https://github.com/guest271314"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/35021384?u=2791dd4bdb578574d9ec284d8713f99af870b235&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I added the main GitHub repository instead of the broken website link.</p>",
-            "url": "https://github.com/mdn/content/pull/23440",
-            "title": "JavaScript Garden website link broken!",
-            "date_modified": "2023-01-06T22:45:09.000Z",
-            "date_published": "2023-01-06T22:44:55.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15844309?u=008f65848dd592799cd1d72033096baa1cbc88ce&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">When we have unicode in markdown heading, the live sample with those id may not work in PR preview.</p>\n<p dir=\"auto\">This is an known issue in <a href=\"https://github.com/mdn/translated-content/pull/3628\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/translated-content/pull/3628/hovercard\">translated-content before</a>. I thinks it is still worth to use 7zip in content repo for the <code class=\"notranslate\">PR review companion</code> in translated-content should be a <a href=\"https://github.com/mdn/translated-content/blob/3e30587bdd2ce02cb8cb36a72284f471711dbe50/.github/workflows/pr-review-companion.yml#L6-L7\">copy</a> of the one in content repo.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1097529054\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/translated-content/issues/3618\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/translated-content/issues/3618/hovercard\" href=\"https://github.com/mdn/translated-content/issues/3618\">mdn/translated-content#3618</a></p>",
+            "url": "https://github.com/mdn/content/pull/23448",
+            "title": "fix(ci): move to 7z in github action",
+            "date_modified": "2023-01-07T04:07:16.000Z",
+            "date_published": "2023-01-07T04:07:15.000Z",
             "author": {
-                "name": "golamrabbiazad",
-                "url": "https://github.com/golamrabbiazad"
+                "name": "yin1999",
+                "url": "https://github.com/yin1999"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/53261472?u=3c4ba52767c9eeb73ddbb65092de795e971a61df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I added a few more level 2 divs, in order to better illustrate the example.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The example is more understandable, based on the description above the code.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1514652663\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23274\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23274/hovercard\" href=\"https://github.com/mdn/content/issues/23274\">#23274</a></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/82551626?u=b4a2d0b73d991ba55742c7ff1be7f48551c44f0c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add the missing http headers in this link<br>\n<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#cors\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#cors</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/23447",
+            "title": "add content of the CORS headers",
+            "date_modified": "2023-01-07T03:49:54.000Z",
+            "date_published": "2023-01-07T03:47:26.000Z",
+            "author": {
+                "name": "fwqaaq",
+                "url": "https://github.com/fwqaaq"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/in/15368?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Automated changes generated by scripts/update-interface-data via interface-updater github workflow</p>",
+            "url": "https://github.com/mdn/content/pull/23442",
+            "title": "Update InterfaceData based on WebRef",
+            "date_modified": "2023-01-07T00:19:01.000Z",
+            "date_published": "2023-01-07T00:19:00.000Z",
+            "author": {
+                "name": "github-actions",
+                "url": "https://github.com/apps/github-actions"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/53261472?u=3c4ba52767c9eeb73ddbb65092de795e971a61df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I added a few more level 2 divs, in order to better illustrate the example.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The example is more understandable, based on the description above the code.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23274.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1514652663\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23274\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23274/hovercard\" href=\"https://github.com/mdn/content/issues/23274\">#23274</a></p>",
             "url": "https://github.com/mdn/content/pull/23438",
             "title": "added level #2  HTML",
-            "date_modified": "2023-01-06T23:10:06.000Z",
+            "date_modified": "2023-01-07T09:31:17.000Z",
             "date_published": "2023-01-06T17:16:16.000Z",
             "author": {
                 "name": "zuzexx",
@@ -39,43 +61,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4152514?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">follow on to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1521927994\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23426\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/23426/hovercard\" href=\"https://github.com/mdn/content/pull/23426\">#23426</a></p>\n<ul dir=\"auto\">\n<li>revises information added in the above PR to instead be based off the corrected ARIA 1.3 spec.</li>\n<li>further expanding on the potential different behaviors for a single select vs multi-select tablist (note: there may need to be even more updates to the ARIA spec per this topic)</li>\n<li>removes references to using the <code class=\"notranslate\">hidden</code> attribute to show/hide tabpanels.  This advice can actually be rather problematic if not also including the various caveats and specific guidance of how to use this attribute.</li>\n<li>removes references to using aria-hidden to hide the tabpanels.  This advice doesn't make much sense, since the tabpanels need to be set to display none anyway, using aria-hidden has no practical benefit. Rather, it can actually make error state situations (e.g., CSS has been removed/failed to load) even worse, as then content could be visually rendered but be otherwise inaccessible to AT.  We dont' want that.</li>\n<li>other wording changes / typo fixes that were not included in the previous PR.</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/23437",
-            "title": "corrections, clarifications and removals for tabpanel doc",
-            "date_modified": "2023-01-06T16:07:03.000Z",
-            "date_published": "2023-01-06T16:02:16.000Z",
-            "author": {
-                "name": "scottaohara",
-                "url": "https://github.com/scottaohara"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/10383892?u=5f5c5de9538806875b4b3361728f88fc76d6dc23&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updated location of reduced motion settings in the iOS.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/23436",
-            "title": "Update index.md",
-            "date_modified": "2023-01-06T15:44:11.000Z",
-            "date_published": "2023-01-06T15:42:05.000Z",
-            "author": {
-                "name": "bartek-szymanski",
-                "url": "https://github.com/bartek-szymanski"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41845017?u=104bfafaaf40389b236e9506f563a55b387c29bf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Remove outdated content on string parameters for the CSS color() function.</p>\n<ul dir=\"auto\">\n<li>also making a slightly unrelated, minor cosmetic fix for a word (\"dashed-ident\") used on the same page to utilize inline code style</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Fix issue</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Nil</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #12209.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1108952569\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/12209\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/12209/hovercard\" href=\"https://github.com/mdn/content/issues/12209\">#12209</a><br>\nRelated to <a href=\"https://github.com/w3c/csswg-drafts/issues/6095#:~:text=the%20color()%20property%20would%20be%20simplified%2C%20the%20whole%20part%20about%20string%20parameters%20would%20be%20removed\" data-hovercard-type=\"issue\" data-hovercard-url=\"/w3c/csswg-drafts/issues/6095/hovercard\">w3c/csswg-drafts/issues/6095</a></p>\n \n \n\n",
-            "url": "https://github.com/mdn/content/pull/23435",
-            "title": "Remove mentioning of string parameters for the CSS color() function ",
-            "date_modified": "2023-01-06T15:23:08.000Z",
-            "date_published": "2023-01-06T15:21:07.000Z",
-            "author": {
-                "name": "tlylt",
-                "url": "https://github.com/tlylt"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR creates a page for the <code class=\"notranslate\">CSPViolationReportBody</code> API, including an example on how to obtain an instance of this interface (after lots of reading through the spec).</p>\n<p dir=\"auto\">Spec URL: <a href=\"https://w3c.github.io/webappsec-csp/#cspviolationreportbody\" rel=\"nofollow\">https://w3c.github.io/webappsec-csp/#cspviolationreportbody</a></p>",
             "url": "https://github.com/mdn/content/pull/23433",
             "title": "Create page for CSPViolationReportBody API",
-            "date_modified": "2023-01-07T00:11:20.000Z",
+            "date_modified": "2023-01-07T04:14:16.000Z",
             "date_published": "2023-01-06T11:57:47.000Z",
             "author": {
                 "name": "queengooborg",
@@ -91,17 +80,6 @@
             "author": {
                 "name": "WinstonSung",
                 "url": "https://github.com/WinstonSung"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/25260234?u=a63b17268dcf9bc17251eedef2c1bc7e3899140b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<h3 dir=\"auto\">Motivation</h3>\n<h3 dir=\"auto\">Additional details</h3>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">fix wrong spell, agin -&gt; again</p>",
-            "url": "https://github.com/mdn/content/pull/23430",
-            "title": "fix wrong spell agin -> again",
-            "date_modified": "2023-01-06T08:05:06.000Z",
-            "date_published": "2023-01-06T08:04:54.000Z",
-            "author": {
-                "name": "wangyuanjian",
-                "url": "https://github.com/wangyuanjian"
             }
         },
         {
@@ -218,11 +196,33 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/787448?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">It was not clear on which listener to use or not. the limitation usage is written after the sample. To understand which sample to use, it seems to me that making limitation before is more understandably.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Spend one day because bad read of the doc. At first and second read, the two listeners seems to be equivalent where as they are exclusive.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><g-emoji class=\"g-emoji\" alias=\"point_right\" fallback-src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f449.png\">👉</g-emoji> Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1520454233\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/translated-content/issues/10933\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/translated-content/pull/10933/hovercard\" href=\"https://github.com/mdn/translated-content/pull/10933\">mdn/translated-content#10933</a></p>",
             "url": "https://github.com/mdn/content/pull/23399",
             "title": "Precision on SSE listeners ",
-            "date_modified": "2023-01-06T08:16:09.000Z",
+            "date_modified": "2023-01-07T04:45:49.000Z",
             "date_published": "2023-01-05T10:00:57.000Z",
             "author": {
                 "name": "wadouk",
                 "url": "https://github.com/wadouk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The issue with defaultZoomFactor not showing the correct value was fixed in Firefox 110, as per <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1772166\" rel=\"nofollow\">Bug 1772166</a>.</p>\n<p dir=\"auto\">Browser compatibility data updated in  defaultZoomFactor fix version update <a href=\"https://github.com/mdn/browser-compat-data/pull/18538\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/18538/hovercard\">#18538</a></p>",
+            "url": "https://github.com/mdn/content/pull/23392",
+            "title": "defaultZoomFactor fix release note",
+            "date_modified": "2023-01-05T03:25:07.000Z",
+            "date_published": "2023-01-05T03:22:58.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/mdn/content/pull/23391",
+            "title": "Scroll snap: see also sections",
+            "date_modified": "2023-01-07T04:24:21.000Z",
+            "date_published": "2023-01-05T03:07:53.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
             }
         }
     ]
