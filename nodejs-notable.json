@@ -6,6 +6,17 @@
     "description": "Node.js notable changes on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2512748?u=1da5cfb76fd24e695d02e4f706e6171261e8dc3b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This commit adds code coverage functionality to the <code class=\"notranslate\">node:test</code> module. When <code class=\"notranslate\">node:test</code> is used in conjunction with the new <code class=\"notranslate\">--test-coverage</code> CLI flag, a coverage report is created when the test runner finishes. The coverage summary is forwarded to any test runner reporters so that the display can be customized as desired. This new functionality is compatible with the existing <code class=\"notranslate\">NODE_V8_COVERAGE</code> environment variable as well.</p>\n<p dir=\"auto\">There are still several limitations, which will be addressed in subsequent pull requests:</p>\n<ul dir=\"auto\">\n<li>Coverage is only reported for a single process. It is possible to merge coverage reports together. Once this is done, the <code class=\"notranslate\">--test</code> flag will be supported as well.</li>\n<li>Source maps are not currently supported.</li>\n<li>Excluding specific files or directories from the coverage report is not currently supported. Node core modules and <code class=\"notranslate\">node_modules/</code> are excluded though.</li>\n</ul>",
+            "url": "https://github.com/nodejs/node/pull/46017",
+            "title": "test_runner: add initial code coverage support",
+            "date_modified": "2023-01-08T21:55:47.000Z",
+            "date_published": "2022-12-29T21:53:57.000Z",
+            "author": {
+                "name": "cjihrig",
+                "url": "https://github.com/cjihrig"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1935246?u=440932d4aed022e31a2140e1825c0167b7a12357&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">With the introduction of <code class=\"notranslate\">simdutf</code>, we can finally have a fast way of validating utf-8 on the userland. This pull request introduces <code class=\"notranslate\">buffer.isUtf8</code>.</p>\n<p dir=\"auto\">This was initially requested by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/KhafraDev/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/KhafraDev\">@KhafraDev</a> while implementing undici websockets.</p>",
             "url": "https://github.com/nodejs/node/pull/45947",
             "title": "buffer: add buffer.isUtf8 for utf8 validation",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "targos",
                 "url": "https://github.com/targos"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/456802?u=55a029ca7659fa56e1422d8f8b619cdba6a33bac&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This removes the <code class=\"notranslate\">--experimental-specifier-resolution</code> flag. The loaders team has been <a href=\"https://github.com/nodejs/node/pull/42252\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/42252/hovercard\">planning on removing this as soon as it became possible to replicate the behavior via a custom loader</a>, and today it is: <a href=\"https://github.com/nodejs/loaders-test/tree/main/commonjs-extension-resolution-loader\">https://github.com/nodejs/loaders-test/tree/main/commonjs-extension-resolution-loader</a>. That loader passes the same tests as the flag’s tests from the Node codebase. This PR both removes the flag and adds a reference to that loader to the docs.</p>",
-            "url": "https://github.com/nodejs/node/pull/44859",
-            "title": "esm: remove specifier resolution flag",
-            "date_modified": "2022-10-25T07:05:22.000Z",
-            "date_published": "2022-10-02T03:28:38.000Z",
-            "author": {
-                "name": "GeoffreyBooth",
-                "url": "https://github.com/GeoffreyBooth"
             }
         }
     ]
