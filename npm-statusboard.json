@@ -6,10 +6,54 @@
     "description": "npm/statusboard Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36607?u=79d8c114db476a7ecc6328b328f71d9d758368c7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">We need to break out the invalid signature error handling to be able to account for integrity errors alongside provenance errors.  For now provenance errors will be thrown from the audit command but that code should be implemented in a way that's easy to move to pacote once sigstore 1.0 lands</p>",
+            "url": "https://github.com/npm/statusboard/issues/623",
+            "title": "npm query invalid signature refactor",
+            "date_modified": "2023-01-09T21:35:57.000Z",
+            "date_published": "2023-01-09T19:25:02.000Z",
+            "author": {
+                "name": "wraithgar",
+                "url": "https://github.com/wraithgar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5888249?u=6523cc0547f97dc9125b1cb19a61f992e7b06a86&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/npm/statusboard/issues/622",
+            "title": "Scope and identify engg tasks",
+            "date_modified": "2023-01-09T19:23:02.000Z",
+            "date_published": "2023-01-09T19:22:34.000Z",
+            "author": {
+                "name": "saquibkhan",
+                "url": "https://github.com/saquibkhan"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5888249?u=6523cc0547f97dc9125b1cb19a61f992e7b06a86&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/npm/statusboard/issues/621",
+            "title": "Start work on converting outlook to use npm",
+            "date_modified": "2023-01-09T19:23:09.000Z",
+            "date_published": "2023-01-09T19:15:16.000Z",
+            "author": {
+                "name": "saquibkhan",
+                "url": "https://github.com/saquibkhan"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5888249?u=6523cc0547f97dc9125b1cb19a61f992e7b06a86&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/npm/statusboard/issues/620",
+            "title": "Reify store links",
+            "date_modified": "2023-01-09T19:15:58.000Z",
+            "date_published": "2023-01-09T19:15:13.000Z",
+            "author": {
+                "name": "saquibkhan",
+                "url": "https://github.com/saquibkhan"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/542108?u=2c20c6b8a5298ef8cccf5e4cf0013bae865d0dc7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Problem Statement</h3>\n<p dir=\"auto\">In the <code class=\"notranslate\">npm/cli</code> repo the following query should return an empty set since none of the direct dependents are <code class=\"notranslate\">.dev</code> deps:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"npm query ':root &gt; #npm-package-arg.dev'\n# should also apply to this\nnode . query ':root &gt; .dev &gt; #npm-package-arg'\"><pre class=\"notranslate\"><code class=\"notranslate\">npm query ':root &gt; #npm-package-arg.dev'\n# should also apply to this\nnode . query ':root &gt; .dev &gt; #npm-package-arg'\n</code></pre></div>\n<h3 dir=\"auto\">Current Behavior</h3>\n<p dir=\"auto\">In the current implementation both <code class=\"notranslate\">:root</code> and <code class=\"notranslate\">.dev</code> are collected separately so it returns:</p>\n<div class=\"highlight highlight-source-json notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"[\n  {\n    &quot;name&quot;: &quot;npm-package-arg&quot;,\n    &quot;version&quot;: &quot;10.1.0&quot;,\n    &quot;location&quot;: &quot;node_modules/npm-package-arg&quot;,\n    &quot;path&quot;: &quot;/Users/lukekarrys/projects/npm/cli/node_modules/npm-package-arg&quot;,\n    &quot;from&quot;: [\n      &quot;node_modules/init-package-json&quot;,\n      &quot;node_modules/npm-pick-manifest&quot;,\n      &quot;node_modules/npm-registry-fetch&quot;,\n      &quot;node_modules/pacote&quot;,\n      &quot;node_modules/@npmcli/template-oss&quot;,\n      &quot;mock-registry&quot;,\n      &quot;workspaces/libnpmexec&quot;,\n      &quot;workspaces/libnpmaccess&quot;,\n      &quot;workspaces/libnpmdiff&quot;,\n      &quot;workspaces/libnpmpack&quot;,\n      &quot;workspaces/libnpmpublish&quot;,\n      &quot;workspaces/arborist&quot;,\n      &quot;&quot;\n    ],\n    &quot;to&quot;: [\n      &quot;node_modules/hosted-git-info&quot;,\n      &quot;node_modules/proc-log&quot;,\n      &quot;node_modules/semver&quot;,\n      &quot;node_modules/validate-npm-package-name&quot;\n    ],\n    &quot;dev&quot;: false,\n    &quot;inBundle&quot;: true,\n    &quot;deduped&quot;: false,\n    &quot;overridden&quot;: false,\n    &quot;queryContext&quot;: {}\n  }\n]\"><pre class=\"notranslate\">[\n  {\n    <span class=\"pl-ent\">\"name\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>npm-package-arg<span class=\"pl-pds\">\"</span></span>,\n    <span class=\"pl-ent\">\"version\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>10.1.0<span class=\"pl-pds\">\"</span></span>,\n    <span class=\"pl-ent\">\"location\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/npm-package-arg<span class=\"pl-pds\">\"</span></span>,\n    <span class=\"pl-ent\">\"path\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>/Users/lukekarrys/projects/npm/cli/node_modules/npm-package-arg<span class=\"pl-pds\">\"</span></span>,\n    <span class=\"pl-ent\">\"from\"</span>: [\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/init-package-json<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/npm-pick-manifest<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/npm-registry-fetch<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/pacote<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/@npmcli/template-oss<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>mock-registry<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>workspaces/libnpmexec<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>workspaces/libnpmaccess<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>workspaces/libnpmdiff<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>workspaces/libnpmpack<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>workspaces/libnpmpublish<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>workspaces/arborist<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span><span class=\"pl-pds\">\"</span></span>\n    ],\n    <span class=\"pl-ent\">\"to\"</span>: [\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/hosted-git-info<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/proc-log<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/semver<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>node_modules/validate-npm-package-name<span class=\"pl-pds\">\"</span></span>\n    ],\n    <span class=\"pl-ent\">\"dev\"</span>: <span class=\"pl-c1\">false</span>,\n    <span class=\"pl-ent\">\"inBundle\"</span>: <span class=\"pl-c1\">true</span>,\n    <span class=\"pl-ent\">\"deduped\"</span>: <span class=\"pl-c1\">false</span>,\n    <span class=\"pl-ent\">\"overridden\"</span>: <span class=\"pl-c1\">false</span>,\n    <span class=\"pl-ent\">\"queryContext\"</span>: {}\n  }\n]</pre></div>\n<h3 dir=\"auto\">Expected Behavior</h3>\n<p dir=\"auto\">It should return <code class=\"notranslate\">[]</code> since <code class=\"notranslate\">npm-package-arg</code> is only a direct <code class=\"notranslate\">.prod</code> dependency</p>",
             "url": "https://github.com/npm/statusboard/issues/614",
-            "title": "[query] direct descendant `>` selector as logical `AND` operator",
-            "date_modified": "2022-12-15T21:22:10.000Z",
+            "title": "[query] need a descendant operator that can specify type",
+            "date_modified": "2023-01-09T17:11:55.000Z",
             "date_published": "2022-12-15T21:22:02.000Z",
             "author": {
                 "name": "lukekarrys",
@@ -119,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/459713?u=584c9167beb0297c958870e824719da9caa385de&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Make <code class=\"notranslate\">npm@9.x</code> available in <code class=\"notranslate\">node@18</code> after roughly ~6 weeks of <code class=\"notranslate\">npm@9.x</code> landing in <code class=\"notranslate\">node@19</code> to address any further critical issues (replacing the unmaintained <code class=\"notranslate\">npm@8.x</code> version).</p>\n<h3 dir=\"auto\">Exit Criteria</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> On Target Date: Open PR to backport <code class=\"notranslate\">npm@latest</code> against the <code class=\"notranslate\">nodejs/node</code> <code class=\"notranslate\">v18</code> branch</li>\n</ul>\n<h3 dir=\"auto\">Links &amp; References</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1357671146\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/Release/issues/778\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/Release/issues/778/hovercard?comment_id=1265458751&amp;comment_type=issue_comment\" href=\"https://github.com/nodejs/Release/issues/778#issuecomment-1265458751\">nodejs/Release#778 (comment)</a></li>\n</ul>",
             "url": "https://github.com/npm/statusboard/issues/587",
             "title": "Initiative: Backport `npm@9.x` in `node@18`",
-            "date_modified": "2022-11-30T17:16:30.000Z",
+            "date_modified": "2023-01-09T18:41:53.000Z",
             "date_published": "2022-10-17T19:19:11.000Z",
             "author": {
                 "name": "darcyclarke",
@@ -179,50 +223,6 @@
             "author": {
                 "name": "darcyclarke",
                 "url": "https://github.com/darcyclarke"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/542108?u=2c20c6b8a5298ef8cccf5e4cf0013bae865d0dc7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">We currently run tests with the following workflow settings for Windows:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"os: windows-latest\nshell: cmd\"><pre class=\"notranslate\"><code class=\"notranslate\">os: windows-latest\nshell: cmd\n</code></pre></div>\n<p dir=\"auto\">Something I didn't realize is that the <code class=\"notranslate\">windows-2022</code> runner image ships with <code class=\"notranslate\">Bash 5.1.16(1)-release</code>. Ref: <a href=\"https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md\"><code class=\"notranslate\">actions/runner-images</code></a>.</p>\n<p dir=\"auto\">This caused unexpected behavior when trying to setup my windows dev environent because I was mistakenly trying to run everything with <code class=\"notranslate\">cmd.exe</code> without bash installed. And things like <code class=\"notranslate\">touch prepack</code> which we run in tests worked in CI but on my my machine. Ref: <a href=\"https://github.com/npm/cli/blob/f0e758494698d9dd8a58d07bf71c87608c36869e/workspaces/libnpmpack/test/index.js#L40-L41\">https://github.com/npm/cli/blob/f0e758494698d9dd8a58d07bf71c87608c36869e/workspaces/libnpmpack/test/index.js#L40-L41</a></p>\n<p dir=\"auto\">Exit Criteria:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Create contributing guide for windows\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Including either a guide to settings for <code class=\"notranslate\">autocrlf</code> or having template-oss create a gitattributes file</li>\n</ul>\n</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Audit windows CI setup to ensure it matches real world usage and what we want to test</li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/562",
-            "title": "chore(CI): investigate windows workflows vs real world usage",
-            "date_modified": "2022-10-18T18:03:39.000Z",
-            "date_published": "2022-09-29T21:18:17.000Z",
-            "author": {
-                "name": "lukekarrys",
-                "url": "https://github.com/lukekarrys"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/498775?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Is there an existing issue for this?</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> I have searched the existing issues</li>\n</ul>\n<h3 dir=\"auto\">Current Behavior</h3>\n<p dir=\"auto\">With <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1237559711\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/statusboard/issues/510\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/statusboard/issues/510/hovercard\" href=\"https://github.com/npm/statusboard/issues/510\">#510</a> landed the default of install is now <code class=\"notranslate\">--install-links=true</code>... this has unintentionally broken the expected behavior of <code class=\"notranslate\">npm link</code> creating a reified on disk representation of the package rather than a symbolic link.</p>\n<h3 dir=\"auto\">Expected Behavior</h3>\n<p dir=\"auto\">running <code class=\"notranslate\">npm link</code> in a package should create a global symbolic link to the package</p>\n<h3 dir=\"auto\">Steps To Reproduce</h3>\n<ol dir=\"auto\">\n<li>in a package with a <code class=\"notranslate\">bin</code> export run <code class=\"notranslate\">npm link</code></li>\n<li>check the globally linked lib/node_modules folder</li>\n<li>it is not a sym link</li>\n</ol>\n<h3 dir=\"auto\">Environment</h3>\n<ul dir=\"auto\">\n<li>npm: 9.0.0-pre.2</li>\n<li>Node: any</li>\n<li>OS: any</li>\n<li>platform: any</li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/561",
-            "title": "[BUG] `npm link` should have `--install-links=false` by default",
-            "date_modified": "2022-10-04T20:23:15.000Z",
-            "date_published": "2022-09-28T15:48:23.000Z",
-            "author": {
-                "name": "MylesBorins",
-                "url": "https://github.com/MylesBorins"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/542108?u=2c20c6b8a5298ef8cccf5e4cf0013bae865d0dc7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Exit Criteria</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1199154649\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/4724\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/4724/hovercard\" href=\"https://github.com/npm/cli/issues/4724\">npm/cli#4724</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1164266729\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/4527\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/4527/hovercard\" href=\"https://github.com/npm/cli/issues/4527\">npm/cli#4527</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1357065776\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/5444\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/5444/hovercard\" href=\"https://github.com/npm/cli/issues/5444\">npm/cli#5444</a></li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/546",
-            "title": "feat(display): standardize `stderr` & `stdout`",
-            "date_modified": "2022-10-19T14:48:58.000Z",
-            "date_published": "2022-09-02T16:55:24.000Z",
-            "author": {
-                "name": "lukekarrys",
-                "url": "https://github.com/lukekarrys"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/542108?u=2c20c6b8a5298ef8cccf5e4cf0013bae865d0dc7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>Replace progress bar with spinner only</li>\n<li>Remove <code class=\"notranslate\">npmlog</code> dependency</li>\n<li>Remove class of bugs where user input and relevant output is covered by progress</li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/545",
-            "title": "feat(display): update progress display (aka. remove bar)",
-            "date_modified": "2022-10-18T17:52:33.000Z",
-            "date_published": "2022-09-02T16:48:00.000Z",
-            "author": {
-                "name": "lukekarrys",
-                "url": "https://github.com/lukekarrys"
             }
         }
     ]
