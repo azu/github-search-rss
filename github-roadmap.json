@@ -6,10 +6,131 @@
     "description": "github/roadmap Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">For individuals new to coding, as well as experienced developers, Codespaces simplifies the creation of a development environment. This enables learners to jump directly into learning, and experienced developers to focus on writing their code.</p>\n<p dir=\"auto\">Currently, individuals must create a repository through Github and then create a codespace from that repository. This experience inhibits developers abilities to jump directly into development, and flips the development loop on its head.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Developers should expect to be able to jump directly into a codespace without requiring a dependency on a repository. New developers should be able to jump into learning scenarios without having to worry about setting up the environment they are learning in. Experienced developers should be able to immediately start writing their code. All developers should be able to create a repository when they are ready to publish their code and start sharing with the greater GitHub community.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Unpublished codespaces will become the default introduction to codespaces for all developers. Developers should be able to access a development experience without having to create a custom codespace just by having a GitHub account and accessing GitHub.com/codespaces.</p>\n<h3 dir=\"auto\">Key Scenarios</h3>\n<p dir=\"auto\"><strong>Create:</strong><br>\nWe will maintain a set of template repositories for developers to use to create unpublished codespaces. These template repositories will contain all of the necessary dependencies for a developer to start building using the language or framework they desire.</p>\n<p dir=\"auto\"><strong>Upgrade:</strong><br>\nOnce developers have developed their projects to a point where they are ready to share and publish their work, an upgrade experience to a repository should be available. Users will be able to upgrade their projects through their VCM.</p>\n<p dir=\"auto\"><strong>Delete:</strong><br>\nWhen a user wants to delete their unpublished codespace they will be able to delete it through the same process as deleting a codespace. A user will be able to go to github.com/codespaces, click the ellipses on their project, and select delete. If a user has unpublished changes in the codespace, or the codespace is unpublished, they will be prompted to confirm they want to delete a codespace with unpublished changes.</p>\n<p dir=\"auto\"><strong>Export:</strong><br>\nIn the case of a user running out of entitlements, a user will be able to go to github.com/codespaces and publish the codespace to a new repo. This will enable the user to get access to their code through Git, and ensure that a user has access to their code if they run out of entitlements.</p>",
+            "url": "https://github.com/github/roadmap/issues/635",
+            "title": "Enabling Developers to Start New Projects in Codespaces (Improved New Project Experience)",
+            "date_modified": "2023-01-25T20:29:17.000Z",
+            "date_published": "2023-01-25T18:46:18.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">CodeQL, the analysis engine that powers GitHub code scanning, is investing in improving the coverage of C/C++ memory corruption vulnerabilities.</p>\n<p dir=\"auto\">Buffer overflows and overreads are common types of memory corruption vulnerabilities, and are common in C/C++ because the language doesn't automatically perform or enforce bounds checks. If such checks are not manually implemented, an attacker might be able to write data to memory locations that it shouldn't have access to (buffer overflows, which potentially result in remote code execution or data corruption), or read from memory that it shouldn't have access to (buffer overreads). A good example of the latter is the 2014 \"Heartbleed\" vulnerability in OpenSSL.</p>\n<p dir=\"auto\">As of May 2021, the number of reported buffer overflow vulnerabilities in the CVE database has reached over 13700 (source: <em>An In-Depth Survey of Bypassing Buffer Overflow Mitigation Techniques</em>)</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">To ensure that CodeQL’s false-positive rate remains low, we’re initially focusing on detecting incorrectly bounded reads and writes. All code scanning users that have configured a C++ analysis on their repository will automatically benefit from this additional coverage once released.</p>\n<p dir=\"auto\">New users can <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql\">set up code scanning</a> on their repositories today and receive actionable <a href=\"https://github.blog/changelog/2022-06-02-users-can-view-and-comment-on-code-scanning-alerts-on-the-conversation-tab-in-a-pull-request/\" rel=\"nofollow\">code security alerts right on their pull-requests</a>.</p>",
+            "url": "https://github.com/github/roadmap/issues/634",
+            "title": "CodeQL: improved support for C++ memory corruption vulnerabilities (beta)",
+            "date_modified": "2023-01-25T18:42:25.000Z",
+            "date_published": "2023-01-25T18:41:53.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">CodeQL is the analysis engine that provides the vast majority of our code scanning results. Three CodeQL suites are <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs\">available</a> at this time: <code class=\"notranslate\">code-scanning</code>, <code class=\"notranslate\">security-extended</code>, and <code class=\"notranslate\">security-and-quality</code>. We're adding another <code class=\"notranslate\">experimental</code> suite, to enable users to easily run nearly 100 additional highly experimental security queries.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Experimental queries are queries in development, or community-contributed queries that have not (yet) been promoted to one of the existing suites. By providing an easier way to run these queries against user source code, more potential security issues could be detected.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Suites for a CodeQL analysis can be <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#running-additional-queries\">specified in the analysis workflow file</a>.</p>\n<p dir=\"auto\">Note that experimental queries can be highly unstable, are subject to change, might produce unexpected results, and could lead to analysis failure on any given codebase. It is not recommended to enable experimental queries for production use cases.</p>",
+            "url": "https://github.com/github/roadmap/issues/633",
+            "title": "CodeQL adds an experimental security query suite",
+            "date_modified": "2023-01-25T18:40:32.000Z",
+            "date_published": "2023-01-25T18:39:46.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Secret scanning currently scans commit content for all supported patterns. We're extending the breadth of our scans for Advanced Security customers to cover pull requests and discussions, plus all related comments.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">While most secret leaks occur in code content, a portion do also leak in other content types, including pull requests and discussions. We're expanding the scope of our scans for more exhaustive coverage to better protect our users across GitHub.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Advanced Security customers will be able to view detections found in private and public repositories for these content types within the secret scanning UI and REST API.</p>",
+            "url": "https://github.com/github/roadmap/issues/632",
+            "title": "Secret scanning detects secrets leaked in pull requests and discussions",
+            "date_modified": "2023-01-25T18:40:30.000Z",
+            "date_published": "2023-01-25T18:39:43.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Secret scanning scans high-confidence tokens (those with a low false positive rate) and blocks a remote push if secrets are detected, thereby flagging secrets before exposure. Last quarter, w<a href=\"https://github.com/github/roadmap/issues/496\" data-hovercard-type=\"issue\" data-hovercard-url=\"/github/roadmap/issues/496/hovercard\">e expanded push protection to custom patterns defined at the repository and organization levels</a>. Now, we're also supporting push protection for any custom pattern defined at the enterprise level.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Advanced Security customers can enable push protection for our set of highly-identifiable, built-in patterns. While these patterns provide preventative support for customers, organizations want to also protect their developers from leaking their own, specific patterns. Push protection support for enterprise level custom patterns will fill this coverage need (repository and organization levels already supported).</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Advanced Security customers will be able to enable push protection for their enterprise-level custom patterns from the UI.</p>",
+            "url": "https://github.com/github/roadmap/issues/631",
+            "title": "Secret scanning: Support push protection for enterprise level custom patterns",
+            "date_modified": "2023-01-25T19:16:47.000Z",
+            "date_published": "2023-01-25T18:39:40.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">The UI for a secret scanning alert will surface metadata about any leaked GitHub token.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Metadata on tokens can help users decide whether or not they should revoke a detected token or when. Certain metadata, like token owner, can also aid quicker remediation action.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">When a user navigates to their alert for a detected GitHub token, they will see metadata about the token in that alert view.</p>",
+            "url": "https://github.com/github/roadmap/issues/630",
+            "title": "Secret scanning: Surface GitHub token metadata in alert view",
+            "date_modified": "2023-01-25T18:40:27.000Z",
+            "date_published": "2023-01-25T18:39:37.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Today on GHES, Dependabot alerts can only be enabled or disabled at the enterprise-level.</p>\n<p dir=\"auto\">This release adds support to GHES 3.9 and later versions, so that enterprise customers can:</p>\n<ul dir=\"auto\">\n<li>\"Enable\" or \"disable\" for a single repository</li>\n<li>\"Enable all\" or \"disable all\" for a single organization</li>\n<li>\"Enable all\" or \"disable all\" for the enterprise</li>\n<li>\"Enabling incoming\" repositories at the organization or enterprise level.</li>\n<li>Still opt-in to Dependabot alerts (approving outbound calls) via GitHub Connect</li>\n</ul>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">You can now enable Dependabot alerts at a more granular level.</p>",
+            "url": "https://github.com/github/roadmap/issues/629",
+            "title": "GHES 3.9: Dependabot alerts can be enabled at the repository, organization, and enterprise levels",
+            "date_modified": "2023-01-25T18:40:24.000Z",
+            "date_published": "2023-01-25T18:39:34.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Manual review of <a href=\"https://github.blog/2022-10-18-introducing-fine-grained-personal-access-tokens-for-github/\" rel=\"nofollow\">fine-grained PATs</a> that have access to an organization doesn't scale well, so we're adding APIs to manage these approvals. These APIs will allow a GitHub app to view pending token requests, accept or deny them, and also review and revoke existing fine-grained PATs for an organization.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Organization administrators have the strongest understanding of their security posture and requirements around the use of PATs.  With access to the full lifecycle of fine-grained PATs, administrators can create exactly the rules-based automation they need, with integration into other sources of data (such as group membership, project lifetimes, and directory data).</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">A GitHub app with a new <code class=\"notranslate\">tokens:write</code> permission will be able to register for a webhook event, signalling that a new fine-grained PAT has been created or approved. The app can then review that token and use its business logic to decide if the token should be approved or not.</p>\n<p dir=\"auto\">Apps will also be able to review existing fine-grained PATs, in case that business logic changes and all previous tokens need to be re-evaluated or audited. Using this new API, apps will be able to revoke those existing tokens, attaching a message to the user explaining why this occurred.</p>",
+            "url": "https://github.com/github/roadmap/issues/628",
+            "title": "Organization APIs to manage fine-grained PATs",
+            "date_modified": "2023-01-25T18:40:23.000Z",
+            "date_published": "2023-01-25T18:39:31.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Developers that use temporary private forks to privately fix their draft security advisories cannot currently take advantage of their test automation in GitHub Actions. We will add support for GitHub Actions in temporary private forks for draft security advisories so developers can run test automation.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Private forks are currently used to fix security issues behind closed doors.</p>\n<p dir=\"auto\">However, if you can't test your code before merging the fix, you could be introducing new bugs as an accidental byproduct. This leads to project maintainers releasing a fix, realizing it has bugs, and then releasing a fix for the fix.</p>\n<p dir=\"auto\">Allowing GitHub Actions to run on private forks will help developers resolve security vulnerabilities faster and safer.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Developers who open a temporary private fork to fix a security issue will be able to use most GitHub Actions workflows in that private fork as normal. However, because these repositories often have untrusted external collaborators, workflows will be unable to use organization secrets.</p>",
+            "url": "https://github.com/github/roadmap/issues/627",
+            "title": "GitHub Security Advisory private forks support Actions",
+            "date_modified": "2023-01-25T18:40:22.000Z",
+            "date_published": "2023-01-25T18:39:28.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Developers can export their dependency graph as a Software Bill of Materials (SBOM), a formal, machine-readable inventory of their dependencies and associated information (versions, licenses, etc).</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">SBOMs are required for companies that provide software to the US federal government per <a href=\"https://www.gsa.gov/technology/technology-products-services/it-security/executive-order-14028-improving-the-nations-cybersecurity\" rel=\"nofollow\">Executive Order 14028</a>. SBOMs also make auditing easier and helps companies comply with their organisation's regulatory and legal requirements.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Developers will be able to visit their repository's dependency graph page and export the current state of their dependency graph as a JSON file using an industry standard format like <a href=\"https://spdx.dev/\" rel=\"nofollow\">SPDX</a>. Developers will also be able to retrieve the SBOM from their repository using an API.</p>",
+            "url": "https://github.com/github/roadmap/issues/626",
+            "title": "Dependency graph produces SBOMs",
+            "date_modified": "2023-01-25T18:40:20.000Z",
+            "date_published": "2023-01-25T18:39:25.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">The dependency graph will add support for pnpm manifest files. This will allow developers to view their pnpm dependencies in the dependency graph and receive Dependabot alerts for any known vulnerabilities.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Adding pnpm support gives developers building pnpm projects the supply chain coverage needed to identify and remediate vulnerabilities within GitHub.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Dependency graph will parse and ingest pnpm <code class=\"notranslate\">package.json</code> and <code class=\"notranslate\">pnpm-lock.yaml</code> files automatically, and the included dependencies will appear in the dependency graph. Dependabot alerts will work for pnpm dependencies.</p>",
+            "url": "https://github.com/github/roadmap/issues/625",
+            "title": "Dependabot alerts and dependency graph support for pnpm ",
+            "date_modified": "2023-01-25T18:40:18.000Z",
+            "date_published": "2023-01-25T18:39:22.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Currently, code scanning can be set up by adding a GitHub Actions workflow to a repository. We're going to provide a solution to set up code scanning without adding a workflow file.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Enabling code scanning without a workflow file will make it easier to start using code scanning and see alerts.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Users will enable default CodeQL code scanning security analysis without adding a workflow file to the repository.<br>\nIf they want to customize the analysis to specify the frequency of scans, the languages or directories to scan or use specific commands to compile the code, etc., they will need to add a workflow file to a repository and then edit the CodeQL analysis workflow.</p>",
             "url": "https://github.com/github/roadmap/issues/624",
             "title": "Enable code scanning without a workflow file",
-            "date_modified": "2023-01-09T17:04:26.000Z",
+            "date_modified": "2023-01-25T18:50:07.000Z",
             "date_published": "2022-12-14T18:36:20.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -20,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">SAML single sign-on (SSO) gives organization owners and enterprise owners a way to control and secure access to organization resources like repositories, issues, and pull requests. Organization owners can invite your personal account to join their organization that uses SAML SSO, which allows you to contribute to the organization and retain your existing identity and contributions on GitHub.</p>\n<p dir=\"auto\">When you access resources within an organization that uses SAML SSO, GitHub will redirect you to the organization's SAML IdP to authenticate. After you successfully authenticate with your account on the IdP, the IdP redirects you back to GitHub, where you can access the organization's resources.</p>\n<p dir=\"auto\">The purpose of this feature is to augment existing audit log events with the SAML identity associated with the user who took the relevant action. In doing so, customers using GitHub Enterprise will be able to track activity associated with a specific SAML identity in the enterprise and organization audit logs.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Enterprise and Organization owners will be able to track audit log activity associated with specific SAML SSO identities. By providing the SAML SSO identity as part of the audit log, enterprise and organization owners can quickly and easily link logs from multiple sourcing using the same SAML SSO identity identifiers.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">The <code class=\"notranslate\">external_identity_nameid</code> or <code class=\"notranslate\">external_identity_username</code> will be displayed in all audit log events where the SAML SSO identity was used as a means of authentication.</p>",
             "url": "https://github.com/github/roadmap/issues/623",
             "title": "SAML SSO identity displayed in enterprise audit log events - [Beta]",
-            "date_modified": "2022-12-14T18:27:23.000Z",
+            "date_modified": "2023-01-25T18:42:24.000Z",
             "date_published": "2022-12-14T18:26:53.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -31,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">While fine-grained PATs support GitHub's REST APIs, the public beta does not include GraphQL support.  This roadmap item tracks the ability to use a fine-grained PAT against all the same GraphQL APIs that a GitHub App can target.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Lots of GitHub features are surfaced via the GraphQL API, and we need fine-grained PATs to be able to use them. When complete, fine-grained PATs will have parity with GitHub Apps when it comes to GraphQL.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">We'll be confident in the correctness and security of fine-grained PAT access to GraphQL APIs.  You'll be able to use a fine-grained PAT anywhere you could use a user-to-server GitHub app token.</p>",
             "url": "https://github.com/github/roadmap/issues/622",
             "title": "Fine-grained PATs support for GraphQL",
-            "date_modified": "2022-12-21T20:31:00.000Z",
+            "date_modified": "2023-01-25T18:42:23.000Z",
             "date_published": "2022-12-14T18:26:50.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -42,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">GitHub already provides <a href=\"https://education.github.com/teachers\">multiple benefits for verified teachers</a> including:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://classroom.github.com/\">GitHub Classroom</a> for managing assignments</li>\n<li><a href=\"https://github.com/team\">GitHub Team</a> for courses, coding clubs, and nonprofit research</li>\n<li><a href=\"https://github.blog/2022-05-09-prepare-for-next-semester-with-github-global-campus-and-codespaces/\" rel=\"nofollow\">GitHub Codespaces</a> cloud-hosted development environments</li>\n</ul>\n<p dir=\"auto\"><strong>Now, verified teachers can also use <a href=\"https://copilot.github.com\">GitHub Copilot</a> free of charge.</strong> GiHub Copilot is an AI pair programmer that uses <a href=\"https://openai.com/blog/openai-codex/\" rel=\"nofollow\">OpenAI Codex</a> to suggest code and entire functions in real time, right from your editor. Earlier this summer, following a successful year long technical preview with more than 1.2 million developers, <a href=\"https://github.blog/2022-06-21-github-copilot-is-generally-available-to-all-developers/\" rel=\"nofollow\">we launched GitHub Copilot for individuals</a>. The feedback received from the community has made it abundantly clear: AI is one of the best tools to empower the next generation of developers. With GitHub Copilot, developers have more time and space to focus on solving bigger problems and building even better software.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">GitHub Copilot is effective at solving many introductory programming assignments, which may impact how you assess your students. One <a href=\"https://doi.org/10.1145/3511861.3511863\" rel=\"nofollow\">study</a> found that solutions generated by GitHub Copilot placed it amongst the top 25% of students in a cohort.</p>\n<p dir=\"auto\">We recognize that student's use of GitHub Copilot will likely change the way you plan new lessons, and are committed to partnering closely with our teacher community on how GitHub Copilot can support you and your students. By offering GitHub Copilot free of charge to teachers, we hope to make it easier for teachers to understand and anticipate the impact on student assignments. If you’re interested in sharing your experience, feedback, or ideas, please <a href=\"https://github.com/community/Global-Campus-Teachers/discussions/118\">join the conversation</a> with other verified teachers on GitHub Global Campus.</p>\n<p dir=\"auto\">If you're a teacher, but haven't been verified yet, <a href=\"https://education.github.com/discount_requests/teacher_application\">join GitHub Global Campus for teachers.</a></p>",
             "url": "https://github.com/github/roadmap/issues/621",
             "title": "Copilot for Teachers - [GA]",
-            "date_modified": "2022-12-14T18:27:20.000Z",
+            "date_modified": "2023-01-25T18:42:22.000Z",
             "date_published": "2022-12-14T18:26:47.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -53,7 +174,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Summary</strong><br>\nActions will add the ability to run your workflow jobs on the latest macOS version from Apple, Ventura.<br>\n<strong>Intended Outcome</strong><br>\nRun your Actions workflow jobs on the latest iteration of Apple's macOS platform.</p>\n<p dir=\"auto\"><strong>How will it work</strong><br>\nUpdate your workflow jobs to include <code class=\"notranslate\">runs-on: macos-13</code></p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"jobs:\n  build:\n    runs-on: macos-13\n    steps:\n      - uses: actions/checkout@v2\n      - name: Build\n        run: swift build\n      - name: Run tests\n        run: swift test\"><pre class=\"notranslate\"><code class=\"notranslate\">jobs:\n  build:\n    runs-on: macos-13\n    steps:\n      - uses: actions/checkout@v2\n      - name: Build\n        run: swift build\n      - name: Run tests\n        run: swift test\n</code></pre></div>",
             "url": "https://github.com/github/roadmap/issues/620",
             "title": "Actions: macOS 13 (Ventura) on GitHub-hosted runners (Beta)",
-            "date_modified": "2022-12-14T18:27:19.000Z",
+            "date_modified": "2023-01-25T18:42:21.000Z",
             "date_published": "2022-12-14T18:26:44.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -64,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">With this ship, the use of a new<code class=\"notranslate\">read:audit_log</code> scope will be required to provide personal access tokens (classic) and OAuth apps with the ability to read audit log events.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Stolen and compromised credentials are the number one cause of data breaches across the industry. To mitigate the risk of compromised credentials, GitHub recommends adhering to the <a href=\"https://en.wikipedia.org/wiki/Principle_of_least_privilege\" rel=\"nofollow\">principle of least privilege</a> which promotes \"giving a user account or process only those privileges which are essential to perform its intended function.\" The new scope will enable access to the audit log endpoints, without requiring full administrative privileges.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Enterprise and organizations administrators can create personal access tokens (classic) and OAuth apps without any change, but will do so with the <code class=\"notranslate\">read:audit_log</code> scope.</p>",
             "url": "https://github.com/github/roadmap/issues/619",
             "title": "Create read:audit_log scope for least privileged access to audit log API",
-            "date_modified": "2023-01-06T19:19:44.000Z",
+            "date_modified": "2023-01-25T18:40:17.000Z",
             "date_published": "2022-12-14T18:26:41.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -75,7 +196,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Summary</strong><br>\nEnable groups, corporations, and institutions to fund projects and developers that they depend on</p>\n<p dir=\"auto\"><strong>How will it work?</strong><br>\nAllow an organization to sponsor individuals and organizations via an invoice</p>\n<p dir=\"auto\"><strong>Reasoning</strong><br>\nLarge institutions—companies, enterprises, governments, and more—are the biggest users of open source. They have a clear interest to ensure the projects and developers they depend on not only survive but thrive. Funding open source will help these sponsors to avoid abandonware, keep security tight, and attract technical talent while they’re at it.</p>\n<p dir=\"auto\"><strong>Notes</strong><br>\nThis is the successor to <a href=\"https://github.com/github/roadmap-internal/issues/79\">https://github.com/github/roadmap-internal/issues/79</a></p>",
             "url": "https://github.com/github/roadmap/issues/618",
             "title": "GitHub Sponsors for companies – invoiced billing GA",
-            "date_modified": "2022-12-21T19:56:50.000Z",
+            "date_modified": "2023-01-25T18:59:12.000Z",
             "date_published": "2022-11-16T18:41:10.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -86,7 +207,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Summary</strong><br>\nThe GitHub Actions Runner now supports Windows ARM64 architecture.</p>\n<p dir=\"auto\"><strong>Intended Outcome</strong><br>\nPreviously, the Actions runner did not include Windows ARM64 as a supported OS &amp; Arch combination. This new release of the runner enables customers to use their Windows ARM64 environments as self-hosted runners for GitHub Actions.</p>\n<p dir=\"auto\"><strong>How will it work?</strong><br>\nDuring the self-hosted runner creation flow, customers will select the Windows ARM64 release for deployment. For additional information on how to set up a self-hosted Windows ARM64 runner, please refer to our <a href=\"https://docs.github.com/en/actions/hosting-your-own-runners/using-self-hosted-runners-in-a-workflow#using-default-labels-to-route-jobs\">documentation</a>. If you have any feedback or questions for Actions self-hosted Windows ARM support, you can submit an issue in the <a href=\"https://github.com/actions/runner/issues\">runner repository</a>.</p>",
             "url": "https://github.com/github/roadmap/issues/616",
             "title": "Actions: Self-hosted runners now support Windows ARM64",
-            "date_modified": "2022-12-14T18:32:32.000Z",
+            "date_modified": "2023-01-25T18:45:02.000Z",
             "date_published": "2022-11-16T18:23:47.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -94,132 +215,11 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Summary</strong> <br>\nOrganization and Enterprise Admins can now better understand what is driving their GitHub Action use by repo, workflow and Organization. Organization Admins can now interact with information empowering them to answer questions like which repo is using the most minutes, which workflows have changed resulting in more use and how their split of minutes usage compares across different operating systems.</p>\n<p dir=\"auto\"><strong>Intended Outcome</strong><br>\nPreviously, Admins had to look across a range of un-supported data sources extracting information and then still struggled to answer questions like ‘which workflow is driving the most use across all of my runner types’ or ‘which of my repositories are triggering workflow runs and how are those workflows being triggered’. Understanding how the answers to these questions change over time or in comparison to another repository’s usage required even more custom tooling. Enhanced Usage Metrics solves these problems and more.</p>\n<p dir=\"auto\"><strong>How will it work?</strong> <br>\nThe Actions Usage Metrics dashboard is customizable by date range and provides several filtering and summation tools for an organization's repositories.</p>\n<p dir=\"auto\">Included metrics:<br>\nBillable minutes<br>\nUser counts<br>\nUsage trends<br>\nTotal usage forecasts<br>\nData sorting column header<br>\nData export (.csv format)<br>\nSuccessful workflow runs by invoking event (PR, Push, Merge, etc)<br>\nSuccessful workflow runs by runtime (macos, ubuntu, windows, etc)<br>\nSuccessful workflow runs by runner type (self hosted, hosted, custom)<br>\nSuccessful workflow runs by repository visibility (public or private)</p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Summary</strong> <br>\nOrganization and Enterprise Admins can now better understand what is driving their GitHub Action use by repo, workflow and Organization. Organization Admins can now interact with information empowering them to answer questions like which repo is using the most minutes, which workflows have changed resulting in more use and how their split of minutes usage compares across different operating systems.</p>\n<p dir=\"auto\"><strong>Intended Outcome</strong><br>\nPreviously, Admins had to look across a range of un-supported data sources extracting information and then still struggled to answer questions like ‘which workflow is driving the most use across all of my runner types’ or ‘which of my repositories are triggering workflow runs and how are those workflows being triggered’. Understanding how the answers to these questions change over time or in comparison to another repository’s usage required even more custom tooling. Enhanced Usage Metrics solves these problems and more.</p>\n<p dir=\"auto\"><strong>How will it work?</strong> <br>\nThe Actions Usage Metrics dashboard is customizable by date range and provides several filtering and summation tools for an organization's repositories.</p>\n<p dir=\"auto\">Included metrics:<br>\nBillable minutes<br>\nUser counts<br>\nUsage trends<br>\nTotal usage forecasts<br>\nData sorting by column header<br>\nData export (.csv format)<br>\nSuccessful workflow runs by invoking event (PR, Push, Merge, etc)<br>\nSuccessful workflow runs by runtime (macos, ubuntu, windows, etc)<br>\nSuccessful workflow runs by runner type (self hosted, hosted, custom)<br>\nSuccessful workflow runs by repository visibility (public or private)</p>",
             "url": "https://github.com/github/roadmap/issues/615",
             "title": "Actions: Enhanced GitHub Actions Usage Metrics and Insights",
-            "date_modified": "2023-01-12T21:52:05.000Z",
+            "date_modified": "2023-01-25T18:45:00.000Z",
             "date_published": "2022-11-16T18:23:44.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Summary</strong><br>\nEnterprise customers can now set up Actions to connect with their internal networks in under 10 minutes! GitHub has introduced a turnkey set of tools that allow enterprise admins to give GitHub Actions access to the resources their teams need inside their private networks. This means that teams can now access their internal APIs, Databases, Artifactory instances and more from GitHub’s hosted runners.</p>\n<p dir=\"auto\"><strong>Intended Outcome</strong><br>\nThis enables Actions to connect to Azure services, such as Azure Storage, in a secure manner using service endpoints or to on-premises data sources, taking advantage of user-defined routes. You can also connect Actions to a network virtual appliance to inspect all outbound traffic and take actions according to allow and deny rules. Finally you can configure Actions to use custom DNS and configure network security group (NSG) rules to specify egress traffic restrictions.</p>\n<p dir=\"auto\"><strong>How will it work?</strong><br>\nWith the introduction of GitHub’s secure networking for Actions, customers on Azure can now set up an integration with their <a href=\"https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview\" rel=\"nofollow\">Azure subscriptions Virtual Networks </a>(VNets). This solution enables service traffic to go through the Azure backbone network, isolating communication from the public Internet and effectively injecting the Actions runner into your private network.</p>",
-            "url": "https://github.com/github/roadmap/issues/614",
-            "title": "Actions: Private networking support for secure connections to customer VNETs",
-            "date_modified": "2022-12-14T18:32:30.000Z",
-            "date_published": "2022-11-16T18:23:41.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">In order to help teams migrate over from projects classic, we have a number of areas where we are working towards feature parity. In this quarter, we hope to address the following:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Project events are included in issue / pull request timelines</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Streamlined creation experience from the repo projects index</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Ability to deep link to an issue within a project</li>\n</ul>",
-            "url": "https://github.com/github/roadmap/issues/613",
-            "title": "Projects: Parity with Projects (classic) Milestone 3",
-            "date_modified": "2023-01-24T17:07:22.000Z",
-            "date_published": "2022-11-16T18:23:38.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">To better protect npm users from supply chain attacks, we are adding support for verifiable links between the source and the built packages in npm packages. You can read more about the proposed approach in the detailed <a href=\"https://github.com/npm/rfcs/pull/626\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/npm/rfcs/pull/626/hovercard\">RFC</a>.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">npm is the most widely used package manager on the planet today, and is therefore a potential target from malicious actors who want to exploit security weaknesses. By adding verifiable linking between a the source code repository, the build run that generated the package, and the package itself, we can mitigate certain supply chain attacks.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Read more about the proposed approach in the <a href=\"https://github.com/npm/rfcs/pull/626\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/npm/rfcs/pull/626/hovercard\">RFC</a>.</p>",
-            "url": "https://github.com/github/roadmap/issues/612",
-            "title": "npm supports creating verifiable links between a package version and its source/build - Public beta",
-            "date_modified": "2022-12-14T18:30:37.000Z",
-            "date_published": "2022-11-16T18:21:45.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Today, GitHub’s audit log streaming feature requires storage of cloud secrets in GitHub when configuring your stream. Going forward, the audit log feature will support OpenID Connect (OIDC) for streaming partners. OIDC allows for the use of short-lived tokens that are automatically rotated for each configuration.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<ul dir=\"auto\">\n<li>With the new OpenID Connect (OIDC) support, you can stream to one of our five streaming partners</li>\n<li>OpenID token exchange eliminates the need for storing any long-lived cloud secrets in GitHub</li>\n<li>Enterprise owners can use the security mechanisms of their cloud provider to ensure minimal access to cloud resources</li>\n</ul>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">OIDC will establish an identity layer between GitHub and AWS for the purposes of authenticating GitHub to stream audit log events to a specified AWS S3 bucket. Enterprise owners will establish trust with the GitHub audit log application and assign audit log a role with write permissions to the S3 bucket. When streaming GitHub events via audit log streaming, GitHub will authenticate the cloud role and the Github audit log identity using short lived tokens.</p>",
-            "url": "https://github.com/github/roadmap/issues/611",
-            "title": "Open ID Connect (OIDC) for GHEC Audit Log Streaming to AWS S3 - [GA]",
-            "date_modified": "2022-12-14T18:30:36.000Z",
-            "date_published": "2022-11-16T18:21:42.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Audit log streaming enables customers to stream a high-fidelity set of audit log and git event data to a log collection point of their choosing. This capability will sit alongside our existing audit log API and UI. The purpose of this release is to enable Datadog as a streaming endpoint.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">We want enterprise administrators to be able to use the right tools for their job, whether that be short term investigation or longer term threat analysis and prevention. With audit log streaming, customers can be assured that no audit log event will be lost, and that they will be able to satisfy longer term data retention goals by storing streamed events within their own log aggregation systems. Administrators will be able to analyze GitHub audit log data using Datadog's products.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">An enterprise owner will be able to configure a destination domain, port, and token with write authorization to the streaming endpoint.</p>",
-            "url": "https://github.com/github/roadmap/issues/610",
-            "title": "Audit Log Streaming to Datadog - [GA]",
-            "date_modified": "2023-01-06T19:16:56.000Z",
-            "date_published": "2022-11-16T18:21:39.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Today by default, only those with the <code class=\"notranslate\">admin</code> role for a repository can view or modify Dependabot alerts. With this change, anyone with <code class=\"notranslate\">write</code> or <code class=\"notranslate\">maintain</code> roles will also have permissions to view and modify Dependabot alerts by default.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Starting February 2023, default permissions for Dependabot alerts are changing so that the right collaborators can see and action on Dependabot alerts.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">Based on your repository permissions, if you have <code class=\"notranslate\">write</code> or <code class=\"notranslate\">maintain</code> access, you'll be able to view and action on Dependabot alerts.</p>\n</li>\n<li>\n<p dir=\"auto\">Based on your user notification settings and per-repository watching settings, you'll begin receiving notifications on Dependabot alerts.</p>\n</li>\n</ul>\n<p dir=\"auto\">You can adjust your user notifications settings and per-repository watching settings to make sure you're receiving notifications on Dependabot alerts for the repositories you care about.</p>",
-            "url": "https://github.com/github/roadmap/issues/609",
-            "title": "Dependabot Alerts default permissions: `write` and `maintain` roles",
-            "date_modified": "2022-12-21T20:41:37.000Z",
-            "date_published": "2022-11-16T18:21:36.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">A new enterprise membership CSV report enables enterprise administrators to better analyse their membership and take action based on that information. Alongside this, we have also improved the enterprise consumed licenses report to provide more information to administrators.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">With these enhanced reports, customers should be able to more easily answer license consumption and enterprise access questions.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">The Consumed Licenses report is available both in GHEC UI on the enterprise account's <code class=\"notranslate\">settings</code> &gt; <code class=\"notranslate\">enterprise licensing</code> page as a download button for <code class=\"notranslate\">User licenses</code> as well as via API.</p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/58748846/193249774-09ac320f-f401-429c-9b29-b984cb4aa55f.png\"><img width=\"1425\" alt=\"Screen Shot 2022-09-30 at 6 22 01 AM\" src=\"https://user-images.githubusercontent.com/58748846/193249774-09ac320f-f401-429c-9b29-b984cb4aa55f.png\" style=\"max-width: 100%;\"></a></p>\n<p dir=\"auto\">The enterprise membership report, it is downloadable via the enterprise account's <code class=\"notranslate\">People</code> page as a download button.</p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/58748846/193250107-e72fcfe7-a60a-4f2e-ab21-92cd62d352da.png\"><img width=\"1407\" alt=\"Screen Shot 2022-09-30 at 6 24 01 AM\" src=\"https://user-images.githubusercontent.com/58748846/193250107-e72fcfe7-a60a-4f2e-ab21-92cd62d352da.png\" style=\"max-width: 100%;\"></a></p>",
-            "url": "https://github.com/github/roadmap/issues/608",
-            "title": "Enterprise Membership & Improved Consumed License Reports",
-            "date_modified": "2022-11-29T22:58:19.000Z",
-            "date_published": "2022-11-16T18:21:33.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">This feature enables GitHub Enterprise Cloud administrators to move organization move from one enterprise account to another without having to drop the org into a free state or request that GitHub Support transfers the organization for them.</p>\n<p dir=\"auto\">Note this feature enables the transfer of an organization between enterprise accounts only if both enterprise accounts are GHEC Classic accounts - not EMUs - and the administrator is an enterprise owner for both enterprise accounts. A future roadmap item will bring the ability to transfer an organization between GHEC Classic accounts which have different enterprise owners.</p>\n<p dir=\"auto\">Customers wishing to move organizations into a GHEC EMU enterprise are advised to use the <a href=\"https://docs.github.com/en/early-access/enterprise-importer\">GitHub Enterprise Importer</a> to manage this.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Customers who are growing through acquisitions and partnerships can easily, confidently and quickly transfer organizations into their enterprise cloud account.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">An enterprise administrator with access to two enterprise accounts will:</p>\n<ul dir=\"auto\">\n<li>See a UI option in the enterprise account that is available within the organization's gear drop-down to <code class=\"notranslate\">transfer</code> an organization</li>\n<li>Have the ability to invite an organization from another enterprise account to pull an organization over via the invitation flow</li>\n</ul>",
-            "url": "https://github.com/github/roadmap/issues/607",
-            "title": "Transfer Organizations between GHEC Classic Enterprise Accounts",
-            "date_modified": "2022-12-14T18:30:33.000Z",
-            "date_published": "2022-11-16T18:21:30.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Code scanning will include a new tool status page, which will show detailed information about the security tools/engines (including CodeQL) set up on a repository, and will provide information like coverage of files and directories. Users will be able to see errors for analysis and its configuration.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">The code scanning tool status page will help users complete the setup successfully by raising awareness if the setup has failed or is incomplete. It will also allow users to maintain a successful setup by understanding if the success status has changed due to the latest changes in the repository. The tool status page will be a new entry point to debug and configure code scanning tools.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Code scanning will report the status of the tool based on the number of files that were built and analysed. Users will be able to tweak and improve their analysis configuration based on the provided information.</p>",
-            "url": "https://github.com/github/roadmap/issues/606",
-            "title": "Code scanning tool status page ",
-            "date_modified": "2022-12-21T20:41:13.000Z",
-            "date_published": "2022-11-16T18:19:29.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">A REST API to enable GitHub Advanced Security, secret scanning, and push protection.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Customers can use the enterprise level REST API to automate processes around the enablement of secret scanning and push protection.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">With the enterprise REST API, GitHub Advanced Security customers can:</p>\n<ul dir=\"auto\">\n<li>Enable or disable GitHub Advanced Security</li>\n<li>Enable or disable secret scanning</li>\n<li>Enable or disable push protection for secret scanning</li>\n<li>Add or update a custom link to display to contributors who are blocked from pushing a secret</li>\n</ul>",
-            "url": "https://github.com/github/roadmap/issues/605",
-            "title": "Secret scanning: Enable at the enterprise level with the Enterprise-level REST API",
-            "date_modified": "2022-12-21T20:42:06.000Z",
-            "date_published": "2022-11-16T18:19:26.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">In-product metrics on how a specific custom pattern is performing. The metrics can be accessed in the UI page of the specific custom pattern.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">We want to provide customers with insight into how their custom patterns perform. Based on those metrics, admins can take action to enable the custom pattern for push protection, edit the pattern to make it less noisy, or leave the pattern running as is.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">When viewing a custom pattern, admins will be able to view metrics about the specific custom pattern. Metrics will include the number of false positives, open alerts, etc.</p>",
-            "url": "https://github.com/github/roadmap/issues/604",
-            "title": "Secret scanning: Metrics for custom patterns",
-            "date_modified": "2022-12-21T20:42:05.000Z",
-            "date_published": "2022-11-16T18:19:23.000Z",
             "author": {
                 "name": "github-product-roadmap",
                 "url": "https://github.com/github-product-roadmap"
