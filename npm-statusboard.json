@@ -6,10 +6,43 @@
     "description": "npm/statusboard Issues on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/542108?u=2c20c6b8a5298ef8cccf5e4cf0013bae865d0dc7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Here's a list of flaky tests I've seen across our supported repos:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">@npmcli/arborist</code>: <a href=\"https://github.com/npm/cli/actions/runs/3928786524\">https://github.com/npm/cli/actions/runs/3928786524</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <code class=\"notranslate\">npm/ignore-walk</code>: <a href=\"https://github.com/npm/ignore-walk/actions/runs/3928775936\">https://github.com/npm/ignore-walk/actions/runs/3928775936</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">fs-minipass</code>: <a href=\"https://github.com/npm/fs-minipass/actions/runs/3984841403\">https://github.com/npm/fs-minipass/actions/runs/3984841403</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">minipass-fetch</code>: <a href=\"https://github.com/npm/minipass-fetch/actions/runs/4009475310/jobs/6884876964\">https://github.com/npm/minipass-fetch/actions/runs/4009475310/jobs/6884876964</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">make-fetch-happen</code>: <a href=\"https://github.com/npm/make-fetch-happen/actions/runs/3927650948/jobs/6714458250\">https://github.com/npm/make-fetch-happen/actions/runs/3927650948/jobs/6714458250</a></li>\n</ul>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/91213?u=c5d308beaf78f91744200e6507109f04ad881503&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
+            "url": "https://github.com/npm/statusboard/issues/638",
+            "title": "Epic: Refactor Arborist for Performance and Flexiblity",
+            "date_modified": "2023-01-27T00:10:46.000Z",
+            "date_published": "2023-01-27T00:10:46.000Z",
+            "author": {
+                "name": "fritzy",
+                "url": "https://github.com/fritzy"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/91213?u=c5d308beaf78f91744200e6507109f04ad881503&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This issue tracks known issues, feedback, fixes, and broken repos for <code class=\"notranslate\">--install-strategy=linked</code></p>\n<h2 dir=\"auto\">Known Issues/Fixes:</h2>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> workspace specific installs failing\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">.children</code> should be <code class=\"notranslate\">CaseInsensitiveMap</code></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">.inventory</code> might as well be <code class=\"notranslate\">Inventory</code></li>\n</ul>\n</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> .bin discovery failing (although placed correctly)</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> package cleanup breaking on failed installs (possibly related to build scripts)</li>\n</ul>\n<h2 dir=\"auto\">Known Failed Repos/Packages:</h2>\n<ul dir=\"auto\">\n<li>npm/cli narrowed down to a specific workspace <code class=\"notranslate\">-ws</code></li>\n<li><a href=\"https://github.com/npm/documentation\">https://github.com/npm/documentation</a></li>\n<li><code class=\"notranslate\">npm install --install-strategy=linked lmbd</code></li>\n</ul>",
+            "url": "https://github.com/npm/statusboard/issues/637",
+            "title": "Linked Install Strategy Bugs and Feedback",
+            "date_modified": "2023-01-26T18:57:33.000Z",
+            "date_published": "2023-01-26T18:43:48.000Z",
+            "author": {
+                "name": "fritzy",
+                "url": "https://github.com/fritzy"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/424045?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><strong>Is your feature request related to a problem? Please describe.</strong></p>\n<p dir=\"auto\">Yes. For example, if a user runs <code class=\"notranslate\">npm install --legacy-peer-deps</code> followed by <code class=\"notranslate\">npm ls</code> without including the <code class=\"notranslate\">--legacy-peer-deps</code> flag, they will see errors in their tree related to peer dependencies. Running <code class=\"notranslate\">npm ls --legacy-peer-deps</code> however, returns correctly.</p>\n<p dir=\"auto\"><strong>Describe the solution you'd like</strong></p>\n<p dir=\"auto\">We should store flags that impact the shape of the dependency tree in the package-lock.json, this way future commands can be aware those flags were used and can enable them, providing our users a more consistent experience. For our users who disable <code class=\"notranslate\">package-lock.json</code> (like ourselves, we do that) this data should be persisted in the hidden lockfile as well.</p>\n<p dir=\"auto\"><strong>Describe alternatives you've considered</strong></p>\n<p dir=\"auto\">The only alternative I can think of is implicitly saving these settings to a project level <code class=\"notranslate\">.npmrc</code>. This could be a viable approach too.</p>\n<p dir=\"auto\"><strong>Additional context</strong></p>\n<p dir=\"auto\">Here's a spot to link related issues as we find them:</p>",
+            "url": "https://github.com/npm/statusboard/issues/636",
+            "title": "feat: store flags that impact tree building in the package-lock.json",
+            "date_modified": "2023-01-26T18:34:49.000Z",
+            "date_published": "2023-01-26T17:24:47.000Z",
+            "author": {
+                "name": "nlf",
+                "url": "https://github.com/nlf"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/542108?u=2c20c6b8a5298ef8cccf5e4cf0013bae865d0dc7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Here's a list of flaky tests I've seen across our supported repos:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">@npmcli/arborist</code>: <a href=\"https://github.com/npm/cli/actions/runs/3928786524\">https://github.com/npm/cli/actions/runs/3928786524</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <code class=\"notranslate\">npm/ignore-walk</code>: <a href=\"https://github.com/npm/ignore-walk/actions/runs/3928775936\">https://github.com/npm/ignore-walk/actions/runs/3928775936</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <code class=\"notranslate\">fs-minipass</code>: <a href=\"https://github.com/npm/fs-minipass/actions/runs/3984841403\">https://github.com/npm/fs-minipass/actions/runs/3984841403</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">minipass-fetch</code>: <a href=\"https://github.com/npm/minipass-fetch/actions/runs/4009475310/jobs/6884876964\">https://github.com/npm/minipass-fetch/actions/runs/4009475310/jobs/6884876964</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <code class=\"notranslate\">make-fetch-happen</code>: <a href=\"https://github.com/npm/make-fetch-happen/actions/runs/3927650948/jobs/6714458250\">https://github.com/npm/make-fetch-happen/actions/runs/3927650948/jobs/6714458250</a></li>\n</ul>",
             "url": "https://github.com/npm/statusboard/issues/631",
             "title": "Flaky tests",
-            "date_modified": "2023-01-25T21:23:15.000Z",
+            "date_modified": "2023-01-26T21:11:38.000Z",
             "date_published": "2023-01-18T18:14:22.000Z",
             "author": {
                 "name": "lukekarrys",
@@ -86,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5888249?u=6523cc0547f97dc9125b1cb19a61f992e7b06a86&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
             "url": "https://github.com/npm/statusboard/issues/620",
             "title": "Reify store links",
-            "date_modified": "2023-01-12T17:58:26.000Z",
+            "date_modified": "2023-01-26T18:13:22.000Z",
             "date_published": "2023-01-09T19:15:13.000Z",
             "author": {
                 "name": "saquibkhan",
@@ -187,39 +220,6 @@
             "title": "investigate issues with `npx` between v8 > v9",
             "date_modified": "2022-10-27T20:41:34.000Z",
             "date_published": "2022-10-20T16:54:15.000Z",
-            "author": {
-                "name": "darcyclarke",
-                "url": "https://github.com/darcyclarke"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/459713?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">In v7 we broke the ability for users to parse <code class=\"notranslate\">stderr</code> vs. <code class=\"notranslate\">stdout</code> output when <code class=\"notranslate\">--json</code> is passed.</p>\n<h3 dir=\"auto\">Exit Criteria</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> revert to using <code class=\"notranslate\">console.log()</code> vs. <code class=\"notranslate\">console.error()</code> <a href=\"https://github.com/npm/cli/blob/lk/all-deps/lib/utils/exit-handler.js#L212\">here</a></li>\n</ul>\n<h3 dir=\"auto\">Links &amp; References</h3>\n<ul dir=\"auto\">\n<li>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"812494719\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/2740\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/2740/hovercard\" href=\"https://github.com/npm/cli/issues/2740\">npm/cli#2740</a></li>\n</ul>\n</li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/589",
-            "title": "BREAKING CHANGE(output): make `--json` parseable again",
-            "date_modified": "2022-10-19T17:04:39.000Z",
-            "date_published": "2022-10-18T17:58:41.000Z",
-            "author": {
-                "name": "darcyclarke",
-                "url": "https://github.com/darcyclarke"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/459713?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Make <code class=\"notranslate\">npm@9.x</code> available in <code class=\"notranslate\">node@18</code> after roughly ~6 weeks of <code class=\"notranslate\">npm@9.x</code> landing in <code class=\"notranslate\">node@19</code> to address any further critical issues (replacing the unmaintained <code class=\"notranslate\">npm@8.x</code> version).</p>\n<h3 dir=\"auto\">Exit Criteria</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> On Target Date: Open PR to backport <code class=\"notranslate\">npm@latest</code> against the <code class=\"notranslate\">nodejs/node</code> <code class=\"notranslate\">v18</code> branch</li>\n</ul>\n<h3 dir=\"auto\">Links &amp; References</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1357671146\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/Release/issues/778\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/Release/issues/778/hovercard?comment_id=1265458751&amp;comment_type=issue_comment\" href=\"https://github.com/nodejs/Release/issues/778#issuecomment-1265458751\">nodejs/Release#778 (comment)</a></li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/587",
-            "title": "Initiative: Backport `npm@9.x` in `node@18`",
-            "date_modified": "2023-01-09T18:41:53.000Z",
-            "date_published": "2022-10-17T19:19:11.000Z",
-            "author": {
-                "name": "darcyclarke",
-                "url": "https://github.com/darcyclarke"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/459713?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Make <code class=\"notranslate\">npm@9.x</code> available in the latest LTS version of Node.js after roughly ~4 weeks of General Availability to address any critical issues (replacing the unmaintained <code class=\"notranslate\">npm@8.x</code> version).</p>\n<h3 dir=\"auto\">Exit Criteria</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> On Target Date: Open PR to backport <code class=\"notranslate\">npm@latest</code> against the <code class=\"notranslate\">nodejs/node</code> <code class=\"notranslate\">v19</code> branch</li>\n</ul>\n<h3 dir=\"auto\">Links &amp; References</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1357671146\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/Release/issues/778\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/Release/issues/778/hovercard?comment_id=1265458751&amp;comment_type=issue_comment\" href=\"https://github.com/nodejs/Release/issues/778#issuecomment-1265458751\">nodejs/Release#778 (comment)</a></li>\n</ul>",
-            "url": "https://github.com/npm/statusboard/issues/586",
-            "title": "Initiative: Backport `npm@9.x` in `node@19`",
-            "date_modified": "2022-12-12T19:55:32.000Z",
-            "date_published": "2022-10-17T19:16:26.000Z",
             "author": {
                 "name": "darcyclarke",
                 "url": "https://github.com/darcyclarke"
