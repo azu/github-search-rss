@@ -6,36 +6,80 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF110 adds support for serializing the stack for native error types in workers - which means that cloning error stacks now works wherever the structured cloning algorithm is used, not just main threads (support for that was added in FF104).</p>\n<p dir=\"auto\">This adds a release note.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1534938720\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23686\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23686/hovercard\" href=\"https://github.com/mdn/content/issues/23686\">#23686</a></p>",
-            "url": "https://github.com/mdn/content/pull/23997",
-            "title": "FF110 Relnote- structured cloning error stack in workers",
-            "date_modified": "2023-01-30T23:52:33.000Z",
-            "date_published": "2023-01-30T23:50:50.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6409576?u=fdc2e4345fda2a776deccdf244907f993802584a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I typo in the code example demonstrating the interest in the polymorphic implementation of <code class=\"notranslate\">Promise[@@species]</code>.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I've been coming to MDN to know what the standard is in JavaScript (which is more friendly than the official EcmaScript spec). I was also implementing a <code class=\"notranslate\">Promise</code> from scratch before I tweaked it to my flavour... And my test case didn't match that code excerpt behaviour.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">N/A</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/24020",
+            "title": "fix: polymorphism code excerpt expectation",
+            "date_modified": "2023-01-31T11:47:46.000Z",
+            "date_published": "2023-01-31T11:47:34.000Z",
+            "author": {
+                "name": "SalathielGenese",
+                "url": "https://github.com/SalathielGenese"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109748926?u=b8c5d64c32ee700c37d7374a9ac1808955b027c4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Correct me if I'm wrong, but I'm pretty sure that the handler.setPrototypeOf method is a trap for the internal method [[SetPrototypeOf]], not for Object.setPrototypeOf: <a href=\"https://262.ecma-international.org/13.0/#table-proxy-handler-methods\" rel=\"nofollow\">https://262.ecma-international.org/13.0/#table-proxy-handler-methods</a></p>",
+            "url": "https://github.com/mdn/content/pull/24018",
+            "title": "replace Object.setPrototypeOf with [[SetPrototypeOf]]",
+            "date_modified": "2023-01-31T10:33:36.000Z",
+            "date_published": "2023-01-31T10:33:22.000Z",
+            "author": {
+                "name": "petardotjs",
+                "url": "https://github.com/petardotjs"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">When adding the Cascade Layer feature, the Web Platform also added a few CSSOM APIs.</p>\n<p dir=\"auto\">I found it thanks to <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/dontcallmedom/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/dontcallmedom\">@dontcallmedom</a>'s mdn-gaps tool.</p>\n<p dir=\"auto\">This PR only adds the extension for <code class=\"notranslate\">CSSImportRule</code>. There are also two new interfaces that will be added in another PR (I want to be sure to have understood layers correctly by having this merged first.</p>",
+            "url": "https://github.com/mdn/content/pull/24014",
+            "title": "Add CSSImportRule.layer document",
+            "date_modified": "2023-01-31T07:33:10.000Z",
+            "date_published": "2023-01-31T07:01:57.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7622339?u=93923bc2d6f813991d8365d1c6eeccfc73201a96&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Replace references to <code class=\"notranslate\">navigationStart</code> with <code class=\"notranslate\">timeOrigin</code>. Move discussion of \"origin time\" from <code class=\"notranslate\">Document.timeline</code> to <code class=\"notranslate\">DocumentTimeline()</code>. Specify the default <code class=\"notranslate\">originTime</code> in <code class=\"notranslate\">DocumentTimline()</code>. Add examples showing how <code class=\"notranslate\">originTime</code> works. Define \"non-active document\".</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Clarity, completeness.</p>\n<p dir=\"auto\"><code class=\"notranslate\">navigationStart</code> is marked obsolete, doesn't match the terminology in the standard, and isn't terribly relevant to animation in any case.</p>\n<p dir=\"auto\">The \"origin time\" discussion is redundant in <code class=\"notranslate\">Document.timeline</code> because that timeline's origin time is always zero, and therefore not terribly observable.</p>\n<p dir=\"auto\">\"Origin time\" and \"time origin\" are both confusing and easily confused (<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"279249856\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/csswg-drafts/issues/2079\" data-hovercard-type=\"issue\" data-hovercard-url=\"/w3c/csswg-drafts/issues/2079/hovercard\" href=\"https://github.com/w3c/csswg-drafts/issues/2079\">w3c/csswg-drafts#2079</a>); hopefully examples help with that a bit.</p>",
+            "url": "https://github.com/mdn/content/pull/24011",
+            "title": "Refactor `DocumentTimeline`'s discussion of time origin",
+            "date_modified": "2023-01-31T05:21:15.000Z",
+            "date_published": "2023-01-31T05:19:29.000Z",
+            "author": {
+                "name": "ninevra",
+                "url": "https://github.com/ninevra"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7622339?u=93923bc2d6f813991d8365d1c6eeccfc73201a96&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Document that <code class=\"notranslate\">Element.animate()</code> accepts a <code class=\"notranslate\">timeline</code> option to associate the animation with a timeline other than <code class=\"notranslate\">document.timeline</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Completeness. This option isn't useful now, but could become useful if scroll timelines are implemented.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://w3c.github.io/csswg-drafts/web-animations-1/#dom-keyframeanimationoptions-timeline\" rel=\"nofollow\">Spec reference.</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1561146680\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/18776\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/18776/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/18776\">mdn/browser-compat-data#18776</a>, which would add browser compatibility data for this option.</p>\n",
+            "url": "https://github.com/mdn/content/pull/24009",
+            "title": "Document `Element.animate()`'s `timeline` option",
+            "date_modified": "2023-01-31T04:16:23.000Z",
+            "date_published": "2023-01-31T04:14:55.000Z",
+            "author": {
+                "name": "ninevra",
+                "url": "https://github.com/ninevra"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">To access webMidi you need to call <code class=\"notranslate\">requestMIDIAccess()</code> in a secure context, the page permission policy must allow access, and the user must have granted access. The permission status can be queried using the permission API.</p>\n<p dir=\"auto\">This PR is a test of how you might record the above information. I have added a \"Security section\" in both the Web MIDI API overview and in <code class=\"notranslate\">requestMIDIAccess()</code>. I expect to remove one following this discussion.</p>\n<p dir=\"auto\">My leaning is that security information should probably go in the <code class=\"notranslate\">requestMIDIAccess()</code> - because that is where the access checks occur.</p>\n<p dir=\"auto\">The permissions API behaviour is defined in the API spec so it makes sense to me that we should have a section in the API docs for this. We already have the concept of a security section that includes security requirements so perhaps this is the right place for this information too? That's kind of what I did.</p>\n<p dir=\"auto\">But then I'm not sure the best place/way to show the compatibility information for the <code class=\"notranslate\">midi</code> permission policy and permission API tokens (they don't have to be supported). For now I put these as additional compatibility information in the Web API overview.</p>\n<p dir=\"auto\">Upshot, trying to work out where we should have security information and permission API status information.</p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Elchi3/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Elchi3\">@Elchi3</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a> Any thoughts? I'm hoping for a pattern that can be reused next time I have to do one of these.</p>",
+            "url": "https://github.com/mdn/content/pull/24006",
+            "title": "[TBD] WebMIDI security and permission API - how to capture?",
+            "date_modified": "2023-01-31T11:25:29.000Z",
+            "date_published": "2023-01-31T02:44:10.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #22560.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1465466785\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22560\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/22560/hovercard\" href=\"https://github.com/mdn/content/issues/22560\">#22560</a>, in which is is reported that submitting the form breaks the example because the server returns 403.</p>\n<p dir=\"auto\">I don't really love this fix, but I don't think we can make this work as a live sample given CSP constraints, and I don't think it is very useful as a live sample anyway without being part of a larger example (with, say, some server-side component).</p>",
-            "url": "https://github.com/mdn/content/pull/23996",
-            "title": "Fix issue 22560: remove live sample",
-            "date_modified": "2023-01-30T23:49:42.000Z",
-            "date_published": "2023-01-30T23:48:04.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9910800?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&gt; **Note:** You have to remove this attribute entirely or set it to an empty string, `open=&quot;&quot;` to hide details. `open=&quot;false&quot;` makes the details visible because this attribute is Boolean.\"><pre class=\"notranslate\"><code class=\"notranslate\">&gt; **Note:** You have to remove this attribute entirely or set it to an empty string, `open=\"\"` to hide details. `open=\"false\"` makes the details visible because this attribute is Boolean.\n</code></pre></div>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\"><code class=\"notranslate\">open=\"\"</code> is valid to hide details as an empty string is falsy.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Just can be done without Element.removeAttribute(\"open\")</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/23999",
+            "title": " `open=\"\"` is valid to hide details",
+            "date_modified": "2023-01-31T00:46:27.000Z",
+            "date_published": "2023-01-31T00:46:13.000Z",
             "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add missing information; remove outdated information.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/23995",
-            "title": "Class elements syntax restrictions",
-            "date_modified": "2023-01-30T21:57:10.000Z",
-            "date_published": "2023-01-30T21:23:34.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
+                "name": "tforward",
+                "url": "https://github.com/tforward"
             }
         },
         {
@@ -47,17 +91,6 @@
             "author": {
                 "name": "protofarer",
                 "url": "https://github.com/protofarer"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates the MDN page to use the GitHub-hosted examples which were added in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1555526456\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/dom-examples/issues/200\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/dom-examples/pull/200/hovercard\" href=\"https://github.com/mdn/dom-examples/pull/200\">mdn/dom-examples#200</a>, so the examples work properly. <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23394.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1520191013\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23394\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23394/hovercard\" href=\"https://github.com/mdn/content/issues/23394\">#23394</a>.</p>\n<ul dir=\"auto\">\n<li>changes <code class=\"notranslate\">EmbedLiveSample</code> to <code class=\"notranslate\">EmbedGHLiveSample</code></li>\n<li>fixes paths to paint worklet</li>\n<li>fixes an error in <code class=\"notranslate\">inputArguments</code> in the last paint worklet</li>\n<li>a few copy-edits, in particular one place in the last example where there was some odd repetition, like a copy/paste thing gone wrong. Please check I've not mangled the sense of this.</li>\n</ul>\n<p dir=\"auto\">cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Rumyra/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Rumyra\">@Rumyra</a> .</p>",
-            "url": "https://github.com/mdn/content/pull/23992",
-            "title": "Fix 23394 - fix CSS Painting API examples",
-            "date_modified": "2023-01-30T18:55:17.000Z",
-            "date_published": "2023-01-30T18:42:52.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
             }
         },
         {
@@ -75,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41845017?u=104bfafaaf40389b236e9506f563a55b387c29bf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Move content of openOrClosedShadowRoot into <code class=\"notranslate\">dom</code> namespace (according to suggestions in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1535624255\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23711\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23711/hovercard\" href=\"https://github.com/mdn/content/issues/23711\">#23711</a>)</p>\n<ul dir=\"auto\">\n<li>redirect is added</li>\n<li>a <code class=\"notranslate\">dom</code> page is added as previously there's no such page</li>\n<li>content in the <code class=\"notranslate\">openOrClosedShadowRoot</code> is edited to reflect the description of the <code class=\"notranslate\">dom.openOrClosedShadowRoot</code> method</li>\n<li>add a note about Firefox's <code class=\"notranslate\">Element.openOrClosedShadowRoot</code></li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Fix BCD and related issues for openOrClosedShadowRoot</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Content is based on</p>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.chrome.com/docs/extensions/reference/dom/\" rel=\"nofollow\">https://developer.chrome.com/docs/extensions/reference/dom/</a></li>\n<li><a href=\"https://chromium.googlesource.com/chromium/src/+/fe6e27d68a44c714dcce906749390378ede7d423\" rel=\"nofollow\">https://chromium.googlesource.com/chromium/src/+/fe6e27d68a44c714dcce906749390378ede7d423</a></li>\n</ul>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23711.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1535624255\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23711\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23711/hovercard\" href=\"https://github.com/mdn/content/issues/23711\">#23711</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/23989",
             "title": "move Web/API/Element/openOrClosedShadowRoot",
-            "date_modified": "2023-01-30T16:48:24.000Z",
+            "date_modified": "2023-01-31T03:14:47.000Z",
             "date_published": "2023-01-30T16:46:07.000Z",
             "author": {
                 "name": "tlylt",
@@ -108,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109489?u=77525acc2526cc835b5b4c68f16b46d0aa4e988c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Document the FormData constructor submitter parameter.</p>\n<p dir=\"auto\">Also add a \"Submit button\" glossary page and link to it from various places to help facilitate a consistent and complete understanding of what a submit button is :)</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This is a new feature which should be landing in major browsers soon, so it would be useful to have it documented.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Spec: <a href=\"https://xhr.spec.whatwg.org/#interface-formdata\" rel=\"nofollow\">https://xhr.spec.whatwg.org/#interface-formdata</a><br>\nSpec PR (merged): <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1529939220\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/xhr/issues/366\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/xhr/pull/366/hovercard\" href=\"https://github.com/whatwg/xhr/pull/366\">whatwg/xhr#366</a><br>\nChromium implementation: <a href=\"https://chromium-review.googlesource.com/c/chromium/src/+/4189297\" rel=\"nofollow\">https://chromium-review.googlesource.com/c/chromium/src/+/4189297</a><br>\nWebKit implementation (merged): <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1558830197\" data-permission-text=\"Title is private\" data-url=\"https://github.com/WebKit/WebKit/issues/9188\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/WebKit/WebKit/pull/9188/hovercard\" href=\"https://github.com/WebKit/WebKit/pull/9188\">WebKit/WebKit#9188</a><br>\nGecko implementation: <a href=\"https://phabricator.services.mozilla.com/D167576\" rel=\"nofollow\">https://phabricator.services.mozilla.com/D167576</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23917.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1558710808\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23917\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23917/hovercard\" href=\"https://github.com/mdn/content/issues/23917\">#23917</a></p>",
             "url": "https://github.com/mdn/content/pull/23950",
             "title": "Document the FormData constructor submitter parameter",
-            "date_modified": "2023-01-30T17:16:23.000Z",
+            "date_modified": "2023-01-31T11:31:36.000Z",
             "date_published": "2023-01-28T06:59:24.000Z",
             "author": {
                 "name": "jenseng",
@@ -127,10 +160,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I created a test module landing page so we could discuss the CSS module landing page format for the Q1 project <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1533077393\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/147\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/147/hovercard\" href=\"https://github.com/openwebdocs/project/issues/147\">openwebdocs/project#147</a></p>\n<p dir=\"auto\">What do you all think of the format of this CSS module landing page?</p>\n<p dir=\"auto\">Do the headings make sense for the CSS module landing template?</p>\n<p dir=\"auto\">Idea:</p>\n<ul dir=\"auto\">\n<li>3 to 5 paragraphs about the module</li>\n<li>Example (should this be in line, or have its own h2 level heading?)</li>\n<li>Things to note, if any, about the module, displayed in the example. This being inline, not its own heading.</li>\n<li>Reference\n<ul dir=\"auto\">\n<li>Properties</li>\n<li>Data Types</li>\n<li>Functions, or other important to module reference (if any)</li>\n<li>Events (if any)</li>\n<li>Interfaces (if any)</li>\n</ul>\n</li>\n<li>Guides (not in this page, but if they were, is this the right spot?)</li>\n<li>Associated content (not present in all modules, but likely in most)\n<ul dir=\"auto\">\n<li>associated properties</li>\n<li>associated datatypes from other modules</li>\n<li>associated concepts (things you need to know to get this module to work, such as time or hardware acceleration in animations)</li>\n<li>glossary terms (is this the right spot?)</li>\n</ul>\n</li>\n<li>Specifications  (note, <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1556496366\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/browser-specs/issues/851\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/browser-specs/pull/851/hovercard\" href=\"https://github.com/w3c/browser-specs/pull/851\">w3c/browser-specs#851</a> should fix the spec name appearing the same for 2 different specs)</li>\n<li>See also - this would generally be for internal learn, related properties and guides. We don't have anything on blending, so these are external. There's a few internal on the animation page</li>\n</ul>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Part of Q1-2023 project <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1533077393\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/147\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/147/hovercard\" href=\"https://github.com/openwebdocs/project/issues/147\">openwebdocs/project#147</a></p>\n<p dir=\"auto\"><del>Note, <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1556496366\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/browser-specs/issues/851\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/browser-specs/pull/851/hovercard\" href=\"https://github.com/w3c/browser-specs/pull/851\">w3c/browser-specs#851</a> should fix the spec name appearing the same for 2 different specs on the blending and compositing page.</del></p>",
             "url": "https://github.com/mdn/content/pull/23898",
             "title": "Feedback wanted: CSS module landing page",
-            "date_modified": "2023-01-30T20:33:03.000Z",
+            "date_modified": "2023-01-31T01:01:18.000Z",
             "date_published": "2023-01-26T02:03:48.000Z",
             "author": {
                 "name": "estelle",
@@ -190,39 +223,6 @@
             "author": {
                 "name": "CTimmerman",
                 "url": "https://github.com/CTimmerman"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1496993279\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22957\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/22957/hovercard\" href=\"https://github.com/mdn/content/pull/22957\">#22957</a> added documentation for the different parts of the <a href=\"https://wicg.github.io/web-app-launch/\" rel=\"nofollow\">Web App Launch Handler API</a>, but it didn't include a landing page to tell the complete story of the API, and tie all of the different parts together. This PR does just that.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/23832",
-            "title": "Add landing page for the Launch Handler API",
-            "date_modified": "2023-01-24T16:31:11.000Z",
-            "date_published": "2023-01-23T09:55:32.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/12934964?u=20c48574fa02a25aeea37df35fde741229aa275f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The code sample probably has an erroneous <code class=\"notranslate\">type=\"module\"</code> attribute. Removing it makes it work for me.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Hopefully it fixes an error.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">When the attribute is present I'm getting the following messages in my console (just running firefox on the local files):</p>\n<blockquote>\n<p dir=\"auto\">Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at file:///somepath/webgl-demo.js. (Reason: CORS request not http).</p>\n</blockquote>\n<blockquote>\n<p dir=\"auto\">Module source URI is not allowed in this document: “file:///somepath/webgl-demo.js”. index.html:6:1</p>\n</blockquote>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
-            "url": "https://github.com/mdn/content/pull/23821",
-            "title": "Remove type=\"module\" attribute from script tag",
-            "date_modified": "2023-01-23T08:55:43.000Z",
-            "date_published": "2023-01-22T14:27:59.000Z",
-            "author": {
-                "name": "urxvtcd",
-                "url": "https://github.com/urxvtcd"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/24950890?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixes the order of navigation links in <a href=\"https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">According to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1468845524\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22618\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/22618/hovercard\" href=\"https://github.com/mdn/content/pull/22618\">#22618</a> \"Selectors\" should come first, then different types of selectors, and only then \"Cascade and inheritance\". The order of navigation was broken in the later PR and now it completely misses the different types of selectors. This PR fixes this.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Together with <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1552072760\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/8014\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/yari/pull/8014/hovercard\" href=\"https://github.com/mdn/yari/pull/8014\">mdn/yari#8014</a> <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23645.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1533594751\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23645\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23645/hovercard\" href=\"https://github.com/mdn/content/issues/23645\">#23645</a></p>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/23814",
-            "title": "Fix order of learn css pages",
-            "date_modified": "2023-01-23T06:31:37.000Z",
-            "date_published": "2023-01-22T10:19:31.000Z",
-            "author": {
-                "name": "drybalka",
-                "url": "https://github.com/drybalka"
             }
         }
     ]
