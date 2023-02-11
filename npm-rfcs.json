@@ -6,6 +6,17 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1812093?u=0d6a92ea991be8b4d893c64f017d10b26d60e581&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">It's kind of impossible to know if a package name is available without trying to publish a package with that name. As a result sometimes it's very frustrating to develop a new package, because once you are done NPM tells you that the name is already taken, often with an obscure error message, and you need to find another one.</p>\n<h3 dir=\"auto\">Example</h3>\n<p dir=\"auto\">For example, NPM tells me that the ansi-strip package doesn't exit (<a href=\"https://www.npmjs.com/package/ansi-strip\" rel=\"nofollow\">https://www.npmjs.com/package/ansi-strip</a>), but then I try to publish it and it tells me \"npm ERR! 400 Bad Request - PUT <a href=\"https://registry.npmjs.org/ansi-strip\" rel=\"nofollow\">https://registry.npmjs.org/ansi-strip</a> - Cannot publish over previously published version \"1.0.0\", as if the package exists (I guess it's a private one or something?), and as if I've already published v1.</p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<p dir=\"auto\">Frustration.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\">Something like <code class=\"notranslate\">npm available ansi-strip</code> that tells you if you can publish a new package with that name or not.</p>\n<h3 dir=\"auto\">References</h3>\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
+            "url": "https://github.com/npm/rfcs/issues/676",
+            "title": "[RRFC] New command for detecting availability of a package name",
+            "date_modified": "2023-02-11T05:44:39.000Z",
+            "date_published": "2023-02-11T01:57:23.000Z",
+            "author": {
+                "name": "fabiospampinato",
+                "url": "https://github.com/fabiospampinato"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1812093?u=0d6a92ea991be8b4d893c64f017d10b26d60e581&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">The motivations behind this is that it seems natural to me, even if a bit niche, and scripts defined like this are the cleanest possibly way to write them that I can think of:</p>\n<div class=\"highlight highlight-source-json notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"{\n  &quot;name&quot;: &quot;pkg&quot;,\n  &quot;bin&quot;: &quot;./src/index.js&quot;,\n  &quot;scripts&quot;: {\n     &quot;something&quot;: &quot;pkg something&quot;\n  }\n}\"><pre class=\"notranslate\">{\n  <span class=\"pl-ent\">\"name\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>pkg<span class=\"pl-pds\">\"</span></span>,\n  <span class=\"pl-ent\">\"bin\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>./src/index.js<span class=\"pl-pds\">\"</span></span>,\n  <span class=\"pl-ent\">\"scripts\"</span>: {\n     <span class=\"pl-ent\">\"something\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>pkg something<span class=\"pl-pds\">\"</span></span>\n  }\n}</pre></div>\n<p dir=\"auto\">Notice how the <code class=\"notranslate\">something</code> script inside <code class=\"notranslate\">pkg</code> references the <code class=\"notranslate\">pkg</code> bin, i.e. itself.</p>\n<h3 dir=\"auto\">Example</h3>\n<p dir=\"auto\">See above.</p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<p dir=\"auto\">Currently running an <code class=\"notranslate\">npm run something</code> leads to an error saying that <code class=\"notranslate\">pkg</code> has not been found.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<p dir=\"auto\"><code class=\"notranslate\">npm run</code> should take into consideration the binaries defined by the current package, and consider them as available binaries too.</p>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>Original npm/cli issue: <a aria-label=\"Issue #6141\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1574587794\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/6141\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/6141/hovercard\" href=\"https://github.com/npm/cli/issues/6141\">npm/cli#6141</a></li>\n</ul>",
             "url": "https://github.com/npm/rfcs/issues/673",
             "title": "[RRFC] Ensure that binaries defined by the current package are recognized as available binaries inside itself by npm run",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "denox55",
                 "url": "https://github.com/denox55"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/113018783?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<h3 dir=\"auto\">References</h3>\n`\n<ul dir=\"auto\">\n<li><a href=\"url\">n/a</a></li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/631",
-            "title": "[RRFC] <title>",
-            "date_modified": "2022-09-07T18:09:13.000Z",
-            "date_published": "2022-09-07T10:15:07.000Z",
-            "author": {
-                "name": "cronosid-xyz",
-                "url": "https://github.com/cronosid-xyz"
             }
         }
     ]
