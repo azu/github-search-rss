@@ -6,6 +6,39 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF111 support <code class=\"notranslate\">RTCInboundRtpStreamStats.trackIdentifier</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1804676\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1804676</a></p>\n<p dir=\"auto\">Unfortunately <code class=\"notranslate\">RTCInboundRtpStreamStats</code> has no BCD entry. I know that we don't like having dictionary entries, but I don't want to untangle that mess now. So I'm starting by creating one.</p>\n<p dir=\"auto\">Strategy has been to create a full BCD with entries for all values and spec links. I have then for FF111, Chrome 110 and Safari 16 gone through using this wpt example <a href=\"http://wpt.live/webrtc/RTCPeerConnection-mandatory-getStats.https.html\" rel=\"nofollow\">RTCPeerConnection-mandatory-getStats.https.html</a>. Breaking on the point shown below and then iterating until I get a stat object of type <code class=\"notranslate\">inbound-rtp</code>. This is the correct type to return this dictionary.</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"test(t =&gt; {\n    for (const stat of stats.values()) {\n      let dictName = dictionaryNames[stat.type];\n&gt;&gt;      if (!dictName) continue;\"><pre class=\"notranslate\"><code class=\"notranslate\">test(t =&gt; {\n    for (const stat of stats.values()) {\n      let dictName = dictionaryNames[stat.type];\n&gt;&gt;      if (!dictName) continue;\n</code></pre></div>\n<p dir=\"auto\">I then marked all those values that showed up as <code class=\"notranslate\">true</code>, even if they had zero values.</p>\n<ol dir=\"auto\">\n<li>Would you prefer I marked them as &gt;= to the version number I tested?</li>\n<li>There are a few that are in the FF IDL as well, but not showing up here. Should I mark them false or null?</li>\n<li>There are a whole bunch then that are <code class=\"notranslate\">null</code> for all browsers. I propose to delete those entries on assumption are not implemented.</li>\n<li>There are a few where they are null for one browser but not others. Propose for these cases to mark the nulls as false. OK?</li>\n</ol>\n<p dir=\"auto\">Does this make sense? <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a> - if yes to all the above I'll update on Friday.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a aria-label=\"Issue #24397\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1582562230\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24397\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24397/hovercard\" href=\"https://github.com/mdn/content/issues/24397\">mdn/content#24397</a></p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/5368500/218652016-f193ff6a-4ca9-43ab-b79a-fc06932f4c83.png\"><img src=\"https://user-images.githubusercontent.com/5368500/218652016-f193ff6a-4ca9-43ab-b79a-fc06932f4c83.png\" alt=\"image\" style=\"max-width: 100%;\"></a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/18910",
+            "title": "RTCInboundRtpStreamStats.trackIdentifier + the whole dictionary",
+            "date_modified": "2023-02-14T06:20:47.000Z",
+            "date_published": "2023-02-14T05:52:35.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF99 lost the config option <code class=\"notranslate\">media.peerconnection.rtpsourcesapi.enable</code> <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1749802\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1749802</a></p>\n<p dir=\"auto\">But I bisected and this showed that this was ALWAYS set true - ie. the preference was pointless. Checked later and earlier versions.</p>\n<p dir=\"auto\">Discovered while looking into <a aria-label=\"Issue #24397\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1582562230\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24397\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24397/hovercard\" href=\"https://github.com/mdn/content/issues/24397\">mdn/content#24397</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/18908",
+            "title": "FF99 Remove pref media.peerconnection.rtpsourcesapi.enable",
+            "date_modified": "2023-02-14T02:41:25.000Z",
+            "date_published": "2023-02-14T02:38:00.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF111 turns on the <code class=\"notranslate\">dom.fs.enabled</code> preference in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1811001\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1811001</a> (in FF110 this was added in <a aria-label=\"Pull request #18723\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1554280931\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/18723\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/18723/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/18723\">#18723</a>)</p>\n<p dir=\"auto\">Other docs work for this can be tracked in #24388</p>\n<p dir=\"auto\">FYI <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a> Dunno if you want to hold off on merging this since FF110 just came out, and FF111 isn't released until next month.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/18907",
+            "title": "FF111 OPFS Released",
+            "date_modified": "2023-02-14T00:57:49.000Z",
+            "date_published": "2023-02-14T00:57:36.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Support for <code class=\"notranslate\">list</code> attribute of <code class=\"notranslate\">&lt;input type=\"color\"&gt;</code> element has been added in Firefox 110 via <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=960984\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=960984</a>.</p>\n<p dir=\"auto\">However, this fix only adds support in Firefox on Windows and Linux.</p>\n<p dir=\"auto\">The implementation on Android and macOS is still pending (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1805397\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1805397</a>).</p>\n<p dir=\"auto\">This pull request makes the following changes:</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">For the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#browser_compatibility\" rel=\"nofollow\">\"type_color.list\" entry in the BCD table</a>:</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">adds partial implementation flag with link to the bug 960984 for \"firefox\". The note also calls out the current support in Windows and Linux only.</p>\n</li>\n<li>\n<p dir=\"auto\">replaces <code class=\"notranslate\">\"mirror\"</code> with <code class=\"notranslate\">\"version_added\": false</code> for \"firefox_android\" and adds link to the related bug (1805397).</p>\n<p dir=\"auto\">I am hoping this would be the way to reflect the current support.</p>\n</li>\n</ul>\n</li>\n<li>\n<p dir=\"auto\">For the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#browser_compatibility\" rel=\"nofollow\">\"type_color.autocomplete\" entry in the BCD table</a>:</p>\n<ul dir=\"auto\">\n<li>fixes the entry for \"firefox_android\" because it was pointing to the <code class=\"notranslate\">list</code> attribute.</li>\n</ul>\n</li>\n</ul>\n<h3 dir=\"auto\">Related</h3>\n<p dir=\"auto\">MDN page: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#browser_compatibility\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#browser_compatibility</a></p>\n<p dir=\"auto\">Doc issue tracker: <a aria-label=\"Issue #23684\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1534930432\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23684\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23684/hovercard\" href=\"https://github.com/mdn/content/issues/23684\">mdn/content#23684</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/18904",
             "title": "Add partial support for input type color list attribute in FF110",
@@ -14,17 +47,6 @@
             "author": {
                 "name": "dipikabh",
                 "url": "https://github.com/dipikabh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47937456?u=b9aa36f8cd70e65de86f6cb33570a64f668bf575&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Firefox has supported search.query and search.search disposition property since version 111. Chromium has supported search.query method since version 87. We need compat data for these features.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/search/search\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/search/search</a><br>\n<a href=\"https://developer.chrome.com/docs/extensions/reference/search/\" rel=\"nofollow\">https://developer.chrome.com/docs/extensions/reference/search/</a><br>\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1804357\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1804357</a><br>\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1811274\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1811274</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/18903",
-            "title": "Add BCD for search.query method and search.search disposition property",
-            "date_modified": "2023-02-13T18:50:37.000Z",
-            "date_published": "2023-02-13T16:40:48.000Z",
-            "author": {
-                "name": "gregorypappas",
-                "url": "https://github.com/gregorypappas"
             }
         },
         {
@@ -187,28 +209,6 @@
             "title": "Add Chrome/Safari versions for svg.attributes.presentation.vector-effect",
             "date_modified": "2023-02-10T14:02:50.000Z",
             "date_published": "2023-02-10T14:02:35.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR adds real values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code class=\"notranslate\">tooltip_display</code> member of the <code class=\"notranslate\">title</code> SVG element, based upon manual testing.</p>\n<p dir=\"auto\">Test Code Used: <a href=\"https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title</a></p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #5893.\">Fixes</span> <a aria-label=\"Issue #5893\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"588842345\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/5893\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/5893/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/5893\">#5893</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/18874",
-            "title": "Add Chromium versions for svg.elements.title.tooltip_display",
-            "date_modified": "2023-02-10T14:05:38.000Z",
-            "date_published": "2023-02-10T13:53:26.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR adds a note regarding backgrounds applied to <code class=\"notranslate\">&lt;thead&gt;</code> elements.  <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #5753.\">Fixes</span> <a aria-label=\"Issue #5753\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"570473628\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/5753\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/5753/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/5753\">#5753</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/18873",
-            "title": "Add a note regarding backgrounds applied to `<thead>` elements",
-            "date_modified": "2023-02-10T13:45:37.000Z",
-            "date_published": "2023-02-10T13:45:24.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
