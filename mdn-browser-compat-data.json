@@ -6,6 +6,28 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">This PR adds compat data for the <a href=\"https://www.w3.org/TR/css-view-transitions-1/\" rel=\"nofollow\">View Transitions API Level 1</a>, which is available in Chrome 111+.</p>\n<p dir=\"auto\">See my research document for more information on exactly what this work entails.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/18916",
+            "title": "Add data for the View Transitions API Level 1",
+            "date_modified": "2023-02-14T16:22:11.000Z",
+            "date_published": "2023-02-14T16:13:17.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">We moved it last year as part of our INTEROP2022 work.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/18915",
+            "title": "Fix MDN URL for keyword transparent",
+            "date_modified": "2023-02-14T14:54:37.000Z",
+            "date_published": "2023-02-14T14:54:23.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF111 support <code class=\"notranslate\">RTCInboundRtpStreamStats.trackIdentifier</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1804676\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1804676</a></p>\n<p dir=\"auto\">Unfortunately <code class=\"notranslate\">RTCInboundRtpStreamStats</code> has no BCD entry. I know that we don't like having dictionary entries, but I don't want to untangle that mess now. So I'm starting by creating one.</p>\n<p dir=\"auto\">Strategy has been to create a full BCD with entries for all values and spec links. I have then for FF111, Chrome 110 and Safari 16 gone through using this wpt example <a href=\"http://wpt.live/webrtc/RTCPeerConnection-mandatory-getStats.https.html\" rel=\"nofollow\">RTCPeerConnection-mandatory-getStats.https.html</a>. Breaking on the point shown below and then iterating until I get a stat object of type <code class=\"notranslate\">inbound-rtp</code>. This is the correct type to return this dictionary.</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"test(t =&gt; {\n    for (const stat of stats.values()) {\n      let dictName = dictionaryNames[stat.type];\n&gt;&gt;      if (!dictName) continue;\"><pre class=\"notranslate\"><code class=\"notranslate\">test(t =&gt; {\n    for (const stat of stats.values()) {\n      let dictName = dictionaryNames[stat.type];\n&gt;&gt;      if (!dictName) continue;\n</code></pre></div>\n<p dir=\"auto\">I then marked all those values that showed up as <code class=\"notranslate\">true</code>, even if they had zero values.</p>\n<ol dir=\"auto\">\n<li>Would you prefer I marked them as &gt;= to the version number I tested?</li>\n<li>There are a few that are in the FF IDL as well, but not showing up here. Should I mark them false or null?</li>\n<li>There are a whole bunch then that are <code class=\"notranslate\">null</code> for all browsers. I propose to delete those entries on assumption are not implemented.</li>\n<li>There are a few where they are null for one browser but not others. Propose for these cases to mark the nulls as false. OK?</li>\n</ol>\n<p dir=\"auto\">Does this make sense? <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a> - if yes to all the above I'll update on Friday.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a aria-label=\"Issue #24397\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1582562230\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24397\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24397/hovercard\" href=\"https://github.com/mdn/content/issues/24397\">mdn/content#24397</a></p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/5368500/218652016-f193ff6a-4ca9-43ab-b79a-fc06932f4c83.png\"><img src=\"https://user-images.githubusercontent.com/5368500/218652016-f193ff6a-4ca9-43ab-b79a-fc06932f4c83.png\" alt=\"image\" style=\"max-width: 100%;\"></a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/18910",
             "title": "RTCInboundRtpStreamStats.trackIdentifier + the whole dictionary",
@@ -179,28 +201,6 @@
             "author": {
                 "name": "lucalves",
                 "url": "https://github.com/lucalves"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1365071?u=a28e0813dc14227725639ff1d19a94f36319e285&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">The first release with support for the scripting API is 102, not 101. This PR fixes that.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<p dir=\"auto\">The first release with support for the scripting API is 102 - by <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1766615\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1766615</a></p>\n<p dir=\"auto\">The implementations landed before, but restricted to MV3, whose support was not enabled until Firefox 109 -<br>\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1801291\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1801291</a></p>\n<p dir=\"auto\">Also fixed the compat note for the persistAcrossSessions flag, whose implementation completed in<br>\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1751436\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1751436</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">I already used the correct Firefox version in missing properties documented in <a aria-label=\"Pull request #18878\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1580091533\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/18878\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/18878/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/18878\">#18878</a> .</p>\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/18879",
-            "title": "Correct supported Firefox versions of scripting API",
-            "date_modified": "2023-02-10T18:28:36.000Z",
-            "date_published": "2023-02-10T18:03:11.000Z",
-            "author": {
-                "name": "Rob--W",
-                "url": "https://github.com/Rob--W"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1365071?u=a28e0813dc14227725639ff1d19a94f36319e285&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Fixes the incorrect and incomplete BCD for the \"world\" parameter of the scripting.executeScript API.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<p dir=\"auto\">References:</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">\"world\" support introduced in Chrome 102 per <a href=\"https://chromium.googlesource.com/chromium/src/+/e5ad3451c17b21341b0b9019b074801c44c92c9f\" rel=\"nofollow\">https://chromium.googlesource.com/chromium/src/+/e5ad3451c17b21341b0b9019b074801c44c92c9f</a></p>\n</li>\n<li>\n<p dir=\"auto\">\"world\" + \"ISOLATED\" introduced in Firefox per <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1759932\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1759932</a> While that bug was fixed in 100, the underlying feature was not available until it was enabled in MV2 - <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1766615\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1766615</a></p>\n<p dir=\"auto\">\"MAIN\" not supported yet in Firefox, part of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736575\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1736575</a></p>\n</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\">Related to <a aria-label=\"Pull request #24316\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1579766580\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24316\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/24316/hovercard\" href=\"https://github.com/mdn/content/pull/24316\">mdn/content#24316</a> and <a aria-label=\"Issue #22493\" class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1460974410\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22493\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/22493/hovercard\" href=\"https://github.com/mdn/content/issues/22493\">mdn/content#22493</a></p>\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/18878",
-            "title": "Add compatibility data for scripting.ExecutionWorld",
-            "date_modified": "2023-02-10T18:53:04.000Z",
-            "date_published": "2023-02-10T17:45:46.000Z",
-            "author": {
-                "name": "Rob--W",
-                "url": "https://github.com/Rob--W"
             }
         },
         {
