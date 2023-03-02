@@ -6,6 +6,28 @@
     "description": "github/roadmap Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Code scanning default setup will now also analyze the repository's default branch following a pre-configured schedule (like <a href=\"https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule\">GitHub Actions' <code class=\"notranslate\">on: schedule</code> trigger</a>).</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Analyzing the default branch on schedule ensures that a repository's code is scanned and protected even when it is not actively contributed to. This means that repositories will automatically benefit from updates to the CodeQL analysis, even when there are no code changes. This brings the CodeQL default setup configuration in line with the CodeQL starter workflow.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Code scanning default setup sets up CodeQL on a repository without committing a workflow file. This now also analyzes the default branch on weekly schedule. This brings the CodeQL default setup configuration in line with the CodeQL starter workflow.</p>",
+            "url": "https://github.com/github/roadmap/issues/674",
+            "title": "Code scanning default setup scans `on:schedule`",
+            "date_modified": "2023-03-01T18:14:35.000Z",
+            "date_published": "2023-03-01T18:09:32.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Users can optionally select the <code class=\"notranslate\">security-extended</code> query suite for analyzing their code code through the code scanning default setup configuration.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Allow repositories to increase query suite coverage in their default setup analysis.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">Users can manually choose to analyze the <code class=\"notranslate\">security-extended</code> query suite in the code scanning default setup configuration. This query suite will be in addition to the default query suite. <code class=\"notranslate\">security-extended</code> query suite will not be analyzed unless explicitly included in the configuration settings by the user. It will also be possible to change the query suite selection after initial setup.</p>",
+            "url": "https://github.com/github/roadmap/issues/670",
+            "title": "Code scanning default setup makes it possible to use `security-extended` CodeQL query suite",
+            "date_modified": "2023-03-01T18:09:32.000Z",
+            "date_published": "2023-03-01T17:15:20.000Z",
+            "author": {
+                "name": "github-product-roadmap",
+                "url": "https://github.com/github-product-roadmap"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">The <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql\">CodeQL analysis engine</a> for <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning\">GitHub code scanning</a> will be able to analyze projects written with using new C# 11 language features.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Currently, <a href=\"https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/\">CodeQL supports builds and standard language features up to C# 10</a>. C# 11 is due to be released before EOY 2022. Updating CodeQL support will allow customers who want to adopt C# 11 to benefit from CodeQL's comprehensive security analysis, while using C#11 latest features.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">If a project contains C# 11 code, or if C# has been <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#changing-the-languages-that-are-analyzed\">configured as a language to be analyzed</a> in the <a href=\"https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#about-code-scanning-configuration\">code scanning workflow</a>, CodeQL will pick up code using C# 11 language features automatically. No further configuration changes are needed. As soon as the analysis is finished, the CodeQL results will then become visible to you in the \"Security\" tab and on pull requests. C# 11 support will also be available through the <a href=\"https://codeql.github.com/docs/codeql-cli/about-the-codeql-cli/\">CodeQL CLI</a>.</p>",
             "url": "https://github.com/github/roadmap/issues/663",
             "title": "CodeQL Support for C# 11 language features",
@@ -108,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Currently developers use the <a href=\"https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules\">environment protection rules</a> to require specific conditions to pass before a deployment job referencing the environment can proceed.</p>\n<p dir=\"auto\">We are now enabling repository administrators to bypass all the protection rules on a given environment (break glass) by default and force the pending jobs referencing the environment to proceed.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">Previously, deployments (jobs) gated on the protection rules defined on an environment had to wait until all the configured protection rules passed.</p>\n<p dir=\"auto\">This new feature provides the ncessary granular control for administrators to allow/disallow bypassing the protection rules on specific environments.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">During a workflow run executing multiple deployment Jobs referencing environments, Admins can now choose the specific environments where they would like to bypass the protection rules and force deployments.</p>\n<p dir=\"auto\">We allow admins to bypass protection rules and manually force deployments by default. Alternatively, Environments can also be configured in advance to disallow the bypass feature and enforce the protection rules for all deployments to the environment.</p>",
             "url": "https://github.com/github/roadmap/issues/654",
             "title": "Actions - Granular control for admins to bypass protection rules on an environment (break glass) - [GA] ",
-            "date_modified": "2023-02-22T18:06:22.000Z",
+            "date_modified": "2023-03-01T23:18:28.000Z",
             "date_published": "2023-02-22T18:05:13.000Z",
             "author": {
                 "name": "github-product-roadmap",
@@ -198,28 +220,6 @@
             "title": "New Replication API for the High Availability setup of GitHub Enterprise Server",
             "date_modified": "2023-02-22T18:06:07.000Z",
             "date_published": "2023-02-22T18:04:49.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">When a GHES administrator backs up their appliance, or restores their appliance using a backup, GHES does not curretnly show how the backup or restore operation is progressing. We are going to update our tooling so that customers can see how these operations are progressing.</p>\n<h3 dir=\"auto\">Intended Outcome</h3>\n<p dir=\"auto\">GHES administrators understand how far through a backup or restore operation they are.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<p dir=\"auto\">We will add details to our backup and restore tools that will allow us to track how a backup or restore operation is progress. We will then use these details to add a progress bar to the command line interfaces for the backup and restore tools.</p>",
-            "url": "https://github.com/github/roadmap/issues/645",
-            "title": "Show backup and restore progress to GHES customers",
-            "date_modified": "2023-02-22T18:01:11.000Z",
-            "date_published": "2023-02-22T18:00:17.000Z",
-            "author": {
-                "name": "github-product-roadmap",
-                "url": "https://github.com/github-product-roadmap"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67656570?u=71034939d8d88be6d9b9068038dfdc8158fa69c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Summary</h3>\n<p dir=\"auto\">Repository rules are the evolution of GitHub's current branch protection rules, which will allow you to operate repository protections at scale with confidence and clarity.</p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/7575792/215554335-5581432f-ea8f-418e-8766-bd3725b31f62.png\"><img src=\"https://user-images.githubusercontent.com/7575792/215554335-5581432f-ea8f-418e-8766-bd3725b31f62.png\" alt=\"GitHubScreenShot-Google Chrome-30-01-2023-000541\" style=\"max-width: 100%;\"></a></p>\n<h3 dir=\"auto\">Intended outcome</h3>\n<p dir=\"auto\">This is a new way to manage rules with a new user experience allowing for the flexible targeting of branches, rule visibility for all repository members, and for GitHub Enterprise customers, the ability to create and enforce rules at an organization level.</p>\n<h3 dir=\"auto\">How will it work?</h3>\n<h4 dir=\"auto\">Repository rulesets</h4>\n<ul dir=\"auto\">\n<li>All repository members can read all active rulesets on a repository.</li>\n<li>Repositories support multiple rulesets.</li>\n<li>Rulesets can be layered, allowing for multiple branches to have rules applied from different rulesets.\n<ul dir=\"auto\">\n<li>E.g., one ruleset for the <code class=\"notranslate\">main</code> branch requires 2 pull request reviewers, and one ruleset for <code class=\"notranslate\">all branches</code> requires status checks. In this case, <code class=\"notranslate\">main</code> would require status checks <em>and</em> 2 pull request reviewers.</li>\n</ul>\n</li>\n<li>Repository admins and authorized users can create a repository ruleset, which includes the following activities:\n<ul dir=\"auto\">\n<li><strong>General:</strong> Name the ruleset, activate or disable the ruleset, configure who can bypass the ruleset's rules, or delete the ruleset.</li>\n<li><strong>Targeting:</strong> Select the branch(es) where rules apply. Choose from <code class=\"notranslate\">all</code> branches, the <code class=\"notranslate\">default</code> branch, or use wildcard matches. You can also exclude branches from matching.</li>\n<li><strong>Rules:</strong> Configure existing branch protections.</li>\n</ul>\n</li>\n</ul>\n<h4 dir=\"auto\">GitHub Enterprise</h4>\n<p dir=\"auto\">GitHub Enterprise accounts will have the following additional capabilities:</p>\n<ul dir=\"auto\">\n<li>Create and enforce rulesets at the organization level for all or select repositories based on pattern matching of repository names.</li>\n<li>Apply new rules:\n<ul dir=\"auto\">\n<li>Commit messages: Prevent commits to a branch based on commit message requirements.</li>\n<li>Branch and tag names: Ensure branches and tags meet naming conventions.</li>\n<li>File restrictions: Limit commits to a branch based on requirements for a file's name, path, and size.</li>\n</ul>\n</li>\n<li>Set a ruleset to Evaluation mode, which allows \"dry-runs\" of rulesets to understand their effect before they are enforced.</li>\n</ul>",
-            "url": "https://github.com/github/roadmap/issues/644",
-            "title": "Repository Rules ",
-            "date_modified": "2023-02-22T18:01:09.000Z",
-            "date_published": "2023-02-22T18:00:14.000Z",
             "author": {
                 "name": "github-product-roadmap",
                 "url": "https://github.com/github-product-roadmap"
