@@ -6,10 +6,109 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/14857884?u=05e8d6702615c8f958d64bfbf52bc2f001619875&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Expectation:<br>\nWithout <code class=\"notranslate\">\"use strict\";</code> I expected <code class=\"notranslate\">y</code> to be available in the outer scope and for no <code class=\"notranslate\">ReferenceError</code> to occur.</p>\n<p dir=\"auto\">Observation:<br>\nWithout <code class=\"notranslate\">\"use strict\";</code> <code class=\"notranslate\">y</code> is not available in the outer scope.</p>\n<p dir=\"auto\">Testing scenarios: Safari 16.3, Firefox 110.0.1, Chromium 110.0.5481.100 Test document:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;html&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot; /&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;\n    &lt;title&gt;&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;script type=&quot;text/javascript&quot;&gt;\n        (function foo() {\n            var x = 1;\n            function bar() {\n                var y = 2;\n                console.log(x); // 1 (function `bar` closes over `x`)\n                console.log(y); // 2 (`y` is in scope)\n            }\n            bar();\n            console.log(x); // 1 (`x` is in scope)\n            console.log(y); // ReferenceError, `y` is scoped only to `bar` without 'use strict';\n        })();\n    &lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;\"><pre lang=\"&lt;!DOCTYPE\" class=\"notranslate\"><code class=\"notranslate\">&lt;html&gt;\n&lt;head&gt;\n    &lt;meta charset=\"UTF-8\" /&gt;\n    &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"&gt;\n    &lt;title&gt;&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;script type=\"text/javascript\"&gt;\n        (function foo() {\n            var x = 1;\n            function bar() {\n                var y = 2;\n                console.log(x); // 1 (function `bar` closes over `x`)\n                console.log(y); // 2 (`y` is in scope)\n            }\n            bar();\n            console.log(x); // 1 (`x` is in scope)\n            console.log(y); // ReferenceError, `y` is scoped only to `bar` without 'use strict';\n        })();\n    &lt;/script&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n</code></pre></div>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The outcome is the same regardless if you are in strict mode or not.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">While reading and learning, this section really confused me so I want to help clarify it for others.</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/25240",
+            "title": "Remove Redundant \"use strict\";",
+            "date_modified": "2023-03-10T23:55:42.000Z",
+            "date_published": "2023-03-10T23:55:14.000Z",
+            "author": {
+                "name": "dantemattson",
+                "url": "https://github.com/dantemattson"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3390621?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">When XML serialization is used, the xmlns attribute is necessary for the SVG tag.</p>",
+            "url": "https://github.com/mdn/content/pull/25238",
+            "title": "SVG `xmlns` attribute is also needed for XHTML",
+            "date_modified": "2023-03-10T22:12:37.000Z",
+            "date_published": "2023-03-10T22:12:25.000Z",
+            "author": {
+                "name": "LinAGKar",
+                "url": "https://github.com/LinAGKar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/18016774?u=aa9a15e140f95836c2e4bc282ac34ccb3cc3f48b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<ul dir=\"auto\">\n<li>Documentation for the possible exceptions that can occur when using the Response.json()</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n\n<ul dir=\"auto\">\n<li>Help developers handle errors more effectively.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n\n<ul dir=\"auto\">\n<li>Issue #<a href=\"https://github.com/mdn/content/issues/13208\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/13208/hovercard\">13208</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n<ul dir=\"auto\">\n<li>Fixes #<a href=\"https://github.com/mdn/content/issues/13208\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/13208/hovercard\">13208</a></li>\n</ul>\n\n\n",
+            "url": "https://github.com/mdn/content/pull/25237",
+            "title": "Response.json() possible exceptions ",
+            "date_modified": "2023-03-10T22:18:08.000Z",
+            "date_published": "2023-03-10T21:53:08.000Z",
+            "author": {
+                "name": "majidzeno",
+                "url": "https://github.com/majidzeno"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">instead of including the long code in the page.</p>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1580493793\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24329\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24329/hovercard\" href=\"https://github.com/mdn/content/issues/24329\">#24329</a></p>",
+            "url": "https://github.com/mdn/content/pull/25236",
+            "title": "Example from `css-example` repo",
+            "date_modified": "2023-03-10T20:06:33.000Z",
+            "date_published": "2023-03-10T19:51:47.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/42311431?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I'm wondering if it should be <code class=\"notranslate\">('/catalog/')</code> or <code class=\"notranslate\">('catalog/')</code><br>\ni.e. with or without the preceding forward slash.</p>\n<p dir=\"auto\">PS: Should it not preceed with a forward slash instead of forward slash following it?<br>\ni.e. <code class=\"notranslate\">('/catalog')</code> instead of <code class=\"notranslate\">('catalog/')</code> ?</p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Home_page\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Home_page</a><br>\nThis is the link of the document.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/25234",
+            "title": "added a pair of missing quotation marks",
+            "date_modified": "2023-03-10T16:42:08.000Z",
+            "date_published": "2023-03-10T16:39:18.000Z",
+            "author": {
+                "name": "alittlebitofit",
+                "url": "https://github.com/alittlebitofit"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1567683818\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/152\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/152/hovercard\" href=\"https://github.com/openwebdocs/project/issues/152\">openwebdocs/project#152</a></p>\n<p dir=\"auto\">Add docs for MediaStreamTrackEvent.track, link to it, and fixes the sidebars that were wrong (typo).</p>",
+            "url": "https://github.com/mdn/content/pull/25231",
+            "title": "Add MediaStreamTrackEvent.track",
+            "date_modified": "2023-03-10T15:05:15.000Z",
+            "date_published": "2023-03-10T14:34:17.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #25223.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1618828738\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/25223\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/25223/hovercard\" href=\"https://github.com/mdn/content/issues/25223\">#25223</a></p>\n<p dir=\"auto\">(Note that this also matches what is written in <code class=\"notranslate\">decodingInfo()</code>)</p>",
+            "url": "https://github.com/mdn/content/pull/25230",
+            "title": "Fix transmission -> webrtc",
+            "date_modified": "2023-03-10T15:30:22.000Z",
+            "date_published": "2023-03-10T14:16:40.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1567683818\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/152\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/152/hovercard\" href=\"https://github.com/openwebdocs/project/issues/152\">openwebdocs/project#152</a></p>\n<p dir=\"auto\">This adds the missing <code class=\"notranslate\">MediaDeviceInfo.toJSON()</code> method supported by all browsers.</p>",
+            "url": "https://github.com/mdn/content/pull/25229",
+            "title": "Add MediaDeviceInfo.toJSON()",
+            "date_modified": "2023-03-10T14:02:34.000Z",
+            "date_published": "2023-03-10T14:00:37.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/46881869?u=ccbfc374166fa543dc97ce9fa1b343c233489f01&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Improved the example and added the Live Sample macro to the <em>footer</em> element.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/25224",
+            "title": "Example of the footer element  modified",
+            "date_modified": "2023-03-10T18:57:32.000Z",
+            "date_published": "2023-03-10T12:06:23.000Z",
+            "author": {
+                "name": "Mehrm0",
+                "url": "https://github.com/Mehrm0"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1152698?u=5ce323090a48b425ec70128365c96809699959f7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR offers a minor edit pass to the web app manifest page. It was a bit outdated and I thought could be made more current and clearer.</p>\n<p dir=\"auto\">This PR also contains ref docs for <code class=\"notranslate\">file_handlers</code> which is a manifest member that allows installed PWAs to become handlers for files at the operating system level.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This is part of the parent PWA docs revamp project: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1484416015\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/280\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/280/hovercard\" href=\"https://github.com/mdn/mdn/issues/280\">mdn/mdn#280</a></p>\n<p dir=\"auto\">In this project, we're rewriting the PWA docs entirely. And part of it is to make sure the manifest ref docs are correct too.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">For more information about <code class=\"notranslate\">file_handlers</code>:</p>\n<ul dir=\"auto\">\n<li>Docs\n<ul dir=\"auto\">\n<li><a href=\"https://developer.chrome.com/articles/file-handling/\" rel=\"nofollow\">https://developer.chrome.com/articles/file-handling/</a></li>\n<li><a href=\"https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/handle-files\" rel=\"nofollow\">https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/handle-files</a></li>\n</ul>\n</li>\n<li>Feature tracking\n<ul dir=\"auto\">\n<li><a href=\"https://chromestatus.com/feature/5721776357113856\" rel=\"nofollow\">https://chromestatus.com/feature/5721776357113856</a></li>\n</ul>\n</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">We need this BCD PR to be merged too: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1618656793\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/19096\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/19096/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/19096\">mdn/browser-compat-data#19096</a></p>",
             "url": "https://github.com/mdn/content/pull/25222",
             "title": "Update web app manifest page and add missing `file_handlers` member",
-            "date_modified": "2023-03-10T11:35:25.000Z",
+            "date_modified": "2023-03-10T13:12:33.000Z",
             "date_published": "2023-03-10T09:48:24.000Z",
             "author": {
                 "name": "captainbrosset",
@@ -20,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/792924?u=4321bed4dc4f1622ec3c633b074607dfed63de37&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add webdriver updates for 111 release</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/25219",
             "title": "Update 111 release changes",
-            "date_modified": "2023-03-10T11:28:10.000Z",
+            "date_modified": "2023-03-10T22:32:56.000Z",
             "date_published": "2023-03-10T08:28:08.000Z",
             "author": {
                 "name": "bomsy",
@@ -53,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This module was not previously documented.</p>",
             "url": "https://github.com/mdn/content/pull/25211",
             "title": "New CSS Module: CSS color adjustment",
-            "date_modified": "2023-03-10T07:04:24.000Z",
+            "date_modified": "2023-03-10T19:43:26.000Z",
             "date_published": "2023-03-10T00:25:19.000Z",
             "author": {
                 "name": "estelle",
@@ -97,7 +196,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This <a href=\"https://github.com/orgs/mdn/discussions/339\">discussion</a> describes the existing inconsistencies across the See also sections and the proposed set of guidelines to follow from here on.</p>\n<h3 dir=\"auto\">Details of changes</h3>\n<ul dir=\"auto\">\n<li>In the Writing style guide:</li>\n</ul>\n<ol dir=\"auto\">\n<li>With the non-implementation of exposing H3 headings in the page TOC on the right, added a mini TOC in each of the three H2 sections \"General writing guidelines\", \"Writing style\", and \"Page components\".</li>\n<li>Upgraded \"Shortened URLs (shortlinks)\" from H4 to H3 and also edited the section a bit.</li>\n<li>Added the \"See also section\" section per the proposal in the <a href=\"https://github.com/orgs/mdn/discussions/339\">discussion</a>.</li>\n<li>Updated the \"See also\" section of the Writing style guide to comply with the new guidelines.</li>\n</ol>\n<ul dir=\"auto\">\n<li>In the template files:<br>\nUpdated the \"See also\" section to refer to the guidelines in the writing style guide.</li>\n</ul>\n<h3 dir=\"auto\">TO DO</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Organize sub-sections in the writing style guide in alphabetical order.</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Update \"See also\" sections in the pages used as examples in the <a href=\"https://github.com/orgs/mdn/discussions/339\">discussion</a>.</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/25191",
             "title": "docs(meta): Add See also section guidelines to writing style guide",
-            "date_modified": "2023-03-09T08:51:55.000Z",
+            "date_modified": "2023-03-10T21:25:54.000Z",
             "date_published": "2023-03-09T03:06:03.000Z",
             "author": {
                 "name": "dipikabh",
@@ -124,105 +223,6 @@
             "author": {
                 "name": "dletorey",
                 "url": "https://github.com/dletorey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR is part of a multi-PR series that aims to document the WebGPU API. The interfaces documented in this PR are:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">GPUBindGroup</code> (done)</li>\n<li><code class=\"notranslate\">GPUBindGroupLayout</code> (done)</li>\n<li><code class=\"notranslate\">GPUComputePipeline</code> (done)</li>\n<li><code class=\"notranslate\">GPUPipelineLayout</code> (done)</li>\n<li><code class=\"notranslate\">GPURenderPipeline</code> (done)</li>\n</ul>\n<p dir=\"auto\">Note that the main PR for this series is <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1572661849\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24202\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/24202/hovercard\" href=\"https://github.com/mdn/content/pull/24202\">#24202</a> — that one must be merged first, before this one! after that one is merged, <code class=\"notranslate\">main</code> should be merged into this PR, and the documentation integrity must be checked (e.g. do all the links work) before merging.</p>\n<p dir=\"auto\">You can see full details of the additions expected in the WebGPU docs in my <a href=\"https://docs.google.com/document/d/10wW89xkXN_9fztLUZ9uzKoP9lMbOa02w9dG0qY7geow/edit#heading=h.frl8u3cowbcx\" rel=\"nofollow\">research document</a>.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/25174",
-            "title": "WebGPU PR #3 — Interfaces for representing pipelines",
-            "date_modified": "2023-03-08T18:40:35.000Z",
-            "date_published": "2023-03-08T11:55:24.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is a part of a project to format all of the documents using Prettier, and then enforce Prettier formatting for the files going forward.  This PR formats the <code class=\"notranslate\">/mozilla</code> folder, aside from the <code class=\"notranslate\">/mozilla/add-ons</code> folder.</p>\n<p dir=\"auto\">Cherry-picked from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1565785890\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24050\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/24050/hovercard\" href=\"https://github.com/mdn/content/pull/24050\">#24050</a> as that is blocked on the web extensions team.</p>",
-            "url": "https://github.com/mdn/content/pull/25169",
-            "title": "Format /web/mozilla/[^add-ons] using Prettier",
-            "date_modified": "2023-03-08T08:05:57.000Z",
-            "date_published": "2023-03-08T07:54:23.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3152061?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><code class=\"notranslate\">&lt;datalist&gt;</code> elements are technically <code class=\"notranslate\">display: none</code> by default. While it is true that their content may be used by other elements, such as an <code class=\"notranslate\">&lt;input&gt;</code> via the <code class=\"notranslate\">list</code> attribute, I do not believe this is sufficient for classifying <code class=\"notranslate\">&lt;datalist&gt;</code> as an \"inline\" element.</p>",
-            "url": "https://github.com/mdn/content/pull/25153",
-            "title": "Remove `<datalist>` from list of \"inline\" elements",
-            "date_modified": "2023-03-08T04:08:01.000Z",
-            "date_published": "2023-03-07T22:05:36.000Z",
-            "author": {
-                "name": "cmthornton",
-                "url": "https://github.com/cmthornton"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/76060661?u=61555b84cf15f78a7792bba269b1d02ff6b2b028&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">fixed minor grammatical issues in Introduction to client-side frameworks.</p>",
-            "url": "https://github.com/mdn/content/pull/25147",
-            "title": "fix grammatical issues in Introduction to client-side frameworks",
-            "date_modified": "2023-03-09T07:02:27.000Z",
-            "date_published": "2023-03-07T20:02:54.000Z",
-            "author": {
-                "name": "yashikabhargava",
-                "url": "https://github.com/yashikabhargava"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR is part of a multi-PR series that aims to document the WebGPU API. The interfaces documented in this PR are:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">GPUBuffer</code> (done)</li>\n<li><code class=\"notranslate\">GPUExternalTexture</code> (done)</li>\n<li><code class=\"notranslate\">GPUSampler</code> (done)</li>\n<li><code class=\"notranslate\">GPUShaderModule</code> (done)</li>\n<li><code class=\"notranslate\">GPUTexture</code> (done)</li>\n<li><code class=\"notranslate\">GPUTextureView</code> (done)</li>\n</ul>\n<p dir=\"auto\">Note that the main PR for this series is <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1572661849\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24202\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/24202/hovercard\" href=\"https://github.com/mdn/content/pull/24202\">#24202</a> — that one must be merged first, before this one! after that one is merged, <code class=\"notranslate\">main</code> should be merged into this PR, and the documentation integrity must be checked (e.g. do all the links work) before merging.</p>\n<p dir=\"auto\">You can see full details of the additions expected in the WebGPU docs in my <a href=\"https://docs.google.com/document/d/10wW89xkXN_9fztLUZ9uzKoP9lMbOa02w9dG0qY7geow/edit#heading=h.frl8u3cowbcx\" rel=\"nofollow\">research document</a>.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/25140",
-            "title": "WebGPU PR #2 — Interfaces for representing pipeline resources",
-            "date_modified": "2023-03-08T17:47:05.000Z",
-            "date_published": "2023-03-07T10:36:22.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/57294686?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The case for non-SVG elements(elements with associated CSS layout box) was not explained.<br>\n<a href=\"https://w3c.github.io/csswg-drafts/css-transforms/#valdef-transform-box-view-box\" rel=\"nofollow\">https://w3c.github.io/csswg-drafts/css-transforms/#valdef-transform-box-view-box</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/25137",
-            "title": "transform-b​​ox: added from w3c specification",
-            "date_modified": "2023-03-07T13:34:56.000Z",
-            "date_published": "2023-03-07T09:39:08.000Z",
-            "author": {
-                "name": "freemedom",
-                "url": "https://github.com/freemedom"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">From FF111 if a <code class=\"notranslate\">fetch()</code> or <code class=\"notranslate\">XMLHttpRequest</code>  request is redirected cross-origin, then a developer-added <code class=\"notranslate\">Authorization</code> HTTP header will be removed from the request. The header is not stripped if the request is redirected to the same origin.</p>\n<p dir=\"auto\">There isn't any particularly great place to record this information. What I have done is added it as a note to the <code class=\"notranslate\">option.headers</code> value for <code class=\"notranslate\">fetch()</code> and in the description for <code class=\"notranslate\">XMLHttpRequest.setRequestHeader()</code> - I think that is the most likely place it will be seen.  This also gets a note in the <code class=\"notranslate\">Authorization</code> header.</p>\n<p dir=\"auto\">I've also added a release note.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1464192467\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22533\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/22533/hovercard\" href=\"https://github.com/mdn/content/issues/22533\">#22533</a></p>",
-            "url": "https://github.com/mdn/content/pull/25127",
-            "title": "Ff111 fetch authorization cross origin",
-            "date_modified": "2023-03-10T03:26:27.000Z",
-            "date_published": "2023-03-07T03:18:34.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/92880314?u=1ce2ec8040c40bc96f2d856414554e5889c7e820&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I propose saying the function will be called \"RIGHT before the next repaint\" instead of just \"before the nest repaint\".</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I believe it's important for the reader to understand that Window.requestAnimationFrame() will wait 1 / [browser fps] seconds before executing the callback, and that's why it must be used recursively.</p>",
-            "url": "https://github.com/mdn/content/pull/25122",
-            "title": "Small change proposal",
-            "date_modified": "2023-03-07T03:50:13.000Z",
-            "date_published": "2023-03-07T00:46:20.000Z",
-            "author": {
-                "name": "GBelloS",
-                "url": "https://github.com/GBelloS"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11153289?u=6bf62988d32bd529677498a826af24831c7a8804&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Safari now supports AVIF</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Lets readers know they can use AVIF in Safari now</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1281873090\" data-permission-text=\"Title is private\" data-url=\"https://github.com/WebKit/WebKit/issues/1717\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/WebKit/WebKit/pull/1717/hovercard\" href=\"https://github.com/WebKit/WebKit/pull/1717\">WebKit/WebKit#1717</a></p>",
-            "url": "https://github.com/mdn/content/pull/25114",
-            "title": "Update Safari AVIF support",
-            "date_modified": "2023-03-07T03:54:40.000Z",
-            "date_published": "2023-03-06T20:52:14.000Z",
-            "author": {
-                "name": "arjunyel",
-                "url": "https://github.com/arjunyel"
             }
         }
     ]
