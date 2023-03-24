@@ -6,14 +6,69 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23891.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1557348940\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/23891\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/23891/hovercard\" href=\"https://github.com/mdn/content/issues/23891\">#23891</a>, <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #25472.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1631553369\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/25472\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/25472/hovercard\" href=\"https://github.com/mdn/content/issues/25472\">#25472</a>.</p>\n<p dir=\"auto\">This PR makes it clearer that the error messages are different for different browsers, and adds new screenshots.</p>",
-            "url": "https://github.com/mdn/content/pull/25583",
-            "title": "Fix 23891: clarify that error messages are browser-specific",
-            "date_modified": "2023-03-23T23:30:30.000Z",
-            "date_published": "2023-03-23T23:27:09.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6667599?u=c6264c34285a2083e0d17bed6ba44d0acfcfd11b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Fix return value of <code class=\"notranslate\">Window.showDirectoryPicker()</code></p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">This method should return a <code class=\"notranslate\">Promise</code>, not raw <code class=\"notranslate\">FileSystemDirectoryHandle</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">The specification: <a href=\"https://wicg.github.io/file-system-access/#api-showdirectorypicker\" rel=\"nofollow\">File System Access</a></p>\n<blockquote>\n<p dir=\"auto\">3.5. The showDirectoryPicker() method</p>\n<p dir=\"auto\">(omit)</p>\n<p dir=\"auto\">The showDirectoryPicker(options) method, when invoked, must run these steps:</p>\n<p dir=\"auto\">(omit)</p>\n<p dir=\"auto\">5. Let p be a new promise.</p>\n<p dir=\"auto\">(omit)</p>\n<p dir=\"auto\">7. Return p.</p>\n</blockquote>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/25599",
+            "title": "Fix return value of Window.showDirectoryPicker()",
+            "date_modified": "2023-03-24T11:24:44.000Z",
+            "date_published": "2023-03-24T11:22:36.000Z",
+            "author": {
+                "name": "mikecat",
+                "url": "https://github.com/mikecat"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2863444?u=06ca2f97ba79c014f5955447a0bae8336ca0893e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR uses the recommended URL of the IETF language tag standard, so if the spec is updated, we don't need to update the URL. This is also the URL <a href=\"https://www.w3.org/TR/international-specs/#lang_bcp_not_rfc\" rel=\"nofollow\">recommended</a> by W3C (for many years):</p>\n<blockquote>\n<p dir=\"auto\">The link to and name of BCP 47 was created specifically so that there is an unchanging reference to the definition of Tags for the Identification of Languages. RFCs 1766, 3066, 4646 were previous (superseded) versions and 5646 is the current version of BCP 47.</p>\n</blockquote>\n<p dir=\"auto\">In terms of content, RFC 5646 is just the core of BCP 47, so it doesn't introduce or remove any language tags. (The language subtags are managed by the <a href=\"https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry\" rel=\"nofollow\">IANA Subtag Registry</a>.)</p>",
+            "url": "https://github.com/mdn/content/pull/25598",
+            "title": "Refer to BCP 47, not to RFC 5646",
+            "date_modified": "2023-03-24T09:32:20.000Z",
+            "date_published": "2023-03-24T09:30:16.000Z",
+            "author": {
+                "name": "xfq",
+                "url": "https://github.com/xfq"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #11494.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1088814240\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11494\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11494/hovercard\" href=\"https://github.com/mdn/content/issues/11494\">#11494</a>, I hope.</p>\n<p dir=\"auto\">This PR rewrites the example to use <code class=\"notranslate\">await</code>.</p>\n<p dir=\"auto\">In the issue report I was a bit puzzled by this bit:</p>\n<blockquote>\n<p dir=\"auto\">defaultWriter.ready.then is called multiple times.</p>\n</blockquote>\n<p dir=\"auto\">As far as I can see you have to call <code class=\"notranslate\">ready</code> after each time you write to the stream, so you know you can write to it again. However it is true that:</p>\n<ul dir=\"auto\">\n<li>if any chunk write throws an error, then the writer keeps writing (and keeps getting errors), when it should presumably give up</li>\n<li><code class=\"notranslate\">defaultWriter.close();</code> should presumably return its promise, or any error is unhandled</li>\n</ul>\n<p dir=\"auto\">One change I have made here is no longer distinguishing between a chunk write failing and <code class=\"notranslate\">defaultWriter.close();</code> failing: they're all in the same <code class=\"notranslate\">try</code> block. That is simpler and seemed OK?</p>\n<p dir=\"auto\">Anyway if you like this I'll update all the other places it's used, as well as the working copy in mdn/dom-examples.</p>\n<p dir=\"auto\">I've tested this and it seems to work fine. I've also tested it with <code class=\"notranslate\">write</code> throwing an error: in the old version the output was like:</p>\n<hr>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/432915/227431577-36098d79-1bc9-4a5d-b286-f741ee332ed4.png\"><img width=\"636\" alt=\"Screen Shot 2023-03-23 at 10 20 31 PM\" src=\"https://user-images.githubusercontent.com/432915/227431577-36098d79-1bc9-4a5d-b286-f741ee332ed4.png\" style=\"max-width: 100%;\"></a></p>\n<hr>\n<p dir=\"auto\">...and in this version it is like:</p>\n<hr>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/432915/227431632-fc7e5c7a-8847-4a53-abbc-9bb254877e41.png\"><img width=\"636\" alt=\"Screen Shot 2023-03-23 at 10 20 54 PM\" src=\"https://user-images.githubusercontent.com/432915/227431632-fc7e5c7a-8847-4a53-abbc-9bb254877e41.png\" style=\"max-width: 100%;\"></a></p>",
+            "url": "https://github.com/mdn/content/pull/25597",
+            "title": "Fix 11494: promise handling in WritableStreamDefaultWriter example",
+            "date_modified": "2023-03-24T07:24:19.000Z",
+            "date_published": "2023-03-24T05:23:27.000Z",
             "author": {
                 "name": "wbamberg",
                 "url": "https://github.com/wbamberg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #11206.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1079927420\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/11206\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/11206/hovercard\" href=\"https://github.com/mdn/content/issues/11206\">#11206</a></p>",
+            "url": "https://github.com/mdn/content/pull/25591",
+            "title": "clarified a11y issue is not universal.",
+            "date_modified": "2023-03-24T02:47:18.000Z",
+            "date_published": "2023-03-24T02:44:49.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1021777877\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9703\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/9703/hovercard\" href=\"https://github.com/mdn/content/issues/9703\">#9703</a></p>\n<p dir=\"auto\">Grabbed a path from shape-outside. Not supported in all browsers, but at least it's a valid value.</p>",
+            "url": "https://github.com/mdn/content/pull/25588",
+            "title": "updated path() parameter",
+            "date_modified": "2023-03-24T06:48:09.000Z",
+            "date_published": "2023-03-24T02:07:03.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #24244.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1574059954\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24244\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24244/hovercard\" href=\"https://github.com/mdn/content/issues/24244\">#24244</a></p>",
+            "url": "https://github.com/mdn/content/pull/25587",
+            "title": "add a11y concern and aria-label note",
+            "date_modified": "2023-03-24T12:03:34.000Z",
+            "date_published": "2023-03-24T01:53:42.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
             }
         },
         {
@@ -42,22 +97,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/145676?u=d9e4353115d1dcae2ff7be06802522be0a4323df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I found this very confusing with the nested sentences. Hope it's more accessible when split up.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Make it more comprehensible.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://emscripten.org//docs/getting_started/FAQ.html#what-does-exiting-the-runtime-mean-why-don-t-atexit-s-run\" rel=\"nofollow\">https://emscripten.org//docs/getting_started/FAQ.html#what-does-exiting-the-runtime-mean-why-don-t-atexit-s-run</a></p>",
             "url": "https://github.com/mdn/content/pull/25579",
             "title": "Compiling a New C/C++ Module to WebAssembly: Simplify `NO_EXIT_RUNTIME` bit.",
-            "date_modified": "2023-03-23T23:50:17.000Z",
+            "date_modified": "2023-03-24T10:52:35.000Z",
             "date_published": "2023-03-23T18:15:00.000Z",
             "author": {
                 "name": "tomayac",
                 "url": "https://github.com/tomayac"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19503293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Update Safari's eviction policy based on documentation at <a href=\"https://webkit.org/tracking-prevention/\" rel=\"nofollow\">https://webkit.org/tracking-prevention/</a>, making it clear that Safari performs eviction for script-writeable data under certain condition.</p>",
-            "url": "https://github.com/mdn/content/pull/25578",
-            "title": "Make Proactive eviction section more accurate",
-            "date_modified": "2023-03-23T23:53:18.000Z",
-            "date_published": "2023-03-23T17:44:21.000Z",
-            "author": {
-                "name": "szewai",
-                "url": "https://github.com/szewai"
             }
         },
         {
@@ -75,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/39165319?u=183f8d6eeb97b106b96293c040984710c0652229&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR removes outdated content related to edge browser for  .<br>\nCurrently, it is stated that the UI for  is different for edge browser as compared to that of chrome, but it is the same for edge browser as well.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Correctness of the doc so that it helps other fellow members of the community</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Issue :- <a href=\"https://github.com/mdn/content/issues/24047\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24047/hovercard\">24047</a></p>",
             "url": "https://github.com/mdn/content/pull/25574",
             "title": "Removed outdated content related to edge browser for <input type=\"week\"> ",
-            "date_modified": "2023-03-23T16:10:07.000Z",
+            "date_modified": "2023-03-24T09:38:25.000Z",
             "date_published": "2023-03-23T16:09:52.000Z",
             "author": {
                 "name": "MohitMaheshwari1711",
@@ -179,50 +223,6 @@
             "author": {
                 "name": "StaZhu",
                 "url": "https://github.com/StaZhu"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/10995431?u=5346f6d08ed3107d347176467f8c24fa7339288d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Missing navigation buttons in the bottom of the <a href=\"https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript\" rel=\"nofollow\">page</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #24824.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1597977379\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24824\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24824/hovercard\" href=\"https://github.com/mdn/content/issues/24824\">#24824</a></p>",
-            "url": "https://github.com/mdn/content/pull/25534",
-            "title": "fix: missing bottom navigation buttons",
-            "date_modified": "2023-03-23T10:40:15.000Z",
-            "date_published": "2023-03-22T12:34:24.000Z",
-            "author": {
-                "name": "sidverma32",
-                "url": "https://github.com/sidverma32"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36711370?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add redirect to keep old links working:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/5\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/5</a></li>\n<li><a href=\"https://github.com/ahal/mozconfigwrapper\">https://github.com/ahal/mozconfigwrapper</a></li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Old links in other locations will start to redirect to the correct location again. <a href=\"https://www.w3.org/Provider/Style/URI\" rel=\"nofollow\">\"Cool URIs don't change\"</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/25532",
-            "title": "Add redirects to keep old links to configuring_build_options working",
-            "date_modified": "2023-03-22T10:39:34.000Z",
-            "date_published": "2023-03-22T10:10:30.000Z",
-            "author": {
-                "name": "mb",
-                "url": "https://github.com/mb"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1308419?u=e5238d0f45ed736216e460e226d27c2949f119d9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">thanks</p>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">now actually is inline grouping</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">did not match description</p>",
-            "url": "https://github.com/mdn/content/pull/25526",
-            "title": "fix css/selector_list Single line grouping example",
-            "date_modified": "2023-03-22T05:58:29.000Z",
-            "date_published": "2023-03-22T05:30:31.000Z",
-            "author": {
-                "name": "tomByrer",
-                "url": "https://github.com/tomByrer"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1081381?u=1177eb43fb6889e0b5270c68ea3616ee0b4a0821&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds a link to the MDN documentation on codec parameters which is probably more helpful than a raw link to the registry.</p>\n<p dir=\"auto\">I'll add the same docs for VideoEncoder, AudioDecoder, and AudioEncoder if this approach looks good to reviewers.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Improved documentation for users.</p>",
-            "url": "https://github.com/mdn/content/pull/25520",
-            "title": "Improve WebCodecs configure docs on codecs.",
-            "date_modified": "2023-03-22T17:37:38.000Z",
-            "date_published": "2023-03-21T23:32:35.000Z",
-            "author": {
-                "name": "dalecurtis",
-                "url": "https://github.com/dalecurtis"
             }
         }
     ]
