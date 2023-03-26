@@ -56,6 +56,18 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/WebKit-standards-positions.json`
     },
     {
+        title: "Fyrd/caniuse Issues",
+        query: 'repo:Fyrd/caniuse label:"Support data suggestion"',
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/caniuse.json`
+    },
+    {
+        title: "whatwg/html Changes",
+        query: 'repo:whatwg/html label:"impacts documentation"',
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/whatwg-html.json`
+    },
+    {
         title: "org:wintercg Issues",
         query: "org:wintercg is:open is:issue -repo:wintercg/admin",
         TYPE: "ISSUE",
