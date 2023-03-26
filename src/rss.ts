@@ -62,12 +62,6 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/caniuse.json`
     },
     {
-        title: "whatwg/html Changes",
-        query: 'repo:whatwg/html label:"impacts documentation"',
-        TYPE: "ISSUE",
-        link: `${BASE_URL}/whatwg-html.json`
-    },
-    {
         title: "org:wintercg Issues",
         query: "org:wintercg is:open is:issue -repo:wintercg/admin",
         TYPE: "ISSUE",
@@ -101,6 +95,12 @@ export const SEARCH_ITEMS: RSSItem[] = [
         query: "repo:nodejs/node label:notable-change is:pr is:closed -label:doc",
         TYPE: "ISSUE",
         link: `${BASE_URL}/nodejs-notable.json`
+    },
+    {
+        title: "whatwg/html changes",
+        query: 'repo:whatwg/html is:pr label:"impacts documentation"',
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/whatwg-html.json`
     },
     // Repository
     {
