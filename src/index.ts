@@ -1,6 +1,6 @@
 import { Feed } from "feed";
 import dayjs from "dayjs";
-import { SEARCH_ITEMS } from "./rss";
+import { SEARCH_ITEMS } from "./RSS";
 import * as fs from "fs/promises";
 import path from "path";
 import { graphql } from "@octokit/graphql";
@@ -257,7 +257,9 @@ if (require.main === module) {
         const opml = convertJsonToOPML(SEARCH_ITEMS);
         await fs.writeFile(path.join(distDir, "index.opml"), opml, "utf-8");
         const links = SEARCH_ITEMS.map((feed) => {
-            return `<li><code>${escapeSpecialChars(feed.query)}</code>: <a href="${feed.link}">${feed.link}</a></li>`;
+            return `<li><a href="https://github.com/search?q=${encodeURIComponent(
+                feed.query
+            )}">🔎</a><code>${escapeSpecialChars(feed.query)}</code>: <a href="${feed.link}">${feed.link}</a></li>`;
         }).join("\n");
         const index = {
             html: `

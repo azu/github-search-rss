@@ -13,7 +13,7 @@ GitHub Search Results as RSS Feeds via GitHub Actions.
 ## Add new feeds
 
 - Fork it
-- Edit: [rss.ts](src/rss.ts)
+- Edit: [RSS.ts](src/RSS.ts)
 - Commit it
 
 ## Changelog
