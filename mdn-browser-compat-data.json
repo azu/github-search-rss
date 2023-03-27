@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF110 implements the \"focus fixup rule\" on elements in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1810077\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1810077</a>.</p>\n<p dir=\"auto\">This was basically a spec clarification to state what happened to the focus and blur/focus events if focus was lost on an element because:</p>\n<ul dir=\"auto\">\n<li>A style like <code class=\"notranslate\">hidden</code> was applied to the element, which cannot accept focus.</li>\n<li>The element was removed.</li>\n</ul>\n<p dir=\"auto\">The spec changes says that the first case means blur event should fire, and focus should move to the <code class=\"notranslate\">body</code>/viewport. For removal of element from document the focus should move to the <code class=\"notranslate\">body</code> but <code class=\"notranslate\">blur</code> should not fire.<br>\nPrior to FF110 FF would not release focus even if the style was set to hidden, so the event was not fired. This makes the change so that it is. This matches chromium.<br>\nThere are some tests:</p>\n<ul dir=\"auto\">\n<li><a href=\"http://wpt.live/css/selectors/focus-display-none-001.html\" rel=\"nofollow\">http://wpt.live/css/selectors/focus-display-none-001.html</a></li>\n<li><a href=\"http://wpt.live/inert/dynamic-inert-on-focused-element.html\" rel=\"nofollow\">http://wpt.live/inert/dynamic-inert-on-focused-element.html</a></li>\n</ul>\n<p dir=\"auto\">Anyway, the developers <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1810077#c5\" rel=\"nofollow\">are not sure if BCD entry is warranted</a>. Neither am I, but I'd hate to lose what information we have now, so I have added a note to record this.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1633233446\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/25496\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/25496/hovercard\" href=\"https://github.com/mdn/content/issues/25496\">mdn/content#25496</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/19242",
+            "title": "FF110 focus fixup rule on Elements",
+            "date_modified": "2023-03-27T04:16:12.000Z",
+            "date_published": "2023-03-27T04:14:11.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF113 adds support for dynamic import behind pref - see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1540913#c37\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1540913#c37</a></p>\n<p dir=\"auto\">Note that this is the same pref as support for static import in workers, so all should ship at the same time.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/19241",
             "title": "FF113 supports dynamic import behind pref",
