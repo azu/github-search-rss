@@ -9,7 +9,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/102823432?u=a05c8656f962aa431273f0f280b54b0b7fbe5e12&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2670.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"815736298\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2670\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2670/hovercard\" href=\"https://github.com/mdn/content/issues/2670\">#2670</a> by adding second argument expected to <code class=\"notranslate\">exportFunction</code> in the example code.</p>\n</li>\n<li>\n<p dir=\"auto\">also fixes a typo, and adds <code class=\"notranslate\">try...catch</code> statements to prevent termination of code execution when expected errors are thrown in the same piece of example code</p>\n</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Fixes various sections of the same example code that throws errors which cause termination of the example code:</p>\n<ul dir=\"auto\">\n<li>The first fix addresses the initial reported issue by providing the second argument expected to the <code class=\"notranslate\">exportFunction</code> function.</li>\n</ul>\n<p dir=\"auto\">However, other parts of the same example code will throw errors and so were also addressed:</p>\n<ul dir=\"auto\">\n<li>Permission denied error is thrown in the <code class=\"notranslate\">window.eval</code> function when attempting access of properties of <code class=\"notranslate\">objA</code> . So <code class=\"notranslate\">console.log(objA.foo)</code> and <code class=\"notranslate\">objA.baz = \"baz\"</code> were placed in separate <code class=\"notranslate\">try...catch</code> statements to allow logging of the errors without code termination.</li>\n<li>In the same <code class=\"notranslate\">window.eval</code> function, fixed typo <code class=\"notranslate\">console.log(objA.foo) //undefined</code> , since <code class=\"notranslate\">objA.foo</code> will throw a permission denied error instead of returning <code class=\"notranslate\">undefined</code></li>\n</ul>\n<p dir=\"auto\">The rest of the unaddressed example code segment outputs as documented since example is working within the context of content script / page script environments.</p>\n<p dir=\"auto\">These changes will allow readers to run and examine the output of the entire example code without early code termination due to thrown errors.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#content_script_environment\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#content_script_environment</a></p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2670.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"815736298\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2670\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2670/hovercard\" href=\"https://github.com/mdn/content/issues/2670\">#2670</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/26056",
             "title": "fix example error in \"sharing objects with page scripts\"",
-            "date_modified": "2023-04-08T16:58:32.000Z",
+            "date_modified": "2023-04-08T17:13:10.000Z",
             "date_published": "2023-04-08T16:56:21.000Z",
             "author": {
                 "name": "dalvg",
@@ -36,17 +36,6 @@
             "author": {
                 "name": "geryogam",
                 "url": "https://github.com/geryogam"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><code class=\"notranslate\">WindowProxy</code> is an <em>exotic object</em> (Yes, that's the spec use) that is transparent to the web developer. It isn't an interface and is the <code class=\"notranslate\">Window</code> object. A technicality of no use for web developers.</p>",
-            "url": "https://github.com/mdn/content/pull/26047",
-            "title": "WindowProxy -> Window",
-            "date_modified": "2023-04-08T09:04:09.000Z",
-            "date_published": "2023-04-08T09:02:06.000Z",
-            "author": {
-                "name": "teoli2003",
-                "url": "https://github.com/teoli2003"
             }
         },
         {
@@ -223,6 +212,17 @@
             "author": {
                 "name": "dletorey",
                 "url": "https://github.com/dletorey"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add documentation for <code class=\"notranslate\">storage.session.setAccessLevel()</code> a function introduced in Chrome 102.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #25735.\">Fixes</span> <a href=\"https://github.com/mdn/content/issues/25735\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/25735/hovercard\">#25735</a><br>\nBCD in <a href=\"https://github.com/mdn/browser-compat-data/pull/19323\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/19323/hovercard\">PR #19323</a></p>",
+            "url": "https://github.com/mdn/content/pull/25939",
+            "title": "Add storage.session.setAccessLevel()",
+            "date_modified": "2023-04-06T15:56:48.000Z",
+            "date_published": "2023-04-06T04:34:34.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
             }
         }
     ]
