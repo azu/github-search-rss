@@ -6,6 +6,17 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3969484?u=39664f4f9988aaa83dc885825f7f60d719ceb48b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<p dir=\"auto\">Sometimes it would be helpful to set/edit or remove some values in package.json files <a href=\"https://docs.npmjs.com/cli/v9/commands/npm-pkg\" rel=\"nofollow\">npm-pkg</a> that are not included in workspaces or the main package.<br>\nE.g. there was a build script that puts all packages modified in the dist folder for publishing. After that, the package.json files in that folder should be edited to remove some properties only needed for development.</p>\n<h3 dir=\"auto\">Example</h3>\n\n<p dir=\"auto\"><code class=\"notranslate\">npm pkg delete scripts.build --paths dist/*</code></p>\n<p dir=\"auto\">this might be useful for other commands as well</p>\n<p dir=\"auto\"><code class=\"notranslate\">npm exec -c '&lt;cmd&gt; [args...]' --paths dist/*</code></p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<p dir=\"auto\">Npm <code class=\"notranslate\">pkg</code> currently only works for a package.json in the same folder or for workspaces.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<p dir=\"auto\">Allow custom paths to run commands like <code class=\"notranslate\">pkg</code>.</p>\n<h4 dir=\"auto\">Alternatives</h4>\n<p dir=\"auto\"><a href=\"https://github.com/npm/package-json\">@npmcli/package-json</a> and a custom script to get all the paths and then update the packages could be used.</p>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
+            "url": "https://github.com/npm/rfcs/issues/689",
+            "title": "[RRFC] allow custom paths for pkg command",
+            "date_modified": "2023-04-11T09:34:51.000Z",
+            "date_published": "2023-04-11T09:34:51.000Z",
+            "author": {
+                "name": "boeckMt",
+                "url": "https://github.com/boeckMt"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/117959557?u=a6adb2fa9a7f5e598f8c2e82ef010fcf1c4cdcef&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
             "url": "https://github.com/npm/rfcs/issues/686",
             "title": "[RRFC] <title>",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "everett1992",
                 "url": "https://github.com/everett1992"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/229881?u=58675cc3f9993517e5f29209ccba960d79b719ad&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">When comparing CI logs, it would be very helpful to see the npm version that was used with <code class=\"notranslate\">npm install</code>, <code class=\"notranslate\">npm run build</code>, or really any npm command.</p>\n<h3 dir=\"auto\">Example</h3>\n<p dir=\"auto\">This came up recently when npm changed the behavior of peer dependencies in <code class=\"notranslate\">npm@8.6.0</code> so that <code class=\"notranslate\">npm install</code> suddenly started failing with <code class=\"notranslate\">npm ERR! Fix the upstream dependency conflict</code>. If the version was printed, a simple diff of the <code class=\"notranslate\">npm install</code> logs before and after would have made it clear that the npm version changed and that it wasn't a change to the <code class=\"notranslate\">package-lock.json</code> that caused the error.</p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ npm install\n\nup to date, audited 228 packages in 577ms\n\n78 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\"><pre class=\"notranslate\"><code class=\"notranslate\">$ npm install\n\nup to date, audited 228 packages in 577ms\n\n78 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n</code></pre></div>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\">Something like yarn where it prints the version on the first line</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ yarn install\n\nyarn install v1.22.17\n[1/4] 🔍  Resolving packages...\nsuccess Already up-to-date.\n✨  Done in 0.10s.\"><pre class=\"notranslate\"><code class=\"notranslate\">$ yarn install\n\nyarn install v1.22.17\n[1/4] 🔍  Resolving packages...\nsuccess Already up-to-date.\n✨  Done in 0.10s.\n</code></pre></div>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/639",
-            "title": "[RRFC] Print npm version for each command",
-            "date_modified": "2022-11-22T15:29:30.000Z",
-            "date_published": "2022-10-03T16:33:41.000Z",
-            "author": {
-                "name": "styfle",
-                "url": "https://github.com/styfle"
             }
         }
     ]
