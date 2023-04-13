@@ -6,21 +6,10 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>Fixed using <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1596958527\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/8295\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/yari/pull/8295/hovercard\" href=\"https://github.com/mdn/yari/pull/8295\">mdn/yari#8295</a></li>\n</ul>\n<p dir=\"auto\">These are cherry picked issues. There is more to come.</p>\n<p dir=\"auto\">I've tested the rendered changes yari has no issues with it.</p>",
-            "url": "https://github.com/mdn/content/pull/26174",
-            "title": "Lint front-matter using the work in progress fmlinter",
-            "date_modified": "2023-04-13T05:53:49.000Z",
-            "date_published": "2023-04-13T05:43:45.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">As part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1177408050\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/91\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/91/hovercard\" href=\"https://github.com/openwebdocs/project/issues/91\">openwebdocs/project#91</a> we adds page-type to every document on MDN.</p>\n<p dir=\"auto\">This PR adds them (<em>landing-page</em> and <em>guide</em>) to the documents under Web/Web_components.</p>\n<p dir=\"auto\">In addition, it relocates the folder under Web/API. Its location at the top of the Web/ hierarchy is incongruous: It is a set of APIs. Its sidebar was <code class=\"notranslate\">{{DefaultAPISidebar}}</code> and used <code class=\"notranslate\">GroupData.json</code> anyway.</p>",
             "url": "https://github.com/mdn/content/pull/26173",
             "title": "Add page-type to Web_component and relocate them",
-            "date_modified": "2023-04-13T05:57:13.000Z",
+            "date_modified": "2023-04-13T07:00:42.000Z",
             "date_published": "2023-04-13T05:35:31.000Z",
             "author": {
                 "name": "teoli2003",
@@ -75,7 +64,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR re-runs Prettier on folders that have already gotten a pass, but have gotten changes since that aren't formatted according to Prettier's desires.</p>",
             "url": "https://github.com/mdn/content/pull/26162",
             "title": "Run Prettier on folders that have already been formatted",
-            "date_modified": "2023-04-12T16:34:36.000Z",
+            "date_modified": "2023-04-13T06:56:01.000Z",
             "date_published": "2023-04-12T16:31:56.000Z",
             "author": {
                 "name": "queengooborg",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "c362",
                 "url": "https://github.com/c362"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/102823432?u=685a47897f493713dbf7e42a32b49e1a20f3c3df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2670.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"815736298\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2670\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2670/hovercard\" href=\"https://github.com/mdn/content/issues/2670\">#2670</a> by adding second argument expected to <code class=\"notranslate\">exportFunction</code> in the example code.</p>\n</li>\n<li>\n<p dir=\"auto\">also fixes a typo, and adds <code class=\"notranslate\">try...catch</code> statements to prevent termination of code execution when expected errors are thrown in the same piece of example code</p>\n</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Fixes various sections of the same example code that throws errors which cause termination of the example code:</p>\n<ul dir=\"auto\">\n<li>The first fix addresses the initial reported issue by providing the second argument expected to the <code class=\"notranslate\">exportFunction</code> function.</li>\n</ul>\n<p dir=\"auto\">However, other parts of the same example code will throw errors and so were also addressed:</p>\n<ul dir=\"auto\">\n<li>Permission denied error is thrown in the <code class=\"notranslate\">window.eval</code> function when attempting access of properties of <code class=\"notranslate\">objA</code> . So <code class=\"notranslate\">console.log(objA.foo)</code> and <code class=\"notranslate\">objA.baz = \"baz\"</code> were placed in separate <code class=\"notranslate\">try...catch</code> statements to allow logging of the errors without code termination.</li>\n<li>In the same <code class=\"notranslate\">window.eval</code> function, fixed typo <code class=\"notranslate\">console.log(objA.foo) //undefined</code> , since <code class=\"notranslate\">objA.foo</code> will throw a permission denied error instead of returning <code class=\"notranslate\">undefined</code></li>\n</ul>\n<p dir=\"auto\">The rest of the unaddressed example code segment outputs as documented since example is working within the context of content script / page script environments.</p>\n<p dir=\"auto\">These changes will allow readers to run and examine the output of the entire example code without early code termination due to thrown errors.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#content_script_environment\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#content_script_environment</a></p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #2670.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"815736298\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/2670\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/2670/hovercard\" href=\"https://github.com/mdn/content/issues/2670\">#2670</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/26056",
+            "title": "fix example error in \"sharing objects with page scripts\"",
+            "date_modified": "2023-04-08T17:13:10.000Z",
+            "date_published": "2023-04-08T16:56:21.000Z",
+            "author": {
+                "name": "dalvg",
+                "url": "https://github.com/dalvg"
             }
         }
     ]
