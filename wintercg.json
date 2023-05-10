@@ -6,10 +6,21 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The HTML spec defines a <a href=\"https://html.spec.whatwg.org/multipage/webappapis.html#runtime-script-errors\" rel=\"nofollow\"><code class=\"notranslate\">reportError</code></a> function which takes a JS value (usually an exception object) and acts as if that value had been thrown, without actually stopping the execution of the current function and its callstack. This seems fairly useful in server-side environments.</p>\n<p dir=\"auto\">Acting \"as if the value had been thrown\" in browsers includes firing an <code class=\"notranslate\">error</code> event at the global, propagating up the chain of workers if called inside a dedicated worker, and eventually, if the error is not handled at any step along the way, logging the corresponding error message on the console.</p>\n<p dir=\"auto\">However, specifying this for server-side runtimes would involve having to deal with the runtime's existing error handling mechanisms, which might be quite different to those in browsers. (See also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1372455065\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-common-minimum-api/issues/29\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-common-minimum-api/issues/29/hovercard\" href=\"https://github.com/wintercg/proposal-common-minimum-api/issues/29\">#29</a>)</p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/41",
+            "title": "Consider adding `globalThis.reportError()`",
+            "date_modified": "2023-05-10T10:07:18.000Z",
+            "date_published": "2023-05-10T10:06:20.000Z",
+            "author": {
+                "name": "andreubotella",
+                "url": "https://github.com/andreubotella"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16144158?u=82cadd66bfcfcd8340269a3c0ce30f503acaf7b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This repo was created as a result of a desire to standardize and specify <code class=\"notranslate\">package.json</code>. It seemed best for this to be a WinterCG effort. Just because it exists here doesn't mean all runtimes have to adopt it, but for those that want to use it, this is a place we can all iterate on it collectively</p>",
             "url": "https://github.com/wintercg/proposal-package-json/issues/1",
             "title": "Introductory Thread",
-            "date_modified": "2023-05-09T23:30:15.000Z",
+            "date_modified": "2023-05-10T10:09:35.000Z",
             "date_published": "2023-05-09T20:06:31.000Z",
             "author": {
                 "name": "Ethan-Arrowood",
@@ -130,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1150298?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Already exists in at least Cloudflare Workers, Deno and Node.js...</p>",
             "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/27",
             "title": "Expected `fetch` to be in the common minimum API",
-            "date_modified": "2022-10-01T23:37:39.000Z",
+            "date_modified": "2023-05-10T10:10:36.000Z",
             "date_published": "2022-09-08T14:52:54.000Z",
             "author": {
                 "name": "timfish",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "XadillaX",
                 "url": "https://github.com/XadillaX"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1566869?u=2503348c06c35836486e92d9bcb983557dc4e955&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Motivation</h2>\n<p dir=\"auto\">Platforms are not consistent in how they provide access to environment variables. We'd like to define a consistent API for environment variable access.</p>\n<h2 dir=\"auto\">Environment variables on existing platforms</h2>\n<h3 dir=\"auto\">Cloudflare</h3>\n<p dir=\"auto\">Environment variables are injected into a scoped variable. For example, an <code class=\"notranslate\">API_TOKEN</code> environment variable would be available within the <code class=\"notranslate\">env</code> param:</p>\n<div class=\"highlight highlight-source-ts notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"export default {\n  fetch(request, env, context) {\n    // env.API_TOKEN\n  },\n};\"><pre class=\"notranslate\"><span class=\"pl-k\">export</span> <span class=\"pl-k\">default</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-en\">fetch</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">request</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">env</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">context</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-c\">// env.API_TOKEN</span>\n  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">Reference: <a href=\"https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#syntax-module-worker\" rel=\"nofollow\">https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#syntax-module-worker</a></p>\n<h3 dir=\"auto\">Vercel</h3>\n<p dir=\"auto\">Environment variables are defined on <code class=\"notranslate\">process.env</code> object. For example, an <code class=\"notranslate\">API_TOKEN</code> environment variable would be available by <code class=\"notranslate\">process.env.API_TOKEN</code>.</p>\n<p dir=\"auto\">Reference: <a href=\"https://vercel.com/docs/concepts/functions/serverless-functions#environment-variables\" rel=\"nofollow\">https://vercel.com/docs/concepts/functions/serverless-functions#environment-variables</a></p>\n<h3 dir=\"auto\">Deno</h3>\n<p dir=\"auto\">Environment variables are retrieved through a global <code class=\"notranslate\">Deno.env</code> object. For example, an <code class=\"notranslate\">API_TOKEN</code> environment variable would be available by <code class=\"notranslate\">Deno.env.get('API_TOKEN')</code></p>\n<p dir=\"auto\">Reference: <a href=\"https://doc.deno.land/deno/stable/~/Deno.env\" rel=\"nofollow\">https://doc.deno.land/deno/stable/~/Deno.env</a></p>\n<h3 dir=\"auto\">NodeJS</h3>\n<p dir=\"auto\">Environment variables are defined on a global <code class=\"notranslate\">process.env</code> object. For example, an <code class=\"notranslate\">API_TOKEN</code> environment variable would be available by <code class=\"notranslate\">process.env.API_TOKEN</code>.</p>\n<p dir=\"auto\">Reference: <a href=\"https://nodejs.org/docs/latest/api/process.html#processenv\" rel=\"nofollow\">https://nodejs.org/docs/latest/api/process.html#processenv</a></p>\n<h3 dir=\"auto\">Shopify Oxygen</h3>\n<p dir=\"auto\">Environment variables are defined on a global <code class=\"notranslate\">Oxygen.env</code> object. For example, an <code class=\"notranslate\">API_TOKEN</code> environment variable would be available by <code class=\"notranslate\">Oxygen.env.API_TOKEN</code>.</p>\n<p dir=\"auto\">Reference: <a href=\"https://shopify.dev/custom-storefronts/oxygen/environment-variables\" rel=\"nofollow\">https://shopify.dev/custom-storefronts/oxygen/environment-variables</a></p>\n<h2 dir=\"auto\">Options</h2>\n<h3 dir=\"auto\">Unify on one of the existing platform implementations</h3>\n<p dir=\"auto\">Which one?</p>\n<h3 dir=\"auto\"><code class=\"notranslate\">import.meta</code></h3>\n<p dir=\"auto\">The <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta\" rel=\"nofollow\"><code class=\"notranslate\">import.meta</code> object</a> exposes context-specific metadata to a JavaScript module. We could utilize that container for environment variables, <code class=\"notranslate\">import.meta.env.API_TOKEN</code>.</p>\n<p dir=\"auto\">There is precedent to <code class=\"notranslate\">import.meta.env</code> with <a href=\"https://vitejs.dev/guide/env-and-mode.html#env-variables\" rel=\"nofollow\">Vite's implementation</a>. The downside to this is that <code class=\"notranslate\">import.meta</code> is only available in ES Modules.</p>",
-            "url": "https://github.com/wintercg/environment-metadata/issues/1",
-            "title": "Environment variables",
-            "date_modified": "2023-03-20T12:12:29.000Z",
-            "date_published": "2022-06-29T21:16:43.000Z",
-            "author": {
-                "name": "blittle",
-                "url": "https://github.com/blittle"
             }
         }
     ]
