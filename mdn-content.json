@@ -9,7 +9,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15844309?u=008f65848dd592799cd1d72033096baa1cbc88ce&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">remove unnecessary code wrapper, as the macro would wrapper <code class=\"notranslate\">&lt;code&gt;</code> with the text.</p>",
             "url": "https://github.com/mdn/content/pull/26762",
             "title": "chore: remove unnecessary code wrapper",
-            "date_modified": "2023-05-13T06:36:29.000Z",
+            "date_modified": "2023-05-13T10:46:40.000Z",
             "date_published": "2023-05-13T06:34:34.000Z",
             "author": {
                 "name": "yin1999",
@@ -116,28 +116,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/61116?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">In the documentation of the Javascript Date object, in the section showing how to get the main components of the date, add a specific date and a pair of comment with the actual output of the methods.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><code class=\"notranslate\">Date.getMonth</code> behavior differ slightly from the similar method as it return the index of the month and is 0-indexed, while the other method return ordinal values instead of index and don't have this distinction.</p>\n<p dir=\"auto\">Adding a comment with the actual output put emphasis on this difference in behavior and might prevent people being surprised by that after the fact. I personally assumed <code class=\"notranslate\">getMonth</code> return an iso-compatible month number and didn't notice 4 wasn't the correct number for may until I wrote similar code using PHP date format instead of string formatting and noticing I did get different output for the same date.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The value chosen for the date is partly random, as in chosen arbitrary.<br>\n2000 is the first year not starting with 19; January cause the month part to be 0 which should call attention to itself; 17 is high enough so it cannot be a month and I like it; 16 is in the 24h hour clock; 45 is high enough to not be confused with an hour; 30 is here for lack of imagination.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Nothing that I know of</p>",
-            "url": "https://github.com/mdn/content/pull/26734",
-            "title": "Accentuate month being 0-index in getMonth example",
-            "date_modified": "2023-05-11T21:52:17.000Z",
-            "date_published": "2023-05-11T16:36:45.000Z",
-            "author": {
-                "name": "gkrnours",
-                "url": "https://github.com/gkrnours"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/118456?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Mention that Set iterators have a well-defined order. It isn't stated directly in the spec, but the <a href=\"https://tc39.es/ecma262/multipage/keyed-collections.html#sec-createsetiterator\" rel=\"nofollow\">algorithm</a> used is a linear scan by index over the <code class=\"notranslate\">[[SetData]]</code> List, which <code class=\"notranslate\">add()</code> is <a href=\"https://tc39.es/ecma262/multipage/keyed-collections.html#sec-set.prototype.add\" rel=\"nofollow\">defined</a> as appending to.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">While doing a PR I was about to warn someone that they shoudn't be relying on the order of a Set (which is a common bug in other languages), but decided to verify that it wasn't guaranteed by JS first. MDN didn't say anything about the order, so I had to dig into the spec, which does require an order, but doesn't say so directly.</p>\n<p dir=\"auto\">Hopefully this will save someone else the time to  look this up in the future.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">There are probably other places that should have a similar change, eg <code class=\"notranslate\">Set.prototype.values()</code> and all of the <code class=\"notranslate\">Map</code> iterator methods.</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/26727",
-            "title": "Mention that Set iterators have a defined order",
-            "date_modified": "2023-05-11T12:21:27.000Z",
-            "date_published": "2023-05-11T12:21:13.000Z",
-            "author": {
-                "name": "RedBeard0531",
-                "url": "https://github.com/RedBeard0531"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=a7abf92f16a0e563130967aef2beb65cbf9cf882&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The prefixed prop is deprecated for a long time and is now no longer supported.<br>\nAlso removing references in examples showing the prefixed props.</p>\n<p dir=\"auto\"><strong>Related issues and pull requests:</strong></p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Parent issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1703467996\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/26686\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/26686/hovercard\" href=\"https://github.com/mdn/content/issues/26686\">#26686</a></li>\n</ul>\n<p dir=\"auto\"><strong>Bugzilla:</strong></p>\n<ul dir=\"auto\">\n<li>Tracking bug: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1228850\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1228850</a></li>\n</ul>\n<p dir=\"auto\"><strong>Other resources:</strong></p>\n<ul dir=\"auto\">\n<li>Intent to Remove: CanvasRenderingContext2D.webkitImageSmoothingEnabled <a href=\"https://groups.google.com/a/chromium.org/g/blink-dev/c/qeFgqezm0cM/m/z708BVaGAAAJ\" rel=\"nofollow\">https://groups.google.com/a/chromium.org/g/blink-dev/c/qeFgqezm0cM/m/z708BVaGAAAJ</a></li>\n<li><a href=\"https://chromestatus.com/metrics/feature/timeline/popularity/267\" rel=\"nofollow\">https://chromestatus.com/metrics/feature/timeline/popularity/267</a></li>\n<li>BCD: <a href=\"https://github.com/mdn/browser-compat-data/blame/93c166cb0b0409dfda8950fca3ad148b2ff12050/api/CanvasRenderingContext2D.json#L1478\">https://github.com/mdn/browser-compat-data/blame/93c166cb0b0409dfda8950fca3ad148b2ff12050/api/CanvasRenderingContext2D.json#L1478</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/26726",
             "title": "relnote(Fx114): mozImageSmoothingEnabled no longer supported",
@@ -204,17 +182,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/39087996?u=0bfb15351d70d43196a212731dbdf1ba521ab3e7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Such as the title.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The original code does not print the commented expected output.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Nope yet.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
-            "url": "https://github.com/mdn/content/pull/26662",
-            "title": "fix: code error in the examples of `Array.shift()`",
-            "date_modified": "2023-05-09T17:02:45.000Z",
-            "date_published": "2023-05-09T04:52:23.000Z",
-            "author": {
-                "name": "JasonLamv-t",
-                "url": "https://github.com/JasonLamv-t"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This adds docs for the WebRTC <code class=\"notranslate\">RTCPeerConnectionStats</code> dictionary.</p>\n<p dir=\"auto\">Note that there was much discussion about whether this should be a dictionary or not. The end result was that this should be a <em>flattened dictionary</em>.</p>\n<p dir=\"auto\">The docs for the dictionary are themselves complete. Note however that there are surrounding docs such as <code class=\"notranslate\">RTCStats</code> that will require iteration (I do the bare minimum here). That will be a post process.</p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1664412478\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/26146\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/26146/hovercard\" href=\"https://github.com/mdn/content/issues/26146\">#26146</a></p>",
             "url": "https://github.com/mdn/content/pull/26661",
             "title": "FF113 RTCPeerConnectionStats - add docs",
@@ -223,6 +190,39 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Provides documentation for <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1827910\" rel=\"nofollow\">Bug 1827910</a> \"Deprecate browser_style in MV3\"</p>",
+            "url": "https://github.com/mdn/content/pull/26642",
+            "title": "browser_style deprecated in MV3",
+            "date_modified": "2023-05-10T23:51:38.000Z",
+            "date_published": "2023-05-08T08:06:18.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The <code class=\"notranslate\">String</code> page should be purely runtime semantics. I've moved syntax-related stuff to the grammar page.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/26624",
+            "title": "Move escape sequences to lexical grammar",
+            "date_modified": "2023-05-07T04:23:13.000Z",
+            "date_published": "2023-05-07T04:21:10.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/50659234?u=41a0dec2e6fdd50a15ad649285460c784e817030&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds an new example of using <code class=\"notranslate\">srcset</code> attribute on the <code class=\"notranslate\">&lt;img&gt;</code> tag.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Earlier on the page, the reader is told:</p>\n<blockquote>\n<p dir=\"auto\">If providing higher-density versions of an image for high-DPI (Retina) display, use <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-srcset\" rel=\"nofollow\">srcset</a> on the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"\"><img style=\"max-width: 100%;\"></a> element instead. This lets browsers opt for lower-density versions in data-saving modes, and you don't have to write explicit media conditions.</p>\n</blockquote>\n<p dir=\"auto\">But in \"The srcset attribute\" section, the example used to demonstrate how to include alternate images based on pixel density only uses srcset in the <source> elements and src in the <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"\"><img style=\"max-width: 100%;\"></a> element.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">NIL</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #25150.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1614202399\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/25150\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/25150/hovercard\" href=\"https://github.com/mdn/content/issues/25150\">#25150</a></p>",
+            "url": "https://github.com/mdn/content/pull/26618",
+            "title": "25150 add new srcset usage example",
+            "date_modified": "2023-05-12T22:49:18.000Z",
+            "date_published": "2023-05-06T15:31:21.000Z",
+            "author": {
+                "name": "adarshajit",
+                "url": "https://github.com/adarshajit"
             }
         }
     ]
