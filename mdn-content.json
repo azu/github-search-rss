@@ -6,10 +6,21 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Migrates URLs linking to <a href=\"https://media.prod.mdn.mozit.cloud/\" rel=\"nofollow\">https://media.prod.mdn.mozit.cloud/</a> to point to the archived URL at <a href=\"https://mdn.dev/archives/media/\" rel=\"nofollow\">https://mdn.dev/archives/media/</a>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The contents of <a href=\"https://media.prod.mdn.mozit.cloud/\" rel=\"nofollow\">https://media.prod.mdn.mozit.cloud/</a> have been archived at <a href=\"https://mdn.dev/archives/media/\" rel=\"nofollow\">https://mdn.dev/archives/media/</a>, and we will soon decommission the <code class=\"notranslate\">media.prod.mdn.mozit.cloud</code> domain, so those links won't work afterwards.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related:</p>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1713624050\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/8873\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/yari/pull/8873/hovercard\" href=\"https://github.com/mdn/yari/pull/8873\">mdn/yari#8873</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1713629598\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/translated-content/issues/13291\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/translated-content/pull/13291/hovercard\" href=\"https://github.com/mdn/translated-content/pull/13291\">mdn/translated-content#13291</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/26809",
+            "title": "refactor: migrate media.prod.mdn.mozit.cloud URLs",
+            "date_modified": "2023-05-17T10:52:06.000Z",
+            "date_published": "2023-05-17T10:38:24.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/290859?u=4d1c9b567c615e1736f9185b4d8506265c5bd0fd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The service worker install and activate event examples used nonexistent identifiers <code class=\"notranslate\">globalScope</code> and <code class=\"notranslate\">this</code>. These changes replace them with <code class=\"notranslate\">globalThis</code>.</p>\n<p dir=\"auto\"><strong>Consider</strong> if they should use <code class=\"notranslate\">self</code> for consistency with other service worker examples instead. (<code class=\"notranslate\">self</code> is also a reference to the global object in workers.)</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The examples cannot work because they use incorrect identifiers for the global object.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I did a quick search on <code class=\"notranslate\">globalThis</code> using SourceGraph and found only these two files using <code class=\"notranslate\">globalScope</code>: <a href=\"https://sourcegraph.com/search?q=context:global+repo:mdn/content+content:%22globalScope%22&amp;patternType=standard&amp;case=yes&amp;sm=1&amp;groupBy=repo\" rel=\"nofollow\"><code class=\"notranslate\">repo:mdn/content content:\"globalScope\" case:yes</code></a>.</p>\n<p dir=\"auto\">Note that it is necessary to search case sensitively to get useful results from SourceGraph though that option does not seem to appear on their UI. I could not work out how to do this with GitHub search and found the SourceGraph suggestion for case sensitive search from a StackOverflow post.</p>\n<p dir=\"auto\">I also fixed one case of using <code class=\"notranslate\">this.addEventListener</code> in the install_event example. While <code class=\"notranslate\">this</code> may work on <code class=\"notranslate\">type: \"script\"</code> workers it won't work on those of <code class=\"notranslate\">type: \"module\"</code>. However the SourceGraph search for <a href=\"https://sourcegraph.com/search?q=repo%3Amdn%2Fcontent+content%3A%22this.addEventListener%22&amp;patternType=standard&amp;case=yes&amp;sm=1&amp;groupBy=repo\" rel=\"nofollow\"><code class=\"notranslate\">repo:mdn/content content:\"this.addEventListener\" case:yes</code></a> shows several other broken examples which I have not fixed in this pull request:</p>",
             "url": "https://github.com/mdn/content/pull/26808",
             "title": "Rename nonexistent globalScope to globalThis in service worker event examples",
-            "date_modified": "2023-05-17T08:44:03.000Z",
+            "date_modified": "2023-05-17T10:36:17.000Z",
             "date_published": "2023-05-17T08:43:50.000Z",
             "author": {
                 "name": "lrowe",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "fwqaaq",
                 "url": "https://github.com/fwqaaq"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #26729.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1705842335\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/26729\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/26729/hovercard\" href=\"https://github.com/mdn/content/issues/26729\">#26729</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/26737",
-            "title": "Fix description of TypedArray.from()",
-            "date_modified": "2023-05-16T14:37:32.000Z",
-            "date_published": "2023-05-12T01:54:27.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
             }
         }
     ]
