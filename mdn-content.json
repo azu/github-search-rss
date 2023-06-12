@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <a href=\"/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers\"><code class=\"notranslate\">Access-Control-Allow-Headers</code></a> is a response header to a <a href=\"/en-US/docs/Glossary/Preflight_request\">CORS preflight request</a>, which indicates what request headers may be included in the final request.<br>\nAccording to the spec, the response directive can contain a wildcard (<code class=\"notranslate\">*</code>) indicating all headers except the <code class=\"notranslate\">Authorization</code> header are allowed.</p>\n<p dir=\"auto\">Browsers have been ignoring this and including the Authorization header, but FF and Chrome (at least) are now looking to deprecate the old behaviour. FF115 adds the  spec behaviour behind a preference.<br>\nNote that the preference is negative - i.e. normally you enable a feature by setting it <code class=\"notranslate\">true</code>, but in this case the preference is true by default and you have to set to <code class=\"notranslate\">false</code> to get the new/spec behaviour.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1749159520\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27230\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27230/hovercard\" href=\"https://github.com/mdn/content/issues/27230\">#27230</a></p>",
+            "url": "https://github.com/mdn/content/pull/27264",
+            "title": "ExprFeat: Access-Control-Allow-Headers wildcard disallow Authorization header",
+            "date_modified": "2023-06-12T02:41:22.000Z",
+            "date_published": "2023-06-12T02:39:18.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers#directives\" rel=\"nofollow\">Access-Control-Expose-Headers</a> had information about the affect of the <code class=\"notranslate\">Authorization</code> request header if <code class=\"notranslate\">Access-Control-Expose-Headers</code> is set as a wildcard.</p>\n<p dir=\"auto\">That information is incorrect because  <code class=\"notranslate\">Access-Control-Expose-Headers</code> lists <em>response</em> headers that can be shared with clients (as set by the server). It should never list <code class=\"notranslate\">Authorization</code> under any circumstances.<br>\nThe confusion comes from a note that applies to a number of these access control headers <a href=\"https://fetch.spec.whatwg.org/#http-new-header-syntax\" rel=\"nofollow\">in the spec</a>.</p>\n<p dir=\"auto\">I am <em>fairly</em> sure that the whole note is irrelevant for this header and it is unaffected by credentials - so  <code class=\"notranslate\">*</code> just means \"share all response headers\". I am confirming that in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1751691259\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/fetch/issues/1671\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/fetch/issues/1671/hovercard\" href=\"https://github.com/whatwg/fetch/issues/1671\">whatwg/fetch#1671</a> - but I think I'd be OK for this to go in now as it is less wrong. Note that this issue with  <code class=\"notranslate\">Authorization</code> fell out of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1687364#c42\" rel=\"nofollow\">this engineering discussion</a></p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1749159520\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27230\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27230/hovercard\" href=\"https://github.com/mdn/content/issues/27230\">#27230</a></p>",
             "url": "https://github.com/mdn/content/pull/27263",
             "title": "Access-Control-Expose-Headers - wildcarded authorization header info incorrect",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "wbamberg",
                 "url": "https://github.com/wbamberg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/114003900?u=1fa8df5ae471bb5c65fe3c0e612833a33fd781cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Fixed a typo in \"In other documents, it creates an element with a null namespace URI.\" (should be URL)</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixed a typo in \"In other documents, it creates an element with a null namespace URI.\" (should be URL)</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I am a beginner web developer, I want to contribute to MDN docs because this helps me a lot in learning! &lt;3</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Here is the page - <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/27204",
-            "title": "Update index.md",
-            "date_modified": "2023-06-07T20:51:00.000Z",
-            "date_published": "2023-06-07T20:01:00.000Z",
-            "author": {
-                "name": "Nikita0x",
-                "url": "https://github.com/Nikita0x"
             }
         }
     ]
