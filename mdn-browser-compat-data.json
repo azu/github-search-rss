@@ -28,17 +28,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR corrects the data for the Storage Access API for Chrome.  This feature is reserved to Chrome's proprietary first-party sets and is not available to all websites, so it is marked as partial implementation.</p>\n<p dir=\"auto\">Additionally, this removes the <code class=\"notranslate\">version_removed</code> set on the flags.  Not only were they incorrect (they were off by one), but the flag still enables the feature for websites not within first-party sets.  (Although keeping the flag is technically against our irrelevant flag data policy, I feel that it is still worthwhile to retain as I personally don't consider gated access like first-party sets or origin trials to be \"supported\".)</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20094",
-            "title": "Correct data for Storage Access API",
-            "date_modified": "2023-06-12T09:12:58.000Z",
-            "date_published": "2023-06-12T05:35:51.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF, safari, node, deno all support new URL.canParse() static method. This adds a feature for the method.</p>\n<ul dir=\"auto\">\n<li>FF115: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1823354\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1823354</a></li>\n<li>Node 19.9 (closest is 20) <a href=\"https://nodejs.org/en/blog/release/v19.9.0\" rel=\"nofollow\">https://nodejs.org/en/blog/release/v19.9.0</a></li>\n<li>Safari 17: <a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-17-release-notes\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-17-release-notes</a></li>\n<li>Deno 1.33 : <a href=\"https://deno.land/api@v1.33.0?s=URL&amp;p=canParse\" rel=\"nofollow\">https://deno.land/api@v1.33.0?s=URL&amp;p=canParse</a></li>\n</ul>\n<p dir=\"auto\">FYI <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a></p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1744133960\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27170\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27170/hovercard\" href=\"https://github.com/mdn/content/issues/27170\">mdn/content#27170</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20093",
             "title": "FF115 URL.canParse() static method",
@@ -201,6 +190,28 @@
             "author": {
                 "name": "confused-Techie",
                 "url": "https://github.com/confused-Techie"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/243601?u=72f5a31c69134f5b74e88c67ebf19beabbcb06bd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Fixes/improves the support data for the CSS <code class=\"notranslate\">mask</code> shorthand property for Firefox and Safari.</p>\n<ul dir=\"auto\">\n<li>Firefox: marked the Firefox 2 entry as partial support; added an entry with the version which added support for <a href=\"https://www.w3.org/TR/css-masking-1/\" rel=\"nofollow\">CSS Masking Module Level 1</a>.</li>\n<li>Safari: added an entry for Safari 15.4, which shipped the unprefixed <code class=\"notranslate\">mask</code> property.</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">My rationale was that the support data should be a rough match for “does this browser support the <a href=\"https://www.w3.org/TR/css-masking-1/#positioned-masks\" rel=\"nofollow\">CSS Masking Level 1: Positioned Masks</a> feature?”</p>\n<p dir=\"auto\">In the case of Firefox, relevant release notes are:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/2\" rel=\"nofollow\">Firefox 2</a> (the version that is in the current data): no mentions of masks.</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/10\" rel=\"nofollow\">Firefox 10</a>: mention of a change to the color space used for SVG masks.</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/47\" rel=\"nofollow\">Firefox 47</a>: adds CSS Mask Image support in Nightly.</li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/53\" rel=\"nofollow\">Firefox 53</a>: ships CSS Masks by default.</li>\n</ul>\n<p dir=\"auto\">I could not find a description of what the <code class=\"notranslate\">mask</code> property did in Firefox 2+ and before Firefox 53. My memory tells me that it supported SVG masks (as <code class=\"notranslate\">mask: url(image.svg)</code>) so I wrote that down in the notes. It's also far enough from the CSS Masking Module definition of <code class=\"notranslate\">mask</code> to warrant a “partial implementation” flag.</p>\n<p dir=\"auto\">The notes for Firefox 2+ had an extract from the <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/10\" rel=\"nofollow\">Firefox 10 release notes</a> about sRGB vs Linear RGB and Firefox aligning with the SVG 1.1 spec, which IMHO is a minute implementation detail that may not be worth mentioning.</p>\n<p dir=\"auto\">For Safari, it shipped the unprefixed <code class=\"notranslate\">mask</code> property <a href=\"https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/\" rel=\"nofollow\">in Safari 15.4 (release notes)</a>.</p>\n<blockquote>\n<p dir=\"auto\">Retiring WebKit prefixes</p>\n<p dir=\"auto\">In an ongoing effort to reduce dependency on prefixes, WebKit newly supports several CSS properties and values that were only previous available in an earlier form. The prefixed versions will still work, now aliased to the unprefixed versions. Safari 15.4 added support for:</p>\n<ul dir=\"auto\">\n<li>appearance, including appearance: auto</li>\n<li>mask, along with the long-hand forms mask-image, mask-size, mask-repeat-x, mask-repeat-y, mask-origin</li>\n<li>backface-visibility</li>\n<li>text-combine-upright</li>\n<li>print-color-adjust</li>\n<li>match-parent CSS value for the text-align property</li>\n</ul>\n</blockquote>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/19019",
+            "title": "Fix support data for the CSS mask shorthand property",
+            "date_modified": "2023-03-30T16:37:41.000Z",
+            "date_published": "2023-02-26T20:05:08.000Z",
+            "author": {
+                "name": "fvsch",
+                "url": "https://github.com/fvsch"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4488452?u=a4423eea157994b7779b327e356260ff07a12d27&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Removed mention of background-attachment: local bug</p>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">I've removed the mention of background-attachment: local not working on iOS. According to the <a href=\"https://bugs.webkit.org/show_bug.cgi?id=219324\" rel=\"nofollow\">bug report</a> it has been fixed and merged. However I'm not exactly sure in which Safari version.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">I've tested this on an iPhone 12 Pro iOS16.2 and using BrowserStack iPhone 12 Pro iOS14.<br>\nUsing these examples:<br>\n<a href=\"https://codepen.io/smashingmag/pen/ExRNxpd\" rel=\"nofollow\">https://codepen.io/smashingmag/pen/ExRNxpd</a><br>\n<a href=\"https://codepen.io/bramus/pen/ExxgNrV\" rel=\"nofollow\">https://codepen.io/bramus/pen/ExxgNrV</a></p>\n<h4 dir=\"auto\">Related</h4>\n<p dir=\"auto\"><a href=\"https://bugs.webkit.org/show_bug.cgi?id=181048\" rel=\"nofollow\">This is another bug</a> that has been fixed by the same fix.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/18507",
+            "title": "Update background-attachment.json",
+            "date_modified": "2023-06-09T12:02:21.000Z",
+            "date_published": "2023-01-01T20:51:10.000Z",
+            "author": {
+                "name": "rickdoesburg",
+                "url": "https://github.com/rickdoesburg"
             }
         }
     ]
