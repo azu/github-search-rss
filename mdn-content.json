@@ -6,17 +6,6 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>This PR needs to be committed before <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1793656010\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27828\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27828/hovercard\" href=\"https://github.com/mdn/content/pull/27828\">#27828</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/27830",
-            "title": "Prettier style front-matter",
-            "date_modified": "2023-07-07T15:24:21.000Z",
-            "date_published": "2023-07-07T15:02:22.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6552986?u=1695f196e6791231ea33f27ac407d0f55c90f9a7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Appears to be a spelling mistake.</p>\n\n<h3 dir=\"auto\">The sentence didn't make sense.</h3>\n\n<p dir=\"auto\">Simple spelling mistake.</p>\n\n<p dir=\"auto\">Saw an issue, figured I would help.</p>\n\n<p dir=\"auto\">n/a</p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/27829",
             "title": "Update index.md",
@@ -25,17 +14,6 @@
             "author": {
                 "name": "BoKu",
                 "url": "https://github.com/BoKu"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">The front-matter linter and Prettier are correcting each other and are causing some friction.</p>\n<h2 dir=\"auto\">Problem</h2>\n<p dir=\"auto\">Formatters available in YAML space output exactly what is told, so the output remains same no matter the input. But Prettier is an intelligent formatter: it's output changes based on certain conditions.</p>\n<p dir=\"auto\">In following examples YAML parser and Prettier have been told to prefer double quotes to enclose values.</p>\n<div class=\"highlight highlight-source-yaml notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"# example 1\ntitle: &quot;TypeError: can't assign to property 'x' on 'y': not an object&quot;\n\n# in this case, both agree on the same thing\ntitle: &quot;TypeError: can't assign to property 'x' on 'y': not an object&quot;\n\n# example 2\ntitle: &quot;TypeError: can't assign to property \\&quot;x\\&quot; on \\&quot;y\\&quot;: not an object&quot;\n\n# YAML parser yields the same string as output\ntitle: &quot;TypeError: can't assign to property \\&quot;x\\&quot; on \\&quot;y\\&quot;: not an object&quot;\n\n# Prettier encloses string with double quoted words in single quotes\ntitle: 'TypeError: can''t assign to property &quot;x&quot; on &quot;y&quot;: not an object'\"><pre class=\"notranslate\"><span class=\"pl-c\"><span class=\"pl-c\">#</span> example 1</span>\n<span class=\"pl-ent\">title</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>TypeError: can't assign to property 'x' on 'y': not an object<span class=\"pl-pds\">\"</span></span>\n\n<span class=\"pl-c\"><span class=\"pl-c\">#</span> in this case, both agree on the same thing</span>\n<span class=\"pl-ent\">title</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>TypeError: can't assign to property 'x' on 'y': not an object<span class=\"pl-pds\">\"</span></span>\n\n<span class=\"pl-c\"><span class=\"pl-c\">#</span> example 2</span>\n<span class=\"pl-ent\">title</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>TypeError: can't assign to property <span class=\"pl-cce\">\\\"</span>x<span class=\"pl-cce\">\\\"</span> on <span class=\"pl-cce\">\\\"</span>y<span class=\"pl-cce\">\\\"</span>: not an object<span class=\"pl-pds\">\"</span></span>\n\n<span class=\"pl-c\"><span class=\"pl-c\">#</span> YAML parser yields the same string as output</span>\n<span class=\"pl-ent\">title</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>TypeError: can't assign to property <span class=\"pl-cce\">\\\"</span>x<span class=\"pl-cce\">\\\"</span> on <span class=\"pl-cce\">\\\"</span>y<span class=\"pl-cce\">\\\"</span>: not an object<span class=\"pl-pds\">\"</span></span>\n\n<span class=\"pl-c\"><span class=\"pl-c\">#</span> Prettier encloses string with double quoted words in single quotes</span>\n<span class=\"pl-ent\">title</span>: <span class=\"pl-s\"><span class=\"pl-pds\">'</span>TypeError: can<span class=\"pl-cce\">''</span>t assign to property \"x\" on \"y\": not an object<span class=\"pl-pds\">'</span></span></pre></div>\n<h2 dir=\"auto\">Solution</h2>\n<p dir=\"auto\">It's easy to simply run YAML formatter's output through Prettier before writing to file, than making the YAML formatter behave like Prettier:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"let yml = YAML.dump(fmObject);\nyml = await prettier.format(yml, { parser: &quot;yaml&quot; });\n// write `yml` to file\"><pre class=\"notranslate\"><span class=\"pl-k\">let</span> <span class=\"pl-s1\">yml</span> <span class=\"pl-c1\">=</span> <span class=\"pl-c1\">YAML</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">dump</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">fmObject</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">yml</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">prettier</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">format</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">yml</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">parser</span>: <span class=\"pl-s\">\"yaml\"</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-c\">// write `yml` to file</span></pre></div>\n<p dir=\"auto\"><strong>Note:</strong> apart from above change following changes have been made:</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">updated and added unit tests <code class=\"notranslate\">yarn test:front-matter-linter</code></p>\n</li>\n<li>\n<p dir=\"auto\">ran <code class=\"notranslate\">fix:js</code> on all the <code class=\"notranslate\">.js</code> files in the repo to confrom to the new Prettier v3.0.0</p>\n</li>\n<li>\n<p dir=\"auto\">The <code class=\"notranslate\">*.md</code> files need to be committed before this PR are in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1793700268\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27830\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27830/hovercard\" href=\"https://github.com/mdn/content/pull/27830\">#27830</a></p>\n</li>\n</ul>\n<h2 dir=\"auto\">Testing</h2>\n<ul dir=\"auto\">\n<li>Committed above code changes</li>\n<li>Commented <code class=\"notranslate\">/files/en-us/web/javascript/**/*.md</code> line in <code class=\"notranslate\">.prettierignore</code> file</li>\n<li>Ran <code class=\"notranslate\">fix:fm</code> then committed the changes</li>\n<li>Ran 'fix:md' saw the diff<br>\nPrettier didn't contradict front-matter linter.</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/27828",
-            "title": "Align front-matter linter with prettier",
-            "date_modified": "2023-07-07T16:24:56.000Z",
-            "date_published": "2023-07-07T14:34:00.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
             }
         },
         {
@@ -80,17 +58,6 @@
             "author": {
                 "name": "bsmth",
                 "url": "https://github.com/bsmth"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is a part of a project to format all of the documents using Prettier, and then enforce Prettier formatting for the files going forward.  This PR formats the <code class=\"notranslate\">/javascript</code> folder.</p>\n<p dir=\"auto\">Additionally, this formats two other files from other folders that were somehow not properly formatted.  (The changes are small enough that I didn't feel they needed their own PR.)</p>",
-            "url": "https://github.com/mdn/content/pull/27819",
-            "title": "Format /javascript using Prettier",
-            "date_modified": "2023-07-07T15:16:16.000Z",
-            "date_published": "2023-07-07T07:45:26.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
             }
         },
         {
@@ -223,6 +190,39 @@
             "author": {
                 "name": "dletorey",
                 "url": "https://github.com/dletorey"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I have added a good and bad example to help emphasize the location of the <a class=\"user-mention notranslate\" data-hovercard-type=\"organization\" data-hovercard-url=\"/orgs/import/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/import\">@import</a> at-rule</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Making sure the documentation is clearer while making sure that <a href=\"https://github.com/mdn/content/issues/27182\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27182/hovercard\">27182</a> is documented.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/browser-compat-data/pull/20303\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/20303/hovercard\">BCD</a></li>\n<li><a href=\"https://github.com/mdn/content/pull/27796\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27796/hovercard\">Firefox Release</a></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1830779\" rel=\"nofollow\">Bugzilla Issue 1830779</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/27794",
+            "title": "added examples to emphasize the location of the @import at-rule",
+            "date_modified": "2023-07-06T16:45:28.000Z",
+            "date_published": "2023-07-06T15:12:31.000Z",
+            "author": {
+                "name": "dletorey",
+                "url": "https://github.com/dletorey"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">While doing the page-type project, we forgot some pages here or there (or they got added right after an area was converted without having a <code class=\"notranslate\">page-type</code> YAML key.</p>\n<p dir=\"auto\">This PR adds the missing page types in the 50-or-so pages that didn't have one. After this PR (and the two others still open), all MDN pages should have a <code class=\"notranslate\">page-type</code>. (A last check will be made before closing the issue).</p>\n<p dir=\"auto\">Note: no new page type is introduced by this PR</p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1177408050\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/91\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/91/hovercard\" href=\"https://github.com/openwebdocs/project/issues/91\">openwebdocs/project#91</a> and will <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #27620.\">close</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1778874665\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27620\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27620/hovercard\" href=\"https://github.com/mdn/content/issues/27620\">#27620</a>.</p>",
+            "url": "https://github.com/mdn/content/pull/27785",
+            "title": "Add page-types to remaining pages",
+            "date_modified": "2023-07-07T07:08:28.000Z",
+            "date_published": "2023-07-06T06:55:42.000Z",
+            "author": {
+                "name": "teoli2003",
+                "url": "https://github.com/teoli2003"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #27767.\">Fixes</span>: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1788557508\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27767\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27767/hovercard\" href=\"https://github.com/mdn/content/issues/27767\">#27767</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/27783",
+            "title": "fix(CSS): update `minmax()` value `auto`",
+            "date_modified": "2023-07-07T02:24:12.000Z",
+            "date_published": "2023-07-06T03:52:18.000Z",
+            "author": {
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
             }
         }
     ]
