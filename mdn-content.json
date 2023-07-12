@@ -6,39 +6,6 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8744929?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"      const blob = new Blob(\n        Array.prototype.map.call(\n          document.querySelectorAll(&quot;script[type='text\\/js-worker']&quot;),\n          (script) =&gt; script.textContent,\n          { type: &quot;text/javascript&quot; },\n        ),\n      );\"><pre class=\"notranslate\">      <span class=\"pl-k\">const</span> <span class=\"pl-s1\">blob</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span>\n        <span class=\"pl-v\">Array</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">prototype</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">map</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">call</span><span class=\"pl-kos\">(</span>\n          <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">querySelectorAll</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"script[type='text\\/js-worker']\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">,</span>\n          <span class=\"pl-kos\">(</span><span class=\"pl-s1\">script</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-s1\">script</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">textContent</span><span class=\"pl-kos\">,</span>\n          <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">type</span>: <span class=\"pl-s\">\"text/javascript\"</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n        <span class=\"pl-kos\">)</span><span class=\"pl-kos\">,</span>\n      <span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">is essentially:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"textContents = [script1, script2].map(script =&gt; script.textContent, { type: &quot;text/javascript&quot; });\nblob = new Blob(textContents);\"><pre class=\"notranslate\"><span class=\"pl-s1\">textContents</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">[</span><span class=\"pl-s1\">script1</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">script2</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">map</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">script</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-s1\">script</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">textContent</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">type</span>: <span class=\"pl-s\">\"text/javascript\"</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">blob</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">textContents</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">but should be:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"textContents = [script1, script2].map(script =&gt; script.textContent);\nblob = new Blob(textContents, { type: &quot;text/javascript&quot; });\"><pre class=\"notranslate\"><span class=\"pl-s1\">textContents</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">[</span><span class=\"pl-s1\">script1</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">script2</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">map</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">script</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-s1\">script</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">textContent</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">blob</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Blob</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">textContents</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">type</span>: <span class=\"pl-s\">\"text/javascript\"</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The code works as is (<code class=\"notranslate\">thisArg</code> is not used in the mapping function, and <code class=\"notranslate\">blob.type</code>'s value of <code class=\"notranslate\">''</code> seems to be ignored), but is not strictly correct.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/27903",
-            "title": "Move `{ type: \"text/javascript\" }` from Array.prototype.map's thisArg to Blob's options",
-            "date_modified": "2023-07-12T17:51:28.000Z",
-            "date_published": "2023-07-12T17:51:17.000Z",
-            "author": {
-                "name": "nmlorg",
-                "url": "https://github.com/nmlorg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #26837.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1715828019\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/26837\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/26837/hovercard\" href=\"https://github.com/mdn/content/issues/26837\">#26837</a></p>\n<p dir=\"auto\">Dunno why this is very necessary, but it reads fine either way.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/27901",
-            "title": "Reorder subsections",
-            "date_modified": "2023-07-12T14:33:17.000Z",
-            "date_published": "2023-07-12T14:30:48.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://github.com/mdn/browser-compat-data/releases/tag/v5.3.2\">BCD release v5.3.2</a></p>\n<p dir=\"auto\">/cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/sideshowbarker/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/sideshowbarker\">@sideshowbarker</a></p>",
-            "url": "https://github.com/mdn/content/pull/27892",
-            "title": "Synchronize with BCD v5.3.2",
-            "date_modified": "2023-07-12T00:46:44.000Z",
-            "date_published": "2023-07-12T00:44:56.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF116 adds support for specifying allowed eternal files in CSP script-src directives as hashes.</p>\n<p dir=\"auto\">This adds docs on the feature (been around for ages in Chrome), but in FF only supported for inline scripts before now.</p>\n<p dir=\"auto\">Related docs work in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1787471415\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27749\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27749/hovercard\" href=\"https://github.com/mdn/content/issues/27749\">#27749</a></p>",
             "url": "https://github.com/mdn/content/pull/27876",
             "title": "FF116 CSP script-src can specify hash for external files",
@@ -119,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF116 adds support for the Audio Output Device API.</p>\n<p dir=\"auto\">This improves some of the docs. There feels like quite a lot of duplication, in particular around the way permissions/security considerations work. But at least it should not be \"wrong\". Happy to take advice.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1787468634\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27748\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27748/hovercard\" href=\"https://github.com/mdn/content/issues/27748\">#27748</a></p>",
             "url": "https://github.com/mdn/content/pull/27818",
             "title": "FF116 Audio Output Device API updates",
-            "date_modified": "2023-07-11T01:10:20.000Z",
+            "date_modified": "2023-07-12T18:53:04.000Z",
             "date_published": "2023-07-07T07:39:11.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -223,6 +190,39 @@
             "author": {
                 "name": "takaram",
                 "url": "https://github.com/takaram"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #27356.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1759292946\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27356\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27356/hovercard\" href=\"https://github.com/mdn/content/issues/27356\">#27356</a></p>\n<p dir=\"auto\">cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/WebReflection/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/WebReflection\">@WebReflection</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Kaiido/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Kaiido\">@Kaiido</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/27619",
+            "title": "Improve Atomics.wait(Async) parameter description",
+            "date_modified": "2023-06-28T12:09:30.000Z",
+            "date_published": "2023-06-28T11:57:29.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add documentation for changes made in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1814905\" rel=\"nofollow\">Bug 1814905</a> Implement chrome.action.getUserSettings</p>",
+            "url": "https://github.com/mdn/content/pull/27608",
+            "title": "Implementation of action.getUserSettings",
+            "date_modified": "2023-07-12T11:38:19.000Z",
+            "date_published": "2023-06-27T23:44:53.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/31216671?u=5aef3f32904fa7fbd61fa5020c2e00d2bc92eed0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">There's not many places linking to the Practical Position Examples article, so I thought this would be a good place to include it.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I had trouble finding this article, so I thought it would be useful to link it in a place where other related links are.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/27604",
+            "title": "Mention Practice Positioning Examples in note",
+            "date_modified": "2023-06-28T04:46:10.000Z",
+            "date_published": "2023-06-27T20:56:26.000Z",
+            "author": {
+                "name": "JamesC01",
+                "url": "https://github.com/JamesC01"
             }
         }
     ]
