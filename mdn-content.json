@@ -6,14 +6,14 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/194984?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/content/pull/27896",
-            "title": "Replace “MDN” with “project” in the README.md file",
-            "date_modified": "2023-07-12T10:59:06.000Z",
-            "date_published": "2023-07-12T10:58:47.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/94305004?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">As per the code above these lines, Changing word \"bottom\" to \"top\" on Line 188 and Changing word \"top\" to \"bottom\" on Line 189.</p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/27898",
+            "title": "Changing word \"bottom\" to \"top\" on Line 188",
+            "date_modified": "2023-07-12T11:19:16.000Z",
+            "date_published": "2023-07-12T11:15:18.000Z",
             "author": {
-                "name": "sideshowbarker",
-                "url": "https://github.com/sideshowbarker"
+                "name": "meetanoopverma",
+                "url": "https://github.com/meetanoopverma"
             }
         },
         {
@@ -36,17 +36,6 @@
             "author": {
                 "name": "OnkarRuikar",
                 "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/277214?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifies that time zone IDs are sorted in ASCII order, not alphabetically.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">For case-insensitive data, \"alphabetic\" sort usually ignores letter case, as in SQL databases with case-insensitive collation.  The default sort used in ECMAScript doesn't ignore letter case, which may result in unexpectedly sorted mixed-case data. For this API, only time zone IDs are mixed case, so it's helpful to note this exception in the docs.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">Chrome, Node, and Safari currently don't produce any different output using a case-insensitive sort of time zones than a case-sensitive sort. But Firefox does display different results, as you can see with the following code:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"function caseInsensitiveSortFunc(s1, s2) {\n  s1 = s1.toLowerCase();\n  s2 = s2.toLowerCase();\n  if (s1 &lt; s2) return -1;\n  if (s1 &gt; s2) return 1;\n  return 0;\n}\n\ntzs = Intl.supportedValuesOf('timeZone');\ntzsInsensitive = [...Intl.supportedValuesOf('timeZone')].sort(caseInsensitiveSortFunc);\n\nconsole.log(`Index of PST8PDT (case sensitive): ${tzs.indexOf('PST8PDT')}`);\n// =&gt; Index of PST8PDT (case sensitive): 426 \nconsole.log(`Index of PST8PDT (case insensitive): ${tzsInsensitive.indexOf('PST8PDT')}`);\n// =&gt; Index of PST8PDT (case insensitive): 466\n\n// Note: results above only work in Firefox. Chrome and Safari don't include `'PST8PDT'` at all.\"><pre class=\"notranslate\"><span class=\"pl-k\">function</span> <span class=\"pl-en\">caseInsensitiveSortFunc</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">s1</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">s2</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-s1\">s1</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">s1</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toLowerCase</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-s1\">s2</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">s2</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toLowerCase</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">s1</span> <span class=\"pl-c1\">&lt;</span> <span class=\"pl-s1\">s2</span><span class=\"pl-kos\">)</span> <span class=\"pl-k\">return</span> <span class=\"pl-c1\">-</span><span class=\"pl-c1\">1</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">s1</span> <span class=\"pl-c1\">&gt;</span> <span class=\"pl-s1\">s2</span><span class=\"pl-kos\">)</span> <span class=\"pl-k\">return</span> <span class=\"pl-c1\">1</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-k\">return</span> <span class=\"pl-c1\">0</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span>\n\n<span class=\"pl-s1\">tzs</span> <span class=\"pl-c1\">=</span> <span class=\"pl-v\">Intl</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">supportedValuesOf</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'timeZone'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">tzsInsensitive</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">[</span>...<span class=\"pl-v\">Intl</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">supportedValuesOf</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'timeZone'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">sort</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">caseInsensitiveSortFunc</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`Index of PST8PDT (case sensitive): <span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">tzs</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">indexOf</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'PST8PDT'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">}</span></span>`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-c\">// =&gt; Index of PST8PDT (case sensitive): 426 </span>\n<span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`Index of PST8PDT (case insensitive): <span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">tzsInsensitive</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">indexOf</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'PST8PDT'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">}</span></span>`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-c\">// =&gt; Index of PST8PDT (case insensitive): 466</span>\n\n<span class=\"pl-c\">// Note: results above only work in Firefox. Chrome and Safari don't include `'PST8PDT'` at all.</span></pre></div>\n<p dir=\"auto\">Adding a warning to the docs might help developers avoid writing code that will work OK in non-FF browsers but will break in FF.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1745007517\" data-permission-text=\"Title is private\" data-url=\"https://github.com/tc39/ecma402/issues/790\" data-hovercard-type=\"issue\" data-hovercard-url=\"/tc39/ecma402/issues/790/hovercard\" href=\"https://github.com/tc39/ecma402/issues/790\">tc39/ecma402#790</a></p>\n<p dir=\"auto\">cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/sffc/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/sffc\">@sffc</a></p>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/27890",
-            "title": "Clarify sorting for time zone IDs",
-            "date_modified": "2023-07-12T08:43:31.000Z",
-            "date_published": "2023-07-11T21:05:43.000Z",
-            "author": {
-                "name": "justingrant",
-                "url": "https://github.com/justingrant"
             }
         },
         {
@@ -174,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><a href=\"https://wicg.github.io/fenced-frame/\" rel=\"nofollow\">Fenced frames</a> are an integral part of Google's <a href=\"https://developer.chrome.com/docs/privacy-sandbox/\" rel=\"nofollow\">privacy sandbox</a> technologies. Many parts of this set are being made available by default in Chrome 115 (depending on a gradual ramp up to 100% of userbase over the 115 release period).</p>\n<p dir=\"auto\">This PR provides documentation for the <code class=\"notranslate\">&lt;fencedframe&gt;</code> element and the APIs that underpin it.</p>\n<p dir=\"auto\">See my <a href=\"https://docs.google.com/document/d/1r27C2_yV8jb7N4-7MxLMHWCx9wHHaCw9HbBDcTyPnZs/edit#heading=h.frl8u3cowbcx\" rel=\"nofollow\">research document</a> for more details of exactly what changes are expected in the PR.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/27781",
             "title": "Add documentation for Fenced Frames",
-            "date_modified": "2023-07-11T13:46:04.000Z",
+            "date_modified": "2023-07-12T11:59:53.000Z",
             "date_published": "2023-07-05T18:23:48.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "NeoxAA",
                 "url": "https://github.com/NeoxAA"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/18339861?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR revises the description about ETag validation of <code class=\"notranslate\">If-Match</code> and <code class=\"notranslate\">If-None-Match</code> HTTP headers.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">According to RFC 9110, strong comparison function must be used for If-Match, and weak comparison function must be used for If-None-Match.<br>\n<a href=\"https://httpwg.org/specs/rfc9110.html#conditional.requests\" rel=\"nofollow\">https://httpwg.org/specs/rfc9110.html#conditional.requests</a></p>\n<p dir=\"auto\">Current description seems to be different from this.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/27645",
+            "title": "Update description of conditional headers",
+            "date_modified": "2023-06-29T10:04:14.000Z",
+            "date_published": "2023-06-29T09:57:55.000Z",
+            "author": {
+                "name": "takaram",
+                "url": "https://github.com/takaram"
             }
         }
     ]
