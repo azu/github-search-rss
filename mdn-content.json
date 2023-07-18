@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/78285518?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h1 dir=\"auto\">Description</h1>\n<p dir=\"auto\">This fixes a bug where the variable isn't initialized which causes a reference error. In the sample code:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const canvas = document.querySelector(&quot;canvas&quot;);\nconst c = canvas.getContext(&quot;2d&quot;);\nc.fillStyle = &quot;hotpink&quot;;\n\nfunction draw(x, y) {\n  if (isDrawing) {\n    c.beginPath();\n    c.arc(x, y, 10, 0, Math.PI * 2);\n    c.closePath();\n    c.fill();\n  }\n}\n\ncanvas.addEventListener(&quot;mousemove&quot;, (event) =&gt;\n  draw(event.offsetX, event.offsetY),\n);\ncanvas.addEventListener(&quot;mousedown&quot;, () =&gt; (isDrawing = true));\ncanvas.addEventListener(&quot;mouseup&quot;, () =&gt; (isDrawing = false));\n\ndocument\n  .querySelector(&quot;a&quot;)\n  .addEventListener(\n    &quot;click&quot;,\n    (event) =&gt; (event.target.href = canvas.toDataURL()),\n  );\"><pre class=\"notranslate\"><code class=\"notranslate\">const canvas = document.querySelector(\"canvas\");\nconst c = canvas.getContext(\"2d\");\nc.fillStyle = \"hotpink\";\n\nfunction draw(x, y) {\n  if (isDrawing) {\n    c.beginPath();\n    c.arc(x, y, 10, 0, Math.PI * 2);\n    c.closePath();\n    c.fill();\n  }\n}\n\ncanvas.addEventListener(\"mousemove\", (event) =&gt;\n  draw(event.offsetX, event.offsetY),\n);\ncanvas.addEventListener(\"mousedown\", () =&gt; (isDrawing = true));\ncanvas.addEventListener(\"mouseup\", () =&gt; (isDrawing = false));\n\ndocument\n  .querySelector(\"a\")\n  .addEventListener(\n    \"click\",\n    (event) =&gt; (event.target.href = canvas.toDataURL()),\n  );\n</code></pre></div>\n<p dir=\"auto\">the variable \"isDrawing\" is being used, but it's never initialized. This pull request initializes the variable.</p>\n\n<h2 dir=\"auto\">Why I'm making this pull request</h2>\n<p dir=\"auto\">I saw the console and I found a bunch of reference errors. I noticed there wasn't a \"isDrawing\" variable being initialized in the sample code.</p>\n\n<p dir=\"auto\">Take a look here: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#using_the_download_attribute_to_save_a_canvas_as_a_png\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#using_the_download_attribute_to_save_a_canvas_as_a_png</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/28020",
+            "title": "Initialize \"isDrawing\" variable",
+            "date_modified": "2023-07-18T03:06:40.000Z",
+            "date_published": "2023-07-18T03:06:27.000Z",
+            "author": {
+                "name": "hueychen27",
+                "url": "https://github.com/hueychen27"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1149904?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add a section expanding upon OffscreenCanvas's APIs, specifically transferToImageBitmap.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Some web developers have noted that transferToImageBitmap can be confusing and lead to application bugs; crbug.com/1457212 is one recent example. Add a section describing the necessity to either consume or close the ImageBitmap this API creates, and mention an alternative.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">crbug.com/1457212 contains a minimized test case from a Chromium customer which was incorrect and which<br>\nled to application instability. The customer noted that they used MDN's OffscreenCanvas documentation as a<br>\nprimary source of information, and requested that the documentation be expanded with this information.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None</p>\n",
             "url": "https://github.com/mdn/content/pull/28019",
             "title": "Add \"Important Notes\" to OffscreenCanvas.",
@@ -14,17 +25,6 @@
             "author": {
                 "name": "kenrussell",
                 "url": "https://github.com/kenrussell"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes the duplicate example from <code class=\"notranslate\">Mozilla/Add-ons/WebExtensions/manifest.json/icons</code>.</p>",
-            "url": "https://github.com/mdn/content/pull/28018",
-            "title": "Remove duplicated example from WebExtensions/manifest.json/icons",
-            "date_modified": "2023-07-18T00:14:32.000Z",
-            "date_published": "2023-07-18T00:12:03.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
             }
         },
         {
