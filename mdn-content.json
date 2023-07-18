@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">not sure why the anchor links aren't working (Tried FF and edge), so adding the path</p>",
+            "url": "https://github.com/mdn/content/pull/28021",
+            "title": "Broken links",
+            "date_modified": "2023-07-18T03:15:36.000Z",
+            "date_published": "2023-07-18T03:13:45.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/78285518?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h1 dir=\"auto\">Description</h1>\n<p dir=\"auto\">This fixes a bug where the variable isn't initialized which causes a reference error. In the sample code:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const canvas = document.querySelector(&quot;canvas&quot;);\nconst c = canvas.getContext(&quot;2d&quot;);\nc.fillStyle = &quot;hotpink&quot;;\n\nfunction draw(x, y) {\n  if (isDrawing) {\n    c.beginPath();\n    c.arc(x, y, 10, 0, Math.PI * 2);\n    c.closePath();\n    c.fill();\n  }\n}\n\ncanvas.addEventListener(&quot;mousemove&quot;, (event) =&gt;\n  draw(event.offsetX, event.offsetY),\n);\ncanvas.addEventListener(&quot;mousedown&quot;, () =&gt; (isDrawing = true));\ncanvas.addEventListener(&quot;mouseup&quot;, () =&gt; (isDrawing = false));\n\ndocument\n  .querySelector(&quot;a&quot;)\n  .addEventListener(\n    &quot;click&quot;,\n    (event) =&gt; (event.target.href = canvas.toDataURL()),\n  );\"><pre class=\"notranslate\"><code class=\"notranslate\">const canvas = document.querySelector(\"canvas\");\nconst c = canvas.getContext(\"2d\");\nc.fillStyle = \"hotpink\";\n\nfunction draw(x, y) {\n  if (isDrawing) {\n    c.beginPath();\n    c.arc(x, y, 10, 0, Math.PI * 2);\n    c.closePath();\n    c.fill();\n  }\n}\n\ncanvas.addEventListener(\"mousemove\", (event) =&gt;\n  draw(event.offsetX, event.offsetY),\n);\ncanvas.addEventListener(\"mousedown\", () =&gt; (isDrawing = true));\ncanvas.addEventListener(\"mouseup\", () =&gt; (isDrawing = false));\n\ndocument\n  .querySelector(\"a\")\n  .addEventListener(\n    \"click\",\n    (event) =&gt; (event.target.href = canvas.toDataURL()),\n  );\n</code></pre></div>\n<p dir=\"auto\">the variable \"isDrawing\" is being used, but it's never initialized. This pull request initializes the variable.</p>\n\n<h2 dir=\"auto\">Why I'm making this pull request</h2>\n<p dir=\"auto\">I saw the console and I found a bunch of reference errors. I noticed there wasn't a \"isDrawing\" variable being initialized in the sample code.</p>\n\n<p dir=\"auto\">Take a look here: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#using_the_download_attribute_to_save_a_canvas_as_a_png\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#using_the_download_attribute_to_save_a_canvas_as_a_png</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/28020",
             "title": "Initialize \"isDrawing\" variable",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "sakastudio",
                 "url": "https://github.com/sakastudio"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41028518?u=780b200e2341fcfc184b4c4ee469f9cc16b042df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Changed <a href=\"https://acorn.firefox.com/latest/acorn.html\" rel=\"nofollow\">dead Acorn links</a> to <a href=\"https://acorn.firefox.com/latest/\" rel=\"nofollow\">working ones</a>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The old links took users to a sign in page, then a <code class=\"notranslate\">404 not found</code> page. The updated version takes users to the latest acorn homepage.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Some Acorn links (eg: <a href=\"https://acorn.firefox.com/latest/styles/iconography.html\" rel=\"nofollow\">https://acorn.firefox.com/latest/styles/iconography.html</a>) still don't function. I couldn't find a clear way to link to the updated page (<a href=\"https://acorn.firefox.com/latest/styles/iconography-q7JqGl5H\" rel=\"nofollow\">https://acorn.firefox.com/latest/styles/iconography-q7JqGl5H</a>) that would persist when \"q7JqGl5H\" is presumably changed in a future page update.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None</p>",
-            "url": "https://github.com/mdn/content/pull/27932",
-            "title": "Fixed dead acorn links",
-            "date_modified": "2023-07-14T00:54:07.000Z",
-            "date_published": "2023-07-14T00:53:52.000Z",
-            "author": {
-                "name": "wiki-Bird",
-                "url": "https://github.com/wiki-Bird"
             }
         }
     ]
