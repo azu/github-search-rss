@@ -73,6 +73,12 @@ export const SEARCH_ITEMS: RSSItem[] = [
         TYPE: "ISSUE",
         link: `${BASE_URL}/babel-proposals.json`
     },
+    {
+        title: "repo:antifraudcg/proposals Issues",
+        query: "repo:antifraudcg/proposals is:issue",
+        TYPE: "ISSUE",
+        link: `${BASE_URL}/antifraudcg-proposals.json`
+    },
     // Pull Request
     {
         // label:data:
