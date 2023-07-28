@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7702955?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Small changes on language and some grammar corrections</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Madee some small additions, corrected small grammar mistakes and made some points more explicit</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/28243",
+            "title": "Update Privacy page",
+            "date_modified": "2023-07-28T13:59:21.000Z",
+            "date_published": "2023-07-28T13:57:32.000Z",
+            "author": {
+                "name": "couci",
+                "url": "https://github.com/couci"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109434545?u=7b615336f34247b94f81f53a7a3d21f912a47ec9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adding <code class=\"notranslate\">loadstart</code> URL in event section  <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#events\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio#events</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #27820.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1793025684\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27820\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27820/hovercard\" href=\"https://github.com/mdn/content/issues/27820\">#27820</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/28242",
+            "title": "url added: loadstart url added to event",
+            "date_modified": "2023-07-28T13:48:02.000Z",
+            "date_published": "2023-07-28T13:45:51.000Z",
+            "author": {
+                "name": "rohini-ranjanR",
+                "url": "https://github.com/rohini-ranjanR"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7702955?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Some small grammar and spelling updates</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Corrected some small grammar mistakes and spellings</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/28241",
+            "title": "Update with small changes",
+            "date_modified": "2023-07-28T13:23:37.000Z",
+            "date_published": "2023-07-28T13:21:48.000Z",
+            "author": {
+                "name": "couci",
+                "url": "https://github.com/couci"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>Alternative to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1825404683\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28228\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/28228/hovercard\" href=\"https://github.com/mdn/content/pull/28228\">#28228</a></li>\n</ul>\n<p dir=\"auto\">Purpose of this PR is to provide an alternative approach. This PR involves all the linters/formatters (markdown, prettier, front-matter) for automated review using <a href=\"https://github.com/reviewdog/reviewdog\">reviewdog</a>.</p>\n<h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Current Prettier implementation in our CI is being annoying because the formatter tells contributors that there is something wrong with their changes without telling what is it and how to fix it. This is forcing contributors to fix those issues using command line tools or online Prettier playground.<br>\nUsing reviewdog it is possible to instead suggest those changes as review comments on PRs. With this contributors will simply have to accept these changes and commit them in a batch.</p>\n<p dir=\"auto\">While we are at it we can involve markdownlint and front-matter linters too, i.e we can suggest solutions to markdown and front-matter related issues as well.</p>\n<h2 dir=\"auto\">Implementation</h2>\n<p dir=\"auto\">reviewdog uses two inputs to provide review comments:<br>\na) <code class=\"notranslate\">git diff</code> generated after running the linters with <code class=\"notranslate\">--fix</code> or <code class=\"notranslate\">--write</code> options<br>\nb) logs generated by the linters along with error message matching pattern</p>\n<p dir=\"auto\">The implementation performs following steps to provide the review comments:</p>\n<ol dir=\"auto\">\n<li>Run all the linters/formatter to fix the code and collect logs along with exit statuses.</li>\n<li>Use <code class=\"notranslate\">git diff</code> to suggest changes done by the linters using <code class=\"notranslate\">reviewdog -f=diff</code> command. Basically we are suggesting the same changes done by the linters.<br>\n<strong>Note:</strong> The diff is collected after running all the linters because we always run Prettier the last in order to avoid clashes with markdownlint. Also providing reviews for each linter separately will confuse the contributors. The combined linting is being presented as \"mdn-linter\".</li>\n<li>If there are unfixable issues reported by markdownlint then put them as review comments using <code class=\"notranslate\">reviewdog -efm</code> command.</li>\n<li>Initially the front-matter linter had been implemented as a yari tool, so the logs generated by it are multi line. Till we make those logs single line just log the front-matter output and fail the workflow.</li>\n</ol>",
             "url": "https://github.com/mdn/content/pull/28240",
             "title": "Feature: provide automated PR reviews for linting related changes",
@@ -14,17 +47,6 @@
             "author": {
                 "name": "OnkarRuikar",
                 "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/29251049?u=8294c27999936581e5c08e332a0c63255a125bd7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">1.) Typo: nubmer &gt; number<br>\n2.) Added one more example: sftp://foo.bar:21 - also returns empty</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Very small enhancement as described above 1.) and 2.)</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Was asked to do so by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/sideshowbarker/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/sideshowbarker\">@sideshowbarker</a>  ;-)</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/28239",
-            "title": "Update index.md - correct typo on nubmer, +1 example",
-            "date_modified": "2023-07-28T12:39:39.000Z",
-            "date_published": "2023-07-28T11:21:00.000Z",
-            "author": {
-                "name": "raro42",
-                "url": "https://github.com/raro42"
             }
         },
         {
@@ -53,7 +75,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105683440?u=fa3168b8b1e165909aa7ad6a09adfcd6ead45def&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">This PR changes the descriptions of the <code class=\"notranslate\">absolute</code> and <code class=\"notranslate\">fixed</code> values in the documentation about the CSS <code class=\"notranslate\">position</code> property.  It also adds information about the creation of a new stacking context and the behavior of margins for these values.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This PR aims to help developers gain a clearer understanding of these positioning values.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/position#values\" rel=\"nofollow\">This</a> is the documentation that this PR refers to.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #28209.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1823610490\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28209\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28209/hovercard\" href=\"https://github.com/mdn/content/issues/28209\">#28209</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/28226",
             "title": "fix: revise information about absolute and fixed",
-            "date_modified": "2023-07-28T08:20:50.000Z",
+            "date_modified": "2023-07-28T13:09:14.000Z",
             "date_published": "2023-07-27T22:54:36.000Z",
             "author": {
                 "name": "CBID2",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36278229?u=ff13e20c870da0f0c8baee04fbc4206781af2347&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Removed references and description of the margin-box property</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">margin-box was removed in the 5 August 2021 CSS Masking Module Level 1 Candidate Recommendation</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://drafts.fxtf.org/css-masking-1/#changes\" rel=\"nofollow\">https://drafts.fxtf.org/css-masking-1/#changes</a><br>\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1823257\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1823257</a><br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1819275383\" data-permission-text=\"Title is private\" data-url=\"https://github.com/web-platform-tests/wpt/issues/41166\" data-hovercard-type=\"issue\" data-hovercard-url=\"/web-platform-tests/wpt/issues/41166/hovercard\" href=\"https://github.com/web-platform-tests/wpt/issues/41166\">web-platform-tests/wpt#41166</a></p>",
-            "url": "https://github.com/mdn/content/pull/28157",
-            "title": "Remove references to margin-box",
-            "date_modified": "2023-07-27T17:33:34.000Z",
-            "date_published": "2023-07-24T23:27:11.000Z",
-            "author": {
-                "name": "FormularSumo",
-                "url": "https://github.com/FormularSumo"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36379249?u=4840c2d79361800483d4c22b03d928ae33115103&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1789491788\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/9490\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/9490/hovercard\" href=\"https://github.com/whatwg/html/pull/9490\">whatwg/html#9490</a></p>\n<p dir=\"auto\">Dirname should soon apply to input elements of type hidden/tel/url/email in addition to text and search.</p>",
-            "url": "https://github.com/mdn/content/pull/28146",
-            "title": "Make dirname apply to hidden/tel/url/email inputs.",
-            "date_modified": "2023-07-25T16:37:21.000Z",
-            "date_published": "2023-07-24T08:30:20.000Z",
-            "author": {
-                "name": "vinhill",
-                "url": "https://github.com/vinhill"
             }
         }
     ]
