@@ -9,7 +9,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/156154?u=67d9c00ef924395a56fb10225cccaf5f99562dcd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The FileSystemSyncAccessHandle read() and write() methods are incorrectly documented as returning Promises. This PR documents them as returning numbers instead.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The documented return values are incorrect.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">FileSystemSyncAccessHandle spec:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://fs.spec.whatwg.org/#api-filesystemsyncaccesshandle-write\" rel=\"nofollow\">FileSystemSyncAccessHandle.write()</a></li>\n<li><a href=\"https://fs.spec.whatwg.org/#api-filesystemsyncaccesshandle-read\" rel=\"nofollow\">FileSystemSyncAccessHandle.read()</a></li>\n</ul>\n<p dir=\"auto\">The read() and write() methods have <em>always</em> been synchronous, which is the reason \"Sync\" is in the class name.</p>\n<p dir=\"auto\">The spec has been changed so all the other FileSystemSyncAccess methods are synchronous as well. There is a note to that effect on every method page, but the return values for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/close\" rel=\"nofollow\">close()</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/flush\" rel=\"nofollow\">flush()</a>, <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/getSize\" rel=\"nofollow\">getSize()</a>, and <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/truncate\" rel=\"nofollow\">truncate()</a> are still described as returning a Promise. This PR does not address those methods that at least used to be correct.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/28261",
             "title": "Fix FileSystemSyncAccessHandle read/write method return values.",
-            "date_modified": "2023-07-29T18:24:08.000Z",
+            "date_modified": "2023-07-29T22:06:04.000Z",
             "date_published": "2023-07-29T18:22:14.000Z",
             "author": {
                 "name": "rhashimoto",
@@ -42,7 +42,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109434545?u=7b615336f34247b94f81f53a7a3d21f912a47ec9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">using CSP and frame-ancestors URL in See also section</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #27754.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1787545380\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27754\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/27754/hovercard\" href=\"https://github.com/mdn/content/issues/27754\">#27754</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/28246",
             "title": "url: using correct url",
-            "date_modified": "2023-07-29T18:40:49.000Z",
+            "date_modified": "2023-07-29T22:25:21.000Z",
             "date_published": "2023-07-28T14:13:06.000Z",
             "author": {
                 "name": "rohini-ranjanR",
@@ -102,17 +102,6 @@
             "author": {
                 "name": "rebloor",
                 "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/156154?u=67d9c00ef924395a56fb10225cccaf5f99562dcd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The example for AsyncGenerator in the constructor documentation has yield statements that look like this:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"  yield await Promise.resolve(1);\n  ...\"><pre class=\"notranslate\">  <span class=\"pl-k\">yield</span> <span class=\"pl-k\">await</span> <span class=\"pl-v\">Promise</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">resolve</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">1</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  ...</pre></div>\n<p dir=\"auto\">There's no reason to have \"await\" here; the output of the generator is expected to be a Promise. The only reasons one might add \"await\" is (1) if the Promise rejects (which it doesn't) <em>and</em> (2) if the generator catches the exception (which it doesn't).</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Removing the await provides a proper minimal example and won't lead readers to believe that await is required here.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Note that the live example under the Try It section also has the unnecessary awaits. I don't know how to submit a pull request for that. Note that you can remove \"await\" from the yield statements in the live example and it still works fine.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/28220",
-            "title": "Remove \"await\" from yield-ed values in AsyncGenerator constructor example",
-            "date_modified": "2023-07-29T21:35:08.000Z",
-            "date_published": "2023-07-27T15:52:00.000Z",
-            "author": {
-                "name": "rhashimoto",
-                "url": "https://github.com/rhashimoto"
             }
         },
         {
@@ -223,6 +212,17 @@
             "author": {
                 "name": "FormularSumo",
                 "url": "https://github.com/FormularSumo"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36379249?u=4840c2d79361800483d4c22b03d928ae33115103&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">See <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1789491788\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/9490\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/9490/hovercard\" href=\"https://github.com/whatwg/html/pull/9490\">whatwg/html#9490</a></p>\n<p dir=\"auto\">Dirname should soon apply to input elements of type hidden/tel/url/email in addition to text and search.</p>",
+            "url": "https://github.com/mdn/content/pull/28146",
+            "title": "Make dirname apply to hidden/tel/url/email inputs.",
+            "date_modified": "2023-07-25T16:37:21.000Z",
+            "date_published": "2023-07-24T08:30:20.000Z",
+            "author": {
+                "name": "vinhill",
+                "url": "https://github.com/vinhill"
             }
         }
     ]
