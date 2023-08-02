@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/21976058?u=f679c89b0f3a1335df9cc5f1d902caa6f97f4956&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Fixes confusing looping example description in <code class=\"notranslate\">codePointAt</code> docs</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Previous description seemed to be confusing because there was an emphasis on <code class=\"notranslate\">returns only low surrogate</code>, which is not explicitly an issue for looping with indices. The issue is with <code class=\"notranslate\">codePointAt</code> returns 2 code points instead of one, while we want to operate only with single surrogate pair code point (as showed in \"good\" example below in this section)</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">It was hard for me to understand why there was an emphasis on <code class=\"notranslate\">returns only low surrogate</code> so I spent some time figuring out why the example is bad</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/28343",
+            "title": "fix: `codePointAt`confusing looping example description",
+            "date_modified": "2023-08-02T11:15:08.000Z",
+            "date_published": "2023-08-02T11:14:54.000Z",
+            "author": {
+                "name": "dj-stormtrooper",
+                "url": "https://github.com/dj-stormtrooper"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6064038?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Elements tab in Chrome Dev Tools</p>",
             "url": "https://github.com/mdn/content/pull/28338",
             "title": "Update index.md",
@@ -116,17 +127,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/755354?u=7e7c1abdb78aea9b0b6b14e40544503f72b34789&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Prevent possible race condition between prettier and markdownlint in lint-staged, changed to use the order defined already in the package.json fix:md and lint:md commands.</p>\n<p dir=\"auto\">I don't believe the other rules will race, since:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">yarn test:front-matter-linter</code> doesn't appear to change the files, just runs jest on them</li>\n<li>prettier wouldn't run anyway on <code class=\"notranslate\">*.{svg,png,jpeg,jpg,gif}</code></li>\n</ul>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/OnkarRuikar/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/OnkarRuikar\">@OnkarRuikar</a> I don't seem to be able to assign you as a reviewer, but it would be great if you can take a look :)</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://github.com/okonet/lint-staged#task-concurrency\">https://github.com/okonet/lint-staged#task-concurrency</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1804101392\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27936\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27936/hovercard\" href=\"https://github.com/mdn/content/pull/27936\">#27936</a></p>",
-            "url": "https://github.com/mdn/content/pull/28306",
-            "title": "fix(lint-staged): markdownlint and prettier can race on md files",
-            "date_modified": "2023-08-01T10:34:04.000Z",
-            "date_published": "2023-07-31T16:10:38.000Z",
-            "author": {
-                "name": "LeoMcA",
-                "url": "https://github.com/LeoMcA"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>testing <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1825404683\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28228\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/28228/hovercard\" href=\"https://github.com/mdn/content/pull/28228\">#28228</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/28295",
             "title": "Test reviewdog for Prettier",
@@ -185,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>Alternative to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1825404683\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28228\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/28228/hovercard\" href=\"https://github.com/mdn/content/pull/28228\">#28228</a></li>\n</ul>\n<p dir=\"auto\">Purpose of this PR is to provide an alternative approach. This PR involves all the linters/formatters (markdown, prettier, front-matter) for automated review using <a href=\"https://github.com/reviewdog/reviewdog\">reviewdog</a>.</p>\n<h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Current Prettier implementation in our CI is being annoying because the formatter tells contributors that there is something wrong with their changes without telling what is it and how to fix it. This is forcing contributors to fix those issues using command line tools or online Prettier playground.<br>\nUsing reviewdog it is possible to instead suggest those changes as review comments on PRs. With this contributors will simply have to accept these changes and commit them in a batch.</p>\n<p dir=\"auto\">While we are at it we can involve markdownlint and front-matter linters too, i.e we can suggest solutions to markdown and front-matter related issues as well.</p>\n<h2 dir=\"auto\">Implementation</h2>\n<p dir=\"auto\">reviewdog uses two inputs to provide review comments:<br>\na) <code class=\"notranslate\">git diff</code> generated after running the linters with <code class=\"notranslate\">--fix</code> or <code class=\"notranslate\">--write</code> options<br>\nb) logs generated by the linters along with error message matching pattern</p>\n<p dir=\"auto\">The implementation performs following steps to provide the review comments:</p>\n<ol dir=\"auto\">\n<li>Run all the linters/formatter to fix the code and collect logs along with exit statuses.</li>\n<li>Use <code class=\"notranslate\">git diff</code> to suggest changes done by the linters using <code class=\"notranslate\">reviewdog -f=diff</code> command. Basically we are suggesting the same changes done by the linters.<br>\n<strong>Note:</strong> The diff is collected after running all the linters because we always run Prettier the last in order to avoid clashes with markdownlint. Also providing reviews for each linter separately will confuse the contributors. The combined linting is being presented as \"mdn-linter\".</li>\n<li>If there are unfixable issues reported by markdownlint then put them as review comments using <code class=\"notranslate\">reviewdog -efm</code> command.</li>\n<li>Initially the front-matter linter had been implemented as a yari tool, so the logs generated by it are multi line. Till we make those logs single line just log the front-matter output and fail the workflow.</li>\n</ol>",
             "url": "https://github.com/mdn/content/pull/28240",
             "title": "Feature: provide automated PR reviews for linting related changes",
-            "date_modified": "2023-08-02T01:41:23.000Z",
+            "date_modified": "2023-08-02T11:42:10.000Z",
             "date_published": "2023-07-28T11:51:49.000Z",
             "author": {
                 "name": "OnkarRuikar",
