@@ -6,6 +6,17 @@
     "description": "Node.js notable changes on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/598730?u=62984c4f4ede922870c5cc2dbdf498926c7c0f9e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Unflags <code class=\"notranslate\">import.meta.resolve</code> making the second <code class=\"notranslate\">parentURL</code> argument still gated behind the same <code class=\"notranslate\">--experimental-import-meta-resolve</code> flag so that existing users would retain backwards compatibility, while the default behaviour becomes standards compliant.</p>\n<p dir=\"auto\">If we can combine this approach with supporting <code class=\"notranslate\">file:///</code> URLs in <code class=\"notranslate\">fetch</code>, that would be a powerful new approach for cross-platform asset loading - <code class=\"notranslate\">await (await fetch(import.meta.resolve('./asset.bin'))).arrayBuffer()</code> which hopefully in turn bundlers should also be able to support better too.</p>\n<p dir=\"auto\">//cc @nodejs/modules</p>",
+            "url": "https://github.com/nodejs/node/pull/49028",
+            "title": "esm: unflag import.meta.resolve",
+            "date_modified": "2023-08-13T05:42:27.000Z",
+            "date_published": "2023-08-05T17:43:26.000Z",
+            "author": {
+                "name": "guybedford",
+                "url": "https://github.com/guybedford"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67366097?u=61689a08b94862d67a9ebb69b8f9b94ae07e9ca9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
             "url": "https://github.com/nodejs/node/pull/48765",
             "title": "inspector: open add `SymbolDispose`",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "joyeecheung",
                 "url": "https://github.com/joyeecheung"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3109072?u=a2f71b4e0a61161b88f81b2ed09682f3379d1d60&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Node.js has so far only supported user-defined DHE parameters and even recommended generating custom parameters. This change lets users set the <code class=\"notranslate\">dhparam</code> option to <code class=\"notranslate\">'auto'</code> instead, in which case DHE parameters of sufficient strength are selected automatically (from a small set of well-known parameters). This has been recommended by OpenSSL for quite a while, and it makes it much easier for Node.js TLS servers to properly support DHE-based perfect forward secrecy.</p>\n<p dir=\"auto\">This also updates the documentation to prioritize ECDHE over DHE, mostly because the former tends to be more efficient and is enabled by default.</p>\n",
-            "url": "https://github.com/nodejs/node/pull/46978",
-            "title": "tls: support automatic DHE",
-            "date_modified": "2023-03-12T20:16:41.000Z",
-            "date_published": "2023-03-06T17:44:44.000Z",
-            "author": {
-                "name": "tniessen",
-                "url": "https://github.com/tniessen"
             }
         }
     ]
