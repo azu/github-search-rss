@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR adds missing newlines at the ends of the JSON files.</p>\n<p dir=\"auto\">CC <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/chrisdavidmills/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/chrisdavidmills\">@chrisdavidmills</a>, all of the removed newlines seem to be from your PRs; your editor does not seem to honor the rules defined in <code class=\"notranslate\">.editorconfig</code>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20731",
+            "title": "Add missing newlines at end of files",
+            "date_modified": "2023-09-18T07:57:24.000Z",
+            "date_published": "2023-09-18T07:57:07.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Back in FF95 global privacy control (<a href=\"https://globalprivacycontrol.org/\" rel=\"nofollow\">https://globalprivacycontrol.org/</a>) was implemented behind two prefs <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> and <code class=\"notranslate\">privacy.globalprivacycontrol.enabled</code>.</p>\n<p dir=\"auto\">FF118 has now enabled the preference <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> in nightly/preview in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1830623\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1830623</a></p>\n<p dir=\"auto\">Why did they not enable both prefs, you might ask - and this is where things get messy. The newly turned on pref  <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> turns on <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl\" rel=\"nofollow\"><code class=\"notranslate\">Navigator.globalPrivacyControl</code></a>.</p>\n<p dir=\"auto\">The second pref <code class=\"notranslate\">privacy.globalprivacycontrol.enabled</code> causes FF to send the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-GPC\" rel=\"nofollow\">Sec-GPC</a> HTTP header with a value of 1. This means \"I opt out of getting my services sold\". In other words this is like the UI trigger for turning the opt in and opt out. Yes you're enabling the header, but that's how the signaling is done.</p>\n<p dir=\"auto\">Note sure the best way to represent this. I presume at some point (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1830623#c26\" rel=\"nofollow\">and have asked</a>) there might be a real UI and this second preference would disappear.</p>\n<p dir=\"auto\">What I have done is for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl\" rel=\"nofollow\"><code class=\"notranslate\">Navigator.globalPrivacyControl</code></a> is remove both flags - since this is enabled all the time (it exists). For the Sec-GPC header I left the flag present since this is off by default and I expect it is an interim solution.</p>\n<p dir=\"auto\">I added a <strong>note</strong> in both cases about how to enable GPC using the flag.</p>\n<p dir=\"auto\">THoughts on this approach? <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Elchi3/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Elchi3\">@Elchi3</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a></p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1874000094\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28854\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28854/hovercard\" href=\"https://github.com/mdn/content/issues/28854\">mdn/content#28854</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20730",
             "title": "Ff118 Nightly enables globalprivacy",
@@ -209,17 +220,6 @@
             "title": "Remove html.elements.area.hreflang from BCD",
             "date_modified": "2023-08-14T22:47:05.000Z",
             "date_published": "2023-08-14T22:47:04.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is a follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1838449212\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/20497\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/20497/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/20497\">#20497</a> which fixes the data by <del>replacing the improper <code class=\"notranslate\">alternative_name</code> with notes and adding a <code class=\"notranslate\">version_removed</code> (as confirmed locally).</del> removing all mention of the former methods available on the Array prototype.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20512",
-            "title": "Remove mention of Array.group[ToMap]",
-            "date_modified": "2023-08-11T04:28:14.000Z",
-            "date_published": "2023-08-08T22:26:10.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
