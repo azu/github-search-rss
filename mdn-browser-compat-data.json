@@ -6,21 +6,21 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR adds missing newlines at the ends of the JSON files.</p>\n<p dir=\"auto\">CC <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/chrisdavidmills/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/chrisdavidmills\">@chrisdavidmills</a>, all of the removed newlines seem to be from your PRs; your editor does not seem to honor the rules defined in <code class=\"notranslate\">.editorconfig</code>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20731",
-            "title": "Add missing newlines at end of files",
-            "date_modified": "2023-09-18T07:57:24.000Z",
-            "date_published": "2023-09-18T07:57:07.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF118 supports now matches spec so <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule\" rel=\"nofollow\"><code class=\"notranslate\">CSSStyleRule</code></a> inherits from <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule\" rel=\"nofollow\"><code class=\"notranslate\">CSSGroupingRule</code></a> instead of directly from  <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/CSSRule\" rel=\"nofollow\"><code class=\"notranslate\">CSSRule</code></a>. See <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1846251\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1846251</a>.</p>\n<p dir=\"auto\">This means that <code class=\"notranslate\">CSSStyleRule</code> now supports the cssRules property + deleteRule and insertRule from <code class=\"notranslate\">CSSGroupingRule</code>.<br>\nI have checked these are supported in <code class=\"notranslate\">CSSGroupingRule</code> on the bcd collector. Also manually showed they exist in FF119 nightly.</p>\n<p dir=\"auto\">This adds support from version 118 and also links to the MDN docs.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1873982624\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28853\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28853/hovercard\" href=\"https://github.com/mdn/content/issues/28853\">mdn/content#28853</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20733",
+            "title": "FF118 CSSStyleRule inherits from CSSGroupingRule - add props",
+            "date_modified": "2023-09-18T09:01:24.000Z",
+            "date_published": "2023-09-18T09:01:10.000Z",
             "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Back in FF95 global privacy control (<a href=\"https://globalprivacycontrol.org/\" rel=\"nofollow\">https://globalprivacycontrol.org/</a>) was implemented behind two prefs <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> and <code class=\"notranslate\">privacy.globalprivacycontrol.enabled</code>.</p>\n<p dir=\"auto\">FF118 has now enabled the preference <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> in nightly/preview in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1830623\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1830623</a></p>\n<p dir=\"auto\">Why did they not enable both prefs, you might ask - and this is where things get messy. The newly turned on pref  <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> turns on <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl\" rel=\"nofollow\"><code class=\"notranslate\">Navigator.globalPrivacyControl</code></a>.</p>\n<p dir=\"auto\">The second pref <code class=\"notranslate\">privacy.globalprivacycontrol.enabled</code> causes FF to send the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-GPC\" rel=\"nofollow\">Sec-GPC</a> HTTP header with a value of 1. This means \"I opt out of getting my services sold\". In other words this is like the UI trigger for turning the opt in and opt out. Yes you're enabling the header, but that's how the signaling is done.</p>\n<p dir=\"auto\">Note sure the best way to represent this. I presume at some point (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1830623#c26\" rel=\"nofollow\">and have asked</a>) there might be a real UI and this second preference would disappear.</p>\n<p dir=\"auto\">What I have done is for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl\" rel=\"nofollow\"><code class=\"notranslate\">Navigator.globalPrivacyControl</code></a> is remove both flags - since this is enabled all the time (it exists). For the Sec-GPC header I left the flag present since this is off by default and I expect it is an interim solution.</p>\n<p dir=\"auto\">I added a <strong>note</strong> in both cases about how to enable GPC using the flag.</p>\n<p dir=\"auto\">THoughts on this approach? <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Elchi3/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Elchi3\">@Elchi3</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a></p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1874000094\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28854\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28854/hovercard\" href=\"https://github.com/mdn/content/issues/28854\">mdn/content#28854</a></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Back in FF95 global privacy control (<a href=\"https://globalprivacycontrol.org/\" rel=\"nofollow\">https://globalprivacycontrol.org/</a>) was implemented behind two prefs <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> and <code class=\"notranslate\">privacy.globalprivacycontrol.enabled</code>.</p>\n<p dir=\"auto\">FF118 has now enabled the preference <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> in nightly/preview in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1830623\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1830623</a></p>\n<ul dir=\"auto\">\n<li>The newly turned on pref  <code class=\"notranslate\">privacy.globalprivacycontrol.functionality.enabled</code> turns on <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl\" rel=\"nofollow\"><code class=\"notranslate\">Navigator.globalPrivacyControl</code></a>.</li>\n<li>The second pref <code class=\"notranslate\">privacy.globalprivacycontrol.enabled</code> causes FF to send the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-GPC\" rel=\"nofollow\">Sec-GPC</a> HTTP header with a value of 1. This means \"I opt out of getting my services sold\". In other words this is like the UI trigger for turning the opt in and opt out. Yes you're enabling the header, but that's how the signaling is done.</li>\n</ul>\n<p dir=\"auto\">The intent is for an <code class=\"notranslate\">about:preferences</code> to be added instead of that config pref. In the meantime for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl\" rel=\"nofollow\"><code class=\"notranslate\">Navigator.globalPrivacyControl</code></a> i have removed both flags since this is enabled all the time (it exists). For the <code class=\"notranslate\">Sec-GPC</code> header I left the flag present since this is off by default and it won't exist on release.</p>\n<p dir=\"auto\">I added a <strong>note</strong> in both cases about how to enable GPC using the flag., since that's the only way to do it right now.<br>\nI will probably also have to add <code class=\"notranslate\">WorkerNavigator.globalPrivacyControl</code> - checking still.</p>\n<p dir=\"auto\">THoughts on this approach? <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Elchi3/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Elchi3\">@Elchi3</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a></p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1874000094\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28854\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28854/hovercard\" href=\"https://github.com/mdn/content/issues/28854\">mdn/content#28854</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20730",
             "title": "Ff118 Nightly enables globalprivacy",
-            "date_modified": "2023-09-18T05:40:33.000Z",
+            "date_modified": "2023-09-18T08:06:26.000Z",
             "date_published": "2023-09-18T05:31:22.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -36,17 +36,6 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/787658?u=890160d6ae09c4f0feb5e88c82ea6c9060b335f7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">This PR updates the versions for the :user-valid and :user-invalid selectors based on manual testing. This <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #20727.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1899723367\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/20727\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/20727/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/20727\">#20727</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20728",
-            "title": "update Chrome version for css.selectors.user-valid/user-invalid",
-            "date_modified": "2023-09-17T09:48:11.000Z",
-            "date_published": "2023-09-17T09:47:14.000Z",
-            "author": {
-                "name": "mfranzke",
-                "url": "https://github.com/mfranzke"
             }
         },
         {
@@ -116,17 +105,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code class=\"notranslate\">FileSystemSyncAccessHandle</code> API. The data comes from the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.2.3).</p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/GooborgStudios/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/api/FileSystemSyncAccessHandle\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/api/FileSystemSyncAccessHandle</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20663",
-            "title": "Update Chromium data for FileSystemSyncAccessHandle API",
-            "date_modified": "2023-09-06T12:12:07.000Z",
-            "date_published": "2023-09-06T12:12:06.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/14011954?u=8c72394413acfe127e77e5eee3b389f4b40a667a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Update Opera's compatibility data for <code class=\"notranslate\">Cross-Origin-Resource-Policy</code> (CORP)</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ol dir=\"auto\">\n<li>Tested by <a href=\"https://wpt.live/html/cross-origin-embedder-policy/reporting-subresource-corp.https.html\" rel=\"nofollow\">running WPT tests on Opera</a> and checked devtools console for CORP related error messages (e.g. <code class=\"notranslate\">Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin</code>)</li>\n<li><a href=\"https://blogs.opera.com/desktop/2019/04/opera-60-0-3255-56-stable-update/\" rel=\"nofollow\">Opera 60</a> is based on Chromium 73, which was the version CORP was added to Chromium.</li>\n</ol>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20643",
             "title": "Include Opera 60+ support for `Cross-Origin-Resource-Policy`",
@@ -160,17 +138,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is a part of a project to add missing interfaces and interface features to BCD that are from an active spec (including WICG specs) and is supported in at least one browser. This particular PR adds the missing features of the <code class=\"notranslate\">NumberFormat</code> member of the <code class=\"notranslate\">Intl</code> JavaScript builtin. This <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #6046.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"608338497\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/6046\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/6046/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/6046\">#6046</a> by adding the missing arguments.  Note: all data was simply mirrored from the main constructor's data, assuming they are all features that were supported since the constructor was introduced.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20588",
-            "title": "Add missing features for javascript.builtins.Intl.NumberFormat",
-            "date_modified": "2023-08-23T08:02:30.000Z",
-            "date_published": "2023-08-23T08:02:29.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/153264?u=8928381dcceca8b3cd411e76d118b03da5e74ed9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Add an <code class=\"notranslate\">api/</code> entry for <a href=\"https://w3c.github.io/secure-payment-confirmation/\" rel=\"nofollow\">Secure Payment Confirmation</a>. It consists of three main sub-features:</p>\n<ol dir=\"auto\">\n<li>PaymentCredentialInstrument, a dictionary (minor)</li>\n<li>payment-extension, a WebAuthn extension that the SPC spec defines</li>\n<li>secure-payment-confirmation, a Payment Request payment method that the SPC spec defines</li>\n</ol>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Data was written using the author's knowledge of when SPC released on Chrome, and which other browsers inherit from Chrome. Some of this still needs to be manually verified, such as the status on Opera and Samsung Internet Browser.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20583",
             "title": "Add BCD data for Secure Payment Confirmation",
@@ -185,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/145676?u=d9e4353115d1dcae2ff7be06802522be0a4323df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Add compat data about the <a href=\"https://github.com/WebAssembly/gc/blob/main/proposals/gc/Overview.md\">WasmGC</a> feature.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">See these <a href=\"https://webassembly.org/roadmap/#:~:text=%5Bu%5D-,Garbage%20collection,-%5Ba%5D\" rel=\"nofollow\">feature tests</a> and <a href=\"https://chromestatus.com/feature/6062715726462976\" rel=\"nofollow\">ChromeStatus entry</a> as well as the <a href=\"https://bugs.chromium.org/p/v8/issues/detail?id=7748\" rel=\"nofollow\">Chromium feature bug</a>.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20576",
             "title": "Add WasmGC compat data",
-            "date_modified": "2023-09-11T18:09:07.000Z",
+            "date_modified": "2023-09-18T09:01:30.000Z",
             "date_published": "2023-08-22T08:00:02.000Z",
             "author": {
                 "name": "tomayac",
@@ -220,6 +187,39 @@
             "title": "Remove html.elements.area.hreflang from BCD",
             "date_modified": "2023-08-14T22:47:05.000Z",
             "date_published": "2023-08-14T22:47:04.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is a follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1838449212\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/20497\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/20497/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/20497\">#20497</a> which fixes the data by <del>replacing the improper <code class=\"notranslate\">alternative_name</code> with notes and adding a <code class=\"notranslate\">version_removed</code> (as confirmed locally).</del> removing all mention of the former methods available on the Array prototype.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20512",
+            "title": "Remove mention of Array.group[ToMap]",
+            "date_modified": "2023-08-11T04:28:14.000Z",
+            "date_published": "2023-08-08T22:26:10.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Microsoft Edge for the <code class=\"notranslate\">persistent</code> member of the <code class=\"notranslate\">background</code> Web Extensions manifest property. This <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #12702.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1014844084\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/12702\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/12702/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/12702\">#12702</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20494",
+            "title": "Update Edge data for webextensions.manifest.background.persistent",
+            "date_modified": "2023-09-04T03:49:12.000Z",
+            "date_published": "2023-08-06T12:44:46.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes the <code class=\"notranslate\">referrerpolicy</code> member of the <code class=\"notranslate\">a</code> SVG element from BCD. Per the <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/index.md#removal-of-irrelevant-features\">data guidelines</a>, this feature can be considered irrelevant and may be removed from BCD accordingly. Even if the current data suggests that the feature is supported, lack of support has been confirmed by the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.2.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/svg/elements/a/referrerpolicy\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/svg/elements/a/referrerpolicy</a></p>\n<p dir=\"auto\">Additional Notes: This attribute is only available on HTML anchor elements, not SVG anchor elements.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20484",
+            "title": "Remove svg.elements.a.referrerpolicy from BCD",
+            "date_modified": "2023-09-17T15:05:15.000Z",
+            "date_published": "2023-08-06T06:41:00.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
