@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The MathML <a href=\"https://developer.mozilla.org/en-US/docs/Web/MathML/Global_attributes/mathvariant\" rel=\"nofollow\"><code class=\"notranslate\">mathvariant</code></a> is documented as a global attribute that can be used on many/several elements (but primarily <a href=\"https://developer.mozilla.org/en-US/docs/Web/MathML/Element/mi\" rel=\"nofollow\"><code class=\"notranslate\">&lt;mi&gt;</code></a>). This is according to the MathML 3 spec.</p>\n<p dir=\"auto\">Firefox and other browsers are now moving towards the MathML core spec (in fact that is what BCD references) which redefines <a href=\"https://developer.mozilla.org/en-US/docs/Web/MathML/Global_attributes/mathvariant\" rel=\"nofollow\"><code class=\"notranslate\">mathvariant</code></a> as an attribute <strong>only</strong> of <a href=\"https://developer.mozilla.org/en-US/docs/Web/MathML/Element/mi\" rel=\"nofollow\"><code class=\"notranslate\">&lt;mi&gt;</code></a>, and only allows one value: 'normal'.</p>\n<p dir=\"auto\">FF118 is a aligning with this in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1845461\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1845461</a> by explicitly deprecating use on other elements and of values other than 'normal'. Chrome has already effectively done this by only allowing 'normal'.</p>\n<p dir=\"auto\">What I have done is:</p>\n<ul dir=\"auto\">\n<li>moved mathvariant from global to under the mi element</li>\n<li>Removed some redundant old \"behind pref\" chrome support features.</li>\n<li>Removed the \"partial-implementation\" from chrome - if it only has to support \"normal\" it is fully compliant with the MathML core spec (and it does).</li>\n<li>Safari and FF both support additional values to the new spec from the MathML 3 spec. So I have modifed the text to simply refer to those as deprecated:\n<blockquote>\n<p dir=\"auto\">The only allowed value in MathML Core is 'normal'. XXXXX enables a number of other deprecated values from the MathML 3 specification</p>\n</blockquote>\n</li>\n<li>Safari and FF both support the attribute on mtext and possibly other elements as well as mi. I have simply removed mention of that since the behaviour is deprecated/not allowed in the new spec.</li>\n</ul>\n<p dir=\"auto\">So I think this now works quite well - the feature is fully supported by all the main browsers but has some unspecified deprecated additional features (which I will keep in the docs in a deprecated section).</p>\n<p dir=\"auto\">Hope this makes sense? If not I need direction, as this informs my plans for MDN docs</p>\n<p dir=\"auto\">This is part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1873967685\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/28849\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28849/hovercard\" href=\"https://github.com/mdn/content/issues/28849\">mdn/content#28849</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20746",
+            "title": "Ff118 mathvariant not global",
+            "date_modified": "2023-09-19T06:35:19.000Z",
+            "date_published": "2023-09-19T06:35:07.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69170106?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Updated javascript.builtins.Set to reflect Safari's 17 support.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a href=\"https://webkit.org/blog/14445/webkit-features-in-safari-17-0/\" rel=\"nofollow\">WebKit Features in Safari 17.0</a> (search in page for \"Set Operations\")</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Doesn't look like there was one.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20744",
             "title": "Safari 17 shipped new Set methods",
@@ -141,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/145676?u=d9e4353115d1dcae2ff7be06802522be0a4323df&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Add compat data about the <a href=\"https://github.com/WebAssembly/gc/blob/main/proposals/gc/Overview.md\">WasmGC</a> feature.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">See these <a href=\"https://webassembly.org/roadmap/#:~:text=%5Bu%5D-,Garbage%20collection,-%5Ba%5D\" rel=\"nofollow\">feature tests</a> and <a href=\"https://chromestatus.com/feature/6062715726462976\" rel=\"nofollow\">ChromeStatus entry</a> as well as the <a href=\"https://bugs.chromium.org/p/v8/issues/detail?id=7748\" rel=\"nofollow\">Chromium feature bug</a>.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20576",
             "title": "Add WasmGC compat data",
-            "date_modified": "2023-09-18T09:40:01.000Z",
+            "date_modified": "2023-09-19T06:54:37.000Z",
             "date_published": "2023-08-22T08:00:02.000Z",
             "author": {
                 "name": "tomayac",
@@ -209,17 +220,6 @@
             "title": "Remove svg.elements.a.referrerpolicy from BCD",
             "date_modified": "2023-09-17T15:05:15.000Z",
             "date_published": "2023-08-06T06:41:00.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes the unsupported subfeatures of the <code class=\"notranslate\">body</code> HTML element from BCD. Per the <a href=\"https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/index.md#removal-of-irrelevant-features\">data guidelines</a>, this feature can be considered irrelevant and may be removed from BCD accordingly. Even if the current data suggests that the feature is supported, lack of support has been confirmed by the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.2.0).</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/html/elements/body\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/html/elements/body</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20477",
-            "title": "Remove subfeatures of body HTML element from BCD",
-            "date_modified": "2023-09-17T15:04:47.000Z",
-            "date_published": "2023-08-05T06:09:51.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
