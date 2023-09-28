@@ -6,6 +6,39 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/512240?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Deno currently provides the ability to connect to a unix socket. While there is no standard for unix socket addresses, a few ad-hoc standards do exist for this.</p>",
+            "url": "https://github.com/wintercg/proposal-sockets-api/issues/16",
+            "title": "Unix sockets",
+            "date_modified": "2023-09-28T16:34:32.000Z",
+            "date_published": "2023-09-28T16:34:32.000Z",
+            "author": {
+                "name": "mmastrac",
+                "url": "https://github.com/mmastrac"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/512240?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The hostname negotiation for SNI may be different from the connection address. For example, a client may connect by IP to a service and provide an unresolved hostname on connection. As in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1917884775\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-sockets-api/issues/14\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-sockets-api/issues/14/hovercard\" href=\"https://github.com/wintercg/proposal-sockets-api/issues/14\">#14</a>, this SNI negotation result may need to provided as part of the handshake promise.</p>",
+            "url": "https://github.com/wintercg/proposal-sockets-api/issues/15",
+            "title": "Provide hostname for SNI",
+            "date_modified": "2023-09-28T16:33:09.000Z",
+            "date_published": "2023-09-28T16:33:09.000Z",
+            "author": {
+                "name": "mmastrac",
+                "url": "https://github.com/mmastrac"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/512240?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The spec likely needs to deal with these three items which are necessary for creating HTTP/2 connections.</p>\n<p dir=\"auto\">The socket options must allow outgoing connections to specify ALPN negotation strings and/or byte strings, and should return the negotiated values as part of a handshake.</p>\n<p dir=\"auto\">In addition, a socket should be configured so that it may optionally send/receive data before the handshake promise completes.</p>",
+            "url": "https://github.com/wintercg/proposal-sockets-api/issues/14",
+            "title": "Early data, handshake promise, and ALPN negotiation",
+            "date_modified": "2023-09-28T16:30:41.000Z",
+            "date_published": "2023-09-28T16:30:41.000Z",
+            "author": {
+                "name": "mmastrac",
+                "url": "https://github.com/mmastrac"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/246651?u=80e18ea8c1e4cba31f0f0e3de791b33f0d36c523&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Only <code class=\"notranslate\">hostname:port</code> should be supported.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/13",
             "title": "Clarify the string format of AnySocketAddress",
@@ -190,39 +223,6 @@
             "author": {
                 "name": "guest271314",
                 "url": "https://github.com/guest271314"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1148376?u=97348b862d4820275f7e7567ad64a72edfec1443&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I have played around with Deno's built in test runner before.<br>\nit's pretty nice. but i tend to not use it if i'm also writing test cases that should run in different env.</p>\n<p dir=\"auto\">When i write test cases for both NodeJS and Deno then i tend to simply just use a simple array or an object myself to define all test cases and import all files that i want to test. Then i just use a simple logic function that are very similar to <code class=\"notranslate\">console.assert</code> but it throws instead. then i simply just write a for loop to exec all functions, if the env match Deno then i use <code class=\"notranslate\">Deno.test</code> otherwise it have just been a classic for loop that execute. very simple and fast but lose a lot of shiny features for the cost of being more cross compatible. I'm not such a huge fan of any of the existing test framework that exist out there on npm atm.</p>\n<p dir=\"auto\">now i found out that NodeJS also have a test <a href=\"https://nodejs.org/api/test.html\" rel=\"nofollow\">runner built in</a></p>\n<p dir=\"auto\">it would be nice if both could play ball and work the same way...<br>\nI know this isn't something web related but it would be nice if i could write test cases the same way.<br>\nWould even wish for there to be some browserified version of it too.</p>\n<p dir=\"auto\">Bonus point if there where something like <code class=\"notranslate\">node --test --browsers</code> that could launch maybe a headless browser or where i could open up a own browser and navigate to url to hook it in.</p>\n<ul dir=\"auto\">\n<li>then it would dump everything to the console,</li>\n<li>talk with each other over websocket</li>\n<li>hook it into file changes</li>\n<li>have some good CI/CD that could execute all test cases in a browser and exit with either an error or a success in the terminal</li>\n</ul>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/32",
-            "title": "Same test api",
-            "date_modified": "2023-08-09T16:25:29.000Z",
-            "date_published": "2022-12-18T01:21:23.000Z",
-            "author": {
-                "name": "jimmywarting",
-                "url": "https://github.com/jimmywarting"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5900105?u=3a9f6d65f8ec7432d6ce35bb83c4a8c95ea10ca3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">My company is looking for integrating WinterCG common minimum API into TypeScript config, in order to provide type checking, error highlighting, autocomplete, etc.</p>\n<h1 dir=\"auto\">1. <a href=\"https://github.com/tsconfig/bases/\">TypeScript base config</a></h1>\n<p dir=\"auto\">Developers may be able to write something like this in tsconfig.json:</p>\n<div class=\"highlight highlight-source-json notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"{\n  &quot;extends&quot;: &quot;@tsconfig/wintercg/tsconfig.json&quot;\n}\"><pre class=\"notranslate\">{\n  <span class=\"pl-ent\">\"extends\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>@tsconfig/wintercg/tsconfig.json<span class=\"pl-pds\">\"</span></span>\n}</pre></div>\n<p dir=\"auto\">This tsconfig should at least support the common minimum APIs which are listed in <a href=\"https://blog.cloudflare.com/introducing-the-wintercg/\" rel=\"nofollow\">https://blog.cloudflare.com/introducing-the-wintercg/</a> and <a href=\"https://common-min-api.proposal.wintercg.org/\" rel=\"nofollow\">https://common-min-api.proposal.wintercg.org/</a>.</p>\n<p dir=\"auto\">Install the wintercg tsconfig:</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"npm install --save-dev @tsconfig/wintercg\nyarn add --dev @tsconfig/wintercg\"><pre class=\"notranslate\">npm install --save-dev @tsconfig/wintercg\nyarn add --dev @tsconfig/wintercg</pre></div>\n<h1 dir=\"auto\">2. <a href=\"https://www.typescriptlang.org/tsconfig#lib\" rel=\"nofollow\"><code class=\"notranslate\">lib</code></a></h1>\n<p dir=\"auto\">Provide WinterCG common minimum API access in the <code class=\"notranslate\">lib</code> configuration. For example: <code class=\"notranslate\">lib</code> can be set to <code class=\"notranslate\">WinterCG</code>.</p>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/5900105/199933617-f56dbf2c-3c99-4c58-83d2-28ecda2e1d64.png\"><img src=\"https://user-images.githubusercontent.com/5900105/199933617-f56dbf2c-3c99-4c58-83d2-28ecda2e1d64.png\" alt=\"Screenshot from 2022-11-04 16-59-36\" style=\"max-width: 100%;\"></a></p>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/31",
-            "title": "Provide TypeScript config for minimum common API",
-            "date_modified": "2022-11-05T03:49:49.000Z",
-            "date_published": "2022-11-04T06:31:36.000Z",
-            "author": {
-                "name": "ytxmobile98",
-                "url": "https://github.com/ytxmobile98"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16144158?u=82cadd66bfcfcd8340269a3c0ce30f503acaf7b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">As promised a few calls ago, I have been working on drafting the initial specification for WinterCG Fetch. I've had many discussions with multiple folks and I have arrived at two options for us. I'd like us to decide on one of them as the organization structure for our specification. Once agreed; I will continue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1549639442\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/fetch/issues/11\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/fetch/issues/11/hovercard\" href=\"https://github.com/wintercg/fetch/issues/11\">#11</a> and get our base line specification published.</p>\n<h3 dir=\"auto\">Option 1</h3>\n<p dir=\"auto\">The first option is to create a fork of <code class=\"notranslate\">whatwg/fetch</code> here in wintercg. We will utilize aspects of the <a href=\"https://tabatkins.github.io/bikeshed/\" rel=\"nofollow\">Bikeshed</a> language (which is what <code class=\"notranslate\">whatwg/fetch</code> is written in) to omit sections and include notes/extensions for aspects that we want to modify.</p>\n<p dir=\"auto\">We will be responsible for rebasing our modifications every time Fetch lands a change to the specification. This could be partially automated where we create a bot that watches the <code class=\"notranslate\">whatwg/fetch</code> repo, and anytime new commit(s) are merged to <code class=\"notranslate\">main</code>, it would open a branch and attempts to do the necessary git operations. Of course, if there are merge conflicts they would need to be settled by a contributor here in WinterCG.</p>\n<p dir=\"auto\">This will ensure our specification is always up to date with the latest whatwg version.</p>\n<p dir=\"auto\">This option has a long-term maintenance cost where members of WinterCG would be responsible for managing the rebasing overtime. As stated, it could be automated, but it wouldn't be a perfect solution as whenever conflicts arise someone would have to spend time fixing them.</p>\n<h3 dir=\"auto\">Option 2</h3>\n<p dir=\"auto\">The second option is to start with essentially an empty specification that states something along the lines of: \"Unless otherwise specified in this document, WinterCG Fetch is compatible with the latest edition of WHATWG Fetch specification\". Then, overtime as we agree on modifications to <code class=\"notranslate\">whatwg/fetch</code>, we will create new sections within our document that states the necessary changes. For example, lets pretend we agree to get rid of the entire concept of \"Forbidden Headers\". Our specification may include a section such as:</p>\n<blockquote>\n<p dir=\"auto\">Please note this is purely for demonstration purposes. The WinterCG has made no decisions regarding modifications to the Whatwg Fetch API and the content in the following example is purely hypothetical. Do not use this issue thread to discuss the nuance of the example.</p>\n</blockquote>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"### Headers\n\n#### Modification of Forbidden Headers List\n\nSection [2.2.2 Headers #forbidden-header-name](https://fetch.spec.whatwg.org/#forbidden-header-name) of the whatwg/fetch specification states a list of header names that are considered &quot;forbidden&quot;. During runtime execution of the Fetch API, usage of a forbidden header results in an early return such as in the [Concept Headers append](https://fetch.spec.whatwg.org/#concept-headers-append) section.\n\nWinterCG Fetch deviates from this section by stating that there are **no** forbidden headers. A WinterCG Fetch API will not return early if it encounters one of these headers.\"><pre class=\"notranslate\"><code class=\"notranslate\">### Headers\n\n#### Modification of Forbidden Headers List\n\nSection [2.2.2 Headers #forbidden-header-name](https://fetch.spec.whatwg.org/#forbidden-header-name) of the whatwg/fetch specification states a list of header names that are considered \"forbidden\". During runtime execution of the Fetch API, usage of a forbidden header results in an early return such as in the [Concept Headers append](https://fetch.spec.whatwg.org/#concept-headers-append) section.\n\nWinterCG Fetch deviates from this section by stating that there are **no** forbidden headers. A WinterCG Fetch API will not return early if it encounters one of these headers.\n</code></pre></div>\n<p dir=\"auto\">This option has less maintenance burden as it could essentially stagnate while remaining \"up to date\". With the catch all statement stating that essentially WinterCG Fetch <strong>is</strong> WHATWG Fetch unless otherwise noted. The WHATWG Fetch could land changes and unless we need to deviate from those changes, we don't have to modify our specification.</p>\n<p dir=\"auto\">Unfortunately, this also means that if we are not on top of changes to WHATWG Fetch, we could incorrectly be supporting something they add that we want to deviate from. Arguably, implementations don't generally move as quickly as standards. And so even if there is a bit of a lag between us coming to decision on a hypothetical change to WHATWG Fetch, many implementers would already be apart of the conversation and it wouldn't have much impact.</p>\n<hr>\n<p dir=\"auto\">With these two options, please react to this post with which one you prefer more to give us a sense of what folks are preferring. We will also be discussing this at upcoming wintercg calls. When we come to a majority decision I will create the initial proposal draft. In the mean time, we can being making API decisions for WinterCG Fetch - capture the result in issues, and when we eventually get our proposal created, I can add those decisions to the initial draft. Also please feel free to use this issue to discuss details of either option too.</p>\n<p dir=\"auto\">Thank you!</p>\n<p dir=\"auto\">Option 1 - react with: 😄</p>\n<p dir=\"auto\">Option 2 - react with: 🚀</p>",
-            "url": "https://github.com/wintercg/fetch/issues/12",
-            "title": "Specification outline",
-            "date_modified": "2023-01-19T17:40:58.000Z",
-            "date_published": "2022-10-19T21:40:11.000Z",
-            "author": {
-                "name": "Ethan-Arrowood",
-                "url": "https://github.com/Ethan-Arrowood"
             }
         }
     ]
