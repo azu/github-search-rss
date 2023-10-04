@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/373675?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Renamed \"bracket\" to \"parenthesis\"</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a href=\"https://www.wordhippo.com/what-is/the-meaning-of-the-word/bracket.html\" rel=\"nofollow\">The term bracket has different connotations depending on the user's dialect</a>:</p>\n<blockquote>\n<p dir=\"auto\">Any of the characters \"(\", \")\", \"[\", \"]\", \"parenthetic remarks, sections of mathematical expressions, etc.</p>\n<ol dir=\"auto\">\n<li>(Britain) \"(\" and \")\" specifically, the other forms above requiring adjectives for disambiguation.</li>\n<li>(US) \"[\" and \"]\" specifically - opposed to the other forms of which have their own technical names.</li>\n</ol>\n</blockquote>\n<p dir=\"auto\">In the context of this article, using the word \"parenthesis\" may reduce confusion because it usually means round brackets, and that's what this article means when it says \"brackets.\"</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/29481",
+            "title": "Renamed \"bracket\" to \"parenthesis\"",
+            "date_modified": "2023-10-04T23:00:46.000Z",
+            "date_published": "2023-10-04T22:58:46.000Z",
+            "author": {
+                "name": "DanKaplanSES",
+                "url": "https://github.com/DanKaplanSES"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Address is the documentation requirements of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1848020\" rel=\"nofollow\">Bug 1848020</a> Changes to extension process crash handling for persistent background pages. Also addresses a number of minor text issues in the background script page.</p>",
+            "url": "https://github.com/mdn/content/pull/29480",
+            "title": "Extension process crash handling for persistent background pages",
+            "date_modified": "2023-10-04T22:43:29.000Z",
+            "date_published": "2023-10-04T22:41:18.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9437625?u=5bae19ad8c52ed12e143d9d463a09a03b6bf7bdb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Moving example OKLCH colours closer to realistic values</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The differing absolute ranges of different coordinates in OKLCH can be confusing at first, and these examples are using a chroma value of 130, which is extremely far out of gamut. 0.5 is also out of gamut for this particular colour, but is within the rough 0–0.5 range in which one generally works, mentioned earlier on the page.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Although <code class=\"notranslate\">oklch(50% 130 20)</code> is syntactically valid in CSS, it's so far out of gamut that, at least in Firefox 118, reducing the chroma by a factor of 260 down to <code class=\"notranslate\">oklch(50% 0.5 20)</code> still displays the same colour after it's clamped down to sRGB.</p>",
+            "url": "https://github.com/mdn/content/pull/29479",
+            "title": "Move example oklch colours closer to gamut bounds",
+            "date_modified": "2023-10-04T22:05:38.000Z",
+            "date_published": "2023-10-04T22:05:23.000Z",
+            "author": {
+                "name": "cpmsmith",
+                "url": "https://github.com/cpmsmith"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #29421.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1921625766\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29421\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/29421/hovercard\" href=\"https://github.com/mdn/content/issues/29421\">#29421</a>, maybe?</p>\n<p dir=\"auto\">It seems like what's happening here is that we eval the contents of the textarea every time:</p>\n<ul dir=\"auto\">\n<li>the user edits it</li>\n<li>we show the solution</li>\n<li>we hide the solution</li>\n<li>we reset the example</li>\n</ul>\n<p dir=\"auto\">...and every time we eval, we add the event listener in the textarea again. Which means we never really reset the state of the example. It also means that the example gets this huge pile of broken event listeners. Try using the example with the devtools open and you will see what I mean.</p>\n<p dir=\"auto\">Honestly I find it a bit hard to believe that these examples had such an obvious bug in them for so long, am I missing something here?</p>\n<p dir=\"auto\">What I've done in this PR is put the output part of the example inside yet another iframe, and used <code class=\"notranslate\">srcdoc</code> to set its contents to whatever is in the textarea. Amazingly this seems to work. But I'd really value some opinions on whether this is at all a sensible thing to do (and if so, whether there are other examples that would need the same treatment).</p>",
             "url": "https://github.com/mdn/content/pull/29477",
             "title": "Fix issue 29421: use more iframes",
@@ -190,39 +223,6 @@
             "author": {
                 "name": "waldyrious",
                 "url": "https://github.com/waldyrious"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #8267.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"978300303\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/8267\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/8267/hovercard\" href=\"https://github.com/mdn/content/issues/8267\">#8267</a>, including:</p>\n<ul dir=\"auto\">\n<li>\"see\" link back to the \"working with\" article for all mentions of cookeStoreId except those in the conceptual identities API.</li>\n<li>updates to the \"working with\" article, including:\n<ul dir=\"auto\">\n<li>adding a full list of APIs that can work with contextual containers</li>\n<li>update the details about permissions</li>\n</ul>\n</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/29337",
-            "title": "Improved cookieStoreId documentation",
-            "date_modified": "2023-10-04T01:09:11.000Z",
-            "date_published": "2023-09-28T07:38:15.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Added the FF118 release note for the values <code class=\"notranslate\">content-box</code> and <code class=\"notranslate\">stroke-box</code> in the <code class=\"notranslate\">transform-box</code> property</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Working on <a href=\"https://github.com/mdn/content/issues/28843\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/28843/hovercard\">Issue #28843</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">All other content &amp; BCD up to date</p>",
-            "url": "https://github.com/mdn/content/pull/29313",
-            "title": "added release note for content-box and stroke-box in transform-box pr…",
-            "date_modified": "2023-10-04T21:15:00.000Z",
-            "date_published": "2023-09-26T16:31:33.000Z",
-            "author": {
-                "name": "dletorey",
-                "url": "https://github.com/dletorey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23692842?u=a6483dfd5b09be0cc096e7d48645340ac081ff4e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Add the download attribute to the &lt;a&gt; element in \"Usage notes,\" \"Basic usage,\" \"&lt;audio&gt; element with &lt;source&gt; element,\" and \"Accessibility concerns.\"</p>\n\n<p dir=\"auto\">Adding the download attribute to the &lt;a&gt; element in \"Usage notes,\" \"Basic usage,\" \"&lt;audio&gt; element with &lt;source&gt; element,\" and \"Accessibility concerns.\"  These &lt;a&gt; elements do not have the download attribute and they are being used for file downloads.</p>\n\n<p dir=\"auto\">&lt;a&gt; elements that are used for file downloads need to have the download attribute and the ones in the examples above do not have this attribute.</p>\n\n<p dir=\"auto\">Readers will be helped because they will learn how to use &lt;a&gt; elements better.</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/29287",
-            "title": "download attribute for <a> on <audio> element page",
-            "date_modified": "2023-09-29T09:40:50.000Z",
-            "date_published": "2023-09-25T23:59:14.000Z",
-            "author": {
-                "name": "TazExprez",
-                "url": "https://github.com/TazExprez"
             }
         }
     ]
