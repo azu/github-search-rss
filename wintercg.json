@@ -6,6 +6,17 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/135671829?u=bde12febd669ab6108ec844bb653e8f1ab229962&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">There should be an ability to add client certificates to the new TLS connection. While this feature is implemented in web clients on the browser side (and not allowed from the code side), it's important to have ability to specify client certificates from code on the server side.</p>\n<p dir=\"auto\">Some apps use client certificates as an authentication technology, so it might be critical.</p>\n<p dir=\"auto\">It could look like an option properties <code class=\"notranslate\">tlsKey</code>, <code class=\"notranslate\">tlsCert</code> or as an object property <code class=\"notranslate\">tls</code> with <code class=\"notranslate\">key</code> and <code class=\"notranslate\">cert</code> properties:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const socket = connect('https://hostname:443', {\n  tls: {\n    key: clientKey,\n    cert: clientCert,\n  },\n)\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">socket</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">connect</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'https://hostname:443'</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-c1\">tls</span>: <span class=\"pl-kos\">{</span>\n    <span class=\"pl-c1\">key</span>: <span class=\"pl-s1\">clientKey</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-c1\">cert</span>: <span class=\"pl-s1\">clientCert</span><span class=\"pl-kos\">,</span>\n  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span><span class=\"pl-kos\"></span>\n<span class=\"pl-kos\">)</span></pre></div>\n<p dir=\"auto\">The key and certificate values could be WebCrypto API primitives or TypedArray, ArrayBuffer, DataView instances.</p>",
+            "url": "https://github.com/wintercg/proposal-sockets-api/issues/23",
+            "title": "Add client certificates support",
+            "date_modified": "2023-10-11T18:01:26.000Z",
+            "date_published": "2023-10-11T17:26:39.000Z",
+            "author": {
+                "name": "teabroker",
+                "url": "https://github.com/teabroker"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/246651?u=80e18ea8c1e4cba31f0f0e3de791b33f0d36c523&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1727934008\" data-permission-text=\"Title is private\" data-url=\"https://github.com/cloudflare/cloudflare-docs/issues/9118\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/cloudflare/cloudflare-docs/pull/9118/hovercard?comment_id=1752288727&amp;comment_type=issue_comment\" href=\"https://github.com/cloudflare/cloudflare-docs/pull/9118#issuecomment-1752288727\">cloudflare/cloudflare-docs#9118 (comment)</a></p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/22",
             "title": "Document allowed inputs to WritableStream::write",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "trusktr",
                 "url": "https://github.com/trusktr"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The HTML spec defines a <a href=\"https://html.spec.whatwg.org/multipage/webappapis.html#runtime-script-errors\" rel=\"nofollow\"><code class=\"notranslate\">reportError</code></a> function which takes a JS value (usually an exception object) and acts as if that value had been thrown, without actually stopping the execution of the current function and its callstack. This seems fairly useful in server-side environments.</p>\n<p dir=\"auto\">Acting \"as if the value had been thrown\" in browsers includes firing an <code class=\"notranslate\">error</code> event at the global, propagating up the chain of workers if called inside a dedicated worker, and eventually, if the error is not handled at any step along the way, logging the corresponding error message on the console.</p>\n<p dir=\"auto\">However, specifying this for server-side runtimes would involve having to deal with the runtime's existing error handling mechanisms, which might be quite different to those in browsers. (See also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1372455065\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-common-minimum-api/issues/29\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-common-minimum-api/issues/29/hovercard\" href=\"https://github.com/wintercg/proposal-common-minimum-api/issues/29\">#29</a>)</p>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/41",
-            "title": "Consider adding `globalThis.reportError()`",
-            "date_modified": "2023-05-10T15:51:44.000Z",
-            "date_published": "2023-05-10T10:06:20.000Z",
-            "author": {
-                "name": "andreubotella",
-                "url": "https://github.com/andreubotella"
             }
         }
     ]
