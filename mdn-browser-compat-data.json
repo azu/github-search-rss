@@ -61,33 +61,11 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Safari (Desktop and iOS/iPadOS) for the <code class=\"notranslate\">font-synthesis-small-caps</code> CSS property. This removes a \"resolved fixed\" bug link in notes for the feature.</p>\n<p dir=\"auto\">Additional Notes: �</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20963",
-            "title": "Update Safari data for font-synthesis-small-caps CSS property",
-            "date_modified": "2023-10-14T03:00:18.000Z",
-            "date_published": "2023-10-14T03:00:17.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR converts a few notes that only have a bug URL into the <code class=\"notranslate\">impl_url</code> property.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20962",
             "title": "Convert basic bug links in notes to impl_url",
             "date_modified": "2023-10-14T07:13:28.000Z",
             "date_published": "2023-10-14T02:58:49.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Opera and Opera Android for the <code class=\"notranslate\">Cross-Origin-Resource-Policy</code> HTTP header. This simply sets Opera to mirror.  This supersedes and <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #20643.\">closes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1877718562\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/20643\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/20643/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/20643\">#20643</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20961",
-            "title": "Update Opera data for Cross-Origin-Resource-Policy HTTP header",
-            "date_modified": "2023-10-14T02:49:41.000Z",
-            "date_published": "2023-10-14T02:49:40.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
@@ -138,17 +116,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1253214?u=f76e3fa2c2603a0fdab54deea86eea684017f918&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">All versions of Internet Explorer only support the pre-CSS Fonts Module Level 3 syntax, meaning that it only recognises the <code class=\"notranslate\">small-caps</code> and <code class=\"notranslate\">normal</code> keywords.</p>\n<p dir=\"auto\">This is a stark difference compared to the other browsers listed, and non-obvious unless you know to cross-reference with the <code class=\"notranslate\">font-variant</code> shorthand compat data and what the functional differences are between <code class=\"notranslate\">font-variant</code> and <code class=\"notranslate\">font-variant</code> (but shorthand).</p>\n<p dir=\"auto\">Although IE compat data is no longer actively maintained, flagging this difference (in an albeit high-level, not particularly nuanced way) could help avoid misunderstandings about IE's support for this property.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ul dir=\"auto\">\n<li>IE 11 devtools only lists <code class=\"notranslate\">small-caps</code> and <code class=\"notranslate\">normal</code> keywords for autocompletion for <code class=\"notranslate\">font-variant</code>.</li>\n<li>No other <code class=\"notranslate\">font-variant</code> values work in IE 11 or IE 10. (I could not easily test earlier versions).</li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20914",
-            "title": "Add note to IE support for `font-variant` CSS property",
-            "date_modified": "2023-10-08T08:34:32.000Z",
-            "date_published": "2023-10-08T08:34:18.000Z",
-            "author": {
-                "name": "querkmachine",
-                "url": "https://github.com/querkmachine"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1466293?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">The new script does the following:</p>\n<ul dir=\"auto\">\n<li>Read a specific chromestatus page to get information about current, nightly, and beta versions of Chrome for Desktop and Chrome for Android</li>\n<li>\"Guess\" (and check) the URL for the release notes of the last current Chrome for desktop / Chrome for android</li>\n<li>update the local BCD files <code class=\"notranslate\">chrome.json, </code>chrome_android.json<code class=\"notranslate\">, and  </code>webview_android.json`.</li>\n</ul>\n<p dir=\"auto\">Once landed, the goal is to run it once and manually create a PR for the change. After this, the plan is to add an action to do that automatically and create a PR with the change to the browser files.</p>\n<p dir=\"auto\">Notes:</p>\n<ul dir=\"auto\">\n<li>script should be run in the directory containing \"chrome.json\" / \"chrome_android.json\".</li>\n<li>I found a chromestatus bug that returns an invalid JSON file. This script works around the problem. This is well commented on in the bug. We will follow up with Google, but not blocking</li>\n<li>There is no definitive way to find the URL of the release notes, so I guess it (in a function where I test if it works, checking if the page HTTP status is 200).</li>\n<li>Assumed that:\n<ul dir=\"auto\">\n<li>\"stable\" in chromestatus is \"release\" in BCD</li>\n<li>\"beta\" is \"beta\"</li>\n<li>\"\"canary\" (not \"dev\") is \"nightly\"<br>\nThese are constants in the code, so it is trivial to change this mapping</li>\n</ul>\n</li>\n<li>Errors and warnings are logged on the console; this will be done while working on using it as a GitHub action.</li>\n<li>Chromestatus doesn't have the whole history of release: if there is a gap, the script will log a warning.</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Manually tested.</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Part of the automation project.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20901",
             "title": "Add script to update {chrome|chrome_android|webview_android}.json with new browser versions",
@@ -163,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code class=\"notranslate\">fetchpriority</code> member of the <code class=\"notranslate\">script</code> HTML element. The data comes from the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.2.5).</p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/html/elements/script/fetchpriority\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/html/elements/script/fetchpriority</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/20876",
             "title": "Update Chromium data for html.elements.script.fetchpriority",
-            "date_modified": "2023-10-03T06:35:28.000Z",
+            "date_modified": "2023-10-17T12:11:42.000Z",
             "date_published": "2023-10-03T06:35:27.000Z",
             "author": {
                 "name": "queengooborg",
@@ -215,14 +182,47 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Firefox and Firefox Android for the <code class=\"notranslate\">col</code> HTML element. The data comes from the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.2.5).</p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/html/elements/col\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/html/elements/col</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/20864",
-            "title": "Update Firefox data for col HTML element",
-            "date_modified": "2023-10-14T02:53:14.000Z",
-            "date_published": "2023-10-03T01:06:21.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF119 allows <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey\" rel=\"nofollow\"><code class=\"notranslate\">SubtleCrypto.deriveKey()</code></a> to support  HKDF as a <code class=\"notranslate\">derivedKeyAlgorithm</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1851928\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1851928</a></p>\n<p dir=\"auto\">I have not fully tested all the support options, as even the engineer I asked wasn't sure what tests map to what features in <a href=\"http://wpt.live/WebCryptoAPI/derive_bits_keys/\" rel=\"nofollow\">http://wpt.live/WebCryptoAPI/derive_bits_keys/</a>. However it was stated that this is supported in Chrome. What I have done is mapped the version here to the same as the parent for other browsers. Then checked where possible - e.g. I can find that in deno this is supported in that first version <a href=\"https://deno.land/api@v1.37.1?s=SubtleCrypto#method_deriveKey_13\" rel=\"nofollow\">https://deno.land/api@v1.37.1?s=SubtleCrypto#method_deriveKey_13</a>.</p>\n<p dir=\"auto\">EDIT<br>\nThere are at least 4 possible algorithms to <code class=\"notranslate\">derivedKeyAlgorithm</code>: HMAC, PBKDF2, HKDF, and AES. There are also a bunch of values that can be passed as the main algorithm, and also hash algorithms that can be used by some of these. So it is a big complicated mess, little of which is capture currently.</p>\n<p dir=\"auto\">What I have done is added <code class=\"notranslate\">derivedKeyAlgorithm</code> subfeatures for: HMAC, PBKDF2, HKDF, and AES.</p>\n<ul dir=\"auto\">\n<li>I <a href=\"https://nodejs.org/docs/latest-v15.x/api/webcrypto.html#webcrypto_subtle_derivekey_algorithm_basekey_derivedkeyalgorithm_extractable_keyusages\" rel=\"nofollow\">know nodejs</a> supports AES and HMAC from first version 20ish</li>\n<li>I know <a href=\"https://deno.land/api@v1.15.0?s=SubtleCrypto\" rel=\"nofollow\">Deno supports all options from 1.15</a></li>\n<li>I know FF supports HKDF from 119, and probably HMAC and AES since first version.<br>\nThere is a bug for supporting PBKDF2 which I have linked.</li>\n<li>Chrome <strong>seems</strong> to have supported all algorithms from first version.</li>\n<li>Safari has no information. I have put <code class=\"notranslate\">false</code> because if it is wrong people are more likely to complain and fix it.</li>\n<li>I think we should expand this approach for all the algorithms on all the methods in this API. However I don't have time to do this, and we'd want to have test code to do it properly in the collector <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a></li>\n</ul>\n<p dir=\"auto\">Hope this is good enough, even though we know it might not be \"100%\"</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1921132726\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29411\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/29411/hovercard\" href=\"https://github.com/mdn/content/issues/29411\">mdn/content#29411</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20863",
+            "title": "FF119 SubtleCrypto.deriveKey() supports HKDF as a derivedKeyAlgorith option",
+            "date_modified": "2023-10-06T03:57:41.000Z",
+            "date_published": "2023-10-03T00:44:29.000Z",
             "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32498324?u=6ff39af834311a2dbeefc3c3071dde7eeb6d5a0b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Add data for HTMLSelectElement showPicker</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Pull request for html spec: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1901979709\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/9754\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/9754/hovercard\" href=\"https://github.com/whatwg/html/pull/9754\">whatwg/html#9754</a></p>\n<p dir=\"auto\">Chrome Status Entry: <a href=\"https://chromestatus.com/feature/5111537299881984\" rel=\"nofollow\">https://chromestatus.com/feature/5111537299881984</a></p>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20852",
+            "title": "Add data for HTMLSelectElement showPicker",
+            "date_modified": "2023-10-01T20:54:39.000Z",
+            "date_published": "2023-10-01T20:07:14.000Z",
+            "author": {
+                "name": "lukewarlow",
+                "url": "https://github.com/lukewarlow"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/787658?u=890160d6ae09c4f0feb5e88c82ea6c9060b335f7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #20795.\">Resolves</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1909890123\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/20795\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/20795/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/20795\">#20795</a></p>\n<p dir=\"auto\">Some but not all <code class=\"notranslate\">notes</code> entries mention bug tickets that especially resolve a missing functionality for feature completeness against the standard, that for I've included this one within the new <code class=\"notranslate\">impl_url</code> entry, but not the previous, \"original\" bug ticket (with which the ticket has been partially implemented) for two reasons:</p>\n<ul dir=\"auto\">\n<li>easier implementation: I would have needed to research the original ticket with the partial implementation</li>\n<li>relevance: From my understanding the <code class=\"notranslate\">impl_url</code> entries relevance is mainly about \"feature completeness\", so it would be more relevant to have an insight into the remaining work, than an already resolved ticket.</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20796",
+            "title": "docs: `notes` to `impl_url` property migration leftovers",
+            "date_modified": "2023-10-17T12:11:51.000Z",
+            "date_published": "2023-09-23T14:30:25.000Z",
+            "author": {
+                "name": "mfranzke",
+                "url": "https://github.com/mfranzke"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/70766223?u=6c565bc27d741538f03878b3fd389429ea3c0a81&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Added correct information for Edge's <code class=\"notranslate\">background-clip</code> compatibility, and added the link to the bug tracker for this issue.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<p dir=\"auto\">Bug tracker: <a href=\"https://crbug.com/1339290\" rel=\"nofollow\">https://crbug.com/1339290</a></p>\n<h4 dir=\"auto\">Related issues</h4>\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #15172.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1154244943\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/15172\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/15172/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/15172\">#15172</a>.<br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #16135.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1224623867\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/16135\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/16135/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/16135\">#16135</a>.</p>\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/20743",
+            "title": "Update background-clip.json",
+            "date_modified": "2023-09-21T10:01:33.000Z",
+            "date_published": "2023-09-18T17:54:41.000Z",
+            "author": {
+                "name": "Keyacom",
+                "url": "https://github.com/Keyacom"
             }
         }
     ]
