@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32661241?u=f8e0256b8bb5e87e6d3b5612d3d0619420bf745e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This pull request fixes live example code for <a href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role\" rel=\"nofollow\">ARIA/Tab role</a> sample code by checking whether <code class=\"notranslate\">DOMContentLoaded</code> should be used as a trigger to initalize the code or not.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The sample code for <a href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role\" rel=\"nofollow\">ARIA/Tab role</a> isn't working. This is caused by listening to <code class=\"notranslate\">DOMContentLoaded</code> event to run the initialization script when the document has already been loaded (can be checked with <code class=\"notranslate\">document.readyState === 'loading'</code>.</p>\n<p dir=\"auto\">To fix this behavior, we can check if we should listen to the corresponding event:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"if (document.readyState !== 'loading') {\n  init();\n} else {\n  window.addEventListener('DOMContentLoaded', init);\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">readyState</span> <span class=\"pl-c1\">!==</span> <span class=\"pl-s\">'loading'</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-en\">init</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span> <span class=\"pl-k\">else</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-smi\">window</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'DOMContentLoaded'</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">init</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The change has been tested to be working on the following environments:</p>\n<ul dir=\"auto\">\n<li>Firefox 119.0 (Ubuntu)</li>\n<li>Chrome 118.0.5993.117</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #29325.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1915019760\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29325\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/29325/hovercard\" href=\"https://github.com/mdn/content/issues/29325\">#29325</a></p>\n",
+            "url": "https://github.com/mdn/content/pull/29889",
+            "title": "fix: use readyState to run scripts",
+            "date_modified": "2023-10-29T14:54:30.000Z",
+            "date_published": "2023-10-29T14:49:57.000Z",
+            "author": {
+                "name": "Namchee",
+                "url": "https://github.com/Namchee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/143203214?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/29885",
             "title": "Update index.md",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "Ma-ve",
                 "url": "https://github.com/Ma-ve"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15844309?u=008f65848dd592799cd1d72033096baa1cbc88ce&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">rewrite the documentation of \"events\" and \"guides\" fields</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>\"events\": we are now only including the titles of events which is under other interfaces (see: <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/JSON_Structured_data#events\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/JSON_Structured_data#events</a>)</li>\n<li>\"guides\": the title of the linked document would be used, and this array are now only inlcudes the URLs to those guides.</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/29844",
-            "title": "rewrite the documentation of \"events\" and \"guides\" fields",
-            "date_modified": "2023-10-27T02:10:35.000Z",
-            "date_published": "2023-10-27T02:08:48.000Z",
-            "author": {
-                "name": "yin1999",
-                "url": "https://github.com/yin1999"
             }
         }
     ]
