@@ -6,6 +6,17 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/188257?u=5972424c4a683223929b7b3d783d34948b640399&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Headers.entries is implemented in some WinterCG runtimes (Deno Deploy &amp; Cloudflare Workers) but is not in the spec.<br>\nHere's the example:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"self.addEventListener('fetch', event =&gt; {\n  let headers = event.request.headers;\n  event.respondWith(new Response(`typeof headers.entries == &quot;${typeof headers.entries}&quot;`));\n})\"><pre class=\"notranslate\"><span class=\"pl-s1\">self</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'fetch'</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">event</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-k\">let</span> <span class=\"pl-s1\">headers</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">event</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">request</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">headers</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-s1\">event</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">respondWith</span><span class=\"pl-kos\">(</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">Response</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`typeof headers.entries == \"<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-k\">typeof</span> <span class=\"pl-s1\">headers</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">entries</span><span class=\"pl-kos\">}</span></span>\"`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span></pre></div>\n<p dir=\"auto\">See related issue on WinterJS: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1973304142\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wasmerio/winterjs/issues/25\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wasmerio/winterjs/issues/25/hovercard?comment_id=1790851061&amp;comment_type=issue_comment\" href=\"https://github.com/wasmerio/winterjs/issues/25#issuecomment-1790851061\">wasmerio/winterjs#25 (comment)</a></p>\n<p dir=\"auto\">Should <code class=\"notranslate\">entries</code> be added to the spec so Cloudflare and Deno Deploy stay compliant with the spec and the rest of runtimes add support as well?</p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/60",
+            "title": "Spec missing Headers.entries",
+            "date_modified": "2023-11-02T14:35:48.000Z",
+            "date_published": "2023-11-02T14:35:48.000Z",
+            "author": {
+                "name": "syrusakbary",
+                "url": "https://github.com/syrusakbary"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/246651?u=80e18ea8c1e4cba31f0f0e3de791b33f0d36c523&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">From <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1941459453\" data-permission-text=\"Title is private\" data-url=\"https://github.com/cloudflare/workerd/issues/1305\" data-hovercard-type=\"issue\" data-hovercard-url=\"/cloudflare/workerd/issues/1305/hovercard\" href=\"https://github.com/cloudflare/workerd/issues/1305\">cloudflare/workerd#1305</a> we've realised that we should define what should happen when <code class=\"notranslate\">close</code> is called on a socket that already had its <code class=\"notranslate\">closed</code> promise rejected.</p>\n<p dir=\"auto\">When the <code class=\"notranslate\">closed</code> promise is resolved then the answer is easy: <code class=\"notranslate\">close</code> does nothing.</p>\n<p dir=\"auto\">But when <code class=\"notranslate\">closed</code> is rejected, we have a couple of options:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">close</code> throws the exception in <code class=\"notranslate\">closed</code></li>\n<li><code class=\"notranslate\">close</code> doesn't throw <strong>and</strong> leaves the <code class=\"notranslate\">closed</code> promise unchanged (so it remains rejected)</li>\n</ul>\n<p dir=\"auto\">Workerd currently does a third option, which I think just leads to gotchas so I want to change it, where <code class=\"notranslate\">close</code> doesn't throw but also resolves the <code class=\"notranslate\">closed</code> promise which means the exception can be lost.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/24",
             "title": "sockets.close behaviour when `closed` already rejected",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "andreubotella",
                 "url": "https://github.com/andreubotella"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67498?u=dcd3838813e80bc707de1a11a727294614196968&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <a href=\"https://wintercg.org/faq\" rel=\"nofollow\">https://wintercg.org/faq</a> page says:<br>\n<em>\"The group itself has a strict consensus policy outlined in the charter, which is oversought by the group chairs.\"</em><br>\n-- \"oversought\" should be replaced with \"overseen\".</p>\n<p dir=\"auto\">See <a href=\"https://github.com/wintercg/www/blob/main/main.jsx#L205\">https://github.com/wintercg/www/blob/main/main.jsx#L205</a></p>",
-            "url": "https://github.com/wintercg/www/issues/34",
-            "title": "Nit/typo in faq page",
-            "date_modified": "2023-06-13T18:28:23.000Z",
-            "date_published": "2023-06-13T18:26:41.000Z",
-            "author": {
-                "name": "cweekly",
-                "url": "https://github.com/cweekly"
             }
         }
     ]
