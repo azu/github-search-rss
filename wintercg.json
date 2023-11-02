@@ -6,6 +6,17 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/895923?u=ee2417210461abea5b06cf6aea5492220ecdadf7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Was trying to follow the steps in the <em>README</em> to run the site locally, and experienced this issue</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"➜  www git:(main) deno run -A --no-check main.jsx\nerror: The source code is invalid, as it does not match the expected hash in the lock file.\n  Specifier: https://esm.sh/*@twind/typography@0.0.2\n  Lock file: /Users/owenbuckley/Workspace/github/wintercg/www/deno.lock\"><pre class=\"notranslate\">➜  www git:(main) deno run -A --no-check main.jsx\nerror: The <span class=\"pl-c1\">source</span> code is invalid, as it does not match the expected <span class=\"pl-c1\">hash</span> <span class=\"pl-k\">in</span> the lock file.\n  Specifier: https://esm.sh/<span class=\"pl-k\">*</span>@twind/typography@0.0.2\n  Lock file: /Users/owenbuckley/Workspace/github/wintercg/www/deno.lock</pre></div>\n<p dir=\"auto\">Can confirm that <strong>deno</strong> is installed locally</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"➜  www git:(main) deno --version\ndeno 1.38.0 (release, aarch64-apple-darwin)\nv8 12.0.267.1\ntypescript 5.2.2\"><pre class=\"notranslate\">➜  www git:(main) deno --version\ndeno 1.38.0 (release, aarch64-apple-darwin)\nv8 12.0.267.1\ntypescript 5.2.2</pre></div>\n<p dir=\"auto\">Any thoughts?  I'm new to deno, so not sure if it is just user error or something else 😅</p>",
+            "url": "https://github.com/wintercg/www/issues/37",
+            "title": "not able to run the website locally",
+            "date_modified": "2023-11-02T15:33:19.000Z",
+            "date_published": "2023-11-02T15:29:43.000Z",
+            "author": {
+                "name": "thescientist13",
+                "url": "https://github.com/thescientist13"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/188257?u=5972424c4a683223929b7b3d783d34948b640399&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Headers.entries is implemented in some WinterCG runtimes (Deno Deploy &amp; Cloudflare Workers) but is not in the spec.<br>\nHere's the example:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"self.addEventListener('fetch', event =&gt; {\n  let headers = event.request.headers;\n  event.respondWith(new Response(`typeof headers.entries == &quot;${typeof headers.entries}&quot;`));\n})\"><pre class=\"notranslate\"><span class=\"pl-s1\">self</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'fetch'</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">event</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-k\">let</span> <span class=\"pl-s1\">headers</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">event</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">request</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">headers</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-s1\">event</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">respondWith</span><span class=\"pl-kos\">(</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">Response</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`typeof headers.entries == \"<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-k\">typeof</span> <span class=\"pl-s1\">headers</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">entries</span><span class=\"pl-kos\">}</span></span>\"`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span></pre></div>\n<p dir=\"auto\">See related issue on WinterJS: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1973304142\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wasmerio/winterjs/issues/25\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wasmerio/winterjs/issues/25/hovercard?comment_id=1790851061&amp;comment_type=issue_comment\" href=\"https://github.com/wasmerio/winterjs/issues/25#issuecomment-1790851061\">wasmerio/winterjs#25 (comment)</a></p>\n<p dir=\"auto\">Should <code class=\"notranslate\">entries</code> be added to the spec so Cloudflare and Deno Deploy stay compliant with the spec and the rest of runtimes add support as well?</p>",
             "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/60",
             "title": "Spec missing Headers.entries",
@@ -152,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/275871?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I can <code class=\"notranslate\">curl https://common-min-api.proposal.wintercg.org/</code> but not <code class=\"notranslate\">firefox https://common-min-api.proposal.wintercg.org/</code> (edit: on ubuntu) - the latter fails persistently with a <code class=\"notranslate\">NS_ERROR_UNKNOWN_HOST</code> and I believe this is due to the somewhat unusual CNAME construct:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"$ dig common-min-api.proposal.wintercg.org +short\nproposal-*.deno.dev.\n34.120.54.55\"><pre class=\"notranslate\"><code class=\"notranslate\">$ dig common-min-api.proposal.wintercg.org +short\nproposal-*.deno.dev.\n34.120.54.55\n</code></pre></div>\n<p dir=\"auto\">Supporting evidence: it starts working the moment I add a <code class=\"notranslate\">34.120.54.55 common-min-api.proposal.wintercg.org</code> stanza to my /etc/hosts.</p>\n<p dir=\"auto\">Also applies to the other *.proposal.wintercg.org domain names.</p>\n<p dir=\"auto\">Small aside: proposal.wintercg.org has no A or AAAA records.</p>",
             "url": "https://github.com/wintercg/www/issues/35",
             "title": "*.proposal.wintercg.org not reachable in firefox",
-            "date_modified": "2023-10-25T18:39:32.000Z",
+            "date_modified": "2023-11-02T15:35:01.000Z",
             "date_published": "2023-08-30T10:33:24.000Z",
             "author": {
                 "name": "bnoordhuis",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "guest271314",
                 "url": "https://github.com/guest271314"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">In today's WinterCG meeting we agreed to add <code class=\"notranslate\">import.meta</code> to the common minimum API, including the web's <code class=\"notranslate\">url</code> property and <code class=\"notranslate\">resolve</code> method, but also Deno's <code class=\"notranslate\">main</code> property.</p>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/46",
-            "title": "Add `import.meta`",
-            "date_modified": "2023-08-02T17:49:49.000Z",
-            "date_published": "2023-07-06T19:10:03.000Z",
-            "author": {
-                "name": "andreubotella",
-                "url": "https://github.com/andreubotella"
             }
         }
     ]
