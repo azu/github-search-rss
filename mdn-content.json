@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/12856904?u=358c6d25a187582816ebc99b35388a1b18ea2216&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This pull request adds the <code class=\"notranslate\">lbry</code> protocol scheme to the MDN documentation.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Adding support for LBRY in browsers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">None</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><strong>Fixes:</strong> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1976992812\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/472\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/472/hovercard\" href=\"https://github.com/mdn/mdn/issues/472\">mdn/mdn#472</a><br>\n<strong>Relates to:</strong> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1621394935\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/9016\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/html/issues/9016/hovercard\" href=\"https://github.com/whatwg/html/issues/9016\">whatwg/html#9016</a><br>\n<strong>Depends on:</strong> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1621431332\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/9017\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/9017/hovercard\" href=\"https://github.com/whatwg/html/pull/9017\">whatwg/html#9017</a></p>",
+            "url": "https://github.com/mdn/content/pull/30026",
+            "title": "Add LBRY scheme to allowlist",
+            "date_modified": "2023-11-03T22:16:54.000Z",
+            "date_published": "2023-11-03T22:15:54.000Z",
+            "author": {
+                "name": "ben221199",
+                "url": "https://github.com/ben221199"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4765979?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">The original example shows serializing and de-serializing BigInt in-place, and then comments that it is possible to generalize it. The new example shows a more generic approach, but mentions the potential downsides to it, and suggests the more specific approach as an alternative.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">I had gone through the practice of creating more specific replacers/revivers for JSON and figured a more generic approach might be helpful to others.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/30023",
             "title": "Update index.md with more generic replacer/reviver for BigInt",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32661241?u=f8e0256b8bb5e87e6d3b5612d3d0619420bf745e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This pull request fixes live example code for <a href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role\" rel=\"nofollow\">ARIA/Tab role</a> sample code by checking whether <code class=\"notranslate\">DOMContentLoaded</code> should be used as a trigger to initalize the code or not.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The sample code for <a href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role\" rel=\"nofollow\">ARIA/Tab role</a> isn't working. This is caused by listening to <code class=\"notranslate\">DOMContentLoaded</code> event to run the initialization script when the document has already been loaded (can be checked with <code class=\"notranslate\">document.readyState === 'loading'</code>.</p>\n<p dir=\"auto\">To fix this behavior, we can check if we should listen to the corresponding event:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"if (document.readyState !== 'loading') {\n  init();\n} else {\n  window.addEventListener('DOMContentLoaded', init);\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">readyState</span> <span class=\"pl-c1\">!==</span> <span class=\"pl-s\">'loading'</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-en\">init</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span> <span class=\"pl-k\">else</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-smi\">window</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'DOMContentLoaded'</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">init</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The change has been tested to be working on the following environments:</p>\n<ul dir=\"auto\">\n<li>Firefox 119.0 (Ubuntu)</li>\n<li>Chrome 118.0.5993.117</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #29325.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1915019760\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29325\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/29325/hovercard\" href=\"https://github.com/mdn/content/issues/29325\">#29325</a></p>\n",
-            "url": "https://github.com/mdn/content/pull/29889",
-            "title": "fix: use readyState to run scripts",
-            "date_modified": "2023-11-03T14:56:27.000Z",
-            "date_published": "2023-10-29T14:49:57.000Z",
-            "author": {
-                "name": "Namchee",
-                "url": "https://github.com/Namchee"
             }
         }
     ]
