@@ -42,7 +42,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/246651?u=80e18ea8c1e4cba31f0f0e3de791b33f0d36c523&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">From <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1941459453\" data-permission-text=\"Title is private\" data-url=\"https://github.com/cloudflare/workerd/issues/1305\" data-hovercard-type=\"issue\" data-hovercard-url=\"/cloudflare/workerd/issues/1305/hovercard\" href=\"https://github.com/cloudflare/workerd/issues/1305\">cloudflare/workerd#1305</a> we've realised that we should define what should happen when <code class=\"notranslate\">close</code> is called on a socket that already had its <code class=\"notranslate\">closed</code> promise rejected.</p>\n<p dir=\"auto\">When the <code class=\"notranslate\">closed</code> promise is resolved then the answer is easy: <code class=\"notranslate\">close</code> does nothing.</p>\n<p dir=\"auto\">But when <code class=\"notranslate\">closed</code> is rejected, we have a couple of options:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">close</code> throws the exception in <code class=\"notranslate\">closed</code></li>\n<li><code class=\"notranslate\">close</code> doesn't throw <strong>and</strong> leaves the <code class=\"notranslate\">closed</code> promise unchanged (so it remains rejected)</li>\n</ul>\n<p dir=\"auto\">Workerd currently does a third option, which I think just leads to gotchas so I want to change it, where <code class=\"notranslate\">close</code> doesn't throw but also resolves the <code class=\"notranslate\">closed</code> promise which means the exception can be lost.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/24",
             "title": "sockets.close behaviour when `closed` already rejected",
-            "date_modified": "2023-10-27T17:55:35.000Z",
+            "date_modified": "2023-11-05T23:00:11.000Z",
             "date_published": "2023-10-27T15:08:43.000Z",
             "author": {
                 "name": "dom96",
@@ -53,7 +53,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/135671829?u=bde12febd669ab6108ec844bb653e8f1ab229962&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">There should be an ability to add client certificates to the new TLS connection. While this feature is implemented in web clients on the browser side (and not allowed from the code side), it's important to have ability to specify client certificates from code on the server side.</p>\n<p dir=\"auto\">Some apps use client certificates as an authentication technology, so it might be critical.</p>\n<p dir=\"auto\">It could look like an option properties <code class=\"notranslate\">tlsKey</code>, <code class=\"notranslate\">tlsCert</code> or as an object property <code class=\"notranslate\">tls</code> with <code class=\"notranslate\">key</code> and <code class=\"notranslate\">cert</code> properties:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const socket = connect('https://example.com', {\n  tls: {\n    key: clientKey,\n    cert: clientCert,\n  },\n)\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">socket</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">connect</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'https://example.com'</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-c1\">tls</span>: <span class=\"pl-kos\">{</span>\n    <span class=\"pl-c1\">key</span>: <span class=\"pl-s1\">clientKey</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-c1\">cert</span>: <span class=\"pl-s1\">clientCert</span><span class=\"pl-kos\">,</span>\n  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span><span class=\"pl-kos\"></span>\n<span class=\"pl-kos\">)</span></pre></div>\n<p dir=\"auto\">The key and certificate values could be WebCrypto API primitives or TypedArray, ArrayBuffer, DataView instances.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/23",
             "title": "Add client certificates support",
-            "date_modified": "2023-10-11T18:02:40.000Z",
+            "date_modified": "2023-11-05T22:44:11.000Z",
             "date_published": "2023-10-11T17:26:39.000Z",
             "author": {
                 "name": "teabroker",
@@ -75,7 +75,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/135671829?u=bde12febd669ab6108ec844bb653e8f1ab229962&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">It should be decided not to make insecure options to be default. Developers usually rely on default values as secure enough. It could and would lead to data leakages and security breaches.</p>\n<p dir=\"auto\">The <code class=\"notranslate\">secureTransport</code> option in <code class=\"notranslate\">SocketOptions</code> should not be <code class=\"notranslate\">\"off\"</code>.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/21",
             "title": "Make defaults secure",
-            "date_modified": "2023-10-08T11:13:40.000Z",
+            "date_modified": "2023-11-05T22:48:03.000Z",
             "date_published": "2023-10-08T11:13:40.000Z",
             "author": {
                 "name": "teabroker",
@@ -108,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/512240?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The socket should provide the local and peer addresses for connections. For example, you may wish to know on which port the outgoing connection was established for logging or accounting purposes. In addition, it may be useful to know which IP address a wildcard connection resolved to (though obviously this will be 127.0.0.1 in most cases).</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/17",
             "title": "Peer addresses",
-            "date_modified": "2023-10-08T16:39:59.000Z",
+            "date_modified": "2023-11-05T22:47:06.000Z",
             "date_published": "2023-09-28T17:13:28.000Z",
             "author": {
                 "name": "mmastrac",
@@ -127,21 +127,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/512240?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The hostname negotiation for SNI may be different from the connection address. For example, a client may connect by IP to a service and provide an unresolved hostname on connection. As in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1917884775\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-sockets-api/issues/14\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-sockets-api/issues/14/hovercard\" href=\"https://github.com/wintercg/proposal-sockets-api/issues/14\">#14</a>, this SNI negotation result may need to provided as part of the handshake promise.</p>",
-            "url": "https://github.com/wintercg/proposal-sockets-api/issues/15",
-            "title": "Provide hostname for SNI",
-            "date_modified": "2023-09-28T19:24:35.000Z",
-            "date_published": "2023-09-28T16:33:09.000Z",
-            "author": {
-                "name": "mmastrac",
-                "url": "https://github.com/mmastrac"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/512240?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The spec likely needs to deal with these three items which are necessary for creating HTTP/2 connections.</p>\n<p dir=\"auto\">The socket options must allow outgoing connections to specify ALPN negotation strings and/or byte strings, and should return the negotiated values as part of a handshake.</p>\n<p dir=\"auto\">In addition, a socket should be configured so that it may optionally send/receive data before the handshake promise completes.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/14",
             "title": "Early data, handshake promise, and ALPN negotiation",
-            "date_modified": "2023-09-28T18:32:50.000Z",
+            "date_modified": "2023-11-05T22:49:11.000Z",
             "date_published": "2023-09-28T16:30:41.000Z",
             "author": {
                 "name": "mmastrac",
@@ -152,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/246651?u=80e18ea8c1e4cba31f0f0e3de791b33f0d36c523&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Only <code class=\"notranslate\">hostname:port</code> should be supported.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/13",
             "title": "Clarify the string format of AnySocketAddress",
-            "date_modified": "2023-11-01T11:47:01.000Z",
+            "date_modified": "2023-11-05T22:21:48.000Z",
             "date_published": "2023-09-27T13:22:18.000Z",
             "author": {
                 "name": "dom96",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "Gozala",
                 "url": "https://github.com/Gozala"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4174848?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Take a look at these Native Messaging hosts written in JavaScript; Node.js, Deno, Bun, QuickJS, txiki.js. They implement reading stdin and writing stdout differently.</p>\n<p dir=\"auto\">The last time I check <code class=\"notranslate\">d8</code> (V8) and <code class=\"notranslate\">jsshell</code> (SpiderMonkey) provide no means to read stdin and write stdout using <code class=\"notranslate\">TypedArray</code>s (buffers).</p>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_nodejs.mjs\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_nodejs.mjs</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_deno.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_deno.js</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_qjs.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_qjs.js</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_tjs.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_tjs.js</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_bun.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_bun.js</a></li>\n</ul>\n<p dir=\"auto\">Node.js does not write more than 65536 to stdout without <code class=\"notranslate\">process.stdout._handle.setBlocking(true)</code>, at least not during my testing; Deno, Node.js, Bun; txiki.js all require multiple reads to read 1 MB from stdin after reading the first 4 bytes, QuickJS reads the full 1 MB in one read.</p>\n<p dir=\"auto\">A common stdin/stdout.stderr module that can be imported (CommonJS, Ecmascript Modules, whatever) and is capable of assuming responsibility of writing string or buffer at author/application discretion will be very helpful as a common specification that can be implemented for JavaScript implementations.</p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/47",
+            "title": "Common I/O (stdin/stdout/stderr) module specification",
+            "date_modified": "2023-07-11T02:14:22.000Z",
+            "date_published": "2023-07-11T02:14:22.000Z",
+            "author": {
+                "name": "guest271314",
+                "url": "https://github.com/guest271314"
             }
         }
     ]
