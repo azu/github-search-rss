@@ -42,7 +42,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF121 adds support for the <a href=\"https://wicg.github.io/custom-state-pseudo-class\" rel=\"nofollow\">Custom State Pseudo Class</a> spec in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1861466\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1861466</a> behind a preference.</p>\n<p dir=\"auto\">This adds information about the experimental feature.</p>\n<p dir=\"auto\">Note that this replaces an older entry in the doc \"ElementInternals: Form associated custom element methods and properties\" which should have been removed (by me) in FF95 as this has shipped (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1745378\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1745378</a>).</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1998839324\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/30339\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/30339/hovercard\" href=\"https://github.com/mdn/content/issues/30339\">#30339</a></p>",
             "url": "https://github.com/mdn/content/pull/30394",
             "title": "FF121 ExperFeat: Custom element pseudo class",
-            "date_modified": "2023-11-20T06:01:24.000Z",
+            "date_modified": "2023-11-20T15:39:57.000Z",
             "date_published": "2023-11-20T05:58:54.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -91,17 +91,6 @@
             "author": {
                 "name": "huyenltnguyen",
                 "url": "https://github.com/huyenltnguyen"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/177485?u=4d84ea69f3e98cc16d9daf0c5e7e2ca09c9efad7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR allows starting <code class=\"notranslate\">&lt;custom-ident&gt;</code> with double dashes.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident\" rel=\"nofollow\"><code class=\"notranslate\">&lt;custom-ident&gt;</code> page</a> incorrectly states that custom idents can't start with two double dashes, it two places:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident#forbidden_values\" rel=\"nofollow\">“Forbidden values” section</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident#invalid_identifiers\" rel=\"nofollow\">“Invalid identifiers” section</a></li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I did not find any place in the CSS specs that forbids using two dashes at the start of a <code class=\"notranslate\">&lt;custom-ident&gt;</code>. Yes, at this point it might become a valid <code class=\"notranslate\">&lt;dashed-ident&gt;</code>, but it won't stop properties that accept <code class=\"notranslate\">&lt;custom-ident&gt;</code> from accepting this <code class=\"notranslate\">&lt;dashed-ident&gt;</code>-looking custom ident.</p>\n<p dir=\"auto\">There are also several places that mention either an ability to accept double dashed idents, or the <code class=\"notranslate\">&lt;dashed-ident&gt;</code> being just a <code class=\"notranslate\">&lt;custom-ident&gt;</code> that starts with two dashes, not mentioning the potential limitation.</p>\n<p dir=\"auto\">From the dashed-ident definition:</p>\n<blockquote>\n<p dir=\"auto\">The <code class=\"notranslate\">&lt;dashed-ident&gt;</code> production is a <code class=\"notranslate\">&lt;custom-ident&gt;</code>, with all the case-sensitivity that implies, with the additional restriction that it must start with two dashes (U+002D HYPHEN-MINUS).</p>\n</blockquote>\n<p dir=\"auto\">From the <a href=\"https://drafts.csswg.org/css-will-change/#valdef-will-change-custom-ident\" rel=\"nofollow\"><code class=\"notranslate\">will-change</code> spec</a>:</p>\n<blockquote>\n<p dir=\"auto\">Specifying a custom property must have no effect, which means that effects that happen through custom properties do not count for the rules below that are conditioned on any non-initial value of a property causing something.</p>\n<blockquote>\n<p dir=\"auto\">Note: Specifying a value that’s not recognized as a property is fine; it simply has no effect. This allows you to safely specify new properties that exist in some user agents without negatively affecting down-level user agents that don’t know about that property.</p>\n</blockquote>\n</blockquote>\n<p dir=\"auto\">And, just in case, here is a CodePen that shows that properties that expect custom-ident work fine in an interop way with the dashed-ident: <a href=\"https://codepen.io/kizu/pen/vYbdyEz\" rel=\"nofollow\">https://codepen.io/kizu/pen/vYbdyEz</a></p>\n<p dir=\"auto\">References:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://drafts.csswg.org/css-values/#custom-idents\" rel=\"nofollow\">https://drafts.csswg.org/css-values/#custom-idents</a></li>\n<li><a href=\"https://drafts.csswg.org/css-values/#dashed-idents\" rel=\"nofollow\">https://drafts.csswg.org/css-values/#dashed-idents</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/30374",
-            "title": "Allow starting `<custom-ident>` with double dashes",
-            "date_modified": "2023-11-19T08:34:08.000Z",
-            "date_published": "2023-11-19T08:31:31.000Z",
-            "author": {
-                "name": "kizu",
-                "url": "https://github.com/kizu"
             }
         },
         {
@@ -223,6 +212,17 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/588541?u=112db5ddf8ee6c5c19f56b035b9dbeddaae1897a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is a website that surveys which extensions are actually supported in the wild: <a href=\"https://web3dsurvey.com\" rel=\"nofollow\">https://web3dsurvey.com</a></p>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This is a website that I created earlier this year.  It is included on a number of prominent WebGL related websites including <a href=\"https://webglfundamentals.org/\" rel=\"nofollow\">webglfundamentals.org</a>, threejs and modelviewer.dev.  It aggregates the results in the various reports you see.</p>\n<p dir=\"auto\">This helps users determine which extensions they can use safely and which are more optional.  It is a survey of just the last 2 weeks of data, so it is very current.</p>\n<p dir=\"auto\">The website also links back to the MDN docs for most official extensions.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This makes WebGL developer live's easier since they know what is and isn't supported in the wild.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<h3 dir=\"auto\">Related issues and pull requests</h3>",
+            "url": "https://github.com/mdn/content/pull/30317",
+            "title": "\"Using WebGL extensions\" - add  https://web3dsurvey.com",
+            "date_modified": "2023-11-18T15:43:01.000Z",
+            "date_published": "2023-11-16T18:39:20.000Z",
+            "author": {
+                "name": "bhouston",
+                "url": "https://github.com/bhouston"
             }
         }
     ]
