@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">groupdata.json contains a \"dictionaries\" field which is sometimes given values, but is not read by the macros that build sidebars (<a href=\"https://github.com/search?q=repo%3Amdn%2Fyari+dictionaries&amp;type=code\">https://github.com/search?q=repo%3Amdn%2Fyari+dictionaries&amp;type=code</a>).</p>\n<p dir=\"auto\">Most of the entries given for \"dictionaries\" don't exist any more, victims of de-dictionarification. However there are still a few places where we have chosen to keep dictionaries, such as in the Web Crypto and WebRTC docs. In these places, the dictionary pages are not findable, because the sidebar macros don't look for the \"dictionaries\" key.</p>\n<p dir=\"auto\">So this PR does 2 things:</p>\n<ul dir=\"auto\">\n<li>removes the \"dictionaries\" field from groupdata entirely</li>\n<li>for dictionaries that still exist, move them under \"interfaces\": this means they appear in the sidebar:</li>\n</ul>\n<p dir=\"auto\"><strong>old</strong>:</p>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/432915/287022030-7929f9fa-9bff-40ee-b3e4-a64a8689630f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDEzNjc2MDcsIm5iZiI6MTcwMTM2NzMwNywicGF0aCI6Ii80MzI5MTUvMjg3MDIyMDMwLTc5MjlmOWZhLTliZmYtNDBlZS1iM2U0LWE2NGE4Njg5NjMwZi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMTMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTEzMFQxODAxNDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MDdmMmRhOTA3MDQ1ODBiNmJlYmZjZDlmN2M5ODZmMzM4MzhlZDg1ZGQwMjY5OWUxZTUxOTFhNzkwNWM5NGIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.Kr72QLmSqPsyOZKHfhfMDvBcaiXTEzzNGtQAdKfVXIk\"><img width=\"1118\" alt=\"Screen Shot 2023-11-30 at 9 41 34 AM\" src=\"https://private-user-images.githubusercontent.com/432915/287022030-7929f9fa-9bff-40ee-b3e4-a64a8689630f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDEzNjc2MDcsIm5iZiI6MTcwMTM2NzMwNywicGF0aCI6Ii80MzI5MTUvMjg3MDIyMDMwLTc5MjlmOWZhLTliZmYtNDBlZS1iM2U0LWE2NGE4Njg5NjMwZi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMTMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTEzMFQxODAxNDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MDdmMmRhOTA3MDQ1ODBiNmJlYmZjZDlmN2M5ODZmMzM4MzhlZDg1ZGQwMjY5OWUxZTUxOTFhNzkwNWM5NGIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.Kr72QLmSqPsyOZKHfhfMDvBcaiXTEzzNGtQAdKfVXIk\" style=\"max-width: 100%;\"></a>\n<p dir=\"auto\"><strong>new</strong>:</p>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/432915/287022097-c435a460-dbe9-47b3-a7b5-2b8ae6b4b4e5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDEzNjc2MDcsIm5iZiI6MTcwMTM2NzMwNywicGF0aCI6Ii80MzI5MTUvMjg3MDIyMDk3LWM0MzVhNDYwLWRiZTktNDdiMy1hN2I1LTJiOGFlNmI0YjRlNS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMTMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTEzMFQxODAxNDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kZTM2NTkxZTcwNTdjY2FjYjQ3ZTFkOWYyNjFlNWMwOTkzYWRmOGUwOTQ0Y2E0MGU4NTQxNWMxMzI4NDFmMTFmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.7q7IsFho08mu3dOTzJew4dQ1Wsg4F7xDO7BGIbr7GEs\"><img width=\"1124\" alt=\"Screen Shot 2023-11-30 at 9 41 58 AM\" src=\"https://private-user-images.githubusercontent.com/432915/287022097-c435a460-dbe9-47b3-a7b5-2b8ae6b4b4e5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDEzNjc2MDcsIm5iZiI6MTcwMTM2NzMwNywicGF0aCI6Ii80MzI5MTUvMjg3MDIyMDk3LWM0MzVhNDYwLWRiZTktNDdiMy1hN2I1LTJiOGFlNmI0YjRlNS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMTMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTEzMFQxODAxNDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kZTM2NTkxZTcwNTdjY2FjYjQ3ZTFkOWYyNjFlNWMwOTkzYWRmOGUwOTQ0Y2E0MGU4NTQxNWMxMzI4NDFmMTFmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.7q7IsFho08mu3dOTzJew4dQ1Wsg4F7xDO7BGIbr7GEs\" style=\"max-width: 100%;\"></a>\n<p dir=\"auto\">It might seem a little weird to list these as interfaces when they are not, really, but it's in line with our general approach of treating dictionaries like interfaces, which I think makes sense: I don't think readers really care about this distinction.</p>",
+            "url": "https://github.com/mdn/content/pull/30665",
+            "title": "groupdata: fold dictionary entries into interfaces field",
+            "date_modified": "2023-11-30T17:58:09.000Z",
+            "date_published": "2023-11-30T17:46:28.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">fix <code class=\"notranslate\">Geolocation.clearWatch()</code> method description</p>\n<p dir=\"auto\">also specific <code class=\"notranslate\">spec-urls</code> front matter key of Geolocation API, also add the <em>Extensions to other interfaces</em> section</p>\n<p dir=\"auto\">some other style update</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/30664",
             "title": "fix `Geolocation.clearWatch()` method description",
@@ -25,17 +36,6 @@
             "author": {
                 "name": "skyclouds2001",
                 "url": "https://github.com/skyclouds2001"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <code class=\"notranslate\">booleanattr=\"true\"</code> is a wrong value as per the <a href=\"https://html.spec.whatwg.org/#boolean-attributes\" rel=\"nofollow\">current HTML spec</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/30658",
-            "title": "fix(html): update boolean value description",
-            "date_modified": "2023-11-30T16:38:19.000Z",
-            "date_published": "2023-11-30T08:52:57.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
             }
         },
         {
@@ -77,17 +77,6 @@
             "title": "Remove links",
             "date_modified": "2023-11-30T13:27:09.000Z",
             "date_published": "2023-11-30T04:32:11.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Move guide per <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2014701204\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/185\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/185/hovercard\" href=\"https://github.com/openwebdocs/project/issues/185\">openwebdocs/project#185</a><br>\nUpdate guide to remove prefixing, \"not supported\", and \"modern web\" lingo<br>\nUpdate text to encourage supporting all input types all the time for good UX.<br>\nupdated links to page.</p>",
-            "url": "https://github.com/mdn/content/pull/30646",
-            "title": "Move user_input_methods guide",
-            "date_modified": "2023-11-30T09:12:49.000Z",
-            "date_published": "2023-11-30T04:22:26.000Z",
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
@@ -223,6 +212,17 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">here is better to use <code class=\"notranslate\">{{domxref(\"WorkerGlobalScope.self\",\"self\")}}</code> than <code class=\"notranslate\">{{domxref(\"Window.self\",\"self\")}}</code>, since this is in worker environment</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">this might relates with <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1973462485\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29975\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/29975/hovercard\" href=\"https://github.com/mdn/content/pull/29975\">#29975</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/30558",
+            "title": "fix a macros",
+            "date_modified": "2023-11-27T08:51:44.000Z",
+            "date_published": "2023-11-26T10:28:00.000Z",
+            "author": {
+                "name": "skyclouds2001",
+                "url": "https://github.com/skyclouds2001"
             }
         }
     ]
