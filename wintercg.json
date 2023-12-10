@@ -6,6 +6,17 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4174848?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The rudiments of a synchronous function to return the name of the runtime the script is running in <a href=\"https://gist.github.com/guest271314/13ae833d27395f3db7d3b683b02cc611\">https://gist.github.com/guest271314/13ae833d27395f3db7d3b683b02cc611</a></p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const runtime = () =&gt; {\n  // TODO: More direct and exclusionary way to do this for QuickJS\n  if (\n    !globalThis.hasOwnProperty(&quot;hasOwn&quot;) &amp;&amp;\n    Array.isArray(globalThis.scriptArgs)\n  ) {\n    return &quot;qjs&quot;;\n  }\n  if (Object.hasOwn(globalThis, &quot;tjs&quot;)) {\n    return globalThis.tjs.args[0];\n  }\n  if (Object.hasOwn(globalThis, &quot;process&quot;)) {\n    if (globalThis.process.argv0 === &quot;node&quot;) {\n      return globalThis.process.argv0;\n    }\n    if (\n      globalThis.process.argv0 === &quot;bun&quot; \n      &amp;&amp; globalThis.process.isBun) {\n      return globalThis.process.argv0;\n    }\n  }\n  if (Object.hasOwn(globalThis, &quot;Deno&quot;)) {\n    return Object.keys(globalThis.Deno.version).shift();\n  }\n};\n\nconsole.log(runtime());\"><pre class=\"notranslate\"><code class=\"notranslate\">const runtime = () =&gt; {\n  // TODO: More direct and exclusionary way to do this for QuickJS\n  if (\n    !globalThis.hasOwnProperty(\"hasOwn\") &amp;&amp;\n    Array.isArray(globalThis.scriptArgs)\n  ) {\n    return \"qjs\";\n  }\n  if (Object.hasOwn(globalThis, \"tjs\")) {\n    return globalThis.tjs.args[0];\n  }\n  if (Object.hasOwn(globalThis, \"process\")) {\n    if (globalThis.process.argv0 === \"node\") {\n      return globalThis.process.argv0;\n    }\n    if (\n      globalThis.process.argv0 === \"bun\" \n      &amp;&amp; globalThis.process.isBun) {\n      return globalThis.process.argv0;\n    }\n  }\n  if (Object.hasOwn(globalThis, \"Deno\")) {\n    return Object.keys(globalThis.Deno.version).shift();\n  }\n};\n\nconsole.log(runtime());\n</code></pre></div>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/62",
+            "title": "There's no common, global runtime identifier. How do you know which runtime your script is running in? ",
+            "date_modified": "2023-12-10T14:36:24.000Z",
+            "date_published": "2023-12-10T14:36:24.000Z",
+            "author": {
+                "name": "guest271314",
+                "url": "https://github.com/guest271314"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2352663?u=6d0db159fb863f7648118acf92b7960701228bf9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Hey, I'm sorry if this has already been discussed. I'm just wondering why an entirely new API is being designed when there is at least one existing proposal: <a href=\"https://wicg.github.io/direct-sockets/\" rel=\"nofollow\">https://wicg.github.io/direct-sockets/</a><br>\nHas it been considered to work with Google on that?</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/27",
             "title": "Why not follow existing proposals for Sockets API",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "guest271314",
                 "url": "https://github.com/guest271314"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/52195?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">One of the most annoying things in the ESM implementation in Node.js is the lack of <code class=\"notranslate\">__filename</code> and <code class=\"notranslate\">__dirname</code> to work with paths from ESM files.</p>\n<p dir=\"auto\">I would recommend we specify <code class=\"notranslate\">import.meta.dirname</code> and <code class=\"notranslate\">import.meta.filename</code> as optional shared metadata, returning the local paths in the filesystem as strings (and not <code class=\"notranslate\">file://</code> URLs).</p>\n<p dir=\"auto\">For more context: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1799813372\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/48740\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/48740/hovercard\" href=\"https://github.com/nodejs/node/pull/48740\">nodejs/node#48740</a></p>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/50",
-            "title": "import.meta.filename and import.meta.dirname",
-            "date_modified": "2023-10-20T07:22:48.000Z",
-            "date_published": "2023-08-02T11:52:50.000Z",
-            "author": {
-                "name": "mcollina",
-                "url": "https://github.com/mcollina"
             }
         }
     ]
