@@ -6,55 +6,11 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">its documentation has been added via <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2018114509\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/30654\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/30654/hovercard\" href=\"https://github.com/mdn/content/pull/30654\">mdn/content#30654</a></p>\n<p dir=\"auto\">see also <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Document\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/Document</a></p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/21718",
-            "title": "Add mdn_url for `Document.requestStorageAccessFor()`",
-            "date_modified": "2023-12-22T04:51:12.000Z",
-            "date_published": "2023-12-22T04:50:38.000Z",
-            "author": {
-                "name": "skyclouds2001",
-                "url": "https://github.com/skyclouds2001"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">see <a href=\"https://wicg.github.io/page-lifecycle/spec.html\" rel=\"nofollow\">https://wicg.github.io/page-lifecycle/spec.html</a></p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/21717",
-            "title": "Add spec-url for Page Lifecycle API",
-            "date_modified": "2023-12-22T04:49:40.000Z",
-            "date_published": "2023-12-22T04:43:27.000Z",
-            "author": {
-                "name": "skyclouds2001",
-                "url": "https://github.com/skyclouds2001"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">the page has already been written yet, see <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent</a></p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/21716",
-            "title": "Add mdn_url for `KeyboardEvent.initKeyboardEvent()`",
-            "date_modified": "2023-12-22T04:19:56.000Z",
-            "date_published": "2023-12-22T04:13:49.000Z",
-            "author": {
-                "name": "skyclouds2001",
-                "url": "https://github.com/skyclouds2001"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><code class=\"notranslate\">Element.checkVisibility</code> has an <code class=\"notranslate\">options</code> object parameter. In the spec this has two options, <code class=\"notranslate\">checkOpacity</code> and <code class=\"notranslate\">checkVisibilityCSS</code>, both of which are implemented AFAIK in Chrome (105) and Firefox (106) on first release of the method.</p>\n<p dir=\"auto\">The spec has an unmerged PR <a href=\"https://github.com/w3c/csswg-drafts/pull/9549\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/csswg-drafts/pull/9549/hovercard\">csswg-drafts#9549</a> to add three more options.</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">opacityProperty</code> and <code class=\"notranslate\">visibilityProperty</code> are aliases for the original names with a new naming convention. The old names are not yet \"deprecated\" in the spec.</li>\n<li><code class=\"notranslate\">contentVisibilityAuto</code> allows you to check if an element is being skipped for layout because it is not in the view.</li>\n</ul>\n<p dir=\"auto\">Even though the spec change hasn't merged, Chrome has implemented the <a href=\"https://groups.google.com/a/chromium.org/g/blink-dev/c/ruNqbP3wDSY/m/JZUK92gsAwAJ\" rel=\"nofollow\">change in 121</a> and Firefox has implemented it in nightly in FF122 (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1859852\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1859852</a>).</p>\n<ul dir=\"auto\">\n<li>This adds all the options as subfeatures. For FF the new options are marked as preview. For Chrome as 121.</li>\n<li>The new options are marked as experimental because FF is still in nightly</li>\n<li>The new options are marked as <code class=\"notranslate\">standard</code> even though the spec change has not merged. You might argue that.</li>\n<li>The old options are included because at some point they are going to be deprecated. TO me it makes sense to include them here so that when it is time to remove them that becomes easy.</li>\n</ul>\n<p dir=\"auto\">Note that it is not entirely clear that the new options are preview in the web IDL, however you really can't test <code class=\"notranslate\">contentVisibilityAuto</code> except in preview because the associated CSS is nightly only.<br>\nMy gut feeling is that all the options are actually \"released\", because I think the result of <code class=\"notranslate\">checkVisibility()</code> is correct whether or not you are in preview (because it defaults false, and the feature isn't enabled results in false). I'm asking on the issue, but would appreciate your opinion - in which case we'd set FF release on these to 122?</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2046498384\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31107\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31107/hovercard\" href=\"https://github.com/mdn/content/issues/31107\">mdn/content#31107</a></p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/Elchi3/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/Elchi3\">@Elchi3</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/queengooborg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/queengooborg\">@queengooborg</a> If you are around and able, review appreciated. Mostly because I'm around on and off over January.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/21715",
             "title": "Ff122 Element.checkVisibily options",
             "date_modified": "2023-12-22T04:46:06.000Z",
             "date_published": "2023-12-22T04:01:21.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF122 ships support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/transfer\" rel=\"nofollow\"><code class=\"notranslate\">ArrayBuffer.prototype.transfer()</code></a>, <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/transferToFixedLength\" rel=\"nofollow\"><code class=\"notranslate\">ArrayBuffer.prototype.transferToFixedLength()</code></a>,<a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/detached\" rel=\"nofollow\"><code class=\"notranslate\">ArrayBuffer.prototype.detached</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1865103\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1865103</a></p>\n<p dir=\"auto\">This adds a the version and changes the APIs to experimental \"false\"</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2046484533\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31101\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31101/hovercard\" href=\"https://github.com/mdn/content/issues/31101\">mdn/content#31101</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/21714",
-            "title": "FF122 ArrayBuffer.transfer() et al",
-            "date_modified": "2023-12-22T02:23:01.000Z",
-            "date_published": "2023-12-22T02:22:48.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
@@ -209,6 +165,28 @@
             "title": "Add missing features for outline-style CSS property",
             "date_modified": "2023-12-14T19:53:54.000Z",
             "date_published": "2023-12-14T19:53:53.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/118266?u=5a7fb2f3d1ecc7dcd73f43f4b478cb4938e6572c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">This PR drafts up the documentation for \"Invokers\" (<a href=\"https://open-ui.org/components/invokers.explainer/\" rel=\"nofollow\">OpenUI explainer</a>). This is a new experimental API for enabling buttons to control interactive elements.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ul dir=\"auto\">\n<li><a href=\"https://chromestatus.com/feature/5142517058371584\" rel=\"nofollow\">Chrome Platform Status feature</a></li>\n<li><a href=\"https://github.com/WebKit/WebKit/pull/18794\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/WebKit/WebKit/pull/18794/hovercard\">WebKit PR (merged)</a></li>\n<li><a href=\"https://chromium-review.googlesource.com/c/chromium/src/+/4926471?usp=search\" rel=\"nofollow\">Chromium PR (merged)</a></li>\n<li><a href=\"https://phabricator.services.mozilla.com/D189851\" rel=\"nofollow\">Mozilla PR (merged)</a></li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2028289084\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/30829\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/30829/hovercard\" href=\"https://github.com/mdn/content/pull/30829\">mdn/content#30829</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/21542",
+            "title": "add data for Invokers (invoketarget, invokeaction, InvokeEvent)",
+            "date_modified": "2023-12-11T11:58:35.000Z",
+            "date_published": "2023-12-08T09:58:51.000Z",
+            "author": {
+                "name": "keithamus",
+                "url": "https://github.com/keithamus"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Firefox and Firefox Android for the <code class=\"notranslate\">datalist</code> HTML element. This adds a note that the describes the behavior I discovered during testing, which is important to mention as developers may think the feature is unsupported otherwise.  <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #17753.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1368708435\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/17753\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/17753/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/17753\">#17753</a>.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/21533",
+            "title": "Update Firefox data for datalist HTML element",
+            "date_modified": "2023-12-08T09:32:12.000Z",
+            "date_published": "2023-12-08T07:31:15.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
