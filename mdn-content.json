@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">see spec <a href=\"https://wicg.github.io/cookie-store/\" rel=\"nofollow\">https://wicg.github.io/cookie-store/</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/31396",
+            "title": "update exception section for methods in `CookieStore`",
+            "date_modified": "2023-12-30T05:14:43.000Z",
+            "date_published": "2023-12-30T05:13:22.000Z",
+            "author": {
+                "name": "skyclouds2001",
+                "url": "https://github.com/skyclouds2001"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">see spec <a href=\"https://w3c.github.io/payment-request/\" rel=\"nofollow\">https://w3c.github.io/payment-request/</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">also reference to <a href=\"https://bugs.chromium.org/p/chromium/issues/detail?id=1514818\" rel=\"nofollow\">https://bugs.chromium.org/p/chromium/issues/detail?id=1514818</a>, which fire an issue that <code class=\"notranslate\">PaymentRequestUpdateEvent</code> incorrectly expose to insecure context</p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/31395",
+            "title": "PaymentRequest | fix apiref & add {{SecureContext_Header}}",
+            "date_modified": "2023-12-30T05:11:58.000Z",
+            "date_published": "2023-12-30T05:10:38.000Z",
+            "author": {
+                "name": "skyclouds2001",
+                "url": "https://github.com/skyclouds2001"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6511937?u=0ab671d9c66421b18bbf41bfd109359a3038327c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">In the latest versions of Chrome and Node.js, the maximum string length to my knowledge is 512MB irrespective of 32 vs 64 bit</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Correct info</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Me running this code locally in node.js on ubuntu</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"% node\nWelcome to Node.js v20.10.0.\nType &quot;.help&quot; for more information.\n&gt; const len = 536_870_889\nundefined\n&gt; const buf = new Uint8Array(len)\nundefined\n&gt; for (let i = 0; i &lt; len; i++) {\n...   buf[i] = 'a'.charCodeAt(0)\n... }\n\n&gt; const str = new TextDecoder().decode(buf)\nUncaught Error: Cannot create a string longer than 0x1fffffe8 characters\n    at TextDecoder.decode (node:internal/encoding:449:16) {\n  code: 'ERR_STRING_TOO_LONG'\n}\n&gt; console.log(str.length)\nUncaught ReferenceError: str is not defined\n&gt;\n\"><pre class=\"notranslate\"><code class=\"notranslate\">% node\nWelcome to Node.js v20.10.0.\nType \".help\" for more information.\n&gt; const len = 536_870_889\nundefined\n&gt; const buf = new Uint8Array(len)\nundefined\n&gt; for (let i = 0; i &lt; len; i++) {\n...   buf[i] = 'a'.charCodeAt(0)\n... }\n\n&gt; const str = new TextDecoder().decode(buf)\nUncaught Error: Cannot create a string longer than 0x1fffffe8 characters\n    at TextDecoder.decode (node:internal/encoding:449:16) {\n  code: 'ERR_STRING_TOO_LONG'\n}\n&gt; console.log(str.length)\nUncaught ReferenceError: str is not defined\n&gt;\n\n</code></pre></div>\n<p dir=\"auto\">in Chrome Version 120.0.6099.129 (Official Build) (64-bit) ubuntu</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const len = 536_870_889\nconst buf = new Uint8Array(len)\nfor (let i = 0; i &lt; len; i++) {\n  buf[i] = 'a'.charCodeAt(0)\n}\nconst str = new TextDecoder().decode(buf)\nconsole.log(str.length)\nVM80:7 0\"><pre class=\"notranslate\"><code class=\"notranslate\">const len = 536_870_889\nconst buf = new Uint8Array(len)\nfor (let i = 0; i &lt; len; i++) {\n  buf[i] = 'a'.charCodeAt(0)\n}\nconst str = new TextDecoder().decode(buf)\nconsole.log(str.length)\nVM80:7 0\n</code></pre></div>\n<p dir=\"auto\">random related thing: i wrote about this awhile back but was notified that the docs here said otherwise <a href=\"https://cmdcolin.github.io/posts/2021-10-30-spooky\" rel=\"nofollow\">https://cmdcolin.github.io/posts/2021-10-30-spooky</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
             "url": "https://github.com/mdn/content/pull/31393",
             "title": "Update maximum string length in V8/Node/Chrome",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "teoli2003",
                 "url": "https://github.com/teoli2003"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF122 adds support to get whether an element's rendering is been skipped due to <code class=\"notranslate\">content-visibility:auto</code> being set. The support is a new property of the <code class=\"notranslate\">Element.checkVisibility()</code> options parameter object named <code class=\"notranslate\">contentVisibilityAuto</code>. There are also two other options   <code class=\"notranslate\">opacityProperty</code> and <code class=\"notranslate\">visibilityProperty</code> created as aliases of other existing options in the same bugzilla <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1859852\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1859852</a></p>\n<p dir=\"auto\">This adds docs for the <code class=\"notranslate\">checkVisibility()</code> method.</p>\n<p dir=\"auto\">Other docs work for this can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2046498384\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31107\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31107/hovercard\" href=\"https://github.com/mdn/content/issues/31107\">#31107</a></p>\n<p dir=\"auto\">Note, the example seems to show some issue with the default behaviour for checkVisibility on Firefox. See <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1859852#c7\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1859852#c7</a></p>",
-            "url": "https://github.com/mdn/content/pull/31322",
-            "title": "Element.checkVisibility() - docs",
-            "date_modified": "2023-12-27T07:20:38.000Z",
-            "date_published": "2023-12-27T06:30:36.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/297678?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><a href=\"https://lume.io\" rel=\"nofollow\">https://lume.io</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">To help web developers around the world more easily write 3D content with vanila HTML; or within their favorite web frameworks such as React, Vue, Angular, Svelte, Solid.js; in the simplest way without needing to know higher-level JavaScript (as we do with plain JS engines such as Three.js, PlayCanvas, or Babylon.js).</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Besides aiming to make 3D in the web easier, Lume aims to make it robot and human accessible. Lume's elements can be rendered from server-side applications, indexed by search engines, or described to blind users via screen readers with the help of ARIA attributes.</p>\n<p dir=\"auto\">Lume has embarked on a journey to try to answer the question \"what might 3D HTML in future browsers look like?\" A-Frame had the first attempt, but we still have a ways to go, and Lume provides a fresh set of new and improved ideas that fully embrace the future of web development.</p>\n<p dir=\"auto\">For example Lume elements support having <code class=\"notranslate\">ShadowRoot</code>s and are fully composable with <code class=\"notranslate\">&lt;slot&gt;</code> elements, giving developers the ability to compose higher-level 3D elements out of Lume's lower-level 3D elements. This is unlike React/Vue/Svelte whose components are not compatible with web standards and not interoperable, not inspectable in devtools out of the box, etc.</p>\n<p dir=\"auto\">Lume elements are highly-inspectable and debuggable in a browser's element inspector! <a href=\"https://docs.lume.io/guide/debugging\" rel=\"nofollow\">See a demo</a> of hovering on an element in element inspector and seeing the location of the 3D model on the screen.</p>\n<p dir=\"auto\">So, it is time! I aim to get Lume into people's hands and begin to teach the world not only the simplest, but also the best and most futureproof, way to write the 3D web apps.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>",
-            "url": "https://github.com/mdn/content/pull/31316",
-            "title": "Add Lume to list of WebGL libraries.",
-            "date_modified": "2023-12-27T04:32:47.000Z",
-            "date_published": "2023-12-27T04:31:10.000Z",
-            "author": {
-                "name": "trusktr",
-                "url": "https://github.com/trusktr"
             }
         }
     ]
