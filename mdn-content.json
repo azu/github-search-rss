@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6511937?u=0ab671d9c66421b18bbf41bfd109359a3038327c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">In the latest versions of Chrome and Node.js, the maximum string length to my knowledge is 512MB irrespective of 32 vs 64 bit</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Correct info</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Me running this code locally in node.js on ubuntu</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"% node\nWelcome to Node.js v20.10.0.\nType &quot;.help&quot; for more information.\n&gt; const len = 536_870_889\nundefined\n&gt; const buf = new Uint8Array(len)\nundefined\n&gt; for (let i = 0; i &lt; len; i++) {\n...   buf[i] = 'a'.charCodeAt(0)\n... }\n\n&gt; const str = new TextDecoder().decode(buf)\nUncaught Error: Cannot create a string longer than 0x1fffffe8 characters\n    at TextDecoder.decode (node:internal/encoding:449:16) {\n  code: 'ERR_STRING_TOO_LONG'\n}\n&gt; console.log(str.length)\nUncaught ReferenceError: str is not defined\n&gt;\n\"><pre class=\"notranslate\"><code class=\"notranslate\">% node\nWelcome to Node.js v20.10.0.\nType \".help\" for more information.\n&gt; const len = 536_870_889\nundefined\n&gt; const buf = new Uint8Array(len)\nundefined\n&gt; for (let i = 0; i &lt; len; i++) {\n...   buf[i] = 'a'.charCodeAt(0)\n... }\n\n&gt; const str = new TextDecoder().decode(buf)\nUncaught Error: Cannot create a string longer than 0x1fffffe8 characters\n    at TextDecoder.decode (node:internal/encoding:449:16) {\n  code: 'ERR_STRING_TOO_LONG'\n}\n&gt; console.log(str.length)\nUncaught ReferenceError: str is not defined\n&gt;\n\n</code></pre></div>\n<p dir=\"auto\">in Chrome Version 120.0.6099.129 (Official Build) (64-bit) ubuntu</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const len = 536_870_889\nconst buf = new Uint8Array(len)\nfor (let i = 0; i &lt; len; i++) {\n  buf[i] = 'a'.charCodeAt(0)\n}\nconst str = new TextDecoder().decode(buf)\nconsole.log(str.length)\nVM80:7 0\"><pre class=\"notranslate\"><code class=\"notranslate\">const len = 536_870_889\nconst buf = new Uint8Array(len)\nfor (let i = 0; i &lt; len; i++) {\n  buf[i] = 'a'.charCodeAt(0)\n}\nconst str = new TextDecoder().decode(buf)\nconsole.log(str.length)\nVM80:7 0\n</code></pre></div>\n<p dir=\"auto\">random related thing: i wrote about this awhile back but was notified that the docs here said otherwise <a href=\"https://cmdcolin.github.io/posts/2021-10-30-spooky\" rel=\"nofollow\">https://cmdcolin.github.io/posts/2021-10-30-spooky</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
+            "url": "https://github.com/mdn/content/pull/31393",
+            "title": "Update maximum string length in V8/Node/Chrome",
+            "date_modified": "2023-12-29T23:46:58.000Z",
+            "date_published": "2023-12-29T23:31:52.000Z",
+            "author": {
+                "name": "cmdcolin",
+                "url": "https://github.com/cmdcolin"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7203944?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Replace \"and will evaluate the next <code class=\"notranslate\">case</code>\" with \"and will execute the next <code class=\"notranslate\">case</code>\" when <code class=\"notranslate\">break</code> is omitted.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The page currently states:</p>\n<blockquote>\n<p dir=\"auto\">If break is omitted, the program continues execution inside the switch statement (and will evaluate the next case, and so on).</p>\n</blockquote>\n<p dir=\"auto\">The wording \"will evaluate the next <code class=\"notranslate\">case</code>\" might be read as \"will evaluate the next <code class=\"notranslate\">case</code> and execute the statements only if it matches\".</p>\n<p dir=\"auto\">Also, <code class=\"notranslate\">break</code> is part of the statements to be executed, so I wouldn't use the verb \"evaluate\" for something that happens during or after statement execution (evaluation already happend at this point and a match was found).</p>\n<p dir=\"auto\">The example right below demonstrates switch fall-through in more detail.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">As defined in the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch#breaking_and_fall-through\" rel=\"nofollow\">switch</a> reference page:</p>\n<blockquote>\n<p dir=\"auto\">The clause expressions are only evaluated when necessary — if a match is already found, subsequent case clause expressions will not be evaluated, even when they will be visited by fall-through.</p>\n</blockquote>\n<blockquote>\n<p dir=\"auto\">If <code class=\"notranslate\">break</code> is omitted, execution will proceed to the next <code class=\"notranslate\">case</code> clause, even to the <code class=\"notranslate\">default</code> clause, regardless of whether the value of that clause's expression matches. This behavior is called \"fall-through\".</p>\n</blockquote>\n",
             "url": "https://github.com/mdn/content/pull/31391",
             "title": "JS Guide: Improve switch fall-through summary",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "trusktr",
                 "url": "https://github.com/trusktr"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/129318651?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">caption is improved</p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/31303",
-            "title": "Table caption in learn tables",
-            "date_modified": "2023-12-26T21:08:50.000Z",
-            "date_published": "2023-12-26T10:21:03.000Z",
-            "author": {
-                "name": "Bakerboonsa11",
-                "url": "https://github.com/Bakerboonsa11"
             }
         }
     ]
