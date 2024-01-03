@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/70535775?u=8e61535b12042d2c98a749d7a56b8d5fb9f1befc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This pull request <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #30603.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2014931926\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/30603\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/30603/hovercard\" href=\"https://github.com/mdn/content/issues/30603\">#30603</a><br>\nIt removes the IE mentioned in the tutorial and refactors that sentence as per <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/jfc3-dol/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/jfc3-dol\">@jfc3-dol</a>'s comment.</p>\n<p dir=\"auto\">(This is a very tiny PR, but the whole tutorial is outdated in several places already and could use some refreshment indeed.)</p>",
+            "url": "https://github.com/mdn/content/pull/31492",
+            "title": "Remove IE mentioned from React tutorial",
+            "date_modified": "2024-01-03T18:50:05.000Z",
+            "date_published": "2024-01-03T18:48:43.000Z",
+            "author": {
+                "name": "BartoszKlonowski",
+                "url": "https://github.com/BartoszKlonowski"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><g-emoji class=\"g-emoji\" alias=\"warning\">⚠️</g-emoji> This is a draft because the demo doesn’t work with client-side rendered playground yet</p>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Declarative shadow DOM reuses the <code class=\"notranslate\">&lt;template&gt;</code> element for generating shadow root in the presence of the <code class=\"notranslate\">shadowrootmode</code> attribute. This element is no longer for templating only, that needs to be reflected, too.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">To support existing implementations in Chrome and Safari and prepare for the upcoming Firefox support.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2046489003\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31102\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31102/hovercard\" href=\"https://github.com/mdn/content/issues/31102\">#31102</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/31490",
             "title": "Update template element description and add shadowrootmode attribute",
@@ -20,7 +31,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/116658?u=e8480efcf11f4b527687463954b181f2e8e34b2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This line is not correct.<br>\nIt does need to come before functions in 3D to properly apply to them, but the transform will still work if it's not listed first.<br>\nIn some cases it's even necessary to insert other functions before it. E.g. manually applying a transform-origin without using <code class=\"notranslate\">transform-origin</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/31486",
             "title": "Removed line about perspective() needing to be listed first",
-            "date_modified": "2024-01-03T15:49:33.000Z",
+            "date_modified": "2024-01-03T18:58:09.000Z",
             "date_published": "2024-01-03T13:00:48.000Z",
             "author": {
                 "name": "ydaniv",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "skyclouds2001",
                 "url": "https://github.com/skyclouds2001"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6511937?u=0ab671d9c66421b18bbf41bfd109359a3038327c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">In the latest versions of Chrome and Node.js, the maximum string length to my knowledge is 512MB irrespective of 32 vs 64 bit</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Correct info</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Me running this code locally in node.js on ubuntu</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"% node\nWelcome to Node.js v20.10.0.\nType &quot;.help&quot; for more information.\n&gt; const len = 536_870_889\nundefined\n&gt; const buf = new Uint8Array(len)\nundefined\n&gt; for (let i = 0; i &lt; len; i++) {\n...   buf[i] = 'a'.charCodeAt(0)\n... }\n\n&gt; const str = new TextDecoder().decode(buf)\nUncaught Error: Cannot create a string longer than 0x1fffffe8 characters\n    at TextDecoder.decode (node:internal/encoding:449:16) {\n  code: 'ERR_STRING_TOO_LONG'\n}\n&gt; console.log(str.length)\nUncaught ReferenceError: str is not defined\n&gt;\n\"><pre class=\"notranslate\"><code class=\"notranslate\">% node\nWelcome to Node.js v20.10.0.\nType \".help\" for more information.\n&gt; const len = 536_870_889\nundefined\n&gt; const buf = new Uint8Array(len)\nundefined\n&gt; for (let i = 0; i &lt; len; i++) {\n...   buf[i] = 'a'.charCodeAt(0)\n... }\n\n&gt; const str = new TextDecoder().decode(buf)\nUncaught Error: Cannot create a string longer than 0x1fffffe8 characters\n    at TextDecoder.decode (node:internal/encoding:449:16) {\n  code: 'ERR_STRING_TOO_LONG'\n}\n&gt; console.log(str.length)\nUncaught ReferenceError: str is not defined\n&gt;\n\n</code></pre></div>\n<p dir=\"auto\">in Chrome Version 120.0.6099.129 (Official Build) (64-bit) ubuntu</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const len = 536_870_889\nconst buf = new Uint8Array(len)\nfor (let i = 0; i &lt; len; i++) {\n  buf[i] = 'a'.charCodeAt(0)\n}\nconst str = new TextDecoder().decode(buf)\nconsole.log(str.length)\nVM80:7 0\"><pre class=\"notranslate\"><code class=\"notranslate\">const len = 536_870_889\nconst buf = new Uint8Array(len)\nfor (let i = 0; i &lt; len; i++) {\n  buf[i] = 'a'.charCodeAt(0)\n}\nconst str = new TextDecoder().decode(buf)\nconsole.log(str.length)\nVM80:7 0\n</code></pre></div>\n<p dir=\"auto\">random related thing: i wrote about this awhile back but was notified that the docs here said otherwise <a href=\"https://cmdcolin.github.io/posts/2021-10-30-spooky\" rel=\"nofollow\">https://cmdcolin.github.io/posts/2021-10-30-spooky</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
-            "url": "https://github.com/mdn/content/pull/31393",
-            "title": "Update maximum string length in V8/Node/Chrome",
-            "date_modified": "2023-12-30T06:50:03.000Z",
-            "date_published": "2023-12-29T23:31:52.000Z",
-            "author": {
-                "name": "cmdcolin",
-                "url": "https://github.com/cmdcolin"
             }
         }
     ]
