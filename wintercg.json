@@ -64,22 +64,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/895923?u=ee2417210461abea5b06cf6aea5492220ecdadf7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Was trying to follow the steps in the <em>README</em> to run the site locally, and experienced this issue</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"➜  www git:(main) deno run -A --no-check main.jsx\nerror: The source code is invalid, as it does not match the expected hash in the lock file.\n  Specifier: https://esm.sh/*@twind/typography@0.0.2\n  Lock file: /Users/owenbuckley/Workspace/github/wintercg/www/deno.lock\"><pre class=\"notranslate\">➜  www git:(main) deno run -A --no-check main.jsx\nerror: The <span class=\"pl-c1\">source</span> code is invalid, as it does not match the expected <span class=\"pl-c1\">hash</span> <span class=\"pl-k\">in</span> the lock file.\n  Specifier: https://esm.sh/<span class=\"pl-k\">*</span>@twind/typography@0.0.2\n  Lock file: /Users/owenbuckley/Workspace/github/wintercg/www/deno.lock</pre></div>\n<p dir=\"auto\">Can confirm that <strong>deno</strong> is installed locally</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"➜  www git:(main) deno --version\ndeno 1.38.0 (release, aarch64-apple-darwin)\nv8 12.0.267.1\ntypescript 5.2.2\"><pre class=\"notranslate\">➜  www git:(main) deno --version\ndeno 1.38.0 (release, aarch64-apple-darwin)\nv8 12.0.267.1\ntypescript 5.2.2</pre></div>\n<p dir=\"auto\">Any thoughts?  I'm new to deno, so not sure if it is just user error or something else 😅</p>",
             "url": "https://github.com/wintercg/www/issues/37",
             "title": "not able to run the website locally",
-            "date_modified": "2023-11-02T16:09:02.000Z",
+            "date_modified": "2024-01-04T15:57:03.000Z",
             "date_published": "2023-11-02T15:29:43.000Z",
             "author": {
                 "name": "thescientist13",
                 "url": "https://github.com/thescientist13"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/188257?u=5972424c4a683223929b7b3d783d34948b640399&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Headers.entries is implemented in some WinterCG runtimes (Deno Deploy &amp; Cloudflare Workers) but is not in the spec.<br>\nHere's the example:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"self.addEventListener('fetch', event =&gt; {\n  let headers = event.request.headers;\n  event.respondWith(new Response(`typeof headers.entries == &quot;${typeof headers.entries}&quot;`));\n})\"><pre class=\"notranslate\"><span class=\"pl-s1\">self</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addEventListener</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'fetch'</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">event</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-k\">let</span> <span class=\"pl-s1\">headers</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">event</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">request</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">headers</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-s1\">event</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">respondWith</span><span class=\"pl-kos\">(</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">Response</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`typeof headers.entries == \"<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-k\">typeof</span> <span class=\"pl-s1\">headers</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">entries</span><span class=\"pl-kos\">}</span></span>\"`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span></pre></div>\n<p dir=\"auto\">See related issue on WinterJS: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1973304142\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wasmerio/winterjs/issues/25\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wasmerio/winterjs/issues/25/hovercard?comment_id=1790851061&amp;comment_type=issue_comment\" href=\"https://github.com/wasmerio/winterjs/issues/25#issuecomment-1790851061\">wasmerio/winterjs#25 (comment)</a></p>\n<p dir=\"auto\">Should <code class=\"notranslate\">entries</code> be added to the spec so Cloudflare and Deno Deploy stay compliant with the spec and the rest of runtimes add support as well?</p>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/60",
-            "title": "Spec missing Headers.entries",
-            "date_modified": "2023-12-07T15:21:03.000Z",
-            "date_published": "2023-11-02T14:35:48.000Z",
-            "author": {
-                "name": "syrusakbary",
-                "url": "https://github.com/syrusakbary"
             }
         },
         {
@@ -223,6 +212,17 @@
             "author": {
                 "name": "guest271314",
                 "url": "https://github.com/guest271314"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/52195?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">One of the most annoying things in the ESM implementation in Node.js is the lack of <code class=\"notranslate\">__filename</code> and <code class=\"notranslate\">__dirname</code> to work with paths from ESM files.</p>\n<p dir=\"auto\">I would recommend we specify <code class=\"notranslate\">import.meta.dirname</code> and <code class=\"notranslate\">import.meta.filename</code> as optional shared metadata, returning the local paths in the filesystem as strings (and not <code class=\"notranslate\">file://</code> URLs).</p>\n<p dir=\"auto\">For more context: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1799813372\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/48740\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/48740/hovercard\" href=\"https://github.com/nodejs/node/pull/48740\">nodejs/node#48740</a></p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/50",
+            "title": "import.meta.filename and import.meta.dirname",
+            "date_modified": "2023-10-20T07:22:48.000Z",
+            "date_published": "2023-08-02T11:52:50.000Z",
+            "author": {
+                "name": "mcollina",
+                "url": "https://github.com/mcollina"
             }
         }
     ]
