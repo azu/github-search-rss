@@ -61,17 +61,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/895923?u=ee2417210461abea5b06cf6aea5492220ecdadf7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Was trying to follow the steps in the <em>README</em> to run the site locally, and experienced this issue</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"➜  www git:(main) deno run -A --no-check main.jsx\nerror: The source code is invalid, as it does not match the expected hash in the lock file.\n  Specifier: https://esm.sh/*@twind/typography@0.0.2\n  Lock file: /Users/owenbuckley/Workspace/github/wintercg/www/deno.lock\"><pre class=\"notranslate\">➜  www git:(main) deno run -A --no-check main.jsx\nerror: The <span class=\"pl-c1\">source</span> code is invalid, as it does not match the expected <span class=\"pl-c1\">hash</span> <span class=\"pl-k\">in</span> the lock file.\n  Specifier: https://esm.sh/<span class=\"pl-k\">*</span>@twind/typography@0.0.2\n  Lock file: /Users/owenbuckley/Workspace/github/wintercg/www/deno.lock</pre></div>\n<p dir=\"auto\">Can confirm that <strong>deno</strong> is installed locally</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"➜  www git:(main) deno --version\ndeno 1.38.0 (release, aarch64-apple-darwin)\nv8 12.0.267.1\ntypescript 5.2.2\"><pre class=\"notranslate\">➜  www git:(main) deno --version\ndeno 1.38.0 (release, aarch64-apple-darwin)\nv8 12.0.267.1\ntypescript 5.2.2</pre></div>\n<p dir=\"auto\">Any thoughts?  I'm new to deno, so not sure if it is just user error or something else 😅</p>",
-            "url": "https://github.com/wintercg/www/issues/37",
-            "title": "not able to run the website locally",
-            "date_modified": "2024-01-04T15:57:03.000Z",
-            "date_published": "2023-11-02T15:29:43.000Z",
-            "author": {
-                "name": "thescientist13",
-                "url": "https://github.com/thescientist13"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/246651?u=80e18ea8c1e4cba31f0f0e3de791b33f0d36c523&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">From <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1941459453\" data-permission-text=\"Title is private\" data-url=\"https://github.com/cloudflare/workerd/issues/1305\" data-hovercard-type=\"issue\" data-hovercard-url=\"/cloudflare/workerd/issues/1305/hovercard\" href=\"https://github.com/cloudflare/workerd/issues/1305\">cloudflare/workerd#1305</a> we've realised that we should define what should happen when <code class=\"notranslate\">close</code> is called on a socket that already had its <code class=\"notranslate\">closed</code> promise rejected.</p>\n<p dir=\"auto\">When the <code class=\"notranslate\">closed</code> promise is resolved then the answer is easy: <code class=\"notranslate\">close</code> does nothing.</p>\n<p dir=\"auto\">But when <code class=\"notranslate\">closed</code> is rejected, we have a couple of options:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">close</code> throws the exception in <code class=\"notranslate\">closed</code></li>\n<li><code class=\"notranslate\">close</code> doesn't throw <strong>and</strong> leaves the <code class=\"notranslate\">closed</code> promise unchanged (so it remains rejected)</li>\n</ul>\n<p dir=\"auto\">Workerd currently does a third option, which I think just leads to gotchas so I want to change it, where <code class=\"notranslate\">close</code> doesn't throw but also resolves the <code class=\"notranslate\">closed</code> promise which means the exception can be lost.</p>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/24",
             "title": "sockets.close behaviour when `closed` already rejected",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "mcollina",
                 "url": "https://github.com/mcollina"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/21236?u=b06abb428eb56148f0d63ed53b83bcc4026226b1&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">APIs proposed here address the problem of hashing / signing / verifying content that is too large to hold in memory, which is great. Unfortunately it does not address use cases where you need to do those operations incrementally e.g. when large stream of data is transferred over some channel you may want to send checksums along the way.</p>\n<p dir=\"auto\">With the drafted API it would require replaying all the previous bytes. In contrast node's crypto APIs provide you with <code class=\"notranslate\">.copy()</code> method on a hasher so you can continue writing into hasher.</p>\n<p dir=\"auto\">Perhaps something along the same lines could be done here as well, e.g. instead of hashing / signing / verifying readable stream, one could create hasher / signer / verifier instance from readable stream, with a method method <code class=\"notranslate\">digest</code> / <code class=\"notranslate\">sign</code> / <code class=\"notranslate\">verify</code> to compute result for the bytes that had been written so far.</p>",
+            "url": "https://github.com/wintercg/proposal-webcrypto-streams/issues/7",
+            "title": "Incremental hashing / signing ",
+            "date_modified": "2023-07-20T19:03:20.000Z",
+            "date_published": "2023-07-20T19:03:20.000Z",
+            "author": {
+                "name": "Gozala",
+                "url": "https://github.com/Gozala"
             }
         }
     ]
