@@ -105,17 +105,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/628926?u=005309ed463151dd6cf918269125f91578f15096&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Your spec sites are all down.. Like: <a href=\"https://common-min-api.proposal.wintercg.org/\" rel=\"nofollow\">https://common-min-api.proposal.wintercg.org/</a></p>",
-            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/59",
-            "title": "Spec websites are down",
-            "date_modified": "2023-10-25T18:38:51.000Z",
-            "date_published": "2023-10-05T20:13:17.000Z",
-            "author": {
-                "name": "melroy89",
-                "url": "https://github.com/melroy89"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/439929?u=88483145a53c3d594ab68146c1a8bdecc3bcd1d3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Because the socket API builds on the streams spec, it would be helpful for performance tuning to be able to specify the readable and writable queuing strategies. For example,</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const socket = connect('https://example.org', {\n  writableStrategy: { highWaterMark: 4096 },\n  readableStrategy: { highWaterMark: 4096 },\n});\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">socket</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">connect</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'https://example.org'</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-c1\">writableStrategy</span>: <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">highWaterMark</span>: <span class=\"pl-c1\">4096</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n  <span class=\"pl-c1\">readableStrategy</span>: <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">highWaterMark</span>: <span class=\"pl-c1\">4096</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>",
             "url": "https://github.com/wintercg/proposal-sockets-api/issues/20",
             "title": "Writable and Readable QueuingStrategies",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "Gozala",
                 "url": "https://github.com/Gozala"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4174848?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Take a look at these Native Messaging hosts written in JavaScript; Node.js, Deno, Bun, QuickJS, txiki.js. They implement reading stdin and writing stdout differently.</p>\n<p dir=\"auto\">The last time I check <code class=\"notranslate\">d8</code> (V8) and <code class=\"notranslate\">jsshell</code> (SpiderMonkey) provide no means to read stdin and write stdout using <code class=\"notranslate\">TypedArray</code>s (buffers).</p>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_nodejs.mjs\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_nodejs.mjs</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_deno.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_deno.js</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_qjs.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_qjs.js</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_tjs.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_tjs.js</a></li>\n<li><a href=\"https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_bun.js\">https://github.com/guest271314/NativeMessagingHosts/blob/main/nm_bun.js</a></li>\n</ul>\n<p dir=\"auto\">Node.js does not write more than 65536 to stdout without <code class=\"notranslate\">process.stdout._handle.setBlocking(true)</code>, at least not during my testing; Deno, Node.js, Bun; txiki.js all require multiple reads to read 1 MB from stdin after reading the first 4 bytes, QuickJS reads the full 1 MB in one read.</p>\n<p dir=\"auto\">A common stdin/stdout.stderr module that can be imported (CommonJS, Ecmascript Modules, whatever) and is capable of assuming responsibility of writing string or buffer at author/application discretion will be very helpful as a common specification that can be implemented for JavaScript implementations.</p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/47",
+            "title": "Common I/O (stdin/stdout/stderr) module specification",
+            "date_modified": "2023-11-17T06:49:08.000Z",
+            "date_published": "2023-07-11T02:14:22.000Z",
+            "author": {
+                "name": "guest271314",
+                "url": "https://github.com/guest271314"
             }
         }
     ]
