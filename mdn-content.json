@@ -193,17 +193,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Addresses the documentation needs of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1877223\" rel=\"nofollow\">Bug 1877223</a> \"syntax and handling of async runtime.onMessage listeners is confusing\" by clarifying that appending <code class=\"notranslate\">async</code> to the function when using the option to return <code class=\"notranslate\">true</code> from the event listener doesn't work as expected.</p>",
-            "url": "https://github.com/mdn/content/pull/32060",
-            "title": "async runtime.onMessage listeners clarification",
-            "date_modified": "2024-02-02T01:19:21.000Z",
-            "date_published": "2024-02-01T15:31:36.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/15235202?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">CacheStorage page: InstallEvent is deprecated. I replaced it with what I hope is the correct text, \"install event\", and what I'm sure is the correct link.</p>\n<p dir=\"auto\">InstallEvent page: The blue Note is the most important thing users need to know and is specific to this page, whereas the red warning boxes are generic text, thus I put the Note at the top of the page.</p>",
             "url": "https://github.com/mdn/content/pull/32058",
             "title": "IntallEvent vs install event",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "they-cloned-me",
                 "url": "https://github.com/they-cloned-me"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is the first piece of updating globals, as discussed in <a href=\"https://github.com/orgs/mdn/discussions/360\">https://github.com/orgs/mdn/discussions/360</a>.</p>\n<p dir=\"auto\">It updates a single page, <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/indexedDB\" rel=\"nofollow\"><code class=\"notranslate\">indexedDB</code></a>, as a test.</p>\n<p dir=\"auto\">The procedure is:</p>\n<ul dir=\"auto\">\n<li>yarn content move the global page to be under <code class=\"notranslate\">Window</code>.</li>\n<li>update the page under <code class=\"notranslate\">Window</code> to be an instance property page, and update the content accordingly</li>\n<li>create a new version of the page under <code class=\"notranslate\">WorkerGlobalScope</code>, that's worker-specific</li>\n<li>manually delete the redirect from <code class=\"notranslate\">Web/API/WorkerGlobalScope/indexedDB</code> to <code class=\"notranslate\">Web/API/indexedDB</code></li>\n</ul>\n<p dir=\"auto\">The BCD is still weird, \"api.indexedDB\" rather than \"api.Window.indexedDB\", but I'm not going to try to fix that here.</p>\n<p dir=\"auto\">(In this PR I also updated the main <code class=\"notranslate\">WorkerGlobalScope</code> page to not have a separate section for nonstandard members. For the sake of simplicity, I probably should have left that alone.)</p>",
+            "url": "https://github.com/mdn/content/pull/32040",
+            "title": "Fix globals, part 1: indexedDB",
+            "date_modified": "2024-02-01T18:20:26.000Z",
+            "date_published": "2024-01-31T21:01:18.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
             }
         }
     ]
