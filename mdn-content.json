@@ -9,7 +9,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">update more possible values for <code class=\"notranslate\">Credential.type</code> (<code class=\"notranslate\">identity</code> and <code class=\"notranslate\">otp</code>, refer to <code class=\"notranslate\">IdentityCredential</code> and <code class=\"notranslate\">OTPCredential</code>)</p>\n<p dir=\"auto\">and small fix to example</p>\n<p dir=\"auto\">see also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2076273776\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31658\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/31658/hovercard?comment_id=1926167546&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/pull/31658#issuecomment-1926167546\">#31658 (comment)</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/32117",
             "title": "Update possible values for `Credential.type`",
-            "date_modified": "2024-02-05T04:42:49.000Z",
+            "date_modified": "2024-02-05T10:20:01.000Z",
             "date_published": "2024-02-05T04:33:26.000Z",
             "author": {
                 "name": "skyclouds2001",
@@ -160,17 +160,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The auto sync script is evolving. Updating missing headers first.</p>\n<p dir=\"auto\">These files exactly match the files in the <code class=\"notranslate\">Secure context in WebIDL, not secure context in MDN</code> list provided in <a href=\"https://github.com/wbamberg/securecontext-checker/blob/main/secure-context-analysis.md#secure-context-in-webidl-not-secure-context-in-mdn\">securecontext-checker<br>\n/secure-context-analysis.md</a>.</p>\n<p dir=\"auto\">cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a></p>",
-            "url": "https://github.com/mdn/content/pull/32085",
-            "title": "fix(api): add missing SecureContext_Header macros",
-            "date_modified": "2024-02-02T17:36:07.000Z",
-            "date_published": "2024-02-02T17:31:12.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add details for <code class=\"notranslate\">world</code> in the <code class=\"notranslate\">content_scripts</code> manifest key.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The feature is supported in Chrome and planned for Firefox (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1736575\" rel=\"nofollow\">Bug 1736575</a> Support execution world MAIN in <code class=\"notranslate\">scripting.executeScript()</code> and content_scripts.)</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related BCD changes in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2113904892\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/22139\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/22139/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/22139\">mdn/browser-compat-data#22139</a></p>",
             "url": "https://github.com/mdn/content/pull/32084",
             "title": "Add webextensions.manifest.content scripts.world",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "they-cloned-me",
                 "url": "https://github.com/they-cloned-me"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is the first piece of updating globals, as discussed in <a href=\"https://github.com/orgs/mdn/discussions/360\">https://github.com/orgs/mdn/discussions/360</a>.</p>\n<p dir=\"auto\">It updates a single page, <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/indexedDB\" rel=\"nofollow\"><code class=\"notranslate\">indexedDB</code></a>, as a test.</p>\n<p dir=\"auto\">The procedure is:</p>\n<ul dir=\"auto\">\n<li>yarn content move the global page to be under <code class=\"notranslate\">Window</code>.</li>\n<li>update the page under <code class=\"notranslate\">Window</code> to be an instance property page, and update the content accordingly</li>\n<li>create a new version of the page under <code class=\"notranslate\">WorkerGlobalScope</code>, that's worker-specific</li>\n<li>manually delete the redirect from <code class=\"notranslate\">Web/API/WorkerGlobalScope/indexedDB</code> to <code class=\"notranslate\">Web/API/indexedDB</code></li>\n</ul>\n<p dir=\"auto\">The BCD is still weird, \"api.indexedDB\" rather than \"api.Window.indexedDB\", but I'm not going to try to fix that here.</p>\n<p dir=\"auto\">(In this PR I also updated the main <code class=\"notranslate\">WorkerGlobalScope</code> page to not have a separate section for nonstandard members. For the sake of simplicity, I probably should have left that alone.)</p>",
+            "url": "https://github.com/mdn/content/pull/32040",
+            "title": "Fix globals, part 1: indexedDB",
+            "date_modified": "2024-02-01T18:20:26.000Z",
+            "date_published": "2024-01-31T21:01:18.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
             }
         }
     ]
