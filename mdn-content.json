@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF123 supports Feature policy <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy/publickey-credentials-create\" rel=\"nofollow\"><code class=\"notranslate\">publickey-credentials-create</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1870863\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1870863</a><br>\nAs per usual for FF, this can't be set on the header, but only via <code class=\"notranslate\">allow</code> on the frame.</p>\n<p dir=\"auto\">This attempts to update the docs with some corrections according to advice from engineers and my interpretation of the spec. Note that I think there are probably more relevant exceptions, but I don't propose to go through all the specs right now.</p>\n<p dir=\"auto\">The specific issues fixed are:</p>\n<ol dir=\"auto\">\n<li>Docs say creating/getting a credential is a <code class=\"notranslate\">SecurityError</code>. Spec says <code class=\"notranslate\">NotAllowedError</code> <a href=\"https://w3c.github.io/webappsec-credential-management/#algorithm-create\" rel=\"nofollow\">in step 5 here</a></li>\n<li>If allow is declared in an iframe then transient activation is required on the iframe as well, or you get the same error.</li>\n<li>This explicitly said you can't use <code class=\"notranslate\">create()</code> in an iframe, but that was changed in WebAuthn spec in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1372146083\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/webauthn/issues/1801\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/webauthn/pull/1801/hovercard\" href=\"https://github.com/w3c/webauthn/pull/1801\">w3c/webauthn#1801</a> and to the Credential Management spec in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1372150452\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/webappsec-credential-management/issues/209\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/webappsec-credential-management/pull/209/hovercard\" href=\"https://github.com/w3c/webappsec-credential-management/pull/209\">w3c/webappsec-credential-management#209</a>. I added some examples.</li>\n</ol>\n<p dir=\"auto\">I'm seeing confirmation from engineers too in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1870863#c7\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1870863#c7</a> but the spec seems fairly clear on the NotAllowedError and transient activation.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2098288358\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31890\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31890/hovercard\" href=\"https://github.com/mdn/content/issues/31890\">#31890</a></p>",
+            "url": "https://github.com/mdn/content/pull/32135",
+            "title": "FF123 updates for permission publickey-credentials-create",
+            "date_modified": "2024-02-06T04:44:08.000Z",
+            "date_published": "2024-02-06T04:25:33.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/78599753?u=1f5b3cb4c81c23a93ea588f77592179c5cdf5d49&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">I added clarification that even today it is not possible to change Referr to any value</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The wording of the current documentation means that you can programmatically define any desired referrer completely freely, while in practice you can only define to remove it or set it to an address from the same origin (<a href=\"https://developer.mozilla.org/en-US/docs/Web/API/fetch#referrer\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/fetch#referrer</a> )</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/32134",
             "title": "Update forbidden_header_name referer note",
@@ -53,7 +64,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">inspired by <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1912456992\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29287\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/29287/hovercard\" href=\"https://github.com/mdn/content/pull/29287\">#29287</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/32127",
             "title": "Add `download` attribute for `<a>` on `<video>` element page's examples",
-            "date_modified": "2024-02-05T19:38:09.000Z",
+            "date_modified": "2024-02-06T04:27:14.000Z",
             "date_published": "2024-02-05T15:31:59.000Z",
             "author": {
                 "name": "skyclouds2001",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "skyclouds2001",
                 "url": "https://github.com/skyclouds2001"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">new guide.</p>",
-            "url": "https://github.com/mdn/content/pull/32088",
-            "title": "DRAFT: New guide: using container style queries",
-            "date_modified": "2024-02-05T16:17:27.000Z",
-            "date_published": "2024-02-02T23:33:21.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
             }
         }
     ]
