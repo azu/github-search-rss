@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF123 supports Feature policy <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy/publickey-credentials-create\" rel=\"nofollow\"><code class=\"notranslate\">publickey-credentials-create</code></a> to allow cross origin credential creation in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1870863\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1870863</a></p>\n<p dir=\"auto\">This adds a release note</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2098288358\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31890\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31890/hovercard\" href=\"https://github.com/mdn/content/issues/31890\">#31890</a></p>",
+            "url": "https://github.com/mdn/content/pull/32136",
+            "title": "FF123 Relnote: WebAuthn credential createion in cross origin frames",
+            "date_modified": "2024-02-06T05:14:38.000Z",
+            "date_published": "2024-02-06T05:13:23.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF123 supports Feature policy <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy/publickey-credentials-create\" rel=\"nofollow\"><code class=\"notranslate\">publickey-credentials-create</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1870863\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1870863</a><br>\nAs per usual for FF, this can't be set on the header, but only via <code class=\"notranslate\">allow</code> on the frame.</p>\n<p dir=\"auto\">This attempts to update the docs with some corrections according to advice from engineers and my interpretation of the spec. Note that I think there are probably more relevant exceptions, but I don't propose to go through all the specs right now.</p>\n<p dir=\"auto\">The specific issues fixed are:</p>\n<ol dir=\"auto\">\n<li>Docs say creating/getting a credential is a <code class=\"notranslate\">SecurityError</code>. Spec says <code class=\"notranslate\">NotAllowedError</code> <a href=\"https://w3c.github.io/webappsec-credential-management/#algorithm-create\" rel=\"nofollow\">in step 5 here</a></li>\n<li>If allow is declared in an iframe then transient activation is required on the iframe as well, or you get the same error.</li>\n<li>This explicitly said you can't use <code class=\"notranslate\">create()</code> in an iframe, but that was changed in WebAuthn spec in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1372146083\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/webauthn/issues/1801\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/webauthn/pull/1801/hovercard\" href=\"https://github.com/w3c/webauthn/pull/1801\">w3c/webauthn#1801</a> and to the Credential Management spec in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1372150452\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/webappsec-credential-management/issues/209\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/w3c/webappsec-credential-management/pull/209/hovercard\" href=\"https://github.com/w3c/webappsec-credential-management/pull/209\">w3c/webappsec-credential-management#209</a>. I added some examples.</li>\n</ol>\n<p dir=\"auto\">I'm seeing confirmation from engineers too in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1870863#c7\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1870863#c7</a> but the spec seems fairly clear on the NotAllowedError and transient activation.</p>\n<p dir=\"auto\">Other docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2098288358\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31890\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/31890/hovercard\" href=\"https://github.com/mdn/content/issues/31890\">#31890</a></p>",
             "url": "https://github.com/mdn/content/pull/32135",
             "title": "FF123 updates for permission publickey-credentials-create",
@@ -97,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">update more possible values for <code class=\"notranslate\">Credential.type</code> (<code class=\"notranslate\">identity</code> and <code class=\"notranslate\">otp</code>, refer to <code class=\"notranslate\">IdentityCredential</code> and <code class=\"notranslate\">OTPCredential</code>)</p>\n<p dir=\"auto\">and small fix to example</p>\n<p dir=\"auto\">see also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2076273776\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/31658\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/31658/hovercard?comment_id=1926167546&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/pull/31658#issuecomment-1926167546\">#31658 (comment)</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/32117",
             "title": "Update possible values for `Credential.type`",
-            "date_modified": "2024-02-05T22:16:42.000Z",
+            "date_modified": "2024-02-06T05:05:03.000Z",
             "date_published": "2024-02-05T04:33:26.000Z",
             "author": {
                 "name": "skyclouds2001",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "stevennyman",
                 "url": "https://github.com/stevennyman"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">the parameter is incorrect</p>\n<p dir=\"auto\">spec at <a href=\"https://w3c.github.io/webappsec-credential-management/\" rel=\"nofollow\">https://w3c.github.io/webappsec-credential-management/</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/32092",
-            "title": "Fix example in `CredentialsContainer.create()` & `CredentialsContainer.get()`",
-            "date_modified": "2024-02-03T04:57:59.000Z",
-            "date_published": "2024-02-03T04:50:55.000Z",
-            "author": {
-                "name": "skyclouds2001",
-                "url": "https://github.com/skyclouds2001"
             }
         }
     ]
