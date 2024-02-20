@@ -109,7 +109,7 @@ export const SEARCH_ITEMS: RSSItem[] = [
         link: `${BASE_URL}/whatwg-html.json`
     },
     {
-        title: "papers-we-love/papers-we-love PRs",
+        title: "papers-we-love new papers",
         query: 'repo:papers-we-love/papers-we-love is:pr is:merged add',
         TYPE: "ISSUE",
         link: `${BASE_URL}/papers-we-love.json`
