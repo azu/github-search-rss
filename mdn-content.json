@@ -6,17 +6,6 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #48.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2153050744\" data-permission-text=\"Title is private\" data-url=\"https://github.com/OnkarRuikar/temp/issues/48\" data-hovercard-type=\"issue\" data-hovercard-url=\"/OnkarRuikar/temp/issues/48/hovercard\" href=\"https://github.com/OnkarRuikar/temp/issues/48\">OnkarRuikar/temp#48</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/32436",
-            "title": "fix: typos",
-            "date_modified": "2024-02-26T02:45:26.000Z",
-            "date_published": "2024-02-26T02:44:07.000Z",
-            "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32428.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2152782335\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32428\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32428/hovercard\" href=\"https://github.com/mdn/content/issues/32428\">#32428</a></p>\n<p dir=\"auto\">The assertion of the error is that HTTP messages are not ASCII as stated. That's correct - HTTP Headers in 1.1 are normally in US ASCII. In HTTP/2 they are UTF-8. However the message payload encoding is not defined - it just has to be specified in the content-type header.</p>\n<p dir=\"auto\">My original fix was to correct the text to:</p>\n<blockquote>\n<p dir=\"auto\">HTTP messages are composed of a start line, optional headers containing metadata about the message, and an optional body (or \"payload\").<br>\nIn HTTP/1.1, and earlier versions of the protocol, the headers were encoded in US ASCII while in HTTP/2 and later the headers are encoded with UTF-8. In all versions the encoding of the message body, if present, is not mandated, but must be specified in the {{HTTPHeader(\"Content-Type\")}} header. In HTTP/1.1, and earlier versions of the protocol, the messages were openly sent across the connection. In HTTP/2, the message is now divided up into HTTP frames, providing optimization and performance improvements.</p>\n</blockquote>\n<p dir=\"auto\">However I've decided just to remove this. It isn't actually all that useful to the user to know the encoding - or that the headers are somewhat human readable. Certainly not at this point in the overview.</p>",
             "url": "https://github.com/mdn/content/pull/32434",
             "title": "HTTP messages are not ASCII encoded",
@@ -36,17 +25,6 @@
             "author": {
                 "name": "ericchase",
                 "url": "https://github.com/ericchase"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1495895?u=969ce9656b7c23f61a9e3738e177b6bfd5fd9c9c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">To avoid copying low-quality code</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://github.com/validator/validator/wiki/Markup-%C2%BB-Void-elements#trailing-slashes-in-void-element-start-tags-do-not-mark-the-start-tags-as-self-closing\">https://github.com/validator/validator/wiki/Markup-»-Void-elements#trailing-slashes-in-void-element-start-tags-do-not-mark-the-start-tags-as-self-closing</a><br>\n<a href=\"https://github.com/validator/validator/wiki/Markup-%C2%BB-Void-elements#trailing-slashes-directly-preceded-by-unquoted-attribute-values\">https://github.com/validator/validator/wiki/Markup-»-Void-elements#trailing-slashes-directly-preceded-by-unquoted-attribute-values</a></p>",
-            "url": "https://github.com/mdn/content/pull/32429",
-            "title": "Remove trailing slashes for `<source>` examples",
-            "date_modified": "2024-02-26T02:57:37.000Z",
-            "date_published": "2024-02-25T17:10:01.000Z",
-            "author": {
-                "name": "dontliem1",
-                "url": "https://github.com/dontliem1"
             }
         },
         {
@@ -223,6 +201,28 @@
             "author": {
                 "name": "mz3r0",
                 "url": "https://github.com/mz3r0"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 121 has added several new features for the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API\" rel=\"nofollow\">Speculation Rules API</a>:</p>\n<ul dir=\"auto\">\n<li>The <code class=\"notranslate\">Speculation-Rules</code> HTTP response header, which allows developers to set speculation rules on a page via a response header, without modifying the actual page code. See <a href=\"https://chromestatus.com/feature/5069400512659456\" rel=\"nofollow\">https://chromestatus.com/feature/5069400512659456</a> for more info.</li>\n<li>Document-sourced rules, which allow developers to specify a set of rules to include or exclude the URLs linked in the document in the list for prefetching/prerendering, rather than specifying an exact list of URLs. See <a href=\"https://chromestatus.com/feature/5112150536749056\" rel=\"nofollow\">https://chromestatus.com/feature/5112150536749056</a></li>\n<li>The <code class=\"notranslate\">eagerness</code> field, which allows developers to set how eagerly they want URLs to be prefetched/prerendered. See <a href=\"https://chromestatus.com/feature/5091678266851328\" rel=\"nofollow\">https://chromestatus.com/feature/5091678266851328</a>.</li>\n<li>The <code class=\"notranslate\">No-Vary-Search</code> HTTP response header, which is used to indicate whether URL params should be ignored when deciding whether to fetch a page from cache or not. See <a href=\"https://chromestatus.com/feature/5071247189213184\" rel=\"nofollow\">https://chromestatus.com/feature/5071247189213184</a></li>\n<li>The <code class=\"notranslate\">expects_no_vary_search</code> field, which allows developers to report the expected value of the <code class=\"notranslate\">No-Vary-Search</code> response header in the speculation rules, and use that to determine whether a prefetch would be beneficial or not. See <a href=\"https://chromestatus.com/feature/4887338302308352\" rel=\"nofollow\">https://chromestatus.com/feature/4887338302308352</a></li>\n</ul>\n<p dir=\"auto\">This PR adds content to cover all of the above features.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related compat data PR: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2144036316\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/22262\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/22262/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/22262\">mdn/browser-compat-data#22262</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/32360",
+            "title": "Tech review: Add Chrome 121 new speculation rules features",
+            "date_modified": "2024-02-26T03:51:28.000Z",
+            "date_published": "2024-02-20T12:47:31.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16322246?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">According to <a href=\"https://drafts.fxtf.org/filter-effects/#element-attrdef-fedropshadow-stddeviation\" rel=\"nofollow\">Specifications</a> the type of stdDeviation is not <code class=\"notranslate\">number</code> but <code class=\"notranslate\">number-optional-number</code>.</p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/32359",
+            "title": "Fixed type of stdDeviation in feDropShadow",
+            "date_modified": "2024-02-22T16:49:36.000Z",
+            "date_published": "2024-02-20T10:32:20.000Z",
+            "author": {
+                "name": "Horstage",
+                "url": "https://github.com/Horstage"
             }
         }
     ]
