@@ -17,17 +17,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/141595150?u=68fc06e431088f1e14b25a893f2257653ed0be43&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/32437",
-            "title": "Fixes #123\" -->",
-            "date_modified": "2024-02-26T06:37:50.000Z",
-            "date_published": "2024-02-26T06:36:24.000Z",
-            "author": {
-                "name": "local-roofing",
-                "url": "https://github.com/local-roofing"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32428.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2152782335\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32428\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32428/hovercard\" href=\"https://github.com/mdn/content/issues/32428\">#32428</a></p>\n<p dir=\"auto\">The assertion of the error is that HTTP messages are not ASCII as stated. That's correct - HTTP Headers in 1.1 are normally in US ASCII. In HTTP/2 they are UTF-8. However the message payload encoding is not defined - it just has to be specified in the content-type header.</p>\n<p dir=\"auto\">My original fix was to correct the text to:</p>\n<blockquote>\n<p dir=\"auto\">HTTP messages are composed of a start line, optional headers containing metadata about the message, and an optional body (or \"payload\").<br>\nIn HTTP/1.1, and earlier versions of the protocol, the headers were encoded in US ASCII while in HTTP/2 and later the headers are encoded with UTF-8. In all versions the encoding of the message body, if present, is not mandated, but must be specified in the {{HTTPHeader(\"Content-Type\")}} header. In HTTP/1.1, and earlier versions of the protocol, the messages were openly sent across the connection. In HTTP/2, the message is now divided up into HTTP frames, providing optimization and performance improvements.</p>\n</blockquote>\n<p dir=\"auto\">However I've decided just to remove this. It isn't actually all that useful to the user to know the encoding - or that the headers are somewhat human readable. Certainly not at this point in the overview.</p>",
             "url": "https://github.com/mdn/content/pull/32434",
             "title": "HTTP messages are not ASCII encoded",
@@ -163,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR is a cherry-pick from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2145040694\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32366\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/32366/hovercard\" href=\"https://github.com/mdn/content/pull/32366\">#32366</a> that removes mention of global attributes on individual SVG elements pages.</p>",
             "url": "https://github.com/mdn/content/pull/32383",
             "title": "Remove mention of global attributes on individual SVG elements pages",
-            "date_modified": "2024-02-22T01:40:43.000Z",
+            "date_modified": "2024-02-26T07:08:39.000Z",
             "date_published": "2024-02-22T01:38:58.000Z",
             "author": {
                 "name": "queengooborg",
@@ -196,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=6717e5ff89d22ac777c8bebbf54e89ed0fbf81e8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR performs a number of updates to the SVG attributes pages to clean up the pages:</p>\n<ul dir=\"auto\">\n<li><strong>Remove mention of global attributes on individual elements pages</strong></li>\n<li><strong>Remove landing pages for attribute categories</strong></li>\n<li><strong>Update BCD keys</strong></li>\n</ul>\n<p dir=\"auto\">Note: review and merge along with <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2144831527\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/22267\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/22267/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/22267\">mdn/browser-compat-data#22267</a>.</p>\n<p dir=\"auto\">Follow-up: remove all use of the <code class=\"notranslate\">SVGAttr</code> macro.</p>",
             "url": "https://github.com/mdn/content/pull/32366",
             "title": "Clean up global SVG attributes",
-            "date_modified": "2024-02-22T06:09:21.000Z",
+            "date_modified": "2024-02-26T07:25:45.000Z",
             "date_published": "2024-02-20T18:39:30.000Z",
             "author": {
                 "name": "queengooborg",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16322246?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">According to <a href=\"https://drafts.fxtf.org/filter-effects/#element-attrdef-fedropshadow-stddeviation\" rel=\"nofollow\">Specifications</a> the type of stdDeviation is not <code class=\"notranslate\">number</code> but <code class=\"notranslate\">number-optional-number</code>.</p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/32359",
+            "title": "Fixed type of stdDeviation in feDropShadow",
+            "date_modified": "2024-02-22T16:49:36.000Z",
+            "date_published": "2024-02-20T10:32:20.000Z",
+            "author": {
+                "name": "Horstage",
+                "url": "https://github.com/Horstage"
             }
         }
     ]
