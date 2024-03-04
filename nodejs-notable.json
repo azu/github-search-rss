@@ -17,6 +17,17 @@
             }
         },
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8221854?u=656e1eb9ee161eedbd253bebb625d523b191a8a3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #40731.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1045899214\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/40731\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/node/issues/40731/hovercard\" href=\"https://github.com/nodejs/node/issues/40731\">#40731</a><br>\nThis PR introduces <code class=\"notranslate\">fs.glob</code>and <code class=\"notranslate\">fsPromises.glob</code>.</p>",
+            "url": "https://github.com/nodejs/node/pull/51912",
+            "title": "fs: expose glob and globSync",
+            "date_modified": "2024-03-03T23:15:37.000Z",
+            "date_published": "2024-02-28T13:05:02.000Z",
+            "author": {
+                "name": "MoLow",
+                "url": "https://github.com/MoLow"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/26234614?u=5edcb211e86232b06e6d6133439f9490f9f5d689&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">A fresh new PR from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1267793533\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/43371\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/43371/hovercard\" href=\"https://github.com/nodejs/node/pull/43371\">#43371</a>.</p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/hemanth/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/hemanth\">@hemanth</a> I took the liberty to create a new fresh PR (including a few changes) as your PR is almost 2 years old. I have included you as Co-Author I hope you don't mind (I tried to search for your handle in the OpenJS Foundation Slack, but I couldn't find it).</p>\n<p dir=\"auto\">The concerns raised in the original blocker can be discussed again if necessary, but I believe we should have this API on Node.js.</p>\n<p dir=\"auto\">cc: @nodejs/tsc</p>",
             "url": "https://github.com/nodejs/node/pull/51850",
             "title": "util: add styleText API to text formatting",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "aduh95",
                 "url": "https://github.com/aduh95"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">vm: unify host-defined option generation in vm.compileFunction</h3>\n<p dir=\"auto\">Set a default host-defined option for vm.compileFunction so that<br>\nit's consistent with vm.Script.</p>\n<h3 dir=\"auto\">vm: use internal versions of compileFunction and Script</h3>\n<p dir=\"auto\">Instead of using the public versions of the vm APIs internally,<br>\nuse the internal versions so that we can skip unnecessary<br>\nargument validation.</p>\n<p dir=\"auto\">The public versions would need special care to the generation<br>\nof host-defined options to hit the isolate compilation cache<br>\nwhen imporModuleDynamically isn't used, while internally it's<br>\nalmost always used, so this allows us to handle the host-defined<br>\noptions separately.</p>\n<h3 dir=\"auto\">vm: reject in importModuleDynamically without --experimental-vm-modules</h3>\n<p dir=\"auto\">Users cannot access any API that can be used to return a module or<br>\nmodule namespace in this callback without --experimental-vm-modules<br>\nanyway, so this would eventually lead to a rejection. This patch<br>\nrejects in this case with our own error message and use a constant<br>\nhost-defined option for the rejection, so that scripts with the<br>\nsame source can still be compiled using the compilation cache<br>\nif no <code class=\"notranslate\">import()</code> is actually called in the script.</p>\n<p dir=\"auto\">Refs: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"709722982\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/35375\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/node/issues/35375/hovercard\" href=\"https://github.com/nodejs/node/issues/35375\">#35375</a></p>\n<p dir=\"auto\"><code class=\"notranslate\">with-dynamic-import-callback</code> is Jest's current behavior which blocks users from upgrading from v16.x (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1919227958\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/49950\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/49950/hovercard?comment_id=1748178407&amp;comment_type=issue_comment\" href=\"https://github.com/nodejs/node/pull/49950#issuecomment-1748178407\">#49950 (comment)</a>).</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"                                                                                   confidence improvement accuracy (*)     (**)    (***)\nvm/compile-script-in-isolate-cache.js n=100 type='with-dynamic-import-callback'           ***   9880.21 %     ±166.83% ±237.30% ±343.44%\nvm/compile-script-in-isolate-cache.js n=100 type='without-dynamic-import-callback'                 1.87 %       ±4.21%   ±5.83%   ±8.06%\"><pre class=\"notranslate\"><code class=\"notranslate\">                                                                                   confidence improvement accuracy (*)     (**)    (***)\nvm/compile-script-in-isolate-cache.js n=100 type='with-dynamic-import-callback'           ***   9880.21 %     ±166.83% ±237.30% ±343.44%\nvm/compile-script-in-isolate-cache.js n=100 type='without-dynamic-import-callback'                 1.87 %       ±4.21%   ±5.83%   ±8.06%\n</code></pre></div>\n",
-            "url": "https://github.com/nodejs/node/pull/50137",
-            "title": "vm: reject in importModuleDynamically without --experimental-vm-modules",
-            "date_modified": "2023-12-01T17:01:21.000Z",
-            "date_published": "2023-10-11T11:56:20.000Z",
-            "author": {
-                "name": "joyeecheung",
-                "url": "https://github.com/joyeecheung"
             }
         }
     ]
