@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/115237?u=ec97c900f701f18ed5d393f181396c57ce9d0a7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Previously the word \"unknown\" was highlighed as code tag, which was misleading. The word appears in <a href=\"https://www.w3.org/TR/html401/struct/dirlang.html#language-info\" rel=\"nofollow\">old W3C specs</a> as literal text only and I'd say it was never meant to be interpreted as string.</p>\n<blockquote>\n<p dir=\"auto\">The default value of this attribute is unknown</p>\n</blockquote>\n<p dir=\"auto\">The <a href=\"https://html.spec.whatwg.org/multipage/dom.html#the-lang-and-xml:lang-attributes\" rel=\"nofollow\">WHATWG spec</a> gives a better description:</p>\n<blockquote>\n<p dir=\"auto\">Its value must be a valid BCP 47 language tag, or the empty string. Setting the attribute to the empty string indicates that the primary language is unknown.</p>\n</blockquote>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I was mislead believing <code class=\"notranslate\">\"unknown\"</code> was a valid value.</p>",
+            "url": "https://github.com/mdn/content/pull/32604",
+            "title": "Fix misleading information regarding default value of `lang` attribute",
+            "date_modified": "2024-03-08T00:03:12.000Z",
+            "date_published": "2024-03-08T00:02:16.000Z",
+            "author": {
+                "name": "silverwind",
+                "url": "https://github.com/silverwind"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32564.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2170248543\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32564\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32564/hovercard\" href=\"https://github.com/mdn/content/issues/32564\">#32564</a></p>\n<p dir=\"auto\">Generally I think if we can state the alternatives approach for a deprecated entity, that is a \"good thing\" - in this way we can because the spec states it.</p>\n<p dir=\"auto\">This would be much easier if we had <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1731336419\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/yari/issues/8969\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/yari/issues/8969/hovercard\" href=\"https://github.com/mdn/yari/issues/8969\">mdn/yari#8969</a></p>",
             "url": "https://github.com/mdn/content/pull/32602",
             "title": "HTTP Warning Header - deprecation warning",
@@ -209,17 +220,6 @@
             "title": "Bigint multiplication assignment fix",
             "date_modified": "2024-03-03T22:55:57.000Z",
             "date_published": "2024-03-03T22:54:32.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This fixes a few issues in the Web Bluetooth API.</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">Bluetooth</code> interface description said it returned a promise, which is of course impossible. (<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32529.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2165330401\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32529\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32529/hovercard\" href=\"https://github.com/mdn/content/issues/32529\">#32529</a>)</li>\n<li>Missing link to extension to the Navigator API - added section for <code class=\"notranslate\">Navigator.bluetooth</code></li>\n<li>A permission policy was added for Chrome in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2168064800\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/22525\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/22525/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/22525\">mdn/browser-compat-data#22525</a> - I added the policy doc and cross linked to a security section in the Web API docs.</li>\n<li>associated changes in the method docs - e.g. getDevices() can now have an exception.</li>\n</ul>\n<p dir=\"auto\">Note that this is an improvement, but it is not complete. There are two parts that it would make sense to do together:</p>\n<ul dir=\"auto\">\n<li>This is a powerful feature so the user must be prompted for access. There is a BluetoothPermissionDescriptor which allows you to query for whether access to particular devices is granted and then get a handle if access is granted. That is not documented but uses the same kinds of objects as in next point.</li>\n<li>The <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice\" rel=\"nofollow\"><code class=\"notranslate\">Bluetooth.requestDevice()</code></a> options are out of date / don't match spec. These would be same as options to the permission descriptor (I think).</li>\n</ul>\n<p dir=\"auto\">I haven't done that because it isn't clear whether Chrome matches that spec. It is clear the docs do not. If I was do to that, would be a post process. Would be good to get this reviewed.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32529.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2165330401\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32529\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32529/hovercard\" href=\"https://github.com/mdn/content/issues/32529\">#32529</a></p>",
-            "url": "https://github.com/mdn/content/pull/32533",
-            "title": "Bluetooth - fix a few errors and add security considerations",
-            "date_modified": "2024-03-05T10:01:48.000Z",
-            "date_published": "2024-03-03T22:12:11.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
