@@ -61,6 +61,17 @@
             }
         },
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/18269663?u=0c9e9c1f0a4d40e2b3f46d18f0e6721f9125411a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is an automated update of llhttp to 9.2.0.</p>",
+            "url": "https://github.com/nodejs/node/pull/51719",
+            "title": "deps: update llhttp to 9.2.0",
+            "date_modified": "2024-03-13T15:56:27.000Z",
+            "date_published": "2024-02-11T00:25:35.000Z",
+            "author": {
+                "name": "nodejs-github-bot",
+                "url": "https://github.com/nodejs-github-bot"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16144158?u=82cadd66bfcfcd8340269a3c0ce30f503acaf7b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">New option <code class=\"notranslate\">--report-exclude-network</code>, also available as <code class=\"notranslate\">report.excludeNetwork</code>, enables the user to exclude networking interfaces in their diagnostic report. On some systems, this can cause the report to take minutes to generate so this option can be used to optimize that.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #46060.\">Fixes</span>: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1516426833\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/46060\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/node/issues/46060/hovercard\" href=\"https://github.com/nodejs/node/issues/46060\">#46060</a></p>",
             "url": "https://github.com/nodejs/node/pull/51645",
             "title": "report: add `--report-exclude-network` option",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "rluvaton",
                 "url": "https://github.com/rluvaton"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3065230?u=0e938c0e3fcdc4998886799c5bc247ea8d17714a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Avoid splitting chunked responses into multiple parts when corking. This makes a large difference performance-wise on the client side.</p>\n<p dir=\"auto\">Previously when writing to a chunked response Node would create a separate chunk for each call to <code class=\"notranslate\">.write(...)</code> regardless whether the response was corked or not. This leads to unnecessary overhead both on the client and server side.</p>\n<p dir=\"auto\">This PR fixes this by creating a single chunk for all calls to <code class=\"notranslate\">write(...)</code> when uncorking the response.</p>\n<p dir=\"auto\">Consider the following example based on <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding#chunked_encoding\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding#chunked_encoding</a>:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"res.cork();\nres.write('Mozilla');\nres.write(' Developer Network');\nres.uncork();\"><pre class=\"notranslate\"><span class=\"pl-s1\">res</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">cork</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">res</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">write</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Mozilla'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">res</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">write</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">' Developer Network'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">res</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">uncork</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<blockquote>\n<p dir=\"auto\">At the beginning of each chunk you need to add the length of the current chunk in hexadecimal format, followed by '\\r\\n'  and then the chunk itself, followed by another '\\r\\n'. The terminating chunk is a regular chunk, with the exception that its  length is zero.</p>\n</blockquote>\n<p dir=\"auto\">Resulting in a response stream looking like this:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"HTTP/1.1 200 OK\nContent-Type: text/plain\nTransfer-Encoding: chunked\n\n7\\r\\n\nMozilla\\r\\n\n18\\r\\n\n Developer Network\\r\\n\n0\\r\\n\n\\r\\n\"><pre class=\"notranslate\"><code class=\"notranslate\">HTTP/1.1 200 OK\nContent-Type: text/plain\nTransfer-Encoding: chunked\n\n7\\r\\n\nMozilla\\r\\n\n18\\r\\n\n Developer Network\\r\\n\n0\\r\\n\n\\r\\n\n</code></pre></div>\n<p dir=\"auto\">After this PR everything is combined into a single chunk when uncorking the response bypassing a lot of unnecessary overhead.</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"HTTP/1.1 200 OK\nContent-Type: text/plain\nTransfer-Encoding: chunked\n\n25\\r\\n\nMozilla Developer Network\\r\\n\n0\\r\\n\n\\r\\n\"><pre class=\"notranslate\"><code class=\"notranslate\">HTTP/1.1 200 OK\nContent-Type: text/plain\nTransfer-Encoding: chunked\n\n25\\r\\n\nMozilla Developer Network\\r\\n\n0\\r\\n\n\\r\\n\n</code></pre></div>\n<p dir=\"auto\">Refs: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1585465917\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/performance/issues/57\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/performance/issues/57/hovercard\" href=\"https://github.com/nodejs/performance/issues/57\">nodejs/performance#57</a></p>",
-            "url": "https://github.com/nodejs/node/pull/50167",
-            "title": "http: reduce parts in chunked response when corking",
-            "date_modified": "2023-10-16T05:59:02.000Z",
-            "date_published": "2023-10-12T20:35:42.000Z",
-            "author": {
-                "name": "ronag",
-                "url": "https://github.com/ronag"
             }
         }
     ]
