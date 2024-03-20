@@ -72,17 +72,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/373675?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Rewrite <code class=\"notranslate\">finally()</code>'s \"Return value\" section</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This was the original wording:</p>\n<blockquote>\n<p dir=\"auto\">Returns an equivalent Promise. If the handler throws an error or returns a rejected promise, the promise returned by finally() will be rejected with that value instead. Otherwise, the return value of the handler does not affect the state of the original promise.</p>\n</blockquote>\n<p dir=\"auto\">I'm not convinced my change is necessary, but I was uncertain about the meaning of \"Returns an equivalent Promise,\" so the motivation of my edit was to clarify that phrase.</p>\n<p dir=\"auto\">In my change, I would've liked to have written this as pure prose, but I couldn't find a way to refer to the <code class=\"notranslate\">promise</code> in <code class=\"notranslate\">promise.finally(onFinally)</code> with words alone. I may lack the terminology needed to articulate it. Some ideas I experimented with were, \"The promise that called <code class=\"notranslate\">finally()</code>\" and \"The previous link of the promise chain.\" Both felt too abstract and/or convoluted to me, so I worried it would confuse the reader.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32736.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2193742003\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32736\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32736/hovercard\" href=\"https://github.com/mdn/content/issues/32736\">#32736</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/32753",
-            "title": "Rewrite `finally()`'s \"Return value\" section",
-            "date_modified": "2024-03-20T04:05:36.000Z",
-            "date_published": "2024-03-20T00:54:52.000Z",
-            "author": {
-                "name": "DanKaplanSES",
-                "url": "https://github.com/DanKaplanSES"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109768641?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add link for <code class=\"notranslate\">Object.seal()</code> to the introduction paragraph.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Because otherwise the user has to scroll all the way to the bottom to #See_Also, or more realistically hit alt-back to Google and scroll to the next search result.</p>\n<blockquote>\n<p dir=\"auto\">User: \"What does <code class=\"notranslate\">Object.isSealed()</code> do?\"<br>\nBad answer: \"why, it tells you if it's sealed, duh!\"<br>\nGood answer: \"Oh, you want the article on <code class=\"notranslate\">Object.seal()</code>, here you go.\" //(My thought)<br>\nBetter answer: \"It checks if the object is sealed against extensions or configuration. Details on seals over there, details on that check function down here.\" //(Thanks, <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/estelle/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/estelle\">@estelle</a>)</p>\n</blockquote>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">Original:</p>\n<ul dir=\"auto\">\n<li>The <strong><code class=\"notranslate\">Object.isSealed()</code></strong> static method determines if an object is sealed.</li>\n</ul>\n<p dir=\"auto\">Initial suggestion: just add the link.</p>\n<ul dir=\"auto\">\n<li>The <strong><code class=\"notranslate\">Object.isSealed()</code></strong> static method determines if an object is <a href=\"/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal\">sealed</a>.</li>\n</ul>\n<p dir=\"auto\">Latest as of 3 commits: Define the term in-place, along with offering links. (suggested by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/estelle/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/estelle\">@estelle</a> )</p>\n<ul dir=\"auto\">\n<li>The <strong><code class=\"notranslate\">Object.isSealed()</code></strong> static method determines if an object is <a href=\"/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal\">sealed</a> (meaning <a href=\"/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions\">extensions are prevented</a> and its properties are non-configurable).</li>\n</ul>\n\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/32750",
             "title": "Add link to Object.seal() in introduction to Object.isSealed()",
@@ -124,17 +113,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">You cannot use <a href=\"https://threejs.org/build/three.min.js\" rel=\"nofollow\">https://threejs.org/build/three.min.js</a> to download three.js anymore. Instead linking to their install docs and some hints for setting up with Node.js. There are three main options at the moment:</p>\n<ul dir=\"auto\">\n<li>Node.js (saying this is the preferred method)</li>\n<li>download the GitHub release artifact (350MB zip)</li>\n<li>use a CDN for the JS</li>\n</ul>\n<p dir=\"auto\"><strong>Additions:</strong></p>\n<ul dir=\"auto\">\n<li>Add up-to-date install instructions for three.js</li>\n</ul>\n<p dir=\"auto\"><strong>Changes:</strong></p>\n<ul dir=\"auto\">\n<li>Link to Three.js tutorial for setup steps in other resources instead of copy pasting.</li>\n<li>Updating link to Phong Material to <a href=\"https://developer.playcanvas.com/user-manual/assets/types/material/\" rel=\"nofollow\">https://developer.playcanvas.com/user-manual/assets/types/material/</a></li>\n<li>The <a href=\"https://phaser.io/shop/plugins/virtualjoystick\" rel=\"nofollow\">paid Phaser plugin</a> appears to be gone, linking to <a href=\"https://github.com/Gamegur-us/phaser-touch-control-plugin\">the open source version</a> with links to example code.</li>\n</ul>\n<p dir=\"auto\"><strong>Removals:</strong></p>\n<ul dir=\"auto\">\n<li>Removing <a href=\"https://aframevr.tumblr.com/\" rel=\"nofollow\">https://aframevr.tumblr.com/</a></li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Keep external links working &amp; install docs up-to-date</p>",
-            "url": "https://github.com/mdn/content/pull/32721",
-            "title": "fix(games): Fix broken links to three.js, related 404s",
-            "date_modified": "2024-03-20T12:55:06.000Z",
-            "date_published": "2024-03-18T12:51:23.000Z",
-            "author": {
-                "name": "bsmth",
-                "url": "https://github.com/bsmth"
             }
         },
         {
@@ -223,6 +201,28 @@
             "author": {
                 "name": "lionel-rowe",
                 "url": "https://github.com/lionel-rowe"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This adds docs for <code class=\"notranslate\">RTCRemoteInboundRtpStreamStats </code>, a stats object/dictionary you can get by iterating a <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/RTCStatsReport\" rel=\"nofollow\"><code class=\"notranslate\">RTCStatsReport</code></a>.</p>\n<p dir=\"auto\">It is not very exciting. Largely following the same patterns as the other docs.</p>\n<p dir=\"auto\">This shares some common properties with RTCRemoteOutoundRtpStreamStats. There have been some changes to align those.</p>\n<p dir=\"auto\">This is part of the ongoing work to finished RTC stats, which was started in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1730232976\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27028\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27028/hovercard\" href=\"https://github.com/mdn/content/pull/27028\">#27028</a></p>",
+            "url": "https://github.com/mdn/content/pull/32657",
+            "title": "RTCRemoteInboundRtpStreamStats - plus alignment with outbound",
+            "date_modified": "2024-03-19T05:59:33.000Z",
+            "date_published": "2024-03-12T06:11:42.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/669326?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Simplify callback, in the <code class=\"notranslate\">MutationObserver</code> example illustrating the usage of <code class=\"notranslate\">attributeFilter</code> &amp; <code class=\"notranslate\">attributeOldValue</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">I thought the old version had a typo, in <code class=\"notranslate\">userStatusChanged(mutation.target.username, mutation.target.status);</code>, <code class=\"notranslate\">mutation.target.username</code> seems like it should've been <code class=\"notranslate\">mutation.oldValue</code>, though after taking a closer look, this was probably intentional.</p>\n<p dir=\"auto\">While fixing this \"typo\", I decided the old callback was unnecessary complex -- e.g. the outer <code class=\"notranslate\">switch</code> wasn't doing anything (aside from serving as a future placeholder perhaps) -- so I made it a bit more \"to the point\". Also seems a tiny bit unusual to have an example that calls functions not provided (<code class=\"notranslate\">userStatusChanged</code> &amp; <code class=\"notranslate\">usernameChanged</code>), this new one is a little easier to modify and begin playing with.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\">Old version added in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1023061281\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/9737\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/9737/hovercard\" href=\"https://github.com/mdn/content/pull/9737\">#9737</a>:<br>\n<a href=\"https://github.com/mdn/content/pull/9737/files#diff-fc20b9f4adbc6723e9fe01425cea6512399d9a9bd69451d25f8fd6f0b8f92788R144-R170\">https://github.com/mdn/content/pull/9737/files#diff-fc20b9f4adbc6723e9fe01425cea6512399d9a9bd69451d25f8fd6f0b8f92788R144-R170</a></p>\n",
+            "url": "https://github.com/mdn/content/pull/32656",
+            "title": "Cleaner attributeFilter/attributeOldValue example (MutationObserver)",
+            "date_modified": "2024-03-12T05:48:12.000Z",
+            "date_published": "2024-03-12T05:46:46.000Z",
+            "author": {
+                "name": "mrienstra",
+                "url": "https://github.com/mrienstra"
             }
         }
     ]
