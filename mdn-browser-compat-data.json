@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">As part of cleaning up docs in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2280005537\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/33429\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/33429/hovercard\" href=\"https://github.com/mdn/content/pull/33429\">mdn/content#33429</a> I found some very old FF40 notes. One is still valid - a behind a preference option called readwriteflush, which I have added to BCD. Removed notes are:</p>\n<blockquote>\n<p dir=\"auto\"><strong>Note:</strong> In Firefox, if you wish to ensure durability for some reason (e.g. you're storing critical data that cannot be recomputed later) you can force a transaction to flush to disk before delivering the <code class=\"notranslate\">complete</code> event by creating a transaction using the experimental (non-standard) <code class=\"notranslate\">readwriteflush</code> mode (see {{domxref(\"IDBDatabase.transaction\")}}.)<br>\n&gt; This is currently experimental, and can only be used if the <code class=\"notranslate\">dom.indexedDB.experimental</code> pref is set to <code class=\"notranslate\">true</code> in <code class=\"notranslate\">about:config</code>.</p>\n</blockquote>\n<p dir=\"auto\">Related docs work can be found in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2257731370\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/33220\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/33220/hovercard\" href=\"https://github.com/mdn/content/issues/33220\">mdn/content#33220</a></p>\n<p dir=\"auto\">FYI Only I also remove an additional note for FF40 that the transaction default changed to <code class=\"notranslate\">relaxed</code> to match the spec and other browsers. Given that is so long ago, I have not bothered to capture the point at which this compatibility happened. Shown below just for record keeping.</p>\n<blockquote>\n<p dir=\"auto\">As of Firefox 40, IndexedDB transactions have relaxed durability guarantees to increase performance (see <a href=\"https://bugzil.la/1112702\" rel=\"nofollow\">Firefox bug 1112702</a>), which is the same behavior as other IndexedDB-supporting browsers.<br>\nPreviously in a <code class=\"notranslate\">readwrite</code> transaction, a {{domxref(\"IDBTransaction.complete_event\", \"complete\")}} event was fired only when all data was guaranteed to have been flushed to disk.<br>\nIn Firefox 40+ the <code class=\"notranslate\">complete</code> event is fired after the OS has been told to write the data but potentially before that data has actually been flushed to disk.<br>\nThe <code class=\"notranslate\">complete</code> event may thus be delivered quicker than before, however, there exists a small chance that the entire transaction will be lost if the OS crashes or there is a loss of system power before the data is flushed to disk.<br>\nSince such catastrophic events are rare most consumers should not need to concern themselves further.</p>\n</blockquote>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/23010",
+            "title": "IDBDatabase.transaction() has non standard FF option readwriteflush",
+            "date_modified": "2024-05-06T04:50:44.000Z",
+            "date_published": "2024-05-06T04:50:17.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This adds links to docs for <code class=\"notranslate\">Element.currentCSSZoom</code> being written in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2279894157\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/33427\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/33427/hovercard\" href=\"https://github.com/mdn/content/pull/33427\">mdn/content#33427</a></p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2259579619\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/33241\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/33241/hovercard\" href=\"https://github.com/mdn/content/issues/33241\">mdn/content#33241</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/23009",
             "title": "Element.currentCSSZoom - add doc link",
@@ -201,17 +212,6 @@
             "author": {
                 "name": "Kaiido",
                 "url": "https://github.com/Kaiido"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=cd2cd89732988370977199b052537a5d721dd80d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">No spec_urls because of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"909474460\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/browser-specs/issues/305\" data-hovercard-type=\"issue\" data-hovercard-url=\"/w3c/browser-specs/issues/305/hovercard?comment_id=2063511127&amp;comment_type=issue_comment\" href=\"https://github.com/w3c/browser-specs/issues/305#issuecomment-2063511127\">w3c/browser-specs#305 (comment)</a><br>\nChrome 117: <a href=\"https://chromestatus.com/feature/5680189201711104\" rel=\"nofollow\">https://chromestatus.com/feature/5680189201711104</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/22872",
-            "title": "Add RTP header extension control methods",
-            "date_modified": "2024-04-30T13:23:27.000Z",
-            "date_published": "2024-04-18T10:14:56.000Z",
-            "author": {
-                "name": "Elchi3",
-                "url": "https://github.com/Elchi3"
             }
         }
     ]
