@@ -4,5 +4,226 @@
     "home_page_url": "https://azu.github.io/github-search-rss/wintercg.json",
     "feed_url": "https://azu.github.io/github-search-rss/wintercg.json",
     "description": "org:wintercg Issues on GitHub",
-    "items": []
+    "items": [
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5588957?u=392e8525a19f71ee495a6f1a2f3a0c4de852b0e4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Can browser service worker runtime be included?</p>\n<p dir=\"auto\">Hono can run in Node, Deno, Bun, Cloudflare Workers, Pages, and can also run in a service worker to power an offline web app.</p>\n<p dir=\"auto\">I'd like to see more things target/support service workers too (e.g. Next.js, Deno Fresh, and HonoX could all be made to work in various runtime environments and could then easily be ran in a service worker).</p>",
+            "url": "https://github.com/wintercg/runtime-keys/issues/13",
+            "title": "Service worker runtime environment",
+            "date_modified": "2024-04-08T10:51:57.000Z",
+            "date_published": "2024-04-08T10:29:10.000Z",
+            "author": {
+                "name": "mfulton26",
+                "url": "https://github.com/mfulton26"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Node is now shipping <a href=\"https://github.com/nodejs/node/pull/51850\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/51850/hovercard\">their own API</a> for this and many popular libraries offer this. We should decide if this is in scope or not first.</p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/18",
+            "title": "API for text styling?",
+            "date_modified": "2024-03-07T11:52:00.000Z",
+            "date_published": "2024-03-07T00:11:31.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1935696?u=d4da91ea9b820da475036cd6fec79943b2c06775&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Since Node.js, Bun and Deno offer different APIs (<a href=\"https://nodejs.org/api/test.html#test-runner\" rel=\"nofollow\"><code class=\"notranslate\">node:test</code></a>, <a href=\"https://bun.sh/docs/test/writing\" rel=\"nofollow\"><code class=\"notranslate\">bun:test</code></a>, <a href=\"https://examples.deno.land/writing-tests\" rel=\"nofollow\"><code class=\"notranslate\">Deno.test</code></a>) but have many similarities, would it make sense to have a set of specced cross-platform testing APIs?</p>\n<h2 dir=\"auto\">Motivating Example</h2>\n<p dir=\"auto\"><code class=\"notranslate\">runtime:</code> prefix, in the style of Node.js or Bun:</p>\n<div class=\"highlight highlight-source-ts notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"import { test } from 'runtime:test';\n\ntest('2 + 2', () =&gt; {\n  expect(2 + 2).toBe(4);\n});\"><pre class=\"notranslate\"><span class=\"pl-k\">import</span> <span class=\"pl-kos\">{</span> <span class=\"pl-s1\">test</span> <span class=\"pl-kos\">}</span> <span class=\"pl-k\">from</span> <span class=\"pl-s\">'runtime:test'</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-en\">test</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'2 + 2'</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-en\">expect</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">2</span> <span class=\"pl-c1\">+</span> <span class=\"pl-c1\">2</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toBe</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">4</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">Or, Deno-style global:</p>\n<div class=\"highlight highlight-source-ts notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"Runtime.test(&quot;assert works correctly&quot;, () =&gt; {\n  assert(true);\n  assertEquals(1, 1);\n});\n\n// Using existing global:\nglobalThis.test(&quot;assert works correctly&quot;, () =&gt; {\n  assert(true);\n  assertEquals(1, 1);\n});\"><pre class=\"notranslate\"><span class=\"pl-smi\">Runtime</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">test</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"assert works correctly\"</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-en\">assert</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">true</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-en\">assertEquals</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">1</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">1</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-c\">// Using existing global:</span>\n<span class=\"pl-s1\">globalThis</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">test</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"assert works correctly\"</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-en\">assert</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">true</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-en\">assertEquals</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">1</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">1</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">This was originally inspired by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/nzakas/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/nzakas\">@nzakas</a>'s tweet here:</p>\n<blockquote>\n<p dir=\"auto\">What I want: To write JavaScript tests once and be able to run them across Node.js, Bun, and Deno.</p>\n<p dir=\"auto\">Problem: Bun and Deno have built-in test runners you have to import from to run tests. I use Mocha. This doesn't work.</p>\n<p dir=\"auto\">Solution: ???</p>\n</blockquote>\n<p dir=\"auto\">Source: <a href=\"https://twitter.com/slicknet/status/1762264774166085937\" rel=\"nofollow\">https://twitter.com/slicknet/status/1762264774166085937</a></p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/CanadaHonk/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/CanadaHonk\">@CanadaHonk</a> rightly mentions that, while there are similarities, there are probably challenges creating a spec:</p>\n<blockquote>\n<p dir=\"auto\">most test framework APIs are pretty similar?</p>\n<p dir=\"auto\">probably hard to spec due to sandbox/isolation/etc</p>\n</blockquote>\n<p dir=\"auto\">Source: <a href=\"https://twitter.com/CanadaHonk/status/1762417370893516929\" rel=\"nofollow\">https://twitter.com/CanadaHonk/status/1762417370893516929</a></p>\n<h2 dir=\"auto\">Alternatives Considered</h2>\n<h3 dir=\"auto\">Separate Package</h3>\n<p dir=\"auto\">Instead of something built into the standard library of multiple runtimes, use a separate package (either like Vitest, including testing features of its own, or a wrapper package).</p>\n<p dir=\"auto\">Downsides:</p>\n<ol dir=\"auto\">\n<li>Doesn't work out of the box or with zero dependencies</li>\n<li>Downloading and maintaining another package in <code class=\"notranslate\">devDependencies</code></li>\n</ol>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/68",
+            "title": "Cross-Runtime Testing APIs?",
+            "date_modified": "2024-03-02T05:14:42.000Z",
+            "date_published": "2024-02-27T10:10:33.000Z",
+            "author": {
+                "name": "karlhorky",
+                "url": "https://github.com/karlhorky"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Eg: <code class=\"notranslate\">'0'</code> -&gt; <code class=\"notranslate\">0</code>, <code class=\"notranslate\">'false'</code> -&gt; <code class=\"notranslate\">false</code>. Suggested by <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/nicolo-ribaudo/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/nicolo-ribaudo\">@nicolo-ribaudo</a></p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/17",
+            "title": "Should environment variable values be normalized?",
+            "date_modified": "2024-03-14T01:26:30.000Z",
+            "date_published": "2024-02-11T21:35:18.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/42794878?u=c2da6d9d9cc86ff6ae7bd4c089f2cdbb9ff01a84&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Cloudflare workers, Deno, node, bun all have it in some capacity. But it's also extremely limited and there is little incentive from browsers to change it.</p>\n<p dir=\"auto\">Node supports passing a dictionary as the second argument, ie. for setting custom headers or undici dispatchers (which allows for proxying, etc.). If this could be standardized it'd be great.</p>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1599378606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/websockets/issues/42\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/websockets/issues/42/hovercard\" href=\"https://github.com/whatwg/websockets/issues/42\">whatwg/websockets#42</a><br>\n<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1147048320\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/websockets/issues/16\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/websockets/issues/16/hovercard?comment_id=881547333&amp;comment_type=issue_comment\" href=\"https://github.com/whatwg/websockets/issues/16#issuecomment-881547333\">whatwg/websockets#16 (comment)</a></p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/66",
+            "title": "WebSocket",
+            "date_modified": "2024-02-09T09:48:37.000Z",
+            "date_published": "2024-02-09T04:01:26.000Z",
+            "author": {
+                "name": "KhafraDev",
+                "url": "https://github.com/KhafraDev"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Further future thing, but would be very nice to have, especially for more low-level implementations like env atm.</p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/16",
+            "title": "Write mini test suite?",
+            "date_modified": "2024-02-09T02:26:14.000Z",
+            "date_published": "2024-02-09T02:26:14.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Since we can exit, we should likely add exit hooks as <a href=\"https://github.com/CanadaHonk/proposal-cli-api/issues/1#issuecomment-1921542301\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-cli-api/issues/1/hovercard\">suggested by @lucacasonato</a>. How should they be added/removed? (also todo bikeshed exit hook or exit listener or ...)</p>\n<p dir=\"auto\">Just like this?</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const hook = () =&gt; console.log('Goodbye!');\nCLI.addExitHook(hook);\n// CLI.removeExitHook(hook);\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-en\">hook</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'Goodbye!'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-c1\">CLI</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">addExitHook</span><span class=\"pl-kos\">(</span><span class=\"pl-en\">hook</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-c\">// CLI.removeExitHook(hook);</span></pre></div>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/15",
+            "title": "How should exit hooks be added/removed?",
+            "date_modified": "2024-03-07T00:27:32.000Z",
+            "date_published": "2024-02-09T00:37:56.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Since we now have a mini ES-like thing taking up most the explainer, we should probably start an actual spec bikeshed file sometime soon. Maybe once it is under WinterCG?</p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/14",
+            "title": "Write spec bikeshed file",
+            "date_modified": "2024-02-08T21:03:02.000Z",
+            "date_published": "2024-02-08T21:03:01.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32498324?u=6ff39af834311a2dbeefc3c3071dde7eeb6d5a0b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Some terminals support printing interactive hyperlinks and some don't. It could be useful to expose this ability?</p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/12",
+            "title": "Terminal metadata - link support?",
+            "date_modified": "2024-02-19T15:58:55.000Z",
+            "date_published": "2024-02-07T11:53:03.000Z",
+            "author": {
+                "name": "lukewarlow",
+                "url": "https://github.com/lukewarlow"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">\"The three\"</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Node: <a href=\"https://github.com/nodejs/node/issues/51706\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/node/issues/51706/hovercard\">TSC issue requesting comments</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Deno: Marking this as essentially done thanks to <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/lucacasonato/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/lucacasonato\">@lucacasonato</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Bun: Some feedback from <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/paperdave/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/paperdave\">@paperdave</a> (ty!)</li>\n</ul>\n<h3 dir=\"auto\">Edge runtimes</h3>\n<p dir=\"auto\">Not sure, this doesn't really effect them?</p>\n<h3 dir=\"auto\">Smaller runtimes</h3>\n<p dir=\"auto\">Could be nice, probably low priority though?</p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/11",
+            "title": "Runtime outreach",
+            "date_modified": "2024-02-08T19:22:12.000Z",
+            "date_published": "2024-02-07T01:04:09.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Terminal metadata idea from <a href=\"https://github.com/CanadaHonk/proposal-cli-api/issues/1#issuecomment-1921612081\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-cli-api/issues/1/hovercard\">this #1 comment</a>.</p>\n<ul dir=\"auto\">\n<li>Should we have a parent object (eg <code class=\"notranslate\">CLI.terminal.noColor</code>) or bare in the namespace (eg <code class=\"notranslate\">CLI.noColor</code>)?</li>\n<li>Functions (eg <code class=\"notranslate\">CLI.terminal.noColor()</code>) or getters (eg <code class=\"notranslate\">CLI.terminal.noColor</code>)?</li>\n<li>Interactivity:\n<ul dir=\"auto\">\n<li>Potential names: <code class=\"notranslate\">interactive</code>, <code class=\"notranslate\">isInteractive</code>, <code class=\"notranslate\">interactivity</code>, <code class=\"notranslate\">nonInteractive</code>, <code class=\"notranslate\">notInteractive</code>, <code class=\"notranslate\">tty</code>, <code class=\"notranslate\">isTty</code>, <code class=\"notranslate\">isTTY</code>, <code class=\"notranslate\">terminal</code>, <code class=\"notranslate\">isTerminal</code>, <code class=\"notranslate\">inTerminal</code></li>\n<li>Deno used to have a <code class=\"notranslate\">isatty(...)</code> function, but now is moving to <code class=\"notranslate\">isTerminal</code>.</li>\n</ul>\n</li>\n<li>No color:\n<ul dir=\"auto\">\n<li>Potential names: <code class=\"notranslate\">noColor</code>, <code class=\"notranslate\">color</code>, <code class=\"notranslate\">colorful</code>, <code class=\"notranslate\">hasColor</code>, <code class=\"notranslate\">shouldColor</code></li>\n<li>We should probably just use <code class=\"notranslate\">noColor</code> as it is essentially an opt-out preference; <code class=\"notranslate\">color</code> could imply the user <em>wants</em> color which could not be true (rather than <code class=\"notranslate\">NO_COLOR</code> stating the user explicitly does <em>not want</em> color). Also, this would then share the name of the <a href=\"https://no-color.org/\" rel=\"nofollow\">environment variable \"standard\"</a>.</li>\n<li>Only <a href=\"https://deno.land/api?s=Deno.noColor\" rel=\"nofollow\">Deno exposes just this (<code class=\"notranslate\">Deno.noColor</code>)</a> afaik, other runtimes you have to handle it yourself (eg <code class=\"notranslate\">!!process.env.NO_COLOR</code>).</li>\n</ul>\n</li>\n</ul>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/9",
+            "title": "How should terminal metadata be exposed?",
+            "date_modified": "2024-03-07T00:27:32.000Z",
+            "date_published": "2024-02-06T23:14:42.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">A bare object (<code class=\"notranslate\">process.env</code>, <code class=\"notranslate\">Bun.env</code>)? A Map-like object (<code class=\"notranslate\">Deno.env</code>)?</p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/8",
+            "title": "How should env variables be exposed?",
+            "date_modified": "2024-03-07T16:00:35.000Z",
+            "date_published": "2024-02-06T23:10:29.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">While WinterCG doesn't have an official process, here are rough stages I think are reasonable, \"adapted\" from ECMAScript:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Stage 0 (you are here)\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Present idea, see if it is mostly agreed to be reasonable</li>\n</ul>\n</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> Stage 1 (adopted into WinterCG?)\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2094210350\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-cli-api/issues/5\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-cli-api/issues/5/hovercard\" href=\"https://github.com/wintercg/proposal-cli-api/issues/5\">#5</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2121958324\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-cli-api/issues/11\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-cli-api/issues/11/hovercard\" href=\"https://github.com/wintercg/proposal-cli-api/issues/11\">#11</a></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" checked=\"\"> More discussion</li>\n</ul>\n</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Stage 2\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Write specification</li>\n</ul>\n</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Stage 3\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> Implemented in at least 2 runtimes (can be behind flag)</li>\n</ul>\n</li>\n</ul>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/7",
+            "title": "Next steps",
+            "date_modified": "2024-03-07T16:32:19.000Z",
+            "date_published": "2024-02-01T18:26:42.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/189835?u=2d60c25c3f0cbdad0e8c9239a7283e887a3e490c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">In this issue, let's verify that our CLI API has sufficient capabilities for advanced argument parsing and tab completion. I'm not sure what's required here, but I hope my coworker <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/molisani/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/molisani\">@molisani</a> can help lay out requirements, as he has significant experience in advanced Node CLIs.</p>\n<div class=\"markdown-alert markdown-alert-note\" dir=\"auto\"><p class=\"markdown-alert-title\" dir=\"auto\"><svg class=\"octicon octicon-info mr-2\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p><p dir=\"auto\">The initial CLI API should <em>not</em> provide a high-level argument parser or tab completion engine--we should focus on low-level capabilities first, and build more high-level abstractions once we have the basis (so that we're not tempted to put low-level hooks in the higher-level APIs, given that their use is optional).</p>\n</div>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/6",
+            "title": "Enumerate necessary capabilities for advanced APIs",
+            "date_modified": "2024-02-07T13:32:22.000Z",
+            "date_published": "2024-02-01T16:12:03.000Z",
+            "author": {
+                "name": "littledan",
+                "url": "https://github.com/littledan"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><code class=\"notranslate\">argv</code> is traditionally all arguments, which would include: runtime binary, script being ran, and runtime arguments (\"runtime parts\"). Should ours?</p>\n<p dir=\"auto\">Existing examples:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">process.argv</code> (Node): includes runtime parts</li>\n<li><code class=\"notranslate\">Deno.args</code> (Deno): does not include runtime parts (they can be got separately with <code class=\"notranslate\">Deno.execPath()</code>, etc)</li>\n</ul>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/3",
+            "title": "Should argv include runtime parts (binary/script/runtime args)?",
+            "date_modified": "2024-03-07T19:03:44.000Z",
+            "date_published": "2024-01-22T15:44:29.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Node has <code class=\"notranslate\">process</code> for most APIs discussed here (and more), Deno has its own-named <code class=\"notranslate\">Deno</code>. <code class=\"notranslate\">CLI</code>/etc seems obvious but needs (a lot of?) bikeshedding. Separate discussion for whether to use <code class=\"notranslate\">process</code>: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2094206032\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-cli-api/issues/4\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-cli-api/issues/4/hovercard\" href=\"https://github.com/wintercg/proposal-cli-api/issues/4\">#4</a></p>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/2",
+            "title": "What namespace?",
+            "date_modified": "2024-03-07T12:11:56.000Z",
+            "date_published": "2024-01-22T15:42:35.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19228318?u=bea98f5742a158d0da54ca362c91df34c5840087&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>argv (<code class=\"notranslate\">process.argv</code>, ~<code class=\"notranslate\">Deno.args</code>, etc)\n<ul dir=\"auto\">\n<li>See also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2094204042\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/proposal-cli-api/issues/3\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/proposal-cli-api/issues/3/hovercard\" href=\"https://github.com/wintercg/proposal-cli-api/issues/3\">#3</a> for specifying</li>\n</ul>\n</li>\n<li>stdout (<code class=\"notranslate\">process.stdout.write</code>, etc)\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">console.log</code> does partially cover this; however some applications may need/want a method to write to stdout without additional processing or newlines.</li>\n</ul>\n</li>\n<li>stdin</li>\n<li>environment variables (too general/out of scope?)</li>\n<li>exit/quit function (too general/out of scope?)\n<ul dir=\"auto\">\n<li>Possible signature: <code class=\"notranslate\">exit(code?: number)</code></li>\n</ul>\n</li>\n</ul>",
+            "url": "https://github.com/wintercg/proposal-cli-api/issues/1",
+            "title": "What CLI APIs are there?",
+            "date_modified": "2024-03-07T00:27:29.000Z",
+            "date_published": "2024-01-22T15:40:08.000Z",
+            "author": {
+                "name": "CanadaHonk",
+                "url": "https://github.com/CanadaHonk"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/189835?u=2d60c25c3f0cbdad0e8c9239a7283e887a3e490c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Last time I checked, only Firefox actually fired the languagechange event. We should probably investigate whether it even deserves to be in the spec, before we ask people to implement it in servers. (Really, servers should not have a current language, but that is more difficult to do compatibly...)</p>",
+            "url": "https://github.com/wintercg/navigator-registry/issues/2",
+            "title": "Language change",
+            "date_modified": "2024-01-08T13:59:28.000Z",
+            "date_published": "2024-01-08T13:59:28.000Z",
+            "author": {
+                "name": "littledan",
+                "url": "https://github.com/littledan"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <a href=\"https://xhr.spec.whatwg.org/#formdata\" rel=\"nofollow\"><code class=\"notranslate\">FormData</code></a> constructor, as defined in the XHR spec, takes two optional parameters: the first of type <code class=\"notranslate\">HTMLFormElement</code>, and the second of type <code class=\"notranslate\">HTMLElement</code>. These are DOM APIs, which server-side runtimes don't support.</p>\n<p dir=\"auto\">The way I see it, if any of these arguments is passed (and it's anything other than <code class=\"notranslate\">undefined</code>), this indicates a bug in user code. For example, the code in question could be isomorphic code using DOM APIs through a library such as <a href=\"https://github.com/jsdom/jsdom\">jsdom</a> or <a href=\"https://github.com/b-fuze/deno-dom\">deno-dom</a>, and the developer mistakenly used those objects with the runtime's <code class=\"notranslate\">FormData</code> implementation. TypeScript might not catch that, since it could be set up to use the browser's type definitions rather than the runtime's.</p>\n<p dir=\"auto\">In the runtimes I've tested:</p>\n<ul dir=\"auto\">\n<li>Node.js and Deno throw if the first argument is not <code class=\"notranslate\">undefined</code>, but they ignore the second argument.</li>\n<li>Cloudflare Workers / <code class=\"notranslate\">workerd</code>, Bun and WinterJS ignore both arguments.</li>\n</ul>\n<p dir=\"auto\">No runtimes seem to check the second argument. Specifying Node.js and Deno's behavior might be fine, since in browsers the second argument does nothing if the first one is <code class=\"notranslate\">undefined</code>, and the first argument is already checked. But the WebIDL implementation in browsers does check that the second argument is a valid <code class=\"notranslate\">HTMLElement</code> regardless of whether the first one is <code class=\"notranslate\">undefined</code>, so maybe we should be consistent with that. This would also let us specify this by just saying what happens with unsupported WebIDL types, which is something that might also apply to other APIs in the future.</p>",
+            "url": "https://github.com/wintercg/proposal-common-minimum-api/issues/63",
+            "title": "How does the `FormData` constructor handle arguments in non-DOM runtimes?",
+            "date_modified": "2024-01-12T16:48:45.000Z",
+            "date_published": "2024-01-08T07:00:26.000Z",
+            "author": {
+                "name": "andreubotella",
+                "url": "https://github.com/andreubotella"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/14912729?u=2997309b4cece94a0202986b59a3f3de5636f55f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <code class=\"notranslate\">fetch</code> API is becoming the standard HTTP client for server usage. When proxying back a fetched resource to the user-agent, here's what i'd intuitively do:</p>\n<div class=\"highlight highlight-source-ts notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"async function myEndpoint(request: Request): Promise&lt;Response&gt; {\n   return await fetch(&quot;https://www.gatsbyjs.com/Gatsby-Logo.svg&quot;);\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">async</span> <span class=\"pl-k\">function</span> <span class=\"pl-en\">myEndpoint</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">request</span>: <span class=\"pl-smi\">Request</span><span class=\"pl-kos\">)</span>: <span class=\"pl-smi\">Promise</span><span class=\"pl-kos\">&lt;</span><span class=\"pl-smi\">Response</span><span class=\"pl-kos\">&gt;</span> <span class=\"pl-kos\">{</span>\n   <span class=\"pl-k\">return</span> <span class=\"pl-k\">await</span> <span class=\"pl-en\">fetch</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"https://www.gatsbyjs.com/Gatsby-Logo.svg\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<p dir=\"auto\">The URL in this example responds with a gzip-compressed SVG. As specced in 16.1.1.1 of <a href=\"https://fetch.spec.wintercg.org/#http-network-fetch\" rel=\"nofollow\"><code class=\"notranslate\">15.6 HTTP - network fetch</code></a>, the <code class=\"notranslate\">body</code> stream contains an uncompressed version of the SVG, making compression transparent to the user. This works well for consuming the SVG.</p>\n<p dir=\"auto\">However, the spec does not require headers to mirror this decompression. Although the <code class=\"notranslate\">Response</code> has uncompressed body, the <code class=\"notranslate\">Content-Length</code> headers shows it compressed length and the <code class=\"notranslate\">Content-Encoding</code> header pretends it's compressed. In <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2033082818\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/undici/issues/2514\" data-hovercard-type=\"issue\" data-hovercard-url=\"/nodejs/undici/issues/2514/hovercard\" href=\"https://github.com/nodejs/undici/issues/2514\">nodejs/undici#2514</a> (the issue I originally opened), I've included a repro of what this means if the <code class=\"notranslate\">Response</code> is proxied to the user-agent:</p>\n<ol dir=\"auto\">\n<li>The <code class=\"notranslate\">body</code> ends up being longer than the headers described. This is not allowed in the HTTP spec, and leads clients like cURL to warn.</li>\n<li>The user-agent will try decompress a body that isn't compressed</li>\n</ol>\n<p dir=\"auto\">The current workaround is to manually alter headers on responses from <code class=\"notranslate\">fetch</code>:</p>\n<div class=\"highlight highlight-source-ts notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"async function myEndpoint(request: Request): Promise&lt;Response&gt; {\n   let resp = await fetch(&quot;https://www.gatsbyjs.com/Gatsby-Logo.svg&quot;);\n   if (resp.headers.get(&quot;content-encoding&quot;) {\n     const headers = new Headers(resp.headers)\n     headers.delete(&quot;content-encoding&quot;)\n     headers.delete(&quot;content-length&quot;)\n     resp = new Response(body, { ...resp, headers })\n   }\n   return resp\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">async</span> <span class=\"pl-k\">function</span> <span class=\"pl-en\">myEndpoint</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">request</span>: <span class=\"pl-smi\">Request</span><span class=\"pl-kos\">)</span>: <span class=\"pl-smi\">Promise</span><span class=\"pl-kos\">&lt;</span><span class=\"pl-smi\">Response</span><span class=\"pl-kos\">&gt;</span> <span class=\"pl-kos\">{</span>\n   <span class=\"pl-k\">let</span> <span class=\"pl-s1\">resp</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-en\">fetch</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"https://www.gatsbyjs.com/Gatsby-Logo.svg\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n   <span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">resp</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">headers</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">get</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"content-encoding\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\"></span> <span class=\"pl-kos\">{</span>\n     <span class=\"pl-k\">const</span> <span class=\"pl-s1\">headers</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-smi\">Headers</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">resp</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">headers</span><span class=\"pl-kos\">)</span>\n     <span class=\"pl-s1\">headers</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">delete</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"content-encoding\"</span><span class=\"pl-kos\">)</span>\n     <span class=\"pl-s1\">headers</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">delete</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"content-length\"</span><span class=\"pl-kos\">)</span>\n     <span class=\"pl-s1\">resp</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-smi\">Response</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">body</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span> ...<span class=\"pl-s1\">resp</span><span class=\"pl-kos\">,</span> headers <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span>\n   <span class=\"pl-kos\">}</span>\n   <span class=\"pl-k\">return</span> <span class=\"pl-s1\">resp</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<p dir=\"auto\">This is cumbersome and should live in library code. It can't live in frameworks, because it's impossible to differentiate a response produced by fetch (content-encoding header, but uncompressed body) from a compressed Response created in user code (same content-encoding header, but compressed body).</p>\n<p dir=\"auto\">Instead of this workaround, <code class=\"notranslate\">fetch</code> should require the <code class=\"notranslate\">content-length</code> and <code class=\"notranslate\">content-encoding</code> headers to be deleted when response body is decompressed.</p>\n<p dir=\"auto\">Some implementors already do this, including Deno and workerd. Netlify might implement the same for Netlify Functions 2.0.</p>\n<p dir=\"auto\">I've checked undici (Node.js), node-fetch, Chrome and Safari - all of them expose the behaviour explained above, where the headers don't match the body.</p>\n<p dir=\"auto\">An alternative solution for this would be <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1431770838\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/fetch/issues/1524\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/fetch/issues/1524/hovercard\" href=\"https://github.com/whatwg/fetch/issues/1524\">whatwg#1524</a> - that way, frameworks can use the decompressed body field to tell compressed responses from uncompressed ones.</p>\n<hr>\n<p dir=\"auto\">Summary:</p>\n<p dir=\"auto\"><strong>What's the problem?</strong> compressed responses having <code class=\"notranslate\">content-encoding</code> header, but decompressed <code class=\"notranslate\">body</code> leads to incoherent <code class=\"notranslate\">Response</code><br>\n<strong>What's the usecase?</strong>  mostly reverse proxying<br>\n<strong>Is it relevant to upstream?</strong> Yes, potentially because of service workers.<br>\n<strong>What's my suggestion for a fix?</strong> Upon decompression, <code class=\"notranslate\">content-length</code> and <code class=\"notranslate\">content-encoding</code> headers should be deleted.<br>\n<strong>How do engines deal with this?</strong> Most have the bug, but Deno and workerd implemented the fix I propose.</p>",
+            "url": "https://github.com/wintercg/fetch/issues/23",
+            "title": "For compressed responses, omit `Content-Length` and `Content-Encoding` headers",
+            "date_modified": "2024-01-02T08:58:09.000Z",
+            "date_published": "2023-12-11T16:13:34.000Z",
+            "author": {
+                "name": "Skn0tt",
+                "url": "https://github.com/Skn0tt"
+            }
+        }
+    ]
 }
