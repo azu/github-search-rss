@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1323194?u=93e4d24fee9e70f1199839b665e9285308b78818&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add some notes given it's non-obvious that the calls might be ignored or be async.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">See discussion in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1899178\" rel=\"nofollow\">Mozilla bug 1899178</a>.</p>",
+            "url": "https://github.com/mdn/content/pull/33833",
+            "title": "Add some compatibility notes to {move,resize}{By,To}.",
+            "date_modified": "2024-05-30T09:01:23.000Z",
+            "date_published": "2024-05-30T09:00:53.000Z",
+            "author": {
+                "name": "emilio",
+                "url": "https://github.com/emilio"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates documentation as per resolution of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1896508\" rel=\"nofollow\">Bug 1896508</a> scripting.registerContentScripts() should return the registered scripts, according to MDN i.e. scripting.registerContentScripts() returns no argugents.</p>",
+            "url": "https://github.com/mdn/content/pull/33832",
+            "title": "scripting.registerContentScripts() returns no arguments",
+            "date_modified": "2024-05-30T08:27:02.000Z",
+            "date_published": "2024-05-30T08:25:30.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/84226578?u=a14df0a2659477539b8c0ed3212af922702db415&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/33831",
             "title": "cross browser testing: ultimate minor fix",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "rebloor",
                 "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Adds support for lh/rlh in SVG to Firefox 127 release notes</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Firefox 127 release project</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1892089\" rel=\"nofollow\">Bugzilla: Support CSS font-relative line-height units in SVG: lh, rlh</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2288317434\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/33522\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/33522/hovercard\" href=\"https://github.com/mdn/content/issues/33522\">#33522</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/33728",
-            "title": "Add support for lh/rlh in SVG to Firefox 127 release notes",
-            "date_modified": "2024-05-23T11:07:04.000Z",
-            "date_published": "2024-05-23T11:05:37.000Z",
-            "author": {
-                "name": "pepelsbey",
-                "url": "https://github.com/pepelsbey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/94112?u=2b5cfaf8731be8e8aa2863fd3d7f6f61f717d52f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This had some alarmingly ancient and misleading stuff in it.  I touched this up very quickly in a jsbin textarea, but it wfm in current Firefox and current Chrome, and based on some bug tracker diving I think it should be fine going back some eight or more years.</p>\n<p dir=\"auto\">It's unfortunate that the examples both link to github projects I have no control over, but one had already drifted out of sync, and I think making the page itself be more correct is more important.</p>\n<p dir=\"auto\">Could probably stand further improvement; this is more a \"stop the bleeding\" patch after I realized I'd gotten a completely wrong impression about Chrome's behavior from this page.</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This code was based around very old engine differences that aren't even explained well in the prose.  I am baffled by issue templates.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I initially thought the paragraph about Chrome was suggesting that <code class=\"notranslate\">Gamepad</code>'s state only updated every so often unless explicitly nudged, or something, then later realized that didn't make any sense since there's no way to \"nudge\" it.  In retrospect it looks like it was referring to how <code class=\"notranslate\">GamepadEvent.gamepad</code> is (to this day) a snapshot in Chrome but a live object in Firefox, but this difference can be avoided entirely by just using <code class=\"notranslate\">navigator.getGamepads()</code> when updating, instead of keeping the event's property around.  Also the given code doesn't work in current Chrome anyway!</p>\n<p dir=\"auto\">Then I fixed some other stuff like how connecting two gamepads would start two rAF loops in the final demo??  And got rid of checking whether <code class=\"notranslate\">Gamepad.button</code> is a float or an object because it's been specced as an object for an entire decade and nothing else in the article even explains this.  And also just some style nits like <code class=\"notranslate\">.forEach</code> being the most 2013 thing I have ever seen.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Please.  Please there are so many fields.  I have now spent longer writing this issue than I spent on the patch</p>",
-            "url": "https://github.com/mdn/content/pull/33724",
-            "title": "Attempt to bring the Gamepad API examples up to date",
-            "date_modified": "2024-05-24T20:45:10.000Z",
-            "date_published": "2024-05-23T01:05:16.000Z",
-            "author": {
-                "name": "eevee",
-                "url": "https://github.com/eevee"
             }
         }
     ]
