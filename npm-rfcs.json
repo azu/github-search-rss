@@ -6,6 +6,28 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/141217052?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
+            "url": "https://github.com/npm/rfcs/issues/785",
+            "title": "[RRFC] <title>",
+            "date_modified": "2024-06-26T14:31:49.000Z",
+            "date_published": "2024-06-26T14:31:31.000Z",
+            "author": {
+                "name": "hustle-and-finesse",
+                "url": "https://github.com/hustle-and-finesse"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/141217052?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
+            "url": "https://github.com/npm/rfcs/issues/784",
+            "title": "[RRFC] <title>",
+            "date_modified": "2024-06-26T14:23:25.000Z",
+            "date_published": "2024-06-26T14:22:27.000Z",
+            "author": {
+                "name": "hustle-and-finesse",
+                "url": "https://github.com/hustle-and-finesse"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/79560998?u=1fbd5b05057c4198df9ddcd6218e98a813be0a45&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<p dir=\"auto\">When packages do not specify a minimum supported Node version, some people may assume that the package supports <em>any</em> version of Node--or at least the ones that their currently-installed version does not error out on.</p>\n<p dir=\"auto\">This can lead to semver hazards--a maintainer may inadvertently use a JavaScript builtin (as old as <code class=\"notranslate\">Array#map</code> or as new as <code class=\"notranslate\">Object.hasOwn</code>) or a Node standard library feature that is not supported across all versions of Node. This could be seen as a breaking change, and hence semver-major, but it is very hard for the maintainer to notice.</p>\n<p dir=\"auto\">In order to use features that are not supported across all releases of Node in a semver-compatible way, authors must include the <code class=\"notranslate\">\"engines\"</code> field in their <code class=\"notranslate\">package.json</code>. Currently, however, few do so--probably because it is not included by default.</p>\n<h3 dir=\"auto\">Example</h3>\n<p dir=\"auto\">See current semver hazard examples:</p>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2168412759\" data-permission-text=\"Title is private\" data-url=\"https://github.com/indutny/elliptic/issues/314\" data-hovercard-type=\"issue\" data-hovercard-url=\"/indutny/elliptic/issues/314/hovercard\" href=\"https://github.com/indutny/elliptic/issues/314\">indutny/elliptic#314</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1847341464\" data-permission-text=\"Title is private\" data-url=\"https://github.com/dequelabs/axe-core/issues/4127\" data-hovercard-type=\"issue\" data-hovercard-url=\"/dequelabs/axe-core/issues/4127/hovercard\" href=\"https://github.com/dequelabs/axe-core/issues/4127\">dequelabs/axe-core#4127</a></li>\n</ul>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<p dir=\"auto\"><code class=\"notranslate\">npm init</code> does not currently specify any minimum supported Node version.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\"><code class=\"notranslate\">npm init</code> should specify a reasonably recent Node version as the minimum supported one in the <code class=\"notranslate\">\"engines\"</code> field, for some definition of \"reasonably recent\". The exact timeframe can be bikeshed over, but here are some ideas:</p>\n<ul dir=\"auto\">\n<li>The version of Node released some number of years ago (this can be longer than the EOL timeframe, since people are sometimes slow to upgrade Node--but do we want to encourage that?)</li>\n<li>The earliest LTS non-EOL version of Node</li>\n<li>The latest LTS EOL version of Node</li>\n</ul>\n<h1 dir=\"auto\">Unanswered Questions / Further Work?</h1>\n<ul dir=\"auto\">\n<li>Does npm currently provide a warning when you depend on a package whose minimum Node version is <em>higher</em> than the one you specify? Could it?</li>\n<li>Since the <code class=\"notranslate\">engines</code> field consists of machine-readable semver, should the NPM registry require an <code class=\"notranslate\">engines</code> bump to require a new major version number?</li>\n<li>Other runtimes, like bun and deno, now exist as well. An argument could be made that since <em>those</em> engines are likewise not mentioned in <code class=\"notranslate\">package.json</code>, all of their versions must be supported. While their Node compatibility is still work-in-progress and not officially stable (AFAIK), there may come a time when they <em>do</em> reach parity with Node.\n<ul dir=\"auto\">\n<li>Should maintainers be required to keep up-to-date with all third-party runtimes and e.g. include <code class=\"notranslate\">\"bun\"</code> and <code class=\"notranslate\">\"deno\"</code> fields within <code class=\"notranslate\">\"engines\"</code>? I see this as untenable, both because it is a lot to ask of maintainers and because npm would need an \"official\" list of all third-party runtimes.</li>\n<li>They are the ones implementing APIs that Node is responsible for designing, so should it be their responsibility to map Node versions to the corresponding versions of their own runtimes?</li>\n<li>ECMAScript features are another matter entirely. Third-party runtimes could support different subsets of new ECMAScript features from Node. Should they, again, be asked to map Node versions onto versions of their own runtime? Should a cross-runtime \"JS support level\" field be designed?</li>\n</ul>\n</li>\n</ul>",
             "url": "https://github.com/npm/rfcs/issues/781",
             "title": "[RRFC] Populate `\"engines\"` field during `npm init`",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "HomyeeKing",
                 "url": "https://github.com/HomyeeKing"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1177034?u=487d11a2bf7629de0b1cc59ddf0249aaba04d10e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">When developing in a docker environment, rebuilding images and installing dependencies can be quite slow. Using best practices it is recommended to have a docker file with the following steps:</p>\n<ol dir=\"auto\">\n<li>Copy package.json and package-lock.json files into image</li>\n<li>Install dependencies</li>\n<li>Copy rest of application</li>\n</ol>\n<p dir=\"auto\">Doing it this way ensure that we can skip step 2 if nothing has changed in step 1. Ideally this means that step 1 should only contain the minimum to install the dependencies in step 2.</p>\n<p dir=\"auto\">For npm v9 the minimum needed to be able to install dependencies in a production like setting such as a docker file is both the package.json and package-lock.json.</p>\n<p dir=\"auto\">Relying on package.json has some downsides because it is used for a lot of other configuration:</p>\n<ul dir=\"auto\">\n<li>npm scripts</li>\n<li>eslint configuration</li>\n<li>jest configuration</li>\n<li>repository and licence information.</li>\n</ul>\n<p dir=\"auto\">If any of these change then step 2 of the docker build cannot be skipped.</p>\n\n<h3 dir=\"auto\">Example</h3>\n\n<ul dir=\"auto\">\n<li>Solving this would speed up docker builds for people where package.json has changed but package-lock.json has not changed.</li>\n</ul>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<ul dir=\"auto\">\n<li>Currently both package.json and package-lock.json is needed to be able to install packages.</li>\n</ul>\n<p dir=\"auto\">Trying to install with only a package-lock.json file present results in the following error:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"npm ERR! code ENOENT\nnpm ERR! syscall open\nnpm ERR! path /path/package.json\nnpm ERR! errno -2\nnpm ERR! enoent ENOENT: no such file or directory, open '/path/package.json'\nnpm ERR! enoent This is related to npm not being able to find a file.\nnpm ERR! enoent \"><pre class=\"notranslate\"><code class=\"notranslate\">npm ERR! code ENOENT\nnpm ERR! syscall open\nnpm ERR! path /path/package.json\nnpm ERR! errno -2\nnpm ERR! enoent ENOENT: no such file or directory, open '/path/package.json'\nnpm ERR! enoent This is related to npm not being able to find a file.\nnpm ERR! enoent \n</code></pre></div>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npm install</code> should support installing from only a package-lock.json</li>\n<li><code class=\"notranslate\">npm ci</code> should support installing from only a package-lock.json.</li>\n</ul>\n<h3 dir=\"auto\">References</h3>\n<ul dir=\"auto\">\n<li>Potentially related RRFC <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"945299627\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/rfcs/issues/415\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/rfcs/issues/415/hovercard\" href=\"https://github.com/npm/rfcs/issues/415\">#415</a></li>\n<li><a href=\"https://nodejs.org/en/docs/guides/nodejs-docker-webapp\" rel=\"nofollow\">Recommended docker file for node</a></li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/717",
-            "title": "[RRFC] Support installing from only a lock file",
-            "date_modified": "2023-09-08T08:23:25.000Z",
-            "date_published": "2023-09-06T14:44:53.000Z",
-            "author": {
-                "name": "gingermusketeer",
-                "url": "https://github.com/gingermusketeer"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/142171396?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/716",
-            "title": "[RRFC] <title>work",
-            "date_modified": "2023-12-02T20:13:25.000Z",
-            "date_published": "2023-08-26T21:57:45.000Z",
-            "author": {
-                "name": "DaveS143",
-                "url": "https://github.com/DaveS143"
             }
         }
     ]
