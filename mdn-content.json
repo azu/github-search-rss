@@ -42,7 +42,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19654456?u=c853bd44c1b5672ac6c2cb878797b193216ea7b1&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">specify absolute and relative font-size values multipliers</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">had to search for it elsewhere while expected that to be specified at MDN</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/35261",
             "title": "specify absolute and relative font-size values multipliers",
-            "date_modified": "2024-08-01T06:28:05.000Z",
+            "date_modified": "2024-08-01T19:34:37.000Z",
             "date_published": "2024-08-01T06:07:51.000Z",
             "author": {
                 "name": "UniBreakfast",
@@ -53,7 +53,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/28441561?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><blockquote>\n<p dir=\"auto\">This PR has been set to <code class=\"notranslate\">DRAFT</code> since the behavior written in the specification may be incorrect: “I personally think the standard is wrong. If the body is not potentially scrollable, why return it as the scrollingElement?” <a href=\"https://t.me/typescript_zh/105151\" rel=\"nofollow\">src</a></p>\n</blockquote>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Currently:</p>\n<blockquote>\n<p dir=\"auto\">When in quirks mode, the scrollingElement attribute returns the HTML body element if it exists and is <a href=\"https://drafts.csswg.org/cssom-view/#potentially-scrollable\" rel=\"nofollow\">potentially scrollable</a>, otherwise it returns null.</p>\n</blockquote>\n<p dir=\"auto\">Changes to:</p>\n<blockquote>\n<p dir=\"auto\">When in quirks mode, the scrollingElement attribute returns the HTML body element if it exists and is <strong>not</strong> <a href=\"https://drafts.csswg.org/cssom-view/#potentially-scrollable\" rel=\"nofollow\">potentially scrollable</a>, otherwise it returns null.</p>\n</blockquote>\n<p dir=\"auto\">Because according to <a href=\"https://drafts.csswg.org/cssom-view/#potentially-scrollable\" rel=\"nofollow\">https://drafts.csswg.org/cssom-view/#potentially-scrollable</a>, it states:</p>\n<blockquote>\n<p dir=\"auto\">If the Document is in quirks mode, follow these substeps:</p>\n<ol dir=\"auto\">\n<li>If the body element exists, and it is <strong>not</strong> potentially scrollable, return the body element and abort these steps.</li>\n</ol>\n</blockquote>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The current documentation regarding the behavior in quirk mode might be misleading, according to a reader's feedback.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">This change was introduced in the documentation at <a href=\"https://web.archive.org/web/20201004025304/https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement\" rel=\"nofollow\">https://web.archive.org/web/20201004025304/https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement</a> (<a class=\"commit-link\" data-hovercard-type=\"commit\" data-hovercard-url=\"https://github.com/mdn/content/commit/6ec6bf2b95fb1d10631d99d16e71d40cd0e33020/hovercard\" href=\"https://github.com/mdn/content/commit/6ec6bf2b95fb1d10631d99d16e71d40cd0e33020\"><tt>6ec6bf2</tt></a>). However, the reason for this change is unclear.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Discussion <a href=\"https://t.me/typescript_zh/105136\" rel=\"nofollow\">https://t.me/typescript_zh/105136</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/35260",
             "title": "scrollingElement: Add the missing \"not\" in the quirks mode",
-            "date_modified": "2024-08-01T14:13:18.000Z",
+            "date_modified": "2024-08-01T19:29:40.000Z",
             "date_published": "2024-08-01T05:48:22.000Z",
             "author": {
                 "name": "pan93412",
@@ -149,28 +149,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8265836?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">There was some misleading language here. Web browsers can and will reuse setTimeout IDs eventually, as there is only a finite number of them.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The specification for pertaining to setTimeout IDs is here:<br>\n<a href=\"https://html.spec.whatwg.org/#timer-initialisation-steps\" rel=\"nofollow\">https://html.spec.whatwg.org/#timer-initialisation-steps</a></p>\n<p dir=\"auto\">It doesn't specify how the IDs are chosen, only that they must be positive and can't be currently in use. (Although there is some discussion of standardising them to simply start at 1, increase by one every time, and eventually wrap back around to 1. This would make it rare to see reused IDs, but still not impossible.)</p>\n",
-            "url": "https://github.com/mdn/content/pull/35249",
-            "title": "`setTimeout` IDs can in fact be reused",
-            "date_modified": "2024-08-01T18:02:33.000Z",
-            "date_published": "2024-07-30T16:40:02.000Z",
-            "author": {
-                "name": "majaha",
-                "url": "https://github.com/majaha"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41184947?u=d7d24a71277dbb880be9fdd90608bdf594f97caa&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>fixed some missing glossary links' <strong>label</strong> (<code class=\"notranslate\">Related glossary terms:</code>)</li>\n<li>replacing glossary links under <code class=\"notranslate\">/glossary</code> without anchor with macros</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/35246",
-            "title": "feat: improvements on glossary links and their labels",
-            "date_modified": "2024-08-01T13:33:48.000Z",
-            "date_published": "2024-07-30T15:43:30.000Z",
-            "author": {
-                "name": "PassionPenguin",
-                "url": "https://github.com/PassionPenguin"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5159392?u=81cbae281ceb2952ec0e83c142ec567560d92e76&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Fixes typo in <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories\" rel=\"nofollow\">Content Categories page</a>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">It's just a typo fix, so it'll probably make that particular section more understandable.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/35245",
             "title": "Fix typo in content categories page",
@@ -223,6 +201,28 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/939727?u=2e25f47c213a7e8f2e4e57ddd4ee59ba6601eae3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds documentation of the CSS property <code class=\"notranslate\">color-interpolation-filters</code>, which replicates an SVG attribute.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The page currently doesn’t exist, and needs to be created (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2401542111\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/34763\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/34763/hovercard\" href=\"https://github.com/mdn/content/issues/34763\">#34763</a>).</p>",
+            "url": "https://github.com/mdn/content/pull/35230",
+            "title": "Added CSS color-interpolation-filters property",
+            "date_modified": "2024-07-30T14:50:55.000Z",
+            "date_published": "2024-07-29T21:41:13.000Z",
+            "author": {
+                "name": "meyerweb",
+                "url": "https://github.com/meyerweb"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/939727?u=2e25f47c213a7e8f2e4e57ddd4ee59ba6601eae3&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds documentation of the CSS property <code class=\"notranslate\">shape-rendering</code>, which replicates an SVG attribute.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The page currently doesn’t exist, and needs to be created (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2401542111\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/34763\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/34763/hovercard\" href=\"https://github.com/mdn/content/issues/34763\">#34763</a>).</p>",
+            "url": "https://github.com/mdn/content/pull/35228",
+            "title": "Added CSS shape-rendering property",
+            "date_modified": "2024-08-01T14:55:31.000Z",
+            "date_published": "2024-07-29T20:58:16.000Z",
+            "author": {
+                "name": "meyerweb",
+                "url": "https://github.com/meyerweb"
             }
         }
     ]
