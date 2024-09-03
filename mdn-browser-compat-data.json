@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF131 enables preference by default such that if <code class=\"notranslate\">SameSite=None</code> the  <code class=\"notranslate\">Secure</code> attribute must be set in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1909673\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1909673</a></p>\n<p dir=\"auto\">Unfortunately this required a little more than just replacing the pref subfeature with a version.</p>\n<p dir=\"auto\">The pref was named \"secure_context_required\", which is incorrect for HTTP headers (it's reasonable for APIs though). The requirement is actually about what headers must be set, so I have renamed this to <code class=\"notranslate\">secure_required_if_none</code> and put a proper description. Could also have moved this below the <code class=\"notranslate\">None</code> option, but I think this level is better.</p>\n<p dir=\"auto\">It would be good if we also had an entry for the <code class=\"notranslate\">Secure</code> attribute, at the same level as <code class=\"notranslate\">HttpOnly</code>. However I do not have support data for that.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2500858005\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/35697\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/35697/hovercard\" href=\"https://github.com/mdn/content/issues/35697\">mdn/content#35697</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/24275",
+            "title": "FF131 Secure attr must be set if SameSite=None",
+            "date_modified": "2024-09-03T02:15:23.000Z",
+            "date_published": "2024-09-03T02:13:02.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">WebCodecs API is supported in desktop from FF130, but is only in nightly on Android, in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1908572\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1908572</a></p>\n<p dir=\"auto\">This replaces the partial/preview and puts android to \"preview\" (which gives a warn with <code class=\"notranslate\">npm run test</code>).</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2500852081\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/35695\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/35695/hovercard\" href=\"https://github.com/mdn/content/issues/35695\">mdn/content#35695</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/24274",
             "title": "WebCodecs API - FF130 desktop release",
@@ -198,17 +209,6 @@
             "title": "Add missing features for border-collapse CSS property",
             "date_modified": "2024-08-16T23:50:36.000Z",
             "date_published": "2024-08-16T23:50:36.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR fixes the mirroring script when ranges are involved.  Apparently, if the upstream release was a range, the downstream browser would not be a range, which meant that various bits of data was not set to mirror when it should.  This PR fixes this by introducing some logic that checks if the previous release (before the matching release) uses the same engine as the upstream browser, and if the upstream has a range, it adds the range delimiter.</p>\n<p dir=\"auto\">The engine check for the last release is to help remove range delimiters where there not needed.  For example, if the resulting version is Edge 79, we know that it's pointless to make it a range (\"≤79\") since Edge 18 and earlier used a different browser engine.  As such, this change now produces the following:</p>\n<ul dir=\"auto\">\n<li>Chrome 80 -&gt; Edge 80</li>\n<li>Chrome ≤80 -&gt; Edge ≤80</li>\n<li>Chrome 79 -&gt; Edge 79</li>\n<li>Chrome ≤79 -&gt; Edge 79</li>\n<li>Chrome 24 -&gt; Edge 79</li>\n<li>Chrome ≤24 -&gt; Edge 79</li>\n</ul>\n<p dir=\"auto\">Caveat: due to this change, some data can no longer be mirrored for Firefox Android and Opera Android.  This is a minor caveat, however, since they'll be automatically fixed once the ranges are replaced with proper version numbers.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #23855.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2418324237\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/23855\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/23855/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/23855\">#23855</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/24155",
-            "title": "Fix mirroring from upstream to downstream with ranges",
-            "date_modified": "2024-08-19T12:00:03.000Z",
-            "date_published": "2024-08-16T23:23:41.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
