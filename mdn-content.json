@@ -42,7 +42,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">The only implementer of <code class=\"notranslate\">isInputPending</code> is Chrome/Chromium which <a href=\"https://web.dev/articles/optimize-long-tasks#isinputpending\" rel=\"nofollow\">no longer recommends this API</a>. (Note I work on Chrome).</p>\n<p dir=\"auto\">This PR adds this warning.</p>\n<p dir=\"auto\">We also remove <code class=\"notranslate\">isInputPending</code> from the <a href=\"https://developer.mozilla.org/en-US/docs/Learn/Performance/JavaScript#breaking_down_long_tasks\" rel=\"nofollow\">Learn Performance JavaScript</a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Prioritized_Task_Scheduling_API\" rel=\"nofollow\">Prioritized Task Scheduling API</a> pages and replace with <code class=\"notranslate\">scheduler.yield</code> examples (see also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2536877096\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/35960\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/35960/hovercard\" href=\"https://github.com/mdn/content/pull/35960\">#35960</a> recently merged - during that review some of this came up).</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Warn developers thinking of using this API about the potential concerns.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://web.dev/articles/optimize-long-tasks#isinputpending\" rel=\"nofollow\">https://web.dev/articles/optimize-long-tasks#isinputpending</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/36051",
             "title": "Add warnings on isInputPending",
-            "date_modified": "2024-09-25T17:47:32.000Z",
+            "date_modified": "2024-09-26T07:58:17.000Z",
             "date_published": "2024-09-25T17:45:07.000Z",
             "author": {
                 "name": "tunetheweb",
@@ -86,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR refreshes a few HTTP headers pages.</p>\n<p dir=\"auto\"><strong>common changes:</strong></p>\n<ul dir=\"auto\">\n<li>Capitalize Yes/No in properties table &amp; move verbose notes/caveats under table</li>\n<li>Normalize <code class=\"notranslate\">The HTTP **`Header-Name`** (request|response) header</code> in first sentence</li>\n<li>Add status text to HTTPStatus macros, e.g. <code class=\"notranslate\">{{HTTPStatus(\"406\", \"406 Not Acceptable\")}}</code></li>\n<li>Improve Syntax section where possible</li>\n<li>Remove improper use of quotes in and around code</li>\n<li>Avoid escaping angle brackets in directive names in favor of backticks:</li>\n</ul>\n<div class=\"highlight highlight-source-diff notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"- \\&lt;directive&gt;\n+ `&lt;directive&gt;`\"><pre class=\"notranslate\"><span class=\"pl-md\"><span class=\"pl-md\">-</span> \\&lt;directive&gt;</span>\n<span class=\"pl-mi1\"><span class=\"pl-mi1\">+</span> `&lt;directive&gt;`</span></pre></div>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Keeping content up-to-date, fixing formatting, unifying writing conventions</p>\n<h2 dir=\"auto\">Notes</h2>\n<ul class=\"contains-task-list\">\n<li>Bad BCD for <code class=\"notranslate\">http.headers.Content-Digest</code></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> TODO -&gt; Apply fix for <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1064950460\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/10809\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/10809/hovercard\" href=\"https://github.com/mdn/content/issues/10809\">#10809</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/36038",
             "title": "chore(http): Refresh some headers pages ",
-            "date_modified": "2024-09-25T14:51:05.000Z",
+            "date_modified": "2024-09-26T07:54:53.000Z",
             "date_published": "2024-09-25T08:51:23.000Z",
             "author": {
                 "name": "bsmth",
@@ -171,17 +171,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This work is part of improving the web/manifest docs.</p>\n<p dir=\"auto\">Apart from normalizing the page layout to include \"Syntax\" and \"Values\", this PR includes the following changes:</p>\n<ul dir=\"auto\">\n<li>Organizes the information into a \"Description\" section and covers all info from the spec</li>\n<li>Replaces the existing example with more realistic scenarios</li>\n<li>Adds the tables of examples from the spec as a separate example section</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">To ensure all sections have sufficient explanation, all caveats from spec are covered, and the pages follow a similar template</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Spec link: <a href=\"https://w3c.github.io/manifest/#id-member\" rel=\"nofollow\">https://w3c.github.io/manifest/#id-member</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Tracking issue: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2364926832\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/560\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/560/hovercard\" href=\"https://github.com/mdn/mdn/issues/560\">mdn/mdn#560</a></p>",
-            "url": "https://github.com/mdn/content/pull/36020",
-            "title": "docs(manifest): Improvements to `id` page",
-            "date_modified": "2024-09-26T07:00:50.000Z",
-            "date_published": "2024-09-23T20:05:13.000Z",
-            "author": {
-                "name": "dipikabh",
-                "url": "https://github.com/dipikabh"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">MathML <code class=\"notranslate\">&lt;mprescripts&gt;</code> is now separated from the <code class=\"notranslate\">&lt;mmultiscripts&gt;</code> element reference.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Improve <code class=\"notranslate\">&lt;mprescripts&gt;</code> element’s discoverability</li>\n<li>Improve <code class=\"notranslate\">&lt;mmultiscripts&gt;</code> demos</li>\n</ul>\n<h3 dir=\"auto\">Details</h3>\n<ul dir=\"auto\">\n<li><em>pre-</em> and <em>post-</em> prefixes are now separated with dashes for better readability.</li>\n<li>In some places, even <em>sub-scripts</em> are separated to better catch <em>sub</em> and <em>sup</em> parts.</li>\n<li>I used natural content order (a, b, c, d) to better highlight reversed rendering order.</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/36018",
             "title": "Add a separate MathML mprescripts page",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "OnkarRuikar",
                 "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #34999.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2425682112\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/34999\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/34999/hovercard\" href=\"https://github.com/mdn/content/issues/34999\">#34999</a></p>",
+            "url": "https://github.com/mdn/content/pull/35999",
+            "title": "Increase location anatomy example width to avoid overflow",
+            "date_modified": "2024-09-22T19:14:48.000Z",
+            "date_published": "2024-09-22T19:13:34.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
             }
         }
     ]
