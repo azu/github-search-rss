@@ -6,6 +6,17 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/567540?u=8c4489cd158bb1a7fffff338fc832359a113955e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The current spec text seems ambiguous so I was interested in the semantics: it links to the HTML spec for userAgent which says that the value is used as the default value for the User-Agent header. Is that true for the property here as well? Will fetch() by default use that value?</p>",
+            "url": "https://github.com/wintercg/proposal-minimum-common-api/issues/76",
+            "title": "navigator.userAgent and User-Agent",
+            "date_modified": "2024-10-24T00:17:28.000Z",
+            "date_published": "2024-10-24T00:17:28.000Z",
+            "author": {
+                "name": "jkrems",
+                "url": "https://github.com/jkrems"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The File System API is a relatively recent web standard, now implemented in all browsers, that allows accessing and modifying files in the file system. All browsers allow access through this API to a virtual filesystem, unique to a page's origin, through <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/getDirectory\" rel=\"nofollow\"><code class=\"notranslate\">await navigator.storage.getDirectory()</code></a>, that you can't go outside of.</p>\n<p dir=\"auto\">However, Chromium extends this by providing additional APIs (such as <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker\" rel=\"nofollow\"><code class=\"notranslate\">window.showOpenFilePicker()</code></a>) that give you access to arbitrary files and directories in the file system. Although other browsers are opposed to implementing these APIs because of safety and privacy concerns, this is not an issue for server-side runtimes.</p>\n<p dir=\"auto\">I have heard that this API is not a great fit for server-side environments, but (as someone who hasn't looked in depth at the API and considered it) those concerns are not clear to me. So I opened this issue to have a place to discuss what it's missing, whether we can work with WHATWG to fix that, and also to discuss WinterCG extensions similar to <code class=\"notranslate\">showOpenFilePicker()</code>.</p>",
             "url": "https://github.com/wintercg/proposal-minimum-common-api/issues/73",
             "title": "Considering the File System API",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "littledan",
                 "url": "https://github.com/littledan"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <a href=\"https://xhr.spec.whatwg.org/#formdata\" rel=\"nofollow\"><code class=\"notranslate\">FormData</code></a> constructor, as defined in the XHR spec, takes two optional parameters: the first of type <code class=\"notranslate\">HTMLFormElement</code>, and the second of type <code class=\"notranslate\">HTMLElement</code>. These are DOM APIs, which server-side runtimes don't support.</p>\n<p dir=\"auto\">The way I see it, if any of these arguments is passed (and it's anything other than <code class=\"notranslate\">undefined</code>), this indicates a bug in user code. For example, the code in question could be isomorphic code using DOM APIs through a library such as <a href=\"https://github.com/jsdom/jsdom\">jsdom</a> or <a href=\"https://github.com/b-fuze/deno-dom\">deno-dom</a>, and the developer mistakenly used those objects with the runtime's <code class=\"notranslate\">FormData</code> implementation. TypeScript might not catch that, since it could be set up to use the browser's type definitions rather than the runtime's.</p>\n<p dir=\"auto\">In the runtimes I've tested:</p>\n<ul dir=\"auto\">\n<li>Node.js and Deno throw if the first argument is not <code class=\"notranslate\">undefined</code>, but they ignore the second argument.</li>\n<li>Cloudflare Workers / <code class=\"notranslate\">workerd</code>, Bun and WinterJS ignore both arguments.</li>\n</ul>\n<p dir=\"auto\">No runtimes seem to check the second argument. Specifying Node.js and Deno's behavior might be fine, since in browsers the second argument does nothing if the first one is <code class=\"notranslate\">undefined</code>, and the first argument is already checked. But the WebIDL implementation in browsers does check that the second argument is a valid <code class=\"notranslate\">HTMLElement</code> regardless of whether the first one is <code class=\"notranslate\">undefined</code>, so maybe we should be consistent with that. This would also let us specify this by just saying what happens with unsupported WebIDL types, which is something that might also apply to other APIs in the future.</p>",
-            "url": "https://github.com/wintercg/proposal-minimum-common-api/issues/63",
-            "title": "How does the `FormData` constructor handle arguments in non-DOM runtimes?",
-            "date_modified": "2024-01-12T16:48:45.000Z",
-            "date_published": "2024-01-08T07:00:26.000Z",
-            "author": {
-                "name": "andreubotella",
-                "url": "https://github.com/andreubotella"
             }
         }
     ]
