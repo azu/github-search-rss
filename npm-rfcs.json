@@ -6,6 +6,17 @@
     "description": "npm/rfcs Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/90748009?u=1704cfa80d62e9a232ea9405cf87183f8efb999d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<p dir=\"auto\">Currently, npm does not provide a way for maintainers to unpublish a specific version of a package, if the package has dependents. This can be problematic when a version has few downloads, is no longer in use, or was published by mistake. Allowing maintainers to unpublish specific versions would help keep the npm registry cleaner and reduce confusion for users. It would also give maintainers better control over their package versions without affecting the entire package.</p>\n<h3 dir=\"auto\">Example</h3>\n\n<p dir=\"auto\">For instance, in our case, version 5.0.0 of a package was mistakenly published instead of version 4. While the package as a whole has a few dependents, this specific version (5.0.0) has no active dependents, very few downloads(~2), and is no longer in use. If we could unpublish this specific version, it would help prevent unnecessary versions from cluttering the registry and make it easier for users to find the correct, active versions.</p>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<p dir=\"auto\">Currently, npm does not allow maintainers to unpublish specific versions of a package, especially when those versions have dependents. The only option available is to unpublish the entire package or, in some cases, versions with no dependents and minimal downloads. This can be problematic when a version is mistakenly published, has few downloads, and is no longer in use, as it leads to unnecessary versions cluttering the registry without an option for removal.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<p dir=\"auto\">Allow package maintainers to unpublish a specific version of a package, even if it has dependents, as long as it meets the following criteria:</p>\n<ul dir=\"auto\">\n<li>The version has a low number of downloads (to be determined by npm’s current metrics).</li>\n<li>The version is no longer actively used or relevant.</li>\n<li>The version has no dependents.<br>\nThis would enable maintainers to clean up outdated versions without having to unpublish the entire package or deal with unnecessary versions.</li>\n</ul>\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2608185192\" data-permission-text=\"Title is private\" data-url=\"https://github.com/npm/cli/issues/7875\" data-hovercard-type=\"issue\" data-hovercard-url=\"/npm/cli/issues/7875/hovercard\" href=\"https://github.com/npm/cli/issues/7875\">npm/cli#7875</a></li>\n</ul>",
+            "url": "https://github.com/npm/rfcs/issues/805",
+            "title": "[RRFC]  Option to Unpublish Specific Package Versions, Including Those with Dependents",
+            "date_modified": "2024-11-13T11:22:26.000Z",
+            "date_published": "2024-11-13T11:22:26.000Z",
+            "author": {
+                "name": "aryamohanan",
+                "url": "https://github.com/aryamohanan"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/184959426?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n\n<h3 dir=\"auto\">Example</h3>\n\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n\n<h4 dir=\"auto\">Desired Behaviour</h4>\n\n<h3 dir=\"auto\">References</h3>\n\n<ul dir=\"auto\">\n<li>n/a</li>\n</ul>",
             "url": "https://github.com/npm/rfcs/issues/804",
             "title": "[RRFC]+<title>",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "ericcornelissen",
                 "url": "https://github.com/ericcornelissen"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/181523?u=eb057157876ac412b4e3fdb2e48e76eb8a190804&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h2 dir=\"auto\">Motivation (\"The Why\")</h2>\n<p dir=\"auto\">The result of running <code class=\"notranslate\">npm completion</code> is a monolithic function for the entirety of the <code class=\"notranslate\">npm</code> command. Contrast this with <code class=\"notranslate\">git</code> which allows a definition like:</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"alias gp='git push'\n__git_complete gp _git_push\"><pre class=\"notranslate\"><span class=\"pl-c1\">alias</span> gp=<span class=\"pl-s\"><span class=\"pl-pds\">'</span>git push<span class=\"pl-pds\">'</span></span>\n__git_complete gp _git_push</pre></div>\n<h3 dir=\"auto\">How</h3>\n<h4 dir=\"auto\">Current Behaviour</h4>\n<p dir=\"auto\">The current <code class=\"notranslate\">npm completion</code> only works for the base command.</p>\n<h4 dir=\"auto\">Desired Behaviour</h4>\n<p dir=\"auto\">I could define:</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"alias nr='npm run'\n__npm_complete nr _npm_run\"><pre class=\"notranslate\"><span class=\"pl-c1\">alias</span> nr=<span class=\"pl-s\"><span class=\"pl-pds\">'</span>npm run<span class=\"pl-pds\">'</span></span>\n__npm_complete nr _npm_run</pre></div>\n<p dir=\"auto\">And when I double tab after <code class=\"notranslate\">nr</code> it would show me the available tasks <em>(the behavior when double tabbing after <code class=\"notranslate\">npm run</code> when completions are loaded)</em> rather than listing the files in the current directory.</p>\n<h3 dir=\"auto\">References</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/git/git/blob/master/contrib/completion/git-completion.bash\"><code class=\"notranslate\">git</code> <code class=\"notranslate\">bash</code> completions</a></li>\n</ul>",
-            "url": "https://github.com/npm/rfcs/issues/756",
-            "title": "[RRFC] Decompose `bash` completions",
-            "date_modified": "2024-01-30T07:35:42.000Z",
-            "date_published": "2024-01-30T07:30:25.000Z",
-            "author": {
-                "name": "dysbulic",
-                "url": "https://github.com/dysbulic"
             }
         }
     ]
