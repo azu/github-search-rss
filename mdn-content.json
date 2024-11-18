@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6667599?u=c6264c34285a2083e0d17bed6ba44d0acfcfd11b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Making when to throw exceptions more intuitive.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">With my experiment with Google Chrome 131.0.6778.70, following things didn't throw exceptions:</p>\n<ul dir=\"auto\">\n<li>Making <code class=\"notranslate\">start</code> greater than <code class=\"notranslate\">end</code>: <code class=\"notranslate\">editContext.updateSelection(10, 5);</code></li>\n<li>Making <code class=\"notranslate\">start</code> and <code class=\"notranslate\">end</code> zero: <code class=\"notranslate\">editContext.updateSelection(0, 0);</code></li>\n<li>Making <code class=\"notranslate\">start</code> and <code class=\"notranslate\">end</code> negative: <code class=\"notranslate\">editContext.updateSelection(-1, -2);</code>\n<ul dir=\"auto\">\n<li>This resulted in having both of start and end at the end of text.</li>\n</ul>\n</li>\n</ul>\n<p dir=\"auto\">What to do with negative <code class=\"notranslate\">start</code> and <code class=\"notranslate\">end</code> doesn't seem defined and I thought that there may be an environment where exceptions are thrown in such cases.</p>\n<p dir=\"auto\">However, the other cases seems quite natural and I don't think exceptions should be thrown in such cases.</p>\n<ul dir=\"auto\">\n<li>Zero is used to represent the head of the string. It is quite natural to select from there or to move the caret there.</li>\n<li>Having the end of the selection before the start of the selection is explicitly allowed. Therefore, there doesn't seem reasons that prevent this method from setting such selections.</li>\n</ul>\n<p dir=\"auto\">Quote from the definitions of EditContext state in <a href=\"https://w3c.github.io/edit-context/#editcontext-state\" rel=\"nofollow\">EditContext API</a>:</p>\n<blockquote>\n<ul dir=\"auto\">\n<li><strong>selection start</strong> which refers to the offset in text where the selection starts. The initial value is 0.</li>\n<li><strong>selection end</strong> which refers to the offset in text where the selection ends. The initial value is 0. selection end may be less than selection start in the case of a \"backwards\" selection (in reverse of document order).</li>\n</ul>\n</blockquote>\n<p dir=\"auto\">The \"selection start\" and \"selection end\" are what are set based on <code class=\"notranslate\">start</code> and <code class=\"notranslate\">end</code> passed to <code class=\"notranslate\">updateSelection()</code> in the <a href=\"https://w3c.github.io/edit-context/#editcontext-interface\" rel=\"nofollow\">EditContext Interface</a>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/36834",
+            "title": "updateSelection: make more intuitive",
+            "date_modified": "2024-11-17T23:38:39.000Z",
+            "date_published": "2024-11-17T23:36:48.000Z",
+            "author": {
+                "name": "mikecat",
+                "url": "https://github.com/mikecat"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <code class=\"notranslate\">beforetoggle</code> and <code class=\"notranslate\">toggle</code> events belong to HTMLElement and are inherited by other elements, but they fire only at specific elements such as dialog, popover, details.</p>\n<p dir=\"auto\">So they are quite important in  dialog, popover, details but because we don't document inherited events/api thingies in the derived class, and because these are only fired on some classes, there is no real obvious hint in those pages that they exist or whether they are supported in a particular browser - i.e. you wouldn't know to look at those events, and to check for support in the specific element.</p>\n<p dir=\"auto\">SO this adds special BCD keys for each event to their respective pages, giving the compatibility story visibility at the place where it matters.</p>\n<p dir=\"auto\">Note, that the BCD only just went in for this, so doesn't render yet.</p>\n<p dir=\"auto\">Related docs work in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2617879847\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36536\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36536/hovercard\" href=\"https://github.com/mdn/content/issues/36536\">#36536</a></p>",
+            "url": "https://github.com/mdn/content/pull/36833",
+            "title": "FF133 Compat data for inherited toggle/beforetoggle to dialog, popover, details APIs",
+            "date_modified": "2024-11-17T23:28:22.000Z",
+            "date_published": "2024-11-17T23:26:18.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">see spec at <a href=\"https://drafts.css-houdini.org/css-paint-api/\" rel=\"nofollow\">https://drafts.css-houdini.org/css-paint-api/</a> and <a href=\"https://html.spec.whatwg.org/multipage/canvas.html\" rel=\"nofollow\">https://html.spec.whatwg.org/multipage/canvas.html</a></p>\n<p dir=\"auto\">note that the <code class=\"notranslate\">filter</code> property though not included in the spec (neither included nor exluded), the chromium has implemented this, see <a href=\"https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/modules/csspaint/paint_rendering_context_2d.idl#L33\">https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/modules/csspaint/paint_rendering_context_2d.idl#L33</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">part of the <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2078247208\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/516\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/516/hovercard\" href=\"https://github.com/mdn/mdn/issues/516\">mdn/mdn#516</a></p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/36830",
             "title": "Add docs for `PaintRenderingContext2D`",
@@ -198,28 +220,6 @@
             "title": "Remove 'simple' part 5: the rest of HTML directory",
             "date_modified": "2024-11-13T18:55:27.000Z",
             "date_published": "2024-11-13T18:53:35.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">this is pretty much the entire HTML Element section</p>",
-            "url": "https://github.com/mdn/content/pull/36763",
-            "title": "Remove \"simple\" part 4: change to \"basic\" ",
-            "date_modified": "2024-11-13T18:53:07.000Z",
-            "date_published": "2024-11-13T00:19:03.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>",
-            "url": "https://github.com/mdn/content/pull/36762",
-            "title": "Remove \"simple\" part 3: change to \"basic\" ",
-            "date_modified": "2024-11-13T00:09:13.000Z",
-            "date_published": "2024-11-13T00:05:55.000Z",
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
