@@ -6,25 +6,25 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41184947?u=dc63bc6f8b1d2895c923fdd8689b2d487d329945&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ol dir=\"auto\">\n<li>fixed a typo <code class=\"notranslate\">a the ID of a different add-on</code>;</li>\n<li>under <code class=\"notranslate\">## Examples</code> line 2 (L49 of file), sentence written <code class=\"notranslate\">Note that we haven't passed a fulfillment handler because if uninstallation succeeds, the add-on is no longer around to handle it.</code>; *but that's not factually correct if we are uninstalling different add-on(s) than the one that's calling the method, than shouldn't the add-on is still here to handle it?</li>\n</ol>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3604775?u=16aa4afa5624207dd44dd5121bfe858db15631a7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Feature parity with yari. Depends on <code class=\"notranslate\">rari v0.0.27</code> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2709186225\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/rari/issues/54\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/rari/pull/54/hovercard\" href=\"https://github.com/mdn/rari/pull/54\">mdn/rari#54</a> to land but it's compatible with <code class=\"notranslate\">rari v0.0.26</code>.</p>",
+            "url": "https://github.com/mdn/content/pull/37092",
+            "title": "fix(sidebars): use code for some links like yari",
+            "date_modified": "2024-12-04T12:01:29.000Z",
+            "date_published": "2024-12-04T11:51:14.000Z",
+            "author": {
+                "name": "fiji-flo",
+                "url": "https://github.com/fiji-flo"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41184947?u=dc63bc6f8b1d2895c923fdd8689b2d487d329945&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ol dir=\"auto\">\n<li>\n<p dir=\"auto\">fixed a typo <code class=\"notranslate\">a the ID of a different add-on</code>;</p>\n</li>\n<li>\n<p dir=\"auto\">under <code class=\"notranslate\">## Examples</code> line 2 (L49 of file), sentence written <code class=\"notranslate\">Note that we haven't passed a fulfillment handler because if uninstallation succeeds, the add-on is no longer around to handle it.</code>; *but that's not factually correct if we are uninstalling different add-on(s) than the one that's calling the method, than shouldn't the add-on is still here to handle it?</p>\n<p dir=\"auto\">per tested, fulfillment handler are called when the add-on/extension is uninstalled.</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"let id = &quot;addon-id&quot;;\n\nconst uninstall = () =&gt; {\n    function onCanceled(error) {\n        console.log(`Cancelled: ${error}`);\n    }\n\n    function onUninstalled() {\n        console.log(&quot;Uninstalled&quot;);\n    }\n\n    let uninstalling = chrome.management.uninstall(id);\n    uninstalling.then(onUninstalled, onCanceled);\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">let</span> <span class=\"pl-s1\">id</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s\">\"addon-id\"</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-k\">const</span> <span class=\"pl-en\">uninstall</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">function</span> <span class=\"pl-en\">onCanceled</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">error</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`Cancelled: <span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">error</span><span class=\"pl-kos\">}</span></span>`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-kos\">}</span>\n\n    <span class=\"pl-k\">function</span> <span class=\"pl-en\">onUninstalled</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"Uninstalled\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-kos\">}</span>\n\n    <span class=\"pl-k\">let</span> <span class=\"pl-s1\">uninstalling</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">chrome</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">management</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">uninstall</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">id</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-s1\">uninstalling</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">then</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">onUninstalled</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">onCanceled</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span></pre></div>\n</li>\n</ol>\n<hr>\n<p dir=\"auto\">FYI: content was here ever since it's checkin into git.</p>",
             "url": "https://github.com/mdn/content/pull/37091",
             "title": "WebExt: fix typo",
-            "date_modified": "2024-12-04T11:01:24.000Z",
+            "date_modified": "2024-12-04T11:27:49.000Z",
             "date_published": "2024-12-04T11:01:22.000Z",
             "author": {
                 "name": "PassionPenguin",
                 "url": "https://github.com/PassionPenguin"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/54338318?u=38d354b44b90c9179f8f81918f8bc4386b12ac90&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Change of inappropriate color that had an irrelevant WCAG reference</p>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">I've changed the colors in the last example to better fit a neutral document.<br>\nI've also deleted the irrelevant hidden comment that references the WCAG. The comment said that only the contrast between the color of text and the background color matters, not the contrast between two backgrounds.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The old box-shadow colors used a mix of colors and order that could be confused with a political flag which doesn't belong in a politically neutral documentation.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">-</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\">-</p>\n",
-            "url": "https://github.com/mdn/content/pull/37090",
-            "title": "Update index.md",
-            "date_modified": "2024-12-04T10:43:32.000Z",
-            "date_published": "2024-12-04T10:43:03.000Z",
-            "author": {
-                "name": "CinderLordTurtle",
-                "url": "https://github.com/CinderLordTurtle"
             }
         },
         {
@@ -53,7 +53,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds the <code class=\"notranslate\">X-Robots-Tag</code> header page.</p>\n<p dir=\"auto\">Omitting historical rules no longer used by Google, at least</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">noarchive</code></li>\n<li><code class=\"notranslate\">nocache</code></li>\n<li><code class=\"notranslate\">nositelinkssearchbox</code></li>\n</ul>\n<p dir=\"auto\">See <a href=\"https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives\" rel=\"nofollow\">https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">We're missing docs about it, and it's a widely used header for controlling indexing &amp; search presentation.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"788368431\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1458\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1458/hovercard\" href=\"https://github.com/mdn/content/issues/1458\">#1458</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/37079",
             "title": "feat(http): Add X-Robots-Tag header",
-            "date_modified": "2024-12-04T10:27:29.000Z",
+            "date_modified": "2024-12-04T11:50:14.000Z",
             "date_published": "2024-12-03T18:00:53.000Z",
             "author": {
                 "name": "bsmth",
