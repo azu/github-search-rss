@@ -53,7 +53,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16910748?u=8ee88d3d559b9ca4f1765e9a6c4297ad30e809b0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Update the rust version used in the <code class=\"notranslate\">Compiling from Rust to WebAssembly</code> page.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Reduce the mismatches when readers follow this tutorial.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/37141",
             "title": "Update the rust version for rust wasm tutorial",
-            "date_modified": "2024-12-09T09:07:56.000Z",
+            "date_modified": "2024-12-09T10:31:05.000Z",
             "date_published": "2024-12-09T02:27:31.000Z",
             "author": {
                 "name": "wtlin1228",
@@ -108,22 +108,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1782266?u=74360146ce74a9abc04f4cf9cdf4c05df6e060d8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Added deprecated icon next to deprecated system colors.<br>\nAdditionally added <a href=\"https://drafts.csswg.org/css-color-4/#deprecated-system-colors\" rel=\"nofollow\">equivalent non-deprecated colors from the spec</a>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">When scanning through the page, it's easy to miss the \"deprecated\" header. Adding the trash can icon makes it more obvious these colors are deprecated, as well as find the alternatives.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/37129",
             "title": "Add deprecated symbols to system colors",
-            "date_modified": "2024-12-06T23:03:45.000Z",
+            "date_modified": "2024-12-09T11:00:55.000Z",
             "date_published": "2024-12-06T22:54:01.000Z",
             "author": {
                 "name": "NotWoods",
                 "url": "https://github.com/NotWoods"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67853915?u=197f1a3b36544f7a5dd506b9e57c3c9c65dd3bfa&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">In <a href=\"https://developer.mozilla.org/en-US/docs/Web/Media/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video#building_a_caption_menu\" rel=\"nofollow\">the \"Building a caption menu\" section of the \"Adding captions and subtitles to HTML video\" tutorial</a>, the <code class=\"notranslate\">subtitlesMenu</code> variable is accidentally declared twice:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"let subtitlesMenu;\nif (video.textTracks) {\n\tconst df = document.createDocumentFragment();\n\tconst subtitlesMenu = df.appendChild(document.createElement(&quot;ul&quot;));\n\t/* ... */\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">let</span> <span class=\"pl-s1\">subtitlesMenu</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">video</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">textTracks</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t<span class=\"pl-k\">const</span> <span class=\"pl-s1\">df</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">createDocumentFragment</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-k\">const</span> <span class=\"pl-s1\">subtitlesMenu</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">df</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">appendChild</span><span class=\"pl-kos\">(</span><span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">createElement</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"ul\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-c\">/* ... */</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<p dir=\"auto\">Using this verbatim leads to the following error: <code class=\"notranslate\">Uncaught ReferenceError: can't access lexical declaration 'subtitlesMenu' before initialization</code>. Removing the <code class=\"notranslate\">const</code> for <code class=\"notranslate\">subtitlesMenu</code> turns the statement from an unintended 2nd declaration to the intended initialization of the 1st declaration.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Readers who are going through this tutorial would be confused that using the tutorial code is leading to browser errors. This pull request will prevent confusion for future readers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">The MDN tutorial is based on code from <a href=\"https://github.com/iandevlin/iandevlin.github.io/blob/master/mdn/video-player-with-captions/js/video-player.js\">a tutorial by iandevlin</a>, which uses the ECMAScript 5 syntax of <code class=\"notranslate\">var</code> instead of <code class=\"notranslate\">let</code> and <code class=\"notranslate\">const</code>:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"var subtitlesMenu;\nif (video.textTracks) {\n\tvar df = document.createDocumentFragment();\n\tvar subtitlesMenu = df.appendChild(document.createElement('ul'));\n\t/* ... */\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">var</span> <span class=\"pl-s1\">subtitlesMenu</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">video</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">textTracks</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">df</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">createDocumentFragment</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-k\">var</span> <span class=\"pl-s1\">subtitlesMenu</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">df</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">appendChild</span><span class=\"pl-kos\">(</span><span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">createElement</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'ul'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n\t<span class=\"pl-c\">/* ... */</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<p dir=\"auto\">While using <code class=\"notranslate\">let</code> and <code class=\"notranslate\">const</code> as above means 2 different <code class=\"notranslate\">subtitlesMenu</code> variables are stored, using <code class=\"notranslate\">var</code> means only 1 <code class=\"notranslate\">subtitlesMenu</code> variable is stored and it is assigned <code class=\"notranslate\">df.appendChild(document.createElement('ul'))</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\">Having done a quick search, it appears there are no related issues or pull requests.</p>\n",
-            "url": "https://github.com/mdn/content/pull/37128",
-            "title": "Fix subtitlesMenu redeclaration in \"Adding captions and subtitles to HTML video\" tutorial",
-            "date_modified": "2024-12-06T22:33:55.000Z",
-            "date_published": "2024-12-06T22:33:17.000Z",
-            "author": {
-                "name": "jacob-willden",
-                "url": "https://github.com/jacob-willden"
             }
         },
         {
@@ -141,7 +130,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/32498324?u=6ff39af834311a2dbeefc3c3071dde7eeb6d5a0b&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Add a page for the new <code class=\"notranslate\">::details-content</code> pseudo element.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">To help web developers discover this new feature.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\"><strong>Depends on:</strong> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2722875529\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/interactive-examples/issues/2874\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/interactive-examples/pull/2874/hovercard\" href=\"https://github.com/mdn/interactive-examples/pull/2874\">mdn/interactive-examples#2874</a></p>\n",
             "url": "https://github.com/mdn/content/pull/37118",
             "title": "Add `::details-content` page",
-            "date_modified": "2024-12-06T12:00:52.000Z",
+            "date_modified": "2024-12-09T10:32:06.000Z",
             "date_published": "2024-12-06T11:58:38.000Z",
             "author": {
                 "name": "lukewarlow",
@@ -218,11 +207,22 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds the <code class=\"notranslate\">X-Robots-Tag</code> header page.</p>\n<p dir=\"auto\">Omitting historical rules no longer used by Google, at least</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">noarchive</code></li>\n<li><code class=\"notranslate\">nocache</code></li>\n<li><code class=\"notranslate\">nositelinkssearchbox</code></li>\n</ul>\n<p dir=\"auto\">See <a href=\"https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives\" rel=\"nofollow\">https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">We're missing docs about it, and it's a widely used header for controlling indexing &amp; search presentation.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"788368431\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/1458\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/1458/hovercard\" href=\"https://github.com/mdn/content/issues/1458\">#1458</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/37079",
             "title": "feat(http): Add X-Robots-Tag header",
-            "date_modified": "2024-12-08T23:07:46.000Z",
+            "date_modified": "2024-12-09T10:43:35.000Z",
             "date_published": "2024-12-03T18:00:53.000Z",
             "author": {
                 "name": "bsmth",
                 "url": "https://github.com/bsmth"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43868318?u=3f179cacfd70db40ae7c11f1b951533a8ebf45bf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">part of <a href=\"https://github.com/openwebdocs/project/issues/214\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/214/hovercard\">Missing baseline pages</a> project</p>",
+            "url": "https://github.com/mdn/content/pull/37076",
+            "title": "MDN Feature Pages for SVGAnimatedRect: animVal, baseVal",
+            "date_modified": "2024-12-06T07:41:11.000Z",
+            "date_published": "2024-12-03T17:05:54.000Z",
+            "author": {
+                "name": "yashrajbharti",
+                "url": "https://github.com/yashrajbharti"
             }
         }
     ]
