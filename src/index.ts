@@ -236,31 +236,56 @@ if (require.main === module) {
             recursive: true
         });
         for (const item of SEARCH_ITEMS) {
-            const { query, TYPE, SIZE, ...options } = item;
-            const items = await search({
-                query,
-                TYPE,
-                GITHUB_TOKEN: GITHUB_TOKEN,
-                SIZE: SIZE ?? 20
-            });
-            if (!items) {
-                throw new Error("Can not search:" + query);
+            try {
+                const { query, TYPE, SIZE, ...options } = item;
+                const items = await search({
+                    query,
+                    TYPE,
+                    GITHUB_TOKEN: GITHUB_TOKEN,
+                    SIZE: SIZE ?? 20
+                });
+                if (!items) {
+                    throw new Error("Can not search:" + query);
+                }
+                const jsonRSS = generateRSS(items, {
+                    ...options,
+                    description: `${item.title} on GitHub`,
+                    updated: new Date()
+                });
+                const atomRSS = generateRSS(items, {
+                    ...options,
+                    link: item.link.replace(/\.json$/, ".rss"),
+                    description: `${item.title} on GitHub`,
+                    updated: new Date()
+                });
+                const fileName = path.basename(item.link);
+                await fs.writeFile(path.join(distDir, fileName), jsonRSS, "utf-8");
+                await fs.writeFile(path.join(distDir, fileName.replace(/\.json$/, ".rss")), atomRSS, "utf-8");
+            } catch (error) {
+                console.error(`Error on ${item.title}`, error);
+                console.log("But continue to next");
             }
-            const rss = generateRSS(items, {
-                ...options,
-                description: `${item.title} on GitHub`,
-                updated: new Date()
-            });
-            const fileName = path.basename(item.link);
-            await fs.writeFile(path.join(distDir, fileName), rss, "utf-8");
         }
         const opml = convertJsonToOPML(SEARCH_ITEMS);
         await fs.writeFile(path.join(distDir, "index.opml"), opml, "utf-8");
-        const links = SEARCH_ITEMS.map((feed) => {
-            return `<li><a href="https://github.com/search?q=${encodeURIComponent(
-                feed.query
-            )}">🔎</a><code>${escapeSpecialChars(feed.query)}</code>: <a href="${feed.link}">${feed.link}</a></li>`;
-        }).join("\n");
+        const { feedLinks, slackCommands } = SEARCH_ITEMS.reduce<{
+            feedLinks: string[];
+            slackCommands: string[];
+        }>(
+            (acc, feed) => {
+                const atomLink = feed.link.replace(/\.json$/, ".rss");
+                const feedLink = `<li><a href="https://github.com/search?q=${encodeURIComponent(
+                    feed.query
+                )}">🔎</a><code>${escapeSpecialChars(feed.query)}</code>: <a href="${feed.link}">${
+                    feed.link
+                }</a>（<a href="${atomLink}">atom</a>）</li>`;
+                const slackCommand = `<code>/feed subscribe <a href="${atomLink}">${atomLink}</a><code>`;
+                acc.feedLinks.push(feedLink);
+                acc.slackCommands.push(slackCommand);
+                return acc;
+            },
+            { feedLinks: [], slackCommands: [] }
+        );
         const index = {
             html: `
             <!DOCTYPE html>
@@ -270,11 +295,26 @@ if (require.main === module) {
     <title>github-search-rss</title>
 </head>
 <body>
-<p>These RSS Feed is search result of GitHub. Your RSS reader need to support JSON RSS.</p>
+<p>These RSS Feed is search result of GitHub.</p>
+<p>Supported Feed Types</p>
+<ul>
+<li>JSON Feed</li>
+<li>Atom Feed</li>
+</ul>
 <p><a href="./index.opml">OPML Feeds</a></p>
 <ul>
-${links}
+${feedLinks.join("\n")}
 </ul>
+<details>
+<summary>Subscribe in slack</summary>
+
+You can subscribe feeds via <code>/feed<code> command
+
+<pre>
+${slackCommands.join("\n")}
+</pre>
+
+</details>
 <footer>
 <a href="https://github.com/azu/github-search-rss">Source Code</a>
 </footer>
