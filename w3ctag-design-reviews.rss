@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
+    <title>w3ctag/design-reviews Design Issues</title>
+    <updated>2025-01-10T06:11:16.124Z</updated>
+    <generator>github-search-rss</generator>
+    <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
+    <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
+    <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[On-device Web Speech API]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1038</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1038"/>
+        <updated>2025-01-09T23:00:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/20709609?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of on-device support for the Web Speech API.</p>
+<p dir="auto">This feature adds on-device speech recognition support to the Web Speech API, allowing websites to ensure that neither audio nor transcribed speech are sent to a third-party service for processing. Websites can query the availability of on-device speech recognition for specific languages, prompt users to install the necessary resources for on-device speech recognition, and choose between on-device or cloud-based speech recognition as needed.</p>
+<ul dir="auto">
+<li>Explainer¹: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2756682170" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/122" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/122/hovercard" href="https://github.com/WebAudio/web-speech-api/pull/122">WebAudio/web-speech-api#122</a></li>
+<li>Specification: <a href="https://webaudio.github.io/web-speech-api/" rel="nofollow">https://webaudio.github.io/web-speech-api/</a></li>
+<li>WPT Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/speech-api">https://github.com/web-platform-tests/wpt/tree/master/speech-api</a></li>
+<li>User research: N/A</li>
+<li>Security and Privacy self-review²:<br>
+Relevant survey questions:<br>
+2.1. What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?<br>
+This feature would expose if on-device speech recognition is available in a specific language. This is required in order for websites to know if on-device speech recognition is available.</li>
+</ul>
+<p dir="auto">2.2. Do features in your specification expose the minimum amount of information necessary to enable their intended uses?<br>
+Yes. Some websites may have strict privacy requirements that require on-device speech recognition so websites must know if it's possible to ensure that neither audio nor captions are sent to a third-party service for processing.</p>
+<p dir="auto">2.6. Do the features in your specification expose information about the underlying platform to origins?<br>
+While this feature does not directly expose information about the underlying platform, websites may potentially use performance metrics for on-device speech recognition to gauge general hardware capability.</p>
+<p dir="auto">2.15. Does this specification have both "Security Considerations" and "Privacy Considerations" sections?<br>
+Yes, the spec contains a section on how to reduce risk of fingerprinting. Websites needs explicit user permission to install on-device speech recognition language packs that do not match the user's preferred language or if the user is not on ethernet or Wi-Fi.</p>
+<ul dir="auto">
+<li>GitHub repo: <a href="https://github.com/WebAudio/web-speech-api">https://github.com/WebAudio/web-speech-api</a></li>
+<li>Primary contacts: <a href="mailto:evliu@google.com">evliu@google.com</a></li>
+<li>Organization/project driving the specification: Google</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: <a href="https://chromestatus.com/feature/6090916291674112" rel="nofollow">https://chromestatus.com/feature/6090916291674112</a></li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2773665829" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1157" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1157/hovercard" href="https://github.com/mozilla/standards-positions/issues/1157">mozilla/standards-positions#1157</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2773667844" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/443" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/443/hovercard" href="https://github.com/WebKit/standards-positions/issues/443">WebKit/standards-positions#443</a><br>
+Commonly requested feature. Examples:<br>
+<a href="https://webwewant.fyi/wants/55/" rel="nofollow">https://webwewant.fyi/wants/55/</a><br>
+<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1497568010" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/108" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-speech-api/issues/108/hovercard" href="https://github.com/WebAudio/web-speech-api/issues/108">WebAudio/web-speech-api#108</a><br>
+<a href="https://stackoverflow.com/questions/49473369/offline-speech-recognition-in-browser" rel="nofollow">https://stackoverflow.com/questions/49473369/offline-speech-recognition-in-browser</a><br>
+<a href="https://www.reddit.com/r/html5/comments/8jtv3u/offline_voice_recognition_without_the_webspeech/" rel="nofollow">https://www.reddit.com/r/html5/comments/8jtv3u/offline_voice_recognition_without_the_webspeech/</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the work on this specification is currently being done: Audio Community Group</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): Audio Working Group</li>
+<li>This work is being funded by: Google</li>
+</ul>
+<p dir="auto">You should also know that...<br>
+The primary risk of this new functionality is the potential for fingerprinting. To mitigate this risk, the Chrome Trust &amp; Safety team proposes requiring explicit user consent to install language packs that do not match one of the user's preferred languages or if the user is not on a Ethernet/Wi-Fi network.</p>
+<p dir="auto">The existing Web Speech API has an outdated callback design which must be maintained due to backwards compatibility/interoperability issues. While Firefox doesn't officially support the speech recognition section of the Web Speech API, it has a unprefixed implementation behind a flag and most of the guides on how to use the Web Speech API do something like window.SpeechRecognition || window.webkitSpeechRecognition; (Examples from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API" rel="nofollow">developer.mozilla.org</a>, <a href="https://codeburst.io/html5-speech-recognition-api-670846a50e92" rel="nofollow">codeburst.io</a>, <a href="https://dev.to/nixx/building-a-real-time-speech-to-text-web-app-with-web-speech-api-4mc6" rel="nofollow">dev.to</a>) and there are 17.8K instances of this kind of usage on <a href="https://github.com/search?q=%22window.webkitSpeechRecognition+%7C%7C+window.SpeechRecognition%22+OR+%22window.SpeechRecognition+%7C%7C+window.webkitSpeechRecognition%22&amp;type=code">Github</a> alone. The Audio Working Group is looking into potentially replacing this API with a new, modernized version under a different name. A separate TAG design review will be sent for that if the group decides to proceed with the new API.</p>]]></content>
+        <author>
+            <name>evanbliu</name>
+            <email>evanbliu@noreply.github.com</email>
+            <uri>https://github.com/evanbliu</uri>
+        </author>
+        <published>2025-01-09T22:49:18.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS Overflow Navigation Controls]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1037</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1037"/>
+        <updated>2025-01-09T16:04:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/366761?u=0268238fbc8a57f6156b96334dbf14a275d74ef5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of CSS Overflow Navigation Controls.</p>
+<p dir="auto">Carousels are an often used design pattern on the web. They are used in a variety of contexts, from product listing pages to slideshow like content. OpenUI has <a href="https://open-ui.org/components/carousel.research/" rel="nofollow">explored a range of carousel designs</a>, showing that the specific layout and appearance can vary dramatically. They are also provided by many frameworks as components, however implementing a carousel correctly is complicated and often results in inconsistent and sometimes inaccessible implementations.</p>
+<p dir="auto">There are a <a href="https://css.oddbird.net/overflow/explainer/" rel="nofollow">variety of problems being solved by carousels</a>, which we believe could be provided by a set of CSS features. Developers could then combine these CSS features to create the various designs. CSS-only component libraries could be built to further simplify this process.</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/w3c/csswg-drafts/blob/main/css-overflow-5/carousel-explainer.md">https://github.com/w3c/csswg-drafts/blob/main/css-overflow-5/carousel-explainer.md</a></li>
+<li>Specification: <a href="https://drafts.csswg.org/css-overflow-5/#scroll-navigation" rel="nofollow">https://drafts.csswg.org/css-overflow-5/#scroll-navigation</a>, <a href="https://drafts.csswg.org/css-multicol-2/#selectordef-column" rel="nofollow">https://drafts.csswg.org/css-multicol-2/#selectordef-column</a>, <a href="https://github.com/w3c/csswg-drafts/pull/11178" data-hovercard-type="pull_request" data-hovercard-url="/w3c/csswg-drafts/pull/11178/hovercard">interactivity: inert</a></li>
+<li>WPT Tests: Need to be moved to wpt</li>
+<li>User research: <a href="https://css.oddbird.net/overflow/explainer/" rel="nofollow">https://css.oddbird.net/overflow/explainer/</a> (Carousel listed among top missing elements <a href="https://2023.stateofhtml.com/en-US/usage/#html_missing_elements" rel="nofollow">https://2023.stateofhtml.com/en-US/usage/#html_missing_elements</a>)</li>
+<li>Security and Privacy self-review²: This feature has no known privacy/security concerns. <a href="https://drafts.csswg.org/css-overflow-5/#privacy" rel="nofollow">https://drafts.csswg.org/css-overflow-5/#privacy</a> <a href="https://drafts.csswg.org/css-overflow-5/#security" rel="nofollow">https://drafts.csswg.org/css-overflow-5/#security</a></li>
+<li>GitHub repo: <a href="https://github.com/w3c/csswg-drafts/">https://github.com/w3c/csswg-drafts/</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Robert Flack (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/flackr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/flackr">@flackr</a>), Google, editor</li>
+<li>Tab Atkins (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/tabatkins/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/tabatkins">@tabatkins</a>), Google, editor</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Google</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Positive, implementation is underway</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2778205922" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1161" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1161/hovercard" href="https://github.com/mozilla/standards-positions/issues/1161">mozilla/standards-positions#1161</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2778219650" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/447" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/447/hovercard" href="https://github.com/WebKit/standards-positions/issues/447">WebKit/standards-positions#447</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li>Chromium: <a href="https://chromestatus.com/feature/5160035463462912" rel="nofollow">::scroll-marker and ::scroll-marker-group</a>, <a href="https://chromestatus.com/feature/5093129273999360" rel="nofollow">::scroll-button(*)</a>, <a href="https://chromestatus.com/feature/5107436833472512" rel="nofollow">interactivity: inert</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done: CSSWG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>]]></content>
+        <author>
+            <name>flackr</name>
+            <email>flackr@noreply.github.com</email>
+            <uri>https://github.com/flackr</uri>
+        </author>
+        <published>2025-01-09T16:02:54.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[HTML] Fix divergence of CanvasRenderingContext2D and Offscreen with CanvasSettings]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1036</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1036"/>
+        <updated>2025-01-08T13:28:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/32557109?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of CanvasSettings.</p>
+<p dir="auto">There is a lot of duplicated spec text for CanvasRenderingContext2D and OffscreenCanvasRenderingContext2D, especially related to how CanvasRenderingContext2DSettings is handled. As with all things that are duplicated, there are accidental divergences.</p>
+<p dir="auto">This creates a new mixin interface CanvasSettings. This will unify the accidentally diverged paths, and also prevent this from happening in the future. It will introduce some features accidentally left out of OffscreenCanvasRenderingContext2D.</p>
+<p dir="auto">This is being pursued so that things like floating-point and HDR canvas do not need to add duplicate text when they are added to the specification.</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/ccameron-chromium/ColorWeb-CG/blob/canvas_cleanup/canvas2d_settings.md">https://github.com/ccameron-chromium/ColorWeb-CG/blob/canvas_cleanup/canvas2d_settings.md</a></li>
+<li>Specification: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2775316934" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10904" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10904/hovercard" href="https://github.com/whatwg/html/pull/10904">whatwg/html#10904</a></li>
+<li>WPT Tests: <a href="https://chromium-review.googlesource.com/c/chromium/src/+/6157844" rel="nofollow">https://chromium-review.googlesource.com/c/chromium/src/+/6157844</a></li>
+<li>User research:</li>
+<li>Security and Privacy self-review²: N/A</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ccameron-chromium/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ccameron-chromium">@ccameron-chromium</a></li>
+</ul>
+</li>
+<li>Organization/project driving the specification: ColorWeb-CG</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Support</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2775290348" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1159" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1159/hovercard" href="https://github.com/mozilla/standards-positions/issues/1159">mozilla/standards-positions#1159</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2775287963" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/445" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/445/hovercard" href="https://github.com/WebKit/standards-positions/issues/445">WebKit/standards-positions#445</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li>Chromium: <a href="https://chromestatus.com/feature/5508068999430144" rel="nofollow">https://chromestatus.com/feature/5508068999430144</a></li>
+<li>Gecko: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1940414" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1940414</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done: ColorWeb-CG (because of floating-point and HDR canvas)</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>]]></content>
+        <author>
+            <name>ccameron-chromium</name>
+            <email>ccameron-chromium@noreply.github.com</email>
+            <uri>https://github.com/ccameron-chromium</uri>
+        </author>
+        <published>2025-01-08T13:28:55.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS Gap Decorations]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1035</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1035"/>
+        <updated>2025-01-08T08:53:11.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/20029735?u=c3216de679c201bf818e81a75e714d38b6160b48&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of CSS Gap Decorations.</p>
+<p dir="auto">CSS multi-column containers allow for <a href="https://drafts.csswg.org/css-multicol-1/#cr" rel="nofollow">rules</a> to be drawn between columns. Applying similar styling to other container layouts such as grid and flex has been widely sought after, as seen in the discussion for CSS Working Group issue <a href="https://github.com/w3c/csswg-drafts/issues/2748" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/2748/hovercard">#2748</a> and in several StackOverflow questions ( <a href="https://stackoverflow.com/questions/45884630/css-grid-is-it-possible-to-apply-color-to-grid-gaps" rel="nofollow">[1]</a> <a href="https://stackoverflow.com/questions/59899641/is-it-possible-to-draw-all-css-grid-lines-as-dotted-borders-or-outlines-if-js-i" rel="nofollow">[2]</a> <a href="https://stackoverflow.com/questions/47882924/preventing-double-borders-in-css-grid" rel="nofollow">[3]</a> <a href="https://stackoverflow.com/questions/67479163/css-border-doubling-with-flex" rel="nofollow">[4]</a> ). Currently, developers seeking to draw such decorations must resort to non-ergonomic workarounds such as these examples:</p>
+<ul dir="auto">
+<li><a href="https://www.smashingmagazine.com/2017/09/css-grid-gotchas-stumbling-blocks/#how-do-i-add-backgrounds-and-borders-to-grid-areas" rel="nofollow">https://www.smashingmagazine.com/2017/09/css-grid-gotchas-stumbling-blocks/#how-do-i-add-backgrounds-and-borders-to-grid-areas</a></li>
+<li><a href="https://x.com/geddski/status/1004731709764534274" rel="nofollow">https://x.com/geddski/status/1004731709764534274</a></li>
+</ul>
+<p dir="auto">This proposal seeks to:</p>
+<ul dir="auto">
+<li>Extend CSS <a href="https://drafts.csswg.org/css-multicol-1/#column-gaps-and-rules" rel="nofollow">column rule properties</a> to apply to container layout types beyond multi-column.</li>
+<li>Introduce row-direction gap decorations on CSS container layouts.</li>
+<li>Allow gap decorations to vary over a given container to handle cases such as alternating row separators.</li>
+</ul>
+<hr>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/CSSGapDecorations/explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/CSSGapDecorations/explainer.md</a></li>
+<li>Specification: <a href="https://drafts.csswg.org/css-gaps-1/" rel="nofollow">https://drafts.csswg.org/css-gaps-1/</a></li>
+<li>WPT Tests: In development; early examples in <a href="https://github.com/web-platform-tests/wpt/tree/master/css/css-gaps">https://github.com/web-platform-tests/wpt/tree/master/css/css-gaps</a></li>
+<li>User research: Use cases in the explainer were collected from the discussion in CSSWG issue <a href="https://github.com/w3c/csswg-drafts/issues/2748" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/2748/hovercard">#2748</a>. Additional use cases are touched on in the discussion in <a href="https://github.com/w3c/csswg-drafts/issues/10393" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/10393/hovercard">#10393</a>.</li>
+<li>Security and Privacy self-review²: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/CSSGapDecorations/security-privacy-questionnaire.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/CSSGapDecorations/security-privacy-questionnaire.md</a></li>
+<li>GitHub repo: N/A</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Kevin Babbitt (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/kbabbitt/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/kbabbitt">@kbabbitt</a>), Microsoft, spec editor</li>
+<li>Sam Davis Omekara (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/oSamDavis/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/oSamDavis">@oSamDavis</a>), Microsoft, implementer in Chromium</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Microsoft</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Positive</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2773845134" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1158" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1158/hovercard" href="https://github.com/mozilla/standards-positions/issues/1158">mozilla/standards-positions#1158</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2773845527" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/444" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/444/hovercard" href="https://github.com/WebKit/standards-positions/issues/444">WebKit/standards-positions#444</a></li>
+<li>Positive feedback from web developers as seen in comments on <a href="https://github.com/w3c/csswg-drafts/issues/10393" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/10393/hovercard">#10393</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li><a href="https://chromestatus.com/feature/5157805733183488" rel="nofollow">https://chromestatus.com/feature/5157805733183488</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: Prototyping is in progress in Chromium, and we're hoping to start origin trials around June of this year.</li>
+<li>The group where the work on this specification is currently being done: CSSWG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): CSSWG</li>
+<li>Major unresolved issues with or opposition to this specification: There are a few <a href="https://drafts.csswg.org/css-gaps-1/#issues-index" rel="nofollow">design issues</a> left to tackle in the spec but nothing I would consider major.</li>
+<li>This work is being funded by: Microsoft</li>
+</ul>
+<p dir="auto">You should also know that... your input is greatly appreciated, thank you in advance!</p>]]></content>
+        <author>
+            <name>kbabbitt</name>
+            <email>kbabbitt@noreply.github.com</email>
+            <uri>https://github.com/kbabbitt</uri>
+        </author>
+        <published>2025-01-07T22:12:46.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Container Timing API]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1034</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1034"/>
+        <updated>2025-01-08T13:39:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/118266?u=5a7fb2f3d1ecc7dcd73f43f4b478cb4938e6572c&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting an early TAG design review of the Container Timing API.</p>
+<p dir="auto">The Container Timing API enables monitoring when annotated sections of the DOM are displayed on screen and have <em>finished their initial paint</em>.</p>
+<ul dir="auto">
+<li>Explainer¹:<a href="https://github.com/bloomberg/container-timing">https://github.com/bloomberg/container-timing</a></li>
+<li>User research:</li>
+<li>Security and Privacy self-review²: This is essentially an extension of the Element Timing API (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="381657530" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/326" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/326/hovercard" href="https://github.com/w3ctag/design-reviews/issues/326">#326</a>) so the same security constraints apply</li>
+<li>GitHub repo:<a href="https://github.com/bloomberg/container-timing">https://github.com/bloomberg/container-timing</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Jason Williams (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jasonwilliams/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jasonwilliams">@jasonwilliams</a>), Bloomberg, Author</li>
+<li>José Dapena Paz (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jdapena/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jdapena">@jdapena</a>), Igalia, Author</li>
+</ul>
+</li>
+<li>Organization/project driving the design: Bloomberg</li>
+<li>Multi-stakeholder feedback³:
+<ul dir="auto">
+<li>Chromium comments:</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2772676053" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1155" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1155/hovercard" href="https://github.com/mozilla/standards-positions/issues/1155">mozilla/standards-positions#1155</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2772684869" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/442" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/442/hovercard" href="https://github.com/WebKit/standards-positions/issues/442">WebKit/standards-positions#442</a></li>
+<li>positive signals from developers (GitHub is supportive)</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the incubation/design work on this is being done (or is intended to be done in the future): This will likely move to WICG or the Web Perf WG.</li>
+<li>The group where standardization of this work is intended to be done ("unknown" if not known): This will likely move to WICG or the Web Perf WG.</li>
+<li>Existing major pieces of multi-implementer review or discussion of this design:</li>
+<li>Major unresolved issues with or opposition to this design:</li>
+<li>This work is being funded by: Bloomberg</li>
+</ul>
+<p dir="auto">You should also know that... y'all are great, keep up the great work!</p>]]></content>
+        <author>
+            <name>keithamus</name>
+            <email>keithamus@noreply.github.com</email>
+            <uri>https://github.com/keithamus</uri>
+        </author>
+        <published>2025-01-07T12:18:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS `shape()` function]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1033</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1033"/>
+        <updated>2025-01-06T16:18:49.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/88566?u=b5551d5208a9a90fc7510a9f5502dd4c0afeb05a&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of  CSS <code class="notranslate">shape()</code> function.</p>
+<p dir="auto">{{One paragraph summary of the feature, ideally copy-pasted from your Explainer.}}</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://drafts.csswg.org/css-shapes-2/#shape-function" rel="nofollow">https://drafts.csswg.org/css-shapes-2/#shape-function</a></li>
+<li>Specification: <a href="https://drafts.csswg.org/css-shapes-2/#shape-function" rel="nofollow">https://drafts.csswg.org/css-shapes-2/#shape-function</a></li>
+<li>WPT Tests: <a href="https://wpt.fyi/results/css/css-masking/clip-path?label=master&amp;label=experimental&amp;aligned&amp;q=shape%28" rel="nofollow">https://wpt.fyi/results/css/css-masking/clip-path?label=master&amp;label=experimental&amp;aligned&amp;q=shape%28</a> <a href="https://wpt.fyi/results/css/css-shapes?label=master&amp;label=experimental&amp;aligned&amp;q=shape%28" rel="nofollow">https://wpt.fyi/results/css/css-shapes?label=master&amp;label=experimental&amp;aligned&amp;q=shape%28</a></li>
+<li>User research:</li>
+<li>Security and Privacy self-review²: <a href="https://gist.github.com/noamr/6897ab8bddbcc6189cd39761f60d48f2">https://gist.github.com/noamr/6897ab8bddbcc6189cd39761f60d48f2</a></li>
+<li>GitHub repo: w3c/csswg-drafts</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/noamr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/noamr">@noamr</a>, Google Inc, developing and editing the spec</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Google, Apple</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Chromium is actively implementing this.</li>
+<li>WebKit comments: WebKit is actively implementing this. <a href="https://bugs.webkit.org/show_bug.cgi?id=238371" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=238371</a></li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2770979772" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1153" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1153/hovercard" href="https://github.com/mozilla/standards-positions/issues/1153">mozilla/standards-positions#1153</a></li>
+<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴: <a href="https://g-issues.chromium.org/issues/40829059" rel="nofollow">https://g-issues.chromium.org/issues/40829059</a>  <a href="https://bugs.webkit.org/show_bug.cgi?id=238371" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=238371</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done:</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">{{Please tell us anything else you think is relevant to this review.}}</p>
+<hr>
+<p dir="auto">CAREFULLY READ AND DELETE CONTENT BELOW THIS LINE BEFORE SUBMITTING</p>
+<p dir="auto">Use links to content rather than pasting text into this issue. Issues are ephemeral and most of the material we are asking for has long term value.</p>
+<p dir="auto">Please preview the issue and check that the links work before submitting. Please make sure anyone with the link can access the document. We may refuse to review anything that is not public.</p>
+<p dir="auto">¹ We require an explainer to give the relevant context for the spec review, even if the spec has some background information. An explainer must address user needs and contain examples of use.  For more information, see our <a href="https://tag.w3.org/explainers/" rel="nofollow">explanation of how to write a good explainer</a>.</p>
+<p dir="auto">² A Security and Privacy questionnaire helps us understand potential security and privacy issues and mitigations for your design, and can save us asking redundant questions. See <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">https://www.w3.org/TR/security-privacy-questionnaire/</a>.</p>
+<p dir="auto">³ For your own organization, you can simply state the organization's position instead of linking to it.  This includes items on <a href="https://github.com/mozilla/standards-positions">Mozilla standards-positions</a>, and <a href="https://github.com/WebKit/standards-positions">WebKit standards-positions</a>.  Chromium doesn't have a standards-positions repository and <a href="https://source.chromium.org/chromium/chromium/src/+/main:docs/standards/positions/GoogleChrome/README.md" rel="nofollow">prefers</a> to use comments from the teams that maintain the relevant area of their codebase.</p>
+<p dir="auto">⁴ Include links to <a href="https://chromestatus.com/" rel="nofollow">Chrome Status</a>, <a href="https://bugzilla.mozilla.org/" rel="nofollow">Mozilla's</a>, <a href="https://bugs.webkit.org/" rel="nofollow">WebKit's Bugzilla</a>, and trackers for other implementations if those are known to you.</p>]]></content>
+        <author>
+            <name>noamr</name>
+            <email>noamr@noreply.github.com</email>
+            <uri>https://github.com/noamr</uri>
+        </author>
+        <published>2025-01-06T16:18:49.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Custom Functions (@function)]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1031</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1031"/>
+        <updated>2025-01-03T11:36:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/77163?u=71e54533cf5ab9be1100bb5054da3f46991f27b5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of Custom Functions (<code class="notranslate">@function</code>)</p>
+<p dir="auto">"A custom function can be thought of as an advanced custom property, which instead of being substituted by a single fixed value provides its substitution value based on function parameters and local variables." (From the spec.)</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://css.oddbird.net/sasslike/mixins-functions/" rel="nofollow">https://css.oddbird.net/sasslike/mixins-functions/</a> (Also explains mixins, which is not in scope for this review.)</li>
+<li>Specification: <a href="https://drafts.csswg.org/css-mixins-1/#defining-custom-functions" rel="nofollow">https://drafts.csswg.org/css-mixins-1/#defining-custom-functions</a></li>
+<li>WPT Tests: N/A</li>
+<li>User research: <a href="https://css.oddbird.net/sasslike/mixins-functions/#author-interest" rel="nofollow">https://css.oddbird.net/sasslike/mixins-functions/#author-interest</a></li>
+<li>Security and Privacy self-review²: <details><summary><strong>tl;dr</strong>: nothing to report, expand for details.</summary><ul dir="auto"><li>2.1 What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary? <br>A: It doesn't expose anything. It's both defined and used within CSS.</li><li>2.2 Do features in your specification expose the minimum amount of information necessary to enable their intended uses? <br>A: Yes. (Nothing.)</li><li>2.3 How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them? <br>A: N/A</li><li>2.4 How do the features in your specification deal with sensitive information? <br>A: N/A</li><li>2.5 Do the features in your specification introduce new state for an origin that persists across browsing sessions? <br>A: No.</li><li>2.6 Do the features in your specification expose information about the underlying platform to origins? <br>A: No.</li><li>2.7 Does this specification allow an origin to send data to the underlying platform? <br>A: No.</li><li>2.8 Do features in this specification enable access to device sensors? <br>A: No.</li><li>2.9 Do features in this specification enable new script execution/loading mechanisms? <br>A: No.</li><li>2.10 Do features in this specification allow an origin to access other devices? <br>A: No.</li><li>2.11 Do features in this specification allow an origin some measure of control over a user agent's native UI? <br>A: No.</li><li>2.12 What temporary identifiers do the features in this specification create or expose to the web? <br>A: None.</li><li>2.13 How does this specification distinguish between behavior in first-party and third-party contexts? <br>A: N/A.</li><li>2.14 How do the features in this specification work in the context of a browser's Private Browsing or Incognito mode? <br>A: As normal / not applicable.</li><li>2.15 Does this specification have both "Security Considerations" and "Privacy Considerations" sections? <br>A: Not yet. </li><li>2.16 Do features in your specification enable origins to downgrade default security protections? <br>A: N/A.</li><li>2.17 How does your feature handle non-"fully active" documents? <br>A: N/A.</li><li>2.18 What should this questionnaire have asked? <br>A: N/A.</li></ul></details></li>
+<li>GitHub repo: <a href="https://github.com/w3c/csswg-drafts/tree/main/css-mixins-1">https://github.com/w3c/csswg-drafts/tree/main/css-mixins-1</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mirisuzanne/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mirisuzanne">@mirisuzanne</a>, CSSWG Invited Expert, original proposal author and spec editor.</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/tabatkins/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/tabatkins">@tabatkins</a>, Google, spec editor.</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/andruud/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/andruud">@andruud</a>, Google, working on the feature in Chromium.</li>
+</ul>
+</li>
+<li>Organization/project driving the specification:  Chromium</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: 👍</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2748726169" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1148" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1148/hovercard" href="https://github.com/mozilla/standards-positions/issues/1148">mozilla/standards-positions#1148</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2748731516" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/437" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/437/hovercard" href="https://github.com/WebKit/standards-positions/issues/437">WebKit/standards-positions#437</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴: <a href="https://issues.chromium.org/issues/325504770" rel="nofollow">https://issues.chromium.org/issues/325504770</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: Q1 2025.</li>
+<li>The group where the work on this specification is currently being done: CSSWG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): CSSWG</li>
+<li>Major unresolved issues with or opposition to this specification: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2551078409" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/10954" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/10954/hovercard" href="https://github.com/w3c/csswg-drafts/issues/10954">w3c/csswg-drafts#10954</a> (not opposition, but could lead to removal of the <code class="notranslate">using</code> keyword and associated behavior.)</li>
+<li>This work is being funded by: N/A</li>
+</ul>]]></content>
+        <author>
+            <name>andruud</name>
+            <email>andruud@noreply.github.com</email>
+            <uri>https://github.com/andruud</uri>
+        </author>
+        <published>2024-12-18T21:18:37.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[HTML] 2D canvas floating point support]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1030</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1030"/>
+        <updated>2024-12-18T16:08:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/32557109?v=4" width="64" height="64" alt=""/><br/><p dir="auto">I'm requesting a TAG review of 2D canvas floating point!</p>
+<p dir="auto">The <a href="https://html.spec.whatwg.org/multipage/canvas.html#output-bitmap" rel="nofollow">output bitmap</a> of a CanvasRenderingContext2D (or offscreen) defaults to being 8-bit on all browses (although it is not specified this way). This change makes that behavior explicitly specified, and add the option, via CanvasRenderingContext2DSettings, to specify that it can be 16-bit floating point.</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/ccameron-chromium/ColorWeb-CG/blob/canvas2d_float/canvas_float.md">canvas_float.md</a></li>
+<li>Specification: PR <a href="https://github.com/whatwg/html/compare/main...ccameron-chromium:html:canvas2d_float16">in development</a></li>
+<li>WPT Tests: In development</li>
+<li>User research: N/A</li>
+<li>Security and Privacy self-review²:</li>
+<li>GitHub repo:</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ccameron-chromium/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ccameron-chromium">@ccameron-chromium</a>, Chromium, co-author of specification</li>
+<li>ColorWeb-CG</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: ColorWeb-CG</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: None (author)</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1454784476" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/708" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/708/hovercard" href="https://github.com/mozilla/standards-positions/issues/708">mozilla/standards-positions#708</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1454800619" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/91" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/91/hovercard" href="https://github.com/WebKit/standards-positions/issues/91">WebKit/standards-positions#91</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li>Chromium: crbug.com/40277213</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done: ColorWeb-CG</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">A superset of this functionality was reviewed by TAG as part of the proposal for <a href="https://github.com/w3ctag/design-reviews/issues/917" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/917/hovercard">Adding support for High Dynamic Range (HDR) imagery to HTML Canvas</a>. That proposal is being split into several independent components to be added individually.</p>]]></content>
+        <author>
+            <name>ccameron-chromium</name>
+            <email>ccameron-chromium@noreply.github.com</email>
+            <uri>https://github.com/ccameron-chromium</uri>
+        </author>
+        <published>2024-12-18T15:59:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Final Review Request of seven (7) W3C VCWG Specifications]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1029</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1029"/>
+        <updated>2025-01-08T13:54:00.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/108611?v=4" width="64" height="64" alt=""/><br/><p dir="auto">The W3C VCWG is requesting a <em>final</em> horizontal review of the following specifications, which your group has reviewed previous versions of over the past year or more.</p>
+<p dir="auto">We are requesting this before proceeding to the Proposed Recommendation phase based on a request by W3M to ensure that changes that have been made in the past six months are reviewed by your group since your last review. We are planning to enter the Proposed Recommendation phase for all seven (7) documents in Q1 2025 (roughly February, if possible).</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/vc-data-model-2.0/" rel="nofollow">Verifiable Credentials Data Model v2.0</a></p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/vc-data-model-2.0/#revision-history" rel="nofollow">Changes since Candidate Recommendation</a></li>
+<li><a href="https://w3c.github.io/vc-data-model-2.0-test-suite/" rel="nofollow">Implementation Report</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/vc-data-integrity/" rel="nofollow">Verifiable Credential Data Integrity v1.0</a></p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/vc-data-integrity/#revision-history" rel="nofollow">Changes since Candidate Recommendation</a></li>
+<li>Implementation Report (see ECDSA and EdDSA test suites, which test the Data Integrity base spec in each cryptosuite)</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/vc-di-ecdsa/" rel="nofollow">ECDSA Cryptosuite v1.0</a></p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/vc-di-ecdsa/#revision-history" rel="nofollow">Changes since Candidate Recommendation</a></li>
+<li><a href="https://w3c.github.io/vc-di-ecdsa-test-suite/" rel="nofollow">Implementation Report</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/vc-di-eddsa/" rel="nofollow">EdDSA Cryptosuite v1.0</a></p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/vc-di-eddsa/#revision-history" rel="nofollow">Changes since Candidate Recommendation</a></li>
+<li><a href="https://w3c.github.io/vc-di-eddsa-test-suite/" rel="nofollow">Implementation Report</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/vc-jose-cose/" rel="nofollow">Securing Verifiable Credentials using JOSE and COSE</a></p>
+<ul dir="auto">
+<li><a href="https://github.com/w3c/vc-jose-cose/commits/?since=2024-09-15&amp;until=now">Changes since Candidate Recommendation</a></li>
+<li><a href="https://w3c.github.io/vc-jose-cose-test-suite/" rel="nofollow">Implementation Report</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/vc-bitstring-status-list/" rel="nofollow">Bitstring Status List v1.0</a></p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/vc-bitstring-status-list/#revision-history" rel="nofollow">Changes since Candidate Recommendation</a></li>
+<li><a href="https://w3c.github.io/vc-bitstring-status-list-test-suite/" rel="nofollow">Implementation Report</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto"><a href="https://www.w3.org/TR/controller-document/" rel="nofollow">Controlled Identifier Documents v1.0</a></p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/controller-document/#revision-history" rel="nofollow">Changes since Candidate Recommendation</a></li>
+<li><a href="https://w3c.github.io/cid/implementations/1.0/" rel="nofollow">Implementation Report</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto">Primary contacts:</p>
+<ul dir="auto">
+<li>Brent Zundel <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/brentzundel/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/brentzundel">@brentzundel</a> (Chair)</li>
+<li>Ivan Herman <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/iherman/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/iherman">@iherman</a> (W3C Staff Contact)</li>
+<li>Greg Bernstein <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Wind4Greg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Wind4Greg">@Wind4Greg</a> (Editor, Data Integrity and cryptosuite specs)</li>
+<li>Mike Jones <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/selfissued/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/selfissued">@selfissued</a> (Editor, VCDM v2.0 and VC JOSE COSE spec)</li>
+<li>Gabe Cohen <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/decentralgabe/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/decentralgabe">@decentralgabe</a> (Editor, VC JOSE COSE spec)</li>
+<li>Manu Sporny <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/msporny/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/msporny">@msporny</a> (Editor, VCDM v2.0, Data Integrity, Bitstring Status List specs)</li>
+<li>Dmitri Zagidulin <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dmitrizagidulin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dmitrizagidulin">@dmitrizagidulin</a> (Editor, Data Integrity and cryptosuite specs)</li>
+</ul>
+</li>
+<li>
+<p dir="auto">Organization/project driving the specification:</p>
+<ul dir="auto">
+<li>W3C Verifiable Credentials Working Group</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<p dir="auto">There are no major unresolved issues or opposition to these specifications that we know of at the present time.</p>]]></content>
+        <author>
+            <name>msporny</name>
+            <email>msporny@noreply.github.com</email>
+            <uri>https://github.com/msporny</uri>
+        </author>
+        <published>2024-12-15T19:02:23.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[هلا ]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1028</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1028"/>
+        <updated>2024-12-12T19:15:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190158857?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting an early TAG design review of {{feature}}.</p>
+<p dir="auto">{{One paragraph summary of idea, ideally copy-pasted from your Explainer.}}</p>
+<ul dir="auto">
+<li>Explainer¹:</li>
+<li>User research:</li>
+<li>Security and Privacy self-review²:</li>
+<li>GitHub repo:</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>$name (@-mention), $organization/s, $role in developing specification</li>
+<li>{{repeat as necessary, we recommend including group chairs and editors in this list}}</li>
+</ul>
+</li>
+<li>Organization/project driving the design:</li>
+<li>Multi-stakeholder feedback³:
+<ul dir="auto">
+<li>Chromium comments:</li>
+<li>Mozilla comments: <a href="https://github.com/mozilla/standards-positions/issues/NNN">https://github.com/mozilla/standards-positions/issues/NNN</a></li>
+<li>WebKit comments: <a href="https://github.com/WebKit/standards-positions/issues/NNN">https://github.com/WebKit/standards-positions/issues/NNN</a></li>
+<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the incubation/design work on this is being done (or is intended to be done in the future):</li>
+<li>The group where standardization of this work is intended to be done ("unknown" if not known):</li>
+<li>Existing major pieces of multi-implementer review or discussion of this design:</li>
+<li>Major unresolved issues with or opposition to this design:</li>
+<li>This work is being funded by:</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">{{Please tell us anything else you think is relevant to this review.}}</p>
+<hr>
+<p dir="auto">CAREFULLY READ AND DELETE CONTENT BELOW THIS LINE BEFORE SUBMITTING</p>
+<p dir="auto">Use links to content rather than pasting text into this issue. Issues are ephemeral and most of the material we are asking for has long term value.</p>
+<p dir="auto">Please preview the issue and check that the links work before submitting. Please make sure anyone with the link can access the document. We may refuse to review anything that is not public.</p>
+<p dir="auto">¹ An explainer must address user needs and contain examples of use. See our <a href="https://tag.w3.org/explainers/" rel="nofollow">explanation of how to write a good explainer</a>.</p>
+<p dir="auto">² Even for early-stage ideas, a Security and Privacy questionnaire helps us understand potential security and privacy issues and mitigations for your design, and can save us asking redundant questions. See <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">https://www.w3.org/TR/security-privacy-questionnaire/</a>.</p>
+<p dir="auto">³ For your own organization, you can simply state the organization's position instead of linking to it.  This includes items on <a href="https://github.com/mozilla/standards-positions">Mozilla standards-positions</a>, and <a href="https://github.com/WebKit/standards-positions">WebKit standards-positions</a>.  Chromium doesn't have a standards-positions repository and <a href="https://source.chromium.org/chromium/chromium/src/+/main:docs/standards/positions/GoogleChrome/README.md" rel="nofollow">prefers</a> to use comments from the teams that maintain the relevant area of their codebase.</p>]]></content>
+        <author>
+            <name>cheko383</name>
+            <email>cheko383@noreply.github.com</email>
+            <uri>https://github.com/cheko383</uri>
+        </author>
+        <published>2024-12-12T19:01:08.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS `dynamic-range-limit`]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1027</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1027"/>
+        <updated>2024-12-18T12:04:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/32557109?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of CSS dynamic-range-limit</p>
+<p dir="auto">The goal of this proposal is to provide a mechansim through which an application may limit the maximum brightness of HDR content (including images, videos, and in the future HTML canvases and CSS colors).</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/ccameron-chromium/hdr-headroom-limit/blob/main/EXPLAINER.md">https://github.com/ccameron-chromium/hdr-headroom-limit/blob/main/EXPLAINER.md</a></li>
+<li>Specification: <a href="https://drafts.csswg.org/css-color-hdr/#controlling-dynamic-range" rel="nofollow">https://drafts.csswg.org/css-color-hdr/#controlling-dynamic-range</a></li>
+<li>WPT Tests: <a href="https://wpt.fyi/results/css/css-color-hdr?label=experimental&amp;label=master&amp;aligned" rel="nofollow">https://wpt.fyi/results/css/css-color-hdr?label=experimental&amp;label=master&amp;aligned</a></li>
+<li>User research:</li>
+<li>Security and Privacy self-review²:</li>
+<li>GitHub repo:</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ccameron-chromium/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ccameron-chromium">@ccameron-chromium</a>, Google, proposal author, Chromium author</li>
+<li>sboukortt, Google, Chromium implementor</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/svgeesus/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/svgeesus">@svgeesus</a> Editor of CSS Color HDR spec</li>
+</ul>
+</li>
+<li>Organization/project driving the specification:</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Positive</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2110112310" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/979" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/979/hovercard" href="https://github.com/mozilla/standards-positions/issues/979">mozilla/standards-positions#979</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2110107066" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/312" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/312/hovercard" href="https://github.com/WebKit/standards-positions/issues/312">WebKit/standards-positions#312</a></li>
+<li>Adobe <a href="https://github.com/w3c/csswg-drafts/issues/9074#issuecomment-1640353994" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/9074/hovercard">requested support</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li><a href="https://chromestatus.com/feature/5146250411769856" rel="nofollow">https://chromestatus.com/feature/5146250411769856</a>, <a href="https://crbug.com/40277822" rel="nofollow">https://crbug.com/40277822</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: Aiming for Chrome 133 (early January)</li>
+<li>The group where the work on this specification is currently being done: CSS WG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>]]></content>
+        <author>
+            <name>ccameron-chromium</name>
+            <email>ccameron-chromium@noreply.github.com</email>
+            <uri>https://github.com/ccameron-chromium</uri>
+        </author>
+        <published>2024-12-10T12:05:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[WebRTC API Proposed Amendments]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1026</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1026"/>
+        <updated>2024-12-10T07:27:53.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/216410?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of Proposed Amendments to the WebRTC API.</p>
+<ul dir="auto">
+<li>Explainer¹: N/A</li>
+<li>Specification: <a href="https://www.w3.org/TR/2024/REC-webrtc-20241008/#proposed-amendments" rel="nofollow">https://www.w3.org/TR/2024/REC-webrtc-20241008/#proposed-amendments</a> (this review focuses only on proposed amendments)</li>
+<li>WPT Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/webrtc/">https://github.com/web-platform-tests/wpt/tree/master/webrtc/</a> (<a href="https://www.w3.org/2024/10/webrtc-amendments-interop.html" rel="nofollow">https://www.w3.org/2024/10/webrtc-amendments-interop.html</a> for links to tests specifically tied to the proposed amendments)</li>
+<li>User research: N/A</li>
+<li>Security and Privacy self-review²: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="100478730" data-permission-text="Title is private" data-url="https://github.com/w3c/webrtc-pc/issues/265" data-hovercard-type="issue" data-hovercard-url="/w3c/webrtc-pc/issues/265/hovercard?comment_id=147394405&amp;comment_type=issue_comment" href="https://github.com/w3c/webrtc-pc/issues/265#issuecomment-147394405">w3c/webrtc-pc#265 (comment)</a> - not changed by the proposed amendments as far as we could determine</li>
+<li>GitHub repo: <a href="https://github.com/w3c/webrtc-pc/">https://github.com/w3c/webrtc-pc/</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Dominique Hazael-Massieux (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dontcallmedom/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dontcallmedom">@dontcallmedom</a>), W3C, staff contact</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: W3C WebRTC WG</li>
+<li>Multi-stakeholder support³: all the proposed amendments have received at least double implementation (see <a href="https://www.w3.org/2024/10/webrtc-amendments-interop.html" rel="nofollow">implementation report</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: would like to proceed with updated Rec ASAP (other wide review deadlines set to Jan 31st 2025)</li>
+<li>The group where the work on this specification is currently being done: WebRTC WG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): idem</li>
+<li>Major unresolved issues with or opposition to this specification: N/A</li>
+<li>This work is being funded by: W3C</li>
+</ul>]]></content>
+        <author>
+            <name>dontcallmedom</name>
+            <email>dontcallmedom@noreply.github.com</email>
+            <uri>https://github.com/dontcallmedom</uri>
+        </author>
+        <published>2024-12-10T07:27:53.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS Inline `text-box`, `text-box-trim`, and `text-box-edge` properties]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1021</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1021"/>
+        <updated>2024-12-05T09:09:53.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1274377?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of CSS Inline <code class="notranslate">text-box</code>, <code class="notranslate">text-box-trim</code>, and <code class="notranslate">text-box-edge</code> properties.</p>
+<p dir="auto">To achieve optical balance of text content, the <a href="https://drafts.csswg.org/css-inline-3/#propdef-text-box-trim" rel="nofollow">text-box-trim</a> and <a href="https://drafts.csswg.org/css-inline-3/#propdef-text-box-edge" rel="nofollow">text-box-edge</a> properties, along with the <a href="https://drafts.csswg.org/css-inline-3/#propdef-text-box" rel="nofollow">text-box</a> shorthand property, make finer control of vertical alignment of text possible.</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://kojiishi.github.io/explainers/text-box-trim" rel="nofollow">https://kojiishi.github.io/explainers/text-box-trim</a></li>
+<li>Specification: <a href="https://drafts.csswg.org/css-inline-3/#leading-trim" rel="nofollow">https://drafts.csswg.org/css-inline-3/#leading-trim</a></li>
+<li>WPT Tests: <a href="https://wpt.fyi/results/css/css-inline/text-box-trim?label=master&amp;label=experimental&amp;aligned" rel="nofollow">https://wpt.fyi/results/css/css-inline/text-box-trim?label=master&amp;label=experimental&amp;aligned</a></li>
+<li>User research:</li>
+<li>Security and Privacy self-review²:</li>
+<li>GitHub repo:</li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/fantasai/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/fantasai">@fantasai</a>, Apple, spec editor.</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/kojiishi/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/kojiishi">@kojiishi</a>, Google, Chromium implementor</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/atanassov/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/atanassov">@atanassov</a>, Microsoft, CSS WG Chair</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/astearns/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/astearns">@astearns</a>, Adobe, CSS WG Chair</li>
+</ul>
+</li>
+<li>Organization/project driving the specification:</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Positive.</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2633461349" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1105" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1105/hovercard" href="https://github.com/mozilla/standards-positions/issues/1105">mozilla/standards-positions#1105</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2711278566" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/432" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/432/hovercard" href="https://github.com/WebKit/standards-positions/issues/432">WebKit/standards-positions#432</a></li>
+<li>Microsoft Design: Published <a href="https://medium.com/microsoft-design/leading-trim-the-future-of-digital-typesetting-d082d84b202" rel="nofollow">an article</a>.</li>
+<li>Figma: <a href="https://forum.figma.com/t/launched-leading-trim/27039" rel="nofollow">Launched their implementation</a>.</li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li><a href="https://chromestatus.com/feature/5174589850648576" rel="nofollow">https://chromestatus.com/feature/5174589850648576</a>, <a href="https://crbug.com/40254880" rel="nofollow">crbug.com/40254880</a>, available as Experimental Web Platform features.</li>
+<li>WebKit available under a runtime flag.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done: CSS WG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>]]></content>
+        <author>
+            <name>kojiishi</name>
+            <email>kojiishi@noreply.github.com</email>
+            <uri>https://github.com/kojiishi</uri>
+        </author>
+        <published>2024-12-02T09:51:42.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSP report-hash keyword]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1020</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1020"/>
+        <updated>2024-12-06T09:00:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/786187?u=ea03cb781b69bbae33dbd354c0902e37ea57a438&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of {{feature}}.</p>
+<p dir="auto">{{One paragraph summary of the feature, ideally copy-pasted from your Explainer.}}</p>
+<ul dir="auto">
+<li>Explainer¹: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2692363906" data-permission-text="Title is private" data-url="https://github.com/w3c/webappsec-csp/issues/693" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webappsec-csp/pull/693/hovercard" href="https://github.com/w3c/webappsec-csp/pull/693#issue-2692363906">w3c/webappsec-csp#693 (comment)</a></li>
+<li>Specification: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2692363906" data-permission-text="Title is private" data-url="https://github.com/w3c/webappsec-csp/issues/693" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webappsec-csp/pull/693/hovercard" href="https://github.com/w3c/webappsec-csp/pull/693">w3c/webappsec-csp#693</a></li>
+<li>WPT Tests: <a href="https://chromium-review.googlesource.com/c/chromium/src/+/6038298/11/third_party/blink/web_tests/external/wpt/content-security-policy/report-hash.https.html" rel="nofollow">https://chromium-review.googlesource.com/c/chromium/src/+/6038298/11/third_party/blink/web_tests/external/wpt/content-security-policy/report-hash.https.html</a></li>
+<li>User research: N/A</li>
+<li>Security and Privacy self-review²: <a href="https://gist.github.com/yoavweiss/911099e2e28ac2917ba342283243f698">https://gist.github.com/yoavweiss/911099e2e28ac2917ba342283243f698</a></li>
+<li>GitHub repo: <a href="https://github.com/w3c/webappsec-csp">https://github.com/w3c/webappsec-csp</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Yoav Weiss (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/yoavweiss/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/yoavweiss">@yoavweiss</a>), Shopify, implementer</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Shopify</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/FAnsVyszxQ4/m/vG2qKw8YCQAJ" rel="nofollow">https://groups.google.com/a/chromium.org/g/blink-dev/c/FAnsVyszxQ4/m/vG2qKw8YCQAJ</a></li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2694603898" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1129" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1129/hovercard" href="https://github.com/mozilla/standards-positions/issues/1129">mozilla/standards-positions#1129</a></li>
+<li>WebKit comments: <a href="https://github.com/WebKit/standards-positions/issues/NNN">https://github.com/WebKit/standards-positions/issues/NNN</a></li>
+<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li><a href="https://chromestatus.com/feature/6337535507431424" rel="nofollow">https://chromestatus.com/feature/6337535507431424</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: As the relevant security standards go into effect in March 2025, I'd like to ship this in the next month or so.</li>
+<li>The group where the work on this specification is currently being done: WebAppSec</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by: Shopify</li>
+</ul>
+<p dir="auto">You should also know that this work is critical for <a href="https://east.pcisecuritystandards.org/document_library?category=pcidss&amp;document=pci_dss" rel="nofollow">PCI-DSS v4</a> - <a href="https://docs.google.com/document/d/1RcUpbpWPxXTyW0Qwczs9GCTLPD3-LcbbhL4ooBUevTM/edit?tab=t.0#heading=h.dzquzu6onmmy" rel="nofollow">context</a>.</p>]]></content>
+        <author>
+            <name>yoavweiss</name>
+            <email>yoavweiss@noreply.github.com</email>
+            <uri>https://github.com/yoavweiss</uri>
+        </author>
+        <published>2024-11-26T13:03:14.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Normative Changes of the Input Events Level 2]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1019</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1019"/>
+        <updated>2025-01-08T08:54:27.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5643782?u=974de1b3c40cb1024725ae14edacbac6f351c9f3&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of the normative changes of the Input Events Level 2.</p>
+<p dir="auto">The Input Events spec defines additions to events for text and related input to allow for the monitoring and manipulation of default browser behavior in the context of text editor applications and other applications that deal with text input and text formatting.</p>
+<ul dir="auto">
+<li>
+<p dir="auto">Explainer¹: <a href="http://w3c.github.io/editing/" rel="nofollow">http://w3c.github.io/editing/</a> (includes explanation for why contenteditable as it exists today is problematic and why additions such as the beforeinput event are needed)</p>
+</li>
+<li>
+<p dir="auto">Specification: <a href="https://w3c.github.io/input-events/" rel="nofollow">https://w3c.github.io/input-events/</a> (Please review the list of normative changes since 2018 at the following link: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2679282635" data-permission-text="Title is private" data-url="https://github.com/w3c/input-events/issues/166" data-hovercard-type="issue" data-hovercard-url="/w3c/input-events/issues/166/hovercard" href="https://github.com/w3c/input-events/issues/166">w3c/input-events#166</a>)</p>
+</li>
+<li>
+<p dir="auto">WPT Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/input-events">https://github.com/web-platform-tests/wpt/tree/master/input-events</a></p>
+</li>
+<li>
+<p dir="auto">User research:</p>
+</li>
+<li>
+<p dir="auto">Security and Privacy self-review²:<br>
+(1) PII? No<br>
+(2) High value data? No<br>
+(3) New state that persists across browsing sessions? No<br>
+(4) Persistent, cross-origin state? No<br>
+(5) Newly expose data to an origin? No<br>
+(6) New script exe/loading? No<br>
+(7) Access location? No<br>
+(8) Access sensors? No<br>
+(9) Access local computing environment? No.<br>
+(10) Access other devices? No<br>
+(11) Control over UA's UI? No<br>
+(12) Expose temp IDs? No<br>
+(13) 1st party vs. 3rd party contexts? No<br>
+(14) What about "incognito"? No changes<br>
+(15) Local data persist? No<br>
+(16) "Security Considerations" and "Privacy Considerations"? There are<br>
+no known security or privacy impacts of this feature beyond<br>
+fingerprinting [ fingerprinting-guidance] techniques that already are<br>
+available through existing events, such as the keydown and keypress [<br>
+UI-EVENTS] events.<br>
+(17) Downgrade default security? N</p>
+</li>
+<li>
+<p dir="auto">GitHub repo: <a href="https://github.com/w3c/input-events">https://github.com/w3c/input-events</a></p>
+</li>
+<li>
+<p dir="auto">Primary contacts:</p>
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/johanneswilm/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/johanneswilm">@johanneswilm</a>, IE, WebEditing WG chair and Input Events Level 2 spec editor</li>
+</ul>
+</li>
+<li>
+<p dir="auto">Organization/project driving the specification: the W3C WebEditing WG</p>
+</li>
+<li>
+<p dir="auto">Multi-stakeholder support³:</p>
+<ul dir="auto">
+<li>Chromium comments: <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/W-Q1yWW-zas/m/w8XMfQOHDAAJ" rel="nofollow">https://groups.google.com/a/chromium.org/g/blink-dev/c/W-Q1yWW-zas/m/w8XMfQOHDAAJ</a></li>
+<li>Mozilla comments:</li>
+<li>WebKit comments:</li>
+<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
+</ul>
+</li>
+<li>
+<p dir="auto">Status/issue trackers for implementations⁴: <a href="https://wpt.fyi/results/input-events?label=experimental&amp;label=master&amp;aligned" rel="nofollow">https://wpt.fyi/results/input-events?label=experimental&amp;label=master&amp;aligned</a></p>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: if possible, 27 December 2014</li>
+<li>The group where the work on this specification is currently being done: the W3C WebEditing WG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): the W3C WebEditing WG</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by:</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="224677794" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/173" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/173/hovercard" href="https://github.com/w3ctag/design-reviews/issues/173">#173</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="215524564" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/160" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/160/hovercard" href="https://github.com/w3ctag/design-reviews/issues/160">#160</a> (Input Events Level 1 is now a <a href="https://www.w3.org/standards/types#DISC" rel="nofollow">Discontinued Draft</a>)</li>
+</ul>]]></content>
+        <author>
+            <name>siusin</name>
+            <email>siusin@noreply.github.com</email>
+            <uri>https://github.com/siusin</uri>
+        </author>
+        <published>2024-11-26T05:44:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Handwriting] Add Handwriting CSS Value]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1018</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1018"/>
+        <updated>2024-12-17T23:49:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/19615935?u=15dca7029e7863504cb78155d03c28304cb7119e&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting an early TAG design review of the <code class="notranslate">handwriting</code> keyword for the <code class="notranslate">touch-action</code> CSS attribute.</p>
+<p dir="auto">This feature introduces a new web standard that simplifies enabling or disabling handwriting input across multiple platforms. By specifying a new keyword in the <a href="https://w3c.github.io/pointerevents/#the-touch-action-css-property" rel="nofollow">touch-action</a> CSS property, developers can now easily indicate whether an element or its subtree should allow handwriting input.</p>
+<ul dir="auto">
+<li>Explainer: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/Handwriting/HandwritingIntentCSSValue.md">MSEdgeExplainers/Handwriting/HandwritingIntentCSSValue.md</a></li>
+<li>User research: Handwriting capabilities are being implemented at the moment and when they are shipped developers will need a way to handle their enablement. Once implemented, these capabilities will be enabled by default and users will need a mechanism to disable it.</li>
+<li>Security and Privacy self-review: Since the proposed property should not interact with other HTML or IDL attributes, DOM properties, or JavaScript APIs in an interesting way, and the property doesn't reflect whether a user agent supports or has enabled handwriting input, it shouldn't be possible to use this for fingerprinting. As of writing this, we are not aware of any way the proposed property could be used towards nefarious means since it's merely a hint for the browser to allow handwriting input and the handwriting state doesn't expose anything about the user nor their device. There are no known security impacts of the features in this specification.</li>
+<li>GitHub repo: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers">MicrosoftEdge/MSEdgeExplainers</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Gaston Rodriguez (@<a href="https://github.com/gastonrod">gastonrod</a>), Microsoft</li>
+<li>Adam Ettenberger (@<a href="https://github.com/adettenb">adettenb</a>), Microsoft</li>
+<li>Olga Gerchikov (@<a href="https://github.com/ogerchikov">ogerchikov</a>), Microsoft</li>
+</ul>
+</li>
+<li>Organization/project driving the design: Microsoft</li>
+<li>Multi-stakeholder feedback³:
+<ul dir="auto">
+<li>Chromium comments: A new chrome Status will be created as soon as I get the needed permissions. Ongoing discussion can be found in the explainer, here are some links [<a href="https://github.com/w3c/pointerevents/issues/516" data-hovercard-type="issue" data-hovercard-url="/w3c/pointerevents/issues/516/hovercard">1</a>] [<a href="https://www.w3.org/2024/11/06-pointerevents-minutes.html" rel="nofollow">2</a>] [<a href="https://github.com/w3c/pointerevents/issues/512" data-hovercard-type="issue" data-hovercard-url="/w3c/pointerevents/issues/512/hovercard">3</a>]</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the incubation/design work on this is being done (or is intended to be done in the future): <a href="https://wicg.io/" rel="nofollow">W3C Web Incubator Community Group</a>, <a href="https://w3c.github.io/pointerevents/" rel="nofollow">Pointer Events Working Group</a></li>
+<li>The group where standardization of this work is intended to be done ("unknown" if not known): <a href="https://w3c.github.io/pointerevents/" rel="nofollow">Pointer Events Working Group</a></li>
+<li>Existing major pieces of multi-implementer review or discussion of this design: Linked under <strong>Multi-stakeholder feedback -&gt; Chromium comments</strong></li>
+<li>Major unresolved issues with or opposition to this design:
+<ul dir="auto">
+<li>touch-action in its current state may not be flexible enough for developers needs.</li>
+<li>The property name, while clearly communicated in the Spec, isn't specific to touch behaviors as it includes stylus/pen actions as well.</li>
+<li>Developers may want granular control over input type in addition to "actions".</li>
+<li>Developers may want granular control to specify "action" precedence (handwriting then scrolling, or vice versa).</li>
+<li>Concerns with how handwriting and panning can intuitively co-exist, since it's possible a scrollable page with touch-action: handwriting pan-y may be unable to be panned. e.g., when the entire document is editable.</li>
+</ul>
+</li>
+<li>This work is being funded by: Microsoft</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">Feedback from many working groups will likely be required to achieve consensus on the shipping of this feature, as it may affect pointer events, CSS and HTML.</p>]]></content>
+        <author>
+            <name>gastonrod</name>
+            <email>gastonrod@noreply.github.com</email>
+            <uri>https://github.com/gastonrod</uri>
+        </author>
+        <published>2024-11-25T16:29:23.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ClipboardChange event API]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1017</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1017"/>
+        <updated>2025-01-08T16:38:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176362279?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting an early TAG design review of ClipboardChange event API.</p>
+<p dir="auto">The clipboardchange event is fired whenever the system clipboard contents are changed. This allows web-apps like remote desktop clients to be notified and respond to changes to the system clipboard. It provides an efficient alternative to polling the clipboard for changes.</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ClipboardAPI/clipboard-change-event-explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ClipboardAPI/clipboard-change-event-explainer.md</a></li>
+<li>Specification: <a href="https://www.w3.org/TR/clipboard-apis/#clipboard-event-clipboardchange" rel="nofollow">https://www.w3.org/TR/clipboard-apis/#clipboard-event-clipboardchange</a></li>
+<li>User research: Web based spreadsheet apps like Excel Online and web based remote desktop client apps have shown interest in this API. Please refer to the explainer document for further details about their use cases.</li>
+<li>Security and Privacy self-review²: <a href="https://docs.google.com/document/d/1CjIORGpRK776O0YNF7Ah2FtQpA0ziNz20sFy-wWAzPE/edit?tab=t.0#heading=h.xzptrog8pyxf" rel="nofollow">https://docs.google.com/document/d/1CjIORGpRK776O0YNF7Ah2FtQpA0ziNz20sFy-wWAzPE/edit?tab=t.0#heading=h.xzptrog8pyxf</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Rohan Raja (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/roraja/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/roraja">@roraja</a>), Microsoft</li>
+<li>Rakesh Goulikar (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ragoulik/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ragoulik">@ragoulik</a>), Microsoft</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Microsoft</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: <a href="https://issues.chromium.org/issues/41442253" rel="nofollow">https://issues.chromium.org/issues/41442253</a></li>
+<li>Mozilla comments: <a href="https://github.com/mozilla/standards-positions/issues/NNN">https://github.com/mozilla/standards-positions/issues/NNN</a></li>
+<li>WebKit comments: <a href="https://github.com/WebKit/standards-positions/issues/NNN">https://github.com/WebKit/standards-positions/issues/NNN</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2671777568" data-permission-text="Title is private" data-url="https://github.com/WICG/proposals/issues/186" data-hovercard-type="issue" data-hovercard-url="/WICG/proposals/issues/186/hovercard" href="https://github.com/WICG/proposals/issues/186">WICG/proposals#186</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a> ✅ 2024-11-21</li>
+<li>Relevant time constraints or deadlines: Jan, 2025</li>
+<li>The group where the work on this specification is currently being done: Microsoft</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): Microsoft</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by: Microsoft</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">The <a href="https://docs.google.com/document/d/1bY2pzV6PSX56fiFcrXEgOjpFen07xaxmnsM5dqXFE1U/edit#heading=h.lem8rnjx4cw8" rel="nofollow">design doc</a> of this feature for Chromium might be useful for review. Code changes for a prototype implementation can be found <a href="https://chromium-review.googlesource.com/c/chromium/src/+/5832111" rel="nofollow">here</a>.</p>
+<hr>
+<p dir="auto">CAREFULLY READ AND DELETE CONTENT BELOW THIS LINE BEFORE SUBMITTING</p>
+<p dir="auto">Use links to content rather than pasting text into this issue. Issues are ephemeral and most of the material we are asking for has long term value.</p>
+<p dir="auto">Please preview the issue and check that the links work before submitting. Please make sure anyone with the link can access the document. We may refuse to review anything that is not public.</p>
+<p dir="auto">¹ An explainer must address user needs and contain examples of use. See our <a href="https://tag.w3.org/explainers/" rel="nofollow">explanation of how to write a good explainer</a>.</p>
+<p dir="auto">² Even for early-stage ideas, a Security and Privacy questionnaire helps us understand potential security and privacy issues and mitigations for your design, and can save us asking redundant questions. See <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">https://www.w3.org/TR/security-privacy-questionnaire/</a>.</p>
+<p dir="auto">³ For your own organization, you can simply state the organization's position instead of linking to it.  This includes items on <a href="https://github.com/mozilla/standards-positions">Mozilla standards-positions</a>, and <a href="https://github.com/WebKit/standards-positions">WebKit standards-positions</a>.  Chromium doesn't have a standards-positions repository and <a href="https://source.chromium.org/chromium/chromium/src/+/main:docs/standards/positions/GoogleChrome/README.md" rel="nofollow">prefers</a> to use comments from the teams that maintain the relevant area of their codebase.</p>]]></content>
+        <author>
+            <name>roraja</name>
+            <email>roraja@noreply.github.com</email>
+            <uri>https://github.com/roraja</uri>
+        </author>
+        <published>2024-11-22T03:26:28.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FYI - Web Authentication API: PublicKeyCredential’s getClientCapabilities() method]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1016</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1016"/>
+        <updated>2024-11-20T13:20:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/12660562?u=dce78756f30effd3bbb6790975483b7ede7159c5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">Per the Chromium Intent to Ship, <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/-u_7GCYU0sY" rel="nofollow">it was advised that I file a TAG review as a FYI, because this is related to feature detection</a> - hence this request.</p>
+<p dir="auto">I'm requesting a TAG review of Web Authentication API: PublicKeyCredential’s getClientCapabilities() method.</p>
+<p dir="auto"><code class="notranslate">getClientCapabilities()</code> method allows to determine which WebAuthn features are supported by the user's client. The method returns a list of supported capabilities, allowing developers to tailor authentication experiences and workflows based on the client's specific functionality. Context: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1810657040" data-permission-text="Title is private" data-url="https://github.com/w3c/webauthn/issues/1923" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webauthn/pull/1923/hovercard" href="https://github.com/w3c/webauthn/pull/1923">w3c/webauthn#1923</a></p>
+<ul dir="auto">
+<li>Explainer¹: none</li>
+<li>Specification: <a href="https://w3c.github.io/webauthn/#sctn-getClientCapabilities" rel="nofollow">https://w3c.github.io/webauthn/#sctn-getClientCapabilities</a></li>
+<li>WPT Tests: <a href="https://wpt.fyi/results/webauthn/getclientcapabilities.https.html" rel="nofollow">https://wpt.fyi/results/webauthn/getclientcapabilities.https.html</a></li>
+<li>User research: none</li>
+<li>Security and Privacy self-review²:</li>
+<li>GitHub repo: <a href="https://github.com/w3c/webauthn/">https://github.com/w3c/webauthn/</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Andrii Natiahlyi (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/natiahlyi/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/natiahlyi">@natiahlyi</a>), Google, implementing the feature in Chromium</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: the WebAuthn Working Group</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: yes</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2672094642" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1114" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1114/hovercard" href="https://github.com/mozilla/standards-positions/issues/1114">mozilla/standards-positions#1114</a></li>
+<li>WebKit comments: <a href="https://developer.apple.com/documentation/safari-release-notes/safari-17_4-release-notes#WebAuthn" rel="nofollow">Added support for getClientCapabilities(). (119058559)</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴: <a href="https://chromestatus.com/feature/5141695044255744?gate=5532327385497600" rel="nofollow">https://chromestatus.com/feature/5141695044255744?gate=5532327385497600</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done:  WebAuthn WG</li>
+<li>Major unresolved issues with or opposition to this specification: None</li>
+<li>This work is being funded by: Google</li>
+</ul>]]></content>
+        <author>
+            <name>natiahlyi</name>
+            <email>natiahlyi@noreply.github.com</email>
+            <uri>https://github.com/natiahlyi</uri>
+        </author>
+        <published>2024-11-20T13:20:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Payment link type in HTML]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1015</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1015"/>
+        <updated>2025-01-08T08:51:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/38176570?u=bf8fb7b4025fed86f3660a11d13182c193c69dc6&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting an early TAG design review of Payment link type in HTML.</p>
+<p dir="auto">Certain push payment flows can cause high friction for users (e.g. display of a QR code that the user needs to scan with an eWallet app). Browsers may have the ability to more easily facilitate these payment flows (e.g. if the user has a wallet installed on their device that supports the underlying payment method for the displayed QR, or has a browser extension for the supported eWallet).  Payment link type in HTML is designed to better assist users with payments.</p>
+<ul dir="auto">
+<li>Explainer: <a href="https://github.com/WICG/paymentlink/blob/main/README.md">https://github.com/WICG/paymentlink/blob/main/README.md</a></li>
+<li>User research: QR-based payments are very prominent in south east asian countries. User research in some of these regions have shown that the current online payment experience is very clunky and involves multiple steps. The friction caused by these steps lead to issues like drop offs, wrong payment amount etc. Considering browsers play a significant role in these payment flows, there is significant value in the browser enabling an optimized user experience by reducing the number of steps required to complete payment.</li>
+<li>Security and Privacy self-review: <a href="https://github.com/WICG/paymentlink/blob/main/security-privacy-questionnaire.md">https://github.com/WICG/paymentlink/blob/main/security-privacy-questionnaire.md</a></li>
+<li>GitHub repo: <a href="https://github.com/WICG/paymentlink/">https://github.com/WICG/paymentlink/</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Junhui He (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ynyhxfo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ynyhxfo">@ynyhxfo</a> ), Google, editor</li>
+<li>Domenic Denicola (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/domenic/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/domenic">@domenic</a> ), Google</li>
+<li>Rouslan Solomakhin (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/rsolomakhin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/rsolomakhin">@rsolomakhin</a> ), Google</li>
+<li>Aneesh Ali (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/aneeshali/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/aneeshali">@aneeshali</a> ), Google</li>
+<li>Sujie Zhu (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/SujieZhu/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/SujieZhu">@SujieZhu</a>), Google</li>
+</ul>
+</li>
+<li>Organization/project driving the design: Google</li>
+<li>Multi-stakeholder feedback:
+<ul dir="auto">
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2660401666" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1112" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1112/hovercard" href="https://github.com/mozilla/standards-positions/issues/1112">mozilla/standards-positions#1112</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2660399345" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/428" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/428/hovercard" href="https://github.com/WebKit/standards-positions/issues/428">WebKit/standards-positions#428</a></li>
+<li>Web Developers</li>
+<li>we have heard significant excitement for using this feature to reduce the friction of push payment flow. And public feedback is provided on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2286179655" data-permission-text="Title is private" data-url="https://github.com/WICG/proposals/issues/150" data-hovercard-type="issue" data-hovercard-url="/WICG/proposals/issues/150/hovercard" href="https://github.com/WICG/proposals/issues/150">WICG/proposals#150</a>.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the incubation/design work on this is being done (or is intended to be done in the future): WICG</li>
+<li>The group where standardization of this work is intended to be done ("unknown" if not known): WHATWG (HTML Standard)</li>
+<li>Existing major pieces of multi-implementer review or discussion of this design: <a href="https://github.com/WICG/paymentlink/blob/main/docs/Payment%20link%20type%20in%20HTML%20-%20TPAC%202023.pdf">TPAC 2023</a></li>
+<li>Major unresolved issues with or opposition to this design:  None</li>
+<li>This work is being funded by: Google</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">The <a href="https://docs.google.com/document/d/1Pv5WLVj4--Ajz99Ya_BgRW_iWdl4TtrqhLf5yyWlRpk" rel="nofollow">public design</a> doc for the Chromium implementation might also be interesting, as it has more concrete details on what a full implementation will look like, and on one browser's concrete plans for the initial set of supported URL schemes.</p>]]></content>
+        <author>
+            <name>ynyhxfo</name>
+            <email>ynyhxfo@noreply.github.com</email>
+            <uri>https://github.com/ynyhxfo</uri>
+        </author>
+        <published>2024-11-15T00:05:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document-Policy: expect-no-linked-resources]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1014</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1014"/>
+        <updated>2024-11-14T01:40:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/683500?u=675256481d9092298eb01fccfb1b1c0353058a76&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of <code class="notranslate">expect-no-linked-resources</code> Document-Policy.</p>
+<p dir="auto">User Agents have implemented <a href="https://html.spec.whatwg.org/multipage/parsing.html#speculative-html-parsing" rel="nofollow">speculative parsing of HTML</a> to speculatively fetch resources that are present in the HTML markup, to speed up page loading. For the vast majority of pages on the Web that have resources declared in the HTML markup, the optimization is beneficial and the cost paid in determining such resources is a sound tradeoff. However, the following scenarios might result in a sub-optimal performance tradeoff vs. the explicit time spent parsing HTML for determining sub resources to fetch:</p>
+<ul dir="auto">
+<li>Pages that do not have any resources declared in the HTML.</li>
+<li>Large HTML pages with minimal or no resource loads that could explicitly control preloading resources via other preload mechanisms available.</li>
+</ul>
+<p dir="auto">This proposal introduces a <a href="https://wicg.github.io/document-policy#configuration-point" rel="nofollow">configuration point</a> in <a href="https://wicg.github.io/document-policy/" rel="nofollow">Document Policy</a> expect-no-linked-resources to explicitly state to the User Agent that it may choose to optimize out the time spent in such linked resource determination.</p>
+<ul dir="auto">
+<li>Explainer¹: <a href="https://github.com/explainers-by-googlers/expect-no-linked-resources">https://github.com/explainers-by-googlers/expect-no-linked-resources</a></li>
+<li>Specification: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2606956172" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10718" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10718/hovercard" href="https://github.com/whatwg/html/pull/10718">whatwg/html#10718</a></li>
+<li>WPT Tests: TBD.</li>
+<li>User research: <a href="https://developer.chrome.com/origintrials/#/view_trial/225742931321946113" rel="nofollow">Chrome Origin Trial</a>, M125-M130</li>
+<li>Security and Privacy self-review²: <a href="https://explainers-by-googlers.github.io/expect-no-linked-resources/blob/main/privacy-security-questionnaire.md" rel="nofollow">https://explainers-by-googlers.github.io/expect-no-linked-resources/blob/main/privacy-security-questionnaire.md</a></li>
+<li>GitHub repo: <a href="https://github.com/explainers-by-googlers/expect-no-linked-resources">https://github.com/explainers-by-googlers/expect-no-linked-resources</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Alex N. Jose (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexnj/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexnj">@alexnj</a>), Google, Author</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Google</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: We are excited to have completed the Origin Trial of this feature and are positive about the performance improvement. We are excited to ship this feature to stable.</li>
+<li>Mozilla comments:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2606956172" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10718" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10718/hovercard?comment_id=2435861290&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/pull/10718#issuecomment-2435861290">whatwg/html#10718 (comment)</a></li>
+<li>W3C perf WG meeting notes: <a href="https://docs.google.com/document/d/1UtBJA6fQa_8dp2pQCQh_7Fg-snwQKq-A298i-jD0_FI/edit?tab=t.0" rel="nofollow">https://docs.google.com/document/d/1UtBJA6fQa_8dp2pQCQh_7Fg-snwQKq-A298i-jD0_FI/edit?tab=t.0</a></li>
+<li>WHATNOT Meeting 2024-11-7 notes: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2627268409" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10734" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10734/hovercard" href="https://github.com/whatwg/html/issues/10734">whatwg/html#10734</a></li>
+</ul>
+</li>
+<li>WebKit comments:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2606956172" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10718" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10718/hovercard?comment_id=2462217805&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/pull/10718#issuecomment-2462217805">whatwg/html#10718 (comment)</a></li>
+<li>W3C perf WG meeting notes: <a href="https://docs.google.com/document/d/1UtBJA6fQa_8dp2pQCQh_7Fg-snwQKq-A298i-jD0_FI/edit?tab=t.0" rel="nofollow">https://docs.google.com/document/d/1UtBJA6fQa_8dp2pQCQh_7Fg-snwQKq-A298i-jD0_FI/edit?tab=t.0</a></li>
+<li>WHATNOT Meeting 2024-11-7 notes: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2627268409" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10734" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10734/hovercard" href="https://github.com/whatwg/html/issues/10734">whatwg/html#10734</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴:
+<ul dir="auto">
+<li><a href="https://crbug.com/365632977" rel="nofollow">https://crbug.com/365632977</a></li>
+<li><a href="https://chromestatus.com/feature/5202800863346688" rel="nofollow">https://chromestatus.com/feature/5202800863346688</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the work on this specification is currently being done: WHATWG</li>
+<li>The group where standardization of this work is intended to be done (if different from the current group): N/A</li>
+<li>Major unresolved issues with or opposition to this specification:
+<ul dir="auto">
+<li>Feedback from Mozilla that Gecko does have a single pass speculative parser integrated into document parser, and that this is likely only applicable to WebKit and Chromium who have two separate passes. We do think however that Gecko could choose to ignore the hint if such a performance optimization based on the hint is not possible or not necessary.</li>
+<li>There is feedback from Mozilla and WebKit around the correctness of relying on hints from the page or web developers. This is however not against the priority of constituencies and very similar optimization to, say, preload directives. This improves the user experience, in terms of perceived performance and reduced computation needs on the user's browser by actioning the hint provided by the page about its nature.</li>
+</ul>
+</li>
+<li>This work is being funded by: Google</li>
+</ul>
+<p dir="auto">You should also know that:</p>
+<ul dir="auto">
+<li>There was an earlier version of the specification, which was a full HTTP header <code class="notranslate">Prefer-No-Speculative-Parsing</code> that directly tried to control the speculative parser behavior. After consulting W3PerfWG, the header was renamed into <code class="notranslate">expect-no-linked-resources</code> and repositioned as a Document-Policy configuration point, to avoid controlling the scanner behavior directly, and to create a reusable signal that might benefit more use cases.</li>
+</ul>]]></content>
+        <author>
+            <name>alexnj</name>
+            <email>alexnj@noreply.github.com</email>
+            <uri>https://github.com/alexnj</uri>
+        </author>
+        <published>2024-11-14T01:40:07.000Z</published>
+    </entry>
+</feed>
