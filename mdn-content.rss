@@ -2,11 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-01-13T12:01:53.555Z</updated>
+    <updated>2025-01-13T13:06:18.173Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[added correct explanations to offsets in selection api docs]]></title>
+        <id>https://github.com/mdn/content/pull/37630</id>
+        <link href="https://github.com/mdn/content/pull/37630"/>
+        <updated>2025-01-13T13:02:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/63949183?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The Selection api anchorOffset and focusOffset docs are hugely misleading and data on this matter is very scarce. I clarified what those offset return in the case of a non texty node in anchorNode or focusNode</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">A custom project I am working on heavily reliant on selection api. The docs on this matter are scarce and there are a lot of caveats not mentioned anywhere or in very obscure parts of programming forums. This specificly came up from testing my project and <a href="https://stackoverflow.com/a/14753667" rel="nofollow">this SO issue </a>  which also mentions fixing MDN docs but i guessed there was a regression from 2013 to today.</p>]]></content>
+        <author>
+            <name>Agog-io</name>
+            <email>Agog-io@noreply.github.com</email>
+            <uri>https://github.com/Agog-io</uri>
+        </author>
+        <published>2025-01-13T12:59:36.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docs: update WebTransport unidirectional stream examples]]></title>
+        <id>https://github.com/mdn/content/pull/37629</id>
+        <link href="https://github.com/mdn/content/pull/37629"/>
+        <updated>2025-01-13T12:56:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/665810?u=5f3f870f7fd8d15b11f9441ada20b5d0c18e38e5&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The WebTransport <code class="notranslate">createUnidirectionalStream</code> method returns a promise of a <code class="notranslate">WebTransportSendStream</code> (which extends <code class="notranslate">WritableStream</code>), not an object with a <code class="notranslate">.writable</code> property.</p>
+<p dir="auto">So the developer can call <code class="notranslate">getWriter</code> directly on the resolved result of the promise instead of <code class="notranslate">.writable.getWriter</code> as with bidirectional streams.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The examples are wrong.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/webtransport/#dom-webtransport-createunidirectionalstream" rel="nofollow">WebTransport.createUnidirectionalStream spec</a></li>
+<li><a href="https://www.w3.org/TR/webtransport/#webtransportsendstream" rel="nofollow">WebTransportSendStream spec</a></li>
+</ul>]]></content>
+        <author>
+            <name>achingbrain</name>
+            <email>achingbrain@noreply.github.com</email>
+            <uri>https://github.com/achingbrain</uri>
+        </author>
+        <published>2025-01-13T12:56:27.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix wrong shader type in WebGL texture tutorial]]></title>
         <id>https://github.com/mdn/content/pull/37625</id>
@@ -237,7 +275,7 @@ Relates to the typo in the Mdn documentation <a href="https://developer.mozilla.
         <title type="html"><![CDATA[Rewrite `attr()` to match the newest version of the spec]]></title>
         <id>https://github.com/mdn/content/pull/37574</id>
         <link href="https://github.com/mdn/content/pull/37574"/>
-        <updated>2025-01-10T16:07:44.000Z</updated>
+        <updated>2025-01-13T12:16:28.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/213073?u=03328c92e96f5d87fa7eea25d9320bcfda3ab8fe&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><em>(👋  Hi, Chrome DevRel here)</em></p>
 <h3 dir="auto">Description</h3>
 <p dir="auto">The <code class="notranslate">attr()</code> function underwent an upgrade: <a href="https://drafts.csswg.org/css-values-5/#attr-notation" rel="nofollow">https://drafts.csswg.org/css-values-5/#attr-notation</a><br>
@@ -425,87 +463,5 @@ BCD spec change: <a class="issue-link js-issue-link" data-error-text="Failed to 
             <uri>https://github.com/OnkarRuikar</uri>
         </author>
         <published>2025-01-08T04:35:07.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Migrate labels to enclosing, plus other testing/fixing]]></title>
-        <id>https://github.com/mdn/content/pull/37552</id>
-        <link href="https://github.com/mdn/content/pull/37552"/>
-        <updated>2025-01-10T07:03:27.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1013152?u=4b4c0b38e6342330c89812f2ff2f865e0fdc2ee4&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Converted '&lt;label for=id' instances to enclosing labels, in Live Samples, in en-us/web/html directory.  Also tested and fixed some of the examples.</p>
-<p dir="auto"><strong>THIS PR IS NOT NEARLY AS INTIMIDATING AS IT SEEMS!</strong><br>
-see below.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Unfortunately, the for=ID method requires that you have to make up a sometimes arbitrary ID for each instance.  Often, there is no other reason for that ID.  For large pages, if a nontrivial widget appears in many places in the site, each might need a unique string to put into its ID(s).</p>
-<p dir="auto">The for=ID method appears in almost all cases in examples in MDN.  This leads to the impression that no other method is available, and that misconception is propagated.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto"><strong>THIS PR IS NOT NEARLY AS INTIMIDATING AS IT SEEMS!</strong>  Although the size is XL, most of the changes are the same thing over and over again:</p>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th align="left">before</th>
-<th align="left">after</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">&lt;label for="foo"&gt;blah blah&lt;/label&gt;</td>
-<td align="left">&lt;label&gt;</td>
-</tr>
-<tr>
-<td align="left">&lt;input id="foo"... /&gt;</td>
-<td align="left">    blah blah</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">    &lt;input ... /&gt;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">&lt;/label&gt;</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<p dir="auto">See also <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label" rel="nofollow">the &lt;label&gt; element</a><br>
-First section describes how you can use either method.  I think in the early days, the enclosure method didn't work reliably so people got in the habit of using the for=ID method.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>allan-bonadio</name>
-            <email>allan-bonadio@noreply.github.com</email>
-            <uri>https://github.com/allan-bonadio</uri>
-        </author>
-        <published>2025-01-08T04:15:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[feat(http): Add Sec-CH-UA-Form-Factors, Sec-CH-UA-WoW64 headers]]></title>
-        <id>https://github.com/mdn/content/pull/37547</id>
-        <link href="https://github.com/mdn/content/pull/37547"/>
-        <updated>2025-01-07T16:17:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">This PR adds two pages for CH headers.</p>
-<p dir="auto"><strong>fixes:</strong></p>
-<ul dir="auto">
-<li>What looks like typos on other CH headers pages</li>
-<li>Improve list of low entropy CH headers</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">These are mentioned in docs, but not linked.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #34853.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2409697185" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/34853" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/34853/hovercard" href="https://github.com/mdn/content/issues/34853">#34853</a></p>
-<p dir="auto"><strong>TODO:</strong></p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> BCD</li>
-</ul>]]></content>
-        <author>
-            <name>bsmth</name>
-            <email>bsmth@noreply.github.com</email>
-            <uri>https://github.com/bsmth</uri>
-        </author>
-        <published>2025-01-07T16:15:12.000Z</published>
     </entry>
 </feed>
