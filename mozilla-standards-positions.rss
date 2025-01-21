@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2025-01-21T15:01:30.579Z</updated>
+    <updated>2025-01-21T16:01:30.440Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
@@ -509,27 +509,29 @@ However, this makes it difficult for sites to enforce Permissions Policy because
 <p dir="auto">TL;DR:</p>
 <p dir="auto">It would be nice if web developers could verify the provenance of resources they depend upon, establishing the technical foundations upon which they can increase confidence in the integrity of their dependencies. We offer brittle, content-based integrity mechanisms today which can (in theory) but do not (in practice) enable this capability. This proposal explores an alternative that builds upon existing integrity checks (e.g. <a href="https://w3c.github.io/webappsec-subresource-integrity/" rel="nofollow"><code class="notranslate">&lt;script integrity&gt;</code></a> and signature mechanisms (<a href="https://www.rfc-editor.org/rfc/rfc9421.html" rel="nofollow">RFC9421</a> to give developers an additional option when deciding how to protect their sites from unexpected injection.</p>
 <p dir="auto">In short, developers will include the following on their site:</p>
-<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;script src=&quot;https://amazing.example/widget.js&quot;
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&lt;script src=&quot;https://amazing.example/widget.js&quot;
         crossorigin=&quot;anonymous&quot;
-        integrity=&quot;ed25519-[base64-encoded public key]&quot;&gt;&lt;/script&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">https://amazing.example/widget.js</span>"
-        <span class="pl-c1">crossorigin</span>="<span class="pl-s">anonymous</span>"
-        <span class="pl-c1">integrity</span>="<span class="pl-s">ed25519-[base64-encoded public key]</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span></pre></div>
+        integrity=&quot;ed25519-[base64-encoded public key]&quot;&gt;&lt;/script&gt;"><pre lang="html" class="notranslate"><code class="notranslate">&lt;script src="https://amazing.example/widget.js"
+        crossorigin="anonymous"
+        integrity="ed25519-[base64-encoded public key]"&gt;&lt;/script&gt;
+</code></pre></div>
 <p dir="auto">Servers will deliver resources signed with the asserted key:</p>
-<div class="highlight highlight-source-httpspec notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="HTTP/1.1 200 OK
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="HTTP/1.1 200 OK
 Accept-Ranges: none
 Vary: Accept-Encoding
 Content-Type: text/javascript; charset=UTF-8
 Access-Control-Allow-Origin: *
 Identity-Digest: sha-512=:[base64-encoded digest of the response body]:
 Signature-Input: sig1=(&quot;identity-digest&quot;;sf); alg=&quot;ed25519&quot;; keyid=&quot;[base64-encoded public key]&quot;; tag=&quot;sri&quot;
-Signature: sig1=:[base64-encoded result of Ed25519([response metadata], [private key])]:"><pre class="notranslate"><span class="pl-c1">HTTP/1.1 200 OK</span>
-<span class="pl-s"><span class="pl-v">Accept-Ranges:</span> none</span>
-<span class="pl-s"><span class="pl-v">Vary:</span> Accept-Encoding</span>
-<span class="pl-s"><span class="pl-v">Content-Type:</span> text/javascript; charset=UTF-8</span>
-<span class="pl-s"><span class="pl-v">Access-Control-Allow-Origin:</span> *</span>
-<span class="pl-s"><span class="pl-v">Identity-Digest:</span> sha-512=:[base64-encoded digest of the response body]:</span>
-<span class="pl-s"><span class="pl-v">Signature-Input:</span> sig1=("identity-digest";sf); alg="ed25519"; keyid="[base64-encoded public key]"; tag="sri"</span>
-<span class="pl-s"><span class="pl-v">Signature:</span> sig1=:[base64-encoded result of Ed25519([response metadata], [private key])]:</span></pre></div>
+Signature: sig1=:[base64-encoded result of Ed25519([response metadata], [private key])]:"><pre lang="http" class="notranslate"><code class="notranslate">HTTP/1.1 200 OK
+Accept-Ranges: none
+Vary: Accept-Encoding
+Content-Type: text/javascript; charset=UTF-8
+Access-Control-Allow-Origin: *
+Identity-Digest: sha-512=:[base64-encoded digest of the response body]:
+Signature-Input: sig1=("identity-digest";sf); alg="ed25519"; keyid="[base64-encoded public key]"; tag="sri"
+Signature: sig1=:[base64-encoded result of Ed25519([response metadata], [private key])]:
+</code></pre></div>
 <p dir="auto">Modulo a few details we're still working out in the draft spec and on GitHub, that's it. Easy peasy. WDYT?</p>]]></content>
         <author>
             <name>mikewest</name>
