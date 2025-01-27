@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-01-27T10:01:36.211Z</updated>
+    <updated>2025-01-27T11:01:21.959Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -292,88 +292,6 @@ Eventually, the <code class="notranslate">guide</code> dir will be gone, but thi
         <published>2025-01-24T16:53:05.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[feat(scripts): migrate commands to new rari build system]]></title>
-        <id>https://github.com/mdn/content/pull/37788</id>
-        <link href="https://github.com/mdn/content/pull/37788"/>
-        <updated>2025-01-27T10:00:37.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Migrates the following commands to the new <a href="https://github.com/mdn/rari">rari</a> build system:</p>
-<ul dir="auto">
-<li><code class="notranslate">yarn build</code> ✱</li>
-<li><code class="notranslate">yarn content</code></li>
-<li><code class="notranslate">yarn start</code> ✱✱</li>
-</ul>
-<div class="markdown-alert markdown-alert-note" dir="auto"><p class="markdown-alert-title" dir="auto"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p dir="auto">✱ The <code class="notranslate">build</code> command now implies the (now removed) <code class="notranslate">-n</code> parameter, and only builds <code class="notranslate">index.json</code> files.<br>
-To render <code class="notranslate">index.html</code> files, run <code class="notranslate">yarn yari-render-html</code> after the build.</p>
-<p dir="auto">✱✱ The <code class="notranslate">start</code> command is equivalent to the <code class="notranslate">start:rari</code> command, which is now deprecated.</p>
-</div>
-<p dir="auto">The existing commands, using the old yari build system, are preserved with a <code class="notranslate">:legacy</code> suffix for now:</p>
-<ul dir="auto">
-<li><code class="notranslate">yarn build:legacy</code></li>
-<li><code class="notranslate">yarn content:legacy</code></li>
-<li><code class="notranslate">yarn start:legacy</code></li>
-</ul>
-<div class="markdown-alert markdown-alert-warning" dir="auto"><p class="markdown-alert-title" dir="auto"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p dir="auto">These legacy commands are deprecated, and will be removed soon.</p>
-</div>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">MDN is already being deployed using rari since December 17, 2024, and this change makes sure every writer sees the content as it will appear on MDN.</p>
-<div class="markdown-alert markdown-alert-note" dir="auto"><p class="markdown-alert-title" dir="auto"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p dir="auto">Rari only replaces the build parts of yari, namely the <code class="notranslate">build</code>, <code class="notranslate">content</code>, <code class="notranslate">kumascript</code>, <code class="notranslate">markdown</code>, and <code class="notranslate">tool</code> directories.<br>
-For now, yari still provides MDN's frontend code (<code class="notranslate">client</code>), and the filecheck (<code class="notranslate">filecheck</code>), which hasn't been ported yet.</p>
-</div>
-<p dir="auto">The most important changes from a writer's perspective are:</p>
-<ol dir="auto">
-<li>Sidebars are now authored in mdn/content: <a href="https://github.com/mdn/content/tree/main/files/sidebars">https://github.com/mdn/content/tree/main/files/sidebars</a></li>
-<li>The build system is more efficient and powerful, so builds are much faster. ✱</li>
-</ol>
-<div class="markdown-alert markdown-alert-tip" dir="auto"><p class="markdown-alert-title" dir="auto"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p dir="auto">✱ Try running <code class="notranslate">yarn build</code> without any parameter. This should build <em>all</em> en-US pages in less than a minute (or in about 10 seconds on a Macbook Pro M1 or later).</p>
-</div>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Running any of the migrated commands will print an informational message at the top:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="% yarn start
-yarn run v1.22.22
-$ yarn -s info:rari &amp;&amp; yarn up-to-date-check &amp;&amp; env-cmd --silent cross-env CONTENT_ROOT=files REACT_APP_DISABLE_AUTH=true BUILD_OUT_ROOT=build rari-server
-
-🐥 This command is now using rari: https://github.com/mdn/rari
-🐞 Please report any issues here:  https://github.com/mdn/rari/issues/new?template=bug.yml
-
-$ node scripts/up-to-date-check.js
-..."><pre class="notranslate"><code class="notranslate">% yarn start
-yarn run v1.22.22
-$ yarn -s info:rari &amp;&amp; yarn up-to-date-check &amp;&amp; env-cmd --silent cross-env CONTENT_ROOT=files REACT_APP_DISABLE_AUTH=true BUILD_OUT_ROOT=build rari-server
-
-🐥 This command is now using rari: https://github.com/mdn/rari
-🐞 Please report any issues here:  https://github.com/mdn/rari/issues/new?template=bug.yml
-
-$ node scripts/up-to-date-check.js
-...
-</code></pre></div>
-<p dir="auto">Running any of the legacy commands will print a deprecation message at the top:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="% yarn start:legacy
-yarn run v1.22.22
-$ yarn -s info:deprecated &amp;&amp; yarn up-to-date-check &amp;&amp; env-cmd --silent cross-env CONTENT_ROOT=files REACT_APP_DISABLE_AUTH=true BUILD_OUT_ROOT=build yari-server
-
-🗑️  This command is deprecated, and will be removed soon.
-
-$ node scripts/up-to-date-check.js
-..."><pre class="notranslate"><code class="notranslate">% yarn start:legacy
-yarn run v1.22.22
-$ yarn -s info:deprecated &amp;&amp; yarn up-to-date-check &amp;&amp; env-cmd --silent cross-env CONTENT_ROOT=files REACT_APP_DISABLE_AUTH=true BUILD_OUT_ROOT=build yari-server
-
-🗑️  This command is deprecated, and will be removed soon.
-
-$ node scripts/up-to-date-check.js
-...
-</code></pre></div>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Part of <a href="https://mozilla-hub.atlassian.net/browse/MP-1856" rel="nofollow">MP-1856</a> (Mozilla-internal).</p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-01-24T15:08:31.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Remove see also]]></title>
         <id>https://github.com/mdn/content/pull/37785</id>
         <link href="https://github.com/mdn/content/pull/37785"/>
@@ -502,5 +420,31 @@ $ node scripts/up-to-date-check.js
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-01-23T19:01:36.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Remove not-css-containemt module features]]></title>
+        <id>https://github.com/mdn/content/pull/37773</id>
+        <link href="https://github.com/mdn/content/pull/37773"/>
+        <updated>2025-01-23T16:45:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto"><code class="notranslate">container-*</code> proeprties are of css cascade and inheritance module, not of css containment module</p>
+<p dir="auto">also add level-6 link for css cascade and inheritance module, which defines the <code class="notranslate">@scope</code> at-rule that is supported in many browsers</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>skyclouds2001</name>
+            <email>skyclouds2001@noreply.github.com</email>
+            <uri>https://github.com/skyclouds2001</uri>
+        </author>
+        <published>2025-01-23T16:43:59.000Z</published>
     </entry>
 </feed>
