@@ -2,54 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-01-28T13:04:54.802Z</updated>
+    <updated>2025-01-28T14:01:35.801Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[`AggregateError` serialization is standard track (maybe)]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/25744</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/25744"/>
-        <updated>2025-01-24T16:22:28.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+        <title type="html"><![CDATA[Add spec link for css `fit-content()` function]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/25788</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/25788"/>
+        <updated>2025-01-28T13:51:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
+<p dir="auto">found when working with <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2814845224" data-permission-text="Title is private" data-url="https://github.com/mdn/data/issues/914" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/914/hovercard" href="https://github.com/mdn/data/pull/914">mdn/data#914</a></p>
 
-<p dir="auto">Note: This PR is somewhat incomplete. Please read fully before merging.</p>
-<p dir="auto"><code class="notranslate">AggregateError</code>'s serialization is potentially standard track, depending on how you look at it. I'm opening this to settle the question. After some head scratching, I'm proposing that <code class="notranslate">AggregateError</code>'s serialization be marked as standard track, with <em>all</em> implementations being marked as partial, but I'm open to other views.</p>
 <h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">The HTML spec is somewhat odd when it comes to the serialization of errors. Note step 17 in section <a href="https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal" rel="nofollow"><span>2.7.3</span> StructuredSerializeInternal ( <var>value</var>, <var>forStorage</var> [ , <var>memory</var> ] )</a>.</p>
-<p dir="auto">There are two noteworthy things here:</p>
-<ul dir="auto">
-<li>It describes handling for any object with [[ErrorData]], which includes <code class="notranslate">AggregateError</code> but not <code class="notranslate">AggregateError</code> specifically (as it does for other error types).</li>
-<li>It also says that "User agents should attach a serialized representation of any interesting accompanying data […]" with a note that says the "interesting" data isn't yet specified.</li>
-</ul>
-<p dir="auto">Taken together, the compat data tells a maybe odd story, that <code class="notranslate">AggregateError</code> is not serializable (it is though some ambiguously "interesting" information is, depending on your perspective, being lost) and that Firefox's behavior is non-standard (which it is, when it comes to the cloned object's type).</p>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="663335830" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/5749" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/5749/hovercard" href="https://github.com/whatwg/html/pull/5749">whatwg/html#5749</a> looks to settle this more comprehensively, but it hasn't merged yet.</p>
-<p dir="auto">To thread the needle, I suggest marking <code class="notranslate">AggregateError</code>'s serialization as standard track (shown in the diff now), with <em>all</em> implementations being marked as partial (to be done), but I'm open to other views.</p>
 
 
 <h4 dir="auto">Related issues</h4>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="653615828" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/5716" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/5716/hovercard" href="https://github.com/whatwg/html/issues/5716">whatwg/html#5716</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="663335830" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/5749" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/5749/hovercard" href="https://github.com/whatwg/html/pull/5749">whatwg/html#5749</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1305548803" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/17008" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/17008/hovercard" href="https://github.com/mdn/browser-compat-data/pull/17008">#17008</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2803861015" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/2564" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-dx/web-features/pull/2564/hovercard" href="https://github.com/web-platform-dx/web-features/pull/2564">web-platform-dx/web-features#2564</a></li>
-</ul>
 
 ]]></content>
         <author>
-            <name>ddbeck</name>
-            <email>ddbeck@noreply.github.com</email>
-            <uri>https://github.com/ddbeck</uri>
+            <name>skyclouds2001</name>
+            <email>skyclouds2001@noreply.github.com</email>
+            <uri>https://github.com/skyclouds2001</uri>
         </author>
-        <published>2025-01-22T16:59:52.000Z</published>
+        <published>2025-01-28T13:51:18.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Chrome 133 returns LCP and Element Timing renderTime for cross-origin media]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/25735</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/25735"/>
-        <updated>2025-01-27T11:21:39.000Z</updated>
+        <updated>2025-01-28T13:44:19.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 
@@ -197,31 +181,6 @@
         <published>2025-01-06T11:04:35.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Add `Request()` constructor `init.duplex` parameter]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/25488</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/25488"/>
-        <updated>2025-01-25T16:46:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">data taken from <code class="notranslate">Request.duplex</code></p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Spec proposal change at <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1383735914" data-permission-text="Title is private" data-url="https://github.com/whatwg/fetch/issues/1493" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/fetch/pull/1493/hovercard" href="https://github.com/whatwg/fetch/pull/1493">whatwg/fetch#1493</a></p>
-
-
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2082877490" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/31735" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/31735/hovercard" href="https://github.com/mdn/content/issues/31735">mdn/content#31735</a><br>
-Depends on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2754595413" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25486" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25486/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25486">#25486</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2754608195" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25487" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25487/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25487">#25487</a></p>
-
-]]></content>
-        <author>
-            <name>skyclouds2001</name>
-            <email>skyclouds2001@noreply.github.com</email>
-            <uri>https://github.com/skyclouds2001</uri>
-        </author>
-        <published>2024-12-22T11:48:41.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Add meta viewport support data]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/25392</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/25392"/>
@@ -244,44 +203,6 @@ Depends on <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/pepelsbey</uri>
         </author>
         <published>2024-12-12T13:50:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update nodejs data for `Worker`]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/25012</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/25012"/>
-        <updated>2025-01-28T05:04:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<blockquote>
-<p dir="auto">initially added via <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="325108068" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/20876" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/20876/hovercard" href="https://github.com/nodejs/node/pull/20876">nodejs/node#20876</a>, in <a href="https://nodejs.org/zh-cn/blog/release/v10.5.0" rel="nofollow">https://nodejs.org/zh-cn/blog/release/v10.5.0</a>, need to be enabled by <code class="notranslate">--experimental-worker</code> runtime CLI flag</p>
-<p dir="auto">exposed via module and remove the runtime CLI flag via <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="396217134" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/25361" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/25361/hovercard" href="https://github.com/nodejs/node/pull/25361">nodejs/node#25361</a>, in <a href="https://nodejs.org/zh-cn/blog/release/v11.7.0" rel="nofollow">https://nodejs.org/zh-cn/blog/release/v11.7.0</a></p>
-<p dir="auto">see <a href="https://nodejs.org/docs/latest/api/worker_threads.html#class-worker" rel="nofollow">https://nodejs.org/docs/latest/api/worker_threads.html#class-worker</a>, note that the doc has no info about the experimental status between v10.5.0 and v11.7.0, the issue fired at <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2645427550" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55794" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/55794/hovercard" href="https://github.com/nodejs/node/issues/55794">nodejs/node#55794</a></p>
-</blockquote>
-<p dir="auto">update the data for <code class="notranslate">Worker</code>, as there is already a <em>ecmascript_modules</em> field shows the ESM support</p>
-<p dir="auto">the data for <code class="notranslate">error</code> event is confirmed with the intial pr <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="325108068" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/20876" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/20876/hovercard" href="https://github.com/nodejs/node/pull/20876">nodejs/node#20876</a></p>
-<p dir="auto">the data for <code class="notranslate">messageerror</code> event and <code class="notranslate">terminate()</code> method come from the documentation, also confirmed by release and impl pr</p>
-<p dir="auto"><a href="https://nodejs.org/zh-cn/blog/release/v12.19.0" rel="nofollow">https://nodejs.org/zh-cn/blog/release/v12.19.0</a><br>
-<a href="https://nodejs.org/zh-cn/blog/release/v14.5.0" rel="nofollow">https://nodejs.org/zh-cn/blog/release/v14.5.0</a><br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="632521094" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/33772" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/33772/hovercard" href="https://github.com/nodejs/node/pull/33772">nodejs/node#33772</a></p>
-<p dir="auto"><a href="https://nodejs.org/zh-cn/blog/release/v12.5.0" rel="nofollow">https://nodejs.org/zh-cn/blog/release/v12.5.0</a><br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="451194415" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/28021" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/28021/hovercard" href="https://github.com/nodejs/node/pull/28021">nodejs/node#28021</a></p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">confirmed by landing PRs and release notes</p>
-<p dir="auto">also test in local node runtime:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/95597335/384723880-3e75f690-2126-4adb-b169-0d0bff67376a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzgwNjk3OTQsIm5iZiI6MTczODA2OTQ5NCwicGF0aCI6Ii85NTU5NzMzNS8zODQ3MjM4ODAtM2U3NWY2OTAtMjEyNi00YWRiLWIxNjktMGQwYmZmNjczNzZhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI4VDEzMDQ1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE0YTZhZmJmNzk4OGIxNGVkMGY2YzgzNzMyMGJkNzI2MmRlYjEyNWNhNmUyNDc2YTdlMmEyOWU1ZWVkNzMzZjQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.wo-PXsm7mYcIv36vsPUCTHn62B17Ya7D_HrapnXK3jc"><img src="https://private-user-images.githubusercontent.com/95597335/384723880-3e75f690-2126-4adb-b169-0d0bff67376a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzgwNjk3OTQsIm5iZiI6MTczODA2OTQ5NCwicGF0aCI6Ii85NTU5NzMzNS8zODQ3MjM4ODAtM2U3NWY2OTAtMjEyNi00YWRiLWIxNjktMGQwYmZmNjczNzZhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI4VDEzMDQ1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE0YTZhZmJmNzk4OGIxNGVkMGY2YzgzNzMyMGJkNzI2MmRlYjEyNWNhNmUyNDc2YTdlMmEyOWU1ZWVkNzMzZjQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.wo-PXsm7mYcIv36vsPUCTHn62B17Ya7D_HrapnXK3jc" alt="image" style="max-width: 100%;"></a></p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/95597335/384724055-3346c85c-ffe6-4be7-a29c-01e1608d8288.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzgwNjk3OTQsIm5iZiI6MTczODA2OTQ5NCwicGF0aCI6Ii85NTU5NzMzNS8zODQ3MjQwNTUtMzM0NmM4NWMtZmZlNi00YmU3LWEyOWMtMDFlMTYwOGQ4Mjg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI4VDEzMDQ1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM0M2E2ZGNkYzc5ODIzOTIwZTIyMmE1NGQ4MGQ5MmQ1N2Y0NTg4ODY5OTI3YTczNWJkNjI3ZjU5MWEzMjFhZTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Flp_4xG1CZD3B5yEgAuaF8pAg57YQk7j9ZmWRto-ves"><img src="https://private-user-images.githubusercontent.com/95597335/384724055-3346c85c-ffe6-4be7-a29c-01e1608d8288.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzgwNjk3OTQsIm5iZiI6MTczODA2OTQ5NCwicGF0aCI6Ii85NTU5NzMzNS8zODQ3MjQwNTUtMzM0NmM4NWMtZmZlNi00YmU3LWEyOWMtMDFlMTYwOGQ4Mjg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAxMjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMTI4VDEzMDQ1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM0M2E2ZGNkYzc5ODIzOTIwZTIyMmE1NGQ4MGQ5MmQ1N2Y0NTg4ODY5OTI3YTczNWJkNjI3ZjU5MWEzMjFhZTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Flp_4xG1CZD3B5yEgAuaF8pAg57YQk7j9ZmWRto-ves" alt="image" style="max-width: 100%;"></a></p>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>skyclouds2001</name>
-            <email>skyclouds2001@noreply.github.com</email>
-            <uri>https://github.com/skyclouds2001</uri>
-        </author>
-        <published>2024-11-09T00:24:56.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add missing statements for webview_ios]]></title>
@@ -371,5 +292,41 @@ Depends on <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/queengooborg</uri>
         </author>
         <published>2024-01-07T19:38:04.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Update Firefox data for char attributes of HTML element]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/21828</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/21828"/>
+        <updated>2024-11-22T17:28:49.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR updates and corrects version values for Firefox and Firefox Android for the <code class="notranslate">char</code> and <code class="notranslate">charoff</code> attributes of various HTML elements. The data comes from the <a href="https://mdn-bcd-collector.gooborg.com" rel="nofollow">mdn-bcd-collector</a> project (v10.6.5).</p>
+<p dir="auto"><em>Check out the <a href="https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes">collector's guide on how to review this PR</a>.</em></p>
+<p dir="auto">Tests Used:<br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/col/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/col/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/colgroup/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/colgroup/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/tbody/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/tbody/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/td/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/td/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/tfoot/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/tfoot/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/th/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/th/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/thead/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/thead/char</a><br>
+<a href="https://mdn-bcd-collector.gooborg.com/tests/html/elements/tr/char" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/html/elements/tr/char</a></p>]]></content>
+        <author>
+            <name>queengooborg</name>
+            <email>queengooborg@noreply.github.com</email>
+            <uri>https://github.com/queengooborg</uri>
+        </author>
+        <published>2024-01-02T15:09:25.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Update Firefox data for datalist HTML element]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/21533</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/21533"/>
+        <updated>2024-11-22T17:29:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR updates and corrects version values for Firefox and Firefox Android for the <code class="notranslate">datalist</code> HTML element. This adds a note that the describes the behavior I discovered during testing, which is important to mention as developers may think the feature is unsupported otherwise.  <span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #17753.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1368708435" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/17753" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/17753/hovercard" href="https://github.com/mdn/browser-compat-data/issues/17753">#17753</a>.</p>]]></content>
+        <author>
+            <name>queengooborg</name>
+            <email>queengooborg@noreply.github.com</email>
+            <uri>https://github.com/queengooborg</uri>
+        </author>
+        <published>2023-12-08T07:31:15.000Z</published>
     </entry>
 </feed>
