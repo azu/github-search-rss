@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-02-03T06:01:34.527Z</updated>
+    <updated>2025-02-03T07:01:26.093Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Trusted Types - FF updates and missing entries in TT spec]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/25839</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/25839"/>
-        <updated>2025-02-03T05:51:14.000Z</updated>
+        <updated>2025-02-03T06:29:27.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF has added more support for trusted types behind a flag. This adds those updates.</p>
 <p dir="auto">Also it adds some missing entries, primarily for the methods and properties that will now <em>accept</em> trusted types. Some of this is a bit weird so I've added comments inline explaining how/why I did stuff.</p>
 <ul dir="auto">
@@ -21,7 +21,11 @@
 <li>Note, the <code class="notranslate">innerText</code> and <code class="notranslate">textContext</code> were formerly inherited from HTMLElement and Node respectively.</li>
 </ul>
 </li>
-</ul>]]></content>
+<li>FF135 supports <code class="notranslate">setTimeout</code> and <code class="notranslate">setInterval</code> taking a trustedtype  - as a proxy for code in a script. But it isn't in the spec other than broadly referred to. I have added info though, because it is a compat issue - it should be listed in <a href="https://w3c.github.io/trusted-types/dist/spec/#dom-xss-injection-sinks" rel="nofollow">https://w3c.github.io/trusted-types/dist/spec/#dom-xss-injection-sinks</a></li>
+<li>FF supports the global <code class="notranslate">trustedTypes</code> - you need to have that for anything to work. I have added this as though added in FF135. It might have appeared earlier, but not useful - I'm OK with it since all of that will change when this gets released.</li>
+<li><code class="notranslate">Element.innerHTML</code> and the shadow versions arent speced with alternative IDL saying it can take a trusted type, but there are examples which show that, and wpt tests, and they are mentioned in <a href="https://w3c.github.io/trusted-types/dist/spec/#dom-xss-injection-sinks" rel="nofollow">https://w3c.github.io/trusted-types/dist/spec/#dom-xss-injection-sinks</a> - which I have used for the spec url.</li>
+</ul>
+<p dir="auto">The spec mentions some other cases such as <a href="https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#dom-element-outerhtml" rel="nofollow">Element.outerHTML</a> setters, and functions that create a new same-origin <a href="https://dom.spec.whatwg.org/#document" rel="nofollow">Document</a> with caller-controlled markup like <a href="https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#dom-domparser-parsefromstring" rel="nofollow">parseFromString()</a>. Have not added that, because I haven't tested it.</p>]]></content>
         <author>
             <name>hamishwillee</name>
             <email>hamishwillee@noreply.github.com</email>
