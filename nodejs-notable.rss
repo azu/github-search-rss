@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-02-03T04:01:36.803Z</updated>
+    <updated>2025-02-03T05:01:21.638Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -148,9 +148,9 @@ Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title"
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241506?u=13324b3ac27dc54cdde3ac635d567d0d96b88876&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Ed25519 and X25519 algorithms are no longer experimental. They <a href="https://github.com/w3c/webcrypto/pull/362#issuecomment-2519927404" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webcrypto/pull/362/hovercard">were merged into the main spec</a>.</p>
 <hr>
 <p dir="auto">
-<a id="label-7a4073" href="https://github.com/nodejs/node/labels/notable-change" data-name="notable-change" style="--label-r:249;--label-g:208;--label-b:196;--label-h:13;--label-s:81;--label-l:87;" data-view-component="true" class="IssueLabel hx_IssueLabel Label--inline">
+<a id="label-236166" href="https://github.com/nodejs/node/labels/notable-change" data-name="notable-change" style="--label-r:249;--label-g:208;--label-b:196;--label-h:13;--label-s:81;--label-l:87;" data-view-component="true" class="IssueLabel hx_IssueLabel Label--inline">
   notable-change</a>
-  <tool-tip id="tooltip-fc17ece0-f300-4657-8cc6-63ec991534b7" for="label-7a4073" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">PRs with changes that should be highlighted in changelogs.</tool-tip>
+  <tool-tip id="tooltip-7ee1ae99-2794-47f4-86a9-c86d0aa4ad58" for="label-236166" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">PRs with changes that should be highlighted in changelogs.</tool-tip>
 </p>
 <blockquote>
 <p dir="auto">Following the merge of Curve25519 into the <a href="https://w3c.github.io/webcrypto/" rel="nofollow">Web Cryptography API Editor's Draft</a> the <code class="notranslate">Ed25519</code> and <code class="notranslate">X25519</code> algorithm identifiers are now stable and will no longer emit an ExperimentalWarning upon use.</p>
@@ -210,7 +210,7 @@ Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title"
         <link href="https://github.com/nodejs/node/pull/55698"/>
         <updated>2024-12-21T19:13:54.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This introduces <code class="notranslate">module.registerHooks()</code> for registering module loader customization hooks that are run for all modules loaded by <code class="notranslate">require()</code>, <code class="notranslate">import</code> and functions returned by <code class="notranslate">createRequire()</code> in the same thread, which makes them easier for CJS monkey-patchers to migrate to.</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import assert from 'node:assert';
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import assert from 'node:assert';
 import { registerHooks, createRequire } from 'node:module';
 import { writeFileSync } from 'node:fs';
 
@@ -237,36 +237,37 @@ assert.strictEqual(required.id, 456);  // replaced by load hook to 456
 
 // Checks that it works with import.
 const imported = await import('./foo.js');  // redirected by resolve hook to bar.js
-assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">assert</span> <span class="pl-k">from</span> <span class="pl-s">'node:assert'</span><span class="pl-kos">;</span>
-<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">registerHooks</span><span class="pl-kos">,</span> <span class="pl-s1">createRequire</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:module'</span><span class="pl-kos">;</span>
-<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">writeFileSync</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs'</span><span class="pl-kos">;</span>
+assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre lang="js" class="notranslate"><code class="notranslate">import assert from 'node:assert';
+import { registerHooks, createRequire } from 'node:module';
+import { writeFileSync } from 'node:fs';
 
-<span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s">'./bar.js'</span><span class="pl-kos">,</span> <span class="pl-s">'export const id = 123;'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+writeFileSync('./bar.js', 'export const id = 123;', 'utf8');
 
-<span class="pl-en">registerHooks</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
-  <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">specifier</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">nextResolve</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-k">const</span> <span class="pl-s1">replaced</span> <span class="pl-c1">=</span> <span class="pl-s1">specifier</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-s">'foo'</span><span class="pl-kos">,</span> <span class="pl-s">'bar'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-k">return</span> <span class="pl-s1">nextResolve</span><span class="pl-kos">(</span><span class="pl-s1">replaced</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">,</span>
-  <span class="pl-en">load</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">nextLoad</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-k">const</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-s1">nextLoad</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-k">return</span> <span class="pl-kos">{</span>
-      ...<span class="pl-s1">result</span><span class="pl-kos">,</span>
-      <span class="pl-c1">source</span>: <span class="pl-s1">result</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-s">'123'</span><span class="pl-kos">,</span> <span class="pl-s">'456'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
-    <span class="pl-kos">}</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">,</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+registerHooks({
+  resolve(specifier, context, nextResolve) {
+    const replaced = specifier.replace('foo', 'bar');
+    return nextResolve(replaced, context);
+  },
+  load(url, context, nextLoad) {
+    const result = nextLoad(url, context);
+    return {
+      ...result,
+      source: result.source.toString().replace('123', '456'),
+    };
+  },
+});
 
-<span class="pl-c">// Checks that it works with require.</span>
-<span class="pl-k">const</span> <span class="pl-s1">require</span> <span class="pl-c1">=</span> <span class="pl-en">createRequire</span><span class="pl-kos">(</span><span class="pl-k">import</span><span class="pl-kos">.</span>meta<span class="pl-kos">.</span><span class="pl-c1">url</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-k">const</span> <span class="pl-s1">required</span> <span class="pl-c1">=</span> <span class="pl-s1">require</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
-<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">required</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span>
+// Checks that it works with require.
+const require = createRequire(import.meta.url);
+const required = require('./foo.js');  // redirected by resolve hook to bar.js
+assert.strictEqual(required.id, 456);  // replaced by load hook to 456
 
-<span class="pl-c">// Checks that it works with import.</span>
-<span class="pl-k">const</span> <span class="pl-s1">imported</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
-<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">imported</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span></pre></div>
+// Checks that it works with import.
+const imported = await import('./foo.js');  // redirected by resolve hook to bar.js
+assert.strictEqual(imported.id, 456);  // replaced by load hook to 456
+</code></pre></div>
 <p dir="auto">This complements the <code class="notranslate">module.register()</code> hooks - the new hooks fit better internally and cover all corners in the module graph; whereas <code class="notranslate">module.register()</code> previously could not cover <code class="notranslate">require()</code> while it was in-thread, and still cannot cover <code class="notranslate">createRequire()</code> after being moved off-thread.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1NTU1OTYsIm5iZiI6MTczODU1NTI5NiwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIwMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMDNUMDQwMTM2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjQzMjBlY2NiYzRjY2Y5Y2IwODdkOGMyNzlhZWUxZDA5YzU4N2YxYWU5ZWZiMDU1ZDIxZjNjOTJkYzdlYjgyYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.Q1rhbjnCMzQOtyWTx4pdnQgCLV8l2qbGL70wjvw5AX4"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1NTU1OTYsIm5iZiI6MTczODU1NTI5NiwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIwMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMDNUMDQwMTM2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjQzMjBlY2NiYzRjY2Y5Y2IwODdkOGMyNzlhZWUxZDA5YzU4N2YxYWU5ZWZiMDU1ZDIxZjNjOTJkYzdlYjgyYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.Q1rhbjnCMzQOtyWTx4pdnQgCLV8l2qbGL70wjvw5AX4" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1NTkxODEsIm5iZiI6MTczODU1ODg4MSwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIwMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMDNUMDUwMTIxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTcxYWZjYjMzNTQzMjBmNWEzYjAyM2UyNzI3NTlkMzY5ZDk0OTYwYmUwYzQ4ZmQ0OWU1NWQwN2YwZDgyYTZhYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.rISWBoSbKboOzq7Sjvhz4pxnQaJt7BLxCx1-cw7V0tY"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1NTkxODEsIm5iZiI6MTczODU1ODg4MSwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIwMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMDNUMDUwMTIxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTcxYWZjYjMzNTQzMjBmNWEzYjAyM2UyNzI3NTlkMzY5ZDk0OTYwYmUwYzQ4ZmQ0OWU1NWQwN2YwZDgyYTZhYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.rISWBoSbKboOzq7Sjvhz4pxnQaJt7BLxCx1-cw7V0tY" style="max-width: 100%;"></a>
 <p dir="auto">They are also run in the same thread as the modules being loaded and where the hooks are registered, which means they are easier to debug (no more <code class="notranslate">console.log()</code> getting lost) and do not have the many deadlock issues haunting the <code class="notranslate">module.register()</code> hooks. The new API also takes functions directly so that it's easier for intermediate loader packages to take user options from files that the hooks can't be aware of, like many existing CJS monkey-patchers do.</p>
 <hr>
 <h4 dir="auto">Background</h4>
@@ -292,7 +293,7 @@ assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre cla
 <hr>
 <p dir="auto">Second commit is the result of running the script to update to Firefox 131 which picks up NSS 3.104.</p>
 <p dir="auto">Running the script again without specifying the version shows the script picking up Firefox 132 and NSS 3.105 but there are no certdata changes from NSS 3.104 which would correctly prevent <a href="https://github.com/nodejs/node/blob/main/.github/workflows/tools.yml"><code class="notranslate">.github/workflows/tools.yml</code></a> from creating a new pull request as no files would change:</p>
-<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ node tools/dep_updaters/update-root-certs.mjs -v
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ node tools/dep_updaters/update-root-certs.mjs -v
 Fetching Firefox release data from https://nucleus.mozilla.org/rna/all-releases.json.
 Fetching NSS tag from https://hg.mozilla.org/releases/mozilla-release/raw-file/FIREFOX_132_0_RELEASE/security/nss/TAG-INFO.
 Found tag NSS_3_105_RTM.
@@ -471,186 +472,187 @@ Your branch is ahead of 'upstream/main' by 2 commits.
   (use &quot;git push&quot; to publish your local commits)
 
 nothing to commit, working tree clean
-$"><pre class="notranslate">$ <span class="pl-s1">node tools/dep_updaters/update-root-certs.mjs -v</span>
-<span class="pl-c1">Fetching Firefox release data from https://nucleus.mozilla.org/rna/all-releases.json.</span>
-<span class="pl-c1">Fetching NSS tag from https://hg.mozilla.org/releases/mozilla-release/raw-file/FIREFOX_132_0_RELEASE/security/nss/TAG-INFO.</span>
-<span class="pl-c1">Found tag NSS_3_105_RTM.</span>
-<span class="pl-c1">Updating to NSS version 3.105</span>
-<span class="pl-c1">Fetching https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt</span>
-<span class="pl-c1">Writing /home/rlau/sandbox/github/node/tools/certdata.txt</span>
-<span class="pl-c1">Running tools/mk-ca-bundle.pl</span>
-<span class="pl-c1">Parsing: GlobalSign Root CA</span>
-<span class="pl-c1">Parsing: Entrust.net Premium 2048 Secure Server CA</span>
-<span class="pl-c1">Parsing: Baltimore CyberTrust Root</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority</span>
-<span class="pl-c1">Parsing: Comodo AAA Services root</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 2</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 3</span>
-<span class="pl-c1">Parsing: XRamp Global CA Root</span>
-<span class="pl-c1">Parsing: Go Daddy Class 2 CA</span>
-<span class="pl-c1">Parsing: Starfield Class 2 CA</span>
-<span class="pl-c1">Parsing: DigiCert Assured ID Root CA</span>
-<span class="pl-c1">Parsing: DigiCert Global Root CA</span>
-<span class="pl-c1">Parsing: DigiCert High Assurance EV Root CA</span>
-<span class="pl-c1">Parsing: SwissSign Gold CA - G2</span>
-<span class="pl-c1">Parsing: SwissSign Silver CA - G2</span>
-<span class="pl-c1">Parsing: SecureTrust CA</span>
-<span class="pl-c1">Parsing: Secure Global CA</span>
-<span class="pl-c1">Parsing: COMODO Certification Authority</span>
-<span class="pl-c1">Parsing: COMODO ECC Certification Authority</span>
-<span class="pl-c1">Parsing: Certigna</span>
-<span class="pl-c1">Parsing: ePKI Root Certification Authority</span>
-<span class="pl-c1">Parsing: certSIGN ROOT CA</span>
-<span class="pl-c1">Parsing: NetLock Arany (Class Gold) Főtanúsítvány</span>
-<span class="pl-c1">Parsing: SecureSign RootCA11</span>
-<span class="pl-c1">Parsing: Microsec e-Szigno Root CA 2009</span>
-<span class="pl-c1">Parsing: GlobalSign Root CA - R3</span>
-<span class="pl-c1">Parsing: Izenpe.com</span>
-<span class="pl-c1">Parsing: Go Daddy Root Certificate Authority - G2</span>
-<span class="pl-c1">Parsing: Starfield Root Certificate Authority - G2</span>
-<span class="pl-c1">Parsing: Starfield Services Root Certificate Authority - G2</span>
-<span class="pl-c1">Parsing: AffirmTrust Commercial</span>
-<span class="pl-c1">Parsing: AffirmTrust Networking</span>
-<span class="pl-c1">Parsing: AffirmTrust Premium</span>
-<span class="pl-c1">Parsing: AffirmTrust Premium ECC</span>
-<span class="pl-c1">Parsing: Certum Trusted Network CA</span>
-<span class="pl-c1">Parsing: TWCA Root Certification Authority</span>
-<span class="pl-c1">Parsing: Security Communication RootCA2</span>
-<span class="pl-c1">Parsing: Actalis Authentication Root CA</span>
-<span class="pl-c1">Parsing: Buypass Class 2 Root CA</span>
-<span class="pl-c1">Parsing: Buypass Class 3 Root CA</span>
-<span class="pl-c1">Parsing: T-TeleSec GlobalRoot Class 3</span>
-<span class="pl-c1">Parsing: D-TRUST Root Class 3 CA 2 2009</span>
-<span class="pl-c1">Parsing: D-TRUST Root Class 3 CA 2 EV 2009</span>
-<span class="pl-c1">Parsing: CA Disig Root R2</span>
-<span class="pl-c1">Parsing: ACCVRAIZ1</span>
-<span class="pl-c1">Parsing: TWCA Global Root CA</span>
-<span class="pl-c1">Parsing: TeliaSonera Root CA v1</span>
-<span class="pl-c1">Parsing: T-TeleSec GlobalRoot Class 2</span>
-<span class="pl-c1">Parsing: Atos TrustedRoot 2011</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 1 G3</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 2 G3</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 3 G3</span>
-<span class="pl-c1">Parsing: DigiCert Assured ID Root G2</span>
-<span class="pl-c1">Parsing: DigiCert Assured ID Root G3</span>
-<span class="pl-c1">Parsing: DigiCert Global Root G2</span>
-<span class="pl-c1">Parsing: DigiCert Global Root G3</span>
-<span class="pl-c1">Parsing: DigiCert Trusted Root G4</span>
-<span class="pl-c1">Parsing: COMODO RSA Certification Authority</span>
-<span class="pl-c1">Parsing: USERTrust RSA Certification Authority</span>
-<span class="pl-c1">Parsing: USERTrust ECC Certification Authority</span>
-<span class="pl-c1">Parsing: GlobalSign ECC Root CA - R5</span>
-<span class="pl-c1">Parsing: IdenTrust Commercial Root CA 1</span>
-<span class="pl-c1">Parsing: IdenTrust Public Sector Root CA 1</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority - G2</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority - EC1</span>
-<span class="pl-c1">Parsing: CFCA EV ROOT</span>
-<span class="pl-c1">Parsing: OISTE WISeKey Global Root GB CA</span>
-<span class="pl-c1">Parsing: SZAFIR ROOT CA2</span>
-<span class="pl-c1">Parsing: Certum Trusted Network CA 2</span>
-<span class="pl-c1">Parsing: Hellenic Academic and Research Institutions RootCA 2015</span>
-<span class="pl-c1">Parsing: Hellenic Academic and Research Institutions ECC RootCA 2015</span>
-<span class="pl-c1">Parsing: ISRG Root X1</span>
-<span class="pl-c1">Parsing: AC RAIZ FNMT-RCM</span>
-<span class="pl-c1">Parsing: Amazon Root CA 1</span>
-<span class="pl-c1">Parsing: Amazon Root CA 2</span>
-<span class="pl-c1">Parsing: Amazon Root CA 3</span>
-<span class="pl-c1">Parsing: Amazon Root CA 4</span>
-<span class="pl-c1">Parsing: TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1</span>
-<span class="pl-c1">Parsing: GDCA TrustAUTH R5 ROOT</span>
-<span class="pl-c1">Parsing: SSL.com Root Certification Authority RSA</span>
-<span class="pl-c1">Parsing: SSL.com Root Certification Authority ECC</span>
-<span class="pl-c1">Parsing: SSL.com EV Root Certification Authority RSA R2</span>
-<span class="pl-c1">Parsing: SSL.com EV Root Certification Authority ECC</span>
-<span class="pl-c1">Parsing: GlobalSign Root CA - R6</span>
-<span class="pl-c1">Parsing: OISTE WISeKey Global Root GC CA</span>
-<span class="pl-c1">Parsing: UCA Global G2 Root</span>
-<span class="pl-c1">Parsing: UCA Extended Validation Root</span>
-<span class="pl-c1">Parsing: Certigna Root CA</span>
-<span class="pl-c1">Parsing: emSign Root CA - G1</span>
-<span class="pl-c1">Parsing: emSign ECC Root CA - G3</span>
-<span class="pl-c1">Parsing: emSign Root CA - C1</span>
-<span class="pl-c1">Parsing: emSign ECC Root CA - C3</span>
-<span class="pl-c1">Parsing: Hongkong Post Root CA 3</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority - G4</span>
-<span class="pl-c1">Parsing: Microsoft ECC Root Certificate Authority 2017</span>
-<span class="pl-c1">Parsing: Microsoft RSA Root Certificate Authority 2017</span>
-<span class="pl-c1">Parsing: e-Szigno Root CA 2017</span>
-<span class="pl-c1">Parsing: certSIGN Root CA G2</span>
-<span class="pl-c1">Parsing: Trustwave Global Certification Authority</span>
-<span class="pl-c1">Parsing: Trustwave Global ECC P256 Certification Authority</span>
-<span class="pl-c1">Parsing: Trustwave Global ECC P384 Certification Authority</span>
-<span class="pl-c1">Parsing: NAVER Global Root Certification Authority</span>
-<span class="pl-c1">Parsing: AC RAIZ FNMT-RCM SERVIDORES SEGUROS</span>
-<span class="pl-c1">Parsing: GlobalSign Root R46</span>
-<span class="pl-c1">Parsing: GlobalSign Root E46</span>
-<span class="pl-c1">Parsing: GLOBALTRUST 2020</span>
-<span class="pl-c1">Parsing: ANF Secure Server Root CA</span>
-<span class="pl-c1">Parsing: Certum EC-384 CA</span>
-<span class="pl-c1">Parsing: Certum Trusted Root CA</span>
-<span class="pl-c1">Parsing: TunTrust Root CA</span>
-<span class="pl-c1">Parsing: HARICA TLS RSA Root CA 2021</span>
-<span class="pl-c1">Parsing: HARICA TLS ECC Root CA 2021</span>
-<span class="pl-c1">Parsing: Autoridad de Certificacion Firmaprofesional CIF A62634068</span>
-<span class="pl-c1">Parsing: vTrus ECC Root CA</span>
-<span class="pl-c1">Parsing: vTrus Root CA</span>
-<span class="pl-c1">Parsing: ISRG Root X2</span>
-<span class="pl-c1">Parsing: HiPKI Root CA - G1</span>
-<span class="pl-c1">Parsing: GlobalSign ECC Root CA - R4</span>
-<span class="pl-c1">Parsing: GTS Root R1</span>
-<span class="pl-c1">Parsing: GTS Root R2</span>
-<span class="pl-c1">Parsing: GTS Root R3</span>
-<span class="pl-c1">Parsing: GTS Root R4</span>
-<span class="pl-c1">Parsing: Telia Root CA v2</span>
-<span class="pl-c1">Parsing: D-TRUST BR Root CA 1 2020</span>
-<span class="pl-c1">Parsing: D-TRUST EV Root CA 1 2020</span>
-<span class="pl-c1">Parsing: DigiCert TLS ECC P384 Root G5</span>
-<span class="pl-c1">Parsing: DigiCert TLS RSA4096 Root G5</span>
-<span class="pl-c1">Parsing: Certainly Root R1</span>
-<span class="pl-c1">Parsing: Certainly Root E1</span>
-<span class="pl-c1">Parsing: Security Communication RootCA3</span>
-<span class="pl-c1">Parsing: Security Communication ECC RootCA1</span>
-<span class="pl-c1">Parsing: BJCA Global Root CA1</span>
-<span class="pl-c1">Parsing: BJCA Global Root CA2</span>
-<span class="pl-c1">Parsing: Sectigo Public Server Authentication Root E46</span>
-<span class="pl-c1">Parsing: Sectigo Public Server Authentication Root R46</span>
-<span class="pl-c1">Parsing: SSL.com TLS RSA Root CA 2022</span>
-<span class="pl-c1">Parsing: SSL.com TLS ECC Root CA 2022</span>
-<span class="pl-c1">Parsing: Atos TrustedRoot Root CA ECC TLS 2021</span>
-<span class="pl-c1">Parsing: Atos TrustedRoot Root CA RSA TLS 2021</span>
-<span class="pl-c1">Parsing: TrustAsia Global Root CA G3</span>
-<span class="pl-c1">Parsing: TrustAsia Global Root CA G4</span>
-<span class="pl-c1">Parsing: CommScope Public Trust ECC Root-01</span>
-<span class="pl-c1">Parsing: CommScope Public Trust ECC Root-02</span>
-<span class="pl-c1">Parsing: CommScope Public Trust RSA Root-01</span>
-<span class="pl-c1">Parsing: CommScope Public Trust RSA Root-02</span>
-<span class="pl-c1">Parsing: Telekom Security TLS ECC Root 2020</span>
-<span class="pl-c1">Parsing: Telekom Security TLS RSA Root 2023</span>
-<span class="pl-c1">Parsing: FIRMAPROFESIONAL CA ROOT-A WEB</span>
-<span class="pl-c1">Parsing: TWCA CYBER Root CA</span>
-<span class="pl-c1">Parsing: SecureSign Root CA12</span>
-<span class="pl-c1">Parsing: SecureSign Root CA14</span>
-<span class="pl-c1">Parsing: SecureSign Root CA15</span>
-<span class="pl-c1">Done (152 CA certs processed, 25 skipped).</span>
+$"><pre lang="console" class="notranslate"><code class="notranslate">$ node tools/dep_updaters/update-root-certs.mjs -v
+Fetching Firefox release data from https://nucleus.mozilla.org/rna/all-releases.json.
+Fetching NSS tag from https://hg.mozilla.org/releases/mozilla-release/raw-file/FIREFOX_132_0_RELEASE/security/nss/TAG-INFO.
+Found tag NSS_3_105_RTM.
+Updating to NSS version 3.105
+Fetching https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt
+Writing /home/rlau/sandbox/github/node/tools/certdata.txt
+Running tools/mk-ca-bundle.pl
+Parsing: GlobalSign Root CA
+Parsing: Entrust.net Premium 2048 Secure Server CA
+Parsing: Baltimore CyberTrust Root
+Parsing: Entrust Root Certification Authority
+Parsing: Comodo AAA Services root
+Parsing: QuoVadis Root CA 2
+Parsing: QuoVadis Root CA 3
+Parsing: XRamp Global CA Root
+Parsing: Go Daddy Class 2 CA
+Parsing: Starfield Class 2 CA
+Parsing: DigiCert Assured ID Root CA
+Parsing: DigiCert Global Root CA
+Parsing: DigiCert High Assurance EV Root CA
+Parsing: SwissSign Gold CA - G2
+Parsing: SwissSign Silver CA - G2
+Parsing: SecureTrust CA
+Parsing: Secure Global CA
+Parsing: COMODO Certification Authority
+Parsing: COMODO ECC Certification Authority
+Parsing: Certigna
+Parsing: ePKI Root Certification Authority
+Parsing: certSIGN ROOT CA
+Parsing: NetLock Arany (Class Gold) Főtanúsítvány
+Parsing: SecureSign RootCA11
+Parsing: Microsec e-Szigno Root CA 2009
+Parsing: GlobalSign Root CA - R3
+Parsing: Izenpe.com
+Parsing: Go Daddy Root Certificate Authority - G2
+Parsing: Starfield Root Certificate Authority - G2
+Parsing: Starfield Services Root Certificate Authority - G2
+Parsing: AffirmTrust Commercial
+Parsing: AffirmTrust Networking
+Parsing: AffirmTrust Premium
+Parsing: AffirmTrust Premium ECC
+Parsing: Certum Trusted Network CA
+Parsing: TWCA Root Certification Authority
+Parsing: Security Communication RootCA2
+Parsing: Actalis Authentication Root CA
+Parsing: Buypass Class 2 Root CA
+Parsing: Buypass Class 3 Root CA
+Parsing: T-TeleSec GlobalRoot Class 3
+Parsing: D-TRUST Root Class 3 CA 2 2009
+Parsing: D-TRUST Root Class 3 CA 2 EV 2009
+Parsing: CA Disig Root R2
+Parsing: ACCVRAIZ1
+Parsing: TWCA Global Root CA
+Parsing: TeliaSonera Root CA v1
+Parsing: T-TeleSec GlobalRoot Class 2
+Parsing: Atos TrustedRoot 2011
+Parsing: QuoVadis Root CA 1 G3
+Parsing: QuoVadis Root CA 2 G3
+Parsing: QuoVadis Root CA 3 G3
+Parsing: DigiCert Assured ID Root G2
+Parsing: DigiCert Assured ID Root G3
+Parsing: DigiCert Global Root G2
+Parsing: DigiCert Global Root G3
+Parsing: DigiCert Trusted Root G4
+Parsing: COMODO RSA Certification Authority
+Parsing: USERTrust RSA Certification Authority
+Parsing: USERTrust ECC Certification Authority
+Parsing: GlobalSign ECC Root CA - R5
+Parsing: IdenTrust Commercial Root CA 1
+Parsing: IdenTrust Public Sector Root CA 1
+Parsing: Entrust Root Certification Authority - G2
+Parsing: Entrust Root Certification Authority - EC1
+Parsing: CFCA EV ROOT
+Parsing: OISTE WISeKey Global Root GB CA
+Parsing: SZAFIR ROOT CA2
+Parsing: Certum Trusted Network CA 2
+Parsing: Hellenic Academic and Research Institutions RootCA 2015
+Parsing: Hellenic Academic and Research Institutions ECC RootCA 2015
+Parsing: ISRG Root X1
+Parsing: AC RAIZ FNMT-RCM
+Parsing: Amazon Root CA 1
+Parsing: Amazon Root CA 2
+Parsing: Amazon Root CA 3
+Parsing: Amazon Root CA 4
+Parsing: TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1
+Parsing: GDCA TrustAUTH R5 ROOT
+Parsing: SSL.com Root Certification Authority RSA
+Parsing: SSL.com Root Certification Authority ECC
+Parsing: SSL.com EV Root Certification Authority RSA R2
+Parsing: SSL.com EV Root Certification Authority ECC
+Parsing: GlobalSign Root CA - R6
+Parsing: OISTE WISeKey Global Root GC CA
+Parsing: UCA Global G2 Root
+Parsing: UCA Extended Validation Root
+Parsing: Certigna Root CA
+Parsing: emSign Root CA - G1
+Parsing: emSign ECC Root CA - G3
+Parsing: emSign Root CA - C1
+Parsing: emSign ECC Root CA - C3
+Parsing: Hongkong Post Root CA 3
+Parsing: Entrust Root Certification Authority - G4
+Parsing: Microsoft ECC Root Certificate Authority 2017
+Parsing: Microsoft RSA Root Certificate Authority 2017
+Parsing: e-Szigno Root CA 2017
+Parsing: certSIGN Root CA G2
+Parsing: Trustwave Global Certification Authority
+Parsing: Trustwave Global ECC P256 Certification Authority
+Parsing: Trustwave Global ECC P384 Certification Authority
+Parsing: NAVER Global Root Certification Authority
+Parsing: AC RAIZ FNMT-RCM SERVIDORES SEGUROS
+Parsing: GlobalSign Root R46
+Parsing: GlobalSign Root E46
+Parsing: GLOBALTRUST 2020
+Parsing: ANF Secure Server Root CA
+Parsing: Certum EC-384 CA
+Parsing: Certum Trusted Root CA
+Parsing: TunTrust Root CA
+Parsing: HARICA TLS RSA Root CA 2021
+Parsing: HARICA TLS ECC Root CA 2021
+Parsing: Autoridad de Certificacion Firmaprofesional CIF A62634068
+Parsing: vTrus ECC Root CA
+Parsing: vTrus Root CA
+Parsing: ISRG Root X2
+Parsing: HiPKI Root CA - G1
+Parsing: GlobalSign ECC Root CA - R4
+Parsing: GTS Root R1
+Parsing: GTS Root R2
+Parsing: GTS Root R3
+Parsing: GTS Root R4
+Parsing: Telia Root CA v2
+Parsing: D-TRUST BR Root CA 1 2020
+Parsing: D-TRUST EV Root CA 1 2020
+Parsing: DigiCert TLS ECC P384 Root G5
+Parsing: DigiCert TLS RSA4096 Root G5
+Parsing: Certainly Root R1
+Parsing: Certainly Root E1
+Parsing: Security Communication RootCA3
+Parsing: Security Communication ECC RootCA1
+Parsing: BJCA Global Root CA1
+Parsing: BJCA Global Root CA2
+Parsing: Sectigo Public Server Authentication Root E46
+Parsing: Sectigo Public Server Authentication Root R46
+Parsing: SSL.com TLS RSA Root CA 2022
+Parsing: SSL.com TLS ECC Root CA 2022
+Parsing: Atos TrustedRoot Root CA ECC TLS 2021
+Parsing: Atos TrustedRoot Root CA RSA TLS 2021
+Parsing: TrustAsia Global Root CA G3
+Parsing: TrustAsia Global Root CA G4
+Parsing: CommScope Public Trust ECC Root-01
+Parsing: CommScope Public Trust ECC Root-02
+Parsing: CommScope Public Trust RSA Root-01
+Parsing: CommScope Public Trust RSA Root-02
+Parsing: Telekom Security TLS ECC Root 2020
+Parsing: Telekom Security TLS RSA Root 2023
+Parsing: FIRMAPROFESIONAL CA ROOT-A WEB
+Parsing: TWCA CYBER Root CA
+Parsing: SecureSign Root CA12
+Parsing: SecureSign Root CA14
+Parsing: SecureSign Root CA15
+Done (152 CA certs processed, 25 skipped).
 
 
-<span class="pl-c1">NEW_VERSION=3.105</span>
-<span class="pl-c1">COMMIT_MSG&lt;&lt;c116927d-aa5a-4b1e-b0ba-96d2c33ae849</span>
-<span class="pl-c1">crypto: update root certificates to NSS 3.105</span>
+NEW_VERSION=3.105
+COMMIT_MSG&lt;&lt;c116927d-aa5a-4b1e-b0ba-96d2c33ae849
+crypto: update root certificates to NSS 3.105
 
-<span class="pl-c1">This is the certdata.txt[0] from NSS 3.105.</span>
+This is the certdata.txt[0] from NSS 3.105.
 
-<span class="pl-c1">This is the version of NSS that shipped in Firefox 132.0 on 2024-10-29.</span>
+This is the version of NSS that shipped in Firefox 132.0 on 2024-10-29.
 
-<span class="pl-c1">[0] https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt</span>
-<span class="pl-c1">c116927d-aa5a-4b1e-b0ba-96d2c33ae849</span>
-$ <span class="pl-s1">git status</span>
-<span class="pl-c1">On branch rootcerts</span>
-<span class="pl-c1">Your branch is ahead of 'upstream/main' by 2 commits.</span>
-<span class="pl-c1">  (use "git push" to publish your local commits)</span>
+[0] https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt
+c116927d-aa5a-4b1e-b0ba-96d2c33ae849
+$ git status
+On branch rootcerts
+Your branch is ahead of 'upstream/main' by 2 commits.
+  (use "git push" to publish your local commits)
 
-<span class="pl-c1">nothing to commit, working tree clean</span>
-$</pre></div>
+nothing to commit, working tree clean
+$
+</code></pre></div>
 <hr>
 <p dir="auto">For the release notes,  the notable change is</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Update root certificates to NSS 3.104
@@ -1035,19 +1037,20 @@ $ out/Release/node --trace-env env.js
         <updated>2024-10-15T17:22:49.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/439929?u=88483145a53c3d594ab68146c1a8bdecc3bcd1d3&v=4" width="64" height="64" alt=""/><br/><p dir="auto">For release notes:</p>
 <p dir="auto">When a <code class="notranslate">Buffer</code> is created using a resizable <code class="notranslate">ArrayBuffer</code>, the <code class="notranslate">Buffer</code> length will now correctly change as the underlying <code class="notranslate">ArrayBuffer</code> size is changed.</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const ab = new ArrayBuffer(10, { maxByteLength: 20 });
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const ab = new ArrayBuffer(10, { maxByteLength: 20 });
 const buffer = Buffer.from(ab);
 console.log(buffer.byteLength); 10
 ab.resize(15);
 console.log(buffer.byteLength); 15
 ab.resize(5);
-console.log(buffer.byteLength); 5"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">ab</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">ArrayBuffer</span><span class="pl-kos">(</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">maxByteLength</span>: <span class="pl-c1">20</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-k">const</span> <span class="pl-s1">buffer</span> <span class="pl-c1">=</span> <span class="pl-v">Buffer</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s1">ab</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">buffer</span><span class="pl-kos">.</span><span class="pl-c1">byteLength</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c1">10</span>
-<span class="pl-s1">ab</span><span class="pl-kos">.</span><span class="pl-en">resize</span><span class="pl-kos">(</span><span class="pl-c1">15</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">buffer</span><span class="pl-kos">.</span><span class="pl-c1">byteLength</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c1">15</span>
-<span class="pl-s1">ab</span><span class="pl-kos">.</span><span class="pl-en">resize</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">buffer</span><span class="pl-kos">.</span><span class="pl-c1">byteLength</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c1">5</span></pre></div>
+console.log(buffer.byteLength); 5"><pre lang="js" class="notranslate"><code class="notranslate">const ab = new ArrayBuffer(10, { maxByteLength: 20 });
+const buffer = Buffer.from(ab);
+console.log(buffer.byteLength); 10
+ab.resize(15);
+console.log(buffer.byteLength); 15
+ab.resize(5);
+console.log(buffer.byteLength); 5
+</code></pre></div>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #52195.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2203951944" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/52195" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/52195/hovercard" href="https://github.com/nodejs/node/issues/52195">#52195</a></p>]]></content>
         <author>
             <name>jasnell</name>
