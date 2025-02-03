@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-02-03T12:01:46.502Z</updated>
+    <updated>2025-02-03T13:04:41.401Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[fix(http): Clarify content length in 204 responses]]></title>
+        <id>https://github.com/mdn/content/pull/37928</id>
+        <link href="https://github.com/mdn/content/pull/37928"/>
+        <updated>2025-02-03T12:03:19.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The example has a <code class="notranslate">Content-Length: 0</code> in a 204, which is not allowed:</p>
+<p dir="auto"><a href="https://datatracker.ietf.org/doc/html/rfc9110#section-8.6-8" rel="nofollow">https://datatracker.ietf.org/doc/html/rfc9110#section-8.6-8</a></p>
+<blockquote>
+<p dir="auto">A server MUST NOT send a Content-Length header field in any response with a status code of <a href="https://datatracker.ietf.org/doc/html/rfc9110#status.1xx" rel="nofollow">1xx (Informational)</a> or <a href="https://datatracker.ietf.org/doc/html/rfc9110#status.204" rel="nofollow">204 (No Content)</a>.</p>
+</blockquote>
+<p dir="auto">Also removing compat info which is maybe not useful for readers. There's an interesting history behind this:</p>
+<blockquote>
+<p dir="auto">servers may erroneously include data after the headers</p>
+</blockquote>
+<p dir="auto">and browsers deviate in how lenient they are with this erroneous behavior.<br>
+The details were added to prose in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1356614" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1356614</a></p>
+<p dir="auto">I think we can put this in BCD, but open to reviewer feedback.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36146.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2558813677" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36146" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36146/hovercard" href="https://github.com/mdn/content/issues/36146">#36146</a></p>]]></content>
+        <author>
+            <name>bsmth</name>
+            <email>bsmth@noreply.github.com</email>
+            <uri>https://github.com/bsmth</uri>
+        </author>
+        <published>2025-02-03T12:01:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[FF135 ExprFeatures - Add trusted types]]></title>
         <id>https://github.com/mdn/content/pull/37926</id>
@@ -132,7 +159,7 @@
 <li>Spec is here: <a href="https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop" rel="nofollow">https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop</a></li>
 <li><strong>IMPORTANT</strong> Browser compatibility and the link to the specification were generated properly, but the Formal Syntax was not found. I'm not sure how to fix that.</li>
 </ul>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1ODQ0MDYsIm5iZiI6MTczODU4NDEwNiwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjAzVDEyMDE0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyNmIzMGQ1ZTA4ZTYwMGQ4OTc5NGRhZDVkZGIxNWQ4NTY3YWIzNmNlNzA2NWQ4YmYyMTIyMzlmMTAyYTg1MmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Ks5iycxeRstZ_LL52g92OZ-HlUmhCeEeSUziIBReYnw"><img src="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1ODQ0MDYsIm5iZiI6MTczODU4NDEwNiwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjAzVDEyMDE0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyNmIzMGQ1ZTA4ZTYwMGQ4OTc5NGRhZDVkZGIxNWQ4NTY3YWIzNmNlNzA2NWQ4YmYyMTIyMzlmMTAyYTg1MmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Ks5iycxeRstZ_LL52g92OZ-HlUmhCeEeSUziIBReYnw" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1ODgxODEsIm5iZiI6MTczODU4Nzg4MSwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjAzVDEzMDQ0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ1NjEwZjFiMTRjNjI2ZGZjNGFlMGU2MTQwODgzYjljZTMzMTYzOTVkOGM2ZmI2MmI4ODA4M2I1OTIyOTc3MzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.wwDI5W7hgU0V5gebgEZDPMSyF8ucEg8IRIPmCKG967E"><img src="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg1ODgxODEsIm5iZiI6MTczODU4Nzg4MSwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjAzVDEzMDQ0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ1NjEwZjFiMTRjNjI2ZGZjNGFlMGU2MTQwODgzYjljZTMzMTYzOTVkOGM2ZmI2MmI4ODA4M2I1OTIyOTc3MzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.wwDI5W7hgU0V5gebgEZDPMSyF8ucEg8IRIPmCKG967E" alt="image" style="max-width: 100%;"></a></p>
 
 
 
@@ -244,7 +271,7 @@
         <title type="html"><![CDATA[ chore(ia): reorg /web/xpath]]></title>
         <id>https://github.com/mdn/content/pull/37895</id>
         <link href="https://github.com/mdn/content/pull/37895"/>
-        <updated>2025-01-31T15:42:53.000Z</updated>
+        <updated>2025-02-03T12:34:39.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Drafting an XPath reorg PR. Directory now has this structure:</p>
 <div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="./files/en-us/web/xpath
@@ -338,7 +365,7 @@
         <title type="html"><![CDATA[Bug-1930334 to implement background.preferred_environment]]></title>
         <id>https://github.com/mdn/content/pull/37876</id>
         <link href="https://github.com/mdn/content/pull/37876"/>
-        <updated>2025-02-03T10:00:34.000Z</updated>
+        <updated>2025-02-03T12:08:27.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Add release note and documentation for the introduction of <code class="notranslate">preferred_environment</code> to the <code class="notranslate">background</code> manifest key as implemented by <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1930334" rel="nofollow">Bug 1930334</a> Implement background.preferred_environment.</p>
 <h3 dir="auto">Related issues and pull requests</h3>
@@ -468,24 +495,5 @@ This PR adds some hints about using SVG for diagrams, where to put them, and how
             <uri>https://github.com/wbamberg</uri>
         </author>
         <published>2025-01-24T19:10:04.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Bug-1685965 managed storage policy update clarification]]></title>
-        <id>https://github.com/mdn/content/pull/37794</id>
-        <link href="https://github.com/mdn/content/pull/37794"/>
-        <updated>2025-01-28T09:24:09.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Add to note to the managed storage page that changes to the policy manifest are only loaded into manage storage when the browser restart.</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> confirm status and behavior of onChange</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Address is the documentAddresses the documentation requirements of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1685965" rel="nofollow">Bug 1685965</a> storage.managed.get() is cached and never updated, onChange event is not supported</p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2025-01-24T17:36:44.000Z</published>
     </entry>
 </feed>
