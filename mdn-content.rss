@@ -2,23 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-02-04T21:01:26.407Z</updated>
+    <updated>2025-02-04T22:01:19.503Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Switch classList to use contains?]]></title>
-        <id>https://github.com/mdn/content/pull/37962</id>
-        <link href="https://github.com/mdn/content/pull/37962"/>
-        <updated>2025-02-04T17:49:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/870501?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Not sure the idea of using [0] index here but it seems better to demonstrate via contains() as the DOMTokenList API is pretty nice and not inherently subject to problems that indexing would be</p>]]></content>
+        <title type="html"><![CDATA[Add remark describing special dash encoding requirement]]></title>
+        <id>https://github.com/mdn/content/pull/37964</id>
+        <link href="https://github.com/mdn/content/pull/37964"/>
+        <updated>2025-02-04T21:30:36.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3710230?u=ec8847938e97e424cc6277c0553223d36388bf11&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">The Usage Notes section of the Text Fragments reference correctly advises that text strings must be percent-encoded and links to docs for <code class="notranslate">encodeURIComponent</code> as an example of this. However, <code class="notranslate">encodeURIComponent</code> performs replacement only on the special characters described in <a href="https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding" rel="nofollow">Percent-encoding</a> while the Text Fragment <a href="https://wicg.github.io/scroll-to-text-fragment/#syntax" rel="nofollow">standard</a> requires that the dash character <code class="notranslate">-</code> (ASCII 45) must also be percent encoded when appearing in the directive section of a text fragment link.</p>
+<p dir="auto">As an example, <a href="https://pypi.org/simple/tables/#:~:text=tables-3.2.3.tar.gz" rel="nofollow">a fragment link featuring an unencoded dash character</a> will not be highlighted in (e.g.) Chrome, while <a href="https://pypi.org/simple/tables/#:~:text=tables%2D3.2.3.tar.gz" rel="nofollow">the same fragment link containing an encoded dash</a> performs as expected.</p>
+<p dir="auto">This PR adds a brief comment which draws attention to the requirement that the usually URL-safe dash character be percent encoded when appearing in a text fragment link.</p>
+
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">An unqualified reference to "percent encoding" may give readers the impression that this is only necessary for those characters for which <code class="notranslate">encodeURIComponent</code> performs a substitution, while the standard also makes this requirement of the URL-safe dash character.</p>
+
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">A separate comment highlighting this additional requirement described above helps to draw attention to this special circumstance and avoid unexpected behaviour resulting from non-standard compliant text fragments.</p>
+
+
+
+
+]]></content>
         <author>
-            <name>bkardell</name>
-            <email>bkardell@noreply.github.com</email>
-            <uri>https://github.com/bkardell</uri>
+            <name>pmslavin</name>
+            <email>pmslavin@noreply.github.com</email>
+            <uri>https://github.com/pmslavin</uri>
         </author>
-        <published>2025-02-04T17:47:46.000Z</published>
+        <published>2025-02-04T21:19:35.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Fix MIME type for WebDriverBiDi captureScreenshot command]]></title>
@@ -211,19 +226,6 @@
         <published>2025-02-03T23:55:02.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[glossary links: to aphabetic baseline]]></title>
-        <id>https://github.com/mdn/content/pull/37948</id>
-        <link href="https://github.com/mdn/content/pull/37948"/>
-        <updated>2025-02-04T08:53:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">linked the first occurrence of alphabetic baseline to the baseline typography page which defines it.</p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2025-02-03T23:53:25.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Fix `NavigateEvent` & `NavigationCurrentEntryChangeEvent` constructor…]]></title>
         <id>https://github.com/mdn/content/pull/37934</id>
         <link href="https://github.com/mdn/content/pull/37934"/>
@@ -388,7 +390,7 @@ The details were added to prose in <a href="https://bugzilla.mozilla.org/show_bu
 <li>Spec is here: <a href="https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop" rel="nofollow">https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop</a></li>
 <li><strong>IMPORTANT</strong> Browser compatibility and the link to the specification were generated properly, but the Formal Syntax was not found. I'm not sure how to fix that.</li>
 </ul>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDMxODYsIm5iZiI6MTczODcwMjg4NiwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIxMDEyNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJkMjM0ZDA5ZmNhYjM2OTRlZDMyN2E4YTUyYmYxMWRkMjg4MDIyZjljYjEwZGNhNTYyMTMyNWQ2ZmNlYjJhMTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.V7EFFUPvMvnW9FAZ3fIYKnLd9-ARcGGpDrGFRbnqVgs"><img src="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDMxODYsIm5iZiI6MTczODcwMjg4NiwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIxMDEyNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJkMjM0ZDA5ZmNhYjM2OTRlZDMyN2E4YTUyYmYxMWRkMjg4MDIyZjljYjEwZGNhNTYyMTMyNWQ2ZmNlYjJhMTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.V7EFFUPvMvnW9FAZ3fIYKnLd9-ARcGGpDrGFRbnqVgs" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDY3NzksIm5iZiI6MTczODcwNjQ3OSwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIyMDExOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY5Yzc0MTA5ZDc3OTIwNjUyZDE2OGJkODk5Y2IxZTMyYTNlMWQ3YzkwNjFhM2FmZjBkOTgwZGVmOTA2OWFmYjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Iqy9BL8jn9WTr8DUhlAa2EKdf1uLLCHz_uJZRURtbLE"><img src="https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDY3NzksIm5iZiI6MTczODcwNjQ3OSwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIyMDExOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY5Yzc0MTA5ZDc3OTIwNjUyZDE2OGJkODk5Y2IxZTMyYTNlMWQ3YzkwNjFhM2FmZjBkOTgwZGVmOTA2OWFmYjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Iqy9BL8jn9WTr8DUhlAa2EKdf1uLLCHz_uJZRURtbLE" alt="image" style="max-width: 100%;"></a></p>
 
 
 
@@ -499,5 +501,22 @@ The details were added to prose in <a href="https://bugzilla.mozilla.org/show_bu
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-01-29T18:11:21.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[feat: add info about where to put SVG assets]]></title>
+        <id>https://github.com/mdn/content/pull/37824</id>
+        <link href="https://github.com/mdn/content/pull/37824"/>
+        <updated>2025-02-03T15:15:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Most of the work to remove binary assets is done in the HTTP section.<br>
+This PR adds some hints about using SVG for diagrams, where to put them, and how they're included in content.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Closing out the discussion with a recommendation for using SVG in shared assets.</p>]]></content>
+        <author>
+            <name>bsmth</name>
+            <email>bsmth@noreply.github.com</email>
+            <uri>https://github.com/bsmth</uri>
+        </author>
+        <published>2025-01-27T12:03:38.000Z</published>
     </entry>
 </feed>

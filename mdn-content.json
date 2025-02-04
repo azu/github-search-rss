@@ -6,14 +6,14 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/870501?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Not sure the idea of using [0] index here but it seems better to demonstrate via contains() as the DOMTokenList API is pretty nice and not inherently subject to problems that indexing would be</p>",
-            "url": "https://github.com/mdn/content/pull/37962",
-            "title": "Switch classList to use contains?",
-            "date_modified": "2025-02-04T17:49:13.000Z",
-            "date_published": "2025-02-04T17:47:46.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/3710230?u=ec8847938e97e424cc6277c0553223d36388bf11&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Usage Notes section of the Text Fragments reference correctly advises that text strings must be percent-encoded and links to docs for <code class=\"notranslate\">encodeURIComponent</code> as an example of this. However, <code class=\"notranslate\">encodeURIComponent</code> performs replacement only on the special characters described in <a href=\"https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding\" rel=\"nofollow\">Percent-encoding</a> while the Text Fragment <a href=\"https://wicg.github.io/scroll-to-text-fragment/#syntax\" rel=\"nofollow\">standard</a> requires that the dash character <code class=\"notranslate\">-</code> (ASCII 45) must also be percent encoded when appearing in the directive section of a text fragment link.</p>\n<p dir=\"auto\">As an example, <a href=\"https://pypi.org/simple/tables/#:~:text=tables-3.2.3.tar.gz\" rel=\"nofollow\">a fragment link featuring an unencoded dash character</a> will not be highlighted in (e.g.) Chrome, while <a href=\"https://pypi.org/simple/tables/#:~:text=tables%2D3.2.3.tar.gz\" rel=\"nofollow\">the same fragment link containing an encoded dash</a> performs as expected.</p>\n<p dir=\"auto\">This PR adds a brief comment which draws attention to the requirement that the usually URL-safe dash character be percent encoded when appearing in a text fragment link.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">An unqualified reference to \"percent encoding\" may give readers the impression that this is only necessary for those characters for which <code class=\"notranslate\">encodeURIComponent</code> performs a substitution, while the standard also makes this requirement of the URL-safe dash character.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">A separate comment highlighting this additional requirement described above helps to draw attention to this special circumstance and avoid unexpected behaviour resulting from non-standard compliant text fragments.</p>\n\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/37964",
+            "title": "Add remark describing special dash encoding requirement",
+            "date_modified": "2025-02-04T21:30:36.000Z",
+            "date_published": "2025-02-04T21:19:35.000Z",
             "author": {
-                "name": "bkardell",
-                "url": "https://github.com/bkardell"
+                "name": "pmslavin",
+                "url": "https://github.com/pmslavin"
             }
         },
         {
@@ -94,17 +94,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">linked the first occurrence of alphabetic baseline to the baseline typography page which defines it.</p>",
-            "url": "https://github.com/mdn/content/pull/37948",
-            "title": "glossary links: to aphabetic baseline",
-            "date_modified": "2025-02-04T08:53:41.000Z",
-            "date_published": "2025-02-03T23:53:25.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/95597335?u=8d74d22178f21abb716e97df0752093cf31ea013&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">… syntax</p>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">constructor can also passing parameters that in <code class=\"notranslate\">Event()</code>; add missing return value section which should have per spec; add missing <code class=\"notranslate\">hasUAVisualTransition</code> parameter item, which the <code class=\"notranslate\">hasUAVisualTransition</code> property page has added yet</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-navigateevent-interface\" rel=\"nofollow\">https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-navigateevent-interface</a><br>\n<a href=\"https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-navigationcurrententrychangeevent-interface\" rel=\"nofollow\">https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-navigationcurrententrychangeevent-interface</a></p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/37934",
             "title": "Fix `NavigateEvent` & `NavigationCurrentEntryChangeEvent` constructor…",
@@ -171,7 +160,7 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/25226452?u=c5ec666a856373f0197d448756a12680e9f60ac7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adding a page for the <code class=\"notranslate\">view-transition-class</code> property.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This property is supported in Chrome and Edge, but not documented in MDN yet.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Spec is here: <a href=\"https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop\" rel=\"nofollow\">https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop</a></li>\n<li><strong>IMPORTANT</strong> Browser compatibility and the link to the specification were generated properly, but the Formal Syntax was not found. I'm not sure how to fix that.</li>\n</ul>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDMxODYsIm5iZiI6MTczODcwMjg4NiwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIxMDEyNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJkMjM0ZDA5ZmNhYjM2OTRlZDMyN2E4YTUyYmYxMWRkMjg4MDIyZjljYjEwZGNhNTYyMTMyNWQ2ZmNlYjJhMTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.V7EFFUPvMvnW9FAZ3fIYKnLd9-ARcGGpDrGFRbnqVgs\"><img src=\"https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDMxODYsIm5iZiI6MTczODcwMjg4NiwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIxMDEyNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJkMjM0ZDA5ZmNhYjM2OTRlZDMyN2E4YTUyYmYxMWRkMjg4MDIyZjljYjEwZGNhNTYyMTMyNWQ2ZmNlYjJhMTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.V7EFFUPvMvnW9FAZ3fIYKnLd9-ARcGGpDrGFRbnqVgs\" alt=\"image\" style=\"max-width: 100%;\"></a></p>\n\n\n\n\n",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/25226452?u=c5ec666a856373f0197d448756a12680e9f60ac7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adding a page for the <code class=\"notranslate\">view-transition-class</code> property.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This property is supported in Chrome and Edge, but not documented in MDN yet.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Spec is here: <a href=\"https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop\" rel=\"nofollow\">https://drafts.csswg.org/css-view-transitions-2/#view-transition-group-prop</a></li>\n<li><strong>IMPORTANT</strong> Browser compatibility and the link to the specification were generated properly, but the Formal Syntax was not found. I'm not sure how to fix that.</li>\n</ul>\n<p dir=\"auto\"><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDY3NzksIm5iZiI6MTczODcwNjQ3OSwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIyMDExOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY5Yzc0MTA5ZDc3OTIwNjUyZDE2OGJkODk5Y2IxZTMyYTNlMWQ3YzkwNjFhM2FmZjBkOTgwZGVmOTA2OWFmYjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Iqy9BL8jn9WTr8DUhlAa2EKdf1uLLCHz_uJZRURtbLE\"><img src=\"https://private-user-images.githubusercontent.com/25226452/408639302-e5d5d657-89df-4555-b7ed-75574a146d88.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg3MDY3NzksIm5iZiI6MTczODcwNjQ3OSwicGF0aCI6Ii8yNTIyNjQ1Mi80MDg2MzkzMDItZTVkNWQ2NTctODlkZi00NTU1LWI3ZWQtNzU1NzRhMTQ2ZDg4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA0VDIyMDExOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY5Yzc0MTA5ZDc3OTIwNjUyZDE2OGJkODk5Y2IxZTMyYTNlMWQ3YzkwNjFhM2FmZjBkOTgwZGVmOTA2OWFmYjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Iqy9BL8jn9WTr8DUhlAa2EKdf1uLLCHz_uJZRURtbLE\" alt=\"image\" style=\"max-width: 100%;\"></a></p>\n\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/37901",
             "title": "Add view-transition-class property",
             "date_modified": "2025-02-01T13:26:32.000Z",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Most of the work to remove binary assets is done in the HTTP section.<br>\nThis PR adds some hints about using SVG for diagrams, where to put them, and how they're included in content.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Closing out the discussion with a recommendation for using SVG in shared assets.</p>",
+            "url": "https://github.com/mdn/content/pull/37824",
+            "title": "feat: add info about where to put SVG assets",
+            "date_modified": "2025-02-03T15:15:21.000Z",
+            "date_published": "2025-01-27T12:03:38.000Z",
+            "author": {
+                "name": "bsmth",
+                "url": "https://github.com/bsmth"
             }
         }
     ]
