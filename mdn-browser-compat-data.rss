@@ -2,11 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-02-07T12:01:38.370Z</updated>
+    <updated>2025-02-07T13:04:40.819Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Revert ResponseStart updates]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/25876</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/25876"/>
+        <updated>2025-02-07T12:55:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<p dir="auto">This reverts most of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2802324431" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25733" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25733/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25733">#25733</a></p>
+<p dir="auto">The aim of that PR (as well as adding <code class="notranslate">finalResponseHeadersStart</code>) was to try to explain that Chrome diverged in it's definition of <code class="notranslate">responseStart</code> for sites using Early Hints. However, in hindsight, I think the updates are causing more confusion than help.</p>
+<p dir="auto">MDN currently shows this:</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/10931297/410903168-ff8250da-b332-486a-a830-e6c2f77f3130.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg5MzM3ODAsIm5iZiI6MTczODkzMzQ4MCwicGF0aCI6Ii8xMDkzMTI5Ny80MTA5MDMxNjgtZmY4MjUwZGEtYjMzMi00ODZhLWE4MzAtZTZjMmY3N2YzMTMwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA3VDEzMDQ0MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTllNDBlYmNmYmJmZmI0NTkyNzcxZWY3ZTUxMDQxMzJiMjk3MjhiNjVlODc5YmI2OWNjZWMwZTE0OWMzMjU2MDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0._a-s1XQa-8xcV2_VJ1hr3QrHKtHyGNQCsuF6JXwzwZA"><img width="797" alt="image" src="https://private-user-images.githubusercontent.com/10931297/410903168-ff8250da-b332-486a-a830-e6c2f77f3130.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzg5MzM3ODAsIm5iZiI6MTczODkzMzQ4MCwicGF0aCI6Ii8xMDkzMTI5Ny80MTA5MDMxNjgtZmY4MjUwZGEtYjMzMi00ODZhLWE4MzAtZTZjMmY3N2YzMTMwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMDclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjA3VDEzMDQ0MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTllNDBlYmNmYmJmZmI0NTkyNzcxZWY3ZTUxMDQxMzJiMjk3MjhiNjVlODc5YmI2OWNjZWMwZTE0OWMzMjU2MDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0._a-s1XQa-8xcV2_VJ1hr3QrHKtHyGNQCsuF6JXwzwZA" style="max-width: 100%;"></a>
+<p dir="auto">This suggests the header was only added in 133 (it wasn't it was supported since 85 with a slight change in definition for some sites).</p>
+<p dir="auto">It also suggests it's not supported yet in Opera, Opera Android, and Samsung internet when that's not the case.</p>
+<p dir="auto">All in all, I think my intent to help developers has caused more issues than it solved, and we should instead treat this as a small oddity in Chrome 115-132 that doesn't require documenting in BCD (like some bugs aren't unless major issues).</p>
+<p dir="auto">Additionally, I incorrectly noted this was available from Chrome 87, when it was actually available from Chrome 43 so that was a typo.</p>
+<p dir="auto">It's also causing confusion in downstream dependencies:</p>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2817512165" data-permission-text="Title is private" data-url="https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1891" data-hovercard-type="pull_request" data-hovercard-url="/microsoft/TypeScript-DOM-lib-generator/pull/1891/hovercard" href="https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1891">microsoft/TypeScript-DOM-lib-generator#1891</a></p>
+<p dir="auto">Similarly I think the noting of <code class="notranslate">finalResponseHeadersStart</code> as being available earlier, with the alternative name of <code class="notranslate">responseStart</code> is more confusing than helpful so also removing that.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<p dir="auto">N/A - see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2802324431" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25733" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25733/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25733">#25733</a></p>
+<h4 dir="auto">Related issues</h4>
+
+
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2802324431" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25733" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25733/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25733">#25733</a></p>]]></content>
+        <author>
+            <name>tunetheweb</name>
+            <email>tunetheweb@noreply.github.com</email>
+            <uri>https://github.com/tunetheweb</uri>
+        </author>
+        <published>2025-02-07T12:16:21.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add SharedStorageWorkletGlobalScope.interestGroups (Chrome 134)]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/25871</id>
@@ -298,20 +332,5 @@
             <uri>https://github.com/queengooborg</uri>
         </author>
         <published>2024-06-19T06:49:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add missing features for accent-color CSS property]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/22571</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/22571"/>
-        <updated>2024-11-22T17:29:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR adds the missing features of the <code class="notranslate">accent-color</code> CSS property. The data comes from the <a href="https://mdn-bcd-collector.gooborg.com" rel="nofollow">mdn-bcd-collector</a> project (v10.10.0).</p>
-<p dir="auto"><em>Check out the <a href="https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes">collector's guide on how to review this PR</a>.</em></p>
-<p dir="auto">Tests Used: <a href="https://mdn-bcd-collector.gooborg.com/tests/css/properties/accent-color" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/css/properties/accent-color</a></p>]]></content>
-        <author>
-            <name>queengooborg</name>
-            <email>queengooborg@noreply.github.com</email>
-            <uri>https://github.com/queengooborg</uri>
-        </author>
-        <published>2024-03-07T11:18:08.000Z</published>
     </entry>
 </feed>
