@@ -2,11 +2,71 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-02-20T23:01:34.512Z</updated>
+    <updated>2025-02-21T00:04:18.566Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[src: add config file support]]></title>
+        <id>https://github.com/nodejs/node/pull/57016</id>
+        <link href="https://github.com/nodejs/node/pull/57016"/>
+        <updated>2025-02-20T23:16:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36735501?u=8e93f809522831771aab98cbb2a67c5e67e673d5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2398763407" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/53787" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/53787/hovercard" href="https://github.com/nodejs/node/issues/53787">#53787</a></p>
+<h1 dir="auto">Introducing node.json</h1>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="node --experimental-config-file=noderc.json file.js"><pre class="notranslate">node --experimental-config-file=noderc.json file.js</pre></div>
+<h2 dir="auto">Why a config file?</h2>
+<p dir="auto">With the introduction of test runner, sea, and other feature that require a lot of flags, a json config flag would improve by a   lot the developer experience and increase adoption.<br>
+Example:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="node --experimental-config-file=noderc.json --test --experimental-test-coverage"><pre class="notranslate">node --experimental-config-file=noderc.json --test --experimental-test-coverage</pre></div>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+ &quot;test-coverage-lines&quot;: 80,
+ &quot;test-coverage-branches&quot;: 60
+}"><pre class="notranslate">{
+ <span class="pl-ent">"test-coverage-lines"</span>: <span class="pl-c1">80</span>,
+ <span class="pl-ent">"test-coverage-branches"</span>: <span class="pl-c1">60</span>
+}</pre></div>
+<h2 dir="auto">Current solutions</h2>
+<ol dir="auto">
+<li>CLI Flags</li>
+<li>NODE_OPTIONS</li>
+<li><code class="notranslate">--env-file</code> with NODE_OPTIONS</li>
+</ol>
+<p dir="auto">All of these solutions dont have a good developer experience.</p>
+<h2 dir="auto">Why JSON?</h2>
+<p dir="auto">Simply because we already support json parsing (simdjson) and its kinda the default in the js ecosystem.</p>
+<h2 dir="auto">Do we have to support all the configurations possible?</h2>
+<p dir="auto"><strong>NO</strong></p>
+<p dir="auto">Not all flag need to be supported by the config file, and not all flags <strong>CAN</strong> be supported.<br>
+The config file will only support flags that can be passed through <code class="notranslate">NODE_OPTIONS</code>:<br>
+<a href="https://nodejs.org/api/cli.html#node_optionsoptions" rel="nofollow">https://nodejs.org/api/cli.html#node_optionsoptions</a></p>
+<h2 dir="auto">How does it work?</h2>
+<p dir="auto">This is an early development, it work similarly to the <code class="notranslate">--env-file</code> flag. It will parse the provided file with <code class="notranslate">--experimental-config-file</code> and add to <code class="notranslate">NODE_OPTIONS</code> the recognized flags. Unrecognized flags will be ignored.</p>
+<h2 dir="auto">Versioning</h2>
+<p dir="auto">json_schema!<br>
+When we release a new version, we also release a json schema file.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;$schema&quot;: &quot;https://nodejs.org/dist/v20.18.3/docs/node_config_json_schema.json&quot;,
+}"><pre class="notranslate">{
+  <span class="pl-ent">"$schema"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://nodejs.org/dist/v20.18.3/docs/node_config_json_schema.json<span class="pl-pds">"</span></span>,
+}</pre></div>
+<p dir="auto">The users can has autocompletion and validation of their config file specific to the version they are using.<br>
+Since the config file mirrors the features that the current version has, it would be impossible to provide semver major backwards compatibility (immagine a feature gets removed we also have to remove it from the config file).</p>
+<h2 dir="auto">Examples in the ecosystem</h2>
+<ul dir="auto">
+<li><a href="https://docs.deno.com/runtime/fundamentals/configuration/" rel="nofollow">deno.json</a></li>
+<li><a href="https://bun.sh/docs/runtime/bunfig" rel="nofollow">bun toml</a></li>
+</ul>
+<h2 dir="auto">Security</h2>
+<p dir="auto">Just like <code class="notranslate">.env</code> files, Node.js entrusts the user to provide a secure and valid configuration.</p>
+<p dir="auto">@nodejs/tsc for visibility since its a big feature</p>]]></content>
+        <author>
+            <name>marco-ippolito</name>
+            <email>marco-ippolito@noreply.github.com</email>
+            <uri>https://github.com/marco-ippolito</uri>
+        </author>
+        <published>2025-02-12T18:19:53.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[url: expose urlpattern as global]]></title>
         <id>https://github.com/nodejs/node/pull/56950</id>
@@ -146,9 +206,9 @@ http.createServer((req, res) =&gt; {
   <span class="pl-k">new</span> <span class="pl-v">Worker</span><span class="pl-kos">(</span><span class="pl-s1">__filename</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">`RafaelGSS (<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">++</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>)`</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span></pre></div>
 <p dir="auto">On Node.js startup if you monitor using <code class="notranslate">htop</code> you should be able to see:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTI3OTQsIm5iZiI6MTc0MDA5MjQ5NCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIwVDIzMDEzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEyNzA0ZmFiMTZjNzQzNDI0MjE5ZGVkMjRkMjAwMjZjNmVmNWNmNTljNTg4YTFiZDdmNWViMjQ4OTg1Y2JiN2QmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.C50LnUvLndfyi7hk_-g_FssPJGSPqqHDcER18SKdp1M"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTI3OTQsIm5iZiI6MTc0MDA5MjQ5NCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIwVDIzMDEzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEyNzA0ZmFiMTZjNzQzNDI0MjE5ZGVkMjRkMjAwMjZjNmVmNWNmNTljNTg4YTFiZDdmNWViMjQ4OTg1Y2JiN2QmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.C50LnUvLndfyi7hk_-g_FssPJGSPqqHDcER18SKdp1M" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTY1NTgsIm5iZiI6MTc0MDA5NjI1OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIxVDAwMDQxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4NjZkMTk0ZTE1Y2Y2ZTUxZDVmMzFmOThmOTY2ZmJjNGYzNzdmMTNiOTk5Yzg0YmNhNWFjODIwMWMzZGI2ODcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Yk95i3iVy6kTZZrOYPvbF9p-pqtG6MqHLCMJyD3A064"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTY1NTgsIm5iZiI6MTc0MDA5NjI1OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIxVDAwMDQxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4NjZkMTk0ZTE1Y2Y2ZTUxZDVmMzFmOThmOTY2ZmJjNGYzNzdmMTNiOTk5Yzg0YmNhNWFjODIwMWMzZGI2ODcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Yk95i3iVy6kTZZrOYPvbF9p-pqtG6MqHLCMJyD3A064" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto">Then once it gets a request:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTI3OTQsIm5iZiI6MTc0MDA5MjQ5NCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIwVDIzMDEzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFiMTJkNzMwZTZiZDljODJjM2FkZGY0NmEzZjk2MmM1ZjU1ZjZhM2FkODZlZjExZjU4YWEzYzcxZDU4NjgzMzAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.2Y7Bj9FYDLDp8G8jArWA0vjSw2p31-znYhbCsMqVkUs"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTI3OTQsIm5iZiI6MTc0MDA5MjQ5NCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIwVDIzMDEzNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFiMTJkNzMwZTZiZDljODJjM2FkZGY0NmEzZjk2MmM1ZjU1ZjZhM2FkODZlZjExZjU4YWEzYzcxZDU4NjgzMzAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.2Y7Bj9FYDLDp8G8jArWA0vjSw2p31-znYhbCsMqVkUs" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTY1NTgsIm5iZiI6MTc0MDA5NjI1OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIxVDAwMDQxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA1MjAwZDhjNzgxOTZiMzM3NDU0NjkxODA4OTdmMzU0Nzk1MzU3MWYyNmNjMGQ0ZGUzMDY3NGZlZDk4OTgwZTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jc4P2_29WJDHnRNFjCn_OEYkD4PFrPJZREat3W03cAg"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTY1NTgsIm5iZiI6MTc0MDA5NjI1OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAyMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMjIxVDAwMDQxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA1MjAwZDhjNzgxOTZiMzM3NDU0NjkxODA4OTdmMzU0Nzk1MzU3MWYyNmNjMGQ0ZGUzMDY3NGZlZDk4OTgwZTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.jc4P2_29WJDHnRNFjCn_OEYkD4PFrPJZREat3W03cAg" alt="image" style="max-width: 100%;"></a></p>
 <blockquote>
 <p dir="auto"><code class="notranslate">V8Worker</code> and <code class="notranslate">libuv</code> threads number depends on the parameters &amp; environments</p>
 </blockquote>]]></content>
@@ -375,7 +435,7 @@ assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre cla
 <span class="pl-k">const</span> <span class="pl-s1">imported</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
 <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">imported</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span></pre></div>
 <p dir="auto">This complements the <code class="notranslate">module.register()</code> hooks - the new hooks fit better internally and cover all corners in the module graph; whereas <code class="notranslate">module.register()</code> previously could not cover <code class="notranslate">require()</code> while it was in-thread, and still cannot cover <code class="notranslate">createRequire()</code> after being moved off-thread.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTI3OTQsIm5iZiI6MTc0MDA5MjQ5NCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMjBUMjMwMTM0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTQ0NzM4NjUzNDdiZjliOTI2NmMwYmI2Mzg0NzIxMGY1M2EzYTM4YzM1MDNkODQ1YmEwOWQ1NmUzMjJlN2E0MCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.qfHYGHm2xQ48UGPpwZ4v4YWqVlyOgm2QYAKBaaI01mA"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTI3OTQsIm5iZiI6MTc0MDA5MjQ5NCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMjBUMjMwMTM0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTQ0NzM4NjUzNDdiZjliOTI2NmMwYmI2Mzg0NzIxMGY1M2EzYTM4YzM1MDNkODQ1YmEwOWQ1NmUzMjJlN2E0MCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.qfHYGHm2xQ48UGPpwZ4v4YWqVlyOgm2QYAKBaaI01mA" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTY1NTgsIm5iZiI6MTc0MDA5NjI1OCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIyMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMjFUMDAwNDE4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODZiOTI1NmUzNWJhOWI3ZTRhNmViY2M1MmE2YjhhNjViZTI5MjU5M2VlNDQ5YjY0OGUyZWZiYjc2N2JkNGJjMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.u3vPXMLf1Atw55yOrtYntUZdWX6uJj7GjINPFv82IAA"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDAwOTY1NTgsIm5iZiI6MTc0MDA5NjI1OCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDIyMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAyMjFUMDAwNDE4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODZiOTI1NmUzNWJhOWI3ZTRhNmViY2M1MmE2YjhhNjViZTI5MjU5M2VlNDQ5YjY0OGUyZWZiYjc2N2JkNGJjMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.u3vPXMLf1Atw55yOrtYntUZdWX6uJj7GjINPFv82IAA" style="max-width: 100%;"></a>
 <p dir="auto">They are also run in the same thread as the modules being loaded and where the hooks are registered, which means they are easier to debug (no more <code class="notranslate">console.log()</code> getting lost) and do not have the many deadlock issues haunting the <code class="notranslate">module.register()</code> hooks. The new API also takes functions directly so that it's easier for intermediate loader packages to take user options from files that the hooks can't be aware of, like many existing CJS monkey-patchers do.</p>
 <hr>
 <h4 dir="auto">Background</h4>
@@ -1178,25 +1238,5 @@ console.log(buffer.byteLength); 5"><pre class="notranslate"><span class="pl-k">c
             <uri>https://github.com/nicolo-ribaudo</uri>
         </author>
         <published>2024-10-09T12:49:10.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[module: unflag --experimental-require-module]]></title>
-        <id>https://github.com/nodejs/node/pull/55085</id>
-        <link href="https://github.com/nodejs/node/pull/55085"/>
-        <updated>2025-02-06T00:56:48.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This unflags --experimental-require-module so require(esm) can be used without the flag. For now, when require() actually encounters an ESM for the first time in a process, it will still emit an experimental warning. To opt out of the feature, --no-experimental-require-module can be used.</p>
-<p dir="auto">There are some tests specifically testing ERR_REQUIRE_ESM. Some of them are repurposed to test --no-experimental-require-module. Some of them are modified to just expect loading require(esm) to work, when it's appropriate.</p>
-<p dir="auto">This is expected to go out in 23 and get some testing before being backported to older LTS.</p>
-<p dir="auto">See <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2543254926" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55085" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/55085/hovercard?comment_id=2371022961&amp;comment_type=issue_comment" href="https://github.com/nodejs/node/pull/55085#issuecomment-2371022961">#55085 (comment)</a> for a summary of the impact of this on loading the high-impact npm packages.</p>
-<p dir="auto">For more background on the motivation of <code class="notranslate">require(esm)</code> see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2169848882" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/51977" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/51977/hovercard" href="https://github.com/nodejs/node/pull/51977">#51977</a> - TL;DR: it helps accelerating ESM adoption in the ecosystem as package authors can start shipping native ESM with less breakage to their CJS users; it also helps frameworks and tools that take plugins to support native ESM in user/plugin code whilst they are still navigating their own migration to ESM.</p>
-<p dir="auto">Note to releasers: in the release announcements we should emphasize the implications this has on top-level await is limited to require(). In entry points or modules that are only ever imported, top-level await works fine as before. Only when one tries to use the synchronous require() to evaluate a module that awaits at module loading time (top-level), it obviously would not work, not that it ever worked before require() supports ESM, just that it's now the only significant remaining exception for require(esm).</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2264522627" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/52697" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/52697/hovercard" href="https://github.com/nodejs/node/issues/52697">#52697</a></p>
-]]></content>
-        <author>
-            <name>joyeecheung</name>
-            <email>joyeecheung@noreply.github.com</email>
-            <uri>https://github.com/joyeecheung</uri>
-        </author>
-        <published>2024-09-23T17:35:58.000Z</published>
     </entry>
 </feed>
