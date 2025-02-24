@@ -17,17 +17,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/156683013?u=06cf566349a4e9b2848b77206bc2da17faab6bab&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Remove the <code class=\"notranslate\">s</code> from <code class=\"notranslate\">https</code> in the HTTP protocol scheme.</p>",
-            "url": "https://github.com/mdn/content/pull/38309",
-            "title": "fix: remove the \"s\" from \"https\" in the HTTP protocol scheme",
-            "date_modified": "2025-02-24T19:55:47.000Z",
-            "date_published": "2025-02-24T13:33:04.000Z",
-            "author": {
-                "name": "liuxuelian",
-                "url": "https://github.com/liuxuelian"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add <code class=\"notranslate\">camera</code> and <code class=\"notranslate\">microphone</code> to <code class=\"notranslate\">allow</code>.</p>\n<p dir=\"auto\">See</p>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/allow\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/allow</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Live_samples#allow\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Live_samples#allow</a></li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Fixing perm policy violations:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\" [Violation] Permissions policy violation: microphone is not allowed in this document.\n [Violation] Permissions policy violation: camera is not allowed in this document.\"><pre class=\"notranslate\"><code class=\"notranslate\"> [Violation] Permissions policy violation: microphone is not allowed in this document.\n [Violation] Permissions policy violation: camera is not allowed in this document.\n</code></pre></div>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Discussed on Discord at <a href=\"https://discord.com/channels/1009925603572600863/1170042997212184576/1342704407200137268\" rel=\"nofollow\">https://discord.com/channels/1009925603572600863/1170042997212184576/1342704407200137268</a></p>",
             "url": "https://github.com/mdn/content/pull/38308",
             "title": "feat(api): Add allow property to live sample",
@@ -53,7 +42,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33403762?u=fdf36d14527837256c80c3670553dd5f576dda9a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Remove \"Read-only\" label from <code class=\"notranslate\">HTMLMediaElement.controlsList</code></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">It is not correct.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">While seemingly only supported in Chrome and lacking any spec backing, it does seem to be writable at the moment. I don't have any real resources to point to beyond a simple demo showing it works:</p>\n<div class=\"highlight highlight-text-html-basic notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"&lt;style&gt;\n  /* Chrome's options dialog on audio elements is easily cut off as it doesn't account for headroom */\n  audio {\n    margin-top: 5rem;\n  }\n&lt;/style&gt;\n\n&lt;audio controls src=&quot;https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3&quot;&gt;&lt;/audio&gt;\n\n&lt;script&gt;\n  const audio = document.querySelector('audio');\n  // Uncomment me to test\n  //audio.controlsList = 'nodownload';\n&lt;/script&gt;\"><pre class=\"notranslate\"><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">style</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-c\">/* Chrome's options dialog on audio elements is easily cut off as it doesn't account for headroom */</span>\n  <span class=\"pl-ent\">audio</span> {\n    <span class=\"pl-c1\">margin-top</span><span class=\"pl-kos\">:</span> <span class=\"pl-c1\">5<span class=\"pl-smi\">rem</span></span>;\n  }\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">style</span><span class=\"pl-kos\">&gt;</span>\n\n<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">audio</span> <span class=\"pl-c1\">controls</span> <span class=\"pl-c1\">src</span>=\"<span class=\"pl-s\">https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3</span>\"<span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">audio</span><span class=\"pl-kos\">&gt;</span>\n\n<span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-k\">const</span> <span class=\"pl-s1\">audio</span> <span class=\"pl-c1\">=</span> <span class=\"pl-smi\">document</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">querySelector</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'audio'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-c\">// Uncomment me to test</span>\n  <span class=\"pl-c\">//audio.controlsList = 'nodownload';</span>\n<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span></pre></div>\n<p dir=\"auto\">Can toss this into jsfiddle &amp; test with the script comment. As-is, the audio element will have an option to download when clicking the \"More options\" button of the audio element; uncomment that line and the download option will disappear.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
             "url": "https://github.com/mdn/content/pull/38302",
             "title": "docs: `HTMLMediaElement.controlsList` is not read-only",
-            "date_modified": "2025-02-24T08:29:41.000Z",
+            "date_modified": "2025-02-24T21:55:03.000Z",
             "date_published": "2025-02-24T07:38:56.000Z",
             "author": {
                 "name": "rschristian",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "OnkarRuikar",
                 "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/162956766?u=9b7038b07bb1ac4aed20b2dfc901e867453cf1f7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR is a partial fix to the issue <a href=\"https://github.com/mdn/content/issues/37866\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/37866/hovercard\">issues#37866</a>. I was planning to review the <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions\" rel=\"nofollow\">Browser extensions</a> section and add small fix(content) to it instead of making one huge PR.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Like I said before, I honestly love MDN for making information free and open to anyone, and decided to contribute by fixing some of the issues :)</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://github.com/mdn/content/issues/37866\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/37866/hovercard\">issues#37866</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><a href=\"https://github.com/mdn/content/pull/38181\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/38181/hovercard\">pull#3818</a></p>",
+            "url": "https://github.com/mdn/content/pull/38177",
+            "title": "Add await keyword to some of the examples",
+            "date_modified": "2025-02-17T05:17:01.000Z",
+            "date_published": "2025-02-16T07:16:45.000Z",
+            "author": {
+                "name": "mellash",
+                "url": "https://github.com/mellash"
             }
         }
     ]
