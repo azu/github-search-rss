@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-03-04T13:06:23.364Z</updated>
+    <updated>2025-03-04T14:01:25.789Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
@@ -405,30 +405,28 @@ Having this functionality be more complicated than just setting a string is bett
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/76838083?u=b2e85d104410195aaebb49b483c514d1ab07eb16&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
 <p dir="auto"><code class="notranslate">npm completion</code> has worked under Git for Windows <a href="https://github.com/npm/cli/commit/09498e45c5c9e683f092ab1372670f81db4762b6">since 2015</a>. Digging around a bit leads me to believe that back when the decision to explicitly not support Cygwin was made, <a href="https://github.com/emigenix/npm_on_cygwin">it was due to Cygwin behavior with paths</a>. However, <a href="https://www.msys2.org/docs/who-is-using-msys2/" rel="nofollow">Git for Windows is based on MSYS2</a>, which has <a href="https://www.msys2.org/docs/filesystem-paths/" rel="nofollow">automatic path conversion</a> to avoid Win32 programs seeing Unix paths. Cygwin/MSYS programs generally handle Win32 paths fine, but Win32 programs generally need the Unix paths converted before being passed to them. If my research was correct and the reason Cygwin was explicitly not supported was due to path problems, that reason is now gone with MSYS2. Thus, perhaps support for upstream MSYS2 can be considered (Cygwin still doesn't do automatic path conversions AFAICT, users still have to do that manually when passing paths between Cygwin and Win32 programs).</p>
 <h3 dir="auto">Example</h3>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="username@hostname UCRT64 ~
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="username@hostname UCRT64 ~
 $ npm completion &gt;&gt; ~/.zshrc
 
 username@hostname UCRT64 ~
-$"><pre lang="console" class="notranslate"><code class="notranslate">username@hostname UCRT64 ~
-$ npm completion &gt;&gt; ~/.zshrc
+$"><pre class="notranslate"><span class="pl-c1">username@hostname UCRT64 ~</span>
+$ <span class="pl-s1">npm completion <span class="pl-k">&gt;&gt;</span> <span class="pl-k">~</span>/.zshrc</span>
 
-username@hostname UCRT64 ~
-$
-</code></pre></div>
+<span class="pl-c1">username@hostname UCRT64 ~</span>
+$</pre></div>
 <h3 dir="auto">How</h3>
 <h4 dir="auto">Current Behaviour</h4>
 <p dir="auto">Currently, the Windows check only checks for Git for Windows:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const isWindowsShell = (process.platform === 'win32') &amp;&amp;
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const isWindowsShell = (process.platform === 'win32') &amp;&amp;
   !/^MINGW(32|64)$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'
 
-exports.isWindowsShell = isWindowsShell"><pre lang="js" class="notranslate"><code class="notranslate">const isWindowsShell = (process.platform === 'win32') &amp;&amp;
-  !/^MINGW(32|64)$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'
+exports.isWindowsShell = isWindowsShell"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">isWindowsShell</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">platform</span> <span class="pl-c1">===</span> <span class="pl-s">'win32'</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;&amp;</span>
+  <span class="pl-c1">!</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">^</span><span class="pl-s">M</span><span class="pl-s">I</span><span class="pl-s">N</span><span class="pl-s">G</span><span class="pl-s">W</span><span class="pl-kos">(</span><span class="pl-s">3</span><span class="pl-s">2</span><span class="pl-c1">|</span><span class="pl-s">6</span><span class="pl-s">4</span><span class="pl-kos">)</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">.</span><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">MSYSTEM</span><span class="pl-kos">)</span> <span class="pl-c1">&amp;&amp;</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">TERM</span> <span class="pl-c1">!==</span> <span class="pl-s">'cygwin'</span>
 
-exports.isWindowsShell = isWindowsShell
-</code></pre></div>
+<span class="pl-s1">exports</span><span class="pl-kos">.</span><span class="pl-c1">isWindowsShell</span> <span class="pl-c1">=</span> <span class="pl-s1">isWindowsShell</span></pre></div>
 <h4 dir="auto">Desired Behaviour</h4>
 <p dir="auto">Given that the completion works under Git for Windows, it should also work against its direct upstream, so check for <a href="https://www.msys2.org/docs/environments/" rel="nofollow">its environments</a> as well:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="diff --color -Naur a/lib/utils/is-windows.js b/lib/utils/is-windows.js
+<div class="highlight highlight-source-diff notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="diff --color -Naur a/lib/utils/is-windows.js b/lib/utils/is-windows.js
 --- a/lib/utils/is-windows.js   2024-05-12 10:11:24.285665400 +0000
 +++ b/lib/utils/is-windows.js   2024-05-12 10:11:36.695333600 +0000
 @@ -1,4 +1,4 @@
@@ -436,16 +434,15 @@ exports.isWindowsShell = isWindowsShell
 -  !/^MINGW(32|64)$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'
 +  !/^((MSYS)|(MINGW|UCRT|CLANG|CLANGARM)(32|64))$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'
 
- exports.isWindowsShell = isWindowsShell"><pre lang="patch" class="notranslate"><code class="notranslate">diff --color -Naur a/lib/utils/is-windows.js b/lib/utils/is-windows.js
---- a/lib/utils/is-windows.js   2024-05-12 10:11:24.285665400 +0000
-+++ b/lib/utils/is-windows.js   2024-05-12 10:11:36.695333600 +0000
-@@ -1,4 +1,4 @@
+ exports.isWindowsShell = isWindowsShell"><pre class="notranslate"><span class="pl-c1">diff --color -Naur a/lib/utils/is-windows.js b/lib/utils/is-windows.js</span>
+<span class="pl-md">--- a/lib/utils/is-windows.js   2024-05-12 10:11:24.285665400 +0000</span>
+<span class="pl-mi1">+++ b/lib/utils/is-windows.js   2024-05-12 10:11:36.695333600 +0000</span>
+<span class="pl-mdr">@@ -1,4 +1,4 @@</span>
  const isWindowsShell = (process.platform === 'win32') &amp;&amp;
--  !/^MINGW(32|64)$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'
-+  !/^((MSYS)|(MINGW|UCRT|CLANG|CLANGARM)(32|64))$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'
+<span class="pl-md"><span class="pl-md">-</span>  !/^MINGW(32|64)$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span>  !/^((MSYS)|(MINGW|UCRT|CLANG|CLANGARM)(32|64))$/.test(process.env.MSYSTEM) &amp;&amp; process.env.TERM !== 'cygwin'</span>
 
- exports.isWindowsShell = isWindowsShell
-</code></pre></div>
+ exports.isWindowsShell = isWindowsShell</pre></div>
 <p dir="auto">As per <a href="https://github.com/npm/npm/pull/12366#issuecomment-212160226" data-hovercard-type="pull_request" data-hovercard-url="/npm/npm/pull/12366/hovercard">an old comment</a>:</p>
 <blockquote>
 <p dir="auto">won't merge any patch that's intended to solely change the behavior of npm for Cygwin.</p>
