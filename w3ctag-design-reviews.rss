@@ -2,11 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2025-03-06T22:01:16.595Z</updated>
+    <updated>2025-03-06T23:01:20.910Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Update QuotaExceededError to a DOMException derived interface]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1065</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1065"/>
+        <updated>2025-03-06T22:37:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/48255136?u=419d36448c13e7794d04c2eeb0ada45c0fe79886&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of an updated QuotaExceededError interface.</p>
+<p dir="auto">Currently, when the web platform wants to tell you when you've exceeded quota, it will use <code class="notranslate">DOMException</code> with the specific <code class="notranslate">name</code> property set to <code class="notranslate">QuotaExceededError</code>. However this does not allow carrying additional information.</p>
+<p dir="auto">This proposes removing "QuotaExceededError" from the list of built-in <code class="notranslate">DOMException</code> names, and instead creates a class name <code class="notranslate">QuotaExceededError</code> from the list of built-in <code class="notranslate">DOMException</code> and has the additional optional properties <code class="notranslate">quota</code> and <code class="notranslate">requested</code>. We propose all instances of specs that throw "QuotaExceededError" <code class="notranslate">DOMException</code>s get upgraded to instead throw <code class="notranslate">QuotaExceededError</code>s. For now, such specs would leave the <code class="notranslate">quota</code> and <code class="notranslate">requested</code> properties at their default value of <code class="notranslate">null</code>, but they could eventually upgrade to include that data, if it's useful for their use case (and isn't, e.g., a privacy leak).</p>
+<ul dir="auto">
+<li>Explainer¹: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2812296953" data-permission-text="Title is private" data-url="https://github.com/whatwg/webidl/issues/1465" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/webidl/pull/1465/hovercard" href="https://github.com/whatwg/webidl/pull/1465">whatwg/webidl#1465</a></li>
+<li>Specification: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2812296953" data-permission-text="Title is private" data-url="https://github.com/whatwg/webidl/issues/1465" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/webidl/pull/1465/hovercard" href="https://github.com/whatwg/webidl/pull/1465">whatwg/webidl#1465</a></li>
+<li>WPT Tests: To be added (current DomException WPT <a href="https://crsrc.org/c/third_party/blink/web_tests/external/wpt/webidl/ecmascript-binding/es-exceptions/DOMException-constructor-behavior.any.js" rel="nofollow">here</a>)</li>
+<li>Security and Privacy self-review²: This should not be applicable to this change. While it allows features to allow carrying additional information, it does not require it. It should be evaluated case-by-case to ensure it does not cause any privacy leaks for that feature.</li>
+<li>GitHub repo: <a href="https://github.com/whatwg/webidl">https://github.com/whatwg/webidl</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Domenic Denicola(<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/domenic/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/domenic">@domenic</a> ), Google, proposal author</li>
+<li>Ayu Ishii (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ayuishii/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ayuishii">@ayuishii</a> ), Google</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Google</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: Supportive/driving</li>
+<li>Mozilla comments: <a href="https://github.com/whatwg/html/issues/10972#:~:text=think%20of%20this-,quotaexceedederror,-domenic%3A%20this%20is" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10972/hovercard">Under consideration</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2898437480" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/468" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/468/hovercard" href="https://github.com/WebKit/standards-positions/issues/468">WebKit/standards-positions#468</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations⁴: <a href="https://chromestatus.com/feature/6194847180128256" rel="nofollow">https://chromestatus.com/feature/6194847180128256</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>The group where the work on this specification is currently being done: WHATWG</li>
+<li>Major unresolved issues with or opposition to this specification: none</li>
+<li>This work is being funded by: Google</li>
+</ul>]]></content>
+        <author>
+            <name>ayuishii</name>
+            <email>ayuishii@noreply.github.com</email>
+            <uri>https://github.com/ayuishii</uri>
+        </author>
+        <published>2025-03-06T22:37:04.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Expose contentEncoding in resourceTiming]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1064</id>
@@ -958,51 +1003,5 @@ Duplicate of #</p>]]></content>
             <uri>https://github.com/vmpstr</uri>
         </author>
         <published>2025-01-30T20:43:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSS if() function]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1045</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1045"/>
-        <updated>2025-02-13T10:29:42.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/22191199?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
-<p dir="auto">I'm requesting a TAG review of CSS if() function.</p>
-<p dir="auto">"The if() notation is an <a href="https://drafts.csswg.org/css-values-5/#arbitrary-substitution-function" rel="nofollow">arbitrary substitution function</a> that represents conditional values. Its argument consists of an ordered semi-colon–separated list of statements, each consisting of a condition followed by a colon followed by a value. An <a href="https://drafts.csswg.org/css-values-5/#funcdef-if" rel="nofollow">if()</a> notation represents the value corresponding to the first condition in its argument list to be true; if no condition matches, then the if() notation represents an empty token stream." (From the spec.)</p>
-<ul dir="auto">
-<li>Explainer¹: <a href="https://docs.google.com/document/d/1mbHBUR40jUBay7QZxgbjX7qixs5UZXkdL9tVwGvbmt0/edit?usp=sharing" rel="nofollow">https://docs.google.com/document/d/1mbHBUR40jUBay7QZxgbjX7qixs5UZXkdL9tVwGvbmt0/edit?usp=sharing</a></li>
-<li>Specification: <a href="https://drafts.csswg.org/css-values-5/#if-notation" rel="nofollow">https://drafts.csswg.org/css-values-5/#if-notation</a></li>
-<li>WPT Tests:</li>
-<li>User research:</li>
-<li>Security and Privacy self-review²:</li>
-<li>GitHub repo: <a href="https://github.com/w3c/csswg-drafts/tree/main/css-values-5">https://github.com/w3c/csswg-drafts/tree/main/css-values-5</a></li>
-<li>Primary contacts:
-<ul dir="auto">
-<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/tursunova/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/tursunova">@tursunova</a>, Google, working on the feature in Chromium.</li>
-</ul>
-</li>
-<li>Organization/project driving the specification: Chromium</li>
-<li>Multi-stakeholder support³:
-<ul dir="auto">
-<li>Chromium comments: Positive.</li>
-<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2811265814" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1167" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1167/hovercard" href="https://github.com/mozilla/standards-positions/issues/1167">mozilla/standards-positions#1167</a></li>
-<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2811263262" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/453" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/453/hovercard" href="https://github.com/WebKit/standards-positions/issues/453">WebKit/standards-positions#453</a></li>
-</ul>
-</li>
-<li>Status/issue trackers for implementations⁴: <a href="https://issues.chromium.org/issues/346977961" rel="nofollow">https://issues.chromium.org/issues/346977961</a></li>
-</ul>
-<p dir="auto">Further details:</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
-<li>Relevant time constraints or deadlines:</li>
-<li>The group where the work on this specification is currently being done: CSSWG</li>
-<li>The group where standardization of this work is intended to be done (if different from the current group): CSSWG</li>
-<li>Major unresolved issues with or opposition to this specification:</li>
-<li>This work is being funded by:</li>
-</ul>]]></content>
-        <author>
-            <name>tursunova</name>
-            <email>tursunova@noreply.github.com</email>
-            <uri>https://github.com/tursunova</uri>
-        </author>
-        <published>2025-01-28T11:13:12.000Z</published>
     </entry>
 </feed>
