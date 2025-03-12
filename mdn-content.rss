@@ -2,37 +2,83 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-03-12T22:01:27.752Z</updated>
+    <updated>2025-03-12T23:01:25.761Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Fix typo in Promises' "learning outcomes" table]]></title>
-        <id>https://github.com/mdn/content/pull/38594</id>
-        <link href="https://github.com/mdn/content/pull/38594"/>
-        <updated>2025-03-12T19:48:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/49956464?u=b2a9ea772b0f72110f8284c81e4fb1a9808da4e7&v=4" width="64" height="64" alt=""/><br/>
+        <title type="html"><![CDATA[ci(pr-review-companion): port analyze-pr-build script]]></title>
+        <id>https://github.com/mdn/content/pull/38595</id>
+        <link href="https://github.com/mdn/content/pull/38595"/>
+        <updated>2025-03-12T22:07:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
 <h3 dir="auto">Description</h3>
-
-<p dir="auto">Simple typo fix in the Promises table</p>
+<p dir="auto">Ports <a href="https://github.com/mdn/yari/blob/9c1231f1e900b774e1767262dfc2acd047ec093d/deployer/src/deployer/analyze_pr.py">yari's <code class="notranslate">deployer analyze-pr-build</code> command</a> from Python to Node.js, and uses it conditionally in the <code class="notranslate">pr-review-companion</code> workflow.</p>
 <h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Handing errors is quite different hand<em>l</em>ing errors</p>
+<p dir="auto">We no longer deploy review pages using deployer, so the logical next step is to replace the <code class="notranslate">deployer analyze-pr-build</code> command, which has so far been used alongside the <code class="notranslate">deployer upload</code> command.</p>
+<p dir="auto">Uses a new environment variable <code class="notranslate">USE_DEPLOYER</code> (currently set to <code class="notranslate">true</code>) to determine whether to use the legacy deployer, or just run the new <code class="notranslate">analyze-pr-build</code> script.</p>
 <h3 dir="auto">Additional details</h3>
+<p dir="auto">The command was ported using GPT-o3-mini-high, then refined manually, and tested locally using the artifact of <a href="https://github.com/mdn/content/actions/runs/13812063090?pr=38589">this PR Test run</a> belonging to [<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2913909911" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38589" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/38589/hovercard" href="https://github.com/mdn/content/pull/38589">#38589</a>](<a href="https://redirect.github.com/mdn/content/pull/38589">https://redirect.github.com/mdn/content/pull/38589</a>, by unpacking it to a <code class="notranslate">build/</code> directory in the content root, running the following command with the following patch, and comparing the output with the <a href="https://redirect.github.com/mdn/content/pull/38589#issuecomment-2717828402">current PR Review Companion comment</a> (see <a href="https://www.diffchecker.com/TKz0rVrK/" rel="nofollow">resulting diff</a>, most of the differences being due to non-deterministic output of the deployer implementation):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="GITHUB_REPOSITORY=mdn/content
+PR_NUMBER=`cat build/NR`
+BUILD_OUT_ROOT=./build
 
-<p dir="auto">N/A</p>
+node scripts/analyze-pr-build.js \
+    --prefix=&quot;pr$PR_NUMBER&quot; \
+    --analyze-flaws \
+    --analyze-dangerous-content \
+    --repo=$GITHUB_REPOSITORY \
+    --pr-number=$PR_NUMBER \
+    --diff-file=$BUILD_OUT_ROOT/DIFF \
+    --dry-run \
+    $BUILD_OUT_ROOT"><pre class="notranslate">GITHUB_REPOSITORY=mdn/content
+PR_NUMBER=<span class="pl-s"><span class="pl-pds">`</span>cat build/NR<span class="pl-pds">`</span></span>
+BUILD_OUT_ROOT=./build
+
+node scripts/analyze-pr-build.js \
+    --prefix=<span class="pl-s"><span class="pl-pds">"</span>pr<span class="pl-smi">$PR_NUMBER</span><span class="pl-pds">"</span></span> \
+    --analyze-flaws \
+    --analyze-dangerous-content \
+    --repo=<span class="pl-smi">$GITHUB_REPOSITORY</span> \
+    --pr-number=<span class="pl-smi">$PR_NUMBER</span> \
+    --diff-file=<span class="pl-smi">$BUILD_OUT_ROOT</span>/DIFF \
+    --dry-run \
+    <span class="pl-smi">$BUILD_OUT_ROOT</span></pre></div>
+<div class="highlight highlight-source-diff notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="diff --git a/scripts/analyze-pr-build.js b/scripts/analyze-pr-build.js
+index a6fe8871a3..5f03f7a015 100644
+--- a/scripts/analyze-pr-build.js
++++ b/scripts/analyze-pr-build.js
+@@ -76,6 +76,7 @@ async function analyzePR(buildDirectory, config) {
+     if (config.dry_run) {
+       console.warn(`Dry-run! Not actually posting any comment to ${prUrl}`);
+     } else {
++      console.log(fullComment);
+       if (!config.github_token) {
+         throw new Error(&quot;No 'github_token' so no posting of comments&quot;);
+       }"><pre class="notranslate"><span class="pl-c1">diff --git a/scripts/analyze-pr-build.js b/scripts/analyze-pr-build.js</span>
+index a6fe8871a3..5f03f7a015 100644
+<span class="pl-md">--- a/scripts/analyze-pr-build.js</span>
+<span class="pl-mi1">+++ b/scripts/analyze-pr-build.js</span>
+<span class="pl-mdr">@@ -76,6 +76,7 @@</span> async function analyzePR(buildDirectory, config) {
+     if (config.dry_run) {
+       console.warn(`Dry-run! Not actually posting any comment to ${prUrl}`);
+     } else {
+<span class="pl-mi1"><span class="pl-mi1">+</span>      console.log(fullComment);</span>
+       if (!config.github_token) {
+         throw new Error("No 'github_token' so no posting of comments");
+       }</pre></div>
 <h3 dir="auto">Related issues and pull requests</h3>
 
 
 
 ]]></content>
         <author>
-            <name>greenteaisgreat</name>
-            <email>greenteaisgreat@noreply.github.com</email>
-            <uri>https://github.com/greenteaisgreat</uri>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
         </author>
-        <published>2025-03-12T19:47:38.000Z</published>
+        <published>2025-03-12T22:02:03.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Move guide to module: scroll anchoring.]]></title>
@@ -169,26 +215,6 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <published>2025-03-11T23:59:03.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Update `env/var()` browser-compat frontmatter]]></title>
-        <id>https://github.com/mdn/content/pull/38583</id>
-        <link href="https://github.com/mdn/content/pull/38583"/>
-        <updated>2025-03-11T18:54:03.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Updates the browser-compat frontmatter for the <code class="notranslate">env()</code> and <code class="notranslate">var()</code> features.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The BCD features were moved in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2785572520" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25645" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25645/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25645">mdn/browser-compat-data#25645</a>.</p>
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-03-11T18:52:11.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Setting HTMLCanvasElement.width also resets context properties]]></title>
         <id>https://github.com/mdn/content/pull/38582</id>
         <link href="https://github.com/mdn/content/pull/38582"/>
@@ -287,7 +313,7 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
 </blockquote>
 <p dir="auto"><a href="https://github.com/mdn/content/actions/runs/13753835872/job/38458187038#step:5:876">https://github.com/mdn/content/actions/runs/13753835872/job/38458187038#step:5:876</a></p>
 <blockquote>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4MTcxODcsIm5iZiI6MTc0MTgxNjg4NywicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEyVDIyMDEyN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwMDBhY2Q2YmE5ZTRmNTI4YWFkYzFjMjU3OTA1ZWQwYmZhYzIwN2E5M2M1OTBmZjlmZTBjNWU1OTljODEzZTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.gMrfAak-DP6S2UZi5NBuT4I5Sp_bNw3YL5UXuQ9a7vk"><img src="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4MTcxODcsIm5iZiI6MTc0MTgxNjg4NywicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEyVDIyMDEyN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwMDBhY2Q2YmE5ZTRmNTI4YWFkYzFjMjU3OTA1ZWQwYmZhYzIwN2E5M2M1OTBmZjlmZTBjNWU1OTljODEzZTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.gMrfAak-DP6S2UZi5NBuT4I5Sp_bNw3YL5UXuQ9a7vk" alt="1" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4MjA3ODUsIm5iZiI6MTc0MTgyMDQ4NSwicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEyVDIzMDEyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZkOTFjODYxYjY4OGUyMmFkMjczNGViYjUzNjEyMThkYjMzYjFiNWNlMTgzNGUxYWYwMjJkZDE0MDgxNGE2ZjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.La5n-hRUUNb37ccdLQF_stxi0ffXFxQy3pesB5Mruec"><img src="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4MjA3ODUsIm5iZiI6MTc0MTgyMDQ4NSwicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEyVDIzMDEyNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZkOTFjODYxYjY4OGUyMmFkMjczNGViYjUzNjEyMThkYjMzYjFiNWNlMTgzNGUxYWYwMjJkZDE0MDgxNGE2ZjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.La5n-hRUUNb37ccdLQF_stxi0ffXFxQy3pesB5Mruec" alt="1" style="max-width: 100%;"></a></p>
 </blockquote>
 <h2 dir="auto">Solution</h2>
 <p dir="auto">Instead of having file-word combinations, have file-word<strong>s</strong> combinations. That is, list a file path followed by the list of unknown words in it. It will reduce <code class="notranslate">files</code> x <code class="notranslate">words</code> lines to only <code class="notranslate">files</code>.</p>
@@ -359,19 +385,6 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <published>2025-03-11T07:43:29.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[align-items Syntax section "Overflow alignment" add line break]]></title>
-        <id>https://github.com/mdn/content/pull/38569</id>
-        <link href="https://github.com/mdn/content/pull/38569"/>
-        <updated>2025-03-12T02:05:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2075006?u=7d77aab015d08751a0e16691bcf3cd94e2df34a3&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fixed a typography issue</p>]]></content>
-        <author>
-            <name>xianghongai</name>
-            <email>xianghongai@noreply.github.com</email>
-            <uri>https://github.com/xianghongai</uri>
-        </author>
-        <published>2025-03-11T07:37:55.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Fix up COOP HTTP header errors]]></title>
         <id>https://github.com/mdn/content/pull/38568</id>
         <link href="https://github.com/mdn/content/pull/38568"/>
@@ -421,5 +434,31 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2025-03-11T05:01:39.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Remove SIMPLE from HTML]]></title>
+        <id>https://github.com/mdn/content/pull/38564</id>
+        <link href="https://github.com/mdn/content/pull/38564"/>
+        <updated>2025-03-12T22:40:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">remove most occurrences of the word SIMPLE from HTML files</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2025-03-11T04:20:01.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[remove SIMPLE from a11y docs]]></title>
+        <id>https://github.com/mdn/content/pull/38563</id>
+        <link href="https://github.com/mdn/content/pull/38563"/>
+        <updated>2025-03-12T22:28:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">remove most of the occurrences of the word "simple" from the a11y docs</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2025-03-11T04:02:36.000Z</published>
     </entry>
 </feed>
