@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-03-13T15:01:48.070Z</updated>
+    <updated>2025-03-13T16:01:44.216Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -19,6 +19,39 @@
             <uri>https://github.com/nodejs-github-bot</uri>
         </author>
         <published>2025-03-09T00:28:58.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[assert: improve partialDeepStrictEqual]]></title>
+        <id>https://github.com/nodejs/node/pull/57370</id>
+        <link href="https://github.com/nodejs/node/pull/57370"/>
+        <updated>2025-03-13T15:50:19.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8822573?u=6d05b4378979fe36cbc9977377e423e6ac3c3228&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This significantly improves the assert.partialDeepStrictEqual<br>
+implementation (see benchmark below) by reusing the already existing algorithm.<br>
+It is significantly faster and handles all known edge cases like symbols<br>
+identical as the deepStrictEqual algorithm. This is crucial to<br>
+remove the experimental status from the implementation.</p>
+<p dir="auto">The old implementation could not yet handle some cases that<br>
+the benchmark handles. These are deactivated for now.<br>
+This is likely also a good idea due to the significant performance<br>
+difference between the two implementations.</p>
+<p dir="auto">I changed the stability index, since it's now handling all cases<br>
+properly.</p>
+<p dir="auto">This includes a performance improvement for <code class="notranslate">assert.deepStrictEqual()</code>.<br>
+A few uncommon cases are actually slower due to seemingly V8<br>
+deoptimising the code when hitting rare cases. In reality, that should<br>
+not be an issue.</p>
+<p dir="auto">I noticed an interesting thing while working on this.<br>
+<code class="notranslate">ObjectPrototypeHasOwnProperty</code> is significantly faster than<br>
+<code class="notranslate">ObjectHasOwn</code>. This is something we could take advantage<br>
+of in other parts of the code and I plan on opening an issue for<br>
+V8 to fix that.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes pull request #56555.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2780870490" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/56555" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/56555/hovercard" href="https://github.com/nodejs/node/pull/56555">#56555</a></p>]]></content>
+        <author>
+            <name>BridgeAR</name>
+            <email>BridgeAR@noreply.github.com</email>
+            <uri>https://github.com/BridgeAR</uri>
+        </author>
+        <published>2025-03-08T02:19:04.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[src: add config file support]]></title>
@@ -219,9 +252,9 @@ http.createServer((req, res) =&gt; {
   <span class="pl-k">new</span> <span class="pl-v">Worker</span><span class="pl-kos">(</span><span class="pl-s1">__filename</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">`RafaelGSS (<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">++</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>)`</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span></pre></div>
 <p dir="auto">On Node.js startup if you monitor using <code class="notranslate">htop</code> you should be able to see:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Nzg0MDcsIm5iZiI6MTc0MTg3ODEwNywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE1MDE0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdmYzY4MzEyNzA1YzA2NTM0NTdjY2U0OWY5Nzc5ODFiMWY4ZTA5Y2UyOWNjN2QxODAzMDhiOTJjN2FlZjkyMzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.crdTlJyfVZGssmT7Z3L6xbn1HsmZlnnXRNR_aLE9xMs"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Nzg0MDcsIm5iZiI6MTc0MTg3ODEwNywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE1MDE0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdmYzY4MzEyNzA1YzA2NTM0NTdjY2U0OWY5Nzc5ODFiMWY4ZTA5Y2UyOWNjN2QxODAzMDhiOTJjN2FlZjkyMzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.crdTlJyfVZGssmT7Z3L6xbn1HsmZlnnXRNR_aLE9xMs" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4ODIwMDQsIm5iZiI6MTc0MTg4MTcwNCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE2MDE0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM2MDNhZDZiYTBjYTU0MmI5MGQwZmY0M2M3YWJlZWMyMTJjY2FlYzhhYmMyY2Q4ZTljNWRlOTkzNTkyYmJhMTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.LV4O5x7uqHDqzQc35Brx6NbStHJTAkI_XszRdQAg__Y"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4ODIwMDQsIm5iZiI6MTc0MTg4MTcwNCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE2MDE0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM2MDNhZDZiYTBjYTU0MmI5MGQwZmY0M2M3YWJlZWMyMTJjY2FlYzhhYmMyY2Q4ZTljNWRlOTkzNTkyYmJhMTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.LV4O5x7uqHDqzQc35Brx6NbStHJTAkI_XszRdQAg__Y" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto">Then once it gets a request:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Nzg0MDcsIm5iZiI6MTc0MTg3ODEwNywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE1MDE0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiNDhkOWYzYjY1Njg5NzU4Yzk0YzhiNTIwMDQ0NWVmN2RjNWVkYTYyZWQ2YjVkY2U2YjkzOWNhZjNlNDY3NDcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.lNQ9wmOSX7EMIco61RE_3hDSFfLc8gnFcithS3UpgBU"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Nzg0MDcsIm5iZiI6MTc0MTg3ODEwNywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE1MDE0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiNDhkOWYzYjY1Njg5NzU4Yzk0YzhiNTIwMDQ0NWVmN2RjNWVkYTYyZWQ2YjVkY2U2YjkzOWNhZjNlNDY3NDcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.lNQ9wmOSX7EMIco61RE_3hDSFfLc8gnFcithS3UpgBU" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4ODIwMDQsIm5iZiI6MTc0MTg4MTcwNCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE2MDE0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0NzIxNDRmY2Y0YTJmZDA5MWIwOWY4ZGU4ZjJkOTRmZDZmZWMwYmJmMzQ1MTYxYmQ1YTE2Y2I5ZmQ5MTg3YzAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ZUC1xve9wlcX5dMcNSK3J67sG6xI6E0CRlrXqMlZ9oc"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4ODIwMDQsIm5iZiI6MTc0MTg4MTcwNCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDE2MDE0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0NzIxNDRmY2Y0YTJmZDA5MWIwOWY4ZGU4ZjJkOTRmZDZmZWMwYmJmMzQ1MTYxYmQ1YTE2Y2I5ZmQ5MTg3YzAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ZUC1xve9wlcX5dMcNSK3J67sG6xI6E0CRlrXqMlZ9oc" alt="image" style="max-width: 100%;"></a></p>
 <blockquote>
 <p dir="auto"><code class="notranslate">V8Worker</code> and <code class="notranslate">libuv</code> threads number depends on the parameters &amp; environments</p>
 </blockquote>]]></content>
@@ -448,7 +481,7 @@ assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre cla
 <span class="pl-k">const</span> <span class="pl-s1">imported</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
 <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">imported</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span></pre></div>
 <p dir="auto">This complements the <code class="notranslate">module.register()</code> hooks - the new hooks fit better internally and cover all corners in the module graph; whereas <code class="notranslate">module.register()</code> previously could not cover <code class="notranslate">require()</code> while it was in-thread, and still cannot cover <code class="notranslate">createRequire()</code> after being moved off-thread.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Nzg0MDcsIm5iZiI6MTc0MTg3ODEwNywicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMTNUMTUwMTQ3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjU4OTYxNDZjODFhNDc0YzFhZjBkZWE1NGMyMGMwMjVkZDMzZTc4NTYxZGUyNWM3YWMxYzVmMTcxMGY0YWE4ZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.K5n3PR0EgtAv_lDhIdbpur3bI_4r3mjmwo0L1MppesQ"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Nzg0MDcsIm5iZiI6MTc0MTg3ODEwNywicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMTNUMTUwMTQ3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjU4OTYxNDZjODFhNDc0YzFhZjBkZWE1NGMyMGMwMjVkZDMzZTc4NTYxZGUyNWM3YWMxYzVmMTcxMGY0YWE4ZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.K5n3PR0EgtAv_lDhIdbpur3bI_4r3mjmwo0L1MppesQ" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4ODIwMDQsIm5iZiI6MTc0MTg4MTcwNCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMTNUMTYwMTQ0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NWRlODM1MTE0MGU1ZWViZDJmNmIxNTYyMTBkN2FiNDk3ZTNiYWIwNzNiNmU2ZDE1NWMwOTg2ZmU2ZDI1OGNlYiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.2EoyD466JudUI1J6xG65b6ANmS7e7xEIcCaaBFC4mMY"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4ODIwMDQsIm5iZiI6MTc0MTg4MTcwNCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMTNUMTYwMTQ0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NWRlODM1MTE0MGU1ZWViZDJmNmIxNTYyMTBkN2FiNDk3ZTNiYWIwNzNiNmU2ZDE1NWMwOTg2ZmU2ZDI1OGNlYiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.2EoyD466JudUI1J6xG65b6ANmS7e7xEIcCaaBFC4mMY" style="max-width: 100%;"></a>
 <p dir="auto">They are also run in the same thread as the modules being loaded and where the hooks are registered, which means they are easier to debug (no more <code class="notranslate">console.log()</code> getting lost) and do not have the many deadlock issues haunting the <code class="notranslate">module.register()</code> hooks. The new API also takes functions directly so that it's easier for intermediate loader packages to take user options from files that the hooks can't be aware of, like many existing CJS monkey-patchers do.</p>
 <hr>
 <h4 dir="auto">Background</h4>
@@ -1209,33 +1242,5 @@ $ out/Release/node --trace-env env.js
             <uri>https://github.com/ErickWendel</uri>
         </author>
         <published>2024-10-15T21:17:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[buffer: make Buffer work with resizable ArrayBuffer]]></title>
-        <id>https://github.com/nodejs/node/pull/55377</id>
-        <link href="https://github.com/nodejs/node/pull/55377"/>
-        <updated>2024-10-15T17:22:49.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/439929?u=88483145a53c3d594ab68146c1a8bdecc3bcd1d3&v=4" width="64" height="64" alt=""/><br/><p dir="auto">For release notes:</p>
-<p dir="auto">When a <code class="notranslate">Buffer</code> is created using a resizable <code class="notranslate">ArrayBuffer</code>, the <code class="notranslate">Buffer</code> length will now correctly change as the underlying <code class="notranslate">ArrayBuffer</code> size is changed.</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const ab = new ArrayBuffer(10, { maxByteLength: 20 });
-const buffer = Buffer.from(ab);
-console.log(buffer.byteLength); 10
-ab.resize(15);
-console.log(buffer.byteLength); 15
-ab.resize(5);
-console.log(buffer.byteLength); 5"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">ab</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">ArrayBuffer</span><span class="pl-kos">(</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">maxByteLength</span>: <span class="pl-c1">20</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-k">const</span> <span class="pl-s1">buffer</span> <span class="pl-c1">=</span> <span class="pl-v">Buffer</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-s1">ab</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">buffer</span><span class="pl-kos">.</span><span class="pl-c1">byteLength</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c1">10</span>
-<span class="pl-s1">ab</span><span class="pl-kos">.</span><span class="pl-en">resize</span><span class="pl-kos">(</span><span class="pl-c1">15</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">buffer</span><span class="pl-kos">.</span><span class="pl-c1">byteLength</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c1">15</span>
-<span class="pl-s1">ab</span><span class="pl-kos">.</span><span class="pl-en">resize</span><span class="pl-kos">(</span><span class="pl-c1">5</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">buffer</span><span class="pl-kos">.</span><span class="pl-c1">byteLength</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c1">5</span></pre></div>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #52195.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2203951944" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/52195" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/52195/hovercard" href="https://github.com/nodejs/node/issues/52195">#52195</a></p>]]></content>
-        <author>
-            <name>jasnell</name>
-            <email>jasnell@noreply.github.com</email>
-            <uri>https://github.com/jasnell</uri>
-        </author>
-        <published>2024-10-13T17:10:50.000Z</published>
     </entry>
 </feed>
