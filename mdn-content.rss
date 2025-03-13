@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-03-13T12:01:54.732Z</updated>
+    <updated>2025-03-13T13:06:54.203Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -24,79 +24,6 @@
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2025-03-13T04:13:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ci(pr-review-companion): port analyze-pr-build script]]></title>
-        <id>https://github.com/mdn/content/pull/38595</id>
-        <link href="https://github.com/mdn/content/pull/38595"/>
-        <updated>2025-03-13T12:01:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Ports <a href="https://github.com/mdn/yari/blob/9c1231f1e900b774e1767262dfc2acd047ec093d/deployer/src/deployer/analyze_pr.py">yari's <code class="notranslate">deployer analyze-pr-build</code> command</a> from Python to Node.js, and uses it conditionally in the <code class="notranslate">pr-review-companion</code> workflow.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">We no longer deploy review pages using deployer, so the logical next step is to replace the <code class="notranslate">deployer analyze-pr-build</code> command, which has so far been used alongside the <code class="notranslate">deployer upload</code> command.</p>
-<p dir="auto">Uses a new environment variable <code class="notranslate">USE_DEPLOYER</code> (currently set to <code class="notranslate">true</code>) to determine whether to use the legacy deployer, or just run the new <code class="notranslate">analyze-pr-build</code> script.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The command was ported using GPT-o3-mini-high, then refined manually, and tested locally using the artifact of <a href="https://github.com/mdn/content/actions/runs/13812063090?pr=38589">this PR Test run</a> belonging to [<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2913909911" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38589" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/38589/hovercard" href="https://github.com/mdn/content/pull/38589">#38589</a>](<a href="https://redirect.github.com/mdn/content/pull/38589">https://redirect.github.com/mdn/content/pull/38589</a>, by unpacking it to a <code class="notranslate">build/</code> directory in the content root, running the following command with the following patch, and comparing the output with the <a href="https://redirect.github.com/mdn/content/pull/38589#issuecomment-2717828402">current PR Review Companion comment</a> (see <a href="https://www.diffchecker.com/TKz0rVrK/" rel="nofollow">resulting diff</a>, most of the differences being due to non-deterministic output of the deployer implementation):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="GITHUB_REPOSITORY=mdn/content
-PR_NUMBER=`cat build/NR`
-BUILD_OUT_ROOT=./build
-
-node scripts/analyze-pr-build.js \
-    --prefix=&quot;pr$PR_NUMBER&quot; \
-    --analyze-flaws \
-    --analyze-dangerous-content \
-    --repo=$GITHUB_REPOSITORY \
-    --pr-number=$PR_NUMBER \
-    --diff-file=$BUILD_OUT_ROOT/DIFF \
-    --dry-run \
-    $BUILD_OUT_ROOT"><pre class="notranslate">GITHUB_REPOSITORY=mdn/content
-PR_NUMBER=<span class="pl-s"><span class="pl-pds">`</span>cat build/NR<span class="pl-pds">`</span></span>
-BUILD_OUT_ROOT=./build
-
-node scripts/analyze-pr-build.js \
-    --prefix=<span class="pl-s"><span class="pl-pds">"</span>pr<span class="pl-smi">$PR_NUMBER</span><span class="pl-pds">"</span></span> \
-    --analyze-flaws \
-    --analyze-dangerous-content \
-    --repo=<span class="pl-smi">$GITHUB_REPOSITORY</span> \
-    --pr-number=<span class="pl-smi">$PR_NUMBER</span> \
-    --diff-file=<span class="pl-smi">$BUILD_OUT_ROOT</span>/DIFF \
-    --dry-run \
-    <span class="pl-smi">$BUILD_OUT_ROOT</span></pre></div>
-<div class="highlight highlight-source-diff notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="diff --git a/scripts/analyze-pr-build.js b/scripts/analyze-pr-build.js
-index a6fe8871a3..5f03f7a015 100644
---- a/scripts/analyze-pr-build.js
-+++ b/scripts/analyze-pr-build.js
-@@ -76,6 +76,7 @@ async function analyzePR(buildDirectory, config) {
-     if (config.dry_run) {
-       console.warn(`Dry-run! Not actually posting any comment to ${prUrl}`);
-     } else {
-+      console.log(fullComment);
-       if (!config.github_token) {
-         throw new Error(&quot;No 'github_token' so no posting of comments&quot;);
-       }"><pre class="notranslate"><span class="pl-c1">diff --git a/scripts/analyze-pr-build.js b/scripts/analyze-pr-build.js</span>
-index a6fe8871a3..5f03f7a015 100644
-<span class="pl-md">--- a/scripts/analyze-pr-build.js</span>
-<span class="pl-mi1">+++ b/scripts/analyze-pr-build.js</span>
-<span class="pl-mdr">@@ -76,6 +76,7 @@</span> async function analyzePR(buildDirectory, config) {
-     if (config.dry_run) {
-       console.warn(`Dry-run! Not actually posting any comment to ${prUrl}`);
-     } else {
-<span class="pl-mi1"><span class="pl-mi1">+</span>      console.log(fullComment);</span>
-       if (!config.github_token) {
-         throw new Error("No 'github_token' so no posting of comments");
-       }</pre></div>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-03-12T22:02:03.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Move guide to module: scroll anchoring.]]></title>
@@ -172,7 +99,7 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <title type="html"><![CDATA[Organize SVG into Tutorials, Guides, and Reference]]></title>
         <id>https://github.com/mdn/content/pull/38589</id>
         <link href="https://github.com/mdn/content/pull/38589"/>
-        <updated>2025-03-13T09:19:17.000Z</updated>
+        <updated>2025-03-13T12:50:46.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Moves SVG guides, and reference into subfolders</h3>
 <div class="highlight highlight-source-diff notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="- svg/applying_svg_effects_to_html_content/index.md
 + svg/guides/applying_svg_effects_to_html_content/index.md
@@ -337,7 +264,7 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <title type="html"><![CDATA[ci(cspell-bot): group words by file to reduce log size]]></title>
         <id>https://github.com/mdn/content/pull/38575</id>
         <link href="https://github.com/mdn/content/pull/38575"/>
-        <updated>2025-03-13T02:55:35.000Z</updated>
+        <updated>2025-03-13T12:19:39.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Problem</h2>
 <p dir="auto">In the weekly <a href="https://github.com/mdn/content/blob/main/.github/workflows/spelling-check-bot.yml#L1">spelling check bot</a>, the current scheme of reporting each word on a separate line with corresponding file is generating massive logs. If someone adds a different version of lorem ipsum then it breaks the GitHub workflow with an error</p>
 <blockquote>
@@ -345,7 +272,7 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
 </blockquote>
 <p dir="auto"><a href="https://github.com/mdn/content/actions/runs/13753835872/job/38458187038#step:5:876">https://github.com/mdn/content/actions/runs/13753835872/job/38458187038#step:5:876</a></p>
 <blockquote>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Njc2MTQsIm5iZiI6MTc0MTg2NzMxNCwicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDEyMDE1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZhOGE0OWZiOTI1M2IwMDVlZWQxZDNmNTc4N2QwOTU4Yjg3OGJiZDNhYWJmZTI0ZmFkMDRhZWQ0MmU3OTY3OTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.m4Dej5R3Y4n94rqLgN3BBF5baeUWVQ1SlCM7veVXfs4"><img src="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4Njc2MTQsIm5iZiI6MTc0MTg2NzMxNCwicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDEyMDE1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZhOGE0OWZiOTI1M2IwMDVlZWQxZDNmNTc4N2QwOTU4Yjg3OGJiZDNhYWJmZTI0ZmFkMDRhZWQ0MmU3OTY3OTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.m4Dej5R3Y4n94rqLgN3BBF5baeUWVQ1SlCM7veVXfs4" alt="1" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4NzE1MTQsIm5iZiI6MTc0MTg3MTIxNCwicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDEzMDY1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWM2MTJjN2E0NzVjNWU4ODA2YjE0NWU2MmUzMWI4ODkwNmQyMjFiZmNjZmQ2ZGQxMjcyN2IzOTUxNjU1OGIwNTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.t3Zf54FkUpF2zGYareen1u1NsqgNl5gMjpbD3-zEjr8"><img src="https://private-user-images.githubusercontent.com/87750369/421295879-47eb3973-a2a0-4b67-a0d5-6e46d54c992d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDE4NzE1MTQsIm5iZiI6MTc0MTg3MTIxNCwicGF0aCI6Ii84Nzc1MDM2OS80MjEyOTU4NzktNDdlYjM5NzMtYTJhMC00YjY3LWEwZDUtNmU0NmQ1NGM5OTJkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzEzVDEzMDY1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWM2MTJjN2E0NzVjNWU4ODA2YjE0NWU2MmUzMWI4ODkwNmQyMjFiZmNjZmQ2ZGQxMjcyN2IzOTUxNjU1OGIwNTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.t3Zf54FkUpF2zGYareen1u1NsqgNl5gMjpbD3-zEjr8" alt="1" style="max-width: 100%;"></a></p>
 </blockquote>
 <h2 dir="auto">Solution</h2>
 <p dir="auto">Instead of having file-word combinations, have file-word<strong>s</strong> combinations. That is, list a file path followed by the list of unknown words in it. It will reduce <code class="notranslate">files</code> x <code class="notranslate">words</code> lines to only <code class="notranslate">files</code>.</p>
@@ -420,7 +347,7 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <title type="html"><![CDATA[Fix up COOP HTTP header errors]]></title>
         <id>https://github.com/mdn/content/pull/38568</id>
         <link href="https://github.com/mdn/content/pull/38568"/>
-        <updated>2025-03-12T18:07:24.000Z</updated>
+        <updated>2025-03-13T12:50:45.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">There is a typo in the description for the HTTP COOP header, for the case of opening a page in a popup (using <code class="notranslate">window.open()</code> that makes the table wrong.</p>
 <p dir="auto">The steps come from <a href="https://html.spec.whatwg.org/multipage/browsers.html#check-browsing-context-group-switch-coop-value-popup" rel="nofollow">https://html.spec.whatwg.org/multipage/browsers.html#check-browsing-context-group-switch-coop-value-popup</a>. This directly matches the spec (I suspect I tried to invert the logic originally, hence the mismatch).</p>]]></content>
         <author>
@@ -458,7 +385,7 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <title type="html"><![CDATA[Reduce SIMPLE in HTTP docs]]></title>
         <id>https://github.com/mdn/content/pull/38565</id>
         <link href="https://github.com/mdn/content/pull/38565"/>
-        <updated>2025-03-11T11:53:25.000Z</updated>
+        <updated>2025-03-13T12:50:44.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">there are "simple requests", but removed the occurrences that seemed removable</p>]]></content>
         <author>
             <name>estelle</name>
@@ -496,88 +423,46 @@ Values that have a decimal point followed by zero are valid. For example: "5.0"<
         <published>2025-03-10T22:56:26.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[chore(ia): Organize HTTP docs]]></title>
-        <id>https://github.com/mdn/content/pull/38555</id>
-        <link href="https://github.com/mdn/content/pull/38555"/>
-        <updated>2025-03-13T11:17:05.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Moving the HTTP docs:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="├── guides
-│   ├── authentication
-│   ├── browser_detection_using_the_user_agent
-│   ├── caching
-│   ├── client_hints
-│   ├── compression
-│   ├── conditional_requests
-│   ├── connection_management_in_http_1.x
-│   ├── content_negotiation
-│   ├── cookies
-│   ├── cors
-│   ├── cross-origin_resource_policy
-│   ├── csp
-│   ├── evolution_of_http
-│   ├── index.md
-│   ├── messages
-│   ├── mime_types
-│   ├── network_error_logging
-│   ├── overview
-│   ├── permissions_policy
-│   ├── protocol_upgrade_mechanism
-│   ├── proxy_servers_and_tunneling
-│   ├── range_requests
-│   ├── redirections
-│   └── session
-├── index.md
-└── reference
-    ├── headers
-    ├── index.md
-    ├── methods
-    ├── resources_and_specifications
-    └── status"><pre class="notranslate"><code class="notranslate">├── guides
-│   ├── authentication
-│   ├── browser_detection_using_the_user_agent
-│   ├── caching
-│   ├── client_hints
-│   ├── compression
-│   ├── conditional_requests
-│   ├── connection_management_in_http_1.x
-│   ├── content_negotiation
-│   ├── cookies
-│   ├── cors
-│   ├── cross-origin_resource_policy
-│   ├── csp
-│   ├── evolution_of_http
-│   ├── index.md
-│   ├── messages
-│   ├── mime_types
-│   ├── network_error_logging
-│   ├── overview
-│   ├── permissions_policy
-│   ├── protocol_upgrade_mechanism
-│   ├── proxy_servers_and_tunneling
-│   ├── range_requests
-│   ├── redirections
-│   └── session
-├── index.md
-└── reference
-    ├── headers
-    ├── index.md
-    ├── methods
-    ├── resources_and_specifications
-    └── status
-</code></pre></div>
-<p dir="auto"><strong>Discussion:</strong></p>
-<ul dir="auto">
-<li><a href="https://github.com/orgs/mdn/discussions/776#discussion-7882433">https://github.com/orgs/mdn/discussions/776#discussion-7882433</a></li>
-</ul>
-<p dir="auto"><strong>Tracker:</strong></p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2857789700" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/637" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/637/hovercard" href="https://github.com/mdn/mdn/issues/637">mdn/mdn#637</a></li>
-</ul>]]></content>
+        <title type="html"><![CDATA[Improve MouseEvent.button]]></title>
+        <id>https://github.com/mdn/content/pull/38543</id>
+        <link href="https://github.com/mdn/content/pull/38543"/>
+        <updated>2025-03-09T12:03:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/6667599?u=c6264c34285a2083e0d17bed6ba44d0acfcfd11b&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Clarify that the <code class="notranslate">button</code> property is used to indicate which button is released (for <code class="notranslate">mouseup</code> events, for example), not only which button is pressed.</p>
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
         <author>
-            <name>bsmth</name>
-            <email>bsmth@noreply.github.com</email>
-            <uri>https://github.com/bsmth</uri>
+            <name>mikecat</name>
+            <email>mikecat@noreply.github.com</email>
+            <uri>https://github.com/mikecat</uri>
         </author>
-        <published>2025-03-10T16:48:10.000Z</published>
+        <published>2025-03-09T12:02:04.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[simplify WritableStream example]]></title>
+        <id>https://github.com/mdn/content/pull/38536</id>
+        <link href="https://github.com/mdn/content/pull/38536"/>
+        <updated>2025-03-11T00:15:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/6856458?u=215e33360b9ddfee4db978bab8a275a39972aa9f&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The example is needlessly complex. It converts a string to a <code class="notranslate">Uint8Array</code>, then writes each byte of the array separately, and reconstructs the message later. It could simply send the string.  Streams are confusing enough. The examples shouldn't add to that.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">I want developers to be able to understand essential concepts of streams and JavaScript clearly.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The example refers to the bytes within a <code class="notranslate">Uint8Array</code> as "chunks". They are just numbers. This is confusing. The confusion is eliminated by simply writing the message as a string to the stream.</p>]]></content>
+        <author>
+            <name>phoddie</name>
+            <email>phoddie@noreply.github.com</email>
+            <uri>https://github.com/phoddie</uri>
+        </author>
+        <published>2025-03-08T23:59:57.000Z</published>
     </entry>
 </feed>
