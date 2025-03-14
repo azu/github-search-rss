@@ -2,11 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/wintercg.rss</id>
     <title>org:wintercg Issues</title>
-    <updated>2025-03-14T14:01:25.035Z</updated>
+    <updated>2025-03-14T15:01:26.354Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/wintercg.rss"/>
     <subtitle>org:wintercg Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Controlling & inform ALPN protocol]]></title>
+        <id>https://github.com/wintercg/fetch-workstream/issues/9</id>
+        <link href="https://github.com/wintercg/fetch-workstream/issues/9"/>
+        <updated>2025-03-14T14:04:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1148376?u=97348b862d4820275f7e7567ad64a72edfec1443&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Just like reading <code class="notranslate">status</code>, <code class="notranslate">statusText</code> and final <code class="notranslate">url</code>  i also wish there where a <code class="notranslate">protocol</code> information on <code class="notranslate">Response</code> object itself.<br>
+i want to know if the network call that was used when fetching some resource did decide to use <code class="notranslate">http/1.1</code> <code class="notranslate">http/2</code> or any other.</p>
+<p dir="auto">likewise i which i could also control what protocol should be used or sending a preferred ordered. most gRPC applications do not support <code class="notranslate">http/1.1</code> which is the default protocol being used with fetch stuff with standard fetch api.</p>
+<p dir="auto">A gRPC service i used did support both both 1.1 and 2<br>
+But when i made a request with <code class="notranslate">fetch</code> to that server, it responded with 426 status saying basically saying: http/1.1 is not supported, use h2 instead</p>
+<p dir="auto">if it had only supported h2 then that would have been a different story</p>
+<p dir="auto">i which i could do something like</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="new Request(url, { 
+  // working similar to Content Negotiation headers
+  protocol: &quot;http/2=1; http/1.1=0.5, */*;q=0.2&quot;,
+
+  // or
+  protocol: ['h2', 'http/1.1', '*']
+}) "><pre class="notranslate"><span class="pl-k">new</span> <span class="pl-v">Request</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> 
+  <span class="pl-c">// working similar to Content Negotiation headers</span>
+  <span class="pl-c1">protocol</span>: <span class="pl-s">"http/2=1; http/1.1=0.5, */*;q=0.2"</span><span class="pl-kos">,</span>
+
+  <span class="pl-c">// or</span>
+  <span class="pl-c1">protocol</span>: <span class="pl-kos">[</span><span class="pl-s">'h2'</span><span class="pl-kos">,</span> <span class="pl-s">'http/1.1'</span><span class="pl-kos">,</span> <span class="pl-s">'*'</span><span class="pl-kos">]</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span> </pre></div>]]></content>
+        <author>
+            <name>jimmywarting</name>
+            <email>jimmywarting@noreply.github.com</email>
+            <uri>https://github.com/jimmywarting</uri>
+        </author>
+        <published>2025-03-14T14:04:25.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MessageChannel and MessagePort]]></title>
         <id>https://github.com/wintercg/proposal-minimum-common-api/issues/85</id>
@@ -608,18 +640,5 @@ globalThis.test(&quot;assert works correctly&quot;, () =&gt; {
             <uri>https://github.com/KhafraDev</uri>
         </author>
         <published>2024-02-09T04:01:26.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Write mini test suite?]]></title>
-        <id>https://github.com/wintercg/proposal-cli-api/issues/16</id>
-        <link href="https://github.com/wintercg/proposal-cli-api/issues/16"/>
-        <updated>2024-02-09T02:26:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/19228318?u=eea29901f58d6357f0fc2992747d0b4b80d23c8e&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Further future thing, but would be very nice to have, especially for more low-level implementations like env atm.</p>]]></content>
-        <author>
-            <name>CanadaHonk</name>
-            <email>CanadaHonk@noreply.github.com</email>
-            <uri>https://github.com/CanadaHonk</uri>
-        </author>
-        <published>2024-02-09T02:26:14.000Z</published>
     </entry>
 </feed>
