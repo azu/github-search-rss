@@ -2,11 +2,39 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-03-14T22:01:17.286Z</updated>
+    <updated>2025-03-14T23:01:26.123Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove anti-a11y preventDefault example]]></title>
+        <id>https://github.com/mdn/content/pull/38649</id>
+        <link href="https://github.com/mdn/content/pull/38649"/>
+        <updated>2025-03-14T22:53:49.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This example is too overengineered to be illustrative for <code class="notranslate">preventDefault</code>. It's also fully replaced by constraint validation.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27478.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1769785671" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/27478" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/27478/hovercard" href="https://github.com/mdn/content/issues/27478">#27478</a></p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2025-03-14T22:51:56.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[OpenSearch is not a plugin; mention Chrome activation]]></title>
+        <id>https://github.com/mdn/content/pull/38648</id>
+        <link href="https://github.com/mdn/content/pull/38648"/>
+        <updated>2025-03-14T22:34:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #23987.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1562631112" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/23987" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/23987/hovercard" href="https://github.com/mdn/content/issues/23987">#23987</a>.</p>
+<p dir="auto">The current content is worded as if OpenSearch is a custom browser plugin. That may be how it's implemented in Firefox, but not how it works generally—it's more like a PWA.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2025-03-14T22:32:36.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Make translate3d() interactive example code valid]]></title>
         <id>https://github.com/mdn/content/pull/38647</id>
@@ -344,65 +372,5 @@ reorder a few things on the landing page.</p>
             <uri>https://github.com/dletorey</uri>
         </author>
         <published>2025-03-13T16:59:06.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ci(system-file-changes): pass if author/actor is an admin]]></title>
-        <id>https://github.com/mdn/content/pull/38610</id>
-        <link href="https://github.com/mdn/content/pull/38610"/>
-        <updated>2025-03-14T11:11:05.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Prevents the <code class="notranslate">system-file-changes</code> workflow from failing, if both PR author and actor are admin.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Reduces noise when admins update system files, and reduces the chances of missing other failing workflows.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Verified as follows:</p>
-<ul dir="auto">
-<li>Temporarily added <code class="notranslate">pull_request</code> trigger, see: <a href="https://github.com/mdn/content/actions/runs/13838682590/job/38720221491">https://github.com/mdn/content/actions/runs/13838682590/job/38720221491</a></li>
-<li>Manually ran:
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="AUTHOR=&quot;mdn-bot&quot;
-AUTHOR_PERMISSION=$(gh api https://api.github.com/repos/mdn/content/collaborators/$AUTHOR/permission --jq .permission)
-
-if [ &quot;$AUTHOR_PERMISSION&quot; != &quot;admin&quot; ]; then
- echo &quot;PR author ($AUTHOR) is not an admin, please ping someone for a review.&quot;
-fi
-# Output: PR author (mdn-bot) is not an admin, please ping someone for a review."><pre class="notranslate">AUTHOR=<span class="pl-s"><span class="pl-pds">"</span>mdn-bot<span class="pl-pds">"</span></span>
-AUTHOR_PERMISSION=<span class="pl-s"><span class="pl-pds">$(</span>gh api https://api.github.com/repos/mdn/content/collaborators/<span class="pl-smi">$AUTHOR</span>/permission --jq .permission<span class="pl-pds">)</span></span>
-
-<span class="pl-k">if</span> [ <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$AUTHOR_PERMISSION</span><span class="pl-pds">"</span></span> <span class="pl-k">!=</span> <span class="pl-s"><span class="pl-pds">"</span>admin<span class="pl-pds">"</span></span> ]<span class="pl-k">;</span> <span class="pl-k">then</span>
- <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>PR author (<span class="pl-smi">$AUTHOR</span>) is not an admin, please ping someone for a review.<span class="pl-pds">"</span></span>
-<span class="pl-k">fi</span>
-<span class="pl-c"><span class="pl-c">#</span> Output: PR author (mdn-bot) is not an admin, please ping someone for a review.</span></pre></div>
-</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-03-13T15:32:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Guide rewrite: z-index and stacking context]]></title>
-        <id>https://github.com/mdn/content/pull/38601</id>
-        <link href="https://github.com/mdn/content/pull/38601"/>
-        <updated>2025-03-13T04:19:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Rewrote two guides in these two files:</p>
-<ul dir="auto">
-<li>files/en-us/web/css/css_positioned_layout/stacking_context</li>
-<li>/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index</li>
-</ul>
-<p dir="auto">Otherwise, just updated links to all the guides in the CSS positioned layout module within that section.</p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2025-03-13T04:13:32.000Z</published>
     </entry>
 </feed>
