@@ -2,11 +2,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2025-03-17T22:01:16.293Z</updated>
+    <updated>2025-03-17T23:01:28.562Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Web Audio AudioContext "interrupted" state]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1069</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1069"/>
+        <updated>2025-03-17T22:15:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/80070607?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting a TAG review of AudioContext "interrupted" state.</p>
+<p dir="auto">The <a href="https://webaudio.github.io/web-audio-api/" rel="nofollow">Web Audio API</a> is widely used to add advanced audio capabilities to web applications, like web-based games and music applications. One of the API's features is the <a href="https://webaudio.github.io/web-audio-api/#AudioContext" rel="nofollow">AudioContext </a>interface, which represents an audio graph. An AudioContext can find itself in one of three states: <a href="https://webaudio.github.io/web-audio-api/#dom-audiocontextstate-suspended" rel="nofollow">"suspended"</a>, <a href="https://webaudio.github.io/web-audio-api/#dom-audiocontextstate-running" rel="nofollow">"running"</a>, or <a href="https://webaudio.github.io/web-audio-api/#dom-audiocontextstate-closed" rel="nofollow">"closed"</a>. Once an AudioContext is in the "running" state, it can only pause media playback by transitioning to the "suspended" state when, and only when, user code calls <a href="https://webaudio.github.io/web-audio-api/#dom-audiocontext-suspend" rel="nofollow">AudioContext.suspend()</a> on this AudioContext. However, there are situations where we might want to let the User Agent (UA) decide when to interrupt playback - e.g., the proposed <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/IframeMediaPause/iframe_media_pausing.md">"media-playback-while-not-visible" permission policy</a>, the proposed <a href="https://w3c.github.io/audio-session/" rel="nofollow">Audio Session API</a>, or during a phone call where the calling application will need exclusive access to the audio hardware. To support these scenarios, we propose adding a new "interrupted" state to the <a href="https://webaudio.github.io/web-audio-api/#enumdef-audiocontextstate" rel="nofollow">AudioContextState</a> enum.</p>
+<ul dir="auto">
+<li>Explainer: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/AudioContextInterruptedState/explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/AudioContextInterruptedState/explainer.md</a></li>
+<li>Specification: <a href="https://webaudio.github.io/web-audio-api/#dom-audiocontextstate-interrupted" rel="nofollow">https://webaudio.github.io/web-audio-api/#dom-audiocontextstate-interrupted</a></li>
+<li>WPT Tests: None</li>
+<li>User research: None</li>
+<li>Security and Privacy self-review: we have addressed concerns related to <a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data" rel="nofollow">question 2.2 </a> during discussions in the WG and have limited the situations where the transition <code class="notranslate">"suspended" -&gt; "interrupted"</code> should happen.</li>
+<li>GitHub repo: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1005723462" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-audio-api/issues/2392" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-audio-api/issues/2392/hovercard" href="https://github.com/WebAudio/web-audio-api/issues/2392">WebAudio/web-audio-api#2392</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/hoch/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/hoch">@hoch</a>, Google, editor</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/padenot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/padenot">@padenot</a>, Mozilla, editor</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/gabrielsanbrito/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/gabrielsanbrito">@gabrielsanbrito</a>, Microsoft, writer</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Microsoft</li>
+<li>Multi-stakeholder support³:
+<ul dir="auto">
+<li>Chromium comments: positive</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2565831331" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1083" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1083/hovercard" href="https://github.com/mozilla/standards-positions/issues/1083">mozilla/standards-positions#1083</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2565848732" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/410" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/410/hovercard" href="https://github.com/WebKit/standards-positions/issues/410">WebKit/standards-positions#410</a></li>
+</ul>
+</li>
+<li>Status/issue trackers for implementations: <a href="https://chromestatus.com/feature/5172068166139904" rel="nofollow">https://chromestatus.com/feature/5172068166139904</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Previous early design review, if any: <a href="https://github.com/w3ctag/design-reviews/issues/####">https://github.com/w3ctag/design-reviews/issues/####</a></li>
+<li>Relevant time constraints or deadlines:</li>
+<li>The group where the work on this specification is currently being done: <a href="https://www.w3.org/groups/wg/audio/" rel="nofollow">Audio Working Group</a></li>
+<li>The group where standardization of this work is intended to be done (if different from the current group):</li>
+<li>Major unresolved issues with or opposition to this specification:</li>
+<li>This work is being funded by: Microsoft</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">This specification has already reached consensus in Audio WG and has been merged to the <a href="https://webaudio.github.io/web-audio-api/#dom-audiocontextstate-interrupted" rel="nofollow">Web Audio specification</a>. Regardless, we would like TAG to do a horizontal review on the "interrupted" state feature.</p>
+<p dir="auto">Thank you!</p>]]></content>
+        <author>
+            <name>gabrielsanbrito</name>
+            <email>gabrielsanbrito@noreply.github.com</email>
+            <uri>https://github.com/gabrielsanbrito</uri>
+        </author>
+        <published>2025-03-17T22:15:40.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CSS Values and Units: sibling-count() and sibling-index()]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1068</id>
@@ -970,63 +1022,5 @@ Duplicate of #</p>]]></content>
             <uri>https://github.com/shhnjk</uri>
         </author>
         <published>2025-02-11T23:47:20.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[WebRTC Encoded Transform Timestamps]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1049</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1049"/>
-        <updated>2025-03-17T18:10:16.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/13046831?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
-<p dir="auto">I'm requesting an early TAG design review of WebRTC Encoded Transform Timestamps.</p>
-<p dir="auto">Exposure of capture timestamp and receive timestamp at the encoded frame level, for easier computation of delays at the frame level.</p>
-<ul dir="auto">
-<li>Explainer¹: <a href="https://github.com/guidou/webrtc-encoded-transform/blob/master/timestamps.md">https://github.com/guidou/webrtc-encoded-transform/blob/master/timestamps.md</a></li>
-<li>User research: N/A</li>
-<li>Security and Privacy self-review²: <a href="https://github.com/guidou/webrtc-encoded-transform/blob/master/timestamp_sp_questionnaire.md">https://github.com/guidou/webrtc-encoded-transform/blob/master/timestamp_sp_questionnaire.md</a></li>
-<li>GitHub repo:
-<ul dir="auto">
-<li><a href="https://github.com/w3c/webrtc-encoded-transform/pull/237/files">https://github.com/w3c/webrtc-encoded-transform/pull/237/files</a></li>
-<li><a href="https://github.com/w3c/webrtc-encoded-transform/pull/228/files">https://github.com/w3c/webrtc-encoded-transform/pull/228/files</a></li>
-</ul>
-</li>
-<li>Primary contacts:
-<ul dir="auto">
-<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/guidou/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/guidou">@guidou</a>, Google</li>
-</ul>
-</li>
-<li>Organization/project driving the design: Google</li>
-<li>Multi-stakeholder feedback³:
-<ul dir="auto">
-<li>Chromium comments: Authors of the proposal.</li>
-<li>Mozilla comments:<br>
--See <a href="https://github.com/w3c/webrtc-encoded-transform/pull/237" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webrtc-encoded-transform/pull/237/hovercard">PR review for receiveTime</a><br>
--See <a href="https://github.com/w3c/webrtc-encoded-transform/pull/228" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webrtc-encoded-transform/pull/228/hovercard">PR review for captureTime and senderCaptureTimeOffset</a></li>
-<li>WebKit comments:<br>
--See <a href="https://github.com/w3c/webrtc-encoded-transform/pull/237" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webrtc-encoded-transform/pull/237/hovercard">PR review for receiveTime</a><br>
--See <a href="https://github.com/w3c/webrtc-encoded-transform/pull/228" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webrtc-encoded-transform/pull/228/hovercard">PR review for captureTime and senderCaptureTimeOffset</a></li>
-</ul>
-</li>
-</ul>
-<p dir="auto">Further details:</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
-<li>The group where the incubation/design work on this is being done (or is intended to be done in the future): WebRTC WG</li>
-<li>The group where standardization of this work is intended to be done ("unknown" if not known): WebRTC WG</li>
-<li>Existing major pieces of multi-implementer review or discussion of this design:<br>
--See <a href="https://github.com/w3c/webrtc-encoded-transform/pull/237" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webrtc-encoded-transform/pull/237/hovercard">PR review for receiveTime</a><br>
--See <a href="https://github.com/w3c/webrtc-encoded-transform/pull/228" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webrtc-encoded-transform/pull/228/hovercard">PR review for captureTime and senderCaptureTimeOffset</a></li>
-<li>Major unresolved issues with or opposition to this design:
-<ul dir="auto">
-<li>Waiting for the adoption of <a href="https://datatracker.ietf.org/doc/draft-alvestrand-avtcore-abs-capture-time/" rel="nofollow">https://datatracker.ietf.org/doc/draft-alvestrand-avtcore-abs-capture-time/</a> by IETF, otherwise consensus in the WebRTC WG.</li>
-</ul>
-</li>
-<li>This work is being funded by: Google</li>
-</ul>]]></content>
-        <author>
-            <name>guidou</name>
-            <email>guidou@noreply.github.com</email>
-            <uri>https://github.com/guidou</uri>
-        </author>
-        <published>2025-02-07T16:37:27.000Z</published>
     </entry>
 </feed>
