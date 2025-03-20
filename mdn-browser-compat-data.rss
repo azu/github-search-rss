@@ -2,11 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-03-20T16:01:36.578Z</updated>
+    <updated>2025-03-20T17:01:35.009Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Update Deno data for api.Window]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/26265</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/26265"/>
+        <updated>2025-03-20T16:49:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Update Deno data for <code class="notranslate">api.Window</code>.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Mostly sets <code class="notranslate">version: false</code>.</p>
+<p dir="auto">Notable changes:</p>
+<ul dir="auto">
+<li><code class="notranslate">beforeunload_event</code> was added in v1.27 (<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/denoland/deno/commit/06ccb6d41e1b89bff587a6dbac698c912d1c1090/hovercard" href="https://github.com/denoland/deno/commit/06ccb6d41e1b89bff587a6dbac698c912d1c1090">denoland/deno@<tt>06ccb6d</tt></a>)</li>
+<li><code class="notranslate">blur</code> was not available in v1.24 (see <a href="https://github.com/denoland/deno/blob/v1.24/cli/dts/lib.deno.window.d.ts#L15">here</a>, verified by running <code class="notranslate">typeof self.blur</code>, which gives <code class="notranslate">undefined</code>)</li>
+<li><code class="notranslate">closed</code> is available since v1.0 (see <a href="https://github.com/denoland/deno/blob/v1.0.0/cli/js/lib.deno.window.d.ts#L16">here</a>)</li>
+<li><code class="notranslate">error_event</code> was added in v1.21 (<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/denoland/deno/commit/4d18f558e4cfebc5b8d9d594401e3ce74fc3226b/hovercard" href="https://github.com/denoland/deno/commit/4d18f558e4cfebc5b8d9d594401e3ce74fc3226b">denoland/deno@<tt>4d18f55</tt></a>)</li>
+<li><code class="notranslate">location</code> is actually available without runtime flag, but it does reflect the value of it.</li>
+<li><code class="notranslate">self</code> is available since v1.0 (see <a href="https://github.com/denoland/deno/blob/v1.0.0/cli/js/lib.deno.window.d.ts#L12">here</a>)</li>
+<li><code class="notranslate">window</code> is available since v1.0 (see <a href="https://github.com/denoland/deno/blob/v1.0.0/cli/js/lib.deno.window.d.ts#L11">here</a>)</li>
+</ul>
+<p dir="auto">Verified by running <code class="notranslate">Object.getOwnPropertyNames(self).filter(a =&gt; a[0] === a[0].toLowerCase()).sort()</code> in Deno 2.2.4, which seems to reflect <a href="https://github.com/denoland/deno/blob/60b502db80ea4524c8a5e316177f32329dc15a33/cli/tsc/dts/lib.deno.window.d.ts#L18-L72">https://github.com/denoland/deno/blob/60b502db80ea4524c8a5e316177f32329dc15a33/cli/tsc/dts/lib.deno.window.d.ts#L18-L72</a>.</p>
+<p dir="auto">Grouped diff:</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/495429/425093549-7d03646b-2a2c-4431-bb9f-3819f43654f1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0OTAzOTQsIm5iZiI6MTc0MjQ5MDA5NCwicGF0aCI6Ii80OTU0MjkvNDI1MDkzNTQ5LTdkMDM2NDZiLTJhMmMtNDQzMS1iYjlmLTM4MTlmNDM2NTRmMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDMyMFQxNzAxMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZjA1MzQ0MzkzN2I3M2I0NzY4NjVkYmI5OTJhOGI4NGE5NTQwYjEwYThkZjg0NGYyM2EwZGEzYjdjNWZhNTY5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.zOc5TFqmIL8Es9Y0qLa9NrY-ZOoKelkVUgUX8w3g4zI"><img width="616" alt="image" src="https://private-user-images.githubusercontent.com/495429/425093549-7d03646b-2a2c-4431-bb9f-3819f43654f1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0OTAzOTQsIm5iZiI6MTc0MjQ5MDA5NCwicGF0aCI6Ii80OTU0MjkvNDI1MDkzNTQ5LTdkMDM2NDZiLTJhMmMtNDQzMS1iYjlmLTM4MTlmNDM2NTRmMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDMyMFQxNzAxMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZjA1MzQ0MzkzN2I3M2I0NzY4NjVkYmI5OTJhOGI4NGE5NTQwYjEwYThkZjg0NGYyM2EwZGEzYjdjNWZhNTY5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.zOc5TFqmIL8Es9Y0qLa9NrY-ZOoKelkVUgUX8w3g4zI" style="max-width: 100%;"></a>
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2025-03-20T16:46:58.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Shared compression dictionaries]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/26257</id>
@@ -33,34 +65,6 @@
         <published>2025-03-19T14:45:41.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Remove PaymentInstruments API from BCD]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/26253</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/26253"/>
-        <updated>2025-03-19T11:15:22.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR removes the <code class="notranslate">PaymentInstruments</code> API from BCD. Per the <a href="https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/index.md#removal-of-irrelevant-features">data guidelines</a>, this feature can be considered irrelevant and may be removed from BCD accordingly. Even if the current data suggests that the feature is supported, lack of support has been confirmed by the <a href="https://mdn-bcd-collector.gooborg.com" rel="nofollow">mdn-bcd-collector</a> project (v10.12.11).</p>
-<p dir="auto">Tests Used: <a href="https://mdn-bcd-collector.gooborg.com/tests/api/PaymentInstruments" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/api/PaymentInstruments</a></p>]]></content>
-        <author>
-            <name>queengooborg</name>
-            <email>queengooborg@noreply.github.com</email>
-            <uri>https://github.com/queengooborg</uri>
-        </author>
-        <published>2025-03-19T11:14:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove subfeatures of CanMakePaymentEvent API from BCD]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/26252</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/26252"/>
-        <updated>2025-03-19T11:14:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR removes the unsupported subfeatures of the <code class="notranslate">CanMakePaymentEvent</code> API from BCD. Per the <a href="https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/index.md#removal-of-irrelevant-features">data guidelines</a>, this feature can be considered irrelevant and may be removed from BCD accordingly. Even if the current data suggests that the feature is supported, lack of support has been confirmed by the <a href="https://mdn-bcd-collector.gooborg.com" rel="nofollow">mdn-bcd-collector</a> project (v10.12.11).</p>
-<p dir="auto">Tests Used: <a href="https://mdn-bcd-collector.gooborg.com/tests/api/CanMakePaymentEvent" rel="nofollow">https://mdn-bcd-collector.gooborg.com/tests/api/CanMakePaymentEvent</a></p>]]></content>
-        <author>
-            <name>queengooborg</name>
-            <email>queengooborg@noreply.github.com</email>
-            <uri>https://github.com/queengooborg</uri>
-        </author>
-        <published>2025-03-19T11:14:28.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Update information about Samsung not supporting (hover: hover) correctly]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/26246</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/26246"/>
@@ -85,7 +89,7 @@
         <title type="html"><![CDATA[Add data points for nested pseudo-elements]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/26240</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/26240"/>
-        <updated>2025-03-18T16:18:48.000Z</updated>
+        <updated>2025-03-20T16:58:05.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 <p dir="auto">Chrome has added support for styling nested pseudo-elements, beginning in version 135 with <code class="notranslate">::after::marker</code> and <code class="notranslate">::before::marker</code>. See <a href="https://chromestatus.com/feature/5199947786616832" rel="nofollow">https://chromestatus.com/feature/5199947786616832</a>.</p>
@@ -103,29 +107,6 @@
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-03-17T13:58:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove the alternative name on appearance:base]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/26221</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/26221"/>
-        <updated>2025-03-19T15:12:59.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1152698?u=5ce323090a48b425ec70128365c96809699959f7&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">I'm removing the use of <code class="notranslate">alternative_name</code> on the <code class="notranslate">css.properties.appearance.base</code> sub-feature.</p>
-<p dir="auto">This alternative name is making the customizable-select feature look as wholly unsupported in the web-features repository when trying to update to BCD 5.7.2. See <a href="https://github.com/web-platform-dx/web-features/pull/2772/files#r1995736378">https://github.com/web-platform-dx/web-features/pull/2772/files#r1995736378</a></p>
-<p dir="auto">The reason is that web-features treats things like prefixes, partial implementations, and alternative names as clues that a feature is not fully supported.<br>
-I think it's up for discussion whether web-features should treat <code class="notranslate">alternative_name</code> as such, and the fix to remove this would be very easy. But, in this particular case, I think it's BCD that should be changed.</p>
-<p dir="auto">In <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2907970058" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/26171" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/26171/hovercard" href="https://github.com/mdn/browser-compat-data/pull/26171">#26171</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/chrisdavidmills/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/chrisdavidmills">@chrisdavidmills</a> said:</p>
-<blockquote>
-<p dir="auto">The <code class="notranslate">appearance</code> property <code class="notranslate">base-select</code> value (which is currently specified as <code class="notranslate">base</code>, but I think this might change soon).</p>
-</blockquote>
-<p dir="auto">Chris, do you know more about this? Has the value name changed? Should we just use <code class="notranslate">base-select</code> in BCD?</p>]]></content>
-        <author>
-            <name>captainbrosset</name>
-            <email>captainbrosset@noreply.github.com</email>
-            <uri>https://github.com/captainbrosset</uri>
-        </author>
-        <published>2025-03-14T17:01:43.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Chrome 125 + Safari 18.2 support startViewTransition() with object]]></title>
