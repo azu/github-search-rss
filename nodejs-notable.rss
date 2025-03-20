@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-03-20T14:01:28.254Z</updated>
+    <updated>2025-03-20T15:01:41.955Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -68,6 +68,41 @@ V8 to fix that.</p>
             <uri>https://github.com/BridgeAR</uri>
         </author>
         <published>2025-03-08T02:19:04.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[http: support HTTP[S]_PROXY environment variables in fetch]]></title>
+        <id>https://github.com/nodejs/node/pull/57165</id>
+        <link href="https://github.com/nodejs/node/pull/57165"/>
+        <updated>2025-03-20T14:35:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">When <code class="notranslate">NODE_USE_ENV_PROXY=1</code> is set, Node.js parses the <code class="notranslate">HTTP_PROXY</code>,<br>
+<code class="notranslate">HTTPS_PROXY</code> and <code class="notranslate">NO_PROXY</code> environment variables during startup, and<br>
+tunnels requests over the specified proxy.</p>
+<p dir="auto">This currently only affects requests sent over <code class="notranslate">fetch()</code>. Support for<br>
+other built-in <code class="notranslate">http</code> and <code class="notranslate">https</code> methods is under way.</p>
+<hr>
+<p dir="auto">This only tries to support <code class="notranslate">HTTP_PROXY</code> etc. environment variables directly instead of exposing the lower-level dispatcher setter and EnvHttpProxyAgent, but I think for many users, having the environment variables supported out of the box is already enough or more important to solve their headaches, while the lower-level utilities are less essential - many other language runtimes/command line tools only support these environment variables out of the box, without necessarily providing more utilities for further customization, and that seems enough for most people who are behind a proxy already.</p>
+<p dir="auto">The idea is that we can first make this handling opt-in via another environment variable (<code class="notranslate">NODE_USE_ENV_PROXY</code> here, or we can use others if there are better names). And in the future we can enable this flag by default, as this is still opt-in under well-known environment variables <code class="notranslate">HTTP_PROXY</code>. I think some investigation is needed to make sure that enabling it by default would not step on the toes of other libraries/tools already recognizing these environment variables and do their own thing.</p>
+<p dir="auto"><del>This requires a patch in undici to make the EnvHttpProxyAgent usable from the Node.js bundle, which I included locally in this PR and a locally built bundle for demonstration purpose. I opened a separate PR to undici to see what's the best way to patch it <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2868875971" data-permission-text="Title is private" data-url="https://github.com/nodejs/undici/issues/4064" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/undici/pull/4064/hovercard" href="https://github.com/nodejs/undici/pull/4064">nodejs/undici#4064</a> </del> Patch merged into undici and rolled into the main branch.</p>
+<p dir="auto">This is only an initial implementation. The high-level plan is:</p>
+<ul dir="auto">
+<li>Support proxy environment variables in <code class="notranslate">fetch</code> behind <code class="notranslate">NODE_USE_ENV_PROXY</code> as semver-minor (what this PR does)</li>
+<li>Support it in <code class="notranslate">http.request</code> etc. behind <code class="notranslate">NODE_USE_ENV_PROXY</code> as semver-minor (likely just adding in the socket/header rewrite in the default implementation of <code class="notranslate">http.Agent</code> constructor, behind <code class="notranslate">NODE_USE_ENV_PROXY</code>, so that custom agents also get this behavior in their default implementation when the environment variable is passed in)</li>
+<li>Enabling it by default for fetch as semver-major (this has very little interop risk with existing libraries, potentially), but can still be disabled using <code class="notranslate">NODE_USE_ENV_PROXY=0</code></li>
+<li>Enabling it by default for <code class="notranslate">http.request</code> as semver-major (this has more interop risk with existing libraries patching the global agent, so we may not end up doing it and may end up always requiring NODE_USE_ENV_PROXY)</li>
+</ul>
+<p dir="auto">Some TODOs that will need to be fixed in undici for <code class="notranslate">fetch</code>:</p>
+<ul dir="auto">
+<li>Support non-tunneling HTTP proxy, to align with curl: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2897184931" data-permission-text="Title is private" data-url="https://github.com/nodejs/undici/issues/4083" data-hovercard-type="issue" data-hovercard-url="/nodejs/undici/issues/4083/hovercard" href="https://github.com/nodejs/undici/issues/4083">nodejs/undici#4083</a></li>
+<li>Support keep-alive, to align with curl: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2904678459" data-permission-text="Title is private" data-url="https://github.com/nodejs/undici/issues/4086" data-hovercard-type="issue" data-hovercard-url="/nodejs/undici/issues/4086/hovercard" href="https://github.com/nodejs/undici/issues/4086">nodejs/undici#4086</a></li>
+</ul>
+<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1373523504" data-permission-text="Title is private" data-url="https://github.com/nodejs/undici/issues/1650" data-hovercard-type="issue" data-hovercard-url="/nodejs/undici/issues/1650/hovercard" href="https://github.com/nodejs/undici/issues/1650">nodejs/undici#1650</a></p>
+]]></content>
+        <author>
+            <name>joyeecheung</name>
+            <email>joyeecheung@noreply.github.com</email>
+            <uri>https://github.com/joyeecheung</uri>
+        </author>
+        <published>2025-02-21T11:52:16.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[src: add config file support]]></title>
@@ -268,9 +303,9 @@ http.createServer((req, res) =&gt; {
   <span class="pl-k">new</span> <span class="pl-v">Worker</span><span class="pl-kos">(</span><span class="pl-s1">__filename</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">`RafaelGSS (<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">++</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>)`</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span></pre></div>
 <p dir="auto">On Node.js startup if you monitor using <code class="notranslate">htop</code> you should be able to see:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0Nzk1ODgsIm5iZiI6MTc0MjQ3OTI4OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE0MDEyOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZmNDJlZmNmMTZkNWI4NmE3NjliNDMxMWE1NDQ5OTI1MDYxNmM0OGNlN2VlNWMwMGViODBjZjNkNTVjYzBjMTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.wqZ0EfZaRcbho63om3rUVEZ3vMHvYenFoZqftgVxXn8"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0Nzk1ODgsIm5iZiI6MTc0MjQ3OTI4OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE0MDEyOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZmNDJlZmNmMTZkNWI4NmE3NjliNDMxMWE1NDQ5OTI1MDYxNmM0OGNlN2VlNWMwMGViODBjZjNkNTVjYzBjMTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.wqZ0EfZaRcbho63om3rUVEZ3vMHvYenFoZqftgVxXn8" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0ODMyMDEsIm5iZiI6MTc0MjQ4MjkwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE1MDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJjYzY2NWIxZGVhMTg4ZGFkZjhiYjY0MTI0YTYxNDk1MDY0NGRkZGM5ZTZjNWM5YWQ2NzI2ZGE0OWIxNDZhOTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.VjXcqsemzpMM6S8ezlCBlx3G6MV0SBqEHDoIvngmbXw"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0ODMyMDEsIm5iZiI6MTc0MjQ4MjkwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE1MDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJjYzY2NWIxZGVhMTg4ZGFkZjhiYjY0MTI0YTYxNDk1MDY0NGRkZGM5ZTZjNWM5YWQ2NzI2ZGE0OWIxNDZhOTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.VjXcqsemzpMM6S8ezlCBlx3G6MV0SBqEHDoIvngmbXw" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto">Then once it gets a request:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0Nzk1ODgsIm5iZiI6MTc0MjQ3OTI4OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE0MDEyOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc4OTAxYmFlMTU0ODQwZTYzYTRjZDU3ODM1MmFiNGJhNjQ4MzU0NWVmNTFjODdkMjlhMWI0NWFkOTA3ZDY3MWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-58oSrqVbHC_VvMF1PVyQXEmJSVtbPR4PI-356-F3hY"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0Nzk1ODgsIm5iZiI6MTc0MjQ3OTI4OCwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE0MDEyOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc4OTAxYmFlMTU0ODQwZTYzYTRjZDU3ODM1MmFiNGJhNjQ4MzU0NWVmNTFjODdkMjlhMWI0NWFkOTA3ZDY3MWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-58oSrqVbHC_VvMF1PVyQXEmJSVtbPR4PI-356-F3hY" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0ODMyMDEsIm5iZiI6MTc0MjQ4MjkwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE1MDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI4NDlmOWUyODE4YWIzODJlZDFmNGVkYTBkYjZjNGQzNTFjOTc2NDk0NzdkYzIwMzQ2ZmIxY2ZkOTM0ZDljY2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OuY-Bp7kCpGkOecRgBj9hFuX5NtJzIYDjIoEjoIpPYQ"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0ODMyMDEsIm5iZiI6MTc0MjQ4MjkwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIwVDE1MDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI4NDlmOWUyODE4YWIzODJlZDFmNGVkYTBkYjZjNGQzNTFjOTc2NDk0NzdkYzIwMzQ2ZmIxY2ZkOTM0ZDljY2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OuY-Bp7kCpGkOecRgBj9hFuX5NtJzIYDjIoEjoIpPYQ" alt="image" style="max-width: 100%;"></a></p>
 <blockquote>
 <p dir="auto"><code class="notranslate">V8Worker</code> and <code class="notranslate">libuv</code> threads number depends on the parameters &amp; environments</p>
 </blockquote>]]></content>
@@ -497,7 +532,7 @@ assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre cla
 <span class="pl-k">const</span> <span class="pl-s1">imported</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
 <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">imported</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span></pre></div>
 <p dir="auto">This complements the <code class="notranslate">module.register()</code> hooks - the new hooks fit better internally and cover all corners in the module graph; whereas <code class="notranslate">module.register()</code> previously could not cover <code class="notranslate">require()</code> while it was in-thread, and still cannot cover <code class="notranslate">createRequire()</code> after being moved off-thread.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0Nzk1ODgsIm5iZiI6MTc0MjQ3OTI4OCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMjBUMTQwMTI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjBhZmMyM2ZjZTk2M2ZkNDM0YzRhMDRlODYwMWI5NGQ1MmU1MDI0ODFmY2NkY2UxNDUxOGI3YzYzNzA0NjQxMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.4SkYmGXaXExqTxd4o8cSxbpxhB-nUYNCKZ6M-Jn6PGY"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0Nzk1ODgsIm5iZiI6MTc0MjQ3OTI4OCwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMjBUMTQwMTI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjBhZmMyM2ZjZTk2M2ZkNDM0YzRhMDRlODYwMWI5NGQ1MmU1MDI0ODFmY2NkY2UxNDUxOGI3YzYzNzA0NjQxMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.4SkYmGXaXExqTxd4o8cSxbpxhB-nUYNCKZ6M-Jn6PGY" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0ODMyMDEsIm5iZiI6MTc0MjQ4MjkwMSwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMjBUMTUwMTQxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjY3YjY2MjQwZTFlZjgwYWRhMjdmZWNiZjZmMjcyZTJkMjEwOTE4OWE5Y2I4ZjZiY2RhZmE5ZmM2NzY2ZDU3ZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.aBKAaE8Kqq5UmdkVQ5-AFL4pKaYLJjoIwTTgOVIUx7A"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI0ODMyMDEsIm5iZiI6MTc0MjQ4MjkwMSwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDMyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTAzMjBUMTUwMTQxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjY3YjY2MjQwZTFlZjgwYWRhMjdmZWNiZjZmMjcyZTJkMjEwOTE4OWE5Y2I4ZjZiY2RhZmE5ZmM2NzY2ZDU3ZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.aBKAaE8Kqq5UmdkVQ5-AFL4pKaYLJjoIwTTgOVIUx7A" style="max-width: 100%;"></a>
 <p dir="auto">They are also run in the same thread as the modules being loaded and where the hooks are registered, which means they are easier to debug (no more <code class="notranslate">console.log()</code> getting lost) and do not have the many deadlock issues haunting the <code class="notranslate">module.register()</code> hooks. The new API also takes functions directly so that it's easier for intermediate loader packages to take user options from files that the hooks can't be aware of, like many existing CJS monkey-patchers do.</p>
 <hr>
 <h4 dir="auto">Background</h4>
@@ -928,321 +963,5 @@ Certificates added:
             <uri>https://github.com/Llorx</uri>
         </author>
         <published>2024-11-01T11:51:28.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[cli: implement --trace-env and --trace-env-[js|native]-stack]]></title>
-        <id>https://github.com/nodejs/node/pull/55604</id>
-        <link href="https://github.com/nodejs/node/pull/55604"/>
-        <updated>2024-12-19T09:27:54.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This implements <code class="notranslate">--trace-env</code>, <code class="notranslate">--trace-env-js-stack</code> and <code class="notranslate">--trace-env-native-stack</code> CLI options that print information about any access to environment variables done in the current Node.js instance to stderr, including:</p>
-<ul dir="auto">
-<li>The environment variable reads that Node.js does internally.</li>
-<li>Writes in the form of <code class="notranslate">process.env.KEY = "SOME VALUE"</code>.</li>
-<li>Reads in the form of <code class="notranslate">process.env.KEY</code>.</li>
-<li>Definitions in the form of <code class="notranslate">Object.defineProperty(process.env, 'KEY', {...})</code>.</li>
-<li>Queries in the form of <code class="notranslate">Object.hasOwn(process.env, 'KEY')</code>,<br>
-<code class="notranslate">process.env.hasOwnProperty('KEY')</code> or <code class="notranslate">'KEY' in process.env</code>.</li>
-<li>Deletions in the form of <code class="notranslate">delete process.env.KEY</code>.</li>
-<li>Enumerations inf the form of <code class="notranslate">...process.env</code> or <code class="notranslate">Object.keys(process.env)</code>.</li>
-</ul>
-<p dir="auto">Only the names of the environment variables being accessed are printed. The values are not printed. To print the stack trace of the access, use <code class="notranslate">--trace-env-js-stack</code> and/or <code class="notranslate">--trace-env-native-stack</code>.</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cat env.js
-const foo = process.env.FOO;
-process.env.FOO = foo + &quot;foo&quot;;
-
-$ out/Release/node --trace-env env.js
-[--trace-env] get environment variable &quot;NODE_ICU_DATA&quot;
-[--trace-env] get environment variable &quot;OPENSSL_CONF&quot;
-[--trace-env] get environment variable &quot;NODE_EXTRA_CA_CERTS&quot;
-[--trace-env] get environment variable &quot;NODE_DEBUG_NATIVE&quot;
-[--trace-env] get environment variable &quot;NODE_COMPILE_CACHE&quot;
-[--trace-env] get environment variable &quot;NODE_NO_WARNINGS&quot;
-[--trace-env] get environment variable &quot;NODE_V8_COVERAGE&quot;
-[--trace-env] get environment variable &quot;NODE_DEBUG&quot;
-[--trace-env] get environment variable &quot;NODE_CHANNEL_FD&quot;
-[--trace-env] get environment variable &quot;NODE_UNIQUE_ID&quot;
-[--trace-env] get environment variable &quot;HOME&quot;
-[--trace-env] get environment variable &quot;NODE_PATH&quot;
-[--trace-env] get environment variable &quot;WATCH_REPORT_DEPENDENCIES&quot;
-[--trace-env] get environment variable &quot;FOO&quot;
-[--trace-env] set environment variable &quot;FOO&quot;"><pre class="notranslate"><code class="notranslate">$ cat env.js
-const foo = process.env.FOO;
-process.env.FOO = foo + "foo";
-
-$ out/Release/node --trace-env env.js
-[--trace-env] get environment variable "NODE_ICU_DATA"
-[--trace-env] get environment variable "OPENSSL_CONF"
-[--trace-env] get environment variable "NODE_EXTRA_CA_CERTS"
-[--trace-env] get environment variable "NODE_DEBUG_NATIVE"
-[--trace-env] get environment variable "NODE_COMPILE_CACHE"
-[--trace-env] get environment variable "NODE_NO_WARNINGS"
-[--trace-env] get environment variable "NODE_V8_COVERAGE"
-[--trace-env] get environment variable "NODE_DEBUG"
-[--trace-env] get environment variable "NODE_CHANNEL_FD"
-[--trace-env] get environment variable "NODE_UNIQUE_ID"
-[--trace-env] get environment variable "HOME"
-[--trace-env] get environment variable "NODE_PATH"
-[--trace-env] get environment variable "WATCH_REPORT_DEPENDENCIES"
-[--trace-env] get environment variable "FOO"
-[--trace-env] set environment variable "FOO"
-</code></pre></div>
-<details>
-<summary>See output of `--trace-env-js-stack`</summary>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="out/Release/node --trace-env-js-stack env.js
-[--trace-env] get environment variable &quot;NODE_ICU_DATA&quot;
-[--trace-env] get environment variable &quot;OPENSSL_CONF&quot;
-[--trace-env] get environment variable &quot;NODE_EXTRA_CA_CERTS&quot;
-[--trace-env] get environment variable &quot;NODE_DEBUG_NATIVE&quot;
-[--trace-env] get environment variable &quot;NODE_COMPILE_CACHE&quot;
-[--trace-env] get environment variable &quot;NODE_NO_WARNINGS&quot;
-
------ JavaScript stack trace -----
-
-1: setupWarningHandler (node:internal/process/pre_execution:263:17)
-2: prepareExecution (node:internal/process/pre_execution:102:3)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;NODE_V8_COVERAGE&quot;
-
------ JavaScript stack trace -----
-
-1: setupCodeCoverage (node:internal/process/pre_execution:333:19)
-2: prepareExecution (node:internal/process/pre_execution:107:3)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;NODE_DEBUG&quot;
-
------ JavaScript stack trace -----
-
-1: setupDebugEnv (node:internal/process/pre_execution:363:68)
-2: prepareExecution (node:internal/process/pre_execution:108:3)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;NODE_CHANNEL_FD&quot;
-
------ JavaScript stack trace -----
-
-1: setupChildProcessIpcChannel (node:internal/process/pre_execution:497:19)
-2: prepareExecution (node:internal/process/pre_execution:133:5)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;NODE_UNIQUE_ID&quot;
-
------ JavaScript stack trace -----
-
-1: initializeClusterIPC (node:internal/process/pre_execution:514:38)
-2: prepareExecution (node:internal/process/pre_execution:137:5)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;HOME&quot;
-
------ JavaScript stack trace -----
-
-1: node:internal/modules/cjs/loader:1782:57
-2: initializeCJS (node:internal/modules/cjs/loader:427:12)
-3: initializeCJSLoader (node:internal/process/pre_execution:590:3)
-4: setupUserModules (node:internal/process/pre_execution:155:3)
-5: prepareExecution (node:internal/process/pre_execution:148:5)
-6: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-7: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;NODE_PATH&quot;
-
------ JavaScript stack trace -----
-
-1: node:internal/modules/cjs/loader:1783:56
-2: initializeCJS (node:internal/modules/cjs/loader:427:12)
-3: initializeCJSLoader (node:internal/process/pre_execution:590:3)
-4: setupUserModules (node:internal/process/pre_execution:155:3)
-5: prepareExecution (node:internal/process/pre_execution:148:5)
-6: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-7: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable &quot;WATCH_REPORT_DEPENDENCIES&quot;
-
------ JavaScript stack trace -----
-
-1: node:internal/modules/cjs/loader:161:63
-2: node:internal/util:809:15
-3: reportModuleToWatchMode (node:internal/modules/cjs/loader:276:7)
-4: node:internal/modules/cjs/loader:1106:5
-5: traceSync (node:diagnostics_channel:322:14)
-6: wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
-7: executeUserEntryPoint (node:internal/modules/run_main:170:5)
-8: node:internal/main/run_main_module:36:49
-
-
-[--trace-env] get environment variable &quot;FOO&quot;
-
------ JavaScript stack trace -----
-
-1: /Users/joyee/projects/node/env.js:1:25
-2: node:internal/modules/cjs/loader:1546:14
-3: node:internal/modules/cjs/loader:1698:10
-4: node:internal/modules/cjs/loader:1303:32
-5: node:internal/modules/cjs/loader:1117:12
-6: traceSync (node:diagnostics_channel:322:14)
-7: wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
-8: executeUserEntryPoint (node:internal/modules/run_main:170:5)
-9: node:internal/main/run_main_module:36:49
-
-
-[--trace-env] set environment variable &quot;FOO&quot;
-
------ JavaScript stack trace -----
-
-1: /Users/joyee/projects/node/env.js:2:17
-2: node:internal/modules/cjs/loader:1546:14
-3: node:internal/modules/cjs/loader:1698:10
-4: node:internal/modules/cjs/loader:1303:32
-5: node:internal/modules/cjs/loader:1117:12
-6: traceSync (node:diagnostics_channel:322:14)
-7: wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
-8: executeUserEntryPoint (node:internal/modules/run_main:170:5)
-9: node:internal/main/run_main_module:36:49"><pre class="notranslate"><code class="notranslate">out/Release/node --trace-env-js-stack env.js
-[--trace-env] get environment variable "NODE_ICU_DATA"
-[--trace-env] get environment variable "OPENSSL_CONF"
-[--trace-env] get environment variable "NODE_EXTRA_CA_CERTS"
-[--trace-env] get environment variable "NODE_DEBUG_NATIVE"
-[--trace-env] get environment variable "NODE_COMPILE_CACHE"
-[--trace-env] get environment variable "NODE_NO_WARNINGS"
-
------ JavaScript stack trace -----
-
-1: setupWarningHandler (node:internal/process/pre_execution:263:17)
-2: prepareExecution (node:internal/process/pre_execution:102:3)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "NODE_V8_COVERAGE"
-
------ JavaScript stack trace -----
-
-1: setupCodeCoverage (node:internal/process/pre_execution:333:19)
-2: prepareExecution (node:internal/process/pre_execution:107:3)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "NODE_DEBUG"
-
------ JavaScript stack trace -----
-
-1: setupDebugEnv (node:internal/process/pre_execution:363:68)
-2: prepareExecution (node:internal/process/pre_execution:108:3)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "NODE_CHANNEL_FD"
-
------ JavaScript stack trace -----
-
-1: setupChildProcessIpcChannel (node:internal/process/pre_execution:497:19)
-2: prepareExecution (node:internal/process/pre_execution:133:5)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "NODE_UNIQUE_ID"
-
------ JavaScript stack trace -----
-
-1: initializeClusterIPC (node:internal/process/pre_execution:514:38)
-2: prepareExecution (node:internal/process/pre_execution:137:5)
-3: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-4: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "HOME"
-
------ JavaScript stack trace -----
-
-1: node:internal/modules/cjs/loader:1782:57
-2: initializeCJS (node:internal/modules/cjs/loader:427:12)
-3: initializeCJSLoader (node:internal/process/pre_execution:590:3)
-4: setupUserModules (node:internal/process/pre_execution:155:3)
-5: prepareExecution (node:internal/process/pre_execution:148:5)
-6: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-7: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "NODE_PATH"
-
------ JavaScript stack trace -----
-
-1: node:internal/modules/cjs/loader:1783:56
-2: initializeCJS (node:internal/modules/cjs/loader:427:12)
-3: initializeCJSLoader (node:internal/process/pre_execution:590:3)
-4: setupUserModules (node:internal/process/pre_execution:155:3)
-5: prepareExecution (node:internal/process/pre_execution:148:5)
-6: prepareMainThreadExecution (node:internal/process/pre_execution:47:10)
-7: node:internal/main/run_main_module:15:19
-
-
-[--trace-env] get environment variable "WATCH_REPORT_DEPENDENCIES"
-
------ JavaScript stack trace -----
-
-1: node:internal/modules/cjs/loader:161:63
-2: node:internal/util:809:15
-3: reportModuleToWatchMode (node:internal/modules/cjs/loader:276:7)
-4: node:internal/modules/cjs/loader:1106:5
-5: traceSync (node:diagnostics_channel:322:14)
-6: wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
-7: executeUserEntryPoint (node:internal/modules/run_main:170:5)
-8: node:internal/main/run_main_module:36:49
-
-
-[--trace-env] get environment variable "FOO"
-
------ JavaScript stack trace -----
-
-1: /Users/joyee/projects/node/env.js:1:25
-2: node:internal/modules/cjs/loader:1546:14
-3: node:internal/modules/cjs/loader:1698:10
-4: node:internal/modules/cjs/loader:1303:32
-5: node:internal/modules/cjs/loader:1117:12
-6: traceSync (node:diagnostics_channel:322:14)
-7: wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
-8: executeUserEntryPoint (node:internal/modules/run_main:170:5)
-9: node:internal/main/run_main_module:36:49
-
-
-[--trace-env] set environment variable "FOO"
-
------ JavaScript stack trace -----
-
-1: /Users/joyee/projects/node/env.js:2:17
-2: node:internal/modules/cjs/loader:1546:14
-3: node:internal/modules/cjs/loader:1698:10
-4: node:internal/modules/cjs/loader:1303:32
-5: node:internal/modules/cjs/loader:1117:12
-6: traceSync (node:diagnostics_channel:322:14)
-7: wrapModuleLoad (node:internal/modules/cjs/loader:218:24)
-8: executeUserEntryPoint (node:internal/modules/run_main:170:5)
-9: node:internal/main/run_main_module:36:49
-</code></pre></div>
-</details>
-]]></content>
-        <author>
-            <name>joyeecheung</name>
-            <email>joyeecheung@noreply.github.com</email>
-            <uri>https://github.com/joyeecheung</uri>
-        </author>
-        <published>2024-10-30T15:44:24.000Z</published>
     </entry>
 </feed>
