@@ -2,11 +2,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-03-21T04:01:32.495Z</updated>
+    <updated>2025-03-21T05:01:23.503Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix #38690: Explain persistence of registered content scripts across browsers]]></title>
+        <id>https://github.com/mdn/content/pull/38746</id>
+        <link href="https://github.com/mdn/content/pull/38746"/>
+        <updated>2025-03-21T05:00:10.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/113821248?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto"><strong>Extended Commit Description</strong></h3>
+<p dir="auto">This update improves the documentation for the <code class="notranslate">registerContentScripts</code> method by explicitly clarifying the persistence behavior of registered content scripts across different browsers.</p>
+<h4 dir="auto"><strong>Changes made:</strong></h4>
+<ul dir="auto">
+<li>Added a <strong>Persistence of Registered Scripts</strong> section under <strong>Return Value</strong> to describe how long scripts remain registered in <strong>Firefox</strong> and <strong>Chrome</strong>.</li>
+<li>Explained that in <strong>Firefox</strong>, registered scripts are <strong>removed when the extension is unloaded or reloaded</strong>.</li>
+<li>Clarified that in <strong>Chrome</strong>, registered scripts <strong>persist across restarts</strong> if <code class="notranslate">persistAcrossSessions: true</code>, but <strong>are unregistered when the extension is updated</strong>.</li>
+<li>Highlighted the role of the <code class="notranslate">persistAcrossSessions</code> property in controlling script persistence.</li>
+</ul>
+<h4 dir="auto"><strong>Why this change?</strong></h4>
+<ul dir="auto">
+<li>The previous documentation did not explicitly state how long registered scripts persist.</li>
+<li>There was confusion regarding <strong>browser-specific behaviors</strong>, leading to inconsistencies in developer expectations.</li>
+<li>Ensures that developers using the <code class="notranslate">scripting.registerContentScripts</code> API fully understand its behavior in <strong>both Firefox and Chrome</strong>.</li>
+</ul>
+<p dir="auto">This fix references <a href="https://github.com/mdn/content/issues/38690" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38690/hovercard">MDN GitHub Issue #38690</a> and improves the clarity of the API documentation.</p>
+<hr>
+<h3 dir="auto"><strong>Description</strong></h3>
+<p dir="auto">This PR updates the <code class="notranslate">registerContentScripts</code> API documentation to clarify the persistence behavior of registered content scripts across different browsers. It explicitly explains how scripts behave in <strong>Firefox and Chrome</strong>, ensuring that developers are aware of browser-specific differences.</p>
+<hr>
+<h3 dir="auto"><strong>Motivation</strong></h3>
+<ul dir="auto">
+<li>Developers were unsure <strong>how long registered content scripts persist</strong> in different browsers.</li>
+<li>Firefox and Chrome have <strong>different behaviors</strong>, which was not clearly mentioned.</li>
+<li>The <code class="notranslate">persistAcrossSessions</code> property was not <strong>well-documented</strong>, especially regarding script removal during Chrome extension updates.</li>
+<li>This change enhances <strong>developer clarity and avoids confusion</strong> when working with content scripts.</li>
+</ul>
+<hr>
+<h3 dir="auto"><strong>Additional Details</strong></h3>
+<ul dir="auto">
+<li><strong>MDN Documentation Reference:</strong> <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/registerContentScripts" rel="nofollow">scripting.registerContentScripts</a></li>
+<li><strong>Relevant API:</strong> <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/RegisteredContentScript#persistacrosssessions" rel="nofollow"><code class="notranslate">persistAcrossSessions</code></a></li>
+<li><strong>Chromium API Reference:</strong> <a href="https://developer.chrome.com/docs/extensions/reference/api/scripting#method-registerContentScripts" rel="nofollow"><code class="notranslate">chrome.scripting.registerContentScripts</code></a></li>
+</ul>
+<hr>
+<h3 dir="auto"><strong>Related Issues and Pull Requests</strong></h3>
+<ul dir="auto">
+<li><strong><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38690.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2927826980" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38690" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38690/hovercard" href="https://github.com/mdn/content/issues/38690">#38690</a></strong></li>
+<li>No dependent PRs at this time.</li>
+</ul>]]></content>
+        <author>
+            <name>mastaan66</name>
+            <email>mastaan66@noreply.github.com</email>
+            <uri>https://github.com/mastaan66</uri>
+        </author>
+        <published>2025-03-21T04:58:13.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Bug-1657575 webRequest.handlerBehaviorChanged implementation release note]]></title>
         <id>https://github.com/mdn/content/pull/38744</id>
@@ -264,7 +316,7 @@ Rather then redo that, we'd rather document on MDN and point people from that po
         <title type="html"><![CDATA[Better SameSite docs]]></title>
         <id>https://github.com/mdn/content/pull/38710</id>
         <link href="https://github.com/mdn/content/pull/38710"/>
-        <updated>2025-03-21T03:37:17.000Z</updated>
+        <updated>2025-03-21T04:54:34.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR tries to fix a few problems with the docs for <code class="notranslate">SameSite</code>:</p>
 <ul dir="auto">
 <li>the item for <code class="notranslate">Strict</code> seems to mix up site and origin: "If a request originates from a different domain or scheme (even with the same domain), no cookies with the SameSite=Strict attribute are sent."</li>
@@ -284,7 +336,7 @@ Rather then redo that, we'd rather document on MDN and point people from that po
         <title type="html"><![CDATA[Synchronize with BCD v5.7.4]]></title>
         <id>https://github.com/mdn/content/pull/38709</id>
         <link href="https://github.com/mdn/content/pull/38709"/>
-        <updated>2025-03-21T04:01:16.000Z</updated>
+        <updated>2025-03-21T04:01:40.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><a href="https://github.com/mdn/browser-compat-data/releases/tag/v5.7.4">BCD release v5.7.4</a></p>
 <p dir="auto">/cc cc/ <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/bsmth/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/bsmth">@bsmth</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a></p>]]></content>
         <author>
@@ -400,36 +452,5 @@ Rather then redo that, we'd rather document on MDN and point people from that po
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2025-03-17T22:30:24.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Technical review: Document nested pseudo-elements]]></title>
-        <id>https://github.com/mdn/content/pull/38680</id>
-        <link href="https://github.com/mdn/content/pull/38680"/>
-        <updated>2025-03-17T15:48:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Chrome has added support for styling nested pseudo-elements, beginning in version 135 with <code class="notranslate">::after::marker</code> and <code class="notranslate">::before::marker</code>. See <a href="https://chromestatus.com/feature/5199947786616832" rel="nofollow">https://chromestatus.com/feature/5199947786616832</a>.</p>
-<p dir="auto">This PR:</p>
-<ul dir="auto">
-<li>Adds a section to the main pseudo-elements reference page that explains nested pseudo-elements and provides a place to list all the supported ones.</li>
-<li>Adds a basic demo to the <code class="notranslate">::before</code> and <code class="notranslate">::after</code> pages to show the nested pseudo-elements in action.</li>
-</ul>
-<p dir="auto">Note: Unless I've missed something, there doesn't seem to be a really obvious use case for these two nested pseudos — it seems like they are just part of setting up the system for more useful things to come in the future, like carousel/fragmentation (see <a href="https://github.com/flackr/carousel/tree/main/fragmentation">https://github.com/flackr/carousel/tree/main/fragmentation</a>)</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2025-03-17T13:25:37.000Z</published>
     </entry>
 </feed>
