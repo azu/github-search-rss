@@ -2,11 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/github-roadmap.rss</id>
     <title>github/roadmap Issues</title>
-    <updated>2025-03-21T18:01:27.669Z</updated>
+    <updated>2025-03-21T19:01:30.156Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/github-roadmap.rss"/>
     <subtitle>github/roadmap Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fine-grained PATs can access Enterprise APIs [Public Preview]]]></title>
+        <id>https://github.com/github/roadmap/issues/1119</id>
+        <link href="https://github.com/github/roadmap/issues/1119"/>
+        <updated>2025-03-21T18:09:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/134638657?u=796627b7b5613a75768e410a1ef8cd04cea589d7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Value Prop</h3>
+<p dir="auto">Today, only PATs (Personal Access Tokens) <em>Classic</em> can interact with the Enterprise account - managing SCIM and users, creating organizations, setting policy, and provisioning self-hosted runners, as popular examples. By switching to fine-grained PATs for these APIs, enterprises get a better least-privilege security posture. With this release, you can use tokens with <em>just</em> enough permission to accomplish the job instead of a PAT (Classic) that requires permission to do <em>anything</em> to your enterprise.</p>
+<h3 dir="auto">Expected Outcome</h3>
+<p dir="auto">This release trails <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1797336912" data-permission-text="Title is private" data-url="https://github.com/github/roadmap/issues/793" data-hovercard-type="issue" data-hovercard-url="/github/roadmap/issues/793/hovercard" href="https://github.com/github/roadmap/issues/793">#793</a>, which establishes the fine-grained permissions model for the enterprise. Because each API must be updated individually to support new permissions, not every single API will be supported at the time of the public preview. We are prioritizing the most popular APIs to ensure that enterprises can replace the highest number of PATs (Classic), and will ship with at least those for the public preview.</p>
+<p dir="auto">These APIs are:</p>
+<ol dir="auto">
+<li>Self-hosted runner management</li>
+<li>Organization creation</li>
+<li>SCIM support, for platforms that cannot use a GitHub App for provisioning</li>
+<li>Enterprise team creation and management</li>
+<li>Budgeting and Licensing management</li>
+</ol>]]></content>
+        <author>
+            <name>glider-bot</name>
+            <email>glider-bot@noreply.github.com</email>
+            <uri>https://github.com/glider-bot</uri>
+        </author>
+        <published>2025-03-21T18:09:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fine-grained PATs can target multiple organizations in an enterprise [Public Preview]]]></title>
+        <id>https://github.com/github/roadmap/issues/1118</id>
+        <link href="https://github.com/github/roadmap/issues/1118"/>
+        <updated>2025-03-21T18:07:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/134638657?u=796627b7b5613a75768e410a1ef8cd04cea589d7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Value Prop</h3>
+<p dir="auto">Today, fine-grained PATs (Personal Access Tokens) can only be targeted to a single organization, which can be very restrictive for developers who's workflows span multiple organizations. Right now they're stuck juggling multiple tokens, or more likely falling back to PATs (Classic) at the cost of improved security.</p>
+<p dir="auto">With multi-targeting, a single fine-grained PAT can be given access to multiple organizations at once, allowing more developers to move off of PATs (Classic).</p>
+<h3 dir="auto">Expected Outcome</h3>
+<p dir="auto">When creating a fine-grained PAT, developers can pick which enterprise they'd like to target, and then select the organizations within that enterprise the token should be valid for. The permissions selected for the token will be the same in each organization - selecting specific permissions per organization is not supported in this release.</p>
+<p dir="auto">For each organization that has an approval process setup, the token will have to be approved. Organization access will light up on a one by one basis as those approvals are granted.</p>
+<p dir="auto">At this time, for the sake of governance and isolation, we are not looking to let a token access multiple unrelated organizations. Thus, Free-plan and Team-plan organizations you are a member of would still have to be individually targeted with a token.</p>]]></content>
+        <author>
+            <name>glider-bot</name>
+            <email>glider-bot@noreply.github.com</email>
+            <uri>https://github.com/glider-bot</uri>
+        </author>
+        <published>2025-03-21T18:06:50.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Repository creation Form Refresh [GA]]]></title>
         <id>https://github.com/github/roadmap/issues/1117</id>
@@ -27,7 +70,7 @@
         <title type="html"><![CDATA[Fine-grained Personal Access Tokens [GA]]]></title>
         <id>https://github.com/github/roadmap/issues/1116</id>
         <link href="https://github.com/github/roadmap/issues/1116"/>
-        <updated>2025-03-20T18:40:29.000Z</updated>
+        <updated>2025-03-21T18:36:23.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/134638657?u=796627b7b5613a75768e410a1ef8cd04cea589d7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Value Prop</h3>
 <p dir="auto">After over two years in public beta, we've seen millions of requests a day using Fine-Grained PATs and adoption across the platform - enough to say that it's time to call them GA. While there's more work to be done before we can say they entirely replace PATs (Classic), we know that fine-grained PATs aren't going anywhere and are ready for production use in your company, unlocking= visibility and control over the tokens used to access your organizations, and finer-grained permissions to ensure least privilege access.</p>
 <p dir="auto">This release also brings PAT expiration policies (for fine-grained PATs and PATs (Classic)) to GA as well, allowing you to force the rotation of PATs in your enterprise or organization.</p>
@@ -335,38 +378,5 @@
             <uri>https://github.com/glider-bot</uri>
         </author>
         <published>2025-01-28T20:06:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Dependabot version updates support `docker-compose` package manager - [GA]]]></title>
-        <id>https://github.com/github/roadmap/issues/1099</id>
-        <link href="https://github.com/github/roadmap/issues/1099"/>
-        <updated>2025-02-28T19:06:55.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/134638657?u=796627b7b5613a75768e410a1ef8cd04cea589d7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Value Prop</h3>
-<p dir="auto">Docker Compose allows you to define your application's containers as code inside a YAML file you can commit to your source repository. It's one of the most upvoted customer request in dependabot-core. This issue adds Dependabot support for the docker-compose ecosystem.</p>
-<p dir="auto">Today, customers cannot use the <code class="notranslate">docker-compose</code> package manager with Dependabot. It's one of the the most upvoted customer <a href="https://github.com/dependabot/dependabot-core/issues/390" data-hovercard-type="issue" data-hovercard-url="/dependabot/dependabot-core/issues/390/hovercard">requests</a> in <code class="notranslate">dependabot-core</code>.</p>
-<h3 dir="auto">Expected Outcome</h3>
-<p dir="auto">This enables customers who use <code class="notranslate">docker-compose</code> to get version updates from Dependabot.</p>]]></content>
-        <author>
-            <name>glider-bot</name>
-            <email>glider-bot@noreply.github.com</email>
-            <uri>https://github.com/glider-bot</uri>
-        </author>
-        <published>2025-01-28T20:02:01.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Windows ARM hosted runners for OSS [Preview]]]></title>
-        <id>https://github.com/github/roadmap/issues/1098</id>
-        <link href="https://github.com/github/roadmap/issues/1098"/>
-        <updated>2025-01-23T19:06:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/134638657?u=796627b7b5613a75768e410a1ef8cd04cea589d7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Value Prop</h3>
-<p dir="auto">Following on the release of Linux arm64 hosted runners, the GitHub-hosted runner portfolio is expanding to include arm64 hosted runners for free in public repositories. These runners will be fully managed by GitHub with a base image containing a foundational set of tools. These runners offer a power efficient compute layer which can increase price to performance ratios, allowing users to optimize compute costs.</p>
-<h3 dir="auto">Expected Outcome</h3>
-<p dir="auto">You can use arm64 runners to refactor your applications to take advantage of the price performance benefits of ARM architecture. You can now run their workloads on Arm-based hardware hosted by GitHub to build and deploy your release assets anywhere Arm’s architecture is used. These new runners provide power, performance &amp; sustainability improvements for all your Actions jobs.</p>]]></content>
-        <author>
-            <name>glider-bot</name>
-            <email>glider-bot@noreply.github.com</email>
-            <uri>https://github.com/glider-bot</uri>
-        </author>
-        <published>2025-01-23T19:04:07.000Z</published>
     </entry>
 </feed>
