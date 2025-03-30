@@ -2,11 +2,39 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-03-30T18:01:26.205Z</updated>
+    <updated>2025-03-30T19:01:29.521Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove unnecessary 'stream: true' argument from TextEncoder.encode call]]></title>
+        <id>https://github.com/mdn/content/pull/38865</id>
+        <link href="https://github.com/mdn/content/pull/38865"/>
+        <updated>2025-03-30T18:37:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120011256?u=9b1c1de5a62d4cc8a73582b6a58232dcfcca3188&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Removes unnecessary argument from the TextEncoder.encode call. The encode method accepts only an <a href="https://encoding.spec.whatwg.org/#interface-textencoder" rel="nofollow">optional string argument</a> .</p>
+
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">correct technical issues on TextEncoder.encode method call</p>
+
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The example on <a href="https://github.com/mdn/dom-examples/blob/main/streams/simple-writer/index.html">dom-examples</a> doesn't use that argument.<br>
+The <a href="https://encoding.spec.whatwg.org/#interface-textencoder" rel="nofollow">Encoding Api Spec</a> says that the method only accepts an optional string arguement.</p>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38824.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2950597238" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38824" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38824/hovercard" href="https://github.com/mdn/content/issues/38824">#38824</a></p>
+
+
+]]></content>
+        <author>
+            <name>low-perry</name>
+            <email>low-perry@noreply.github.com</email>
+            <uri>https://github.com/low-perry</uri>
+        </author>
+        <published>2025-03-30T18:35:43.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix guide link in groupdata of View Transition API]]></title>
         <id>https://github.com/mdn/content/pull/38863</id>
@@ -394,83 +422,5 @@
             <uri>https://github.com/matthias-p-nowak</uri>
         </author>
         <published>2025-03-26T08:23:48.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[`~` (bitwise NOT): Clarify 32-bit signed integer overflow and comparison with `Math.trunc`]]></title>
-        <id>https://github.com/mdn/content/pull/38816</id>
-        <link href="https://github.com/mdn/content/pull/38816"/>
-        <updated>2025-03-27T04:04:10.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/26078826?u=9388a2c2a0f1ca2799a4fd23f3e060c353d6ac37&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Explain why <code class="notranslate">Math.trunc</code> is better for general-purpose integer truncation</li>
-<li>Tidy up wording around 32-bit signed integer overflow</li>
-<li>Move examples into side-by-side comparison table</li>
-<li>Split Number and BigInt details into own subsections</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Current version just says "Do not use <code class="notranslate">~~x</code> to truncate numbers to integers; use <code class="notranslate">Math.trunc()</code> instead" without explaining why or what the tradeoffs might be.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Added wording "typically has near-identical performance in modern JavaScript engines" tested in Chrome, FF, Deno, Node, Bun:</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const randInts = crypto.getRandomValues(new Int32Array(1e4))
-const randFloats = [...randInts].map((n) =&gt; n * Math.random() / 0xfff)
-const all = [
-    ...randInts,
-    ...randFloats,
-].sort(() =&gt; Math.random() - 0.5)
-
-const fns = {
-    ['~~'](n) {
-        return ~~n
-    },
-    ['| 0'](n) {
-        return n | 0
-    },
-    ['Math.trunc'](n) {
-        return Math.trunc(n)
-    },
-    ['Math.floor'](n) {
-        return Math.floor(n)
-    }
-}
-
-for (const [name, fn] of Object.entries(fns)) {
-    const start = performance.now()
-    for (const n of all) fn(n)
-    console.info(`${name}: ${performance.now() - start}`)
-}"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">randInts</span> <span class="pl-c1">=</span> <span class="pl-s1">crypto</span><span class="pl-kos">.</span><span class="pl-en">getRandomValues</span><span class="pl-kos">(</span><span class="pl-k">new</span> <span class="pl-v">Int32Array</span><span class="pl-kos">(</span><span class="pl-c1">1e4</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
-<span class="pl-k">const</span> <span class="pl-s1">randFloats</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>...<span class="pl-s1">randInts</span><span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">n</span> <span class="pl-c1">*</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">/</span> <span class="pl-c1">0xfff</span><span class="pl-kos">)</span>
-<span class="pl-k">const</span> <span class="pl-s1">all</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span>
-    ...<span class="pl-s1">randInts</span><span class="pl-kos">,</span>
-    ...<span class="pl-s1">randFloats</span><span class="pl-kos">,</span>
-<span class="pl-kos">]</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">random</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">-</span> <span class="pl-c1">0.5</span><span class="pl-kos">)</span>
-
-<span class="pl-k">const</span> <span class="pl-s1">fns</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
-    <span class="pl-kos">[</span><span class="pl-s">'~~'</span><span class="pl-kos">]</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-        <span class="pl-k">return</span> <span class="pl-c1">~</span><span class="pl-c1">~</span><span class="pl-s1">n</span>
-    <span class="pl-kos">}</span><span class="pl-kos">,</span>
-    <span class="pl-kos">[</span><span class="pl-s">'| 0'</span><span class="pl-kos">]</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-        <span class="pl-k">return</span> <span class="pl-s1">n</span> <span class="pl-c1">|</span> <span class="pl-c1">0</span>
-    <span class="pl-kos">}</span><span class="pl-kos">,</span>
-    <span class="pl-kos">[</span><span class="pl-s">'Math.trunc'</span><span class="pl-kos">]</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-        <span class="pl-k">return</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">trunc</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span>
-    <span class="pl-kos">}</span><span class="pl-kos">,</span>
-    <span class="pl-kos">[</span><span class="pl-s">'Math.floor'</span><span class="pl-kos">]</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-        <span class="pl-k">return</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">floor</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span>
-    <span class="pl-kos">}</span>
-<span class="pl-kos">}</span>
-
-<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">name</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">]</span> <span class="pl-k">of</span> <span class="pl-v">Object</span><span class="pl-kos">.</span><span class="pl-en">entries</span><span class="pl-kos">(</span><span class="pl-s1">fns</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-k">const</span> <span class="pl-s1">start</span> <span class="pl-c1">=</span> <span class="pl-s1">performance</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
-    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">n</span> <span class="pl-k">of</span> <span class="pl-s1">all</span><span class="pl-kos">)</span> <span class="pl-s1">fn</span><span class="pl-kos">(</span><span class="pl-s1">n</span><span class="pl-kos">)</span>
-    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">info</span><span class="pl-kos">(</span><span class="pl-s">`<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">name</span><span class="pl-kos">}</span></span>: <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">performance</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">-</span> <span class="pl-s1">start</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
-<span class="pl-kos">}</span></pre></div>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">N/A</p>]]></content>
-        <author>
-            <name>lionel-rowe</name>
-            <email>lionel-rowe@noreply.github.com</email>
-            <uri>https://github.com/lionel-rowe</uri>
-        </author>
-        <published>2025-03-26T03:13:49.000Z</published>
     </entry>
 </feed>
