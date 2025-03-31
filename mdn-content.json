@@ -20,19 +20,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR:</p>\n<ul dir=\"auto\">\n<li>Updates the placeholder text heading so that it is parallel to other H2s on the page.</li>\n<li>Adds more context for the guideline and why it is being recommended.</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/38873",
             "title": "fix(writing-guidelines): Enhance placeholder text guideline",
-            "date_modified": "2025-03-31T02:39:07.000Z",
+            "date_modified": "2025-03-31T15:08:22.000Z",
             "date_published": "2025-03-31T02:34:43.000Z",
-            "author": {
-                "name": "dipikabh",
-                "url": "https://github.com/dipikabh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR corrects a subject-verb agreement error and improves the sentence phrasing.</p>",
-            "url": "https://github.com/mdn/content/pull/38872",
-            "title": "fix(docs): Fix grammar on CSSOM view page",
-            "date_modified": "2025-03-31T01:44:04.000Z",
-            "date_published": "2025-03-31T01:42:05.000Z",
             "author": {
                 "name": "dipikabh",
                 "url": "https://github.com/dipikabh"
@@ -97,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Put quotes inside code</p>",
             "url": "https://github.com/mdn/content/pull/38855",
             "title": "Improve typesetting",
-            "date_modified": "2025-03-31T07:56:22.000Z",
+            "date_modified": "2025-03-31T15:52:56.000Z",
             "date_published": "2025-03-29T19:56:01.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -160,17 +149,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add en-US titles for these docs.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This shows up in the sidebars as</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">Accessibility_Understanding_colors_and_luminance</code></li>\n<li><code class=\"notranslate\">Applying_color_to_HTML_elements</code></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/38841",
-            "title": "fix(sidebars): Add en-US versions for docs with title (l10n) keys",
-            "date_modified": "2025-03-28T16:01:50.000Z",
-            "date_published": "2025-03-28T16:01:27.000Z",
-            "author": {
-                "name": "bsmth",
-                "url": "https://github.com/bsmth"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR finishes off the Learn web development <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Debugging_JavaScript\" rel=\"nofollow\">Debugging JavaScript and handling errors</a> article, which was incomplete.</p>\n<p dir=\"auto\">I've also changed the article title to \"JavaScript debugging and error handling\", which sounds less clumsy than the current title.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/38840",
             "title": "Update JS debugging learn article",
@@ -223,6 +201,28 @@
             "author": {
                 "name": "matthias-p-nowak",
                 "url": "https://github.com/matthias-p-nowak"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/26078826?u=9388a2c2a0f1ca2799a4fd23f3e060c353d6ac37&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Explain why <code class=\"notranslate\">Math.trunc</code> is better for general-purpose integer truncation</li>\n<li>Tidy up wording around 32-bit signed integer overflow</li>\n<li>Move examples into side-by-side comparison table</li>\n<li>Split Number and BigInt details into own subsections</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Current version just says \"Do not use <code class=\"notranslate\">~~x</code> to truncate numbers to integers; use <code class=\"notranslate\">Math.trunc()</code> instead\" without explaining why or what the tradeoffs might be.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Added wording \"typically has near-identical performance in modern JavaScript engines\" tested in Chrome, FF, Deno, Node, Bun:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const randInts = crypto.getRandomValues(new Int32Array(1e4))\nconst randFloats = [...randInts].map((n) =&gt; n * Math.random() / 0xfff)\nconst all = [\n    ...randInts,\n    ...randFloats,\n].sort(() =&gt; Math.random() - 0.5)\n\nconst fns = {\n    ['~~'](n) {\n        return ~~n\n    },\n    ['| 0'](n) {\n        return n | 0\n    },\n    ['Math.trunc'](n) {\n        return Math.trunc(n)\n    },\n    ['Math.floor'](n) {\n        return Math.floor(n)\n    }\n}\n\nfor (const [name, fn] of Object.entries(fns)) {\n    const start = performance.now()\n    for (const n of all) fn(n)\n    console.info(`${name}: ${performance.now() - start}`)\n}\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">randInts</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">crypto</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">getRandomValues</span><span class=\"pl-kos\">(</span><span class=\"pl-k\">new</span> <span class=\"pl-v\">Int32Array</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">1e4</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span>\n<span class=\"pl-k\">const</span> <span class=\"pl-s1\">randFloats</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">[</span>...<span class=\"pl-s1\">randInts</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">map</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-s1\">n</span> <span class=\"pl-c1\">*</span> <span class=\"pl-v\">Math</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">random</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">/</span> <span class=\"pl-c1\">0xfff</span><span class=\"pl-kos\">)</span>\n<span class=\"pl-k\">const</span> <span class=\"pl-s1\">all</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">[</span>\n    ...<span class=\"pl-s1\">randInts</span><span class=\"pl-kos\">,</span>\n    ...<span class=\"pl-s1\">randFloats</span><span class=\"pl-kos\">,</span>\n<span class=\"pl-kos\">]</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">sort</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-v\">Math</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">random</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">-</span> <span class=\"pl-c1\">0.5</span><span class=\"pl-kos\">)</span>\n\n<span class=\"pl-k\">const</span> <span class=\"pl-s1\">fns</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-kos\">[</span><span class=\"pl-s\">'~~'</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-k\">return</span> <span class=\"pl-c1\">~</span><span class=\"pl-c1\">~</span><span class=\"pl-s1\">n</span>\n    <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-kos\">[</span><span class=\"pl-s\">'| 0'</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-k\">return</span> <span class=\"pl-s1\">n</span> <span class=\"pl-c1\">|</span> <span class=\"pl-c1\">0</span>\n    <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-kos\">[</span><span class=\"pl-s\">'Math.trunc'</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-k\">return</span> <span class=\"pl-v\">Math</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">trunc</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span>\n    <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span>\n    <span class=\"pl-kos\">[</span><span class=\"pl-s\">'Math.floor'</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-k\">return</span> <span class=\"pl-v\">Math</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">floor</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span>\n    <span class=\"pl-kos\">}</span>\n<span class=\"pl-kos\">}</span>\n\n<span class=\"pl-k\">for</span> <span class=\"pl-kos\">(</span><span class=\"pl-k\">const</span> <span class=\"pl-kos\">[</span><span class=\"pl-s1\">name</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">fn</span><span class=\"pl-kos\">]</span> <span class=\"pl-k\">of</span> <span class=\"pl-v\">Object</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">entries</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">fns</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">const</span> <span class=\"pl-s1\">start</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">performance</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">now</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span>\n    <span class=\"pl-k\">for</span> <span class=\"pl-kos\">(</span><span class=\"pl-k\">const</span> <span class=\"pl-s1\">n</span> <span class=\"pl-k\">of</span> <span class=\"pl-s1\">all</span><span class=\"pl-kos\">)</span> <span class=\"pl-s1\">fn</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">n</span><span class=\"pl-kos\">)</span>\n    <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">info</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">name</span><span class=\"pl-kos\">}</span></span>: <span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">performance</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">now</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">-</span> <span class=\"pl-s1\">start</span><span class=\"pl-kos\">}</span></span>`</span><span class=\"pl-kos\">)</span>\n<span class=\"pl-kos\">}</span></pre></div>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
+            "url": "https://github.com/mdn/content/pull/38816",
+            "title": "`~` (bitwise NOT): Clarify 32-bit signed integer overflow and comparison with `Math.trunc`",
+            "date_modified": "2025-03-27T04:04:10.000Z",
+            "date_published": "2025-03-26T03:13:49.000Z",
+            "author": {
+                "name": "lionel-rowe",
+                "url": "https://github.com/lionel-rowe"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">added these two features now supported in all browsers.</p>\n<p dir=\"auto\"><a href=\"https://github.com/openwebdocs/project/issues/222\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/222/hovercard\">#222</a></p>",
+            "url": "https://github.com/mdn/content/pull/38815",
+            "title": "New pages: SVGFeSpecularLighting kernalUnitLegth values",
+            "date_modified": "2025-03-26T03:03:55.000Z",
+            "date_published": "2025-03-26T01:57:46.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
             }
         }
     ]
