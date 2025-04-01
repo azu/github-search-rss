@@ -13,14 +13,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: setup Node.js
         uses: actions/setup-node@v3
+        cache: 'pnpm'
         with:
           node-version: 18
       - name: Install
-        run: yarn install
+        run: pnpm install
       - name: Generate RSS
-        run: yarn run main
+        run: pnpm run main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy
