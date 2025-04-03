@@ -2,11 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2025-04-03T19:01:20.426Z</updated>
+    <updated>2025-04-03T20:01:16.077Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Reduce Accept-Language]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1078</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1078"/>
+        <updated>2025-04-03T19:44:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3956411?u=9f40bd514656e1f140ed9f56d54e6697fdb4e54b&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Hi there TAG,</p>
+<p dir="auto">I'm requesting a TAG review of Reduce Accept-Language and the plan to reduce the information available in the Accept-Language HTTP header first, and then reduce related JS APIs navigator.languages in future phases.</p>
+<p dir="auto">Chrome (and other browsers) send all of the user's language preferences on every HTTP request via the Accept-Language header. The header's value contains a lot of entropy about the user that is sent to servers by default. We want to reduce the amount of information the Accept-Language header exposes in HTTP requests and JS interface navigator.languages. Instead of sending all user’s Accept-Language, we only send the user’s most preferred language after language negotiation in the Accept-Language header. For the HTTP Accept-Language header, we will potentially expand a base language based on the language-region pair. The JS getter navigator.languages returns the same value as navigator.language.</p>
+<ul dir="auto">
+<li>Explainer¹ (minimally containing user needs and example code):<br>
+<a href="https://github.com/explainers-by-googlers/reduce-accept-language/blob/main/README.md">https://github.com/explainers-by-googlers/reduce-accept-language/blob/main/README.md</a></li>
+<li>Specification URL: N/A</li>
+<li>Tests:<br>
+<a href="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/navigator_language" rel="nofollow">https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/navigator_language</a></li>
+<li>User research: N/A</li>
+<li>Security and Privacy self-review²: <a href="https://github.com/explainers-by-googlers/reduce-accept-language/blob/main/tag-security-privacy.md">https://github.com/explainers-by-googlers/reduce-accept-language/blob/main/tag-security-privacy.md</a></li>
+<li>GitHub repo: <a href="https://github.com/explainers-by-googlers/reduce-accept-language">https://github.com/explainers-by-googlers/reduce-accept-language</a></li>
+<li>Primary contacts (and their relationship to the specification):<br>
+Victor Tan (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Tanych/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Tanych">@Tanych</a> - editor)<br>
+Mike Taylor(<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/miketaylr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/miketaylr">@miketaylr</a> - editor)</li>
+<li>Organization(s)/project(s) driving the specification: Chromium</li>
+<li>This work is being funded by: Google</li>
+<li>Key pieces of existing multi-stakeholder (e.g. developers, implementers, civil society) support, review or discussion of this specification</li>
+<li>Key pieces of multi-implementer support:
+<ul dir="auto">
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2259528494" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1014" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1014/hovercard" href="https://github.com/mozilla/standards-positions/issues/1014">mozilla/standards-positions#1014</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2259546548" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/338" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/338/hovercard" href="https://github.com/WebKit/standards-positions/issues/338">WebKit/standards-positions#338</a></li>
+</ul>
+</li>
+<li>Major unresolved issues with or opposition to this specification: some i18n concerns have been raised, but our experimental data doesn’t align with them: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1618070320" data-permission-text="Title is private" data-url="https://github.com/explainers-by-googlers/reduce-accept-language/issues/10" data-hovercard-type="issue" data-hovercard-url="/explainers-by-googlers/reduce-accept-language/issues/10/hovercard" href="https://github.com/explainers-by-googlers/reduce-accept-language/issues/10">explainers-by-googlers/reduce-accept-language#10</a></li>
+<li>External status/issue trackers for this specification (publicly visible, e.g. Chrome Status):<br>
+<a href="https://chromestatus.com/feature/5188040623390720#details" rel="nofollow">https://chromestatus.com/feature/5188040623390720</a></li>
+</ul>
+<p dir="auto">Further details:</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
+<li>Relevant time constraints or deadlines: We will consider starting roll-out in Chrome stable population 2025 Q2.</li>
+<li>The group where the work on this specification is currently being done: N/A</li>
+<li>The group where standardization of this work is intended to be done (if current group is a community group or other incubation venue): N/A</li>
+</ul>]]></content>
+        <author>
+            <name>Tanych</name>
+            <email>Tanych@noreply.github.com</email>
+            <uri>https://github.com/Tanych</uri>
+        </author>
+        <published>2025-04-03T19:44:17.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[ig/wai] WAI IG recharter]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1077</id>
@@ -997,60 +1044,5 @@ Duplicate of #</p>]]></content>
             <uri>https://github.com/Mcdeamon241</uri>
         </author>
         <published>2025-02-23T19:40:31.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[The `interesttarget` attribute]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1058</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1058"/>
-        <updated>2025-04-02T12:23:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/29559695?u=fbc4f555987338732c0fe05746de09d7782dce24&v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
-<p dir="auto">I'm requesting an early TAG design review of Interest Invokers (the <code class="notranslate">interesttarget</code> attribute).</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">When you write <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mfreed7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mfreed7">@mfreed7</a> or <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1257095212" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/743" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/743/hovercard" href="https://github.com/w3ctag/design-reviews/issues/743">#743</a> on Github, you get a link to the user's profile page or the issue/PR page. But if you hover over that link instead of clicking it, you get a nice "hovercard" popover containing more detailed information. Users really like this feature, because it gives them the bit of information they want ("who or what is this?"), including common quick actions like "Follow this user", without requiring them to leave the page, potentially losing state in the process.</p>
-<p dir="auto">Nearly all major sites include functionality such as this, ranging from small text-based tooltips to large interactive hovercards with useful links and buttons. However, implementing this behavior takes a remarkable amount of code. It must manage mouse hover and de-hover states, keep track of hover delays, implement keyboard activation, get accessibility right, and all of the related interactions. As a result, many developers' implementations aren't accessible to keyboard users, and none are accessible to touchscreen users. As a result, users who do not use a mouse do not have full access to the same information as those who do. The UA should provide this functionality natively, so we can do it right, and so developers don't have to keep re-inventing this wheel and/or leaving behind some users.</p>
-<h3 dir="auto">Proposed Solution</h3>
-<p dir="auto">The Interest Invokers API is very similar to the Invoker commands API (<a href="https://open-ui.org/components/invokers.explainer/" rel="nofollow">explainer</a>, <a href="https://github.com/whatwg/html/pull/9841" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/9841/hovercard">spec</a>, in that it also provides a declarative way to invoke actions on a target element. However, rather than being activated via a click on the element, this API uses a lighter-touch way for the user to “show interest” in an element without fully activating it. For example, a link <code class="notranslate">&lt;a href="..." interesttarget=foo&gt;</code> element can be hovered with the mouse, which might trigger a hovercard preview of the link, without actually navigating to the link destination URL. Of course, if the link is clicked, then a normal navigation will occur.</p>
-<p dir="auto">The API goes to significant lengths to ensure that the additional content is accessible, particularly for users not using a mouse or keyboard.</p>
-<hr>
-<ul dir="auto">
-<li>Explainer¹: <a href="https://open-ui.org/components/interest-invokers.explainer" rel="nofollow">https://open-ui.org/components/interest-invokers.explainer</a></li>
-<li>Developer/designer research and feedback: <a href="https://github.com/openui/open-ui/issues?q=label%3Ainterest-invokers%20">https://github.com/openui/open-ui/issues?q=label%3Ainterest-invokers%20</a></li>
-<li>Security and Privacy self-review²: All answers are “no”, except this question <span>#</span>1, which is “What information does this feature expose, and for what purposes?”. The answer is: The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/env" rel="nofollow"><code class="notranslate">env()</code> variables</a> expose screen real estate information, in a very similar fashion to the other such variables such as safe-area-inset-top.</li>
-<li>GitHub repo: <a href="https://github.com/openui/open-ui/issues">https://github.com/openui/open-ui/issues</a></li>
-<li>Primary contacts:
-<ul dir="auto">
-<li>Mason Freed (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mfreed7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mfreed7">@mfreed7</a>), Google, Primary driver</li>
-<li>Keith Cirkel (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/keithamus/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/keithamus">@keithamus</a>), Github, Started this work</li>
-</ul>
-</li>
-<li>Organization/project driving the design: Google</li>
-<li>Multi-stakeholder feedback³:
-<ul dir="auto">
-<li>Chromium comments: Supportive/driving</li>
-<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2867523277" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1181" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1181/hovercard" href="https://github.com/mozilla/standards-positions/issues/1181">mozilla/standards-positions#1181</a></li>
-<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2867523491" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/464" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/464/hovercard" href="https://github.com/WebKit/standards-positions/issues/464">WebKit/standards-positions#464</a></li>
-<li>Developers (as heard in OpenUI) are quite supportive. This API would not only remove significant burdens from design system implementation, it would also unblock solving this problem on touchscreens. This is presently not possible in a way that makes users happy. It also simplifies the keyboard activation story, and makes it possible to build completely declarative (no-JS) tooltips and hovercards.</li>
-</ul>
-</li>
-</ul>
-<p dir="auto">Further details:</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
-<li>The group where the incubation/design work on this is being done (or is intended to be done in the future): <a href="https://open-ui.org/" rel="nofollow">OpenUI</a></li>
-<li>The group where standardization of this work is intended to be done ("unknown" if not known): WHATWG, and CSSWG</li>
-<li>Existing major pieces of multi-implementer review or discussion of this design: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2272373451" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10309" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10309/hovercard" href="https://github.com/whatwg/html/issues/10309">whatwg/html#10309</a> (currently at <a href="https://github.com/whatwg/sg/blob/main/Stages.md#stages-overview">“Stage 1”</a> in WHATWG)</li>
-<li>Major unresolved issues with or opposition to this design: The mouse-hover based activation story is pretty clean and non-controversial. The keyboard- and touchscreen-activation stories are (necessarily) more complicated, and still in progress. Feedback on the current direction would be particularly helpful.</li>
-<li>This work is being funded by: Google</li>
-</ul>
-<p dir="auto">You should also know that...</p>
-<p dir="auto">See also, <a href="https://github.com/whatwg/html/issues/10309" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10309/hovercard">whatwg/html#10309</a>, which has <a href="https://github.com/whatwg/html/issues/10309#issuecomment-2657251505" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10309/hovercard">reached</a> Stage 1 of the WHATWG.</p>
-<p dir="auto">This is closely related to both the <a href="https://html.spec.whatwg.org/multipage/popover.html#attr-popover-hint" rel="nofollow">popover=hint</a> feature, the <a href="https://html.spec.whatwg.org/multipage/form-elements.html#attr-button-commandfor" rel="nofollow">commandfor attribute</a>, and the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning" rel="nofollow">anchor positioning</a> API. This API (<code class="notranslate">interesttarget</code>) is the final piece needed in order to unlock the ability to declaratively build tooltips, hovercards, and menus that are triggered by mouse-hover or keyboard/touchscreen.</p>
-<p dir="auto">If you'd like to try out a prototype implementation, Chrome Canary with "Experimental Web Platform Features" enabled can be used with this quick demo: <a href="https://jsbin.com/cosusih/edit?html,output" rel="nofollow">https://jsbin.com/cosusih/edit?html,output</a>. Note that touchscreen behaviors have not yet been implemented, and details are again changing rapidly.</p>]]></content>
-        <author>
-            <name>mfreed7</name>
-            <email>mfreed7@noreply.github.com</email>
-            <uri>https://github.com/mfreed7</uri>
-        </author>
-        <published>2025-02-21T01:02:07.000Z</published>
     </entry>
 </feed>
