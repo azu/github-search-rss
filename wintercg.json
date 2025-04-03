@@ -6,6 +6,17 @@
     "description": "org:wintercg Issues on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8225977?u=ebf8bbc30918fe9c36833005bebc027a65984f34&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://fetch.spec.whatwg.org/#port-blocking\" rel=\"nofollow\">https://fetch.spec.whatwg.org/#port-blocking</a></p>\n<p dir=\"auto\">Those ports are usually for services other than HTTP, and you usually won't have HTTP servers on those. They're probably blocked to prevent sending an HTTP request that might be parsed as a different protocol.</p>\n<p dir=\"auto\">In browsers there's also the concern that this port blocking might be used to prevent remote websites messing with local network services. There are other mechanisms to prevent this for HTTP requests, but they might not work in the case of an attacker-controlled HTTP request being parsed as some other protocol. In that case, this probably isn't a concern that applies to servers, but it might apply to CLI processes (e.g. Node or Deno applications) running in a computer.</p>",
+            "url": "https://github.com/wintercg/fetch-workstream/issues/10",
+            "title": "Should we block bad ports?",
+            "date_modified": "2025-04-03T15:10:23.000Z",
+            "date_published": "2025-04-03T15:10:23.000Z",
+            "author": {
+                "name": "andreubotella",
+                "url": "https://github.com/andreubotella"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/29357907?u=5b1be4accbf0796916d326a344e5c36655396dde&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">It seems like something similar to Electron. At least on the frontend side<br>\n<a href=\"https://tauri.app/\" rel=\"nofollow\">https://tauri.app/</a></p>",
             "url": "https://github.com/wintercg/runtime-keys/issues/21",
             "title": "Add tauri to draft?",
@@ -152,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7829205?u=280fa15bf97605fa9a7a1d331327485daaad7871&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This issue links out to all the different parts of the spec that we need to investigate changes in (that we have found so far):</p>\n<ul dir=\"auto\">\n<li>Allowed request headers\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2837819735\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/fetch-workstream/issues/2\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/fetch-workstream/issues/2/hovercard\" href=\"https://github.com/wintercg/fetch-workstream/issues/2\">#2</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2837829918\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/fetch-workstream/issues/3\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/fetch-workstream/issues/3/hovercard\" href=\"https://github.com/wintercg/fetch-workstream/issues/3\">#3</a></li>\n<li>All other headers should stay forbidden:\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">accept-encoding</code> is related to auto-decompression, see below</li>\n<li><code class=\"notranslate\">keep-alive</code>, <code class=\"notranslate\">transfer-encoding</code>, <code class=\"notranslate\">TE</code> are HTTP/1.1 specific headers that are managed by the underlying HTTP stack itself</li>\n<li><code class=\"notranslate\">trailers</code> are not supported in fetch yet (see below)</li>\n<li><code class=\"notranslate\">upgrade</code>, as there is no upgrade mechanism in fetch (see below)</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>Allowed response headers\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2837832206\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/fetch-workstream/issues/4\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/fetch-workstream/issues/4/hovercard\" href=\"https://github.com/wintercg/fetch-workstream/issues/4\">#4</a></li>\n</ul>\n</li>\n<li><code class=\"notranslate\">content-encoding</code> / <code class=\"notranslate\">content-length</code> header sanitization after auto-decompression of the body\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2052984038\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/fetch/issues/1729\" data-hovercard-type=\"issue\" data-hovercard-url=\"/whatwg/fetch/issues/1729/hovercard\" href=\"https://github.com/whatwg/fetch/issues/1729\">whatwg/fetch#1729</a></li>\n</ul>\n</li>\n<li>Handling of Request and Response properties in init and objects:\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2866690164\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/fetch-workstream/issues/5\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/fetch-workstream/issues/5/hovercard\" href=\"https://github.com/wintercg/fetch-workstream/issues/5\">#5</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2866713575\" data-permission-text=\"Title is private\" data-url=\"https://github.com/wintercg/fetch-workstream/issues/6\" data-hovercard-type=\"issue\" data-hovercard-url=\"/wintercg/fetch-workstream/issues/6/hovercard\" href=\"https://github.com/wintercg/fetch-workstream/issues/6\">#6</a></li>\n</ul>\n</li>\n<li>Connection pooling\n<ul dir=\"auto\">\n<li>Network partition key is the agent. If a runtime has no notion of agents/clients, then there could be multiple partition keys. All global <code class=\"notranslate\">fetch</code> calls with no explicit agent share a network partition key.</li>\n<li>Connection pooling: pretty hand-wavey, seems like this is generally only specified for timing. \"This is intentionally a little vague\"</li>\n</ul>\n</li>\n<li>Port blocking\n<ul dir=\"auto\">\n<li>Need to investigate what different runtimes do</li>\n<li>Probably needs to be normative optional - there are use cases where you want to permit sending requests to <em>any</em> port</li>\n</ul>\n</li>\n<li>No request blocking based on mime type</li>\n<li>HTTP extensions\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">origin</code> header should not be set: servers sometimes treat requests with these specially.</li>\n</ul>\n</li>\n</ul>\n<p dir=\"auto\">There are also some features we have identified as possibly being useful:</p>\n<ul dir=\"auto\">\n<li>Trailers</li>\n<li>HTTP Upgrade API</li>\n<li>Letting users set <code class=\"notranslate\">content-length</code> for HTTP streams</li>\n<li>API to receive interim responses (100 / 101 status code)</li>\n<li>Allowing async iterables in request / response bodies</li>\n<li>Disabling automatic response body decompression</li>\n</ul>",
             "url": "https://github.com/wintercg/fetch-workstream/issues/1",
             "title": "Tracking issue",
-            "date_modified": "2025-03-06T17:01:47.000Z",
+            "date_modified": "2025-04-03T15:46:32.000Z",
             "date_published": "2025-02-07T10:34:19.000Z",
             "author": {
                 "name": "lucacasonato",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "domfarolino",
                 "url": "https://github.com/domfarolino"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5588957?u=fb4173ce4f07a2a10a27f53afb59de4055ec0ca4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Can browser service worker runtime be included?</p>\n<p dir=\"auto\">Hono can run in Node, Deno, Bun, Cloudflare Workers, Pages, and can also run in a service worker to power an offline web app.</p>\n<p dir=\"auto\">I'd like to see more things target/support service workers too (e.g. Next.js, Deno Fresh, and HonoX could all be made to work in various runtime environments and could then easily be ran in a service worker).</p>",
-            "url": "https://github.com/wintercg/runtime-keys/issues/13",
-            "title": "Service worker runtime environment",
-            "date_modified": "2024-04-08T10:51:57.000Z",
-            "date_published": "2024-04-08T10:29:10.000Z",
-            "author": {
-                "name": "mfulton26",
-                "url": "https://github.com/mfulton26"
             }
         }
     ]
