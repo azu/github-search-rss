@@ -2,11 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-04-04T02:27:37.117Z</updated>
+    <updated>2025-04-04T03:12:42.509Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[esm: top-level Wasm without package type]]></title>
+        <id>https://github.com/nodejs/node/pull/57610</id>
+        <link href="https://github.com/nodejs/node/pull/57610"/>
+        <updated>2025-04-04T02:39:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/598730?u=62984c4f4ede922870c5cc2dbdf498926c7c0f9e&v=4" width="64" height="64" alt=""/><br/><p dir="auto">We currently support <code class="notranslate">node x.wasm</code> through the ESM integration where <code class="notranslate">.wasm</code> files are located inside packages with <code class="notranslate">"type": "module"</code>, but not without the module type on the package. This fixes the top-level execution case to always use the ESM loader.</p>
+<p dir="auto">This fix also adds a comprehensive test case for top-level Wasm execution that in turn can be extended to various end-to-end Wasm execution scenarios, in this example creating a JS object, setting some properties on it, and logging it back.</p>]]></content>
+        <author>
+            <name>guybedford</name>
+            <email>guybedford@noreply.github.com</email>
+            <uri>https://github.com/guybedford</uri>
+        </author>
+        <published>2025-03-25T00:03:13.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[src: add `--run-from` runtime flag]]></title>
         <id>https://github.com/nodejs/node/pull/57523</id>
@@ -317,9 +331,9 @@ http.createServer((req, res) =&gt; {
   <span class="pl-k">new</span> <span class="pl-v">Worker</span><span class="pl-kos">(</span><span class="pl-s1">__filename</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">`RafaelGSS (<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">++</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>)`</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span></pre></div>
 <p dir="auto">On Node.js startup if you monitor using <code class="notranslate">htop</code> you should be able to see:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzM5NTcsIm5iZiI6MTc0MzczMzY1NywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAyMjczN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTUyOGI3MDgzMTU0OGQ4OGI2Y2M2NmVmMzBmYjlkY2Q1MzE5NGE4MmRlNzA2ZjQyY2FlN2Y4MDViNDUzOWEzM2ImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.j6w7FqRFNhvIIwL-QO4zTCdOIJCCjIfrNd-9a3cb0mM"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzM5NTcsIm5iZiI6MTc0MzczMzY1NywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAyMjczN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTUyOGI3MDgzMTU0OGQ4OGI2Y2M2NmVmMzBmYjlkY2Q1MzE5NGE4MmRlNzA2ZjQyY2FlN2Y4MDViNDUzOWEzM2ImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.j6w7FqRFNhvIIwL-QO4zTCdOIJCCjIfrNd-9a3cb0mM" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzY2NjIsIm5iZiI6MTc0MzczNjM2MiwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAzMTI0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVmMzk3YjkyYmQwOTRlNWVhNDI3MWVjZjg4NDgzOTc2NzZjNWQ2ZTUwNGFlMzg5NTMzZGUyY2ZlYjE3ZTIxYzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.m1vjNXveAicRbXP6C8mqlDGemLG-UPRSe7K4lHk2Ts8"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzY2NjIsIm5iZiI6MTc0MzczNjM2MiwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAzMTI0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVmMzk3YjkyYmQwOTRlNWVhNDI3MWVjZjg4NDgzOTc2NzZjNWQ2ZTUwNGFlMzg5NTMzZGUyY2ZlYjE3ZTIxYzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.m1vjNXveAicRbXP6C8mqlDGemLG-UPRSe7K4lHk2Ts8" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto">Then once it gets a request:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzM5NTcsIm5iZiI6MTc0MzczMzY1NywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAyMjczN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA4NmUyOGU2MTMyZTk2YmJiODRjYmM4OWIxMDRjODJhMzE2ZGFkZjE5N2VmYWI3YjEzZTNmNjllNjkxYjA0MGMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ql_D0VRS08PxhGn29y8adnuCsT0LPz2a-_VcaF9hJZM"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzM5NTcsIm5iZiI6MTc0MzczMzY1NywicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAyMjczN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA4NmUyOGU2MTMyZTk2YmJiODRjYmM4OWIxMDRjODJhMzE2ZGFkZjE5N2VmYWI3YjEzZTNmNjllNjkxYjA0MGMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ql_D0VRS08PxhGn29y8adnuCsT0LPz2a-_VcaF9hJZM" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzY2NjIsIm5iZiI6MTc0MzczNjM2MiwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAzMTI0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ5OTBjYWZkYjQ1MTk5NTgzMjg2YTM5NWQwZGEyNzMyZWMwNTQ1ZmVjYzIxMTY5MDA4MGE4YTdhOTFiOWJhZmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ZDxwIwm5SJ9okKPxE8Gh-yhZ1mLcJNTm3YFwbfNCMHA"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzY2NjIsIm5iZiI6MTc0MzczNjM2MiwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDA0VDAzMTI0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ5OTBjYWZkYjQ1MTk5NTgzMjg2YTM5NWQwZGEyNzMyZWMwNTQ1ZmVjYzIxMTY5MDA4MGE4YTdhOTFiOWJhZmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ZDxwIwm5SJ9okKPxE8Gh-yhZ1mLcJNTm3YFwbfNCMHA" alt="image" style="max-width: 100%;"></a></p>
 <blockquote>
 <p dir="auto"><code class="notranslate">V8Worker</code> and <code class="notranslate">libuv</code> threads number depends on the parameters &amp; environments</p>
 </blockquote>]]></content>
@@ -546,7 +560,7 @@ assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre cla
 <span class="pl-k">const</span> <span class="pl-s1">imported</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
 <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">imported</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span></pre></div>
 <p dir="auto">This complements the <code class="notranslate">module.register()</code> hooks - the new hooks fit better internally and cover all corners in the module graph; whereas <code class="notranslate">module.register()</code> previously could not cover <code class="notranslate">require()</code> while it was in-thread, and still cannot cover <code class="notranslate">createRequire()</code> after being moved off-thread.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzM5NTcsIm5iZiI6MTc0MzczMzY1NywicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQwNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MDRUMDIyNzM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NDQxYjZiN2JhYTFlNDVjZGY3YjBlZmRiZjNiN2I2NTJhZTU5YjlhMmRmYzQyYWRjMTA3NzJiYTJiN2E5MmI5ZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.p0UE2Z-y7-XVsmH2V2brxHgXEVUDOYKTnMLLQdFe9SA"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzM5NTcsIm5iZiI6MTc0MzczMzY1NywicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQwNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MDRUMDIyNzM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NDQxYjZiN2JhYTFlNDVjZGY3YjBlZmRiZjNiN2I2NTJhZTU5YjlhMmRmYzQyYWRjMTA3NzJiYTJiN2E5MmI5ZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.p0UE2Z-y7-XVsmH2V2brxHgXEVUDOYKTnMLLQdFe9SA" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzY2NjIsIm5iZiI6MTc0MzczNjM2MiwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQwNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MDRUMDMxMjQyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MTU3ODdkMTQzYzI4NDdlYTc4MjI1NTY2M2ZmMGVkYjkwZDAwOTM1Yjk0YTk3NzVkNmIyZjFmYWEzZWFhYTdkOSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ._ljiLxP6t4tfalP1tNZPHjycPMuau-TNZ2VrmAJk6Pw"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDM3MzY2NjIsIm5iZiI6MTc0MzczNjM2MiwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQwNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MDRUMDMxMjQyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MTU3ODdkMTQzYzI4NDdlYTc4MjI1NTY2M2ZmMGVkYjkwZDAwOTM1Yjk0YTk3NzVkNmIyZjFmYWEzZWFhYTdkOSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ._ljiLxP6t4tfalP1tNZPHjycPMuau-TNZ2VrmAJk6Pw" style="max-width: 100%;"></a>
 <p dir="auto">They are also run in the same thread as the modules being loaded and where the hooks are registered, which means they are easier to debug (no more <code class="notranslate">console.log()</code> getting lost) and do not have the many deadlock issues haunting the <code class="notranslate">module.register()</code> hooks. The new API also takes functions directly so that it's easier for intermediate loader packages to take user options from files that the hooks can't be aware of, like many existing CJS monkey-patchers do.</p>
 <hr>
 <h4 dir="auto">Background</h4>
@@ -561,403 +575,5 @@ assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre cla
             <uri>https://github.com/joyeecheung</uri>
         </author>
         <published>2024-11-02T22:36:52.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[tools: fix root certificate updater]]></title>
-        <id>https://github.com/nodejs/node/pull/55681</id>
-        <link href="https://github.com/nodejs/node/pull/55681"/>
-        <updated>2025-02-10T18:22:32.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5445507?u=4dc851f27fdfb6c2e287ccdb528977e722ed7760&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Determine the NSS version from actual Firefox releases, instead of attempting to parse a wiki page (which is sensitive to formatting changes and relies on the page being up to date).</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2499112931" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/54680" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/54680/hovercard?comment_id=2386882113&amp;comment_type=issue_comment" href="https://github.com/nodejs/node/pull/54680#issuecomment-2386882113">#54680 (comment)</a></p>
-<hr>
-<p dir="auto">Second commit is the result of running the script to update to Firefox 131 which picks up NSS 3.104.</p>
-<p dir="auto">Running the script again without specifying the version shows the script picking up Firefox 132 and NSS 3.105 but there are no certdata changes from NSS 3.104 which would correctly prevent <a href="https://github.com/nodejs/node/blob/main/.github/workflows/tools.yml"><code class="notranslate">.github/workflows/tools.yml</code></a> from creating a new pull request as no files would change:</p>
-<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ node tools/dep_updaters/update-root-certs.mjs -v
-Fetching Firefox release data from https://nucleus.mozilla.org/rna/all-releases.json.
-Fetching NSS tag from https://hg.mozilla.org/releases/mozilla-release/raw-file/FIREFOX_132_0_RELEASE/security/nss/TAG-INFO.
-Found tag NSS_3_105_RTM.
-Updating to NSS version 3.105
-Fetching https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt
-Writing /home/rlau/sandbox/github/node/tools/certdata.txt
-Running tools/mk-ca-bundle.pl
-Parsing: GlobalSign Root CA
-Parsing: Entrust.net Premium 2048 Secure Server CA
-Parsing: Baltimore CyberTrust Root
-Parsing: Entrust Root Certification Authority
-Parsing: Comodo AAA Services root
-Parsing: QuoVadis Root CA 2
-Parsing: QuoVadis Root CA 3
-Parsing: XRamp Global CA Root
-Parsing: Go Daddy Class 2 CA
-Parsing: Starfield Class 2 CA
-Parsing: DigiCert Assured ID Root CA
-Parsing: DigiCert Global Root CA
-Parsing: DigiCert High Assurance EV Root CA
-Parsing: SwissSign Gold CA - G2
-Parsing: SwissSign Silver CA - G2
-Parsing: SecureTrust CA
-Parsing: Secure Global CA
-Parsing: COMODO Certification Authority
-Parsing: COMODO ECC Certification Authority
-Parsing: Certigna
-Parsing: ePKI Root Certification Authority
-Parsing: certSIGN ROOT CA
-Parsing: NetLock Arany (Class Gold) Főtanúsítvány
-Parsing: SecureSign RootCA11
-Parsing: Microsec e-Szigno Root CA 2009
-Parsing: GlobalSign Root CA - R3
-Parsing: Izenpe.com
-Parsing: Go Daddy Root Certificate Authority - G2
-Parsing: Starfield Root Certificate Authority - G2
-Parsing: Starfield Services Root Certificate Authority - G2
-Parsing: AffirmTrust Commercial
-Parsing: AffirmTrust Networking
-Parsing: AffirmTrust Premium
-Parsing: AffirmTrust Premium ECC
-Parsing: Certum Trusted Network CA
-Parsing: TWCA Root Certification Authority
-Parsing: Security Communication RootCA2
-Parsing: Actalis Authentication Root CA
-Parsing: Buypass Class 2 Root CA
-Parsing: Buypass Class 3 Root CA
-Parsing: T-TeleSec GlobalRoot Class 3
-Parsing: D-TRUST Root Class 3 CA 2 2009
-Parsing: D-TRUST Root Class 3 CA 2 EV 2009
-Parsing: CA Disig Root R2
-Parsing: ACCVRAIZ1
-Parsing: TWCA Global Root CA
-Parsing: TeliaSonera Root CA v1
-Parsing: T-TeleSec GlobalRoot Class 2
-Parsing: Atos TrustedRoot 2011
-Parsing: QuoVadis Root CA 1 G3
-Parsing: QuoVadis Root CA 2 G3
-Parsing: QuoVadis Root CA 3 G3
-Parsing: DigiCert Assured ID Root G2
-Parsing: DigiCert Assured ID Root G3
-Parsing: DigiCert Global Root G2
-Parsing: DigiCert Global Root G3
-Parsing: DigiCert Trusted Root G4
-Parsing: COMODO RSA Certification Authority
-Parsing: USERTrust RSA Certification Authority
-Parsing: USERTrust ECC Certification Authority
-Parsing: GlobalSign ECC Root CA - R5
-Parsing: IdenTrust Commercial Root CA 1
-Parsing: IdenTrust Public Sector Root CA 1
-Parsing: Entrust Root Certification Authority - G2
-Parsing: Entrust Root Certification Authority - EC1
-Parsing: CFCA EV ROOT
-Parsing: OISTE WISeKey Global Root GB CA
-Parsing: SZAFIR ROOT CA2
-Parsing: Certum Trusted Network CA 2
-Parsing: Hellenic Academic and Research Institutions RootCA 2015
-Parsing: Hellenic Academic and Research Institutions ECC RootCA 2015
-Parsing: ISRG Root X1
-Parsing: AC RAIZ FNMT-RCM
-Parsing: Amazon Root CA 1
-Parsing: Amazon Root CA 2
-Parsing: Amazon Root CA 3
-Parsing: Amazon Root CA 4
-Parsing: TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1
-Parsing: GDCA TrustAUTH R5 ROOT
-Parsing: SSL.com Root Certification Authority RSA
-Parsing: SSL.com Root Certification Authority ECC
-Parsing: SSL.com EV Root Certification Authority RSA R2
-Parsing: SSL.com EV Root Certification Authority ECC
-Parsing: GlobalSign Root CA - R6
-Parsing: OISTE WISeKey Global Root GC CA
-Parsing: UCA Global G2 Root
-Parsing: UCA Extended Validation Root
-Parsing: Certigna Root CA
-Parsing: emSign Root CA - G1
-Parsing: emSign ECC Root CA - G3
-Parsing: emSign Root CA - C1
-Parsing: emSign ECC Root CA - C3
-Parsing: Hongkong Post Root CA 3
-Parsing: Entrust Root Certification Authority - G4
-Parsing: Microsoft ECC Root Certificate Authority 2017
-Parsing: Microsoft RSA Root Certificate Authority 2017
-Parsing: e-Szigno Root CA 2017
-Parsing: certSIGN Root CA G2
-Parsing: Trustwave Global Certification Authority
-Parsing: Trustwave Global ECC P256 Certification Authority
-Parsing: Trustwave Global ECC P384 Certification Authority
-Parsing: NAVER Global Root Certification Authority
-Parsing: AC RAIZ FNMT-RCM SERVIDORES SEGUROS
-Parsing: GlobalSign Root R46
-Parsing: GlobalSign Root E46
-Parsing: GLOBALTRUST 2020
-Parsing: ANF Secure Server Root CA
-Parsing: Certum EC-384 CA
-Parsing: Certum Trusted Root CA
-Parsing: TunTrust Root CA
-Parsing: HARICA TLS RSA Root CA 2021
-Parsing: HARICA TLS ECC Root CA 2021
-Parsing: Autoridad de Certificacion Firmaprofesional CIF A62634068
-Parsing: vTrus ECC Root CA
-Parsing: vTrus Root CA
-Parsing: ISRG Root X2
-Parsing: HiPKI Root CA - G1
-Parsing: GlobalSign ECC Root CA - R4
-Parsing: GTS Root R1
-Parsing: GTS Root R2
-Parsing: GTS Root R3
-Parsing: GTS Root R4
-Parsing: Telia Root CA v2
-Parsing: D-TRUST BR Root CA 1 2020
-Parsing: D-TRUST EV Root CA 1 2020
-Parsing: DigiCert TLS ECC P384 Root G5
-Parsing: DigiCert TLS RSA4096 Root G5
-Parsing: Certainly Root R1
-Parsing: Certainly Root E1
-Parsing: Security Communication RootCA3
-Parsing: Security Communication ECC RootCA1
-Parsing: BJCA Global Root CA1
-Parsing: BJCA Global Root CA2
-Parsing: Sectigo Public Server Authentication Root E46
-Parsing: Sectigo Public Server Authentication Root R46
-Parsing: SSL.com TLS RSA Root CA 2022
-Parsing: SSL.com TLS ECC Root CA 2022
-Parsing: Atos TrustedRoot Root CA ECC TLS 2021
-Parsing: Atos TrustedRoot Root CA RSA TLS 2021
-Parsing: TrustAsia Global Root CA G3
-Parsing: TrustAsia Global Root CA G4
-Parsing: CommScope Public Trust ECC Root-01
-Parsing: CommScope Public Trust ECC Root-02
-Parsing: CommScope Public Trust RSA Root-01
-Parsing: CommScope Public Trust RSA Root-02
-Parsing: Telekom Security TLS ECC Root 2020
-Parsing: Telekom Security TLS RSA Root 2023
-Parsing: FIRMAPROFESIONAL CA ROOT-A WEB
-Parsing: TWCA CYBER Root CA
-Parsing: SecureSign Root CA12
-Parsing: SecureSign Root CA14
-Parsing: SecureSign Root CA15
-Done (152 CA certs processed, 25 skipped).
-
-
-NEW_VERSION=3.105
-COMMIT_MSG&lt;&lt;c116927d-aa5a-4b1e-b0ba-96d2c33ae849
-crypto: update root certificates to NSS 3.105
-
-This is the certdata.txt[0] from NSS 3.105.
-
-This is the version of NSS that shipped in Firefox 132.0 on 2024-10-29.
-
-[0] https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt
-c116927d-aa5a-4b1e-b0ba-96d2c33ae849
-$ git status
-On branch rootcerts
-Your branch is ahead of 'upstream/main' by 2 commits.
-  (use &quot;git push&quot; to publish your local commits)
-
-nothing to commit, working tree clean
-$"><pre class="notranslate">$ <span class="pl-s1">node tools/dep_updaters/update-root-certs.mjs -v</span>
-<span class="pl-c1">Fetching Firefox release data from https://nucleus.mozilla.org/rna/all-releases.json.</span>
-<span class="pl-c1">Fetching NSS tag from https://hg.mozilla.org/releases/mozilla-release/raw-file/FIREFOX_132_0_RELEASE/security/nss/TAG-INFO.</span>
-<span class="pl-c1">Found tag NSS_3_105_RTM.</span>
-<span class="pl-c1">Updating to NSS version 3.105</span>
-<span class="pl-c1">Fetching https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt</span>
-<span class="pl-c1">Writing /home/rlau/sandbox/github/node/tools/certdata.txt</span>
-<span class="pl-c1">Running tools/mk-ca-bundle.pl</span>
-<span class="pl-c1">Parsing: GlobalSign Root CA</span>
-<span class="pl-c1">Parsing: Entrust.net Premium 2048 Secure Server CA</span>
-<span class="pl-c1">Parsing: Baltimore CyberTrust Root</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority</span>
-<span class="pl-c1">Parsing: Comodo AAA Services root</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 2</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 3</span>
-<span class="pl-c1">Parsing: XRamp Global CA Root</span>
-<span class="pl-c1">Parsing: Go Daddy Class 2 CA</span>
-<span class="pl-c1">Parsing: Starfield Class 2 CA</span>
-<span class="pl-c1">Parsing: DigiCert Assured ID Root CA</span>
-<span class="pl-c1">Parsing: DigiCert Global Root CA</span>
-<span class="pl-c1">Parsing: DigiCert High Assurance EV Root CA</span>
-<span class="pl-c1">Parsing: SwissSign Gold CA - G2</span>
-<span class="pl-c1">Parsing: SwissSign Silver CA - G2</span>
-<span class="pl-c1">Parsing: SecureTrust CA</span>
-<span class="pl-c1">Parsing: Secure Global CA</span>
-<span class="pl-c1">Parsing: COMODO Certification Authority</span>
-<span class="pl-c1">Parsing: COMODO ECC Certification Authority</span>
-<span class="pl-c1">Parsing: Certigna</span>
-<span class="pl-c1">Parsing: ePKI Root Certification Authority</span>
-<span class="pl-c1">Parsing: certSIGN ROOT CA</span>
-<span class="pl-c1">Parsing: NetLock Arany (Class Gold) Főtanúsítvány</span>
-<span class="pl-c1">Parsing: SecureSign RootCA11</span>
-<span class="pl-c1">Parsing: Microsec e-Szigno Root CA 2009</span>
-<span class="pl-c1">Parsing: GlobalSign Root CA - R3</span>
-<span class="pl-c1">Parsing: Izenpe.com</span>
-<span class="pl-c1">Parsing: Go Daddy Root Certificate Authority - G2</span>
-<span class="pl-c1">Parsing: Starfield Root Certificate Authority - G2</span>
-<span class="pl-c1">Parsing: Starfield Services Root Certificate Authority - G2</span>
-<span class="pl-c1">Parsing: AffirmTrust Commercial</span>
-<span class="pl-c1">Parsing: AffirmTrust Networking</span>
-<span class="pl-c1">Parsing: AffirmTrust Premium</span>
-<span class="pl-c1">Parsing: AffirmTrust Premium ECC</span>
-<span class="pl-c1">Parsing: Certum Trusted Network CA</span>
-<span class="pl-c1">Parsing: TWCA Root Certification Authority</span>
-<span class="pl-c1">Parsing: Security Communication RootCA2</span>
-<span class="pl-c1">Parsing: Actalis Authentication Root CA</span>
-<span class="pl-c1">Parsing: Buypass Class 2 Root CA</span>
-<span class="pl-c1">Parsing: Buypass Class 3 Root CA</span>
-<span class="pl-c1">Parsing: T-TeleSec GlobalRoot Class 3</span>
-<span class="pl-c1">Parsing: D-TRUST Root Class 3 CA 2 2009</span>
-<span class="pl-c1">Parsing: D-TRUST Root Class 3 CA 2 EV 2009</span>
-<span class="pl-c1">Parsing: CA Disig Root R2</span>
-<span class="pl-c1">Parsing: ACCVRAIZ1</span>
-<span class="pl-c1">Parsing: TWCA Global Root CA</span>
-<span class="pl-c1">Parsing: TeliaSonera Root CA v1</span>
-<span class="pl-c1">Parsing: T-TeleSec GlobalRoot Class 2</span>
-<span class="pl-c1">Parsing: Atos TrustedRoot 2011</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 1 G3</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 2 G3</span>
-<span class="pl-c1">Parsing: QuoVadis Root CA 3 G3</span>
-<span class="pl-c1">Parsing: DigiCert Assured ID Root G2</span>
-<span class="pl-c1">Parsing: DigiCert Assured ID Root G3</span>
-<span class="pl-c1">Parsing: DigiCert Global Root G2</span>
-<span class="pl-c1">Parsing: DigiCert Global Root G3</span>
-<span class="pl-c1">Parsing: DigiCert Trusted Root G4</span>
-<span class="pl-c1">Parsing: COMODO RSA Certification Authority</span>
-<span class="pl-c1">Parsing: USERTrust RSA Certification Authority</span>
-<span class="pl-c1">Parsing: USERTrust ECC Certification Authority</span>
-<span class="pl-c1">Parsing: GlobalSign ECC Root CA - R5</span>
-<span class="pl-c1">Parsing: IdenTrust Commercial Root CA 1</span>
-<span class="pl-c1">Parsing: IdenTrust Public Sector Root CA 1</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority - G2</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority - EC1</span>
-<span class="pl-c1">Parsing: CFCA EV ROOT</span>
-<span class="pl-c1">Parsing: OISTE WISeKey Global Root GB CA</span>
-<span class="pl-c1">Parsing: SZAFIR ROOT CA2</span>
-<span class="pl-c1">Parsing: Certum Trusted Network CA 2</span>
-<span class="pl-c1">Parsing: Hellenic Academic and Research Institutions RootCA 2015</span>
-<span class="pl-c1">Parsing: Hellenic Academic and Research Institutions ECC RootCA 2015</span>
-<span class="pl-c1">Parsing: ISRG Root X1</span>
-<span class="pl-c1">Parsing: AC RAIZ FNMT-RCM</span>
-<span class="pl-c1">Parsing: Amazon Root CA 1</span>
-<span class="pl-c1">Parsing: Amazon Root CA 2</span>
-<span class="pl-c1">Parsing: Amazon Root CA 3</span>
-<span class="pl-c1">Parsing: Amazon Root CA 4</span>
-<span class="pl-c1">Parsing: TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1</span>
-<span class="pl-c1">Parsing: GDCA TrustAUTH R5 ROOT</span>
-<span class="pl-c1">Parsing: SSL.com Root Certification Authority RSA</span>
-<span class="pl-c1">Parsing: SSL.com Root Certification Authority ECC</span>
-<span class="pl-c1">Parsing: SSL.com EV Root Certification Authority RSA R2</span>
-<span class="pl-c1">Parsing: SSL.com EV Root Certification Authority ECC</span>
-<span class="pl-c1">Parsing: GlobalSign Root CA - R6</span>
-<span class="pl-c1">Parsing: OISTE WISeKey Global Root GC CA</span>
-<span class="pl-c1">Parsing: UCA Global G2 Root</span>
-<span class="pl-c1">Parsing: UCA Extended Validation Root</span>
-<span class="pl-c1">Parsing: Certigna Root CA</span>
-<span class="pl-c1">Parsing: emSign Root CA - G1</span>
-<span class="pl-c1">Parsing: emSign ECC Root CA - G3</span>
-<span class="pl-c1">Parsing: emSign Root CA - C1</span>
-<span class="pl-c1">Parsing: emSign ECC Root CA - C3</span>
-<span class="pl-c1">Parsing: Hongkong Post Root CA 3</span>
-<span class="pl-c1">Parsing: Entrust Root Certification Authority - G4</span>
-<span class="pl-c1">Parsing: Microsoft ECC Root Certificate Authority 2017</span>
-<span class="pl-c1">Parsing: Microsoft RSA Root Certificate Authority 2017</span>
-<span class="pl-c1">Parsing: e-Szigno Root CA 2017</span>
-<span class="pl-c1">Parsing: certSIGN Root CA G2</span>
-<span class="pl-c1">Parsing: Trustwave Global Certification Authority</span>
-<span class="pl-c1">Parsing: Trustwave Global ECC P256 Certification Authority</span>
-<span class="pl-c1">Parsing: Trustwave Global ECC P384 Certification Authority</span>
-<span class="pl-c1">Parsing: NAVER Global Root Certification Authority</span>
-<span class="pl-c1">Parsing: AC RAIZ FNMT-RCM SERVIDORES SEGUROS</span>
-<span class="pl-c1">Parsing: GlobalSign Root R46</span>
-<span class="pl-c1">Parsing: GlobalSign Root E46</span>
-<span class="pl-c1">Parsing: GLOBALTRUST 2020</span>
-<span class="pl-c1">Parsing: ANF Secure Server Root CA</span>
-<span class="pl-c1">Parsing: Certum EC-384 CA</span>
-<span class="pl-c1">Parsing: Certum Trusted Root CA</span>
-<span class="pl-c1">Parsing: TunTrust Root CA</span>
-<span class="pl-c1">Parsing: HARICA TLS RSA Root CA 2021</span>
-<span class="pl-c1">Parsing: HARICA TLS ECC Root CA 2021</span>
-<span class="pl-c1">Parsing: Autoridad de Certificacion Firmaprofesional CIF A62634068</span>
-<span class="pl-c1">Parsing: vTrus ECC Root CA</span>
-<span class="pl-c1">Parsing: vTrus Root CA</span>
-<span class="pl-c1">Parsing: ISRG Root X2</span>
-<span class="pl-c1">Parsing: HiPKI Root CA - G1</span>
-<span class="pl-c1">Parsing: GlobalSign ECC Root CA - R4</span>
-<span class="pl-c1">Parsing: GTS Root R1</span>
-<span class="pl-c1">Parsing: GTS Root R2</span>
-<span class="pl-c1">Parsing: GTS Root R3</span>
-<span class="pl-c1">Parsing: GTS Root R4</span>
-<span class="pl-c1">Parsing: Telia Root CA v2</span>
-<span class="pl-c1">Parsing: D-TRUST BR Root CA 1 2020</span>
-<span class="pl-c1">Parsing: D-TRUST EV Root CA 1 2020</span>
-<span class="pl-c1">Parsing: DigiCert TLS ECC P384 Root G5</span>
-<span class="pl-c1">Parsing: DigiCert TLS RSA4096 Root G5</span>
-<span class="pl-c1">Parsing: Certainly Root R1</span>
-<span class="pl-c1">Parsing: Certainly Root E1</span>
-<span class="pl-c1">Parsing: Security Communication RootCA3</span>
-<span class="pl-c1">Parsing: Security Communication ECC RootCA1</span>
-<span class="pl-c1">Parsing: BJCA Global Root CA1</span>
-<span class="pl-c1">Parsing: BJCA Global Root CA2</span>
-<span class="pl-c1">Parsing: Sectigo Public Server Authentication Root E46</span>
-<span class="pl-c1">Parsing: Sectigo Public Server Authentication Root R46</span>
-<span class="pl-c1">Parsing: SSL.com TLS RSA Root CA 2022</span>
-<span class="pl-c1">Parsing: SSL.com TLS ECC Root CA 2022</span>
-<span class="pl-c1">Parsing: Atos TrustedRoot Root CA ECC TLS 2021</span>
-<span class="pl-c1">Parsing: Atos TrustedRoot Root CA RSA TLS 2021</span>
-<span class="pl-c1">Parsing: TrustAsia Global Root CA G3</span>
-<span class="pl-c1">Parsing: TrustAsia Global Root CA G4</span>
-<span class="pl-c1">Parsing: CommScope Public Trust ECC Root-01</span>
-<span class="pl-c1">Parsing: CommScope Public Trust ECC Root-02</span>
-<span class="pl-c1">Parsing: CommScope Public Trust RSA Root-01</span>
-<span class="pl-c1">Parsing: CommScope Public Trust RSA Root-02</span>
-<span class="pl-c1">Parsing: Telekom Security TLS ECC Root 2020</span>
-<span class="pl-c1">Parsing: Telekom Security TLS RSA Root 2023</span>
-<span class="pl-c1">Parsing: FIRMAPROFESIONAL CA ROOT-A WEB</span>
-<span class="pl-c1">Parsing: TWCA CYBER Root CA</span>
-<span class="pl-c1">Parsing: SecureSign Root CA12</span>
-<span class="pl-c1">Parsing: SecureSign Root CA14</span>
-<span class="pl-c1">Parsing: SecureSign Root CA15</span>
-<span class="pl-c1">Done (152 CA certs processed, 25 skipped).</span>
-
-
-<span class="pl-c1">NEW_VERSION=3.105</span>
-<span class="pl-c1">COMMIT_MSG&lt;&lt;c116927d-aa5a-4b1e-b0ba-96d2c33ae849</span>
-<span class="pl-c1">crypto: update root certificates to NSS 3.105</span>
-
-<span class="pl-c1">This is the certdata.txt[0] from NSS 3.105.</span>
-
-<span class="pl-c1">This is the version of NSS that shipped in Firefox 132.0 on 2024-10-29.</span>
-
-<span class="pl-c1">[0] https://raw.githubusercontent.com/nss-dev/nss/refs/tags/NSS_3_105_RTM/lib/ckfw/builtins/certdata.txt</span>
-<span class="pl-c1">c116927d-aa5a-4b1e-b0ba-96d2c33ae849</span>
-$ <span class="pl-s1">git status</span>
-<span class="pl-c1">On branch rootcerts</span>
-<span class="pl-c1">Your branch is ahead of 'upstream/main' by 2 commits.</span>
-<span class="pl-c1">  (use "git push" to publish your local commits)</span>
-
-<span class="pl-c1">nothing to commit, working tree clean</span>
-$</pre></div>
-<hr>
-<p dir="auto">For the release notes,  the notable change is</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Update root certificates to NSS 3.104
-
-This is the version of NSS that shipped in Firefox 131.0 on 2024-10-01.
-
-Certificates added:
-- FIRMAPROFESIONAL CA ROOT-A WEB
-- TWCA CYBER Root CA
-- SecureSign Root CA12
-- SecureSign Root CA14
-- SecureSign Root CA15"><pre class="notranslate"><code class="notranslate">Update root certificates to NSS 3.104
-
-This is the version of NSS that shipped in Firefox 131.0 on 2024-10-01.
-
-Certificates added:
-- FIRMAPROFESIONAL CA ROOT-A WEB
-- TWCA CYBER Root CA
-- SecureSign Root CA12
-- SecureSign Root CA14
-- SecureSign Root CA15
-</code></pre></div>]]></content>
-        <author>
-            <name>richardlau</name>
-            <email>richardlau@noreply.github.com</email>
-            <uri>https://github.com/richardlau</uri>
-        </author>
-        <published>2024-11-01T18:25:42.000Z</published>
     </entry>
 </feed>
