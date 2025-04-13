@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-04-13T11:01:15.164Z</updated>
+    <updated>2025-04-13T12:01:42.026Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -50,6 +50,43 @@
             <uri>https://github.com/puskin94</uri>
         </author>
         <published>2025-03-14T15:25:09.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[repl: add support for multiline history]]></title>
+        <id>https://github.com/nodejs/node/pull/57400</id>
+        <link href="https://github.com/nodejs/node/pull/57400"/>
+        <updated>2025-04-13T11:58:10.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8344987?u=01a8281b5204d7afa434427364f3500404a83d24&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Previously, when navigating the history in the Node.js REPL, multiline commands were displayed line by line, making it difficult to review and edit complete blocks of input.</p>
+<p dir="auto">This PR improves the REPL history behavior by treating multiline commands as a single entry. Now, when scrolling through history, entire blocks of multiline input are displayed together, improving usability and consistency.</p>
+<h3 dir="auto">Key changes:</h3>
+<ul dir="auto">
+<li>Adjusted history handling to store and retrieve multiline commands as single entries.</li>
+<li>Updated navigation logic to properly display multiline inputs.</li>
+<li>Improved editing experience, allowing users to modify multiline history entries in place.</li>
+<li>Changed the multiline indicator: from <code class="notranslate">...</code> to <code class="notranslate">|</code>, to keep the indentation consistent</li>
+<li>Added the multiline indicator also when editing the history, not only when adding new lines</li>
+<li>If the last command caused some kind of error, you can now edit the multiline history, and if you remove the error, the history which caused the error will be replaced with the correct one</li>
+</ul>
+<h2 dir="auto">Important:</h2>
+<p dir="auto">This change relies on the fact that I am now formatting new history entries and saving them in the <code class="notranslate">.node_replhistory</code> file in a specific format. While this does not break backward compatibility, it does mean that switching between older and newer versions (i.e., versions without and with this change) will result in multiline history entries not being preserved if they were created with the latest changes.</p>
+<h3 dir="auto">Impact:</h3>
+<p dir="auto">This change significantly enhances the REPL experience for users who frequently enter complex or multiline expressions, making command recall and editing more intuitive.</p>
+<p dir="auto">Testing:</p>
+<ul dir="auto">
+<li>Manually tested with various multiline inputs, both on unix and windows systems</li>
+<li>Verified history navigation behaves as expected with both single-line and multiline commands.</li>
+</ul>
+<h3 dir="auto">Demos</h3>
+<p dir="auto">Before:</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MTNUMTIwMTQxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjA0M2YzZGY3NzNmMmNhMDdkNjdhYzc5NTRhNTE1YTU5ZTM0NTE5YjQ1YTYzZDQ1MzliNDE4YjY4ZjJlN2JhYiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.VZ-BGj0KAWMqeuaxITv4hnIqsdOBuiYQjC7e1mBRnkA"><img src="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MTNUMTIwMTQxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjA0M2YzZGY3NzNmMmNhMDdkNjdhYzc5NTRhNTE1YTU5ZTM0NTE5YjQ1YTYzZDQ1MzliNDE4YjY4ZjJlN2JhYiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.VZ-BGj0KAWMqeuaxITv4hnIqsdOBuiYQjC7e1mBRnkA" alt="before" data-animated-image="" style="max-width: 100%;"></a></p>
+<p dir="auto">After:</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MTNUMTIwMTQxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTU1YTA4ZTk0OGQ5NjE4NzcwZTUwYzE2M2FjNDg0ODRjZTk5ZjM2MjM1ZjkxYjUyYWUyN2U4Y2Y3NWI3ZGZiZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.Cx7UnT3UFfSE3tQGTsPCIWmNdHzHPCX9UnafifcTgIA"><img src="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MTNUMTIwMTQxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTU1YTA4ZTk0OGQ5NjE4NzcwZTUwYzE2M2FjNDg0ODRjZTk5ZjM2MjM1ZjkxYjUyYWUyN2U4Y2Y3NWI3ZGZiZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.Cx7UnT3UFfSE3tQGTsPCIWmNdHzHPCX9UnafifcTgIA" alt="after" data-animated-image="" style="max-width: 100%;"></a></p>]]></content>
+        <author>
+            <name>puskin94</name>
+            <email>puskin94@noreply.github.com</email>
+            <uri>https://github.com/puskin94</uri>
+        </author>
+        <published>2025-03-10T14:37:19.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[crypto: update root-certificates to 3.108]]></title>
@@ -331,9 +368,9 @@ http.createServer((req, res) =&gt; {
   <span class="pl-k">new</span> <span class="pl-v">Worker</span><span class="pl-kos">(</span><span class="pl-s1">__filename</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">name</span>: <span class="pl-s">`RafaelGSS (<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-c1">++</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>)`</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span></pre></div>
 <p dir="auto">On Node.js startup if you monitor using <code class="notranslate">htop</code> you should be able to see:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDIzNzUsIm5iZiI6MTc0NDU0MjA3NSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDExMDExNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTg5NWQyNjBmNjc2OTM5YzdmNWRiZDE5MjRjNzg5NDM0YWNiNjljZGZkMWUxYmMwMjI5MTE0MGM2OTQxMDI4MzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.XGfryfCkwvOx1FjQv_ig2s_JtXN4qZo-8WQvPENGCQ8"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDIzNzUsIm5iZiI6MTc0NDU0MjA3NSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDExMDExNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTg5NWQyNjBmNjc2OTM5YzdmNWRiZDE5MjRjNzg5NDM0YWNiNjljZGZkMWUxYmMwMjI5MTE0MGM2OTQxMDI4MzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.XGfryfCkwvOx1FjQv_ig2s_JtXN4qZo-8WQvPENGCQ8" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDEyMDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJiOWQ0M2JmMTA4NDhlYzYyNmVkMmIwYWRiODNjZjY2MGQxODdjNjMyMjAzOTk5NTgzNGNkMzI0MDk5NWYwNjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Av9c8fDNz_eDTAhJjPiDwuIwsTyAv38D572kzEhI1Fo"><img src="https://private-user-images.githubusercontent.com/26234614/399515569-e2343986-bb7d-40a0-a624-1ea9b7d0bd16.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU1NjktZTIzNDM5ODYtYmI3ZC00MGEwLWE2MjQtMWVhOWI3ZDBiZDE2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDEyMDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJiOWQ0M2JmMTA4NDhlYzYyNmVkMmIwYWRiODNjZjY2MGQxODdjNjMyMjAzOTk5NTgzNGNkMzI0MDk5NWYwNjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Av9c8fDNz_eDTAhJjPiDwuIwsTyAv38D572kzEhI1Fo" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto">Then once it gets a request:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDIzNzUsIm5iZiI6MTc0NDU0MjA3NSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDExMDExNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA0NGM0NWExYWY0M2NkNmRhMmU0OTI5Yzc2NzExZTAwMzRlMmMyMmQyMzU5ZjJjMDFkODZiZGZmNDU1OWEwNWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ze9OJdxWgRANmLRBVysksoJqY21CJosnOXDA_yJBoDA"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDIzNzUsIm5iZiI6MTc0NDU0MjA3NSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDExMDExNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA0NGM0NWExYWY0M2NkNmRhMmU0OTI5Yzc2NzExZTAwMzRlMmMyMmQyMzU5ZjJjMDFkODZiZGZmNDU1OWEwNWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ze9OJdxWgRANmLRBVysksoJqY21CJosnOXDA_yJBoDA" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDEyMDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA3ZjdhNTA5OTM0NTlmYzU5NzY2ODhlNWMxNWQ2N2M5YmMzNjI5YzVkOTQwODMwZmM4ODEyOTM0OWQ2Y2U1ZDMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.2t0ZIv9C_ONAkUj9Cj5RZuE-VxyV7uuygEUIAnvBbrM"><img src="https://private-user-images.githubusercontent.com/26234614/399515664-729a6935-d5ba-4704-bd73-9e64af19270d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDYwMDEsIm5iZiI6MTc0NDU0NTcwMSwicGF0aCI6Ii8yNjIzNDYxNC8zOTk1MTU2NjQtNzI5YTY5MzUtZDViYS00NzA0LWJkNzMtOWU2NGFmMTkyNzBkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDEzVDEyMDE0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA3ZjdhNTA5OTM0NTlmYzU5NzY2ODhlNWMxNWQ2N2M5YmMzNjI5YzVkOTQwODMwZmM4ODEyOTM0OWQ2Y2U1ZDMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.2t0ZIv9C_ONAkUj9Cj5RZuE-VxyV7uuygEUIAnvBbrM" alt="image" style="max-width: 100%;"></a></p>
 <blockquote>
 <p dir="auto"><code class="notranslate">V8Worker</code> and <code class="notranslate">libuv</code> threads number depends on the parameters &amp; environments</p>
 </blockquote>]]></content>
@@ -497,83 +534,5 @@ Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title"
             <uri>https://github.com/anonrig</uri>
         </author>
         <published>2024-11-04T15:55:07.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[implement module.registerHooks() to run synchronous module customization hooks in thread]]></title>
-        <id>https://github.com/nodejs/node/pull/55698</id>
-        <link href="https://github.com/nodejs/node/pull/55698"/>
-        <updated>2025-02-04T17:18:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This introduces <code class="notranslate">module.registerHooks()</code> for registering module loader customization hooks that are run for all modules loaded by <code class="notranslate">require()</code>, <code class="notranslate">import</code> and functions returned by <code class="notranslate">createRequire()</code> in the same thread, which makes them easier for CJS monkey-patchers to migrate to.</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import assert from 'node:assert';
-import { registerHooks, createRequire } from 'node:module';
-import { writeFileSync } from 'node:fs';
-
-writeFileSync('./bar.js', 'export const id = 123;', 'utf8');
-
-registerHooks({
-  resolve(specifier, context, nextResolve) {
-    const replaced = specifier.replace('foo', 'bar');
-    return nextResolve(replaced, context);
-  },
-  load(url, context, nextLoad) {
-    const result = nextLoad(url, context);
-    return {
-      ...result,
-      source: result.source.toString().replace('123', '456'),
-    };
-  },
-});
-
-// Checks that it works with require.
-const require = createRequire(import.meta.url);
-const required = require('./foo.js');  // redirected by resolve hook to bar.js
-assert.strictEqual(required.id, 456);  // replaced by load hook to 456
-
-// Checks that it works with import.
-const imported = await import('./foo.js');  // redirected by resolve hook to bar.js
-assert.strictEqual(imported.id, 456);  // replaced by load hook to 456"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">assert</span> <span class="pl-k">from</span> <span class="pl-s">'node:assert'</span><span class="pl-kos">;</span>
-<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">registerHooks</span><span class="pl-kos">,</span> <span class="pl-s1">createRequire</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:module'</span><span class="pl-kos">;</span>
-<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">writeFileSync</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs'</span><span class="pl-kos">;</span>
-
-<span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s">'./bar.js'</span><span class="pl-kos">,</span> <span class="pl-s">'export const id = 123;'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-en">registerHooks</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
-  <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-s1">specifier</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">nextResolve</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-k">const</span> <span class="pl-s1">replaced</span> <span class="pl-c1">=</span> <span class="pl-s1">specifier</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-s">'foo'</span><span class="pl-kos">,</span> <span class="pl-s">'bar'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-k">return</span> <span class="pl-s1">nextResolve</span><span class="pl-kos">(</span><span class="pl-s1">replaced</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">,</span>
-  <span class="pl-en">load</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">nextLoad</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-k">const</span> <span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-s1">nextLoad</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-k">return</span> <span class="pl-kos">{</span>
-      ...<span class="pl-s1">result</span><span class="pl-kos">,</span>
-      <span class="pl-c1">source</span>: <span class="pl-s1">result</span><span class="pl-kos">.</span><span class="pl-c1">source</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-s">'123'</span><span class="pl-kos">,</span> <span class="pl-s">'456'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
-    <span class="pl-kos">}</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">,</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-c">// Checks that it works with require.</span>
-<span class="pl-k">const</span> <span class="pl-s1">require</span> <span class="pl-c1">=</span> <span class="pl-en">createRequire</span><span class="pl-kos">(</span><span class="pl-k">import</span><span class="pl-kos">.</span>meta<span class="pl-kos">.</span><span class="pl-c1">url</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-k">const</span> <span class="pl-s1">required</span> <span class="pl-c1">=</span> <span class="pl-s1">require</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
-<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">required</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span>
-
-<span class="pl-c">// Checks that it works with import.</span>
-<span class="pl-k">const</span> <span class="pl-s1">imported</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'./foo.js'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// redirected by resolve hook to bar.js</span>
-<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">imported</span><span class="pl-kos">.</span><span class="pl-c1">id</span><span class="pl-kos">,</span> <span class="pl-c1">456</span><span class="pl-kos">)</span><span class="pl-kos">;</span>  <span class="pl-c">// replaced by load hook to 456</span></pre></div>
-<p dir="auto">This complements the <code class="notranslate">module.register()</code> hooks - the new hooks fit better internally and cover all corners in the module graph; whereas <code class="notranslate">module.register()</code> previously could not cover <code class="notranslate">require()</code> while it was in-thread, and still cannot cover <code class="notranslate">createRequire()</code> after being moved off-thread.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDIzNzUsIm5iZiI6MTc0NDU0MjA3NSwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MTNUMTEwMTE1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjlhNzNlNmQxMWM3NmM2MWM2MDZmYWQzMGU5OTc0MzVhOWJkMGQwYjc2NTAxYjcwZDY1MDAwOWNkNGI5MjAxZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.llFxFKa-O71umIWHSmEZBYeeRHd_XN70GgDQHuhEjEo"><img width="999" alt="Screenshot 2024-11-19 at 16 01 47" src="https://private-user-images.githubusercontent.com/4299420/387710156-a8b04978-f3f6-4b6d-adfb-63710ad8ddf1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDQ1NDIzNzUsIm5iZiI6MTc0NDU0MjA3NSwicGF0aCI6Ii80Mjk5NDIwLzM4NzcxMDE1Ni1hOGIwNDk3OC1mM2Y2LTRiNmQtYWRmYi02MzcxMGFkOGRkZjEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA0MTNUMTEwMTE1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjlhNzNlNmQxMWM3NmM2MWM2MDZmYWQzMGU5OTc0MzVhOWJkMGQwYjc2NTAxYjcwZDY1MDAwOWNkNGI5MjAxZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.llFxFKa-O71umIWHSmEZBYeeRHd_XN70GgDQHuhEjEo" style="max-width: 100%;"></a>
-<p dir="auto">They are also run in the same thread as the modules being loaded and where the hooks are registered, which means they are easier to debug (no more <code class="notranslate">console.log()</code> getting lost) and do not have the many deadlock issues haunting the <code class="notranslate">module.register()</code> hooks. The new API also takes functions directly so that it's easier for intermediate loader packages to take user options from files that the hooks can't be aware of, like many existing CJS monkey-patchers do.</p>
-<hr>
-<h4 dir="auto">Background</h4>
-<p dir="auto">This implements part of the proposal in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2333705982" data-permission-text="Title is private" data-url="https://github.com/nodejs/loaders/issues/198" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/loaders/pull/198/hovercard" href="https://github.com/nodejs/loaders/pull/198">nodejs/loaders#198</a> - for the motivations, see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2207806699" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/52219" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/52219/hovercard" href="https://github.com/nodejs/node/issues/52219">#52219</a> - this fills in the gap where being able to run in-thread and support <code class="notranslate">require()</code> is more important for a hook than being able to run asynchronous code (even then, packages like <a href="https://www.npmjs.com/package/everysync" rel="nofollow">https://www.npmjs.com/package/everysync</a> allows user to sync-ify async code off-thread themselves), especially for a large amount of CJS loader moneky-patchers out there to migrate to an officially supported API easily.</p>
-<p dir="auto">The synchronous, in-thread hooks are a lot easier to support universally in the loaders and reduce the number of dark corners where the hooks cannot run or behave in a surprising manner - I guess the amount of "this caveat of asynchronous hooks does not apply to the synchronous hooks" added in the documentation kind of also already proves the point...</p>
-<p dir="auto">For now only <code class="notranslate">resolve</code> and <code class="notranslate">load</code> are implemented to reach parity with <code class="notranslate">module.register()</code>. I left the exports hook to <a href="https://github.com/joyeecheung/node/tree/export-hooks">https://github.com/joyeecheung/node/tree/export-hooks</a> which will be a follow-up when we decide the timing at which the post-load hook for CJS should run.</p>
-<p dir="auto">The commit <code class="notranslate">module: use synchronous hooks for preparsing in import(cjs)</code> isn't strictly necessary and could split into a follow-up instead, but I think it's nice to have it here instead of leaving out that corner uncovered.</p>
-]]></content>
-        <author>
-            <name>joyeecheung</name>
-            <email>joyeecheung@noreply.github.com</email>
-            <uri>https://github.com/joyeecheung</uri>
-        </author>
-        <published>2024-11-02T22:36:52.000Z</published>
     </entry>
 </feed>
