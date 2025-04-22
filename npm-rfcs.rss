@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-04-22T14:01:17.455Z</updated>
+    <updated>2025-04-22T15:01:15.758Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Include a `globallink` install strategy]]></title>
+        <id>https://github.com/npm/rfcs/issues/817</id>
+        <link href="https://github.com/npm/rfcs/issues/817"/>
+        <updated>2025-04-22T14:49:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1498923?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">There's no doubt that NPM is the butt of a lot of memes relating to how heavy the local <code class="notranslate">node_modules</code> folder can get. Especially on big projects, and whne working on multiple big projects over time, the duplication of the same packages across different project spaces can cause a significant impact on hard drive space. A tool already exists to address this issues: PNPM. However, PNPM is not a 1-for-1 replacement - there are some quirks with the commands, and while for the most part it works, these nuances can get in the way of efficient package management, including when sharing code among developers (especially in the Open Source community).</p>
+<p dir="auto">A <code class="notranslate">globallink</code> install strategy should be included to address this and would work similar to how the <code class="notranslate">linked</code> strategy works now. However, instead of the packages being saved in <code class="notranslate">./node_modules/.store</code>, they would be saved in <code class="notranslate">/path/to/npm/global/node_modules/.store</code>.</p>
+<p dir="auto">This will also cause an update to the <code class="notranslate">clean-install</code> command where the packages (and exact dependencies) for a project are <em>deleted</em> from the global store and re-installed.</p>
+<p dir="auto">Of course, this install strategy can be overridden by specifying a different type at the command line or local config.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The hoisting of packages to the root of the node modules folder helps to deduplicate packages across the project. However, this is only localised to the project. As an example, I work on many web apps that all use SvelteKit and I need to download and store the entire SvelteKit package every time for each project (<a href="https://pkg-size.dev/@sveltejs%2Fkit" rel="nofollow">36MB</a>). Add on the extra frameworks that I use, and that number starts to add up pretty quickly to a couple hundred megabytes.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">By specifying the <code class="notranslate">install-strategy</code> as <code class="notranslate">globallink</code> all the packages would be installed into a global store. npm would resolve the package requirements of an install command, determine that a package exists within the store which meets the version criteria and links to it instead of downloading it again. If no package in the store meets the criteria, one is simply downloaded.</p>
+<p dir="auto">I might be oversimplifying the complexity, but the implementation could be an increase in capability of the <code class="notranslate">linked</code> install strategy, in that the store that it points to is the global store, rather than the local one.</p>]]></content>
+        <author>
+            <name>TheBrenny</name>
+            <email>TheBrenny@noreply.github.com</email>
+            <uri>https://github.com/TheBrenny</uri>
+        </author>
+        <published>2025-04-22T14:49:28.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA["Accountaccess-securityissues"]]></title>
         <id>https://github.com/npm/rfcs/issues/816</id>
@@ -593,32 +617,5 @@ then we could enforce engine from command line</p>
             <uri>https://github.com/ThePlenkov</uri>
         </author>
         <published>2024-04-18T08:32:43.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] <title>]]></title>
-        <id>https://github.com/npm/rfcs/issues/768</id>
-        <link href="https://github.com/npm/rfcs/issues/768"/>
-        <updated>2024-12-05T18:56:10.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/153218963?v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-
-<h3 dir="auto">Example</h3>
-
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-
-<h4 dir="auto">Desired Behaviour</h4>
-
-<h3 dir="auto">References</h3>
-
-<ul dir="auto">
-<li>n/a</li>
-</ul>]]></content>
-        <author>
-            <name>ibrahimkhled</name>
-            <email>ibrahimkhled@noreply.github.com</email>
-            <uri>https://github.com/ibrahimkhled</uri>
-        </author>
-        <published>2024-04-18T06:04:37.000Z</published>
     </entry>
 </feed>
