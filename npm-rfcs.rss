@@ -2,11 +2,84 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-04-22T16:01:31.195Z</updated>
+    <updated>2025-04-22T17:01:05.346Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Verify publisher identity for reused repository URLs]]></title>
+        <id>https://github.com/npm/rfcs/issues/818</id>
+        <link href="https://github.com/npm/rfcs/issues/818"/>
+        <updated>2025-04-22T16:46:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5212744?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Publishing to npm today allows anyone to set the <code class="notranslate">homepage</code> and <code class="notranslate">repository</code> fields in their package metadata without any verification. This gap makes it trivial for a malicious actor to impersonate popular packages by reusing their metadata, tricking users into installing modified or harmful code under a familiar name.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">Consider these two packages:</p>
+<ul dir="auto">
+<li><strong>fs-extra</strong> (the legitimate package):<br>
+<a href="https://npmjs.org/package/fs-extra" rel="nofollow">https://npmjs.org/package/fs-extra</a><br>
+repository: <a href="https://github.com/jprichardson/node-fs-extra">https://github.com/jprichardson/node-fs-extra</a><br>
+latest version: 11.3.0</li>
+<li><strong>fs-extra2</strong> (imposter):<br>
+<a href="https://npmjs.com/package/fs-extra2" rel="nofollow">https://npmjs.com/package/fs-extra2</a><br>
+repository: <a href="https://github.com/jprichardson/node-fs-extra">https://github.com/jprichardson/node-fs-extra</a><br>
+latest version: 1.0.1</li>
+</ul>
+<p dir="auto">At a glance, the metadata matches exactly—but the version (<code class="notranslate">1.0.1</code>) in the imposter does <strong>not</strong> correspond to any tagged release in the real <code class="notranslate">fs-extra</code> GitHub repo. A user who installs <code class="notranslate">fs-extra2</code> may assume they’re getting the genuine library, whereas they’re actually pulling unverified code.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<ul dir="auto">
+<li><strong>No metadata verification</strong><br>
+npm does not check that the maintainer/publisher of a package matches the owner of the <code class="notranslate">homepage</code> or <code class="notranslate">repository</code> URLs specified in <code class="notranslate">package.json</code>.</li>
+<li><strong>Unilateral package creation</strong><br>
+Anyone can publish a new package whose metadata duplicates that of an existing package (aside from the package name).</li>
+<li><strong>No notification to original maintainers</strong><br>
+The legitimate publisher has no way of knowing when someone else reuses their repo URL or homepage in a different package.</li>
+</ul>
+<h4 dir="auto">Desired Behaviour</h4>
+<ol dir="auto">
+<li><strong>Metadata‑to‑publisher cross‑check</strong><br>
+When publishing a package whose <code class="notranslate">repository</code> or <code class="notranslate">homepage</code> URL exactly matches that of a previously published package:
+<ul dir="auto">
+<li>Verify that the npm publisher account matches the GitHub (or other VCS) repo owner.</li>
+</ul>
+</li>
+<li><strong>Provenance verification flow</strong><br>
+If the publisher accounts don’t match:
+<ul dir="auto">
+<li>Prompt the uploader to prove they have rights to those URLs (for example via GitHub’s provenance or an ownership token).</li>
+</ul>
+</li>
+<li><strong>Maintain transparency and safety</strong>
+<ul dir="auto">
+<li>Send an automated email to the original publisher(s) of the URL in question, informing them that another package is reusing their metadata.</li>
+<li>Allow the original publisher to confirm or dispute:
+<ul dir="auto">
+<li>If <strong>confirmed</strong>: proceed with the publish.</li>
+<li>If <strong>disputed</strong> or <strong>unconfirmed</strong> within a grace period: either block the publish or add a clear “<g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Unverified repository URL” label on the package’s npm page.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Optional “fork” designation</strong>
+<ul dir="auto">
+<li>In cases where the author legitimately forks a project, allow a “fork” checkbox or CLI flag that marks the package as a fork of the original.</li>
+</ul>
+</li>
+</ol>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>aqeelat</name>
+            <email>aqeelat@noreply.github.com</email>
+            <uri>https://github.com/aqeelat</uri>
+        </author>
+        <published>2025-04-22T16:46:38.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Include a `globallink` install strategy]]></title>
         <id>https://github.com/npm/rfcs/issues/817</id>
@@ -593,29 +666,5 @@ exports.isWindowsShell = isWindowsShell"><pre class="notranslate"><span class="p
             <uri>https://github.com/500-internal-server-error</uri>
         </author>
         <published>2024-05-03T14:46:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] allowing to use engines as config variable]]></title>
-        <id>https://github.com/npm/rfcs/issues/769</id>
-        <link href="https://github.com/npm/rfcs/issues/769"/>
-        <updated>2024-04-18T08:32:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/6381507?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">package.json allows us to use <a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json#engines" rel="nofollow">engines</a> where we can limit node version.</p>
-<p dir="auto">In CI/CD we often use the pattern when we clone some projects and try to run some tasks from it which requires npm install.</p>
-<p dir="auto">Let's say our pipeline also can accept some parameter such as node version but at the same time we want to enforce a certain rule, when node verrsion of that image should match some version condition.</p>
-<p dir="auto">Currently it is also possible to enforce node version check by use of engines parameter directly in our package.json ( or indirectly via dependent packages ). However let's say if we want to run <code class="notranslate">npm install</code> as it would have something like <code class="notranslate">engines: { node: &gt;20 }</code> we need to  set it manually or at least via <code class="notranslate">npm pkg set engines.node</code> which will modify package.json and it's not perfect for CI/CD procedures where upstream project ideally should stay not touched.</p>
-<p dir="auto">I thought if we would have an option to run something like:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm_config_engines_node='&gt;=18.8` npm i"><pre class="notranslate"><code class="notranslate">npm_config_engines_node='&gt;=18.8` npm i
-</code></pre></div>
-<p dir="auto">which would enforce engine check as it's declared in package.json<br>
-then we could enforce engine from command line</p>
-<p dir="auto">What do you think of this?</p>
-<p dir="auto">Thanks!</p>]]></content>
-        <author>
-            <name>ThePlenkov</name>
-            <email>ThePlenkov@noreply.github.com</email>
-            <uri>https://github.com/ThePlenkov</uri>
-        </author>
-        <published>2024-04-18T08:32:43.000Z</published>
     </entry>
 </feed>
