@@ -2,11 +2,83 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2025-04-23T00:04:17.037Z</updated>
+    <updated>2025-04-23T01:28:39.940Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[media-playback-while-not-visible Permission Policy]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1084</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1084"/>
+        <updated>2025-04-23T01:28:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/80070607?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
+<p dir="auto">I'm requesting an early TAG design review of "media-playback-while-not-visible" permission policy.</p>
+<p dir="auto">Web applications that host embedded media content via iframes may wish to respond to application input by temporarily hiding the media content. These applications may not want to unload the entire iframe when it's not rendered since it could generate user-perceptible performance and experience issues when showing the media content again. At the same time, the user could have a negative experience if the media continues to play and emit audio when not rendered. This proposal aims to provide web applications with the ability to control embedded media content in such a way that guarantees their users have a good experience when the iframe's render status is changed. The "media-playback-while-not-visible" <a href="https://www.w3.org/TR/permissions-policy/" rel="nofollow">permission policy</a> would pause any media being played by iframes which are not currently rendered. For example, this would apply whenever the iframe’s "display" CSS property is set to "none" or when the "visibility" property is set to "hidden" or "collapse".</p>
+<ul class="contains-task-list">
+<li>
+<p dir="auto">Explainer¹: <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/IframeMediaPause/iframe_media_pausing.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/IframeMediaPause/iframe_media_pausing.md</a></p>
+</li>
+<li>
+<p dir="auto">User research: None</p>
+</li>
+<li>
+<p dir="auto">Security and Privacy self-review²: answered the relevant question below.</p>
+</li>
+<li>
+<p dir="auto">GitHub repo:</p>
+</li>
+<li>
+<p dir="auto">Primary contacts:</p>
+<ul dir="auto">
+<li>Gabriel Brito(<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/gabrielsanbrito/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/gabrielsanbrito">@gabrielsanbrito</a>), Microsoft, writer</li>
+<li>Steven Becker(<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/SteveBeckerMSFT/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/SteveBeckerMSFT">@SteveBeckerMSFT</a>), Microsoft, writer</li>
+</ul>
+</li>
+<li>
+<p dir="auto">Organization/project driving the design: Microsoft</p>
+</li>
+<li>
+<p dir="auto">This work is being funded by: Microsoft</p>
+</li>
+<li>
+<p dir="auto">Incubation and standards groups that have discussed the design:</p>
+<ul dir="auto">
+<li>WHATWG: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2192989420" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10208" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10208/hovercard" href="https://github.com/whatwg/html/issues/10208">whatwg/html#10208</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto">Standards group(s) that you expect to discuss and/or adopt this work when it's<br>
+ready: WICG and WHATWG</p>
+</li>
+<li>
+<p dir="auto">Multi-stakeholder feedback³:</p>
+<ul dir="auto">
+<li>Chromium comments: Supportive</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2562917212" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1082" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1082/hovercard" href="https://github.com/mozilla/standards-positions/issues/1082">mozilla/standards-positions#1082</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2565810180" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/409" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/409/hovercard" href="https://github.com/WebKit/standards-positions/issues/409">WebKit/standards-positions#409</a></li>
+</ul>
+</li>
+<li>
+<p dir="auto">Major unresolved issues with or opposition to this design:</p>
+</li>
+<li class="task-list-item">
+<p dir="auto"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></p>
+</li>
+</ul>
+<p dir="auto">You should also know that...</p>
+<p dir="auto">Answer to the privacy questionnaire's question 1:<br>
+What information does this feature expose, and for what purposes?</p>
+<ul dir="auto">
+<li>There is a possibility that the embedded could infer that the permission policy is in effect and it is being hidden. For example, a webpage could have both an HTMLVideoElement and an AudioContext playing audio simultaneously. If at some point they both get, respectively, paused and interrupted within a short time frame; then, the website could infer that an ancestor frame is applying the permission policy on it and that it has been hidden by one of the ancestors. Nevertheless, we believe that this would be very low impact, because a web page could make a similar observation by monitoring when it’s unloaded as well as via the <a href="https://w3c.github.io/IntersectionObserver/#intersection-observer-interface" rel="nofollow">IntersectionObserver API</a>.</li>
+</ul>]]></content>
+        <author>
+            <name>gabrielsanbrito</name>
+            <email>gabrielsanbrito@noreply.github.com</email>
+            <uri>https://github.com/gabrielsanbrito</uri>
+        </author>
+        <published>2025-04-23T01:28:28.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[IP Protection (in Incognito mode)]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1083</id>
@@ -1053,55 +1125,5 @@ ready: Federated Identity Working Group</p>
             <uri>https://github.com/ayuishii</uri>
         </author>
         <published>2025-03-06T22:37:04.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Expose contentEncoding in resourceTiming]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1064</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1064"/>
-        <updated>2025-04-22T03:53:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/185116945?v=4" width="64" height="64" alt=""/><br/><p dir="auto">こんにちは TAG-さん!</p>
-<p dir="auto">I'm requesting a TAG review of exposing contentEncoding in resourceTiming.</p>
-<p dir="auto">Propose that we add an explicit <code class="notranslate">.contentEncoding</code> in resourceTiming.<br>
-<code class="notranslate">contentEncoding</code> value has been very helpful for web apps and CDN in monitoring and optimization. As more compressions are deployed, it's no longer practical to infer such value. Therefore, it's desirable to explicitly expose it.</p>
-<ul dir="auto">
-<li>Explainer¹:<br>
-<a href="https://github.com/guohuideng2024/resource-timing/blob/gh-pages/Explainers/Content_Encoding.md">https://github.com/guohuideng2024/resource-timing/blob/gh-pages/Explainers/Content_Encoding.md</a></li>
-<li>Specification:<br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2739299370" data-permission-text="Title is private" data-url="https://github.com/whatwg/fetch/issues/1796" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/fetch/pull/1796/hovercard" href="https://github.com/whatwg/fetch/pull/1796">whatwg/fetch#1796</a><br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2739324487" data-permission-text="Title is private" data-url="https://github.com/w3c/resource-timing/issues/411" data-hovercard-type="pull_request" data-hovercard-url="/w3c/resource-timing/pull/411/hovercard" href="https://github.com/w3c/resource-timing/pull/411">w3c/resource-timing#411</a></li>
-<li>WPT Tests:<br>
-<a href="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/external/wpt/resource-timing/content-encoding.https.html" rel="nofollow">https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/external/wpt/resource-timing/content-encoding.https.html</a></li>
-<li>User research: <a href="https://github.com/guohuideng2024/resource-timing/blob/gh-pages/Explainers/Content_Encoding.md#user-research">Here</a>.</li>
-<li>Security and Privacy self-review²: <a href="https://github.com/guohuideng2024/resource-timing/blob/gh-pages/Explainers/Content_Encoding.md#securityprivacy-considerations">Here.</a></li>
-<li>GitHub repo:<br>
-<a href="https://github.com/w3c/resource-timing">https://github.com/w3c/resource-timing</a></li>
-<li>Primary contacts:<br>
-<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/guohuideng2024/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/guohuideng2024">@guohuideng2024</a>, Microsoft</li>
-<li>Organization/project driving the specification: Microsoft</li>
-<li>Multi-stakeholder support³:
-<ul dir="auto">
-<li>Chromium comments: Already implemented behind a feature flag.</li>
-<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2895462752" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1189" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1189/hovercard" href="https://github.com/mozilla/standards-positions/issues/1189">mozilla/standards-positions#1189</a></li>
-<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2895440941" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/467" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/467/hovercard" href="https://github.com/WebKit/standards-positions/issues/467">WebKit/standards-positions#467</a></li>
-</ul>
-</li>
-<li>Status/issue trackers for implementations⁴:<br>
-<a href="https://chromestatus.com/feature/4818080273006592" rel="nofollow">https://chromestatus.com/feature/4818080273006592</a><br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1899453061" data-permission-text="Title is private" data-url="https://github.com/w3c/resource-timing/issues/381" data-hovercard-type="issue" data-hovercard-url="/w3c/resource-timing/issues/381/hovercard" href="https://github.com/w3c/resource-timing/issues/381">w3c/resource-timing#381</a></li>
-</ul>
-<p dir="auto">Further details:</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> I have reviewed the TAG's <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a></li>
-<li>The group where the work on this specification is currently being done: WebPerfWG</li>
-<li>The group where standardization of this work is intended to be done (if different from the current group): WebPerfWG</li>
-<li>Major unresolved issues with or opposition to this specification: None.</li>
-<li>This work is being funded by: Microsoft</li>
-</ul>]]></content>
-        <author>
-            <name>guohuideng2024</name>
-            <email>guohuideng2024@noreply.github.com</email>
-            <uri>https://github.com/guohuideng2024</uri>
-        </author>
-        <published>2025-03-04T22:13:33.000Z</published>
     </entry>
 </feed>
