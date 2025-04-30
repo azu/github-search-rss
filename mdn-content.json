@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Without a line break after <code class=\"notranslate\">[!NOTE]</code>, it's rendered weirdly without spaces around HTML tags.</p>",
+            "url": "https://github.com/mdn/content/pull/39331",
+            "title": "Fix GFM alert syntax, add markdownlint check",
+            "date_modified": "2025-04-30T02:54:26.000Z",
+            "date_published": "2025-04-30T02:52:19.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/186451317?u=dbb0df5978fa630d13579d32da91186a546ed4c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Since Firefox 127.0 released, Linux x86 was reported as x86_64, add note for it.<br>\nAdd note for windows aarch64 cpu and remove outdated reference.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Current Firefox User-Agent string reference was outdated<br>\nIt will mislead people (especially when they don't have the actual device)</p>\n<blockquote>\n<p dir=\"auto\">See <a href=\"https://github.com/git-for-windows/git-for-windows.github.io/pull/61#issuecomment-2834747366\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/git-for-windows/git-for-windows.github.io/pull/61/hovercard\">here</a></p>\n</blockquote>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://www.mozilla.org/en-US/firefox/127.0/releasenotes/\" rel=\"nofollow\">Firefox 127.0 Release Notes</a></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1763310\" rel=\"nofollow\">Bugzilla #1763310</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None</p>",
             "url": "https://github.com/mdn/content/pull/39329",
             "title": "fix: Firefox user-agent string reference",
@@ -20,7 +31,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55846417?u=960cf718096ede4057ef19c0b91878e3b5857acd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The following</p>\n<div class=\"highlight highlight-source-cs notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"@layer A, B, C;\n\n@import url('/blob.css') B;\"><pre class=\"notranslate\"><span class=\"pl-smi\">@layer</span> <span class=\"pl-s1\">A</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">B</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">C</span><span class=\"pl-kos\">;</span>\n\n<span class=\"pl-smi\">@import</span> <span class=\"pl-en\">url</span><span class=\"pl-kos\">(</span>'<span class=\"pl-c1\">/</span><span class=\"pl-s1\">blob</span><span class=\"pl-kos\">.</span><span class=\"pl-s1\">css</span>'<span class=\"pl-kos\">)</span> <span class=\"pl-s1\">B</span><span class=\"pl-kos\"></span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">will result in <code class=\"notranslate\">B, A, C</code> order <strong>NOT</strong> the defined one.<br>\nThe reason behind it is that <code class=\"notranslate\">@import</code> runs sooner and its layered defined in layers stack. The the <code class=\"notranslate\">@layer</code> runs and it predefine the layers in the stack if they are not already defined.</p>\n<p dir=\"auto\">While CSS doesn't raise any error or warning, this could end up in unexpected behaviour.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">It took me 2 days to understand the issue!</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/39326",
             "title": "Clarify unexpected bahaviour of using layered `@import` and `@layer` statement together",
-            "date_modified": "2025-04-29T17:37:04.000Z",
+            "date_modified": "2025-04-30T03:10:10.000Z",
             "date_published": "2025-04-29T13:50:42.000Z",
             "author": {
                 "name": "mahmoudmoravej",
@@ -207,19 +218,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/120011256?u=9b1c1de5a62d4cc8a73582b6a58232dcfcca3188&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR addresses the absence of <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer\" rel=\"nofollow\">SourceBuffer</a> event documentation. The following changes have been made:</p>\n<ul dir=\"auto\">\n<li>Added detailed event pages for SourceBuffer</li>\n<li>Included code examples to demonstrate usage.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The event summary in the specification states that the <code class=\"notranslate\">error</code> event is fired whenever an error occurs during <code class=\"notranslate\">SourceBuffer.appendBuffer()</code>, with <code class=\"notranslate\">SourceBuffer.updating</code> changing from <code class=\"notranslate\">true</code> to <code class=\"notranslate\">false</code>.<br>\nHowever, as highlighted <a href=\"https://www.w3.org/TR/media-source-2/#sourcebuffer-events:~:text=object%20to%20true.-,remove,-Removes%20media%20for\" rel=\"nofollow\">here</a>, the <code class=\"notranslate\">error</code> event is also fired during the <code class=\"notranslate\">remove</code> method. This behaviour is described on the <code class=\"notranslate\">error</code> page</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/39224",
             "title": "Add missing SourceBuffer event pages",
-            "date_modified": "2025-04-21T18:16:45.000Z",
+            "date_modified": "2025-04-30T03:13:55.000Z",
             "date_published": "2025-04-21T17:35:25.000Z",
-            "author": {
-                "name": "low-perry",
-                "url": "https://github.com/low-perry"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/120011256?u=9b1c1de5a62d4cc8a73582b6a58232dcfcca3188&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Completed the Exceptions section of the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/appendBuffer\" rel=\"nofollow\">SourceBuffer: appendBuffer() method</a>.<br>\nAdded examples for basic usage and exception handling.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://www.w3.org/TR/media-source-2/#methods\" rel=\"nofollow\">Here</a> the method is described<br>\n<a href=\"https://www.w3.org/TR/media-source-2/#sourcebuffer-prepare-append\" rel=\"nofollow\">The algorithm which throws the errors </a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36404.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2598298341\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36404\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36404/hovercard\" href=\"https://github.com/mdn/content/issues/36404\">#36404</a></p>\n\n\n",
-            "url": "https://github.com/mdn/content/pull/39216",
-            "title": "Add Exceptions section and Examples for the `appendBuffer` method of `SourceBuffer`",
-            "date_modified": "2025-04-21T15:08:09.000Z",
-            "date_published": "2025-04-21T13:34:39.000Z",
             "author": {
                 "name": "low-perry",
                 "url": "https://github.com/low-perry"
