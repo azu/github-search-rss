@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR removes the <code class=\"notranslate\">SnapEvent</code> member of the <code class=\"notranslate\">SnapEvent</code> API from BCD. The collector reports that the constructor is an illegal constructor in Chromium.</p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/api/SnapEvent/SnapEvent\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/api/SnapEvent/SnapEvent</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/26687",
+            "title": "Remove api.SnapEvent.SnapEvent from BCD",
+            "date_modified": "2025-05-01T14:09:36.000Z",
+            "date_published": "2025-05-01T14:08:44.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Firefox and Firefox Android for the <code class=\"notranslate\">load_event</code> member of the <code class=\"notranslate\">SVGElement</code> API. The <code class=\"notranslate\">alternative_name</code> property was incorrectly used in this context.</p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/26686",
             "title": "Update Firefox data for api.SVGElement.load_event",
@@ -105,6 +116,17 @@
             }
         },
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Replaces <code class=\"notranslate\">`&amp;lt;tag&amp;gt;`</code> with <code class=\"notranslate\">`&lt;tag&gt;`</code>.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">These aren't necessary.</p>\n<p dir=\"auto\">Here's how I verified the build output is the same:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"git checkout main\nnpm run build\ncp -r build build-main\n\ngit checkout replace-html-entities-in-backticks\ngit merge main\nnpm run build\n\nnpx prettier --ignore-path /dev/null -w build/data.json build-main/data.json\ndiff build-main/data.json build/data.json\"><pre class=\"notranslate\"><code class=\"notranslate\">git checkout main\nnpm run build\ncp -r build build-main\n\ngit checkout replace-html-entities-in-backticks\ngit merge main\nnpm run build\n\nnpx prettier --ignore-path /dev/null -w build/data.json build-main/data.json\ndiff build-main/data.json build/data.json\n</code></pre></div>\n<p dir=\"auto\">Result:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&lt;   &quot;__meta&quot;: { &quot;timestamp&quot;: &quot;2025-04-29T14:53:56.452Z&quot;, &quot;version&quot;: &quot;6.0.9&quot; },\n---\n&gt;   &quot;__meta&quot;: { &quot;timestamp&quot;: &quot;2025-04-29T14:54:05.893Z&quot;, &quot;version&quot;: &quot;6.0.9&quot; },\"><pre class=\"notranslate\"><code class=\"notranslate\">&lt;   \"__meta\": { \"timestamp\": \"2025-04-29T14:53:56.452Z\", \"version\": \"6.0.9\" },\n---\n&gt;   \"__meta\": { \"timestamp\": \"2025-04-29T14:54:05.893Z\", \"version\": \"6.0.9\" },\n</code></pre></div>\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/26649",
+            "title": "Replace angle quote entities in backticks",
+            "date_modified": "2025-04-29T20:50:55.000Z",
+            "date_published": "2025-04-28T12:01:28.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/301798?u=655c6341a7e8431056ec79000d0dfcfc715f679c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Record incomplete support for the disabled attribute on optgroup elements in desktop Safari v6 and current versions of iOS Safari.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/caugner/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/caugner\">@caugner</a> created <a href=\"https://output.jsbin.com/moqafahuhe\" rel=\"nofollow\">a JS Bin test case</a> and was able to reproduce back to iOS 11.2.</p>\n<p dir=\"auto\">I tested in:</p>\n<ul dir=\"auto\">\n<li>Safari 17.6 on MacOS 12.7.6 - passes</li>\n<li>Safari 18.4 on MacOS 15.4.1 - passes</li>\n<li>iOS 18.3.1 - <strong>fails</strong></li>\n</ul>\n<p dir=\"auto\">Commit history found from <a href=\"https://bugs.webkit.org/show_bug.cgi?id=87614\" rel=\"nofollow\">bug 87614</a> suggests this issue was <strong>likely present in desktop Safari 6</strong> (introduced in 536.11), but fixed by version 7 (fix merged in 537.43.1). I'm unable to test whether it was actually working properly earlier.</p>\n<p dir=\"auto\">There is <a href=\"https://bugs.webkit.org/show_bug.cgi?id=227042\" rel=\"nofollow\">an unresolved bug for iOS and iPadOS</a>.</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #26219.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2920698731\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/26219\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/26219/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/26219\">#26219</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/26644",
             "title": "Update Safari + iOS data for optgroup.disabled",
@@ -124,6 +146,17 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Add a note that Safari provided for support for <code class=\"notranslate\">webRequest</code> use in MV3 in Safari 18.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #24571.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2554846148\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/24571\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/24571/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/24571\">#24571</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/26633",
+            "title": "Safari 18 supports `webextensions.api.webRequest` in MV3",
+            "date_modified": "2025-04-30T02:29:33.000Z",
+            "date_published": "2025-04-26T16:57:41.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
             }
         },
         {
@@ -168,50 +201,6 @@
             "author": {
                 "name": "caugner",
                 "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Fixes several overlapping support statements for Firefox related to VR features.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Before, there were <em>distinct</em> statements for</p>\n<ol dir=\"auto\">\n<li>Windows support (added 55, removed 98), and</li>\n<li>macOS support (added 64, removed 98).</li>\n</ol>\n<p dir=\"auto\">After, there are <em>cumulative</em> statements for</p>\n<ol dir=\"auto\">\n<li>Windows support (added 55, removed 64), and</li>\n<li>macOS <strong>and</strong> Windows support (added 64, removed 98).</li>\n</ol>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Extracted from <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3004725938\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/26544\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/26544/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/26544\">#26544</a>.</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3004645188\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/26543\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/26543/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/26543\">#26543</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/26595",
-            "title": "Fix overlapping VR support statements for Firefox",
-            "date_modified": "2025-04-23T11:54:32.000Z",
-            "date_published": "2025-04-22T11:25:44.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code class=\"notranslate\">SharedStorage</code> API. The data comes from the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.12.11).</p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/api/SharedStorage\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/api/SharedStorage</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/26568",
-            "title": "Chrome 126 added SharedStorage API",
-            "date_modified": "2025-04-28T15:15:05.000Z",
-            "date_published": "2025-04-20T11:57:35.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Firefox and Firefox Android for the <code class=\"notranslate\">permission_screen-wake-lock</code> member of the <code class=\"notranslate\">Permissions</code> API. The data comes from the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.12.11).</p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/api/Permissions/permission_screen-wake-lock\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/api/Permissions/permission_screen-wake-lock</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/26566",
-            "title": "Firefox 122 added `screen-wake-lock` permission",
-            "date_modified": "2025-04-22T14:19:54.000Z",
-            "date_published": "2025-04-20T11:52:49.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Chromium (Chrome, Opera, Samsung Internet, WebView Android) for the <code class=\"notranslate\">Fence</code> API. The data comes from the <a href=\"https://mdn-bcd-collector.gooborg.com\" rel=\"nofollow\">mdn-bcd-collector</a> project (v10.12.11).</p>\n<p dir=\"auto\"><em>Check out the <a href=\"https://github.com/openwebdocs/mdn-bcd-collector#reviewing-bcd-changes\">collector's guide on how to review this PR</a>.</em></p>\n<p dir=\"auto\">Tests Used: <a href=\"https://mdn-bcd-collector.gooborg.com/tests/api/Fence\" rel=\"nofollow\">https://mdn-bcd-collector.gooborg.com/tests/api/Fence</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/26563",
-            "title": "Chrome 126 added Fence API",
-            "date_modified": "2025-04-22T15:26:34.000Z",
-            "date_published": "2025-04-20T11:44:38.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
             }
         }
     ]
