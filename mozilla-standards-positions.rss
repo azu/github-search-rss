@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2025-05-02T11:01:21.284Z</updated>
+    <updated>2025-05-02T12:01:54.075Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
@@ -11,15 +11,16 @@
         <title type="html"><![CDATA[Meta: gh-data.py script errors on querying GitHub API for repository issues starting with page 11]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1221</id>
         <link href="https://github.com/mozilla/standards-positions/issues/1221"/>
-        <updated>2025-05-02T08:57:33.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5774638?u=b853ca7da78e3911eab85badd27e835c8b5569cb&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The gh-data.py script seems to not work provided the underlying repository that's being queried has more than 10 pages of results.</p>
+        <updated>2025-05-02T11:24:19.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5774638?u=b853ca7da78e3911eab85badd27e835c8b5569cb&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The gh-data.py script seems to not work provided the underlying repository that's being queried has more than 10 pages of results (and also, presumably, if not using authentication explaining why it does work in CI).</p>
 <ul dir="auto">
 <li>Page 10: <a href="https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=10">https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=10</a> → normal set of results</li>
 <li>Page 11: <a href="https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=11">https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=11</a> → error response with status 422 and error message <code class="notranslate">API rate limit exceeded for 93.193.43.106. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)</code></li>
 </ul>
 <p dir="auto">I got this error on page 11 the first time I ran the <code class="notranslate">gh-data.py</code> script locally so I feel fairly confident this is a legitimate problem. I consistently get the error above starting on page 11.</p>
 <p dir="auto">To fix this, the script should probably use cursor-based pagination (see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers">https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers</a>).</p>
-<p dir="auto">I'm happy to file a PR to fix this if you like (though I need a little while to test my homework as I'm now rate-limited 😁).</p>]]></content>
+<p dir="auto">I'm happy to file a PR to fix this if you like (though I need a little while to test my homework as I'm now rate-limited 😁).</p>
+<p dir="auto">(As an aside, I also can't run merge-data.py locally because the <code class="notranslate">ruamel.yaml</code> package crashes on parsing a <code class="notranslate">”</code> character (though it has no trouble parsing <code class="notranslate">“</code>, <code class="notranslate">‘</code>, or <code class="notranslate">’</code>) in the activities.yml file. Removing it, and the script works. A fix local to this project could be to programmatically replace <code class="notranslate">“</code> with <code class="notranslate">‘</code> and <code class="notranslate">”</code> with <code class="notranslate">’</code> before passing <code class="notranslate">yml_file</code> to <code class="notranslate">yaml.load</code>.)</p>]]></content>
         <author>
             <name>kleinfreund</name>
             <email>kleinfreund@noreply.github.com</email>
@@ -31,7 +32,7 @@
         <title type="html"><![CDATA[ToggleEvent source attribute]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1220</id>
         <link href="https://github.com/mozilla/standards-positions/issues/1220"/>
-        <updated>2025-05-02T10:19:03.000Z</updated>
+        <updated>2025-05-02T11:52:59.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7681467?u=975aa36c2bf890f0c3f43db7a9d653fd4ad5a5f2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
 <p dir="auto">ToggleEvent source attribute</p>
 <h3 dir="auto">Specification or proposal URL (if available)</h3>
@@ -128,7 +129,7 @@
 </ol>
 <p dir="auto">Some of those questions are also <a href="https://github.com/webmachinelearning/webnn/issues/840" data-hovercard-type="issue" data-hovercard-url="/webmachinelearning/webnn/issues/840/hovercard">in the WebNN Github Repo</a>.</p>
 <p dir="auto">In a single image, this is what they propose (copied from their repository):</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxODM5ODEsIm5iZiI6MTc0NjE4MzY4MSwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQxMTAxMjFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMTQxZThkYmFjMWFhMGIzM2QwNjNkZjEyZjU4YTFiZGE1MjNjMTk5ODA2MWY0ZDYxYmIyZTA5YmZiNGQzN2ZmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.5tgEnqTVZ7jqT7PkDwLywhymd1bdEVdAcucDjIhEk7Q"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxODM5ODEsIm5iZiI6MTc0NjE4MzY4MSwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQxMTAxMjFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMTQxZThkYmFjMWFhMGIzM2QwNjNkZjEyZjU4YTFiZGE1MjNjMTk5ODA2MWY0ZDYxYmIyZTA5YmZiNGQzN2ZmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.5tgEnqTVZ7jqT7PkDwLywhymd1bdEVdAcucDjIhEk7Q" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxODc2MTQsIm5iZiI6MTc0NjE4NzMxNCwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQxMjAxNTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mZGMwZDI0M2ZjNzQyNWI3NTU5MzRiNjJlNzczYzlmZTM3YzZjNTRjOTkwYWFkYTU2OTg4YzBiZjA0ZWY2YjUwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.PnuNZPZGzxUk2Wdb9EHhTDeDCZvYtla0Xicm9RzPa9Q"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxODc2MTQsIm5iZiI6MTc0NjE4NzMxNCwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQxMjAxNTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mZGMwZDI0M2ZjNzQyNWI3NTU5MzRiNjJlNzczYzlmZTM3YzZjNTRjOTkwYWFkYTU2OTg4YzBiZjA0ZWY2YjUwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.PnuNZPZGzxUk2Wdb9EHhTDeDCZvYtla0Xicm9RzPa9Q" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>iampi31415</name>
             <email>iampi31415@noreply.github.com</email>
