@@ -2,11 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2025-05-02T08:01:41.872Z</updated>
+    <updated>2025-05-02T09:01:26.956Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Meta: gh-data.py script errors on querying GitHub API for repository issues starting with page 11]]></title>
+        <id>https://github.com/mozilla/standards-positions/issues/1221</id>
+        <link href="https://github.com/mozilla/standards-positions/issues/1221"/>
+        <updated>2025-05-02T08:57:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5774638?u=b853ca7da78e3911eab85badd27e835c8b5569cb&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The gh-data.py script seems to not work provided the underlying repository that's being queried has more than 10 pages of results.</p>
+<ul dir="auto">
+<li>Page 10: <a href="https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=10">https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=10</a> → normal set of results</li>
+<li>Page 11: <a href="https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=11">https://api.github.com/repos/mozilla/standards-positions/issues?direction=asc&amp;state=all&amp;per_page=100&amp;page=11</a> → error response with status 422 and error message <code class="notranslate">API rate limit exceeded for 93.193.43.106. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)</code></li>
+</ul>
+<p dir="auto">I got this error on page 11 the first time I ran the <code class="notranslate">gh-data.py</code> script locally so I feel fairly confident this is a legitimate problem. I consistently get the error above starting on page 11.</p>
+<p dir="auto">To fix this, the script should probably use cursor-based pagination (see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers">https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers</a>).</p>
+<p dir="auto">I'm happy to file a PR to fix this if you like (though I need a little while to test my homework as I'm now rate-limited 😁).</p>]]></content>
+        <author>
+            <name>kleinfreund</name>
+            <email>kleinfreund@noreply.github.com</email>
+            <uri>https://github.com/kleinfreund</uri>
+        </author>
+        <published>2025-05-02T08:57:33.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ToggleEvent source attribute]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1220</id>
@@ -108,7 +128,7 @@
 </ol>
 <p dir="auto">Some of those questions are also <a href="https://github.com/webmachinelearning/webnn/issues/840" data-hovercard-type="issue" data-hovercard-url="/webmachinelearning/webnn/issues/840/hovercard">in the WebNN Github Repo</a>.</p>
 <p dir="auto">In a single image, this is what they propose (copied from their repository):</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxNzMyMDEsIm5iZiI6MTc0NjE3MjkwMSwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQwODAxNDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MDUwOWQ1OTA0Y2VjYTEwNThjMzE4Nzg4NTUyY2Q2MTJiNDViNmVmMDFjOTc3N2NiYjRhM2Y1NzBlYjNkMjQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Zs8AnJvVFoY652-Z4H2iMgBCgQdlbPNj1m_8f7QpZaQ"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxNzMyMDEsIm5iZiI6MTc0NjE3MjkwMSwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQwODAxNDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MDUwOWQ1OTA0Y2VjYTEwNThjMzE4Nzg4NTUyY2Q2MTJiNDViNmVmMDFjOTc3N2NiYjRhM2Y1NzBlYjNkMjQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Zs8AnJvVFoY652-Z4H2iMgBCgQdlbPNj1m_8f7QpZaQ" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxNzY3ODYsIm5iZiI6MTc0NjE3NjQ4NiwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQwOTAxMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mZDUwOTdlYzQ5MjNhZGU0OGYwOTg3OWZjZDdjMWE4NzUzZWY4OGZkMmZhZDBiNTdmOTY4YTEzODI2NTM2ZDBkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.IoHDadxbpefJ9m47JCureCL9xA1hbuiPWjN1yh2lgd0"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDYxNzY3ODYsIm5iZiI6MTc0NjE3NjQ4NiwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwMlQwOTAxMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mZDUwOTdlYzQ5MjNhZGU0OGYwOTg3OWZjZDdjMWE4NzUzZWY4OGZkMmZhZDBiNTdmOTY4YTEzODI2NTM2ZDBkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.IoHDadxbpefJ9m47JCureCL9xA1hbuiPWjN1yh2lgd0" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>iampi31415</name>
             <email>iampi31415@noreply.github.com</email>
@@ -625,40 +645,5 @@ Given the <a href="https://chromestatus.com/metrics/feature/timeline/popularity/
             <uri>https://github.com/vmpstr</uri>
         </author>
         <published>2025-03-20T19:02:24.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSS Shapes: vertex rounding for polygon()]]></title>
-        <id>https://github.com/mozilla/standards-positions/issues/1197</id>
-        <link href="https://github.com/mozilla/standards-positions/issues/1197"/>
-        <updated>2025-03-31T17:48:19.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1286791?u=b52aa0fbbf4f2e60b84f67ac912b1bdb305357c7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
-<p dir="auto">CSS Shapes</p>
-<h3 dir="auto">Specification or proposal URL (if available)</h3>
-<p dir="auto"><a href="https://drafts.csswg.org/css-shapes/#supported-basic-shapes" rel="nofollow">https://drafts.csswg.org/css-shapes/#supported-basic-shapes</a></p>
-<h3 dir="auto">Explainer URL (if available)</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Proposal author(s)</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">MDN URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Caniuse.com URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozillians who can provide input</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">WebKit standards-position</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2935186951" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/474" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/474/hovercard" href="https://github.com/WebKit/standards-positions/issues/474">WebKit/standards-positions#474</a></p>
-<h3 dir="auto">Other information</h3>
-<blockquote>
-<p dir="auto">There is a wide variety of use cases where authors want to clip or mask an element based on a shape that is basically a simple polygon plus rounding. Right now this is exceedingly complicated to do by hand (since you'd need to use path()), and practically impossible to do with the same flexibility of units that polygon() supports.</p>
-</blockquote>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2097316294" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/9843" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/9843/hovercard" href="https://github.com/w3c/csswg-drafts/issues/9843">w3c/csswg-drafts#9843</a></p>]]></content>
-        <author>
-            <name>jsnkuhn</name>
-            <email>jsnkuhn@noreply.github.com</email>
-            <uri>https://github.com/jsnkuhn</uri>
-        </author>
-        <published>2025-03-20T12:06:39.000Z</published>
     </entry>
 </feed>
