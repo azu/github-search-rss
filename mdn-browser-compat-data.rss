@@ -2,11 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-05-07T17:01:31.870Z</updated>
+    <updated>2025-05-07T18:01:36.098Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix release years for Android Webview 65 and 66]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/26737</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/26737"/>
+        <updated>2025-05-07T17:56:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1039510?u=e02e2a6e01e660c7fb3c1c20ed5304f6223209ad&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">The release date of two releases in Android Webview are wrong. They have year 2017, but they were released in 2018. The date is correct otherwise.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Announcements for <code class="notranslate">65</code> and <code class="notranslate">66</code> respectively:</p>
+<ul dir="auto">
+<li><a href="https://chromereleases.googleblog.com/2018/03/chrome-for-android-update.html" rel="nofollow">https://chromereleases.googleblog.com/2018/03/chrome-for-android-update.html</a></li>
+<li><a href="https://chromereleases.googleblog.com/2018/04/chrome-for-android-update.html" rel="nofollow">https://chromereleases.googleblog.com/2018/04/chrome-for-android-update.html</a></li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">N/A</p>]]></content>
+        <author>
+            <name>gzuidhof</name>
+            <email>gzuidhof@noreply.github.com</email>
+            <uri>https://github.com/gzuidhof</uri>
+        </author>
+        <published>2025-05-07T17:56:01.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RegExp.escape added to nodejs v24]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/26735</id>
@@ -129,7 +152,7 @@ Safari 9 added support for <code class="notranslate">{min,max}-width: -webkit-fi
         <title type="html"><![CDATA[FF139 attributes in serialized HTML escaped for < and >]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/26688</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/26688"/>
-        <updated>2025-05-06T22:30:01.000Z</updated>
+        <updated>2025-05-07T17:59:21.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF139 adds support for escaping <code class="notranslate">&lt;</code> and <code class="notranslate">&gt;</code> to <code class="notranslate">&amp;lt;</code> and <code class="notranslate">&amp;gt;</code> in attributes when serializing HTML in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1941347" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1941347</a>. This affects all the obvious methods like innerHTML, outerHTML, getHTML.</p>
 <p dir="auto">This is enabled in nightly from FF139 (associated pref is <code class="notranslate">dom.security.html_serialization_escape_lt_gt</code>)</p>
 <p dir="auto">Some questions inline.</p>
@@ -375,39 +398,5 @@ Safari 9 added support for <code class="notranslate">{min,max}-width: -webkit-fi
             <uri>https://github.com/queengooborg</uri>
         </author>
         <published>2025-04-20T11:52:49.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[feat(lint): check + fix overlapping version ranges]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/26544</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/26544"/>
-        <updated>2025-04-22T12:56:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Adds a new <code class="notranslate">overlap</code> linter that</p>
-<ul dir="auto">
-<li>checks for overlapping version ranges, e.g. <code class="notranslate">[{ added: 1, removed: 3 }, { added: 2 }]</code>,</li>
-<li>fixes them by using the newer <code class="notranslate">version_added</code> as <code class="notranslate">version_removed</code> for the previous.</li>
-</ul>
-<p dir="auto">Notes:</p>
-<ul dir="auto">
-<li>Each prefix and alternative name is considered as separate "statement groups" that can overlap, while statements within a group must not.</li>
-<li>Ignores statements with <code class="notranslate">flags</code> for now, as these have a separate linter, which forbids <code class="notranslate">version_removed</code>.</li>
-</ul>
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #26543.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3004645188" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/26543" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/26543/hovercard" href="https://github.com/mdn/browser-compat-data/issues/26543">#26543</a>.</p>
-<p dir="auto">Extracted manual fixes to:</p>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3010788429" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/26595" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/26595/hovercard" href="https://github.com/mdn/browser-compat-data/pull/26595">#26595</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3010930191" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/26596" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/26596/hovercard" href="https://github.com/mdn/browser-compat-data/pull/26596">#26596</a></li>
-</ul>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-04-18T11:08:48.000Z</published>
     </entry>
 </feed>
