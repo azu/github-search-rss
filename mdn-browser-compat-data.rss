@@ -2,11 +2,51 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-05-08T05:01:23.225Z</updated>
+    <updated>2025-05-08T06:01:39.088Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Update Reviver has context parameter for Safari]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/26745</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/26745"/>
+        <updated>2025-05-08T05:26:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/78661652?u=d848e24be874ac9b7e2d38e905a004bc2b4f6186&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Update Safari data for context parameter on reviver function of <code class="notranslate">JSON.parse</code> feature</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>
+<p dir="auto">How<br>
+Running on below script on <code class="notranslate">Console</code> tab on <code class="notranslate">Developer Tool</code> of <code class="notranslate">Safari 18.4</code> directly.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="var json = '{&quot;test&quot;:&quot;abc&quot;,&quot;test2&quot;:&quot;def&quot;,&quot;test3&quot;:{&quot;test4&quot;:&quot;ghi&quot;}}'
+JSON.parse(json, (key, value, context) =&gt; {
+  console.log({ key, value, context })
+  return value
+})"><pre class="notranslate"><code class="notranslate">var json = '{"test":"abc","test2":"def","test3":{"test4":"ghi"}}'
+JSON.parse(json, (key, value, context) =&gt; {
+  console.log({ key, value, context })
+  return value
+})
+</code></pre></div>
+</li>
+<li>
+<p dir="auto">Result</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://private-user-images.githubusercontent.com/78661652/440913574-8d141084-a769-40b8-9566-52eacde2c946.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2ODIwNzEsIm5iZiI6MTc0NjY4MTc3MSwicGF0aCI6Ii83ODY2MTY1Mi80NDA5MTM1NzQtOGQxNDEwODQtYTc2OS00MGI4LTk1NjYtNTJlYWNkZTJjOTQ2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MDglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTA4VDA1MjI1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVhYzNkZTYwZDQ3MGQ0ZjdiNDVhZmNjNjZlZGM1YmJlMzJlY2Q3N2ZjYWYwMTE2ZWU0MWNiNGFjZDE4NGFiZmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.NvZuQEtGKSxM7afNxpfrkQtI_1ihj1ZNOxMQP9C3a1I"><img src="https://private-user-images.githubusercontent.com/78661652/440913574-8d141084-a769-40b8-9566-52eacde2c946.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY2ODIwNzEsIm5iZiI6MTc0NjY4MTc3MSwicGF0aCI6Ii83ODY2MTY1Mi80NDA5MTM1NzQtOGQxNDEwODQtYTc2OS00MGI4LTk1NjYtNTJlYWNkZTJjOTQ2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MDglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTA4VDA1MjI1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVhYzNkZTYwZDQ3MGQ0ZjdiNDVhZmNjNjZlZGM1YmJlMzJlY2Q3N2ZjYWYwMTE2ZWU0MWNiNGFjZDE4NGFiZmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.NvZuQEtGKSxM7afNxpfrkQtI_1ihj1ZNOxMQP9C3a1I" alt="Result on Safari 18.4" style="max-width: 100%;"></a></p>
+</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #26720.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3043707114" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/26720" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/26720/hovercard" href="https://github.com/mdn/browser-compat-data/issues/26720">#26720</a></li>
+</ul>]]></content>
+        <author>
+            <name>kksys</name>
+            <email>kksys@noreply.github.com</email>
+            <uri>https://github.com/kksys</uri>
+        </author>
+        <published>2025-05-08T05:25:11.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update browser releases]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/26744</id>
@@ -327,32 +367,5 @@ Safari 9 added support for <code class="notranslate">{min,max}-width: -webkit-fi
             <uri>https://github.com/telic</uri>
         </author>
         <published>2025-04-27T22:47:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Sync `css.types.attr` with CSS Values 5 extensions]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/26624</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/26624"/>
-        <updated>2025-04-28T08:11:05.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Changes:</p>
-<ul dir="auto">
-<li>Removed <code class="notranslate">type-or-unit</code> subfeature: <code class="notranslate">frequency</code>.</li>
-<li>Renamed <code class="notranslate">fallback</code> to <code class="notranslate">fallback-value</code>.</li>
-<li>Renamed <code class="notranslate">type-or-unit</code> to <code class="notranslate">type_function</code>.</li>
-<li>Wrapped all keywords in fences.</li>
-<li>Added subfeatures: <code class="notranslate">custom-ident</code>, <code class="notranslate">ident</code>, <code class="notranslate">image</code>, <code class="notranslate">length-percentage</code>, <code class="notranslate">resolution</code>, <code class="notranslate">string</code>, <code class="notranslate">transform-function</code>.</li>
-</ul>
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #25618.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2778237762" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25618" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/25618/hovercard" href="https://github.com/mdn/browser-compat-data/issues/25618">#25618</a>.</p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-04-25T16:14:28.000Z</published>
     </entry>
 </feed>
