@@ -2,11 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2025-05-09T07:01:23.060Z</updated>
+    <updated>2025-05-09T08:01:37.167Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Extended lifetime shared workers]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/492</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/492"/>
+        <updated>2025-05-09T07:25:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/youennf/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/youennf">@youennf</a></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">Extended lifetime shared workers</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2831961444" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10997" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10997/hovercard" href="https://github.com/whatwg/html/issues/10997">whatwg/html#10997</a> (no spec PR quite yet)</p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a href="https://github.com/whatwg/html">https://github.com/whatwg/html</a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><a href="https://gist.github.com/domenic/c5bd38339f33b49120ae11b3b4af5b9b#file-1-explainer-md">https://gist.github.com/domenic/c5bd38339f33b49120ae11b3b4af5b9b#file-1-explainer-md</a></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3051244797" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1089" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1089/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1089">w3ctag/design-reviews#1089</a></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3051249029" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1227" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1227/hovercard" href="https://github.com/mozilla/standards-positions/issues/1227">mozilla/standards-positions#1227</a></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">We propose adding a new option to the <code class="notranslate">SharedWorker</code> constructor that serves as a request to extend its lifetime after all current clients have unloaded:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const sharedWorker = new SharedWorker(url, { extendedLifetime: true });"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">sharedWorker</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">SharedWorker</span><span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">extendedLifetime</span>: <span class="pl-c1">true</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">The primary use case here is to allow pages to perform some async work that requires JavaScript after a page unloads, without needing to rely on a service worker.</p>
+<p dir="auto">Since <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a> mentioned WebKit has some trepidation about the existing extended lifetime <em>service</em> workers, let me emphasize a point from the explainer that we intend this new feature to provide parity with such service workers, and not give any capabilities beyond. For example, if WebKit decided to shut down all service workers for non-running pages, they would also do so for these shared workers.</p>
+<p dir="auto">The main motivation here is to reduce redundant service worker (ab)use that people currently have to resort to for this sort of work. (And which we've seen evidence of in the wild.)</p>]]></content>
+        <author>
+            <name>domenic</name>
+            <email>domenic@noreply.github.com</email>
+            <uri>https://github.com/domenic</uri>
+        </author>
+        <published>2025-05-09T07:25:12.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Renaming Storage Access Handle methods for non-cookie Storage Access API]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/491</id>
@@ -220,7 +258,7 @@
 Some of the concerns above (not about privacy nor obfuscation) are also <a href="https://github.com/webmachinelearning/webnn/issues/840" data-hovercard-type="issue" data-hovercard-url="/webmachinelearning/webnn/issues/840/hovercard">in the WebNN Github Repo</a>.</li>
 </ol>
 <p dir="auto">In a single image, this is what they propose (copied from their repository):</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3NzQzODIsIm5iZiI6MTc0Njc3NDA4MiwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQwNzAxMjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNWYxZDU5YjhiYTFiYmExMmE0MjYxOWZkOTA5NGY0YjMzZTMyODdmMjY2YzgyZjYzYjkyYmY4MzI5ZjI5MWUzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.lXNNdZEdwpXFjUB-eaoN0Bqj-KtJfhbNFVByj1AqQwc"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3NzQzODIsIm5iZiI6MTc0Njc3NDA4MiwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQwNzAxMjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNWYxZDU5YjhiYTFiYmExMmE0MjYxOWZkOTA5NGY0YjMzZTMyODdmMjY2YzgyZjYzYjkyYmY4MzI5ZjI5MWUzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.lXNNdZEdwpXFjUB-eaoN0Bqj-KtJfhbNFVByj1AqQwc" alt="Image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3Nzc5OTYsIm5iZiI6MTc0Njc3NzY5NiwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQwODAxMzZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zZGVlNTViMWE0Njg2YjFkODEwMTFkZmQ0MDc2ZmVkZmQ0YjIyZTE2MzliOTJlOWMzMjk4ODkxMGYzMjM2NmVkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Rnt2Gcw0ftmZRAkp5VZzGsdGer8QJzXwSDVi5onBtCE"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3Nzc5OTYsIm5iZiI6MTc0Njc3NzY5NiwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQwODAxMzZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zZGVlNTViMWE0Njg2YjFkODEwMTFkZmQ0MDc2ZmVkZmQ0YjIyZTE2MzliOTJlOWMzMjk4ODkxMGYzMjM2NmVkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Rnt2Gcw0ftmZRAkp5VZzGsdGer8QJzXwSDVi5onBtCE" alt="Image" style="max-width: 100%;"></a></p>
 <p dir="auto"><strong>Misc.</strong>: Mozilla <a href="https://github.com/mozilla/standards-positions/issues/1215" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1215/hovercard">does have an issue about it</a>, just not a position yet.</p>]]></content>
         <author>
             <name>iampi31415</name>
@@ -360,7 +398,7 @@ Some of the concerns above (not about privacy nor obfuscation) are also <a href=
 <h3 dir="auto">Description</h3>
 <h1 dir="auto"><a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/SystemStatusIcon/explainer.md">System Status Icons for Installed desktop Web Apps</a></h1>
 <p dir="auto"><a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/SystemStatusIcon/explainer.md">This proposal</a> aims to provide installed desktop web apps with a UX affordance available to native apps. In macOS, this is the concept of a "menu extra", and in macOS it "exposes app-specific functionality using an icon that appears in the menu bar when your app is running, even when it’s not the frontmost app".</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/73939538/436008045-9446bc7e-9778-4def-8290-64a0efed87e7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3NzQzODIsIm5iZiI6MTc0Njc3NDA4MiwicGF0aCI6Ii83MzkzOTUzOC80MzYwMDgwNDUtOTQ0NmJjN2UtOTc3OC00ZGVmLTgyOTAtNjRhMGVmZWQ4N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTA5VDA3MDEyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWIyMTRhMWE3NDMxYWY1MmRkYjk2MjQ2MDZhMjYyMTljZGJmNTY2ZjA3NDYyMGNkMTA1YTNmMDhjZTJlODAwYzgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.7jpftbWRnLEDf_pZ2l6hjWkDg7x7fB-xDGdwjkYiQzM"><img src="https://private-user-images.githubusercontent.com/73939538/436008045-9446bc7e-9778-4def-8290-64a0efed87e7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3NzQzODIsIm5iZiI6MTc0Njc3NDA4MiwicGF0aCI6Ii83MzkzOTUzOC80MzYwMDgwNDUtOTQ0NmJjN2UtOTc3OC00ZGVmLTgyOTAtNjRhMGVmZWQ4N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTA5VDA3MDEyMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWIyMTRhMWE3NDMxYWY1MmRkYjk2MjQ2MDZhMjYyMTljZGJmNTY2ZjA3NDYyMGNkMTA1YTNmMDhjZTJlODAwYzgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.7jpftbWRnLEDf_pZ2l6hjWkDg7x7fB-xDGdwjkYiQzM" alt="Image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/73939538/436008045-9446bc7e-9778-4def-8290-64a0efed87e7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3Nzc5OTYsIm5iZiI6MTc0Njc3NzY5NiwicGF0aCI6Ii83MzkzOTUzOC80MzYwMDgwNDUtOTQ0NmJjN2UtOTc3OC00ZGVmLTgyOTAtNjRhMGVmZWQ4N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTA5VDA4MDEzNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZiYzNkNjhiMWZiYmUwYjRiYTY3Mzg0MjE3NzlkM2Y5NDRmNmUwZTBjMWRkZWM1M2Y0OTQzMTQ4YTA5MWQxYTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.5YmDMwhwWMCH6SuL2PrriEq0VUB588cpijCn5-cL4Tc"><img src="https://private-user-images.githubusercontent.com/73939538/436008045-9446bc7e-9778-4def-8290-64a0efed87e7.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY3Nzc5OTYsIm5iZiI6MTc0Njc3NzY5NiwicGF0aCI6Ii83MzkzOTUzOC80MzYwMDgwNDUtOTQ0NmJjN2UtOTc3OC00ZGVmLTgyOTAtNjRhMGVmZWQ4N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTA5VDA4MDEzNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZiYzNkNjhiMWZiYmUwYjRiYTY3Mzg0MjE3NzlkM2Y5NDRmNmUwZTBjMWRkZWM1M2Y0OTQzMTQ4YTA5MWQxYTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.5YmDMwhwWMCH6SuL2PrriEq0VUB588cpijCn5-cL4Tc" alt="Image" style="max-width: 100%;"></a></p>
 <p dir="auto">This can be useful for a plethora of cases, as seen in VPN software, video players, IM clients use it today.</p>
 <p dir="auto">We think enabling this optional feature for web apps elevates an app's UX and benefits the end user. I am very keen on reading your comments about this possible future feature.</p>
 <p dir="auto">Thanks!</p>
@@ -718,40 +756,5 @@ Chromestatus entry: <a href="https://chromestatus.com/feature/5176206485618688" 
             <uri>https://github.com/arichiv</uri>
         </author>
         <published>2025-03-19T15:44:29.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSS Properties and Values API: Type-agnostic var() fallback]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/472</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/472"/>
-        <updated>2025-04-15T11:49:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/77163?u=71e54533cf5ab9be1100bb5054da3f46991f27b5&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">CSS Properties and Values API: Type-agnostic var() fallback</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2902904726" data-permission-text="Title is private" data-url="https://github.com/w3c/css-houdini-drafts/issues/1139" data-hovercard-type="pull_request" data-hovercard-url="/w3c/css-houdini-drafts/pull/1139/hovercard" href="https://github.com/w3c/css-houdini-drafts/pull/1139">w3c/css-houdini-drafts#1139</a></p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto">N/A. They already fixed it, see bug.</p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1952516" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1952516</a></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">The fallback of a <code class="notranslate">var()</code> no longer needs to match the type of the custom property being referenced, see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2357500496" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/10455" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/10455/hovercard" href="https://github.com/w3c/csswg-drafts/issues/10455">w3c/csswg-drafts#10455</a>.</p>
-<p dir="auto">(The consensus seems clear from the <a href="https://github.com/w3c/csswg-drafts/issues/10455#issuecomment-2402837489" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/10455/hovercard">CSSWG notes</a>, but Blink API OWNERS insisted on this position request.)</p>]]></content>
-        <author>
-            <name>andruud</name>
-            <email>andruud@noreply.github.com</email>
-            <uri>https://github.com/andruud</uri>
-        </author>
-        <published>2025-03-19T08:52:20.000Z</published>
     </entry>
 </feed>
