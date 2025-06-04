@@ -2,11 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-06-04T13:11:41.070Z</updated>
+    <updated>2025-06-04T14:01:38.315Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add note about `beforeinstallprompt` event not fired if PWA already installed]]></title>
+        <id>https://github.com/mdn/content/pull/39792</id>
+        <link href="https://github.com/mdn/content/pull/39792"/>
+        <updated>2025-06-04T13:58:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/29386932?u=1c535ee7444ba22d9d16547974378a0b5e5b3c19&v=4" width="64" height="64" alt=""/><br/>
+
+
+
+
+<hr>
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Add note about <code class="notranslate">beforeinstallprompt</code> event not fired if the PWA is already installed, so users don't think using <code class="notranslate">getInstalledRelatedApps</code> is required.</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">I wasted time digging into <code class="notranslate">getInstalledRelatedApps</code> and was disappointed that it wasn't supported by Chrome on desktop, only to realise thanks to <a href="https://web.dev/learn/pwa/installation-prompt" rel="nofollow">https://web.dev/learn/pwa/installation-prompt</a> that we actually don't need it :-)</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto"><a href="https://web.dev/learn/pwa/installation-prompt" rel="nofollow">https://web.dev/learn/pwa/installation-prompt</a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+]]></content>
+        <author>
+            <name>Zwyx</name>
+            <email>Zwyx@noreply.github.com</email>
+            <uri>https://github.com/Zwyx</uri>
+        </author>
+        <published>2025-06-04T13:55:43.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[chore(http): Add CSP error page to sidebar]]></title>
         <id>https://github.com/mdn/content/pull/39791</id>
@@ -524,34 +555,5 @@ and which is available as a feature preview in visionOS 2.4. I am an editor of t
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2025-05-27T00:05:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Make the `getMessage` function for the javascript example more robust.]]></title>
-        <id>https://github.com/mdn/content/pull/39672</id>
-        <link href="https://github.com/mdn/content/pull/39672"/>
-        <updated>2025-05-30T04:11:27.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/26916078?u=ae3b6dc567b716a44e450bacef5e1a8de9fc9c5c&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The old getMessage function had a bug where if you made multiple unawaited calls to the function, it wouldn't behave correctly because previous reads had not yet completed, and all you were doing was reading 4 bytes at a time from the input into the header buffer. It also had a bug of not reading the correct amount of data, because the buffer given to the read function was not exactly sized for the expected message size, so it was possible that the amount of data that you got back was larger than the size that the header indicated if the extension had sent more than one message.</p>
-<p dir="auto">The new getMessage function solves both of those issues. The first issue is solved by using a promise and a while loop to trap the execution of extra calls at the top of the function while there is already a read in progress. Each call to getMessage is let through the trap one at a time as a read completes. If there are no pending reads, then a call to getMessage does not get trapped at the top of the function, because the read promise will be null, and so the loop will be skipped. The other issue is solved by using buffers which are appropriately sized according to the header information. I think this is also more succinct, since the old <code class="notranslate">readFullAsync</code> ultimately ended up doing that anyway at the end by passing the data array to the Uint8Array constructor. If you just create it from the header information and pass it directly to the read function, you can avoid dispatching to another function, and it prevents a bug.</p>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Make the getMessage function better for the javascript example.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">The change will prevent the bugs I described, which makes it easier to develop a native messaging extension for the next person, I hope.</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto"><a href="https://nodejs.org/api/fs.html#filehandlereadbuffer-options" rel="nofollow">https://nodejs.org/api/fs.html#filehandlereadbuffer-options</a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>qdirks</name>
-            <email>qdirks@noreply.github.com</email>
-            <uri>https://github.com/qdirks</uri>
-        </author>
-        <published>2025-05-25T12:41:16.000Z</published>
     </entry>
 </feed>
