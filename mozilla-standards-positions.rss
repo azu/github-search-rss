@@ -2,11 +2,57 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2025-06-05T16:01:35.852Z</updated>
+    <updated>2025-06-05T17:01:13.829Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[CORS readability for no-cors requests]]></title>
+        <id>https://github.com/mozilla/standards-positions/issues/1240</id>
+        <link href="https://github.com/mozilla/standards-positions/issues/1240"/>
+        <updated>2025-06-05T16:59:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/444165?u=3dc9cb928680e07a7275fb9ccbeaf4b84580a912&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
+<p dir="auto">CORS readability for no-cors requests</p>
+<h3 dir="auto">Specification or proposal URL (if available)</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1323380850" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/8143" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/8143/hovercard?comment_id=2920820484&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/issues/8143#issuecomment-2920820484">whatwg/html#8143 (comment)</a></p>
+<h3 dir="auto">Explainer URL (if available)</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Proposal author(s)</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/pmeenan/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/pmeenan">@pmeenan</a></p>
+<h3 dir="auto">MDN URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Caniuse.com URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozillians who can provide input</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">WebKit standards-position</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3121940086" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/505" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/505/hovercard" href="https://github.com/WebKit/standards-positions/issues/505">WebKit/standards-positions#505</a></p>
+<h3 dir="auto">Other information</h3>
+<p dir="auto">We are exploring a mechanism for servers to assert public readability for <code class="notranslate">no-cors</code> requests. The concrete use cases are for enabling features for resources that are effectively "public". Specifically:</p>
+<ul dir="auto">
+<li>Compression dictionary content-encoding</li>
+<li>Resource timing headers (like content-encoding) that are gated by readability</li>
+</ul>
+<p dir="auto">For widely-used third-party embeds (analytics, social media, video players, etc) where sites have used a <code class="notranslate">&lt;script&gt;</code> tag to use the third-party resource or images loaded by CSS, it would be useful if there were a way for the origin to assert that a response should be readable independent of how it was fetched (i.e. it would send the same response to anonymous or credentialed requests).</p>
+<p dir="auto">Sites could change the script tags to explicitly opt-in to CORS with a <code class="notranslate">crossorigin</code> attribute but there are adoption problems with making that happen at scale and there are performance concerns with either a preflight check requirement or using a dedicated uncredentialed connection (and there is no way to opt-in to CORS from CSS images).</p>
+<p dir="auto">To minimize the risk of accidental exposure of private responses, we're proposing a new header and requiring ACAO *. Both response headers must be present for a response to be readable and in the case of a redirect, every response in the redirect path needs to also include the headers (or be readable by virtue of being same-site).</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Readability: public
+Access-Control-Allow-Origin: *"><pre class="notranslate"><code class="notranslate">Content-Readability: public
+Access-Control-Allow-Origin: *
+</code></pre></div>
+<p dir="auto">To facilitate negotiation, particularly for the dictionary use case where an unreadable response would be a broken response, we're also proposing that <code class="notranslate">no-cors</code> requests from clients that support explicit readability send a new request header:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Sec-Accept-Content-Readability: public"><pre class="notranslate"><code class="notranslate">Sec-Accept-Content-Readability: public
+</code></pre></div>]]></content>
+        <author>
+            <name>pmeenan</name>
+            <email>pmeenan@noreply.github.com</email>
+            <uri>https://github.com/pmeenan</uri>
+        </author>
+        <published>2025-06-05T16:58:33.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Web Authentication Immediate Mediation]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1239</id>
@@ -686,50 +732,5 @@ Previously brought up in a WHATNOT (<a href="https://github.com/whatwg/html/issu
             <uri>https://github.com/saschanaz</uri>
         </author>
         <published>2025-05-01T13:36:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Web Neural Network API]]></title>
-        <id>https://github.com/mozilla/standards-positions/issues/1215</id>
-        <link href="https://github.com/mozilla/standards-positions/issues/1215"/>
-        <updated>2025-05-14T10:54:37.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/202419735?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
-<p dir="auto">Web Neural Network API</p>
-<h3 dir="auto">Specification or proposal URL (if available)</h3>
-<p dir="auto"><a href="https://www.w3.org/TR/webnn/" rel="nofollow">https://www.w3.org/TR/webnn/</a></p>
-<h3 dir="auto">Explainer URL (if available)</h3>
-<p dir="auto"><a href="https://github.com/webmachinelearning/webnn/blob/main/explainer.md">https://github.com/webmachinelearning/webnn/blob/main/explainer.md</a></p>
-<h3 dir="auto">Proposal author(s)</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/huningxin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/huningxin">@huningxin</a></p>
-<h3 dir="auto">MDN URL</h3>
-<p dir="auto">there isn't one</p>
-<h3 dir="auto">Caniuse.com URL</h3>
-<p dir="auto"><a href="https://caniuse.com/?search=WebNN" rel="nofollow">https://caniuse.com/?search=WebNN</a></p>
-<h3 dir="auto">Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozillians who can provide input</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">WebKit standards-position</h3>
-<p dir="auto">there isn't one yet</p>
-<h3 dir="auto">Other information</h3>
-<p dir="auto">WebKit does not have a position, but does have <a href="https://github.com/WebKit/standards-positions/issues/486" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/486/hovercard">an issue now.</a></p>
-<p dir="auto">The Spec for Web Neural Networks is highly active in the <a href="https://w3c.github.io/cg-monitor/" rel="nofollow">W3C activity dashboard</a>.</p>
-<p dir="auto">It proposes a <code class="notranslate">navigator.ml</code> that will allow users to write neural networks, currently only for inference, that will be delegated to a "native" OS ML framework: DirectML, CoreML, OPENVINO, NN Android (unmaintained).</p>
-<p dir="auto">Some questions that seem relevant to me are:</p>
-<ol dir="auto">
-<li>Are there privacy issues?</li>
-<li>Can models be inspected or are they allowed to be obfuscated?</li>
-<li>What do they mean by "native", and wouldn't this lock out other participants?</li>
-<li>How much effort will be on the browsers side? (seems a lot to me.)</li>
-<li>Why not to propose just the use of GPUs with WebGPU which would be a single, portable codebase even though it sacrifices NPU support and some speed? (their answer in comments <a href="https://github.com/webmachinelearning/webnn/blob/main/explainer.md#stay-the-course-and-build-machine-learning-solutions-on-webglwebgpu">and explainer-section</a> is that WebGPU wouldn't help to use the NPUs/DSPs.)</li>
-</ol>
-<p dir="auto">Some of those questions are also <a href="https://github.com/webmachinelearning/webnn/issues/840" data-hovercard-type="issue" data-hovercard-url="/webmachinelearning/webnn/issues/840/hovercard">in the WebNN Github Repo</a>.</p>
-<p dir="auto">In a single image, this is what they propose (copied from their repository):</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkxMzk1OTUsIm5iZiI6MTc0OTEzOTI5NSwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwNVQxNjAxMzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iM2ZkYzc2NzVjOTFlMzhiZjdlOTY5NmJkNzM0YzU2MGUyNTU5Y2UyYzA0NTA0ZjdiZDRmNzBjNjZiNmE1Yjk3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3XatBHjhNKSchRauKIlL_MIrJAHtYgsk6ZuOHwB4K8c"><img src="https://private-user-images.githubusercontent.com/202419735/438754209-777470a2-df60-44d8-8723-5991faa6fb2b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkxMzk1OTUsIm5iZiI6MTc0OTEzOTI5NSwicGF0aCI6Ii8yMDI0MTk3MzUvNDM4NzU0MjA5LTc3NzQ3MGEyLWRmNjAtNDRkOC04NzIzLTU5OTFmYWE2ZmIyYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwNVQxNjAxMzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iM2ZkYzc2NzVjOTFlMzhiZjdlOTY5NmJkNzM0YzU2MGUyNTU5Y2UyYzA0NTA0ZjdiZDRmNzBjNjZiNmE1Yjk3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3XatBHjhNKSchRauKIlL_MIrJAHtYgsk6ZuOHwB4K8c" alt="Image" style="max-width: 100%;"></a></p>]]></content>
-        <author>
-            <name>iampi31415</name>
-            <email>iampi31415@noreply.github.com</email>
-            <uri>https://github.com/iampi31415</uri>
-        </author>
-        <published>2025-04-29T12:35:20.000Z</published>
     </entry>
 </feed>
