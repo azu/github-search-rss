@@ -2,11 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-06-08T07:01:21.676Z</updated>
+    <updated>2025-06-08T08:01:23.158Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix #39848: Update `myConcat` example to skip first argument]]></title>
+        <id>https://github.com/mdn/content/pull/39857</id>
+        <link href="https://github.com/mdn/content/pull/39857"/>
+        <updated>2025-06-08T07:14:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/201322295?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The original example used a <code class="notranslate">for</code> loop that included the first argument (the separator) in the output. I corrected the loop to skip the first argument, starting from <code class="notranslate">i = 1</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The code was producing incorrect output because it included the separator at the beginning. This change ensures that the separator is only placed between values.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Actual code:<br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/201322295/452729609-b99bab75-10d3-4156-8d67-0ee27fed299b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzNjk5ODMsIm5iZiI6MTc0OTM2OTY4MywicGF0aCI6Ii8yMDEzMjIyOTUvNDUyNzI5NjA5LWI5OWJhYjc1LTEwZDMtNDE1Ni04ZDY3LTBlZTI3ZmVkMjk5Yi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwOFQwODAxMjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02NTkyNDIxNTA3YTU1ODU2MzFhMjhmOTNlMjEzNzQzNTE0ZmZhNmM2OTJjNmMxNTAwMmIxOGRkNTdhZGIwMTY1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.O0hFwpR22whSGrMbLyGcXO6gJAW9iXD8q6EDz7NM_84"><img src="https://private-user-images.githubusercontent.com/201322295/452729609-b99bab75-10d3-4156-8d67-0ee27fed299b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzNjk5ODMsIm5iZiI6MTc0OTM2OTY4MywicGF0aCI6Ii8yMDEzMjIyOTUvNDUyNzI5NjA5LWI5OWJhYjc1LTEwZDMtNDE1Ni04ZDY3LTBlZTI3ZmVkMjk5Yi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwOFQwODAxMjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02NTkyNDIxNTA3YTU1ODU2MzFhMjhmOTNlMjEzNzQzNTE0ZmZhNmM2OTJjNmMxNTAwMmIxOGRkNTdhZGIwMTY1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.O0hFwpR22whSGrMbLyGcXO6gJAW9iXD8q6EDz7NM_84" alt="Screenshot 2025-06-08 123431" style="max-width: 100%;"></a><br>
+Actual Error output:<br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/201322295/452729556-0698b056-e37d-45ce-a9bd-f8804bb7da98.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzNjk5ODMsIm5iZiI6MTc0OTM2OTY4MywicGF0aCI6Ii8yMDEzMjIyOTUvNDUyNzI5NTU2LTA2OThiMDU2LWUzN2QtNDVjZS1hOWJkLWY4ODA0YmI3ZGE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwOFQwODAxMjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hZTcxMTEzYzhlYmVmYjg4NzNlZWQ1ODJlZTAwNjg4NzhkNTQxZWM4MTRkMWUyOGVlNjZmMzNmYzBmNTE5ZTc1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.HD3SxWDS_Ba09TdBZ77_lwwrMbUSeNhPcgl1v8xBDt4"><img src="https://private-user-images.githubusercontent.com/201322295/452729556-0698b056-e37d-45ce-a9bd-f8804bb7da98.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzNjk5ODMsIm5iZiI6MTc0OTM2OTY4MywicGF0aCI6Ii8yMDEzMjIyOTUvNDUyNzI5NTU2LTA2OThiMDU2LWUzN2QtNDVjZS1hOWJkLWY4ODA0YmI3ZGE5OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwOFQwODAxMjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hZTcxMTEzYzhlYmVmYjg4NzNlZWQ1ODJlZTAwNjg4NzhkNTQxZWM4MTRkMWUyOGVlNjZmMzNmYzBmNTE5ZTc1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.HD3SxWDS_Ba09TdBZ77_lwwrMbUSeNhPcgl1v8xBDt4" alt="Screenshot 2025-06-08 123657" style="max-width: 100%;"></a><br>
+Corrected Code with Output:<br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/201322295/452730023-ce89a5b5-a03f-42d1-b598-ab7ad7153f17.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzNjk5ODMsIm5iZiI6MTc0OTM2OTY4MywicGF0aCI6Ii8yMDEzMjIyOTUvNDUyNzMwMDIzLWNlODlhNWI1LWEwM2YtNDJkMS1iNTk4LWFiN2FkNzE1M2YxNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwOFQwODAxMjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lZThjNzgzYTc4ODkyZjRmMjI5YmVjY2Y5ODgzYjliN2QyYzdhYjI4YmQ3Mzg1YTU5NjY4OTQ0M2I0ODE1OWY3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.K3dCOB9ND-SThOOw54bFwshr0Rew9G2h-LzRfiXMOZ8"><img src="https://private-user-images.githubusercontent.com/201322295/452730023-ce89a5b5-a03f-42d1-b598-ab7ad7153f17.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkzNjk5ODMsIm5iZiI6MTc0OTM2OTY4MywicGF0aCI6Ii8yMDEzMjIyOTUvNDUyNzMwMDIzLWNlODlhNWI1LWEwM2YtNDJkMS1iNTk4LWFiN2FkNzE1M2YxNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDYwOFQwODAxMjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lZThjNzgzYTc4ODkyZjRmMjI5YmVjY2Y5ODgzYjliN2QyYzdhYjI4YmQ3Mzg1YTU5NjY4OTQ0M2I0ODE1OWY3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.K3dCOB9ND-SThOOw54bFwshr0Rew9G2h-LzRfiXMOZ8" alt="Screenshot 2025-06-08 123855" style="max-width: 100%;"></a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39848.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3126887470" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39848" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39848/hovercard" href="https://github.com/mdn/content/issues/39848">#39848</a></p>]]></content>
+        <author>
+            <name>SandeepSaran27</name>
+            <email>SandeepSaran27@noreply.github.com</email>
+            <uri>https://github.com/SandeepSaran27</uri>
+        </author>
+        <published>2025-06-08T07:13:43.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix content issues]]></title>
         <id>https://github.com/mdn/content/pull/39855</id>
@@ -456,22 +481,5 @@ This addition improves clarity for developers by providing a straightforward exp
             <uri>https://github.com/yoavweiss</uri>
         </author>
         <published>2025-06-06T05:21:57.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[HTTP Cache-Control stale-if-error request]]></title>
-        <id>https://github.com/mdn/content/pull/39812</id>
-        <link href="https://github.com/mdn/content/pull/39812"/>
-        <updated>2025-06-06T00:14:33.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">The Cache-Control directive <code class="notranslate">stale-if-error</code> is a request and response. The behaviour is documented as a response, but not as a request.</p>
-<p dir="auto">The reason for this is that browsers don't seem to implement this in requests. Normally we wouldn't bother documenting this then, but it looks like an omission in docs because it is unsymmetric.</p>
-<p dir="auto">This adds a note about what it should do and that it isn't supported - and points to browser compatibility for more information. The compat doesn't say anything, but if this is ever supported then it wil.<br>
-I don't love this solution, but I think it is worth the note, since we did get an issue posted.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39674.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3089389467" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39674" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39674/hovercard" href="https://github.com/mdn/content/issues/39674">#39674</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2025-06-06T00:12:27.000Z</published>
     </entry>
 </feed>
