@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As part of a larger project to make the challenges/reader exercises in MDN learn more consistent, this PR replaces the old code editor in the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_images\" rel=\"nofollow\">HTML images</a> article with a cleaner experience based on MDN Playground.</p>\n<p dir=\"auto\">It also gets rid of the inconsistently used \"Active learning...\" title.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/39868",
+            "title": "Remove old code editor and active learning from HTML images",
+            "date_modified": "2025-06-09T09:51:01.000Z",
+            "date_published": "2025-06-09T09:49:02.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As part of a larger project to make the challenges/reader exercises in MDN learn more consistent, this PR replaces the old code editor in the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links\" rel=\"nofollow\">Creating links</a> article with a cleaner experience based on MDN Playground.</p>\n<p dir=\"auto\">It also gets rid of the inconsistently used \"Active learning...\" title.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/39867",
+            "title": "Remove old code editor and active learning from Creating links",
+            "date_modified": "2025-06-09T09:12:49.000Z",
+            "date_published": "2025-06-09T09:10:50.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As part of a larger project to make the challenges/reader exercises in MDN learn more consistent, this PR replaces the old code editor in the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Advanced_text_features\" rel=\"nofollow\">Advanced text features</a> article with a cleaner experience based on MDN Playground.</p>\n<p dir=\"auto\">It also gets rid of the inconsistently used \"Active learning...\" title.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/39866",
             "title": "Remove old code editor and active learning from Advanced text",
@@ -64,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2202675?u=ce93c6fbb04512a3b401195ac7396c10d99e70d7&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n\n\n\n<hr>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add concrete examples of the error in OPFS getDirectory() method, at <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/getDirectory\" rel=\"nofollow\">StorageManager.getDirectory#Exceptions</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Currently, the documentation states:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"SecurityError DOMException\n  Thrown if the user agent is not able to map the requested directory to the local OPFS.\"><pre class=\"notranslate\"><code class=\"notranslate\">SecurityError DOMException\n  Thrown if the user agent is not able to map the requested directory to the local OPFS.\n</code></pre></div>\n<p dir=\"auto\">I propose adding concrete scenarios that cause this exception, as the lack of detail may lead to confusion for developers implementing OPFS-based storage, like:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"SecurityError DOMException\n  Thrown if the user agent is not able to map the requested directory to the local OPFS, due to factors such as:\n    * Storage or memory constraints that prevent OPFS allocation.\n    * Security policies, including restrictions in non-secure contexts (e.g., non-HTTPS sessions).\n    * Private browsing mode, where OPFS access is commonly restricted by browsers to prevent persistent data storage.\"><pre class=\"notranslate\"><code class=\"notranslate\">SecurityError DOMException\n  Thrown if the user agent is not able to map the requested directory to the local OPFS, due to factors such as:\n    * Storage or memory constraints that prevent OPFS allocation.\n    * Security policies, including restrictions in non-secure contexts (e.g., non-HTTPS sessions).\n    * Private browsing mode, where OPFS access is commonly restricted by browsers to prevent persistent data storage.\n</code></pre></div>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">SQLite developers have specifically highlighted OPFS limitations in Incognito and Guest modes in their documentation: <a href=\"https://sqlite.org/wasm/doc/trunk/persistence.md#incognito\" rel=\"nofollow\">Achtung: Restrictions in Incognito and Guest Browsing Modes</a>.</p>\n<p dir=\"auto\">In real-world tests, both Firefox and Safari threw a SecurityError when calling getDirectory() inside Private Browsing mode:</p>\n<p dir=\"auto\">Firefox 128.11.0 error: \"Security error when calling GetDirectory\"</p>\n<p dir=\"auto\">Safari 17.6 error: \"UnknownError: The operation failed for an unknown transient reason (e.g. out of memory)\"</p>\n<p dir=\"auto\">While browsers intentionally obscure Private Browsing detection, a small note in MDN can help developers anticipate storage failures in such contexts without directly exposing detection mechanisms.</p>\n<p dir=\"auto\">Would it be possible to add a small clarification about these known limitations to better support developers encountering this issue?</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>",
             "url": "https://github.com/mdn/content/pull/39859",
             "title": "Clarifying SecurityError in StorageManager.getDirectory",
-            "date_modified": "2025-06-08T23:34:00.000Z",
+            "date_modified": "2025-06-09T09:34:24.000Z",
             "date_published": "2025-06-08T10:17:54.000Z",
             "author": {
                 "name": "mpsuzuki",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "dipikabh",
                 "url": "https://github.com/dipikabh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><strong>Changes:</strong></p>\n<ul dir=\"auto\">\n<li>Don't send people off to GitHub readme when we have everything documented under /MDN already</li>\n</ul>\n<p dir=\"auto\"><strong>Addition:</strong></p>\n<ul dir=\"auto\">\n<li>Add Bluesky link</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/39833",
-            "title": "chore(contrib): Adding Bluesky, replace links to contributing.md",
-            "date_modified": "2025-06-08T14:04:17.000Z",
-            "date_published": "2025-06-06T16:05:56.000Z",
-            "author": {
-                "name": "bsmth",
-                "url": "https://github.com/bsmth"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n\n\n\n<hr>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As part of a larger project to make the challenges/reader exercises in MDN learn more consistent, this PR removes the inconsistently used \"Active learning...\" title from the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Structuring_documents\" rel=\"nofollow\">Structuring documents</a> article.</p>\n<p dir=\"auto\">There were no old code editors to remove in this article, but I also took the opportunity to improve the flow of the article, and get rid of the ugly hand-drawn diagrams.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
-            "url": "https://github.com/mdn/content/pull/39831",
-            "title": "Remove active learning, improve Structuring documents",
-            "date_modified": "2025-06-06T15:17:32.000Z",
-            "date_published": "2025-06-06T15:15:10.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
