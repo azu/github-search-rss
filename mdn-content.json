@@ -6,17 +6,6 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/14039540?u=7ec442e96294e83453d78d4a2b8dff46c9cbcc4a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixing a typo (<code class=\"notranslate\">can</code> was spelled as <code class=\"notranslate\">an</code>) in <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/container-type\" rel=\"nofollow\">container-type</a> page.</p>\n<div class=\"highlight highlight-source-diff notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"-The `container-type` property can take a single value from the list below, or two values — one of which must be `scroll-state` and the other can be `inline-size` or `size`. In other words, an element an be established as a size query container, a scroll-state query container, both, or neither.\n+The `container-type` property can take a single value from the list below, or two values — one of which must be `scroll-state` and the other can be `inline-size` or `size`. In other words, an element can be established as a size query container, a scroll-state query container, both, or neither.\"><pre class=\"notranslate\"><span class=\"pl-md\"><span class=\"pl-md\">-</span>The `container-type` property can take a single value from the list below, or two values — one of which must be `scroll-state` and the other can be `inline-size` or `size`. In other words, an element an be established as a size query container, a scroll-state query container, both, or neither.</span>\n<span class=\"pl-mi1\"><span class=\"pl-mi1\">+</span>The `container-type` property can take a single value from the list below, or two values — one of which must be `scroll-state` and the other can be `inline-size` or `size`. In other words, an element can be established as a size query container, a scroll-state query container, both, or neither.</span></pre></div>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/40060",
-            "title": "Fix typo (an → can)",
-            "date_modified": "2025-06-24T11:49:55.000Z",
-            "date_published": "2025-06-24T11:49:34.000Z",
-            "author": {
-                "name": "yuichkun",
-                "url": "https://github.com/yuichkun"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9536601?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I corrected in the operator precedence table for bitwise shifting operators.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I've been a very long time user of <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table\" rel=\"nofollow\">this table</a>, but it is only now, prompted independently by both <em>ESLint</em> and <em>Prettier</em> that I discovered an error within it, regarding the <code class=\"notranslate\">&lt;&lt;</code>, <code class=\"notranslate\">&gt;&gt;</code> and <code class=\"notranslate\">&gt;&gt;&gt;</code> operators.<br>\nWhy so late? Because there operators are not performant in JS, since they imply conversion from IEEE-754 64-bit floats to<br>\n32-bit unsigned integers. With <code class=\"notranslate\">BigInt</code>s is another story.</p>\n<p dir=\"auto\">These few tests in the <em>Node.js</em> REPL</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"&gt; 1 &lt;&lt; 1 + 1\n4\n&gt; 1 &lt;&lt; 1 * 3\n8\n&gt; 1 + 2 &lt; 3\nfalse\"><pre class=\"notranslate\"><code class=\"notranslate\">&gt; 1 &lt;&lt; 1 + 1\n4\n&gt; 1 &lt;&lt; 1 * 3\n8\n&gt; 1 + 2 &lt; 3\nfalse\n</code></pre></div>\n<p dir=\"auto\">show that bit shifting operators have a higher priority that additive ones, but lower that multiplicative ones and the additive operators have a higher precedence than relational ones.<br>\nI moved the bit shifting operators up one position (precedence level <em>11</em> instead of <em>10</em>), sliding down the additive group.</p>",
             "url": "https://github.com/mdn/content/pull/40058",
             "title": "Bitwise shifting has higher priority than addition and subtraction",
@@ -75,7 +64,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><strong>additions:</strong></p>\n<ul dir=\"auto\">\n<li>Dedicated page for the <code class=\"notranslate\">http-equiv</code> attr.</li>\n<li>Sidebar entry</li>\n</ul>\n<p dir=\"auto\"><strong>Changes:</strong></p>\n<ul dir=\"auto\">\n<li>updates links from the DL <code class=\"notranslate\">meta#http-equiv</code> to the page instead: <code class=\"notranslate\">meta/http-equiv</code></li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">There's a lot to say for this, there's too much info in the single DL, it warrants a separate page, exposing compat data.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3120751039\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/39804\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/39804/hovercard\" href=\"https://github.com/mdn/content/pull/39804\">#39804</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/40043",
             "title": "feat(html): Add meta http-equiv attr page",
-            "date_modified": "2025-06-24T09:15:15.000Z",
+            "date_modified": "2025-06-24T13:02:36.000Z",
             "date_published": "2025-06-23T10:57:07.000Z",
             "author": {
                 "name": "bsmth",
@@ -108,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF141 implements the <code class=\"notranslate\">options.source</code> to <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover\" rel=\"nofollow\"><code class=\"notranslate\">HTMLElement/showPopover()</code></a>, and <code class=\"notranslate\">options.source</code>, <code class=\"notranslate\">options.force</code> and <code class=\"notranslate\">force</code> to <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover\" rel=\"nofollow\"><code class=\"notranslate\">HTMLElement/togglePopover()</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1936411\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1936411</a>.</p>\n<p dir=\"auto\">This adds the release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3166061913\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40027\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/40027/hovercard\" href=\"https://github.com/mdn/content/issues/40027\">#40027</a></p>",
             "url": "https://github.com/mdn/content/pull/40037",
             "title": "FF141 Relnote: show/togglePopover() options supported",
-            "date_modified": "2025-06-23T23:38:21.000Z",
+            "date_modified": "2025-06-24T12:45:20.000Z",
             "date_published": "2025-06-23T05:33:27.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -119,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF141 adds support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy\" rel=\"nofollow\"><code class=\"notranslate\">HTMLDialogElement.closedBy</code></a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#closedby\" rel=\"nofollow\"><code class=\"notranslate\">closedby</code> attribute on <code class=\"notranslate\">&lt;dialog&gt;</code></a> by default in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1964078\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1964078</a></p>\n<p dir=\"auto\">This adds a release note and removes the experimental feature note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3166062421\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40028\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/40028/hovercard\" href=\"https://github.com/mdn/content/issues/40028\">#40028</a></p>",
             "url": "https://github.com/mdn/content/pull/40036",
             "title": "FF141 Relnote/Expr Feat closedBy/closedby on dialogs",
-            "date_modified": "2025-06-23T23:37:40.000Z",
+            "date_modified": "2025-06-24T12:45:19.000Z",
             "date_published": "2025-06-23T04:10:37.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -130,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF141 adds support for <a href=\"http://localhost:5042/en-US/docs/Web/API/PointerEvent/persistentDeviceId\" rel=\"nofollow\"><code class=\"notranslate\">PointerEvent.persistentDeviceId</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1968400\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1968400</a></p>\n<p dir=\"auto\">This adds a release not and does minor formatting changes to the property page</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3166056814\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40022\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/40022/hovercard\" href=\"https://github.com/mdn/content/issues/40022\">#40022</a></p>",
             "url": "https://github.com/mdn/content/pull/40035",
             "title": "FF141 PointerEvent.persistentDeviceId - Relnote/layout",
-            "date_modified": "2025-06-23T23:39:11.000Z",
+            "date_modified": "2025-06-24T12:45:18.000Z",
             "date_published": "2025-06-23T03:54:23.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "Kilian",
                 "url": "https://github.com/Kilian"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Ready for review!</p>",
+            "url": "https://github.com/mdn/content/pull/39962",
+            "title": "New guide: Mask properties",
+            "date_modified": "2025-06-24T11:54:17.000Z",
+            "date_published": "2025-06-17T08:01:11.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
             }
         }
     ]
