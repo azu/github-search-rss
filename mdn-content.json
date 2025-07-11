@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As part of a larger project to make the challenges/reader exercises in MDN learn more consistent, this PR:</p>\n<ul dir=\"auto\">\n<li>Replaces the old code editors with the live sample + MDN Playground flow.</li>\n<li>Makes some general wording improvements.</li>\n<li>Fixes some problems. Notably, in the WAI-ARIA tutorial, I've changed the <code class=\"notranslate\">aria-live</code> example to add a button to press to start the generated quotes (it seemed like it was broken before), and I've removed the tabbed example, as it was over-complex, not explained at all, and broken. I've linked to examples elsewhere instead.</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/40327",
+            "title": "Accessibility active learning updates",
+            "date_modified": "2025-07-11T20:41:26.000Z",
+            "date_published": "2025-07-11T20:39:11.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/39094199?u=de6abf20974a822742ae5e97d502aaca03ae7ee8&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add a note at the beginning of the page calling out Web Workers as a better technology for parallel computing</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I'm going to be honest, I only knew about service workers up until today and did <em>not</em> know at all about other \"types\" of workers.</p>\n<p dir=\"auto\">I always thought that Firefox didn't support ES modules in SWs for <em>localhost origins only</em>, but realized today that it just does not work, regardless of the origin.</p>\n<p dir=\"auto\">Thus, I looked for sources on how work on implementation was going for firefox... only to stumble upon a similar implementation bug... for <em>web</em> workers. I searched for \"service worker vs web workers\"... and turns out I was trying to move heavy computation (notably local neural network inference) off of the UI thread by putting them in a <em>service worker</em>, where a web worker is much more appropriate (notably, ONNX Runtime Web uses <code class=\"notranslate\">import.meta</code> in its code, which means that any service worker importing ONNX will not work on Firefox...)</p>\n<p dir=\"auto\">I think that putting a note here about the differences about the two may steer people towards the right direction. Even if web workers seem older than SWs (judging by initial browser support dates), I only knew about SWs, thru the PWA movement. (I even ended up making a RPC library for SWs, swarpc... i need to rename it now 💀)</p>\n<p dir=\"auto\">im not sure about the exact phrasing used here but I think that some kind of note/warning that highlights how Web Workers are more appropriate for moving things off the UI thread is beneficial to devs dabbling into that field</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>caniuse for ES Modules in Web Workers <a href=\"https://caniuse.com/mdn-api_worker_worker_ecmascript_modules\" rel=\"nofollow\">https://caniuse.com/mdn-api_worker_worker_ecmascript_modules</a></li>\n<li>web.dev article for ES Modules in SWs <a href=\"https://web.dev/articles/es-modules-in-sw\" rel=\"nofollow\">https://web.dev/articles/es-modules-in-sw</a></li>\n<li>caniuse for ES Modules in SWs <a href=\"https://caniuse.com/mdn-api_serviceworker_ecmascript_modules\" rel=\"nofollow\">https://caniuse.com/mdn-api_serviceworker_ecmascript_modules</a></li>\n<li>the library i made <a href=\"https://github.com/gwennlbh/swarpc\">https://github.com/gwennlbh/swarpc</a></li>\n<li>project where i'm doing this <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3186707670\" data-permission-text=\"Title is private\" data-url=\"https://github.com/cigaleapp/cigale/issues/370\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/cigaleapp/cigale/pull/370/hovercard\" href=\"https://github.com/cigaleapp/cigale/pull/370\">cigaleapp/cigale#370</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/40325",
             "title": "Suggest Web Workers as an alternative to Service Workers",
@@ -75,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As part of a larger project to make the challenges/reader exercises in MDN learn more consistent, this PR:</p>\n<ul dir=\"auto\">\n<li>Replaces the old code editors with the live sample + MDN Playground flow.</li>\n<li>Makes some general wording improvements.</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/40304",
             "title": "5th set of JS active learning updates",
-            "date_modified": "2025-07-11T10:41:01.000Z",
+            "date_modified": "2025-07-11T20:16:17.000Z",
             "date_published": "2025-07-10T15:13:00.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "samuel871211",
                 "url": "https://github.com/samuel871211"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/150330?u=41aa48771028d34bcf025eefe919bf75fbda77d4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifying the roles of <code class=\"notranslate\">id</code> (aka \"username\") vs <code class=\"notranslate\">name</code> (aka \"display name\") in this credential type, aligning them to typical expectations for username/password credentials.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The existing documentation (and sample code) implies confusing/mixed things about the roles of <code class=\"notranslate\">id</code> versus <code class=\"notranslate\">name</code> in the creation and storage of this credential type. Some parts of this page were accurate (to spec) but other places implied an opposite relationship that contradicts the spec (and browser behavior).</p>\n<p dir=\"auto\">I misunderstood after reading this page, and only figured it out after live testing -- including actually using <code class=\"notranslate\">navigator.credentials.store()</code> to prompt to store the credential in the browser -- and reading the specification.</p>\n<p dir=\"auto\">So I want to fix the page so other's aren't misled like I was. :)</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">n/a</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">n/a</p>",
-            "url": "https://github.com/mdn/content/pull/40264",
-            "title": "Fixing confusion around id versus name",
-            "date_modified": "2025-07-08T19:57:22.000Z",
-            "date_published": "2025-07-08T19:52:07.000Z",
-            "author": {
-                "name": "getify",
-                "url": "https://github.com/getify"
             }
         }
     ]
