@@ -2,11 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-11T16:01:31.962Z</updated>
+    <updated>2025-07-11T17:02:25.408Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Suggest Web Workers as an alternative to Service Workers]]></title>
+        <id>https://github.com/mdn/content/pull/40325</id>
+        <link href="https://github.com/mdn/content/pull/40325"/>
+        <updated>2025-07-11T16:48:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/39094199?u=de6abf20974a822742ae5e97d502aaca03ae7ee8&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Add a note at the beginning of the page calling out Web Workers as a better technology for parallel computing</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">I'm going to be honest, I only knew about service workers up until today and did <em>not</em> know at all about other "types" of workers.</p>
+<p dir="auto">I always thought that Firefox didn't support ES modules in SWs for <em>localhost origins only</em>, but realized today that it just does not work, regardless of the origin.</p>
+<p dir="auto">Thus, I looked for sources on how work on implementation was going for firefox... only to stumble upon a similar implementation bug... for <em>web</em> workers. I searched for "service worker vs web workers"... and turns out I was trying to move heavy computation (notably local neural network inference) off of the UI thread by putting them in a <em>service worker</em>, where a web worker is much more appropriate (notably, ONNX Runtime Web uses <code class="notranslate">import.meta</code> in its code, which means that any service worker importing ONNX will not work on Firefox...)</p>
+<p dir="auto">I think that putting a note here about the differences about the two may steer people towards the right direction. Even if web workers seem older than SWs (judging by initial browser support dates), I only knew about SWs, thru the PWA movement. (I even ended up making a RPC library for SWs, swarpc... i need to rename it now 💀)</p>
+<p dir="auto">im not sure about the exact phrasing used here but I think that some kind of note/warning that highlights how Web Workers are more appropriate for moving things off the UI thread is beneficial to devs dabbling into that field</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>caniuse for ES Modules in Web Workers <a href="https://caniuse.com/mdn-api_worker_worker_ecmascript_modules" rel="nofollow">https://caniuse.com/mdn-api_worker_worker_ecmascript_modules</a></li>
+<li>web.dev article for ES Modules in SWs <a href="https://web.dev/articles/es-modules-in-sw" rel="nofollow">https://web.dev/articles/es-modules-in-sw</a></li>
+<li>caniuse for ES Modules in SWs <a href="https://caniuse.com/mdn-api_serviceworker_ecmascript_modules" rel="nofollow">https://caniuse.com/mdn-api_serviceworker_ecmascript_modules</a></li>
+<li>the library i made <a href="https://github.com/gwennlbh/swarpc">https://github.com/gwennlbh/swarpc</a></li>
+<li>project where i'm doing this <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3186707670" data-permission-text="Title is private" data-url="https://github.com/cigaleapp/cigale/issues/370" data-hovercard-type="pull_request" data-hovercard-url="/cigaleapp/cigale/pull/370/hovercard" href="https://github.com/cigaleapp/cigale/pull/370">cigaleapp/cigale#370</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>gwennlbh</name>
+            <email>gwennlbh@noreply.github.com</email>
+            <uri>https://github.com/gwennlbh</uri>
+        </author>
+        <published>2025-07-11T16:46:14.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[chore: Move Games sidebar into front matter]]></title>
         <id>https://github.com/mdn/content/pull/40322</id>
@@ -75,32 +109,6 @@
         <published>2025-07-11T09:05:50.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Internalize DataTransfer.files example]]></title>
-        <id>https://github.com/mdn/content/pull/40316</id>
-        <link href="https://github.com/mdn/content/pull/40316"/>
-        <updated>2025-07-11T15:20:05.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1237891052" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/16120" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/16120/hovercard" href="https://github.com/mdn/content/issues/16120">#16120</a>. Right now there are two links, but the code in these two playgrounds are exactly identical.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2025-07-11T08:27:15.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Internalize "The verbosity of DOM changes" example]]></title>
-        <id>https://github.com/mdn/content/pull/40315</id>
-        <link href="https://github.com/mdn/content/pull/40315"/>
-        <updated>2025-07-11T14:29:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1237891052" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/16120" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/16120/hovercard" href="https://github.com/mdn/content/issues/16120">#16120</a>. Most of the code is already on the page.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2025-07-11T07:58:10.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Clarify and expand example for `HTMLAnchorElement#href`]]></title>
         <id>https://github.com/mdn/content/pull/40313</id>
         <link href="https://github.com/mdn/content/pull/40313"/>
@@ -120,7 +128,7 @@
         <title type="html"><![CDATA[Make all page status backed by some BCD]]></title>
         <id>https://github.com/mdn/content/pull/40308</id>
         <link href="https://github.com/mdn/content/pull/40308"/>
-        <updated>2025-07-11T08:36:33.000Z</updated>
+        <updated>2025-07-11T16:40:04.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Whereever we use <code class="notranslate">status</code>, I'm adding a <code class="notranslate">browser-compat</code> so they can be cross-checked. In this process I'm noticing some pages that shouldn't get a status, and one page with an incorrect page-type, even, so I'm fixing them alongside.</p>]]></content>
         <author>
             <name>Josh-Cena</name>
@@ -186,7 +194,7 @@
         <title type="html"><![CDATA[Docs: Use && instead of | in padding syntax example]]></title>
         <id>https://github.com/mdn/content/pull/40301</id>
         <link href="https://github.com/mdn/content/pull/40301"/>
-        <updated>2025-07-11T15:04:16.000Z</updated>
+        <updated>2025-07-11T16:41:32.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27722774?v=4" width="64" height="64" alt=""/><br/>
 <h3 dir="auto">Description</h3>
 
@@ -455,5 +463,42 @@ Fixed a few broken links in <a class="commit-link" data-hovercard-type="commit" 
             <uri>https://github.com/Shrinivassab</uri>
         </author>
         <published>2025-07-09T03:14:11.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[doc[glossary/site/index.md]: Improve wording for same-site example]]></title>
+        <id>https://github.com/mdn/content/pull/40268</id>
+        <link href="https://github.com/mdn/content/pull/40268"/>
+        <updated>2025-07-11T02:46:19.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55658154?u=72eb5d6b966bd3197516e3205b1e2f4962df3cc6&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Reworded explanation to use "despite" instead of "because" to more accurately reflect that different ports do not affect same-site status.</p>
+<p dir="auto">Before:</p>
+<p dir="auto">These are the same site because the port is not relevant:</p>
+<ul dir="auto">
+<li><code class="notranslate">https://example.com:8080</code></li>
+<li><code class="notranslate">https://example.com</code></li>
+</ul>
+<p dir="auto">After:</p>
+<p dir="auto">These are the same site despite using different ports:</p>
+<ul dir="auto">
+<li><code class="notranslate">https://example.com:8080</code></li>
+<li><code class="notranslate">https://example.com</code></li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>samuel871211</name>
+            <email>samuel871211@noreply.github.com</email>
+            <uri>https://github.com/samuel871211</uri>
+        </author>
+        <published>2025-07-09T01:08:02.000Z</published>
     </entry>
 </feed>
