@@ -2,11 +2,72 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-14T06:01:39.368Z</updated>
+    <updated>2025-07-14T07:03:28.172Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[CSS] Docs: Clarify margin collapse rule for parent/child scenarios]]></title>
+        <id>https://github.com/mdn/content/pull/40349</id>
+        <link href="https://github.com/mdn/content/pull/40349"/>
+        <updated>2025-07-14T07:03:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27722774?v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">This PR proposes a small wording change to the section on parent/child margin collapsing to be more precise and easier to understand.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">The current text states that a parent's margin collapses with "one or more of its descendant blocks". While technically true in some complex edge cases, this can be misleading for the most common parent-child scenario. It might imply that a parent's margin could collapse with a grandchild, which is not the case.</p>
+<p dir="auto">Changing the wording to specify the "first descendant block" for margin-top and the "last descendant block" for margin-bottom is more precise and provides a clearer mental model for developers trying to understand this tricky concept.</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto"><strong>Suggested Change</strong></p>
+<p dir="auto">I suggest changing the wording from:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&quot;...to separate the margin-top of a block from the margin-top of one or more of its descendant blocks...&quot;"><pre class="notranslate"><code class="notranslate">"...to separate the margin-top of a block from the margin-top of one or more of its descendant blocks..."
+</code></pre></div>
+<p dir="auto">To the more precise:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&quot;...to separate the margin-top of a block from the margin-top of its first in-flow descendant block...&quot;"><pre class="notranslate"><code class="notranslate">"...to separate the margin-top of a block from the margin-top of its first in-flow descendant block..."
+</code></pre></div>
+<p dir="auto">(And a similar change for the margin-bottom rule).</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>kannanwisen</name>
+            <email>kannanwisen@noreply.github.com</email>
+            <uri>https://github.com/kannanwisen</uri>
+        </author>
+        <published>2025-07-14T07:02:30.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docs: fix ReadableByteStreamController: enqueue()]]></title>
+        <id>https://github.com/mdn/content/pull/40348</id>
+        <link href="https://github.com/mdn/content/pull/40348"/>
+        <updated>2025-07-14T06:46:01.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/13471233?u=7eb87d2c8884211a64a46aaf8af9ec7d90a3b24d&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Change the summary of <code class="notranslate">enqueue</code> method.</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">Clarify how the chunk is handled by <code class="notranslate">enqueue</code> method.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">See: <a href="https://streams.spec.whatwg.org/#readable-byte-stream-controller-enqueue" rel="nofollow">https://streams.spec.whatwg.org/#readable-byte-stream-controller-enqueue</a>, step 7.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>OpportunityLiu</name>
+            <email>OpportunityLiu@noreply.github.com</email>
+            <uri>https://github.com/OpportunityLiu</uri>
+        </author>
+        <published>2025-07-14T06:45:42.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix reflected element reference scope]]></title>
         <id>https://github.com/mdn/content/pull/40346</id>
@@ -22,32 +83,6 @@
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2025-07-14T04:52:56.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix incorrect terminology in URL.hostname description]]></title>
-        <id>https://github.com/mdn/content/pull/40345</id>
-        <link href="https://github.com/mdn/content/pull/40345"/>
-        <updated>2025-07-14T04:09:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87312278?u=2b9db5e595eb4dcc7261245265c2785c779aa60c&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Removed the incorrect paragraph in the <code class="notranslate">URL.hostname</code> property description that referred to "percent-encoded". The behavior is already covered by the earlier statement about IDN conversion.</p>
-
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The last paragraph of the <code class="notranslate">URL.hostname</code> description incorrectly stated that the hostname is "percent-encoded when setting but not percent-decoded when reading."</p>
-
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>The earlier sentence in the description, "IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN," already covers the correct behavior.</li>
-</ul>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #40341.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3226607779" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40341" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/40341/hovercard" href="https://github.com/mdn/content/issues/40341">#40341</a></p>]]></content>
-        <author>
-            <name>pulkitgarg04</name>
-            <email>pulkitgarg04@noreply.github.com</email>
-            <uri>https://github.com/pulkitgarg04</uri>
-        </author>
-        <published>2025-07-14T04:04:55.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Remove a codepen link about testing support]]></title>
@@ -393,32 +428,5 @@
             <uri>https://github.com/kannanwisen</uri>
         </author>
         <published>2025-07-10T11:49:47.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docs: Use && instead of | in margin syntax example]]></title>
-        <id>https://github.com/mdn/content/pull/40299</id>
-        <link href="https://github.com/mdn/content/pull/40299"/>
-        <updated>2025-07-10T11:32:54.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27722774?v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">This PR corrects the syntax comment in a margin example, changing the incorrect | (OR) separator to &amp;&amp; (AND) for better accuracy and clarity.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">The previous comment used /* top and bottom | left and right */, which was misleading as it implied only one of the components could be used. Using &amp;&amp; correctly signifies that these components are used together to form the margin value. This change aligns the example with formal CSS value syntax and reduces potential confusion for developers reading the documentation.</p>
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-<p dir="auto">top and bottom | left and right</p>
-]]></content>
-        <author>
-            <name>kannanwisen</name>
-            <email>kannanwisen@noreply.github.com</email>
-            <uri>https://github.com/kannanwisen</uri>
-        </author>
-        <published>2025-07-10T11:30:57.000Z</published>
     </entry>
 </feed>
