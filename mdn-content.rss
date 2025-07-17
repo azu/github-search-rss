@@ -2,16 +2,50 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-17T13:12:39.296Z</updated>
+    <updated>2025-07-17T14:01:39.569Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Document recent FedCM additions, Chrome 122-136]]></title>
+        <id>https://github.com/mdn/content/pull/40411</id>
+        <link href="https://github.com/mdn/content/pull/40411"/>
+        <updated>2025-07-17T13:56:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Chrome has added several <a href="https://developer.mozilla.org/en-US/docs/Web/API/FedCM_API" rel="nofollow">FedCM</a> features that we are missing from MDN. This PR adds docs for them.</p>
+<p dir="auto">The features are:</p>
+<ul dir="auto">
+<li>Support for multiple IdPs in a single <code class="notranslate">get()</code> call, as specified inside the <code class="notranslate">providers</code> array, added in Chrome 136: <a href="https://chromestatus.com/feature/5067784766095360" rel="nofollow">https://chromestatus.com/feature/5067784766095360</a></li>
+<li>The above ChromeStatus entry also includes the <code class="notranslate">IdentityCredential.configURL</code> (if you look at the <a href="https://github.com/w3c-fedid/FedCM/pull/686/files#diff-40cc3a1ba233cc3ca7b6d5873260da9676f6ae20bb897b62f7871c80d0bda4e9R445">associated spec changes</a>)</li>
+<li><code class="notranslate">IdentityCredential.disconnect()</code>, added in Chrome 122: <a href="https://chromestatus.com/feature/5202286040580096" rel="nofollow">https://chromestatus.com/feature/5202286040580096</a>.</li>
+<li><code class="notranslate">identity.mode</code> in <code class="notranslate">get()</code> calls, added in Chrome 132: <a href="https://chromestatus.com/feature/4689551782313984" rel="nofollow">https://chromestatus.com/feature/4689551782313984</a>.</li>
+<li><code class="notranslate">identity.fields</code> and <code class="notranslate">identity.params</code> in <code class="notranslate">get()</code> calls, added in Chrome 132. I'm not sure what ChromeStatus entry covers these, but <a href="https://privacysandbox.google.com/cookies/fedcm/implement/relying-party#providers_property" rel="nofollow">developer.chrome.com</a> says they were added in Chrome 132.</li>
+</ul>
+<p dir="auto">One point I'd especially like the tech review to comment on — the specified <a href="https://w3c-fedid.github.io/FedCM/#dictdef-identitycredentialdisconnectoptions" rel="nofollow">options object for <code class="notranslate">disconnect()</code></a> does not match up with the description in the <a href="https://privacysandbox.google.com/cookies/fedcm/implement/relying-party#disconnect_the_idp_from_the_rp" rel="nofollow">Chrome docs</a>. I think the latter makes more sense, but I'd like to know what is going on here.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2025-07-17T13:54:02.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[chore: move EmbedGH live sample into the page]]></title>
         <id>https://github.com/mdn/content/pull/40409</id>
         <link href="https://github.com/mdn/content/pull/40409"/>
-        <updated>2025-07-17T12:55:56.000Z</updated>
+        <updated>2025-07-17T14:00:09.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43580235?u=cae42d5a371dd041072ce6d85a1808de05535be8&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Moves an EmbedGH live sample into the page.</p>
 <h3 dir="auto">Motivation</h3>
@@ -430,31 +464,5 @@ I believe it was written as a standalone doc, so this updates some styles so it 
             <uri>https://github.com/jmcmenamy</uri>
         </author>
         <published>2025-07-14T16:51:16.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docs: fix ReadableByteStreamController: enqueue()]]></title>
-        <id>https://github.com/mdn/content/pull/40348</id>
-        <link href="https://github.com/mdn/content/pull/40348"/>
-        <updated>2025-07-14T06:46:01.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/13471233?u=7eb87d2c8884211a64a46aaf8af9ec7d90a3b24d&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Change the summary of <code class="notranslate">enqueue</code> method.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Clarify how the chunk is handled by <code class="notranslate">enqueue</code> method.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">See: <a href="https://streams.spec.whatwg.org/#readable-byte-stream-controller-enqueue" rel="nofollow">https://streams.spec.whatwg.org/#readable-byte-stream-controller-enqueue</a>, step 7.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>OpportunityLiu</name>
-            <email>OpportunityLiu@noreply.github.com</email>
-            <uri>https://github.com/OpportunityLiu</uri>
-        </author>
-        <published>2025-07-14T06:45:42.000Z</published>
     </entry>
 </feed>
