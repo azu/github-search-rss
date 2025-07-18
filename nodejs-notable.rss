@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-07-18T19:01:57.494Z</updated>
+    <updated>2025-07-18T20:01:31.381Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -150,6 +150,32 @@ This commit adds support for spawn and spawnSync to propagate permission model f
             <uri>https://github.com/RafaelGSS</uri>
         </author>
         <published>2025-06-26T21:04:01.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[crypto: add tls.setDefaultCACertificates()]]></title>
+        <id>https://github.com/nodejs/node/pull/58822</id>
+        <link href="https://github.com/nodejs/node/pull/58822"/>
+        <updated>2025-07-18T19:58:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This API allows dynamically configuring CA certificates that<br>
+will be used by the Node.js TLS clients by default.</p>
+<p dir="auto">Once called, the provided certificates will become the default CA<br>
+certificate list returned by <code class="notranslate">tls.getCACertificates('default')</code> and<br>
+used by TLS connections that don't specify their own CA certificates.</p>
+<p dir="auto">This function only affects the current Node.js thread.</p>
+<h4 dir="auto">Background</h4>
+<p dir="auto">This API serves two at least use cases:</p>
+<ol dir="auto">
+<li>When a party (e.g. corporate infra packages) need to enable CA certificates other than the bundled ones in the process, but they are only to be loaded by application developers (who can start tls connections themselves, or use a third-party library that does it) and have no control over the command line (which might be controlled by other administrators).</li>
+<li>This allows HTTPS tests - both core and user land - to actually test against a self-signed certificate easily instead of using <code class="notranslate">rejectUnauthorized: false</code> or having to spawn child processes which can affect the validity or debuggability of the test.</li>
+</ol>
+<p dir="auto">The functionality provided by this API already has been possible via monkey patching tls or the global HTTPS agents, and the user land has already been doing it - for example, see <a href="https://www.npmjs.com/package/syswide-cas" rel="nofollow">syswide-cas</a>, <a href="https://www.npmjs.com/package/win-ca" rel="nofollow">win-ca</a>, <a href="https://www.npmjs.com/package/ssl-root-cas" rel="nofollow">ssl-root-cas</a>. I am fairly certain when none of the existing options work there are applications/packages that would just go a nuclear route and use <code class="notranslate">rejectUnauthorized: false</code> in the monkey-patched option bag to avoid whatever woes they have, considering how often it shows up on the Internet and on even <a href="https://github.com/search?q=rejectUnauthorized%3A+false&amp;type=code">public GitHub</a>. Providing a proper API to allow using custom certificates dynamically would overall make the practice less brittle in the ecosystem.</p>
+]]></content>
+        <author>
+            <name>joyeecheung</name>
+            <email>joyeecheung@noreply.github.com</email>
+            <uri>https://github.com/joyeecheung</uri>
+        </author>
+        <published>2025-06-24T21:39:23.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[src: add web locks api]]></title>
@@ -307,7 +333,7 @@ Being able to await sub tests was a really useful feature.</p>
 <p dir="auto">The API in question was runtime-deprecated (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2556631107" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55175" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/55175/hovercard" href="https://github.com/nodejs/node/pull/55175">#55175</a>) and EOLd (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3017561051" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/58008" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/58008/hovercard" href="https://github.com/nodejs/node/pull/58008">#58008</a> which i'm reverting here) in the same major release. The intended cycle is that it gets runtime-deprecated as a major, and then EOLd in another later major.</p>
 <p dir="auto">Despite best efforts to detect it in the EOL PR there is breakage in the jsonwebtoken &gt; jws &gt; jwa dependency chain (29-30M weekly downloads on jwa).</p>
 <p dir="auto">This PR reverts to the <a href="https://github.com/nodejs/node/pull/55175" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/55175/hovercard">runtime-deprecation state</a> that was pending release with 24.0.0, EOL shouldn't have landed yet.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjU2MTcsIm5iZiI6MTc1Mjg2NTMxNywicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxOTAxNTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05MDlkYWNlYmQ0Y2JlOGFmYTBhODY2Yzk4ZjUxOTQ0MDk3NDgwYTY5M2ZlMWFhYmEzNzdhNWE4OTEzZjI0YmEyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.JEBoYvZ7AiLX0I8f2YAoHIR7SgEs4faeGW0VbjLldvg"><img src="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjU2MTcsIm5iZiI6MTc1Mjg2NTMxNywicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQxOTAxNTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05MDlkYWNlYmQ0Y2JlOGFmYTBhODY2Yzk4ZjUxOTQ0MDk3NDgwYTY5M2ZlMWFhYmEzNzdhNWE4OTEzZjI0YmEyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.JEBoYvZ7AiLX0I8f2YAoHIR7SgEs4faeGW0VbjLldvg" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjkxOTEsIm5iZiI6MTc1Mjg2ODg5MSwicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQyMDAxMzFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wZDI4YTJlMjM0ZDllMTgzMGUxZDBhNTUyMWYxMWRkY2U3NTcwZmM5ZWRhMDdkYmZiYmNiYzQ3NGQ4YTVjN2IyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.cgS-ujLGtUV1wOWuumMaxpyaZIEpGEutTxI7DbFVgug"><img src="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjkxOTEsIm5iZiI6MTc1Mjg2ODg5MSwicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQyMDAxMzFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wZDI4YTJlMjM0ZDllMTgzMGUxZDBhNTUyMWYxMWRkY2U3NTcwZmM5ZWRhMDdkYmZiYmNiYzQ3NGQ4YTVjN2IyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.cgS-ujLGtUV1wOWuumMaxpyaZIEpGEutTxI7DbFVgug" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto"><a href="https://openjs-foundation.slack.com/archives/C019MGJQ8RH/p1746596637445769" rel="nofollow">https://openjs-foundation.slack.com/archives/C019MGJQ8RH/p1746596637445769</a></p>
 <p dir="auto">We would re-land the EOL and ship it with a future major release after this revert.</p>
 ]]></content>
@@ -466,9 +492,9 @@ It was already suggested that for v24.0.0, we remove this restriction of the tes
 </ul>
 <h3 dir="auto">Demos</h3>
 <p dir="auto">Before:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjU2MTcsIm5iZiI6MTc1Mjg2NTMxNywicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMTkwMTU3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MmE3MDIwNTA1ODYzM2EwNDBlZTM2Y2QyNzgwYjU5YzhmYTVmNTllNmIzYzc5MmRmODBiZDM1NDU1MmIyMjFkNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.XB8YV8sukNl7imis7uCP5NXBUpv8k5eejg0bpPCwFEY"><img src="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjU2MTcsIm5iZiI6MTc1Mjg2NTMxNywicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMTkwMTU3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MmE3MDIwNTA1ODYzM2EwNDBlZTM2Y2QyNzgwYjU5YzhmYTVmNTllNmIzYzc5MmRmODBiZDM1NDU1MmIyMjFkNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.XB8YV8sukNl7imis7uCP5NXBUpv8k5eejg0bpPCwFEY" alt="before" data-animated-image="" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjkxOTEsIm5iZiI6MTc1Mjg2ODg5MSwicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMjAwMTMxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjY4Y2YzZmM2Yzk3N2M3NGE5YmJhMTA5YTA2ZDRlY2M4MTcxZjkyMzNiOWI1OGYxN2E1ZDk0ZjljNjA4NDllYSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.L3RJXoH6D2sKY_lHi9uIQuEXWwG0Ri7YsJi8SZfe9C0"><img src="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjkxOTEsIm5iZiI6MTc1Mjg2ODg5MSwicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMjAwMTMxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjY4Y2YzZmM2Yzk3N2M3NGE5YmJhMTA5YTA2ZDRlY2M4MTcxZjkyMzNiOWI1OGYxN2E1ZDk0ZjljNjA4NDllYSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.L3RJXoH6D2sKY_lHi9uIQuEXWwG0Ri7YsJi8SZfe9C0" alt="before" data-animated-image="" style="max-width: 100%;"></a></p>
 <p dir="auto">After:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjU2MTcsIm5iZiI6MTc1Mjg2NTMxNywicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMTkwMTU3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YTVjMzY4Zjc0Yzc5OTQ0NTIxMjJiYzRmOGViZTI0N2JlZGFlOTBhOTE0OTMzNDcyNDBjZWI4MGQ1NWU0MTEyNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.68FtQxsiUZ5uahwpKlP-F2s-dl9pSi8juo6yGaDzZtg"><img src="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjU2MTcsIm5iZiI6MTc1Mjg2NTMxNywicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMTkwMTU3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YTVjMzY4Zjc0Yzc5OTQ0NTIxMjJiYzRmOGViZTI0N2JlZGFlOTBhOTE0OTMzNDcyNDBjZWI4MGQ1NWU0MTEyNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.68FtQxsiUZ5uahwpKlP-F2s-dl9pSi8juo6yGaDzZtg" alt="after" data-animated-image="" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjkxOTEsIm5iZiI6MTc1Mjg2ODg5MSwicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMjAwMTMxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YmNjYzFmYzRlNzJmYmY0OTVmOWJhOGFiZjlhNzRmOWRlODhkOWUwNzJjMzQzMjhiZTExYjk0ZjA5ZGU4Nzc1MCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.3av8uw-t8TgvDR2q7Djz7B5JcW9O8XZVYAWEoZhVwpI"><img src="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4NjkxOTEsIm5iZiI6MTc1Mjg2ODg5MSwicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDcxOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA3MThUMjAwMTMxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YmNjYzFmYzRlNzJmYmY0OTVmOWJhOGFiZjlhNzRmOWRlODhkOWUwNzJjMzQzMjhiZTExYjk0ZjA5ZGU4Nzc1MCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.3av8uw-t8TgvDR2q7Djz7B5JcW9O8XZVYAWEoZhVwpI" alt="after" data-animated-image="" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>puskin</name>
             <email>puskin@noreply.github.com</email>
@@ -488,38 +514,5 @@ It was already suggested that for v24.0.0, we remove this restriction of the tes
             <uri>https://github.com/nodejs-github-bot</uri>
         </author>
         <published>2025-03-09T00:28:58.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[assert: improve partialDeepStrictEqual]]></title>
-        <id>https://github.com/nodejs/node/pull/57370</id>
-        <link href="https://github.com/nodejs/node/pull/57370"/>
-        <updated>2025-05-06T20:39:53.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8822573?u=6d05b4378979fe36cbc9977377e423e6ac3c3228&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This significantly improves the assert.partialDeepStrictEqual<br>
-implementation (see benchmark below) by reusing the already existing algorithm.<br>
-It is significantly faster and handles all known edge cases like symbols<br>
-identical as the deepStrictEqual algorithm. This is crucial to<br>
-remove the experimental status from the implementation.</p>
-<p dir="auto">The old implementation could not yet handle some cases that<br>
-the benchmark handles. These are deactivated for now.<br>
-This is likely also a good idea due to the significant performance<br>
-difference between the two implementations.</p>
-<p dir="auto">I changed the stability index, since it's now handling all cases<br>
-properly.</p>
-<p dir="auto">This includes a performance improvement for <code class="notranslate">assert.deepStrictEqual()</code>.<br>
-A few uncommon cases are actually slower due to seemingly V8<br>
-deoptimising the code when hitting rare cases. In reality, that should<br>
-not be an issue.</p>
-<p dir="auto">I noticed an interesting thing while working on this.<br>
-<code class="notranslate">ObjectPrototypeHasOwnProperty</code> is significantly faster than<br>
-<code class="notranslate">ObjectHasOwn</code>. This is something we could take advantage<br>
-of in other parts of the code and I plan on opening an issue for<br>
-V8 to fix that.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes pull request #56555.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2780870490" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/56555" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/56555/hovercard" href="https://github.com/nodejs/node/pull/56555">#56555</a></p>]]></content>
-        <author>
-            <name>BridgeAR</name>
-            <email>BridgeAR@noreply.github.com</email>
-            <uri>https://github.com/BridgeAR</uri>
-        </author>
-        <published>2025-03-08T02:19:04.000Z</published>
     </entry>
 </feed>
