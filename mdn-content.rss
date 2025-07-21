@@ -2,11 +2,74 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-21T13:13:31.657Z</updated>
+    <updated>2025-07-21T14:02:27.116Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Correct `navigate` addeventlistener]]></title>
+        <id>https://github.com/mdn/content/pull/40469</id>
+        <link href="https://github.com/mdn/content/pull/40469"/>
+        <updated>2025-07-21T13:57:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
+<p dir="auto">Missing a <code class="notranslate">navigation</code> from the <code class="notranslate">addeventlistener</code> example, without which it doesn't work. You can see the rest of the examples in the doc use the correct syntax.</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">It's wrong :-)</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto">You can test it with this SQL in the console of any page in Chrome:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// This will log
+navigation.addEventListener(&quot;navigate&quot;, (event) =&gt; {console.log('navigation event:',event)});
+// This won't log
+addEventListener(&quot;navigate&quot;, (event) =&gt; {console.log('window event',event)});
+// Neither will this
+window.addEventListener(&quot;navigate&quot;, (event) =&gt; {console.log('explicit window event',event)})
+// Nor this
+document.addEventListener(&quot;navigate&quot;, (event) =&gt; {console.log('document event',event)})
+
+// Push a history to trigger above
+history.pushState({}, &quot;&quot;, &quot;/barrry&quot;);"><pre class="notranslate"><span class="pl-c">// This will log</span>
+<span class="pl-s1">navigation</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">"navigate"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'navigation event:'</span><span class="pl-kos">,</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// This won't log</span>
+<span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">"navigate"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'window event'</span><span class="pl-kos">,</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// Neither will this</span>
+<span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">"navigate"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'explicit window event'</span><span class="pl-kos">,</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+<span class="pl-c">// Nor this</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">"navigate"</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'document event'</span><span class="pl-kos">,</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">}</span><span class="pl-kos">)</span>
+
+<span class="pl-c">// Push a history to trigger above</span>
+<span class="pl-s1">history</span><span class="pl-kos">.</span><span class="pl-en">pushState</span><span class="pl-kos">(</span><span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-s">""</span><span class="pl-kos">,</span> <span class="pl-s">"/barrry"</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+
+<p dir="auto">FYI: <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mattzeunert/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mattzeunert">@mattzeunert</a></p>]]></content>
+        <author>
+            <name>tunetheweb</name>
+            <email>tunetheweb@noreply.github.com</email>
+            <uri>https://github.com/tunetheweb</uri>
+        </author>
+        <published>2025-07-21T13:55:24.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add note on CSP sandbox causing  to iframe sandbox section]]></title>
+        <id>https://github.com/mdn/content/pull/40468</id>
+        <link href="https://github.com/mdn/content/pull/40468"/>
+        <updated>2025-07-21T13:15:36.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/84141602?u=f06b318cecbf76d83c4de11ace6dd531b3c5bbb6&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Description</h2>
+<p dir="auto">Added a new bullet point to the list of cases where the <code class="notranslate">Origin</code> header may be <code class="notranslate">null</code>.<br>
+It covers the scenario where a page is served with a <code class="notranslate">Content-Security-Policy: sandbox</code> header <strong>without</strong> the <code class="notranslate">allow-same-origin</code> directive.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #40093.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3179678765" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40093" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/40093/hovercard" href="https://github.com/mdn/content/issues/40093">#40093</a></p>]]></content>
+        <author>
+            <name>krikera</name>
+            <email>krikera@noreply.github.com</email>
+            <uri>https://github.com/krikera</uri>
+        </author>
+        <published>2025-07-21T13:13:36.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[`ctrlKey` is true for pinch-zoom wheel events]]></title>
         <id>https://github.com/mdn/content/pull/40465</id>
@@ -59,20 +122,6 @@
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2025-07-20T17:18:54.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mention certain ArrayBuffers have controlled detachment]]></title>
-        <id>https://github.com/mdn/content/pull/40457</id>
-        <link href="https://github.com/mdn/content/pull/40457"/>
-        <updated>2025-07-21T13:09:32.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39021.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2976642619" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39021" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39021/hovercard" href="https://github.com/mdn/content/issues/39021">#39021</a>.</p>
-<p dir="auto">The main change is made to the JS docs, but I'm updating <code class="notranslate">GPUBuffer.getMappedRange</code> as well, because this is not an exception of this method itself.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2025-07-20T16:57:24.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Mention how multiple select is encoded for submission]]></title>
@@ -181,7 +230,7 @@
         <title type="html"><![CDATA[Make test your skills boilerplate more consistent]]></title>
         <id>https://github.com/mdn/content/pull/40447</id>
         <link href="https://github.com/mdn/content/pull/40447"/>
-        <updated>2025-07-21T10:25:01.000Z</updated>
+        <updated>2025-07-21T13:41:01.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 <h3 dir="auto">Description</h3>
 <p dir="auto">As per the following comments:</p>
@@ -244,19 +293,6 @@
         <published>2025-07-19T09:54:37.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[New module: CSS custom highlight API]]></title>
-        <id>https://github.com/mdn/content/pull/40430</id>
-        <link href="https://github.com/mdn/content/pull/40430"/>
-        <updated>2025-07-21T13:13:16.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1533077393" data-permission-text="Title is private" data-url="https://github.com/openwebdocs/project/issues/147" data-hovercard-type="issue" data-hovercard-url="/openwebdocs/project/issues/147/hovercard" href="https://github.com/openwebdocs/project/issues/147">openwebdocs/project#147</a></p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2025-07-18T15:54:31.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[fix(css): Improve description of `:hover` pseudo-class]]></title>
         <id>https://github.com/mdn/content/pull/40429</id>
         <link href="https://github.com/mdn/content/pull/40429"/>
@@ -281,7 +317,7 @@
         <title type="html"><![CDATA[Add a "Guides" section to the API landing page template]]></title>
         <id>https://github.com/mdn/content/pull/40427</id>
         <link href="https://github.com/mdn/content/pull/40427"/>
-        <updated>2025-07-21T13:03:37.000Z</updated>
+        <updated>2025-07-21T13:47:09.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Many guide pages are not reachable from their parent page, which is a minus for discoverability and for consistent IA. This adds a "Guides" section to enforce consistent structure; afterwards I can send another PR to apply this structure to API pages.</p>]]></content>
         <author>
             <name>Josh-Cena</name>
