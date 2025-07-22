@@ -2,16 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-22T07:03:15.981Z</updated>
+    <updated>2025-07-22T08:01:41.710Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Ff142 rtcinboundrtpstreamstats fixes]]></title>
+        <title type="html"><![CDATA[Reference for new Intl.Locale.p.variants]]></title>
+        <id>https://github.com/mdn/content/pull/40497</id>
+        <link href="https://github.com/mdn/content/pull/40497"/>
+        <updated>2025-07-22T08:00:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3248531596" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40467" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/40467/hovercard" href="https://github.com/mdn/content/issues/40467">#40467</a></p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2025-07-22T07:43:11.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ff142 RTCInboundRtpStreamStats fixes]]></title>
         <id>https://github.com/mdn/content/pull/40495</id>
         <link href="https://github.com/mdn/content/pull/40495"/>
-        <updated>2025-07-22T06:17:40.000Z</updated>
+        <updated>2025-07-22T08:01:09.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This fixes up the <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCInboundRtpStreamStats" rel="nofollow"><code class="notranslate">RTCInboundRtpStreamStats</code></a> to match the BCD as per FF142, which adds support for some more properties.</p>
 <p dir="auto">Contributes to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1628555901" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/384" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/384/hovercard" href="https://github.com/mdn/mdn/issues/384">mdn/mdn#384</a></p>
 <p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3249075657" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40478" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/40478/hovercard" href="https://github.com/mdn/content/issues/40478">#40478</a></p>]]></content>
@@ -21,33 +34,6 @@
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2025-07-22T06:15:44.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[fix(ci/spelling-check-bot): Argument list too long]]></title>
-        <id>https://github.com/mdn/content/pull/40494</id>
-        <link href="https://github.com/mdn/content/pull/40494"/>
-        <updated>2025-07-22T06:21:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><ul dir="auto">
-<li>related to <a href="https://github.com/mdn/content/actions/runs/16405622975/job/46351087903#step:6:789">https://github.com/mdn/content/actions/runs/16405622975/job/46351087903#step:6:789</a></li>
-</ul>
-<p dir="auto">The workflow run threw the following error:</p>
-<blockquote>
-<p dir="auto"><code class="notranslate">Error: An error occurred trying to start process '/usr/bin/bash' with working directory '/home/runner/work/content/content'. Argument list too long</code></p>
-</blockquote>
-<p dir="auto">But the underlying GraphQL error, getting shadowed in this case, is the following:</p>
-<blockquote>
-<p dir="auto">Body is too long (maximum is 65536 characters)</p>
-</blockquote>
-<p dir="auto">The workflow script created <code class="notranslate">186,709</code> characters long logs. This is a rare occurrence that happened due to a platform-content <code class="notranslate">addonsidebar</code> update. To avoid workflow failures in such rare cases, let us truncate the logs to fit in the GitHub issue body and add a warning at the bottom.</p>
-<p dir="auto">The fix sets max length for the logs to 64,000. Let us keep rest of the 1,536 characters for other stuff in the issue body. Also, if someone appends more info to the issue body in the future, then I think 1,536 will prevent resurgence of this issue.</p>
-<h2 dir="auto">Testing</h2>
-<p dir="auto">The fix has been tested here <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3251104381" data-permission-text="Title is private" data-url="https://github.com/OnkarRuikar/content/issues/51" data-hovercard-type="issue" data-hovercard-url="/OnkarRuikar/content/issues/51/hovercard" href="https://github.com/OnkarRuikar/content/issues/51">OnkarRuikar#51</a>, and the corresponding workflow run <a href="https://github.com/OnkarRuikar/content/actions/runs/16435324052/job/46444171057#step:5:27">https://github.com/OnkarRuikar/content/actions/runs/16435324052/job/46444171057#step:5:27</a></p>]]></content>
-        <author>
-            <name>OnkarRuikar</name>
-            <email>OnkarRuikar@noreply.github.com</email>
-            <uri>https://github.com/OnkarRuikar</uri>
-        </author>
-        <published>2025-07-22T06:02:29.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[FF142 RTCIceCandidatePairStats mandatory properties - relnote]]></title>
@@ -125,19 +111,6 @@ This adds a release note. It also updates the Experimental features with the cav
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2025-07-21T23:27:08.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix typos]]></title>
-        <id>https://github.com/mdn/content/pull/40486</id>
-        <link href="https://github.com/mdn/content/pull/40486"/>
-        <updated>2025-07-22T02:13:01.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #40347.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3227432478" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40347" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/40347/hovercard" href="https://github.com/mdn/content/issues/40347">#40347</a> (issue from last week). The latest run of this action failed because the issue body is too long (<code class="notranslate">addonsidebar</code> and <code class="notranslate">addonsidebarmain</code> are used in some 1000 docs), so I have to run this manually locally.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2025-07-21T16:53:32.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add tool for obtaining `<area>` `coords` from image]]></title>
@@ -298,7 +271,7 @@ This adds a release note. It also updates the Experimental features with the cav
         <title type="html"><![CDATA[Make test your skills boilerplate more consistent]]></title>
         <id>https://github.com/mdn/content/pull/40447</id>
         <link href="https://github.com/mdn/content/pull/40447"/>
-        <updated>2025-07-21T16:03:29.000Z</updated>
+        <updated>2025-07-22T07:34:08.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 <h3 dir="auto">Description</h3>
 <p dir="auto">As per the following comments:</p>
@@ -337,5 +310,27 @@ This adds a release note. It also updates the Experimental features with the cav
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2025-07-19T14:56:55.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add interactive examples to `sin()` and `cos()` CSS functions]]></title>
+        <id>https://github.com/mdn/content/pull/40441</id>
+        <link href="https://github.com/mdn/content/pull/40441"/>
+        <updated>2025-07-19T16:01:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Add interactive examples to <code class="notranslate">sin()</code> and <code class="notranslate">cos()</code> CSS functions.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">On September 2025, both <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/sin" rel="nofollow">sin()</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/cos" rel="nofollow">cos()</a> will become <a href="https://web.dev/baseline" rel="nofollow">baseline widely available</a>, yet both MDN articles have minimal information about the functions.</p>
+<p dir="auto">The interactive examples interface enhances the learning experience by allowing visitors to modify the code and see the results. This is a more instructive way to understand how these CSS functions work.</p>
+<h3 dir="auto">Related pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1324227543" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/19016" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/19016/hovercard" href="https://github.com/mdn/content/pull/19016">#19016</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1327573895" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/19119" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/19119/hovercard" href="https://github.com/mdn/content/pull/19119">#19119</a></li>
+</ul>]]></content>
+        <author>
+            <name>ramiy</name>
+            <email>ramiy@noreply.github.com</email>
+            <uri>https://github.com/ramiy</uri>
+        </author>
+        <published>2025-07-19T09:54:37.000Z</published>
     </entry>
 </feed>
