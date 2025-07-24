@@ -2,11 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-07-24T03:29:03.349Z</updated>
+    <updated>2025-07-24T04:14:11.397Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove parseHTMLUnsafe for Safari]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/27392</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/27392"/>
+        <updated>2025-07-24T03:29:53.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1198915?u=5dabca633afe77afbfb17bfcf7221a1d9931685f&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">I'm removing parseHTMLUnsafe for Safari, as the implementation is so broken that it can't really be used in real-life.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">The main goal of the parseHTMLUnsafe API is to be able to parse HTML containing declarative shadow root (which can't be done using innerHTML). Unfortuantely, when the declarative shadow dom contains web components (which will happen 99% of the time), Safari currently does not call the constructor and connectedCallback of those parsed web components, making the feature simply unusable.</p>
+<p dir="auto">I've reported the bug to Webkit (<a href="https://bugs.webkit.org/show_bug.cgi?id=296420" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=296420</a>) but for now it's safer to basically say that support is non-existant on Safari as the main use case is not working.</p>]]></content>
+        <author>
+            <name>bakura10</name>
+            <email>bakura10@noreply.github.com</email>
+            <uri>https://github.com/bakura10</uri>
+        </author>
+        <published>2025-07-24T03:29:16.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update Chromium data for -webkit-slider-thumb CSS selector]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/27391</id>
@@ -379,25 +396,5 @@
             <uri>https://github.com/queengooborg</uri>
         </author>
         <published>2025-06-30T04:36:13.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Re-add IDBDatabase abort event]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/27167</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/27167"/>
-        <updated>2025-07-23T12:41:15.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Based on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1140067250" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/15006" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/15006/hovercard" href="https://github.com/mdn/browser-compat-data/pull/15006">#15006</a>.</p>
-
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Adds the <code class="notranslate">abort</code> event on <code class="notranslate">IDBDatabase</code>.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">The data was originally removed in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1140067250" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/15006" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/15006/hovercard" href="https://github.com/mdn/browser-compat-data/pull/15006">#15006</a>.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #15345.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1166786936" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/15345" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/15345/hovercard" href="https://github.com/mdn/browser-compat-data/issues/15345">#15345</a></p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-06-27T14:00:35.000Z</published>
     </entry>
 </feed>
