@@ -2,23 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-27T11:01:18.225Z</updated>
+    <updated>2025-07-27T12:01:51.451Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Move CSSOM view module under API/]]></title>
+        <id>https://github.com/mdn/content/pull/40547</id>
+        <link href="https://github.com/mdn/content/pull/40547"/>
+        <updated>2025-07-27T11:50:45.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I've been long bothered by the fact that "CSSOM view" is not a real API group on MDN. It makes our IA extremely awkward because existing references either have get the sidebar of its owner interface (such as "DOM" for <code class="notranslate">Window</code> and <code class="notranslate">Document</code> extensions, or "UI events" for <code class="notranslate">MouseEvent</code> extensions) or be fakely labeled as "CSSOM". "Visual Viewport API" is also not a real spec anymore. So we basically hacked around the whole issue of lacking a proper API group.</p>
+<p dir="auto">Meanwhile we do have a "CSSOM view" landing page, but it's confusingly categorized as CSS, which means it cannot be used as the landing page of a web API group, because of the way our groupdata.json works. All the other CSS specs that define JS bindings, such as CSSOM, CSS Typed OM, etc. are under web API, so I think this should be no exception: the CSS docs should be left to the CSS language proper, not for JS bindings.</p>
+<p dir="auto">I'm adding the groupdata for the new interfaces only. There are too many interface extensions and I'm not interested in updating their sidebars in this PR, although a future one might.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2025-07-27T11:10:45.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[renew css value processing document]]></title>
         <id>https://github.com/mdn/content/pull/40546</id>
         <link href="https://github.com/mdn/content/pull/40546"/>
-        <updated>2025-07-27T10:58:28.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/74392116?u=4129621f9e965839bd287d5e557fe87b816cf331&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-
+        <updated>2025-07-27T11:59:47.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/74392116?u=4129621f9e965839bd287d5e557fe87b816cf331&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The change mainly aims for better accuracy to describe CSS value processing flow according to the specification.</p>
 <h3 dir="auto">Motivation</h3>
 
+<p dir="auto">The previous version sometimes used incorrect terminology and descriptions, which will ultimately lead differences between mdn and the specs.</p>
+<p dir="auto">e.g.</p>
+<ul dir="auto">
+<li>CSS property value result will not come only from specificity - it will be the result of the entire cascade process</li>
+<li>"specified values" were mostly used incorrectly/confused with "declared values" - they result from the defaulting process after cascading, but the previous version didn't make<br>
+this clear</li>
+<li>The document mainly described the stages after the <a href="https://www.w3.org/TR/css-cascade-4/#defaulting" rel="nofollow">Defaulting process</a>, even though the terminology and phases before Defaulting<br>
+(which are Filtering, Cascading, and related terms) are necessary to make after-Defaulting values understandable. Omitting the before-Defaulting process essentially leads to<br>
+misdescribed concepts.</li>
+<li>Initial value shouldn't be listed as a value processing stage according to the spec - it is the terminology used in the resolution process of the specified value</li>
+</ul>
+<p dir="auto">The change also includes some typo/wording updates, which will make the description more accurate or simpler.</p>
 <h3 dir="auto">Additional details</h3>
 
+<p dir="auto">The changes ensure compliance with:</p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/css-syntax-3/" rel="nofollow">CSS Syntax Module Level 3</a></li>
+<li><a href="https://www.w3.org/TR/css-cascade-4/" rel="nofollow">CSS Cascading and Inheritance Level 4</a></li>
+</ul>
 <h3 dir="auto">Related issues and pull requests</h3>
 
 
@@ -30,19 +61,6 @@
             <uri>https://github.com/sakupi01</uri>
         </author>
         <published>2025-07-27T10:58:07.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mention nesting selector cannot match pseudo-elements]]></title>
-        <id>https://github.com/mdn/content/pull/40545</id>
-        <link href="https://github.com/mdn/content/pull/40545"/>
-        <updated>2025-07-27T10:57:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36888.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2677338049" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36888" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36888/hovercard" href="https://github.com/mdn/content/issues/36888">#36888</a></p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2025-07-27T10:36:43.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Specify getFloatTimeDomainData() encoding range]]></title>
