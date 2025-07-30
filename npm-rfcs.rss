@@ -2,11 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-07-30T20:01:34.313Z</updated>
+    <updated>2025-07-30T21:01:26.969Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Support multiple registries per scope in .npmrc]]></title>
+        <id>https://github.com/npm/rfcs/issues/828</id>
+        <link href="https://github.com/npm/rfcs/issues/828"/>
+        <updated>2025-07-30T20:26:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/53998249?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">The current <code class="notranslate">.npmrc</code> configuration model allows specifying <strong>only one registry per scope</strong>, which is too limiting for more complex setups.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">We use a <strong>self-hosted GitLab instance</strong> as our internal NPM registry provider. GitLab supports publishing packages at different levels:</p>
+<ul dir="auto">
+<li><strong>Project-level registry</strong> — each project has its own NPM registry.</li>
+<li><strong>Group-level registry</strong> — a registry that aggregates all packages from child projects in the group.</li>
+<li><strong>Instance-level (global) registry</strong> — exposes packages using the group name as the scope, and the project name as the package name.</li>
+</ul>
+<p dir="auto">Suppose we have the following structure:</p>
+<ul dir="auto">
+<li><code class="notranslate">project-a</code> published to: <code class="notranslate">https://gitlab.example.com/api/v4/projects/1/packages/npm/</code></li>
+<li><code class="notranslate">libraries/*</code> packages published to: <code class="notranslate">https://gitlab.example.com/api/v4/groups/6/-/packages/npm/</code></li>
+</ul>
+<p dir="auto">This setup introduces limitations for consumers:</p>
+<ul dir="auto">
+<li>We want to use a <strong>single shared scope</strong>, such as <code class="notranslate">@our-org/*</code>, across all packages in our organization.</li>
+<li>Some packages are published to <strong>project-level registries</strong>, while others use <strong>group-level registries</strong>.</li>
+</ul>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Related/Reference to <a href="https://github.com/npm/rfcs/issues/427" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/427/hovercard">#427</a></li>
+<li>Depends on #0</li>
+<li>Blocked by #0</li>
+</ul>]]></content>
+        <author>
+            <name>temez</name>
+            <email>temez@noreply.github.com</email>
+            <uri>https://github.com/temez</uri>
+        </author>
+        <published>2025-07-30T20:26:25.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Please don't store registry info in `packge-lock.json`]]></title>
         <id>https://github.com/npm/rfcs/issues/821</id>
@@ -48,8 +85,8 @@
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDU5OTQsIm5iZiI6MTc1MzkwNTY5NCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMDAxMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lMDkzN2VmY2ZkYWNkYmI3ZTgxNjU5M2JhNjhlNDE0NWI3NTcxN2E0OWM2MGE1ZmRlZTY0OTQ3NGI2ODQxMmE4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.d5dERj3VYlotK9CPC5R1GaeqUQlrEsRH3BYxjtMAhmM"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDU5OTQsIm5iZiI6MTc1MzkwNTY5NCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMDAxMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lMDkzN2VmY2ZkYWNkYmI3ZTgxNjU5M2JhNjhlNDE0NWI3NTcxN2E0OWM2MGE1ZmRlZTY0OTQ3NGI2ODQxMmE4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.d5dERj3VYlotK9CPC5R1GaeqUQlrEsRH3BYxjtMAhmM" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDU5OTQsIm5iZiI6MTc1MzkwNTY5NCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMDAxMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yNThlZmYzMWI0OWNkZDlmZWQwYWY0MzExNDRhZGUyZmFkOTQ4MGU2OThiOTc5ODM3YzBkYmZkMTNlN2MzZDA3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.wRWsyvtwIgLxQfMAjIBKkwjfHYfwNe6tm8lOTpk9Sk4"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDU5OTQsIm5iZiI6MTc1MzkwNTY5NCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMDAxMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yNThlZmYzMWI0OWNkZDlmZWQwYWY0MzExNDRhZGUyZmFkOTQ4MGU2OThiOTc5ODM3YzBkYmZkMTNlN2MzZDA3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.wRWsyvtwIgLxQfMAjIBKkwjfHYfwNe6tm8lOTpk9Sk4" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDk1ODYsIm5iZiI6MTc1MzkwOTI4NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMTAxMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wZjc3ZGFhYzE4MTRiZjE0NGZjYTY2MTk4ZjlkNjU2MGI0M2ViODlhZTU0NTRiNDNhZjM5NjgxNDE1YWEzYWVjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.SfhArxg4cPxYSCNAiBRN3DpK9PdG7JZ6dUL03DcOCtk"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDk1ODYsIm5iZiI6MTc1MzkwOTI4NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMTAxMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wZjc3ZGFhYzE4MTRiZjE0NGZjYTY2MTk4ZjlkNjU2MGI0M2ViODlhZTU0NTRiNDNhZjM5NjgxNDE1YWEzYWVjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.SfhArxg4cPxYSCNAiBRN3DpK9PdG7JZ6dUL03DcOCtk" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDk1ODYsIm5iZiI6MTc1MzkwOTI4NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMTAxMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lZDEwYTIwNzZhYmQxZDA5YTNkMGM2OTI3Zjc2N2IxYjg1ZjZjNWQyYTBhNzA2NGU4YjFkZmViMzJiM2MzY2QwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gKJN1Uxu7WP34kDYCVODGAYiu6bzsBXSoLkD5mIk_80"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTM5MDk1ODYsIm5iZiI6MTc1MzkwOTI4NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzMwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDczMFQyMTAxMjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lZDEwYTIwNzZhYmQxZDA5YTNkMGM2OTI3Zjc2N2IxYjg1ZjZjNWQyYTBhNzA2NGU4YjFkZmViMzJiM2MzY2QwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gKJN1Uxu7WP34kDYCVODGAYiu6bzsBXSoLkD5mIk_80" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -583,43 +620,5 @@ Having this functionality be more complicated than just setting a string is bett
             <uri>https://github.com/valadaptive</uri>
         </author>
         <published>2024-06-23T09:29:56.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] require authentication only once during one single npm publish using workspaces]]></title>
-        <id>https://github.com/npm/rfcs/issues/778</id>
-        <link href="https://github.com/npm/rfcs/issues/778"/>
-        <updated>2024-06-02T20:42:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1135267?u=82bf14abcf63152d090ca75748eb0984fabe911d&v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">I have a lot of mono-repos, which want to be published every once in a while. When using the workspace option to publish multiple packages at once, I get multiple prompts for authentication.</p>
-<p dir="auto">Yes, I can check the checkbox in the web-UI to not be prompted within the next 5 minutes, but that is not my intention in this case. I only want to publish the specified packages. The option to not be bothered for 5 minutes also seems like an unnecessary risk for this use-case.</p>
-<p dir="auto">I remember, that at least some time ago, lerna was able to publish multiple packages with one OTP prompt. Not sure how they did it, but that was comfortable. Not sure if they still support it though, haven't used it in a while.</p>
-<h3 dir="auto">Example</h3>
-<p dir="auto">I have a mono-repo with 3 packages.</p>
-<ul dir="auto">
-<li>I adjust the versions on 2 of them and want to publish them via CLI.</li>
-<li>I run <code class="notranslate">npm publish --access public -w pack1 -w pack2</code></li>
-<li>I have published my packages successfully</li>
-</ul>
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-<p dir="auto">When I run <code class="notranslate">npm publish --access public -w pack1 -w pack2</code>, I have two options for authentication:</p>
-<ul dir="auto">
-<li>open the web-UI authentication link once per package to be released</li>
-<li>open the first web-UI authentication link and check the checkbox to not be bothered for the next 5 minutes</li>
-</ul>
-<h4 dir="auto">Desired Behaviour</h4>
-<p dir="auto">When I run <code class="notranslate">npm publish --access public -w pack1 -w pack2</code>, I get only one web-UI authentication link, even if I don't check the checkbox to not be bothered for 5 minutes.</p>
-<h3 dir="auto">References</h3>
-
-<ul dir="auto">
-<li>n/a</li>
-</ul>]]></content>
-        <author>
-            <name>Lusito</name>
-            <email>Lusito@noreply.github.com</email>
-            <uri>https://github.com/Lusito</uri>
-        </author>
-        <published>2024-06-02T13:55:49.000Z</published>
     </entry>
 </feed>
