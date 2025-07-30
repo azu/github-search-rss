@@ -2,11 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2025-07-29T23:01:21.247Z</updated>
+    <updated>2025-07-30T00:05:30.152Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Extend CSP script-src hashes]]></title>
+        <id>https://github.com/mozilla/standards-positions/issues/1277</id>
+        <link href="https://github.com/mozilla/standards-positions/issues/1277"/>
+        <updated>2025-07-29T23:50:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1571579?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
+<p dir="auto">Extend CSP script-src hashes</p>
+<h3 dir="auto">Specification or proposal URL (if available)</h3>
+<p dir="auto"><a class="commit-link" href="https://github.com/w3c/webappsec-csp/compare/main...carlosjoan91:webappsec-csp:main">w3c/webappsec-csp@<tt>main...carlosjoan91:webappsec-csp:main</tt></a></p>
+<h3 dir="auto">Explainer URL (if available)</h3>
+<p dir="auto"><a href="https://github.com/explainers-by-googlers/script-src-v2/blob/main/README.md">https://github.com/explainers-by-googlers/script-src-v2/blob/main/README.md</a></p>
+<h3 dir="auto">Proposal author(s)</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/carlosjoan91/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/carlosjoan91">@carlosjoan91</a>, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/meacer/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/meacer">@meacer</a></p>
+<h3 dir="auto">MDN URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Caniuse.com URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozillians who can provide input</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">WebKit standards-position</h3>
+<p dir="auto">Not created yet</p>
+<h3 dir="auto">Other information</h3>
+<p dir="auto">This feature adds two new prefixes to hashes in script-src directives (url- and eval-) and a new keyword (strict-dynamic-url).</p>
+<p dir="auto">Note that we originally intended to add these to a new directive called <code class="notranslate">script-src-v2</code>. At the moment, we are adding them to the existing <code class="notranslate">script-src</code> directive only, but the explainer and other text may still refer to <code class="notranslate">script-src-v2</code>.</p>
+<h1 dir="auto">url- hash prefix</h1>
+<p dir="auto">This enables allowlisting scripts by their URL's hash:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Security-Policy: script-src 'url-sha256-SHA256(&quot;https://example.com/script.js&quot;)';
+&lt;script src=&quot;https://example.com/script.js&quot;&gt;&lt;/script&gt;"><pre class="notranslate"><code class="notranslate">Content-Security-Policy: script-src 'url-sha256-SHA256("https://example.com/script.js")';
+&lt;script src="https://example.com/script.js"&gt;&lt;/script&gt;
+</code></pre></div>
+<h1 dir="auto">eval- hash prefix</h1>
+<p dir="auto">eval- prefix enables allowlisting eval'ed scripts by their hash, obviating the need to use <code class="notranslate">unsafe-eval</code>:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Security-Policy: script-src 'eval-sha256-SHA256(&quot;console.log('Hello World')';
+&lt;script&gt;
+eval(&quot;console.log('Hello World')&quot;);
+&lt;/script&gt;"><pre class="notranslate"><code class="notranslate">Content-Security-Policy: script-src 'eval-sha256-SHA256("console.log('Hello World')';
+&lt;script&gt;
+eval("console.log('Hello World')");
+&lt;/script&gt;
+</code></pre></div>
+<h2 dir="auto">strict-dynamic-url</h2>
+<p dir="auto">One of the main goals of this change is to keep compatibility with old browsers. To do this, it introduces a new keyword called <code class="notranslate">strict-dynamic-url</code>. This keyword allows using url hashes in a single, combined policy in both old and new user agents like so:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Security-Policy: script-src https: 'unsafe-inline' 'strict-dynamic-url' url-hash-EXRatbw5eQNZwUCOApq3KI4p5S8ou8jvXBOolnXEg0k='"><pre class="notranslate"><code class="notranslate">Content-Security-Policy: script-src https: 'unsafe-inline' 'strict-dynamic-url' url-hash-EXRatbw5eQNZwUCOApq3KI4p5S8ou8jvXBOolnXEg0k='
+</code></pre></div>
+<p dir="auto">Old user agents will treat this policy as <code class="notranslate">https: 'unsafe-inline'</code>, whereas new user agents will treat it as <code class="notranslate">'strict-dynamic-url' url-hash-EXRatbw5eQNZwUCOApq3KI4p5S8ou8jvXBOolnXEg0k='</code>. Using <code class="notranslate">strict-dynamic</code> wouldn't work here, as it would cause old user agents to ignore the 'https:' source.</p>]]></content>
+        <author>
+            <name>meacer</name>
+            <email>meacer@noreply.github.com</email>
+            <uri>https://github.com/meacer</uri>
+        </author>
+        <published>2025-07-29T23:45:56.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Support "write"-only permission mode in FileSystem/FileSystemAccess API]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1276</id>
@@ -651,37 +705,5 @@
             <uri>https://github.com/evanbliu</uri>
         </author>
         <published>2025-06-18T23:56:50.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[windowAudio option for getDisplayMedia()]]></title>
-        <id>https://github.com/mozilla/standards-positions/issues/1254</id>
-        <link href="https://github.com/mozilla/standards-positions/issues/1254"/>
-        <updated>2025-06-17T07:46:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/44973621?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
-<p dir="auto">Screen Capture</p>
-<h3 dir="auto">Specification or proposal URL (if available)</h3>
-<p dir="auto"><a href="https://w3c.github.io/mediacapture-screen-share/#dom-displaymediastreamoptions-windowaudio" rel="nofollow">https://w3c.github.io/mediacapture-screen-share/#dom-displaymediastreamoptions-windowaudio</a></p>
-<h3 dir="auto">Explainer URL (if available)</h3>
-<p dir="auto"><a href="https://github.com/drkron/explainers/blob/main/windowAudio_Explainer.md">https://github.com/drkron/explainers/blob/main/windowAudio_Explainer.md</a></p>
-<h3 dir="auto">Proposal author(s)</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/drkron/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/drkron">@drkron</a>, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/eladalon1983/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/eladalon1983">@eladalon1983</a></p>
-<h3 dir="auto">MDN URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Caniuse.com URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozillians who can provide input</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jan-ivar/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jan-ivar">@jan-ivar</a></p>
-<h3 dir="auto">WebKit standards-position</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3152420324" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/516" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/516/hovercard" href="https://github.com/WebKit/standards-positions/issues/516">WebKit/standards-positions#516</a></p>
-<h3 dir="auto">Other information</h3>
-<p dir="auto">Minor addition to the Screen Capture spec (already with consensus). This option provides a hint to the user agent about the application's preference for audio sources (specifically window or system audio, or exclude audio entirely) when the user selects a window as the display surface.</p>]]></content>
-        <author>
-            <name>drkron</name>
-            <email>drkron@noreply.github.com</email>
-            <uri>https://github.com/drkron</uri>
-        </author>
-        <published>2025-06-17T07:46:46.000Z</published>
     </entry>
 </feed>

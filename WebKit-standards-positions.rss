@@ -2,11 +2,67 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2025-07-29T23:01:21.816Z</updated>
+    <updated>2025-07-30T00:05:30.896Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Extend CSP script-src hashes]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/535</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/535"/>
+        <updated>2025-07-29T23:50:32.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1571579?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">Extend CSP script-src hashes</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a href="https://www.w3.org/TR/CSP3/" rel="nofollow">https://www.w3.org/TR/CSP3/</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a class="commit-link" href="https://github.com/w3c/webappsec-csp/compare/main...carlosjoan91:webappsec-csp:main">w3c/webappsec-csp@<tt>main...carlosjoan91:webappsec-csp:main</tt></a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><a href="https://github.com/explainers-by-googlers/script-src-v2/blob/main/README.md">https://github.com/explainers-by-googlers/script-src-v2/blob/main/README.md</a></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto">Not filed yet</p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3275261947" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1277" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1277/hovercard" href="https://github.com/mozilla/standards-positions/issues/1277">mozilla/standards-positions#1277</a></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">This feature adds two new prefixes to hashes in script-src directives (url- and eval-) and a new keyword (strict-dynamic-url).</p>
+<p dir="auto">Note that we originally intended to add these to a new directive called <code class="notranslate">script-src-v2</code>. At the moment, we are adding them to the existing <code class="notranslate">script-src</code> directive only, but the explainer and other text may still refer to <code class="notranslate">script-src-v2</code>.</p>
+<h1 dir="auto">url- hash prefix</h1>
+<p dir="auto">This enables allowlisting scripts by their URL's hash:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Security-Policy: script-src 'url-sha256-SHA256(&quot;https://example.com/script.js&quot;)';
+&lt;script src=&quot;https://example.com/script.js&quot;&gt;&lt;/script&gt;"><pre class="notranslate"><code class="notranslate">Content-Security-Policy: script-src 'url-sha256-SHA256("https://example.com/script.js")';
+&lt;script src="https://example.com/script.js"&gt;&lt;/script&gt;
+</code></pre></div>
+<h1 dir="auto">eval- hash prefix</h1>
+<p dir="auto">eval- prefix enables allowlisting eval'ed scripts by their hash, obviating the need to use <code class="notranslate">unsafe-eval</code>:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Security-Policy: script-src 'eval-sha256-SHA256(&quot;console.log('Hello World')';
+&lt;script&gt;
+eval(&quot;console.log('Hello World')&quot;);
+&lt;/script&gt;"><pre class="notranslate"><code class="notranslate">Content-Security-Policy: script-src 'eval-sha256-SHA256("console.log('Hello World')';
+&lt;script&gt;
+eval("console.log('Hello World')");
+&lt;/script&gt;
+</code></pre></div>
+<h2 dir="auto">strict-dynamic-url</h2>
+<p dir="auto">One of the main goals of this change is to keep compatibility with old browsers. To do this, it introduces a new keyword called <code class="notranslate">strict-dynamic-url</code>. This keyword allows using url hashes in a single, combined policy in both old and new user agents like so:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Content-Security-Policy: script-src https: 'unsafe-inline' 'strict-dynamic-url' url-hash-EXRatbw5eQNZwUCOApq3KI4p5S8ou8jvXBOolnXEg0k='"><pre class="notranslate"><code class="notranslate">Content-Security-Policy: script-src https: 'unsafe-inline' 'strict-dynamic-url' url-hash-EXRatbw5eQNZwUCOApq3KI4p5S8ou8jvXBOolnXEg0k='
+</code></pre></div>
+<p dir="auto">Old user agents will treat this policy as <code class="notranslate">https: 'unsafe-inline'</code>, whereas new user agents will treat it as <code class="notranslate">'strict-dynamic-url' url-hash-EXRatbw5eQNZwUCOApq3KI4p5S8ou8jvXBOolnXEg0k='</code>. Using <code class="notranslate">strict-dynamic</code> wouldn't work here, as it would cause old user agents to ignore the 'https:' source.</p>]]></content>
+        <author>
+            <name>meacer</name>
+            <email>meacer@noreply.github.com</email>
+            <uri>https://github.com/meacer</uri>
+        </author>
+        <published>2025-07-29T23:50:32.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Support "write"-only permission mode in FileSystem/FileSystemAccess API]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/534</id>
@@ -703,41 +759,5 @@ Without this working, it is much more complicated and verbose to add a fallback 
             <uri>https://github.com/danielsakhapov</uri>
         </author>
         <published>2025-06-16T11:00:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Customized built-in elements via elementInternals.type]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/513</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/513"/>
-        <updated>2025-06-23T14:05:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/77755715?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">elementInternals.type</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2867510954" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/11061" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/11061/hovercard" href="https://github.com/whatwg/html/issues/11061">whatwg/html#11061</a> (no spec PR yet)</p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><a href="https://github.com/whatwg/html">https://github.com/whatwg/html</a></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ElementInternalsType/explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ElementInternalsType/explainer.md</a></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto">TBD</p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3144493330" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1250" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1250/hovercard" href="https://github.com/mozilla/standards-positions/issues/1250">mozilla/standards-positions#1250</a></p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto"><code class="notranslate">elementInternals.type</code> supports the creation of custom elements that inherit the behaviors and properties of native HTML elements. The <code class="notranslate">elementInternals.type</code> proposal addresses many of the limitations with <code class="notranslate">extends</code>/<code class="notranslate">is</code>, including allowing customized built-ins to support shadow DOM.</p>
-<p dir="auto"><a href="https://github.com/openui/open-ui/issues/1088" data-hovercard-type="issue" data-hovercard-url="/openui/open-ui/issues/1088/hovercard">OpenUI issue tracking initial discussions and WHATWG resolution to accept <code class="notranslate">elementInternals.type = 'button'</code></a><br>
-<a href="https://github.com/openui/open-ui/issues/1088#issuecomment-2372520455" data-hovercard-type="issue" data-hovercard-url="/openui/open-ui/issues/1088/hovercard">WHATWG resolution to accept <code class="notranslate">elementInternals.type = 'button'</code></a></p>]]></content>
-        <author>
-            <name>anaskim</name>
-            <email>anaskim@noreply.github.com</email>
-            <uri>https://github.com/anaskim</uri>
-        </author>
-        <published>2025-06-13T19:23:38.000Z</published>
     </entry>
 </feed>
