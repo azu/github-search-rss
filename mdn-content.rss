@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-07-31T23:01:20.765Z</updated>
+    <updated>2025-08-01T00:05:56.976Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -132,27 +132,6 @@ WebKit article: <a href="https://www.webkit.org/blog/14403/updates-to-storage-po
             <uri>https://github.com/kb42</uri>
         </author>
         <published>2025-07-30T20:45:30.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove URL hash from import()]]></title>
-        <id>https://github.com/mdn/content/pull/40574</id>
-        <link href="https://github.com/mdn/content/pull/40574"/>
-        <updated>2025-07-31T09:18:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/204079201?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Remove unnecessary URL hash from the <code class="notranslate">import()</code>-link</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The linked section is unnecessary for the reader, who expects to read about the <code class="notranslate">import()</code> function, not specifically what the browser support is.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Link before:<br>
-<a href="/en-US/docs/Web/JavaScript/Reference/Operators/import#browser_compatibility"><code class="notranslate">import()</code></a><br>
-Link after:<br>
-<a href="/en-US/docs/Web/JavaScript/Reference/Operators/import"><code class="notranslate">import()</code></a></p>]]></content>
-        <author>
-            <name>SadCar5295</name>
-            <email>SadCar5295@noreply.github.com</email>
-            <uri>https://github.com/SadCar5295</uri>
-        </author>
-        <published>2025-07-30T19:50:52.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add CSRF warning to HTTP Basic Auth security section (fixes #40267)]]></title>
@@ -453,5 +432,45 @@ Link after:<br>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-07-25T11:36:14.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[CSS] docs: Correct display value and BFC behavior for button elements]]></title>
+        <id>https://github.com/mdn/content/pull/40525</id>
+        <link href="https://github.com/mdn/content/pull/40525"/>
+        <updated>2025-07-25T16:57:10.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27722774?v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">This pull request corrects the documentation regarding the default display value and Block Formatting Context (BFC) behavior for  and button  types.</p><p dir="auto"></p>
+<p dir="auto">The current text contains two related statements that incorrectly assert that these elements default to display: flow-root. This PR removes both and replaces them with a single, accurate explanation.</p>
+<p dir="auto"><strong>Summary of Inaccuracies:</strong></p>
+<ul dir="auto">
+<li><strong>Incorrect display Value:</strong> The default user-agent style for these elements is display: inline-block, not display: flow-root.</li>
+<li><strong>False Equivalence:</strong> The text groups button (a container element ) and input (a void element) together, which is imprecise. The BFC on a button element meaningfully contains its children, whereas the BFC on an input element  is an empty context.</li>
+<li><strong>Confusing Rationale:</strong> The second sentence targeted by this PR is circular and grammatically incorrect, adding unnecessary confusion.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">This change provides a more accurate and nuanced explanation for developers.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto"><strong>Suggested Change:</strong></p>
+<p dir="auto"><strong>REMOVE the following two statements:</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="...defaulting to display: flow-root."><pre class="notranslate"><code class="notranslate">...defaulting to display: flow-root.
+</code></pre></div>
+<p dir="auto">and</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="This is the default rendering for &lt;button&gt; elements and button &lt;input&gt; types meaning button's create a new BFC as long as their display value isn't set to a value that doesn't automatically create a new BFC."><pre class="notranslate"><code class="notranslate">This is the default rendering for &lt;button&gt; elements and button &lt;input&gt; types meaning button's create a new BFC as long as their display value isn't set to a value that doesn't automatically create a new BFC.
+</code></pre></div>
+<p dir="auto"><strong>REPLACE them with this single, correct paragraph:</strong></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="By default, browser user-agent stylesheets render &lt;button&gt; and button &lt;input&gt; types as inline-block elements. This display type causes them to establish a new Block Formatting Context (BFC). For the container &lt;button&gt; element, this BFC meaningfully contains its children; for the void &lt;input&gt; element, this context is empty."><pre class="notranslate"><code class="notranslate">By default, browser user-agent stylesheets render &lt;button&gt; and button &lt;input&gt; types as inline-block elements. This display type causes them to establish a new Block Formatting Context (BFC). For the container &lt;button&gt; element, this BFC meaningfully contains its children; for the void &lt;input&gt; element, this context is empty.
+</code></pre></div>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+<p></p>]]></content>
+        <author>
+            <name>kannanwisen</name>
+            <email>kannanwisen@noreply.github.com</email>
+            <uri>https://github.com/kannanwisen</uri>
+        </author>
+        <published>2025-07-24T14:18:01.000Z</published>
     </entry>
 </feed>
