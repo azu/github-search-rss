@@ -2,11 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2025-08-06T21:01:25.166Z</updated>
+    <updated>2025-08-06T22:01:32.096Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[crypto: support ML-DSA KeyObject, sign, and verify]]></title>
+        <id>https://github.com/nodejs/node/pull/59259</id>
+        <link href="https://github.com/nodejs/node/pull/59259"/>
+        <updated>2025-08-06T21:49:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241506?u=13324b3ac27dc54cdde3ac635d567d0d96b88876&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This allows <code class="notranslate">node:crypto</code> to recognize the following asymmetric KeyObject types (<code class="notranslate">keyObject.asymmetricKeyType</code>) when built with or linked to OpenSSL 3.5 (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3266382161" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/59234" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/59234/hovercard" href="https://github.com/nodejs/node/pull/59234">#59234</a>):</p>
+<ul dir="auto">
+<li><code class="notranslate">'ml-dsa-44'</code>, <code class="notranslate">'ml-dsa-65'</code>, <code class="notranslate">'ml-dsa-87'</code> (<a href="https://docs.openssl.org/3.5/man7/EVP_PKEY-ML-DSA/" rel="nofollow">https://docs.openssl.org/3.5/man7/EVP_PKEY-ML-DSA/</a>)</li>
+<li>key fixtures and makefile targets to re-generate them</li>
+</ul>
+<p dir="auto">And the following functionality for them:</p>
+<ul dir="auto">
+<li>import <code class="notranslate">crypto.createPublicKey()</code> SPKI/JWK</li>
+<li>import <code class="notranslate">crypto.createPrivateKey()</code> PKCS#8/JWK</li>
+<li>export <code class="notranslate">keyObject.export()</code> SPKI/PKCS#8/JWK</li>
+<li>keygen <code class="notranslate">crypto.generateKeyPair(Sync)()</code> into KeyObject, PEM, DER, JWK</li>
+<li>ML-DSA signing via <code class="notranslate">crypto.sign()</code> and signature verification via <code class="notranslate">crypto.verify()</code></li>
+</ul>
+<hr>
+<p dir="auto"><a href="https://github.com/nodejs/node/labels/notable-change">https://github.com/nodejs/node/labels/notable-change</a></p>
+<p dir="auto">ML-DSA support in <code class="notranslate">node:crypto</code> kicks off post-quantum cryptography efforts in Node.js. This is part of a broader effort to support NIST's post-quantum cryptography standards for future-proofing applications against quantum computing threats.</p>
+<hr>]]></content>
+        <author>
+            <name>panva</name>
+            <email>panva@noreply.github.com</email>
+            <uri>https://github.com/panva</uri>
+        </author>
+        <published>2025-07-28T12:49:47.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[deps: update OpenSSL to 3.5.1]]></title>
         <id>https://github.com/nodejs/node/pull/59234</id>
@@ -363,7 +392,7 @@ Being able to await sub tests was a really useful feature.</p>
 <p dir="auto">The API in question was runtime-deprecated (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2556631107" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55175" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/55175/hovercard" href="https://github.com/nodejs/node/pull/55175">#55175</a>) and EOLd (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3017561051" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/58008" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/58008/hovercard" href="https://github.com/nodejs/node/pull/58008">#58008</a> which i'm reverting here) in the same major release. The intended cycle is that it gets runtime-deprecated as a major, and then EOLd in another later major.</p>
 <p dir="auto">Despite best efforts to detect it in the EOL PR there is breakage in the jsonwebtoken &gt; jws &gt; jwa dependency chain (29-30M weekly downloads on jwa).</p>
 <p dir="auto">This PR reverts to the <a href="https://github.com/nodejs/node/pull/55175" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/55175/hovercard">runtime-deprecation state</a> that was pending release with 24.0.0, EOL shouldn't have landed yet.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTQzODUsIm5iZiI6MTc1NDUxNDA4NSwicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgwNlQyMTAxMjVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MWQ0ZmI5NGFhZjE0Njk5OTlhOWZlOTMxY2VhMjZmODM2ZjU3NjI2OWIzYmFhNTIyNGViYzhiZTY4NDdmYjRkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.k6KRT4goKx7K5-ZpKMzZ9mtek5c2eEcyaoOHARnte44"><img src="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTQzODUsIm5iZiI6MTc1NDUxNDA4NSwicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgwNlQyMTAxMjVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MWQ0ZmI5NGFhZjE0Njk5OTlhOWZlOTMxY2VhMjZmODM2ZjU3NjI2OWIzYmFhNTIyNGViYzhiZTY4NDdmYjRkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.k6KRT4goKx7K5-ZpKMzZ9mtek5c2eEcyaoOHARnte44" alt="image" style="max-width: 100%;"></a></p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTc5OTIsIm5iZiI6MTc1NDUxNzY5MiwicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgwNlQyMjAxMzJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yODRkNmYxNzljYTNjYWViMGMyYzJiMjVmZDY3Y2U5NmMwNDQxNTA2OWYwZDg0NTA4NTc3MDExOGZiNjI2OWYxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.yJbbIBmcP1i6TDKPE51TXkfkK0I0jmCCxcd8d2ymb0c"><img src="https://private-user-images.githubusercontent.com/241506/441087787-c5bad942-f645-433a-8d84-4de88848e19c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTc5OTIsIm5iZiI6MTc1NDUxNzY5MiwicGF0aCI6Ii8yNDE1MDYvNDQxMDg3Nzg3LWM1YmFkOTQyLWY2NDUtNDMzYS04ZDg0LTRkZTg4ODQ4ZTE5Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgwNlQyMjAxMzJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yODRkNmYxNzljYTNjYWViMGMyYzJiMjVmZDY3Y2U5NmMwNDQxNTA2OWYwZDg0NTA4NTc3MDExOGZiNjI2OWYxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.yJbbIBmcP1i6TDKPE51TXkfkK0I0jmCCxcd8d2ymb0c" alt="image" style="max-width: 100%;"></a></p>
 <p dir="auto"><a href="https://openjs-foundation.slack.com/archives/C019MGJQ8RH/p1746596637445769" rel="nofollow">https://openjs-foundation.slack.com/archives/C019MGJQ8RH/p1746596637445769</a></p>
 <p dir="auto">We would re-land the EOL and ship it with a future major release after this revert.</p>
 ]]></content>
@@ -494,42 +523,5 @@ It was already suggested that for v24.0.0, we remove this restriction of the tes
             <uri>https://github.com/puskin</uri>
         </author>
         <published>2025-03-14T15:25:09.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[repl: add support for multiline history]]></title>
-        <id>https://github.com/nodejs/node/pull/57400</id>
-        <link href="https://github.com/nodejs/node/pull/57400"/>
-        <updated>2025-05-18T17:37:34.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8344987?u=01a8281b5204d7afa434427364f3500404a83d24&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Previously, when navigating the history in the Node.js REPL, multiline commands were displayed line by line, making it difficult to review and edit complete blocks of input.</p>
-<p dir="auto">This PR improves the REPL history behavior by treating multiline commands as a single entry. Now, when scrolling through history, entire blocks of multiline input are displayed together, improving usability and consistency.</p>
-<h3 dir="auto">Key changes:</h3>
-<ul dir="auto">
-<li>Adjusted history handling to store and retrieve multiline commands as single entries.</li>
-<li>Updated navigation logic to properly display multiline inputs.</li>
-<li>Improved editing experience, allowing users to modify multiline history entries in place.</li>
-<li>Changed the multiline indicator: from <code class="notranslate">...</code> to <code class="notranslate">|</code>, to keep the indentation consistent</li>
-<li>Added the multiline indicator also when editing the history, not only when adding new lines</li>
-<li>If the last command caused some kind of error, you can now edit the multiline history, and if you remove the error, the history which caused the error will be replaced with the correct one</li>
-</ul>
-<h2 dir="auto">Important:</h2>
-<p dir="auto">This change relies on the fact that I am now formatting new history entries and saving them in the <code class="notranslate">.node_replhistory</code> file in a specific format. While this does not break backward compatibility, it does mean that switching between older and newer versions (i.e., versions without and with this change) will result in multiline history entries not being preserved if they were created with the latest changes.</p>
-<h3 dir="auto">Impact:</h3>
-<p dir="auto">This change significantly enhances the REPL experience for users who frequently enter complex or multiline expressions, making command recall and editing more intuitive.</p>
-<p dir="auto">Testing:</p>
-<ul dir="auto">
-<li>Manually tested with various multiline inputs, both on unix and windows systems</li>
-<li>Verified history navigation behaves as expected with both single-line and multiline commands.</li>
-</ul>
-<h3 dir="auto">Demos</h3>
-<p dir="auto">Before:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTQzODUsIm5iZiI6MTc1NDUxNDA4NSwicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgwNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MDZUMjEwMTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NDY2ZGFmYjdkMDIwMTczYTBlYTk4ZDM4MjAzY2M3OThjZDEwN2QwNjIyNjFhMjViYTU4NDdiOGU2YjlhYWU0MyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.70eag6cZL5iSGkClLlabBaLCqvWnLB1EXWXpOP3smiA"><img src="https://private-user-images.githubusercontent.com/8344987/421836310-a54fc893-1783-4c4a-bcbe-e6e4e3a4bc66.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTQzODUsIm5iZiI6MTc1NDUxNDA4NSwicGF0aCI6Ii84MzQ0OTg3LzQyMTgzNjMxMC1hNTRmYzg5My0xNzgzLTRjNGEtYmNiZS1lNmU0ZTNhNGJjNjYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgwNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MDZUMjEwMTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NDY2ZGFmYjdkMDIwMTczYTBlYTk4ZDM4MjAzY2M3OThjZDEwN2QwNjIyNjFhMjViYTU4NDdiOGU2YjlhYWU0MyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.70eag6cZL5iSGkClLlabBaLCqvWnLB1EXWXpOP3smiA" alt="before" data-animated-image="" style="max-width: 100%;"></a></p>
-<p dir="auto">After:</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTQzODUsIm5iZiI6MTc1NDUxNDA4NSwicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgwNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MDZUMjEwMTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzkyZDdlNTk2ZWU4MjU0NjgzYmJjYmQ4NTYxNDc1NmU5OWVmNTVhMTZmODc3MGI3N2ZiZmZjM2RkODU5Zjk4MiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.KdeeI27kEwcn9MKK-cRuQylrme5ru_nFp11HVXS4TvI"><img src="https://private-user-images.githubusercontent.com/8344987/424396621-799ed042-96ad-4d47-a17d-851b56050476.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTQ1MTQzODUsIm5iZiI6MTc1NDUxNDA4NSwicGF0aCI6Ii84MzQ0OTg3LzQyNDM5NjYyMS03OTllZDA0Mi05NmFkLTRkNDctYTE3ZC04NTFiNTYwNTA0NzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MDgwNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTA4MDZUMjEwMTI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzkyZDdlNTk2ZWU4MjU0NjgzYmJjYmQ4NTYxNDc1NmU5OWVmNTVhMTZmODc3MGI3N2ZiZmZjM2RkODU5Zjk4MiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.KdeeI27kEwcn9MKK-cRuQylrme5ru_nFp11HVXS4TvI" alt="after" data-animated-image="" style="max-width: 100%;"></a></p>]]></content>
-        <author>
-            <name>puskin</name>
-            <email>puskin@noreply.github.com</email>
-            <uri>https://github.com/puskin</uri>
-        </author>
-        <published>2025-03-10T14:37:19.000Z</published>
     </entry>
 </feed>
