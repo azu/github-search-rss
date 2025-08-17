@@ -2,11 +2,141 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-08-17T11:01:16.302Z</updated>
+    <updated>2025-08-17T12:01:44.409Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add --prefer-direct-exec flag for proper signal handling in npm run]]></title>
+        <id>https://github.com/npm/rfcs/issues/829</id>
+        <link href="https://github.com/npm/rfcs/issues/829"/>
+        <updated>2025-08-17T11:59:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/84302867?u=cc75a5fafcf48184bea43a2359314c5ffe47d409&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto"><code class="notranslate">npm run</code> spawns scripts through a shell (<code class="notranslate">/bin/sh -c</code>), creating an unnecessary intermediate process that interferes with signal propagation. This causes Node.js applications to terminate abruptly without completing their cleanup procedures when receiving SIGTERM/SIGINT signals.</p>
+<p dir="auto">This is a fundamental Unix process management issue that affects:</p>
+<ul dir="auto">
+<li>Docker containers (not just Kubernetes)</li>
+<li>Systemd services</li>
+<li>Process managers (PM2, Forever, etc.)</li>
+<li>CI/CD environments</li>
+<li>Any production deployment using <code class="notranslate">npm run</code></li>
+</ul>
+<p dir="auto">The problem: When a termination signal is sent, the shell may exit immediately without waiting for its child process, causing npm to exit prematurely and killing the Node.js application before graceful shutdown completes.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">Consider a basic Node.js server with cleanup logic:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// server.js
+const server = require('http').createServer();
+
+process.on('SIGTERM', () =&gt; {
+  console.log('Graceful shutdown started');
+  server.close(() =&gt; {
+    console.log('Cleanup complete');
+    process.exit(0);
+  });
+});
+
+server.listen(3000);"><pre class="notranslate"><span class="pl-c">// server.js</span>
+<span class="pl-k">const</span> <span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'http'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">createServer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-s">'SIGTERM'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Graceful shutdown started'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">close</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Cleanup complete'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">exit</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>Problem occurs in any of these scenarios</strong>:</p>
+<ol dir="auto">
+<li><strong>Docker container</strong>: <code class="notranslate">docker stop &lt;container&gt;</code></li>
+<li><strong>Systemd service</strong>: <code class="notranslate">systemctl stop myapp</code></li>
+<li><strong>Process manager</strong>: <code class="notranslate">pm2 stop app</code></li>
+<li><strong>Manual termination</strong>: <code class="notranslate">kill &lt;pid&gt;</code></li>
+</ol>
+<p dir="auto">In all cases, if started with <code class="notranslate">npm run start</code>, the graceful shutdown may not complete because the shell intermediary disrupts signal propagation.</p>
+<h3 dir="auto">How</h3>
+<p dir="auto">Add an opt-in flag to control how <code class="notranslate">npm run</code> spawns processes, eliminating the problematic shell intermediary when not needed.</p>
+<h4 dir="auto">Current Behaviour</h4>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Current process tree with npm run
+npm → /bin/sh -c &quot;node server.js&quot; → node server.js
+ ↓            ↓
+SIGTERM   (shell may exit without waiting)
+ ↓
+(npm exits because child is gone)
+(node process terminated abruptly)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Current process tree with npm run</span>
+npm → /bin/sh -c <span class="pl-s"><span class="pl-pds">"</span>node server.js<span class="pl-pds">"</span></span> → node server.js
+ ↓            ↓
+SIGTERM   (shell may <span class="pl-c1">exit</span> without waiting)
+ ↓
+(npm exits because child is gone)
+(node process terminated abruptly)</pre></div>
+<p dir="auto">The shell (<code class="notranslate">/bin/sh</code>) behavior varies:</p>
+<ul dir="auto">
+<li>Some shells (ash, dash) exit immediately on SIGTERM</li>
+<li>This causes npm to detect child exit and terminate</li>
+<li>Node.js process is killed before cleanup completes</li>
+</ul>
+<p dir="auto"><strong>Current workaround requires modifying code</strong>:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;exec node server.js&quot;  // Must add exec manually
+  }
+}"><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"start"</span>: <span class="pl-s"><span class="pl-pds">"</span>exec node server.js<span class="pl-pds">"</span></span>  <span class="pl-ii">// Must add exec manually</span>
+  }
+}</pre></div>
+<p dir="auto">This workaround is:</p>
+<ul dir="auto">
+<li>Not documented clearly</li>
+<li>Not obvious to developers</li>
+<li>Required in every project</li>
+<li>Easy to forget</li>
+</ul>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Provide an <strong>opt-in</strong> mechanism that works without code changes:</p>
+<p dir="auto"><strong>Option 1 - Environment variable</strong> (for deployments):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="NPM_PREFER_DIRECT_EXEC=1 npm run start"><pre class="notranslate">NPM_PREFER_DIRECT_EXEC=1 npm run start</pre></div>
+<p dir="auto"><strong>Option 2 - CLI flag</strong> (for specific runs):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run start --prefer-direct-exec"><pre class="notranslate">npm run start --prefer-direct-exec</pre></div>
+<p dir="auto"><strong>Option 3 - Config file</strong> (for projects):</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# .npmrc
+prefer-direct-exec=true"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> .npmrc</span>
+<span class="pl-k">prefer-direct-exec</span>=true</pre></div>
+<p dir="auto"><strong>When enabled</strong>:</p>
+<ul dir="auto">
+<li>Simple commands: Spawn directly without shell</li>
+<li>Complex commands (with pipes, &amp;&amp;, etc.): Auto-prepend <code class="notranslate">exec</code> to replace shell</li>
+<li>Windows: No change (different process model)</li>
+<li>Default: Current behavior (backward compatible)</li>
+</ul>
+<p dir="auto"><strong>Result</strong>:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# With flag enabled
+npm → node server.js  (direct, no shell)
+ ↓        ↓
+SIGTERM  (node receives signal)
+ ↓        ↓
+(waits) (graceful shutdown completes)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> With flag enabled</span>
+npm → node server.js  (direct, no shell)
+ ↓        ↓
+SIGTERM  (node receives signal)
+ ↓        ↓
+(waits) (graceful shutdown completes)</pre></div>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313195779" data-permission-text="Title is private" data-url="https://github.com/npm/run-script/issues/237" data-hovercard-type="issue" data-hovercard-url="/npm/run-script/issues/237/hovercard" href="https://github.com/npm/run-script/issues/237">npm/run-script#237</a> (implementation tracking)</li>
+<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313212873" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/8509" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/8509/hovercard" href="https://github.com/npm/cli/issues/8509">npm/cli#8509</a> (original feature request)</li>
+</ul>]]></content>
+        <author>
+            <name>seungwanHam</name>
+            <email>seungwanHam@noreply.github.com</email>
+            <uri>https://github.com/seungwanHam</uri>
+        </author>
+        <published>2025-08-17T11:59:12.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Support multiple registries per scope in .npmrc]]></title>
         <id>https://github.com/npm/rfcs/issues/828</id>
@@ -83,8 +213,8 @@
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0Mjg3NzYsIm5iZiI6MTc1NTQyODQ3NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMTAxMTZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hOTYyMjE4NmJmZWU1MTExNmQ5ZjAxY2NkZmVhZjVhMDVlZDhiYzJkOTNmYjVmYzRkOWI1OWY5OGIwNTgxZTE5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gRwdB-J_yCYIPhF1HG1cU7spa7rACYSuaCSxe0iPM_Y"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0Mjg3NzYsIm5iZiI6MTc1NTQyODQ3NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMTAxMTZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hOTYyMjE4NmJmZWU1MTExNmQ5ZjAxY2NkZmVhZjVhMDVlZDhiYzJkOTNmYjVmYzRkOWI1OWY5OGIwNTgxZTE5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gRwdB-J_yCYIPhF1HG1cU7spa7rACYSuaCSxe0iPM_Y" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0Mjg3NzYsIm5iZiI6MTc1NTQyODQ3NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMTAxMTZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03MmViMmE4MWYxY2M5ZmUwMTI2YzQ1OWExOTJlZDYyNGVkZmQzODVkMzJlMDgzYjk0YWEyY2Q1NjM4MTcwM2FmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0HHh58eck9BkyKQOH8UviSa4xz_QOIRA8xEYTgyPryk"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0Mjg3NzYsIm5iZiI6MTc1NTQyODQ3NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMTAxMTZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03MmViMmE4MWYxY2M5ZmUwMTI2YzQ1OWExOTJlZDYyNGVkZmQzODVkMzJlMDgzYjk0YWEyY2Q1NjM4MTcwM2FmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0HHh58eck9BkyKQOH8UviSa4xz_QOIRA8xEYTgyPryk" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0MzI0MDQsIm5iZiI6MTc1NTQzMjEwNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMjAxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZjdiOGM5OTZjYzhkYmU3ZmRjNWQzMmE4ZmM0ZjhlZjg1OGYwZjY4OWY5ZWZhZmExNmVkYmEwOGVhZjE0YzY3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.frBU90Sbtq4YDXFScoSiMNqnZ-_-D31jPxp7UHfz380"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0MzI0MDQsIm5iZiI6MTc1NTQzMjEwNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMjAxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZjdiOGM5OTZjYzhkYmU3ZmRjNWQzMmE4ZmM0ZjhlZjg1OGYwZjY4OWY5ZWZhZmExNmVkYmEwOGVhZjE0YzY3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.frBU90Sbtq4YDXFScoSiMNqnZ-_-D31jPxp7UHfz380" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0MzI0MDQsIm5iZiI6MTc1NTQzMjEwNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMjAxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YjI5ODE2MjlhZDI3Mjk2NzFjZDliYWQ5YmMwODBjNmU2MDU0ZTVjNmMyZTQzMGUzNjUwZGE4MDE0ZTMyZWMzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.voNuEZxWG-7YvQ_7UaVfXMimdJltJKH1Y86sdzfOc6I"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU0MzI0MDQsIm5iZiI6MTc1NTQzMjEwNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwODE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDgxN1QxMjAxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YjI5ODE2MjlhZDI3Mjk2NzFjZDliYWQ5YmMwODBjNmU2MDU0ZTVjNmMyZTQzMGUzNjUwZGE4MDE0ZTMyZWMzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.voNuEZxWG-7YvQ_7UaVfXMimdJltJKH1Y86sdzfOc6I" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -572,51 +702,5 @@ Having this functionality be more complicated than just setting a string is bett
             <uri>https://github.com/hustle-and-finesse</uri>
         </author>
         <published>2024-06-26T14:22:27.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Populate `"engines"` field during `npm init`]]></title>
-        <id>https://github.com/npm/rfcs/issues/781</id>
-        <link href="https://github.com/npm/rfcs/issues/781"/>
-        <updated>2024-06-23T15:15:16.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/79560998?u=1fbd5b05057c4198df9ddcd6218e98a813be0a45&v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-
-<p dir="auto">When packages do not specify a minimum supported Node version, some people may assume that the package supports <em>any</em> version of Node--or at least the ones that their currently-installed version does not error out on.</p>
-<p dir="auto">This can lead to semver hazards--a maintainer may inadvertently use a JavaScript builtin (as old as <code class="notranslate">Array#map</code> or as new as <code class="notranslate">Object.hasOwn</code>) or a Node standard library feature that is not supported across all versions of Node. This could be seen as a breaking change, and hence semver-major, but it is very hard for the maintainer to notice.</p>
-<p dir="auto">In order to use features that are not supported across all releases of Node in a semver-compatible way, authors must include the <code class="notranslate">"engines"</code> field in their <code class="notranslate">package.json</code>. Currently, however, few do so--probably because it is not included by default.</p>
-<h3 dir="auto">Example</h3>
-<p dir="auto">See current semver hazard examples:</p>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2168412759" data-permission-text="Title is private" data-url="https://github.com/indutny/elliptic/issues/314" data-hovercard-type="issue" data-hovercard-url="/indutny/elliptic/issues/314/hovercard" href="https://github.com/indutny/elliptic/issues/314">indutny/elliptic#314</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1847341464" data-permission-text="Title is private" data-url="https://github.com/dequelabs/axe-core/issues/4127" data-hovercard-type="issue" data-hovercard-url="/dequelabs/axe-core/issues/4127/hovercard" href="https://github.com/dequelabs/axe-core/issues/4127">dequelabs/axe-core#4127</a></li>
-</ul>
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-<p dir="auto"><code class="notranslate">npm init</code> does not currently specify any minimum supported Node version.</p>
-<h4 dir="auto">Desired Behaviour</h4>
-<p dir="auto"><code class="notranslate">npm init</code> should specify a reasonably recent Node version as the minimum supported one in the <code class="notranslate">"engines"</code> field, for some definition of "reasonably recent". The exact timeframe can be bikeshed over, but here are some ideas:</p>
-<ul dir="auto">
-<li>The version of Node released some number of years ago (this can be longer than the EOL timeframe, since people are sometimes slow to upgrade Node--but do we want to encourage that?)</li>
-<li>The earliest LTS non-EOL version of Node</li>
-<li>The latest LTS EOL version of Node</li>
-</ul>
-<h1 dir="auto">Unanswered Questions / Further Work?</h1>
-<ul dir="auto">
-<li>Does npm currently provide a warning when you depend on a package whose minimum Node version is <em>higher</em> than the one you specify? Could it?</li>
-<li>Since the <code class="notranslate">engines</code> field consists of machine-readable semver, should the NPM registry require an <code class="notranslate">engines</code> bump to require a new major version number?</li>
-<li>Other runtimes, like bun and deno, now exist as well. An argument could be made that since <em>those</em> engines are likewise not mentioned in <code class="notranslate">package.json</code>, all of their versions must be supported. While their Node compatibility is still work-in-progress and not officially stable (AFAIK), there may come a time when they <em>do</em> reach parity with Node.
-<ul dir="auto">
-<li>Should maintainers be required to keep up-to-date with all third-party runtimes and e.g. include <code class="notranslate">"bun"</code> and <code class="notranslate">"deno"</code> fields within <code class="notranslate">"engines"</code>? I see this as untenable, both because it is a lot to ask of maintainers and because npm would need an "official" list of all third-party runtimes.</li>
-<li>They are the ones implementing APIs that Node is responsible for designing, so should it be their responsibility to map Node versions to the corresponding versions of their own runtimes?</li>
-<li>ECMAScript features are another matter entirely. Third-party runtimes could support different subsets of new ECMAScript features from Node. Should they, again, be asked to map Node versions onto versions of their own runtime? Should a cross-runtime "JS support level" field be designed?</li>
-</ul>
-</li>
-</ul>]]></content>
-        <author>
-            <name>valadaptive</name>
-            <email>valadaptive@noreply.github.com</email>
-            <uri>https://github.com/valadaptive</uri>
-        </author>
-        <published>2024-06-23T09:29:56.000Z</published>
     </entry>
 </feed>
