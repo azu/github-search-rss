@@ -2,11 +2,122 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/caniuse.rss</id>
     <title>Fyrd/caniuse Issues</title>
-    <updated>2025-08-21T02:29:20.854Z</updated>
+    <updated>2025-08-21T03:17:39.901Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/caniuse.rss"/>
     <subtitle>Fyrd/caniuse Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[CSS @function rule]]></title>
+        <id>https://github.com/Fyrd/caniuse/issues/7368</id>
+        <link href="https://github.com/Fyrd/caniuse/issues/7368"/>
+        <updated>2025-08-21T02:49:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3619317?u=d8c8de435c1c90da8af96758d774318e8276130d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Tracking request for the new CSS <code class="notranslate">@function</code> rule from the CSS Functions and Mixins Module — recently shipped in Chrome 139. Looking to gauge interest and gather support data across browsers.</p>
+<p dir="auto"><em>Note: This request is scoped to the <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/function/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/function">@function</a> rule only. Other parts of the CSS Functions and Mixins Module (such as <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mixin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mixin">@mixin</a> and <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/apply/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/apply">@apply</a>) should be tracked separately when implemented. See <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2971496707" data-permission-text="Title is private" data-url="https://github.com/Fyrd/caniuse/issues/7301" data-hovercard-type="issue" data-hovercard-url="/Fyrd/caniuse/issues/7301/hovercard" href="https://github.com/Fyrd/caniuse/issues/7301">#7301</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2415623366" data-permission-text="Title is private" data-url="https://github.com/Fyrd/caniuse/issues/7110" data-hovercard-type="issue" data-hovercard-url="/Fyrd/caniuse/issues/7110/hovercard" href="https://github.com/Fyrd/caniuse/issues/7110">#7110</a> for other parts of this draft.</em></p>
+<h3 dir="auto">Summary</h3>
+<p dir="auto"><code class="notranslate">@function</code> is a new CSS at-rule that allows authors to define custom, named CSS functions which accept arguments and return computed values. Functions can be reused across a stylesheet, enabling logic such as value negation, dynamic opacity, fluid typography, responsive layouts, and theme-dependent values.</p>
+<h3 dir="auto">Specification</h3>
+<p dir="auto"><a href="https://www.w3.org/TR/css-mixins-1/#function-rule" rel="nofollow">W3C CSS Functions and Mixins Module (First Public Working Draft, 15 May 2025)</a></p>
+<h3 dir="auto">Current status</h3>
+<ul dir="auto">
+<li><strong>Shipped:</strong> Chrome 139+</li>
+<li><strong>Not yet supported:</strong> Firefox, Safari, Edge (Chromium-based Edge will gain support alongside Chrome)</li>
+</ul>
+<h3 dir="auto">Example</h3>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=":root {
+  --primary-color: red;
+}
+
+@function --negate(--value) {
+  result: calc(-1 * var(--value));
+}
+
+@function --opacity(--color, --opacity) {
+  result: rgb(from var(--color) r g b / var(--opacity));
+}
+
+div {
+  margin-left: --negate(10px);
+  background-color: --opacity(var(--primary-color), 80%);
+}"><pre class="notranslate"><span class="pl-kos">:</span><span class="pl-c1">root</span> {
+  <span class="pl-s1">--primary-color</span><span class="pl-kos">:</span> red;
+}
+
+<span class="pl-k">@function</span> --negate(<span class="pl-c1">-</span><span class="pl-c1">-</span>value) {
+  <span class="pl-c1">result</span><span class="pl-kos">:</span> <span class="pl-en">calc</span>(<span class="pl-c1">-1</span> <span class="pl-c1">*</span> <span class="pl-en">var</span>(<span class="pl-s1">--value</span>));
+}
+
+<span class="pl-k">@function</span> --opacity(<span class="pl-c1">-</span><span class="pl-c1">-</span>col<span class="pl-c1">or</span><span class="pl-kos">,</span> --opacity) {
+  <span class="pl-c1">result</span><span class="pl-kos">:</span> <span class="pl-en">rgb</span>(from <span class="pl-en">var</span>(<span class="pl-s1">--color</span>) r g b <span class="pl-c1">/</span> <span class="pl-en">var</span>(<span class="pl-s1">--opacity</span>));
+}
+
+<span class="pl-ent">div</span> {
+  <span class="pl-c1">margin-left</span><span class="pl-kos">:</span> <span class="pl-en">--negate</span>(<span class="pl-c1">10<span class="pl-smi">px</span></span>);
+  <span class="pl-c1">background-color</span><span class="pl-kos">:</span> <span class="pl-en">--opacity</span>(<span class="pl-en">var</span>(<span class="pl-s1">--primary-color</span>)<span class="pl-kos">,</span> <span class="pl-c1">80<span class="pl-smi">%</span></span>);
+}</pre></div>
+<h3 dir="auto">Notes</h3>
+<ul dir="auto">
+<li>Part of ongoing CSSWG work toward higher-level author-defined logic in CSS.</li>
+</ul>
+<h3 dir="auto">Resources</h3>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/css-mixins-1/#function-rule" rel="nofollow">W3C CSS Functions and Mixins Module (First Public Working Draft, 15 May 2025)</a></li>
+<li><a href="https://una.im/5-css-functions/" rel="nofollow">Blog: “5 Useful CSS functions using the new @function rule” (Una Kravets)</a></li>
+</ul>
+<h3 dir="auto">Browser support data</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Browser</th>
+<th>Version</th>
+<th>Support status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td>139</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Edge (Chromium)</td>
+<td></td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td></td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Safari (macOS)</td>
+<td></td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Chrome for Android</td>
+<td>139</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Safari on iOS</td>
+<td></td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Samsung Internet</td>
+<td></td>
+<td>❌</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>]]></content>
+        <author>
+            <name>RyanMoreau</name>
+            <email>RyanMoreau@noreply.github.com</email>
+            <uri>https://github.com/RyanMoreau</uri>
+        </author>
+        <published>2025-08-15T12:39:05.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add CSS scroll-target-group]]></title>
         <id>https://github.com/Fyrd/caniuse/issues/7361</id>
@@ -319,19 +430,5 @@ Mozilla: <a class="issue-link js-issue-link" data-error-text="Failed to load tit
             <uri>https://github.com/Schweinepriester</uri>
         </author>
         <published>2025-03-26T10:13:33.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add support for CRL]]></title>
-        <id>https://github.com/Fyrd/caniuse/issues/7287</id>
-        <link href="https://github.com/Fyrd/caniuse/issues/7287"/>
-        <updated>2025-07-06T20:28:39.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/514794?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Please add support checks for CRL, since there's already one for OCSP, the main alternative.<br>
-It should also be added to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="165741895" data-permission-text="Title is private" data-url="https://github.com/Fyrd/caniuse/issues/2650" data-hovercard-type="issue" data-hovercard-url="/Fyrd/caniuse/issues/2650/hovercard" href="https://github.com/Fyrd/caniuse/issues/2650">#2650</a> (security category).</p>]]></content>
-        <author>
-            <name>sebbu2</name>
-            <email>sebbu2@noreply.github.com</email>
-            <uri>https://github.com/sebbu2</uri>
-        </author>
-        <published>2025-03-16T19:47:06.000Z</published>
     </entry>
 </feed>
