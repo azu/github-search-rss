@@ -6,36 +6,14 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF144 makes <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel\" rel=\"nofollow\"><code class=\"notranslate\">RTCDataChannel</code></a> transferrable in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1209163\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1209163</a>. This updates the feature.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3417401568\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41135\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41135/hovercard\" href=\"https://github.com/mdn/content/issues/41135\">mdn/content#41135</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/27894",
-            "title": "FF144 RTCDataChannel is Transferrable",
-            "date_modified": "2025-09-16T06:42:43.000Z",
-            "date_published": "2025-09-16T06:42:07.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF144 added a new constraint parameter <code class=\"notranslate\">resizeMode</code> for use with <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia\" rel=\"nofollow\"><code class=\"notranslate\">MediaDevices.getUserMedia()</code></a>.</p>\n<p dir=\"auto\">We haven't documented the constraints before so this attempts to do so as there are other compat differences.<br>\nThe results are based on the test <a href=\"https://wpt.live/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html\" rel=\"nofollow\">https://wpt.live/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html</a>, and more specifically, by bisecting based on the wpt results using product tests like:</p>\n<ul dir=\"auto\">\n<li>Chrome: <a href=\"https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=chrome-80&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=chrome-80&amp;aligned</a></li>\n<li>Firefox <a href=\"https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=firefox-115&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=firefox-115&amp;aligned</a></li>\n<li>Safari <a href=\"https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=safari-12&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=safari-12&amp;aligned</a></li>\n</ul>\n<p dir=\"auto\">The tests and results do not run on the earliest version that constraints should be supported for, so I have used <code class=\"notranslate\">≤</code> to indicate the earliest version I could test in each case.</p>\n<p dir=\"auto\">Note that there are some constraints I have not documented:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">backgroundBlur</code> is in spec but not in tests. Assuming it is not implemented though it might be.</li>\n<li><code class=\"notranslate\">volume</code> is not in spec, but shows up in some very old builds. Ignoring.</li>\n<li><code class=\"notranslate\">voiceIsolation</code> is supported by Chrome but is not in spec. Ignoring.</li>\n</ul>\n<p dir=\"auto\">Note that there a related test <a href=\"https://wpt.live/mediacapture-streams/MediaDevices-getUserMedia.https.html\" rel=\"nofollow\">https://wpt.live/mediacapture-streams/MediaDevices-getUserMedia.https.html</a> but everything passes in this for things that support the associated constraint, so this does not lead to any compatibility difference to record.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3417378973\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41132\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41132/hovercard\" href=\"https://github.com/mdn/content/issues/41132\">mdn/content#41132</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/27891",
             "title": "MediaDevices.getUserMedia() add constraints",
-            "date_modified": "2025-09-16T02:28:39.000Z",
+            "date_modified": "2025-09-16T08:59:28.000Z",
             "date_published": "2025-09-16T02:27:37.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<ul dir=\"auto\">\n<li>Added firefox support for <code class=\"notranslate\">::before::marker</code> and removed experimental</li>\n<li>Added firefox support for <code class=\"notranslate\">::after::marker</code> and removed experimental</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ul dir=\"auto\">\n<li>Tested using the <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::before#beforemarker_nested_pseudo-elements\" rel=\"nofollow\"><code class=\"notranslate\">::before::marker</code></a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::after#aftermarker_nested_pseudo-elements\" rel=\"nofollow\"><code class=\"notranslate\">::after::marker</code></a> examples in:\n<ul dir=\"auto\">\n<li>Firefox Beta (143.0)</li>\n<li>Firefox Deveoper Edition (143.0b9)</li>\n<li>Firefox Nightly (144.0a1)</li>\n</ul>\n</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/content/issues/40779\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/40779/hovercard\">MDN Issue #40779</a></li>\n<li><a href=\"https://github.com/mdn/content/pull/41146\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/41146/hovercard\">Firefox Release note PR</a></li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/27878",
-            "title": "added firefox support for ::before/::after::marker nested pseudo-elements",
-            "date_modified": "2025-09-15T13:58:24.000Z",
-            "date_published": "2025-09-15T11:46:44.000Z",
-            "author": {
-                "name": "dletorey",
-                "url": "https://github.com/dletorey"
             }
         },
         {
@@ -201,6 +179,28 @@
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Safari (Desktop and iOS/iPadOS) for the <code class=\"notranslate\">ExtendableCookieChangeEvent</code> API. The mdn-bcd-collector reported this to be unsupported in Safari 18.4 through 18.6, even though it was reported as supported in Safari 18.4 beta. After doing some additional digging, it appears that this feature was hidden behind a flag that must have been enabled in 18.4 beta but disabled in stable releases.</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/27789",
+            "title": "Update Safari data for ExtendableCookieChangeEvent API",
+            "date_modified": "2025-09-09T18:30:03.000Z",
+            "date_published": "2025-09-08T21:36:34.000Z",
+            "author": {
+                "name": "queengooborg",
+                "url": "https://github.com/queengooborg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/108879845?u=eeb9306682180ab80521c80fd8f46609fe3c6770&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">(This PR was generated by the <a href=\"https://github.com/mdn/browser-compat-data/blob/main/.github/workflows/update-webdriver-bidi-data.yml\"><code class=\"notranslate\">update-webdriver-bidi-data</code></a> workflow.)</p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/27776",
+            "title": "Update WebDriver BiDi data",
+            "date_modified": "2025-09-16T08:38:42.000Z",
+            "date_published": "2025-09-08T04:38:01.000Z",
+            "author": {
+                "name": "mdn-bot",
+                "url": "https://github.com/mdn-bot"
             }
         }
     ]
