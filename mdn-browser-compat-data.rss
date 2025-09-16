@@ -2,11 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-09-16T02:25:08.737Z</updated>
+    <updated>2025-09-16T03:10:24.374Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[MediaDevices.getUserMedia() add constraints]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/27891</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/27891"/>
+        <updated>2025-09-16T02:28:39.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF144 added a new constraint parameter <code class="notranslate">resizeMode</code> for use with <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia" rel="nofollow"><code class="notranslate">MediaDevices.getUserMedia()</code></a>.</p>
+<p dir="auto">We haven't documented the constraints before so this attempts to do so as there are other compat differences.<br>
+The results are based on the test <a href="https://wpt.live/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html" rel="nofollow">https://wpt.live/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html</a>, and more specifically, by bisecting based on the wpt results using product tests like:</p>
+<ul dir="auto">
+<li>Chrome: <a href="https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=chrome-80&amp;aligned" rel="nofollow">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=chrome-80&amp;aligned</a></li>
+<li>Firefox <a href="https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=firefox-115&amp;aligned" rel="nofollow">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=firefox-115&amp;aligned</a></li>
+<li>Safari <a href="https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=safari-12&amp;aligned" rel="nofollow">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=safari-12&amp;aligned</a></li>
+</ul>
+<p dir="auto">The tests and results do not run on the earliest version that constraints should be supported for, so I have used <code class="notranslate">≤</code> to indicate the earliest version I could test in each case.</p>
+<p dir="auto">Note that there are some constraints I have not documented:</p>
+<ul dir="auto">
+<li><code class="notranslate">backgroundBlur</code> is in spec but not in tests. Assuming it is not implemented though it might be.</li>
+<li><code class="notranslate">volume</code> is not in spec, but shows up in some very old builds. Ignoring.</li>
+<li><code class="notranslate">voiceIsolation</code> is supported by Chrome but is not in spec. Ignoring.</li>
+</ul>
+<p dir="auto">Note that there a related test <a href="https://wpt.live/mediacapture-streams/MediaDevices-getUserMedia.https.html" rel="nofollow">https://wpt.live/mediacapture-streams/MediaDevices-getUserMedia.https.html</a> but everything passes in this for things that support the associated constraint, so this does not lead to any compatibility difference to record.</p>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3417378973" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41132" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41132/hovercard" href="https://github.com/mdn/content/issues/41132">mdn/content#41132</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2025-09-16T02:27:37.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[added firefox support for ::before/::after::marker nested pseudo-elements]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/27878</id>
@@ -291,18 +320,5 @@ My fault. I didn't see that this comes via a mixin.</p>
             <uri>https://github.com/queengooborg</uri>
         </author>
         <published>2025-09-08T21:36:34.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update WebDriver BiDi data]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/27776</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/27776"/>
-        <updated>2025-09-15T04:38:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/108879845?u=eeb9306682180ab80521c80fd8f46609fe3c6770&v=4" width="64" height="64" alt=""/><br/><p dir="auto">(This PR was generated by the <a href="https://github.com/mdn/browser-compat-data/blob/main/.github/workflows/update-webdriver-bidi-data.yml"><code class="notranslate">update-webdriver-bidi-data</code></a> workflow.)</p>]]></content>
-        <author>
-            <name>mdn-bot</name>
-            <email>mdn-bot@noreply.github.com</email>
-            <uri>https://github.com/mdn-bot</uri>
-        </author>
-        <published>2025-09-08T04:38:01.000Z</published>
     </entry>
 </feed>
