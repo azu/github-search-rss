@@ -2,64 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-09-22T19:01:10.907Z</updated>
+    <updated>2025-09-22T20:01:22.574Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
-    <entry>
-        <title type="html"><![CDATA[Add WeakMap `has()` object reference comparison clarification]]></title>
-        <id>https://github.com/mdn/content/pull/41248</id>
-        <link href="https://github.com/mdn/content/pull/41248"/>
-        <updated>2025-09-22T16:20:10.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27073716?u=81f47323d0deffaee8fc1142089ac2dbaa46988c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The documentation does not clarify that <code class="notranslate">has()</code> uses object reference for comparison despite <code class="notranslate">WeakMap</code> only accepting objects and non-registered symbols.</p>
-<p dir="auto">Object references are counter-intuitive to those unfamiliar with the language.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The WeakMap documentation page highlights <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap#caching" rel="nofollow">caching</a> as an use-case. Naively caching objects might result in unexpected behaviour, e.g.:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import fsp from 'fs/promises';
-
-const cache = new WeakMap();
-
-for await (const file of fsp.glob('images/**/*')) {
-	const raw = await fsp.readFile(file); // Uint8Array
-
-	let cached = cache.get(raw);
-	if (!cached) {
-		cached = file;
-		cache.set(raw, cached);
-	} else {
-		console.log(cached); // Will never reach
-	}
-}"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">fsp</span> <span class="pl-k">from</span> <span class="pl-s">'fs/promises'</span><span class="pl-kos">;</span>
-
-<span class="pl-k">const</span> <span class="pl-s1">cache</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">WeakMap</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-k">for</span> <span class="pl-k">await</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">file</span> <span class="pl-k">of</span> <span class="pl-s1">fsp</span><span class="pl-kos">.</span><span class="pl-en">glob</span><span class="pl-kos">(</span><span class="pl-s">'images/**/*'</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-	<span class="pl-k">const</span> <span class="pl-s1">raw</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">fsp</span><span class="pl-kos">.</span><span class="pl-en">readFile</span><span class="pl-kos">(</span><span class="pl-s1">file</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// Uint8Array</span>
-
-	<span class="pl-k">let</span> <span class="pl-s1">cached</span> <span class="pl-c1">=</span> <span class="pl-s1">cache</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s1">raw</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-	<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">cached</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-		<span class="pl-s1">cached</span> <span class="pl-c1">=</span> <span class="pl-s1">file</span><span class="pl-kos">;</span>
-		<span class="pl-s1">cache</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">raw</span><span class="pl-kos">,</span> <span class="pl-s1">cached</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-	<span class="pl-kos">}</span> <span class="pl-k">else</span> <span class="pl-kos">{</span>
-		<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">cached</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// Will never reach</span>
-	<span class="pl-kos">}</span>
-<span class="pl-kos">}</span></pre></div>
-<p dir="auto">This implementation will never cache, even if the images are duplicates.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap/has" rel="nofollow">WeakMap.prototype.has() (MDN)</a></li>
-<li><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap.prototype.has" rel="nofollow">3.4 WeakMap.prototype.has (key) (ECMAScript® 2026 Language Specification)</a></li>
-<li><a href="https://tc39.es/ecma262/multipage/abstract-operations.html#sec-samevalue" rel="nofollow">7.2.9 SameValue (x, y) (ECMAScript® 2026 Language Specification)</a></li>
-</ul>]]></content>
-        <author>
-            <name>chronoDave</name>
-            <email>chronoDave@noreply.github.com</email>
-            <uri>https://github.com/chronoDave</uri>
-        </author>
-        <published>2025-09-22T16:03:06.000Z</published>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Remove warning from Interactive examples meta docs]]></title>
         <id>https://github.com/mdn/content/pull/41247</id>
@@ -441,5 +388,19 @@ It should be "experimental" as only Chromium implements it, but not non-standard
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-09-17T14:01:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[remove duplicated paragraph]]></title>
+        <id>https://github.com/mdn/content/pull/41156</id>
+        <link href="https://github.com/mdn/content/pull/41156"/>
+        <updated>2025-09-16T14:48:47.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/197940680?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">There were two versions of the same paragraph, I kept the one I think is clearer.</p>]]></content>
+        <author>
+            <name>leander-behr-blag</name>
+            <email>leander-behr-blag@noreply.github.com</email>
+            <uri>https://github.com/leander-behr-blag</uri>
+        </author>
+        <published>2025-09-16T11:14:00.000Z</published>
     </entry>
 </feed>
