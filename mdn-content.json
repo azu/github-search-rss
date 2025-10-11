@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">After <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3207883044\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40228\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/40228/hovercard\" href=\"https://github.com/mdn/content/pull/40228\">#40228</a>, we are a lot more explicit on some CSS stylistic decisions. In particular, we now require all non-generic font family names to be quoted, no exceptions—not even <code class=\"notranslate\">\"Arial\"</code>. In addition, I noticed that the weird <code class=\"notranslate\">Arial, Helvetica, sans-serif</code> combination is used a lot—which is pointless because every computer that supports Helvetica is also going to support Arial, so I reordered these two.</p>",
+            "url": "https://github.com/mdn/content/pull/41471",
+            "title": "Lint: quote non-generic font-family values (3)",
+            "date_modified": "2025-10-11T03:46:57.000Z",
+            "date_published": "2025-10-11T03:45:10.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">After <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3207883044\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40228\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/40228/hovercard\" href=\"https://github.com/mdn/content/pull/40228\">#40228</a>, we are a lot more explicit on some CSS stylistic decisions. In particular, we now require all non-generic font family names to be quoted, no exceptions—not even <code class=\"notranslate\">\"Arial\"</code>. In addition, I noticed that the weird <code class=\"notranslate\">Arial, Helvetica, sans-serif</code> combination is used a lot—which is pointless because every computer that supports Helvetica is also going to support Arial, so I reordered these two.</p>",
+            "url": "https://github.com/mdn/content/pull/41470",
+            "title": "Lint: quote non-generic font-family values (2)",
+            "date_modified": "2025-10-11T03:46:35.000Z",
+            "date_published": "2025-10-11T03:44:56.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">After <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3207883044\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40228\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/40228/hovercard\" href=\"https://github.com/mdn/content/pull/40228\">#40228</a>, we are a lot more explicit on some CSS stylistic decisions. In particular, we now require all non-generic font family names to be quoted, no exceptions—not even <code class=\"notranslate\">\"Arial\"</code>. In addition, I noticed that the weird <code class=\"notranslate\">Arial, Helvetica, sans-serif</code> combination is used a lot—which is pointless because every computer that supports Helvetica is also going to support Arial, so I reordered these two.</p>",
+            "url": "https://github.com/mdn/content/pull/41469",
+            "title": "Lint: quote non-generic font-family values (1)",
+            "date_modified": "2025-10-11T03:46:10.000Z",
+            "date_published": "2025-10-11T03:44:32.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1177304?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The \"Security considerations\" section of the Clipboard API doesn't correctly describe the access checks that browsers perform when a website attempts a read operation. This PR proposes a (hopefully) more correct/precise explanation.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I was reading the section and I had a little heart attack. It seems to imply that Firefox lets websites read the clipboard on any click to the website content (more generally, any interaction that sets transient user activation but isn't made through a native \"paste element\"). I quickly verified this is not the case. It seems that this phrase:</p>\n<blockquote>\n<p dir=\"auto\">If the read operation is caused by user interaction with a browser or OS \"paste element\" (such as a context menu), the browser is expected to prompt the user for acknowledgement.</p>\n</blockquote>\n<p dir=\"auto\">was meant to say the opposite, e.g. a \"not\" was lost. Logically, if the operation is caused by the user pressing \"Paste\" in a context menu, then the browser knows the user intends for the website to be able to read the clipboard; it is on reads that do NOT satisfy this requirement that we'd want the browser to prompt for acknowledgment. Indeed this is what Firefox and Safari do; read() succeeds if called as a result of e.g. a <code class=\"notranslate\">paste</code> event, but triggers a prompt in other cases.</p>\n<p dir=\"auto\">The text also states, for Chromium, that the <code class=\"notranslate\">clipboard-read</code> permission is required for a read to succeed. This is incorrect; reads that result from interaction with a native \"paste element\" always succeed, regardless of permission status. The text also seems to imply that once the permission is granted, the website can read the clipboard at any time (there are no further requirements). This is also incorrect: in either browser, the document must have focus for a read to succeed.</p>\n<p dir=\"auto\">I haven't been able to find the origins of the phrase I quoted above (but I haven't done that much research). The spec doesn't mention anything about prompts for reads, it just says <a href=\"https://w3c.github.io/clipboard-apis/#check-clipboard-read-permission\" rel=\"nofollow\">a read is allowed if transient user activation is set and the code is running as a result of an interaction with a paste element, and disallowed otherwise</a>. Maybe it comes from an earlier version of the spec?</p>\n",
             "url": "https://github.com/mdn/content/pull/41467",
             "title": "Clipboard API / Security: fix read access checks",
@@ -187,39 +220,6 @@
             "title": "HTMLScriptElement.src - update for TrustedScriptURL",
             "date_modified": "2025-10-07T06:33:36.000Z",
             "date_published": "2025-10-07T06:17:10.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Addressing the issue raised in <a href=\"https://github.com/orgs/mdn/discussions/836\">https://github.com/orgs/mdn/discussions/836</a>.</p>\n<p dir=\"auto\">This PR adds a new example to <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#examples\" rel=\"nofollow\"><code class=\"notranslate\">toLocaleString()</code></a> to demo how to control single- vs double-digits in the day/month output.</p>\n<p dir=\"auto\">For the existing example, I noticed slightly different outputs in my time zone, so I've added comments to clarify why that might happen.</p>",
-            "url": "https://github.com/mdn/content/pull/41410",
-            "title": "Add single-digit example to toLocaleString()",
-            "date_modified": "2025-10-10T02:50:06.000Z",
-            "date_published": "2025-10-06T22:08:38.000Z",
-            "author": {
-                "name": "dipikabh",
-                "url": "https://github.com/dipikabh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1323194?u=93e4d24fee9e70f1199839b665e9285308b78818&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">See <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1991270#c3\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1991270#c3</a> for details.</p>",
-            "url": "https://github.com/mdn/content/pull/41406",
-            "title": "Document that ::-moz-meter-bar now needs appearance: none to work properly.",
-            "date_modified": "2025-10-06T14:08:40.000Z",
-            "date_published": "2025-10-06T14:08:18.000Z",
-            "author": {
-                "name": "emilio",
-                "url": "https://github.com/emilio"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This updates the TrustedScript documentation for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval\" rel=\"nofollow\"><code class=\"notranslate\">Window/setInterval()</code></a> to include information about using it with trusted types.</p>\n<p dir=\"auto\">A lot of this was to update the doc to current template - such as moving Usage notes under description and so on.<br>\nI also thought it worthwhile to purge mention of getting things to work with IE, and focus on how you get the \"this\" right rather than not being able to get it right on legacy JavaScript.</p>\n<p dir=\"auto\">The security considerations mostly mention CSP since generally the <code class=\"notranslate\">code</code> option is disabled by default.</p>\n<p dir=\"auto\">I will look at <code class=\"notranslate\">setTimeout()</code> after this, since the changes would be mostly the same.</p>\n<p dir=\"auto\">Project tracking in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2770544982\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/37518\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/37518/hovercard\" href=\"https://github.com/mdn/content/issues/37518\">#37518</a></p>",
-            "url": "https://github.com/mdn/content/pull/41403",
-            "title": "setInterval(code) - update with TrustedScript",
-            "date_modified": "2025-10-10T06:11:49.000Z",
-            "date_published": "2025-10-06T05:38:18.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
