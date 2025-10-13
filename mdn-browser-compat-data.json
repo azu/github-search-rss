@@ -141,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF144 added a new constraint parameter <code class=\"notranslate\">resizeMode</code> for use with <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia\" rel=\"nofollow\"><code class=\"notranslate\">MediaDevices.getUserMedia()</code></a>.</p>\n<p dir=\"auto\">We haven't documented the constraints before so this attempts to do so as there are other compat differences.<br>\nThe results are based on the test <a href=\"https://wpt.live/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html\" rel=\"nofollow\">https://wpt.live/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html</a>, and more specifically, by bisecting based on the wpt results using product tests like:</p>\n<ul dir=\"auto\">\n<li>Chrome: <a href=\"https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=chrome-80&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=chrome-80&amp;aligned</a></li>\n<li>Firefox <a href=\"https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=firefox-115&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=firefox-115&amp;aligned</a></li>\n<li>Safari <a href=\"https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=safari-12&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/mediacapture-streams/MediaDevices-getSupportedConstraints.https.html?label=master&amp;product=safari-12&amp;aligned</a></li>\n</ul>\n<p dir=\"auto\">The tests and results do not run on the earliest version that constraints should be supported for, so I have used <code class=\"notranslate\">≤</code> to indicate the earliest version I could test in each case.</p>\n<p dir=\"auto\">Note that there are some constraints I have not documented:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">backgroundBlur</code> is in spec but not in tests. Assuming it is not implemented though it might be.</li>\n<li><code class=\"notranslate\">volume</code> is not in spec, but shows up in some very old builds. Ignoring.</li>\n<li><code class=\"notranslate\">voiceIsolation</code> is supported by Chrome but is not in spec. Ignoring.</li>\n</ul>\n<p dir=\"auto\">Note that there a related test <a href=\"https://wpt.live/mediacapture-streams/MediaDevices-getUserMedia.https.html\" rel=\"nofollow\">https://wpt.live/mediacapture-streams/MediaDevices-getUserMedia.https.html</a> but everything passes in this for things that support the associated constraint, so this does not lead to any compatibility difference to record.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3417378973\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41132\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41132/hovercard\" href=\"https://github.com/mdn/content/issues/41132\">mdn/content#41132</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/27891",
             "title": "Add `MediaDevices.getSupportedConstraints()` object properties",
-            "date_modified": "2025-10-10T00:35:36.000Z",
+            "date_modified": "2025-10-13T08:04:23.000Z",
             "date_published": "2025-09-16T02:27:37.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -154,17 +154,6 @@
             "title": "Update Firefox data for api.Navigator.share",
             "date_modified": "2025-09-09T16:45:14.000Z",
             "date_published": "2025-09-09T06:38:31.000Z",
-            "author": {
-                "name": "queengooborg",
-                "url": "https://github.com/queengooborg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR updates and corrects version values for Safari (Desktop and iOS/iPadOS) for the <code class=\"notranslate\">ExtendableCookieChangeEvent</code> API. The mdn-bcd-collector reported this to be unsupported in Safari 18.4 through 18.6, even though it was reported as supported in Safari 18.4 beta. After doing some additional digging, it appears that this feature was hidden behind a flag that must have been enabled in 18.4 beta but disabled in stable releases.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/27789",
-            "title": "Update Safari data for ExtendableCookieChangeEvent API",
-            "date_modified": "2025-09-09T18:30:03.000Z",
-            "date_published": "2025-09-08T21:36:34.000Z",
             "author": {
                 "name": "queengooborg",
                 "url": "https://github.com/queengooborg"
