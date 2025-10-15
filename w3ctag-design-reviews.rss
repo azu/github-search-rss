@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2025-10-15T13:09:56.826Z</updated>
+    <updated>2025-10-15T14:01:17.868Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
@@ -429,10 +429,10 @@ ready: <a href="https://github.com/whatwg/html/issues/11641" data-hovercard-type
         <published>2025-09-18T00:58:47.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Other Spec Review: TCP Socket Pool per-Top-Level-Site]]></title>
+        <title type="html"><![CDATA[Other Spec Review: TCP Socket Pool Limit Randomization]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1151</id>
         <link href="https://github.com/w3ctag/design-reviews/issues/1151"/>
-        <updated>2025-10-13T18:44:05.000Z</updated>
+        <updated>2025-10-15T13:57:46.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/666538?u=5cd5c8a82e4e49950d3d9c2bf32a1df46f1bd9d3&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Where and by whom is the work is being done?</h3>
 <ul dir="auto">
 <li>Primary contacts:
@@ -459,8 +459,8 @@ ready: <a href="https://github.com/whatwg/html/issues/11641" data-hovercard-type
 <li>Status/issue trackers for implementations: <a href="https://crbug.com/415691664" rel="nofollow">https://crbug.com/415691664</a></li>
 </ul>
 <h3 dir="auto">You should also know that...</h3>
-<p dir="auto">By <a href="https://xsleaks.dev/docs/attacks/timing-attacks/connection-pool/" rel="nofollow">exploiting limits in the TCP connection pool size on Chrome</a>, knowledge can be gained about cross-site state which would otherwise be inaccessible. Specifically, it’s possible (with some statistical certainty) to evaluate the login state, visited history, or even something more specific like whether gmail has pending messages in the inbox.</p>
-<p dir="auto">To mitigate this we are doubling the per-profile socket pool to 513 (512 was already studied and seen to have no negative impact) while imposing a per-top-level-site limit of 256 (the old global limit). This change should be entirely transparent to most sites and is anticipated to be a wash performance wise.</p>
+<p dir="auto">By <a href="https://xsleaks.dev/docs/attacks/timing-attacks/connection-pool/" rel="nofollow">exploiting limits in the connection pool size on Chrome</a>, knowledge can be gained about cross-site state which would otherwise be inaccessible. Specifically, it’s possible (with some statistical certainty) to evaluate the login state, visited history, or even something more specific like whether gmail has pending messages in the inbox.</p>
+<p dir="auto">To mitigate this we are adding randomization to the way that TCP socket pools are limited so that an observing site cannot infer this information with high certainty.</p>
 
 <hr>
 <p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1151" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1151</a></p>]]></content>
