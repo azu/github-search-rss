@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-10-22T12:02:17.143Z</updated>
+    <updated>2025-10-22T13:11:10.086Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
@@ -166,10 +166,10 @@ The test worked for Chrome, but not in browserstack. Therefore I have assumed th
         <published>2025-10-20T00:12:04.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Add keyboard-inset]]></title>
+        <title type="html"><![CDATA[Chrome 94 added `keyboard-inset-*` CSS env variables]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28230</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28230"/>
-        <updated>2025-10-18T07:40:29.000Z</updated>
+        <updated>2025-10-22T12:55:25.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/965338?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #23922.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2423016064" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/23922" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/23922/hovercard" href="https://github.com/mdn/browser-compat-data/issues/23922">#23922</a></p>
 
 <h4 dir="auto">Summary</h4>
@@ -188,23 +188,6 @@ The test worked for Chrome, but not in browserstack. Therefore I have assumed th
             <uri>https://github.com/makotokato</uri>
         </author>
         <published>2025-10-18T07:30:34.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add version_removed for theme-color for Safari]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28229</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28229"/>
-        <updated>2025-10-18T06:55:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/97435840?u=a82a5f520219a28246154bea38e587feb3aae9b4&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Added version_removed to the theme-color metadata tag for Safari 26</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">See <a href="https://caniuse.com/?search=theme-color" rel="nofollow">https://caniuse.com/?search=theme-color</a></p>]]></content>
-        <author>
-            <name>jackwellerreal</name>
-            <email>jackwellerreal@noreply.github.com</email>
-            <uri>https://github.com/jackwellerreal</uri>
-        </author>
-        <published>2025-10-18T06:54:54.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Unmark `CredentialsContainer` `prf` extension as partial in Safari]]></title>
@@ -364,5 +347,29 @@ As such you wouldn't expect a browser integration, and hence no BCD entry.</p>
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2025-10-13T02:23:10.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add many missing CSS property values (added since ~2015)]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28138</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28138"/>
+        <updated>2025-10-22T12:28:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR is a part of a process to add all of the missing spec-defined CSS property values. These values are added by the mdn-bcd-collector, following an upgrade of Webref CSS to v7 and directly parsing the syntax for each property.</p>
+<p dir="auto">This specific PR focuses on CSS property values that were added in browser versions after ~2012. This PR includes a combination of values added when the properties were introduced, as well as values added afterwards. Any values that didn't seem plausible were omitted. Spec URLs were obtained for as many values as possible.</p>
+<p dir="auto">Notes:</p>
+<ul dir="auto">
+<li>Chrome: Chrome 15+ was tested, with only a few versions that failed to be tested.</li>
+<li>Firefox: Firefox 5 through 49 crashed during tests, so no results were obtained for those versions. Versions within this range were guesstimated by parent data, with the intent to fine-tune the version numbers later if needed.</li>
+<li>Safari: Not all Safari versions were tested during this process (partially due to a lack of VM access), but test results were collected for every major Safari version. Specific minor versions were inferred by parent data, with the intent to fine-tune the version numbers later if needed.</li>
+<li><del>Spec URLs: csswg.org went down frequently during the creation of this PR. Some spec URLs could not be obtained while the website was down.</del> Spec URLs had been added later.</li>
+<li>Properties with Prefixes/Alt. Names: If a property had a prefix or alternative name, and the collector reported that a value was supported in the first version that supported the standard name, then it was assumed that the value was supported from the beginning and had been updated accordingly.</li>
+<li><code class="notranslate">isolation</code> Property: Opera was set to a later version (Opera 30 = Chrome 43) than the matching Chrome version (Opera 28 = Chrome 41).  Because Opera 30 was from the original wiki migration, it was replaced with mirroring.</li>
+<li><code class="notranslate">block-size</code> and <code class="notranslate">inline-size</code> Properties: Samsung Internet was set to 5.0, but in the PR that added it (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="410258089" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/3457" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/3457/hovercard" href="https://github.com/mdn/browser-compat-data/pull/3457">#3457</a>), I found no supporting documentation for that version number.  As such, to fix consistency, the data was treated as untrustworthy and replaced with mirroring.</li>
+</ul>]]></content>
+        <author>
+            <name>queengooborg</name>
+            <email>queengooborg@noreply.github.com</email>
+            <uri>https://github.com/queengooborg</uri>
+        </author>
+        <published>2025-10-10T02:55:32.000Z</published>
     </entry>
 </feed>
