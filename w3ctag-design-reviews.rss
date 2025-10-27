@@ -2,11 +2,92 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2025-10-27T11:01:27.489Z</updated>
+    <updated>2025-10-27T12:02:11.096Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Reconsider W3C Recommendation status of XSLT 2.0 and XSLT 3.0]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1163</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1163"/>
+        <updated>2025-10-27T11:37:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/990588?v=4" width="64" height="64" alt=""/><br/><p dir="auto">I would like to raise an issue with XSLT 2.0 and XSLT 3.0. These have the status of a<br>
+"W3C Recommendation": <a href="https://www.w3.org/TR/xslt20/" rel="nofollow">https://www.w3.org/TR/xslt20/</a> <a href="https://www.w3.org/TR/xslt-30/" rel="nofollow">https://www.w3.org/TR/xslt-30/</a></p>
+<p dir="auto">(I am not very familiar with W3C processes, and I hope this is a good place to raise an<br>
+issue like this. If not, feel free to redirect it to the appropriate place.)</p>
+<p dir="auto">XSLT 2.0 and 3.0 are not "standards" in any meaningful sense of the word. The <a href="https://www.w3.org/standards/" rel="nofollow">W3C web<br>
+page states</a>: "W3C web standards are optimized for<br>
+interoperability, security, privacy, web accessibility, and internationalization." I<br>
+believe XSLT 2.0 and 3.0 violate the first two of those principles.</p>
+<h3 dir="auto">Interoperability</h3>
+<p dir="auto">The XSLT specification has three major versions. While XSLT 1.0 is supported by multiple<br>
+implementations, the same is not true for the later versions. Both XSLT 2.0 and 3.0 are<br>
+only supported by a single implementation named Saxon. The specifications have been<br>
+written by a member of the company providing this implementation.</p>
+<p dir="auto">XSLT 2.0 gained the status of a <a href="https://www.w3.org/TR/2007/REC-xslt20-20070123/" rel="nofollow">W3C recommendation in 2007</a>. 18 years later, it is fair to say that<br>
+it has not been accepted and adopted by the wider community.</p>
+<p dir="auto">The XSLT 2.0 specification contains a link to an implementation report that is not<br>
+publicly available (which I consider a worrying sign of intransparency). The report<br>
+appears to have been created in 2006. It reports about 4 implementations, of which three<br>
+are incomplete. Apart from Saxon, it tested IBM's XSLT processor (I do not know if this<br>
+is still available), Gestalt (an implementation in the Eiffel programming language that<br>
+has <a href="https://sourceforge.net/projects/gestalt/files/gestalt/1.0/" rel="nofollow">not been updated since 2008</a>), and an anonymous<br>
+implementation. This report, therefore, supports the impression that there is no usable<br>
+and complete implementation of XSLT 2.0 or above except Saxon. It is noteworthy that the<br>
+report was likely created before XSLT 2.0 gained "Recommendation" status.</p>
+<p dir="auto">There are two more recent projects that intend to implement XSLT 3.0 in Rust, xee and<br>
+xrust, but they are both in early stages and also incomplete.</p>
+<p dir="auto">Worries that XSLT 2.0 would not be widely implemented were already present before it<br>
+became a recommendation. I found <a href="https://www.snee.com/bobdc.blog/2005/12/no-plans-in-place-to-upgrade-x.html#comment-15" rel="nofollow">a comment from 2005</a><br>
+indicating that XSLT 2.0 will likely be "a single implementation language".</p>
+<p dir="auto">It is obvious that a specification that is not widely implemented is not interoperable.</p>
+<p dir="auto">According to the <a href="https://www.w3.org/wiki/Interoperable" rel="nofollow">W3C wiki</a>, the W3C process<br>
+"requires multiple implementations". It also defines this as a "success" criterium: "Two<br>
+or more independent implementations for each feature, passing the test suite, and<br>
+interoperating with each other." According to these statements, XSLT 2.0 and 3.0 do not<br>
+fulfill the requirements.</p>
+<h3 dir="auto">Security</h3>
+<p dir="auto">By only being supported by a single implementation, any technology built on top of XSLT<br>
+2.0 and 3.0 pushes its users towards that single implementation. (This is not a<br>
+hypothetical example. Recent versions of Schematron are based on XSLT 2.0 and 3.0, and<br>
+those have been used in EU standards.)</p>
+<p dir="auto">It is well known that XML parsing is prone to various security issues, most notably XXE<br>
+(XML eXternal Entity injection), a class of vulnerabilities that often causes<br>
+high-severity security issues by allowing remote file exfiltration.</p>
+<p dir="auto">The behavior of XML implementations and APIs regarding XXE differs substantially. Some<br>
+implementations disallow external entities by default (making them secure-by-default,<br>
+e.g., Python), others disable entity processing by default, but are vulnerable as soon<br>
+as one enables it, and some implementations are simply vulnerable-by-default.</p>
+<p dir="auto">Saxon (and also Java itself) is vulnerable-by-default. This has been <a href="https://saxonica.plan.io/issues/4234" rel="nofollow">raised in Saxon's<br>
+bug tracker</a>. I would summarize the response as<br>
+"distracting from the issue". I also personally communicated this issue to Saxon more<br>
+recently. They have confirmed to me that they have no plans to change this behavior.</p>
+<p dir="auto">Any use of Saxon that processes XML from untrusted sources is, by default, vulnerable to<br>
+XXE attacks. One needs to set extra options to avoid this, and it is not easy to find<br>
+this information. Most users of Saxon will probably be unaware of this. I have not found<br>
+any mention of XXE in the documentation. (I believe one can avoid those attacks by<br>
+setting the '<a href="http://saxon.sf.net/feature/allowedProtocols" rel="nofollow">http://saxon.sf.net/feature/allowedProtocols</a>' property to an empty string.<br>
+I have only tested this with Saxon's Python bindings.)</p>
+<p dir="auto">I think it is fair to say that the "Recommendation" status of XSLT 2.0 and 3.0 is<br>
+exposing users to unnecessary security risks.</p>
+<p dir="auto">(It is unfortunate to begin with that these security issues have been insufficiently<br>
+addressed in the wider XML ecosystem. To my knowledge, no specification exists that<br>
+gives recommendations on how implementations should deal with those and other security<br>
+problems.)</p>
+<h3 dir="auto">Summary</h3>
+<p dir="auto">XSLT 2.0 and 3.0 are violating the W3C principles of interoperability and security. They<br>
+should not be a "Recommendation" by the W3C. They should be marked as <a href="https://www.w3.org/guide/process/obsolete-rescinded-supserseded.html#obsolete" rel="nofollow">obsolete</a>.</p>
+
+<hr>
+<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1163" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1163</a></p>]]></content>
+        <author>
+            <name>hannob</name>
+            <email>hannob@noreply.github.com</email>
+            <uri>https://github.com/hannob</uri>
+        </author>
+        <published>2025-10-27T11:37:27.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[WG New Spec: RDF 1.2 N-Triples]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1161</id>
@@ -1291,76 +1372,5 @@ DAS WG, WebApps WG</li>
             <uri>https://github.com/w3cbot</uri>
         </author>
         <published>2025-08-26T19:18:57.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Incubation: FormControlRange - Live ranges for <input> and <textarea>]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1142</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1142"/>
-        <updated>2025-10-02T09:21:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/30235406?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Explainer</h3>
-<p dir="auto"><a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/FormControlRange/explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/FormControlRange/explainer.md</a></p>
-<h3 dir="auto">The explainer</h3>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes the information requested by the <a href="https://w3ctag.github.io/explainer-explainer/#introduction" rel="nofollow">Explainer Explainer</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes or links to answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Describes user research you did to validate the problem and/or design.</li>
-</ul>
-<h3 dir="auto">Where and by whom is the work is being done?</h3>
-<ul dir="auto">
-<li>
-<p dir="auto">GitHub repo:</p>
-</li>
-<li>
-<p dir="auto">Primary contacts:</p>
-<ul dir="auto">
-<li>Stephanie Zhang (@<a href="https://github.com/stephanieyzhang">stephanieyzhang</a>), Microsoft</li>
-<li>Ana Sollano Kim (@<a href="https://github.com/anaskim">anaskim</a>), Microsoft</li>
-<li>Dan Clark (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dandclark/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dandclark">@dandclark</a>), Microsoft, tech lead</li>
-<li>Leo Lee (@<a href="https://github.com/leotlee">leolee</a>), Microsoft, team lead</li>
-<li>Taylore Givens (@<a href="https://github.com/tayloregivens">tayloregivens</a>, Microsoft, PM</li>
-</ul>
-</li>
-<li>
-<p dir="auto">Organization/project driving the design: Microsoft Edge</p>
-</li>
-<li>
-<p dir="auto">This work is being funded by: Microsoft</p>
-</li>
-<li>
-<p dir="auto">Incubation and standards groups that have discussed the design:</p>
-<ul dir="auto">
-<li><a href="https://github.com/whatwg/html/issues/11478" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/11478/hovercard">WHATWG HTML discussion</a></li>
-<li>[WHATWG DOM Spec PR}(https://github.com/<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3410621075" data-permission-text="Title is private" data-url="https://github.com/whatwg/dom/issues/1404" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/dom/pull/1404/hovercard" href="https://github.com/whatwg/dom/pull/1404">whatwg/dom/pull/1404</a>)</li>
-</ul>
-</li>
-<li>
-<p dir="auto">Standards group(s) that you expect to discuss and/or adopt this work when it's<br>
-ready: WHATWG DOM, WHATWG HTML</p>
-</li>
-</ul>
-<h3 dir="auto">Feedback so far</h3>
-<ul dir="auto">
-<li>Multi-stakeholder feedback:
-<ul dir="auto">
-<li>Chromium comments: <a href="https://chromestatus.com/feature/6297362687066112" rel="nofollow">Prototyping</a></li>
-<li>Mozilla comments: (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3345730426" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1289" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1289/hovercard" href="https://github.com/mozilla/standards-positions/issues/1289">mozilla/standards-positions#1289</a>)</li>
-<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3345698447" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/541" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/541/hovercard" href="https://github.com/WebKit/standards-positions/issues/541">WebKit/standards-positions#541</a></li>
-</ul>
-</li>
-<li>Major unresolved issues with or opposition to this design: None</li>
-</ul>
-<h3 dir="auto">You should also know that...</h3>
-<p dir="auto">Currently, web developers can’t perform range-based operations (e.g., getting bounding rects, setting custom highlights) inside native text controls (<code class="notranslate">&lt;input&gt;</code>, <code class="notranslate">&lt;textarea&gt;</code>). As a result, they often resort to workarounds such as replicating the control and its styles in a <code class="notranslate">contenteditable</code> container and reimplementing input behavior -- an approach that’s tedious and error-prone to keep in sync with native behavior.</p>
-<p dir="auto"><code class="notranslate">FormControlRange </code>is a specialized, live <code class="notranslate">AbstractRange</code> subclass scoped to <code class="notranslate">input</code>/<code class="notranslate">textarea</code> value space. It enables those operations directly in native controls while restricting standard Range mutations to preserve encapsulation. It integrates cleanly with existing selection/editing behavior and closes a long-standing gap for form controls.</p>
-
-<hr>
-<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1142" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1142</a></p>]]></content>
-        <author>
-            <name>stephanieyzhang</name>
-            <email>stephanieyzhang@noreply.github.com</email>
-            <uri>https://github.com/stephanieyzhang</uri>
-        </author>
-        <published>2025-08-22T15:09:10.000Z</published>
     </entry>
 </feed>
