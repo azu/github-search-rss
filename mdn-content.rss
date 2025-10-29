@@ -2,11 +2,169 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-10-29T12:02:23.685Z</updated>
+    <updated>2025-10-29T13:11:03.972Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Document ARIA attributes for SVG element]]></title>
+        <id>https://github.com/mdn/content/pull/41736</id>
+        <link href="https://github.com/mdn/content/pull/41736"/>
+        <updated>2025-10-29T13:07:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/144060585?v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Documents that various ARIA-attributes are valid for the <code class="notranslate">&lt;svg&gt;</code> element.</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">It is not clear on this page if the <code class="notranslate">&lt;svg&gt;</code> element supports any other attributes than the ones listed. Most other pages have something along the lines of:</p>
+<blockquote>
+<p dir="auto">This element's attributes include the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes" rel="nofollow">global attributes</a>.</p>
+</blockquote>
+<p dir="auto">(see e.g. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#attributes" rel="nofollow"><code class="notranslate">&lt;button&gt;</code></a>,  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/div#attributes" rel="nofollow"><code class="notranslate">&lt;div&gt;</code></a>)</p>
+<p dir="auto">I saw some examples on MDN (e.g. on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label" rel="nofollow"><code class="notranslate">aria-label</code> page</a>) use ARIA labels on the <code class="notranslate">&lt;svg&gt;</code> element, but it's not clear on this page if this is supported or not. I had to go into the specification to find out.</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto">The ARIA-attributes are listed as supported in the <a href="https://svgwg.org/svg2-draft/struct.html#SVGElement" rel="nofollow">specification</a>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+
+<p dir="auto">None</p>]]></content>
+        <author>
+            <name>MarcusCaspeco</name>
+            <email>MarcusCaspeco@noreply.github.com</email>
+            <uri>https://github.com/MarcusCaspeco</uri>
+        </author>
+        <published>2025-10-29T13:04:36.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ chore(ia): Reorganize CSS pages - part 2 (moving layout_cookbook to how_to)]]></title>
+        <id>https://github.com/mdn/content/pull/41735</id>
+        <link href="https://github.com/mdn/content/pull/41735"/>
+        <updated>2025-10-29T12:58:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Performed the following steps:</p>
+<ol dir="auto">
+<li>
+<p dir="auto">Created <code class="notranslate">css/how_to</code> and a <code class="notranslate">how_to/index.md</code>.</p>
+</li>
+<li>
+<p dir="auto">Moved <code class="notranslate">layout_cookbook</code> under <code class="notranslate">how_to</code>:<br>
+<code class="notranslate">yarn content move Web/CSS/Layout_cookbook Web/CSS/How_to/Layout_cookbook</code></p>
+</li>
+<li>
+<p dir="auto">To update the slug casing from "Layout_cookbook/Breadcrumb_Navigation" to "Layout_cookbook/Breadcrumb_navigation":</p>
+<ul dir="auto">
+<li>Updated the slug casing in the front matter.</li>
+<li>Updated the redirect using:<br>
+<code class="notranslate">yarn content add-redirect /en-US/docs/Web/CSS/How_to/Layout_cookbook/Breadcrumb_Navigation /en-US/docs/Web/CSS/How_to/Layout_cookbook/Breadcrumb_navigation</code></li>
+</ul>
+</li>
+<li>
+<p dir="auto">Same steps to update the slug casing from "Layout_cookbook/Split_Navigation" to "Layout_cookbook/Split_navigation".</p>
+</li>
+<li>
+<p dir="auto">Updated all links using <code class="notranslate">node scripts/update-moved-file-links.js</code>.</p>
+</li>
+<li>
+<p dir="auto">Updated page-types to <code class="notranslate">how-to</code> (except for contribute and cookbook template).</p>
+</li>
+<li>
+<p dir="auto">Updated <code class="notranslate">cssref.yaml</code> to:</p>
+<ul dir="auto">
+<li>Add the "How to" section to the sidebar.</li>
+<li>Add contribute and cookbook template to the sidebar.</li>
+</ul>
+</li>
+</ol>
+<h3 dir="auto">Before and after</h3>
+<p dir="auto">Current structure:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="files/en-us/web/css/
+├── layout_cookbook
+         ├── breadcrumb_navigation
+         ├── card
+         ├── center_an_element
+         ├── column_layouts
+         ├── contribute_a_recipe
+         |    └── cookbook_template
+         ├── grid_wrapper
+         ├── list_group_with_badges
+         ├── media_objects
+         ├── pagination
+         ├── split_navigation
+         └── sticky_footers"><pre class="notranslate"><code class="notranslate">files/en-us/web/css/
+├── layout_cookbook
+         ├── breadcrumb_navigation
+         ├── card
+         ├── center_an_element
+         ├── column_layouts
+         ├── contribute_a_recipe
+         |    └── cookbook_template
+         ├── grid_wrapper
+         ├── list_group_with_badges
+         ├── media_objects
+         ├── pagination
+         ├── split_navigation
+         └── sticky_footers
+</code></pre></div>
+<p dir="auto">After the move:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="files/en-us/web/css/how_to
+├── layout_cookbook
+         ├── breadcrumb_navigation
+         ├── card
+         ├── center_an_element
+         ├── column_layouts
+         ├── contribute_a_recipe
+         |    └── cookbook_template
+         ├── grid_wrapper
+         ├── list_group_with_badges
+         ├── media_objects
+         ├── pagination
+         ├── split_navigation
+         └── sticky_footers"><pre class="notranslate"><code class="notranslate">files/en-us/web/css/how_to
+├── layout_cookbook
+         ├── breadcrumb_navigation
+         ├── card
+         ├── center_an_element
+         ├── column_layouts
+         ├── contribute_a_recipe
+         |    └── cookbook_template
+         ├── grid_wrapper
+         ├── list_group_with_badges
+         ├── media_objects
+         ├── pagination
+         ├── split_navigation
+         └── sticky_footers
+</code></pre></div>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Sidebar(currently)</th>
+<th>Sidebar (after the move)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/23019147/506808121-73bfaf84-29a3-47ea-a5fe-e97573094e01.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE3NDM3NjMsIm5iZiI6MTc2MTc0MzQ2MywicGF0aCI6Ii8yMzAxOTE0Ny81MDY4MDgxMjEtNzNiZmFmODQtMjlhMy00N2VhLWE1ZmUtZTk3NTczMDk0ZTAxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDI5VDEzMTEwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY3NGZiMzQyMjY0ZDc4MTJmN2E4NzMwYjE3MmI4NzFmMmU4NmI1MDQyZDQyNjQ0YWRkZmIwZTJiYWE1ODk1YzAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.cGQTE2ZnUq7vkjs2b3QsvlF0YpL78DwpMeU6yyy4veI"><img width="329" height="453" alt="layout cookbook sidebar before the move" src="https://private-user-images.githubusercontent.com/23019147/506808121-73bfaf84-29a3-47ea-a5fe-e97573094e01.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE3NDM3NjMsIm5iZiI6MTc2MTc0MzQ2MywicGF0aCI6Ii8yMzAxOTE0Ny81MDY4MDgxMjEtNzNiZmFmODQtMjlhMy00N2VhLWE1ZmUtZTk3NTczMDk0ZTAxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDI5VDEzMTEwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY3NGZiMzQyMjY0ZDc4MTJmN2E4NzMwYjE3MmI4NzFmMmU4NmI1MDQyZDQyNjQ0YWRkZmIwZTJiYWE1ODk1YzAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.cGQTE2ZnUq7vkjs2b3QsvlF0YpL78DwpMeU6yyy4veI" style="max-width: 100%; height: auto; max-height: 453px;"></a></kbd></td>
+<td><kbd><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/23019147/506808125-02218f3d-4989-4732-a09c-501fd3371e33.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE3NDM3NjMsIm5iZiI6MTc2MTc0MzQ2MywicGF0aCI6Ii8yMzAxOTE0Ny81MDY4MDgxMjUtMDIyMThmM2QtNDk4OS00NzMyLWEwOWMtNTAxZmQzMzcxZTMzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDI5VDEzMTEwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY1OThjMTU2OGQzNTRmNGQ1M2U3M2UzODZhZTJlZWNmNGZiMzEwNjMxODEwN2ViNTBhZTU4ZWEyZWMxZGZiMGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.HrcvJWy98yPH_wpLnT0mYAH9NrGM2ZnYk-uREdQRtKU"><img width="320" height="569" alt="layout cookbook sidebar after the move" src="https://private-user-images.githubusercontent.com/23019147/506808125-02218f3d-4989-4732-a09c-501fd3371e33.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjE3NDM3NjMsIm5iZiI6MTc2MTc0MzQ2MywicGF0aCI6Ii8yMzAxOTE0Ny81MDY4MDgxMjUtMDIyMThmM2QtNDk4OS00NzMyLWEwOWMtNTAxZmQzMzcxZTMzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDI5VDEzMTEwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY1OThjMTU2OGQzNTRmNGQ1M2U3M2UzODZhZTJlZWNmNGZiMzEwNjMxODEwN2ViNTBhZTU4ZWEyZWMxZGZiMGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.HrcvJWy98yPH_wpLnT0mYAH9NrGM2ZnYk-uREdQRtKU" style="max-width: 100%; height: auto; max-height: 569px;"></a></kbd></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Discussion: <a href="https://github.com/orgs/mdn/discussions/256">https://github.com/orgs/mdn/discussions/256</a><br>
+Tracker issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2978311041" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/662" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/662/hovercard" href="https://github.com/mdn/mdn/issues/662">mdn/mdn#662</a></p>
+<p dir="auto">To check the proposed new structure, see: <a href="https://github.com/dipikabh/mdn-css-reorg/blob/main/css-tree-proposed.json">https://github.com/dipikabh/mdn-css-reorg/blob/main/css-tree-proposed.json</a></p>]]></content>
+        <author>
+            <name>dipikabh</name>
+            <email>dipikabh@noreply.github.com</email>
+            <uri>https://github.com/dipikabh</uri>
+        </author>
+        <published>2025-10-29T12:40:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix `checkVisibility` example typo `display: content` -> `contents`]]></title>
         <id>https://github.com/mdn/content/pull/41733</id>
@@ -342,49 +500,5 @@ Related docs work can be tracked in <a class="issue-link js-issue-link" data-err
             <uri>https://github.com/aamuley</uri>
         </author>
         <published>2025-10-14T14:06:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF145 Relnote: Trusted Types early beta]]></title>
-        <id>https://github.com/mdn/content/pull/41518</id>
-        <link href="https://github.com/mdn/content/pull/41518"/>
-        <updated>2025-10-28T06:16:58.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF145 supports Trusted Types in early beta in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1992941" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1992941</a></p>
-<p dir="auto">This adds a release note, experimental feature, and updates the API overview page.</p>
-<p dir="auto">Its in draft while I confirm the scope with engineering.</p>
-<p dir="auto">Related work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3510273732" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41507" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41507/hovercard" href="https://github.com/mdn/content/issues/41507">#41507</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2025-10-14T02:09:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add use case details for approved_clients field]]></title>
-        <id>https://github.com/mdn/content/pull/41496</id>
-        <link href="https://github.com/mdn/content/pull/41496"/>
-        <updated>2025-10-13T13:34:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">In our <a href="https://developer.mozilla.org/en-US/docs/Web/API/FedCM_API/IDP_integration" rel="nofollow">Identity provider integration with FedCM</a> page, we mention the <code class="notranslate">approved_clients</code> field of the accounts list endpoint JSON, but we don't say what it does.</p>
-<p dir="auto">This PR aims to add that detail.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38259.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2867261553" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38259" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38259/hovercard" href="https://github.com/mdn/content/issues/38259">#38259</a></p>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2025-10-13T13:33:18.000Z</published>
     </entry>
 </feed>
