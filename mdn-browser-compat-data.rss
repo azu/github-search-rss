@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-10-31T15:01:26.941Z</updated>
+    <updated>2025-10-31T16:01:58.962Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
@@ -189,27 +189,6 @@ Console.timesstamp supported from 134 <a href="https://developer.chrome.com/blog
         <published>2025-10-23T09:35:16.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Add many missing CSS property values (early browser versions)]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28265</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28265"/>
-        <updated>2025-10-31T13:54:16.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR is a part of a process to add all of the missing spec-defined CSS property values. These values are added by the mdn-bcd-collector, following an upgrade of Webref CSS to v7 and directly parsing the syntax for each property.</p>
-<p dir="auto">This specific PR focuses on CSS property values that were added in early browser versions. If a property had a prefix or alternative name, and the collector reported that a value was supported in the first version that supported the standard name, then it was assumed that the value was supported from the beginning and had been updated accordingly.</p>
-<p dir="auto">Spec URLs were obtained for as many values as possible.  However, once again, csswg.org went down frequently during the creation of this PR. Some spec URLs could not be obtained while the website was down. (Last property checked: <code class="notranslate">filter</code>)</p>
-<p dir="auto">Notes:</p>
-<ul dir="auto">
-<li>Chrome: Chrome 15+ was tested, with only a few versions that failed to be tested.</li>
-<li>Firefox: Firefox 5 through 49 crashed during tests, so no results were obtained for those versions. Versions within this range were guesstimated by parent data, with the intent to fine-tune the version numbers later if needed.</li>
-<li>Safari: Not all Safari versions were tested during this process (partially due to a lack of VM access), but test results were collected for every major Safari version. Specific minor versions were inferred by parent data, with the intent to fine-tune the version numbers later if needed.</li>
-</ul>]]></content>
-        <author>
-            <name>queengooborg</name>
-            <email>queengooborg@noreply.github.com</email>
-            <uri>https://github.com/queengooborg</uri>
-        </author>
-        <published>2025-10-22T14:26:07.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Bug 1886894 Clear sessionStorage in browsingData remove options]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28261</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28261"/>
@@ -287,7 +266,7 @@ Console.timesstamp supported from 134 <a href="https://developer.chrome.com/blog
         <title type="html"><![CDATA[Add many missing CSS property values (added since ~2015)]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28138</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28138"/>
-        <updated>2025-10-31T13:53:00.000Z</updated>
+        <updated>2025-10-31T16:00:25.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5179191?u=8dd92441fba3cb438759ee98862670ba56f2c67d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR is a part of a process to add all of the missing spec-defined CSS property values. These values are added by the mdn-bcd-collector, following an upgrade of Webref CSS to v7 and directly parsing the syntax for each property.</p>
 <p dir="auto">This specific PR focuses on CSS property values that were added in browser versions after ~2012. This PR includes a combination of values added when the properties were introduced, as well as values added afterwards. Any values that didn't seem plausible were omitted. Spec URLs were obtained for as many values as possible.</p>
 <p dir="auto">Notes:</p>
@@ -405,5 +384,28 @@ Console.timesstamp supported from 134 <a href="https://developer.chrome.com/blog
             <uri>https://github.com/mkurz</uri>
         </author>
         <published>2025-09-05T09:18:44.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add more spec_urls; set some standard_tracks to false (APIs A-E)]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/27671</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/27671"/>
+        <updated>2025-09-29T11:30:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is a bit of a test PR to see if we could add spec_urls everywhere (especially for behavioral sub features).<br>
+Some things came up where we should probably agree on spec_url consistency for a few common sub features:</p>
+<ul dir="auto">
+<li>worker_support</li>
+<li>iterable sub features (forEach, keys, values, iterator, etc)</li>
+<li>secure_context_required<br>
+I decided to use the spec_url for the interface itself, happy to hear other thoughts.</li>
+</ul>
+<p dir="auto">Also, I think when a sub aspect of e.g. a method is described then it is okay to link to the same spec section as the method. So, basically the sub feature gets the same spec_url as the parent feature.</p>
+<p dir="auto">I marked standard_track false for a few things: CSSPrimitiveValue, CSSValue, CSSValueList, DOMError, FeaturePolicy. Doesn't look like these will be going anywhere.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27456.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3279237470" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/27456" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/27456/hovercard" href="https://github.com/mdn/browser-compat-data/issues/27456">#27456</a>.</p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2025-08-26T13:10:28.000Z</published>
     </entry>
 </feed>
