@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-02T04:02:33.631Z</updated>
+    <updated>2025-11-02T05:01:16.402Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Lint: camelCase JavaScript identifiers]]></title>
+        <id>https://github.com/mdn/content/pull/41775</id>
+        <link href="https://github.com/mdn/content/pull/41775"/>
+        <updated>2025-11-02T04:59:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Our style guide requires JS identifiers to use camelCase. Some of these make sense as snake_case, but it is more important to be consistent than to make sense from a stylistic perspective.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2025-11-02T04:59:32.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Lint: HTML tables should have explicit <tbody> tag]]></title>
+        <id>https://github.com/mdn/content/pull/41774</id>
+        <link href="https://github.com/mdn/content/pull/41774"/>
+        <updated>2025-11-02T04:28:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">HTML <code class="notranslate">&lt;tbody&gt;</code> elements can have both start/end tags omitted, but it's still present in the DOM, which can be extremely unintuitive for selectors/DOM operations. Instead of relying on this implicit behavior, it's better to make the <code class="notranslate">&lt;tbody&gt;</code> explicit where possible.</p>
+<p dir="auto">This PR should be very easy to review with hide whitespace turned on.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2025-11-02T04:26:44.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[HTML conformance/style fixes (2)]]></title>
         <id>https://github.com/mdn/content/pull/41771</id>
@@ -373,76 +400,5 @@ Related docs work can be tracked in <a class="issue-link js-issue-link" data-err
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-10-13T13:33:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Change cloneNode references to importNode]]></title>
-        <id>https://github.com/mdn/content/pull/41441</id>
-        <link href="https://github.com/mdn/content/pull/41441"/>
-        <updated>2025-10-21T23:40:12.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3054066?u=00a2aabab440d4b81da911b9b7bec6012d9284c0&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Updated examples to use <code class="notranslate">document.importNode()</code> exclusively, and references to refer to both <code class="notranslate">importNode</code> and <code class="notranslate">Node.cloneNode</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><code class="notranslate">document.importNode</code> and <code class="notranslate">Node.cloneNode</code> are largely similar, but have one important difference; the timing of when the node is <em>adopted</em>. When using <code class="notranslate">Node.cloneNode()</code>, the content isn't adopted until it's either explicitly adopted or when it's appended to the document, so at a later point after calling <code class="notranslate">cloneNode()</code>. This falls into an edge-case annoyance where calling <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/upgrade" rel="nofollow">upgrade</a> on nodes that aren't yet adopted causes them to not actually get upgraded. This real example from the Web Components discord demonstrates the edge-case:</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="class MyEl extends HTMLElement {
-  constructor() {super(); console.log('MyEl constructor')}
-}
-customElements.define('my-el', MyEl)
-
-const template = document.createElement('template')
-template.innerHTML = '&lt;my-el&gt;&lt;/my-el&gt;'
-
-const frag = template.content.cloneNode(true)
-
-console.log(customElements.get('my-el')) // MyEl
-
-customElements.upgrade(frag) // crickets
-console.log('My el constructor should have ran already')
-
-document.body.append(frag) // logs &quot;MyEl constructor&quot;"><pre class="notranslate"><span class="pl-k">class</span> <span class="pl-v">MyEl</span> <span class="pl-k">extends</span> <span class="pl-v">HTMLElement</span> <span class="pl-kos">{</span>
-  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span><span class="pl-smi">super</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'MyEl constructor'</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
-<span class="pl-kos">}</span>
-<span class="pl-s1">customElements</span><span class="pl-kos">.</span><span class="pl-en">define</span><span class="pl-kos">(</span><span class="pl-s">'my-el'</span><span class="pl-kos">,</span> <span class="pl-v">MyEl</span><span class="pl-kos">)</span>
-
-<span class="pl-k">const</span> <span class="pl-s1">template</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'template'</span><span class="pl-kos">)</span>
-<span class="pl-s1">template</span><span class="pl-kos">.</span><span class="pl-c1">innerHTML</span> <span class="pl-c1">=</span> <span class="pl-s">'&lt;my-el&gt;&lt;/my-el&gt;'</span>
-
-<span class="pl-k">const</span> <span class="pl-s1">frag</span> <span class="pl-c1">=</span> <span class="pl-s1">template</span><span class="pl-kos">.</span><span class="pl-c1">content</span><span class="pl-kos">.</span><span class="pl-en">cloneNode</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span>
-
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">customElements</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s">'my-el'</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-c">// MyEl</span>
-
-<span class="pl-s1">customElements</span><span class="pl-kos">.</span><span class="pl-en">upgrade</span><span class="pl-kos">(</span><span class="pl-s1">frag</span><span class="pl-kos">)</span> <span class="pl-c">// crickets</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'My el constructor should have ran already'</span><span class="pl-kos">)</span>
-
-<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">append</span><span class="pl-kos">(</span><span class="pl-s1">frag</span><span class="pl-kos">)</span> <span class="pl-c">// logs "MyEl constructor"</span></pre></div>
-<p dir="auto">If you change from <code class="notranslate">content.cloneNode()</code> to <code class="notranslate">document.importNode()</code> then the constructor will run and the content is upgraded correctly.</p>
-<p dir="auto">So we would like to update the examples to show <code class="notranslate">document.importNode()</code> being used by default, and also update references/links to show it as an option next to cloneNode.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Web components discord discussion <a href="https://discord.com/channels/767813449048260658/767813449048260661/1421037073829199994" rel="nofollow">https://discord.com/channels/767813449048260658/767813449048260661/1421037073829199994</a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>frehner</name>
-            <email>frehner@noreply.github.com</email>
-            <uri>https://github.com/frehner</uri>
-        </author>
-        <published>2025-10-08T18:55:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Only use *.example and example.com as example domains]]></title>
-        <id>https://github.com/mdn/content/pull/41428</id>
-        <link href="https://github.com/mdn/content/pull/41428"/>
-        <updated>2025-10-19T20:30:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Remove a lot of example domains that may happen to be valid, to <span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39865.">fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3129428369" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39865" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39865/hovercard" href="https://github.com/mdn/content/issues/39865">#39865</a>. It is impossible to find all such examples, but I found a good bunch.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2025-10-07T21:16:15.000Z</published>
     </entry>
 </feed>
