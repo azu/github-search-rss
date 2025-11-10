@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-10T11:01:19.976Z</updated>
+    <updated>2025-11-10T12:02:11.334Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix `document.styleSheets` index in CSSLayerBlockRule example]]></title>
+        <id>https://github.com/mdn/content/pull/41866</id>
+        <link href="https://github.com/mdn/content/pull/41866"/>
+        <updated>2025-11-10T11:10:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/60345799?v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">I've switched the stylesheet index from 1 to 2, as <a href="https://developer.mozilla.org/en-US/play?uuid=87ce142c92ee7e20266d81b349da954386031336&amp;state=jVFNTwIxEP0rk%2BJBE7ILV1iIgh5MlINwoySU7rhb7Ve2JUAI%2F93pbkwwevDUZua9N%2FPenFkdjWYjVvjpMwgDpQpeixOWoCwU0pU4lU67ZgQN7lBK4feN11jkbSsrcj%2FllvWZDIFU7hO1geBRKqHhzC2A7x6Av3TGqXXh9tKKfCQN6WyIoCIamEDp5N6gjVmF8Ulj%2BobZaSWqhTB4y5nn7G492JBMR2v2GsM1L8STxmWNGMN6uMlozbcEIUKew8JFhFiLCC0sJBj0hqACVfG6KEJwZClSLgcVa2oTBs0Oy5JKeBSGzPRb0UOt9A9ub%2FAvQSSmI%2Bbr4wK8qJDbb1NdqJPOXHILNOYB5svlS%2BrMtJOfyVVipNyyiMc4dzZSAETbrkj7Fzjt9O6adjBnN%2Bd2SGYp1gtn3cjtuL0KIQzSYbSq6sguXw%3D%3D&amp;srcPrefix=%2Fen-US%2Fdocs%2FWeb%2FAPI%2FCSSLayerBlockRule%2F" rel="nofollow">the original playground</a> was outputting <code class="notranslate">undefined</code> for the <code class="notranslate">name</code> property. This happened because the referenced rule was not a <code class="notranslate">CSSLayerBlockRule</code>. The currently referenced stylesheet seemingly contains the main styles for the playground, while the first one (at index 0) contains only color variables.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Currently, the playground on <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerBlockRule#result" rel="nofollow">the affected page</a> outputs <code class="notranslate">The CSSLayerBlockRule is for the "undefined" layer</code>, which is confusing considering the preceding code implies the "special" layer name should be output.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Below is a screenshot of the playground's <code class="notranslate">document.styleSheets</code>, showing that <code class="notranslate">document.styleSheets[2]</code> is the desired <code class="notranslate">CSSRuleList</code>, not <code class="notranslate">document.styleSheets[1]</code>.</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/60345799/512110285-e187c4e0-55ab-4b60-85e7-ca2b70ed7841.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjI3NzY0MzEsIm5iZiI6MTc2Mjc3NjEzMSwicGF0aCI6Ii82MDM0NTc5OS81MTIxMTAyODUtZTE4N2M0ZTAtNTVhYi00YjYwLTg1ZTctY2EyYjcwZWQ3ODQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTExMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMTEwVDEyMDIxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWMxMTM3NWM1YzNmYjA5ZTAxMmQyYTg1OGE3NWVhZDIwNjMzNjY5MDY5NDQ0MTE2M2Q4NDM1NzYwNDY3NDhhNjcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.lLtlMkZ_0G4VZONdW-B5_dR0dHi2x315h3nyCtu07Ig"><img width="2000" height="1510" alt="Screenshot of the MDN playground, with the CSSLayerBlockRule playground loaded. The output incorrectly says 'The CSSLayerBlockRule is for the undefined layer'. Firefox developer tools are open over the page, with JavaScript output in the console showing each computed stylesheet for the playground document. There is a total of three style sheets. The first one contains only CSS variables with hex colors defined on the :root element, the second contains the playground's default styles, and the third is the layer rule relevant for the example." src="https://private-user-images.githubusercontent.com/60345799/512110285-e187c4e0-55ab-4b60-85e7-ca2b70ed7841.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjI3NzY0MzEsIm5iZiI6MTc2Mjc3NjEzMSwicGF0aCI6Ii82MDM0NTc5OS81MTIxMTAyODUtZTE4N2M0ZTAtNTVhYi00YjYwLTg1ZTctY2EyYjcwZWQ3ODQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTExMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMTEwVDEyMDIxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWMxMTM3NWM1YzNmYjA5ZTAxMmQyYTg1OGE3NWVhZDIwNjMzNjY5MDY5NDQ0MTE2M2Q4NDM1NzYwNDY3NDhhNjcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.lLtlMkZ_0G4VZONdW-B5_dR0dHi2x315h3nyCtu07Ig" style="max-width: 100%; height: auto; max-height: 1510px;"></a>
+
+
+
+
+]]></content>
+        <author>
+            <name>Kiwow</name>
+            <email>Kiwow@noreply.github.com</email>
+            <uri>https://github.com/Kiwow</uri>
+        </author>
+        <published>2025-11-10T11:06:00.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add note to clarify how to target one specific picker]]></title>
         <id>https://github.com/mdn/content/pull/41863</id>
@@ -492,34 +518,5 @@ link to the new guide (which is in a different PR)</p>]]></content>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-10-29T16:27:03.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Adds `graphics-document`, `graphics-object`, and `graphics-symbol` `aam-graphics` roles.]]></title>
-        <id>https://github.com/mdn/content/pull/41680</id>
-        <link href="https://github.com/mdn/content/pull/41680"/>
-        <updated>2025-11-06T16:15:19.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/143106292?u=b3c5814362982b570863d2bb4e99cc0cc32ec862&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Add<code class="notranslate">graphics-document</code>, <code class="notranslate">graphics-object</code>, and <code class="notranslate">graphics-symbol</code> <code class="notranslate">aam-graphics</code> roles.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">These changes ensure that the reader are aware of the 3 graphical am-graphics roles. And ensures that MDN is up to date!</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto">None.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28707.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1862135707" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/28707" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/28707/hovercard" href="https://github.com/mdn/content/issues/28707">#28707</a></p>
-]]></content>
-        <author>
-            <name>younisdev</name>
-            <email>younisdev@noreply.github.com</email>
-            <uri>https://github.com/younisdev</uri>
-        </author>
-        <published>2025-10-26T01:13:07.000Z</published>
     </entry>
 </feed>
