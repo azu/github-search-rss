@@ -2,11 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-11T19:01:22.965Z</updated>
+    <updated>2025-11-11T20:01:30.787Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Warn that `CanvasRenderingContext2D#getImageData()`, `toDataURL`, and `toBlob` may slightly randomize its return value]]></title>
+        <id>https://github.com/mdn/content/pull/41906</id>
+        <link href="https://github.com/mdn/content/pull/41906"/>
+        <updated>2025-11-11T19:38:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/79560998?u=1fbd5b05057c4198df9ddcd6218e98a813be0a45&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto"><a href="https://blog.mozilla.org/en/firefox/fingerprinting-protections/" rel="nofollow">Firefox 145 enables additional tracking protections by default</a>, one of which is randomizing the data returned by <code class="notranslate">getImageData</code> (and possibly <code class="notranslate">toDataURL</code> and <code class="notranslate">toBlob</code>). Previously, I believe Brave did this as well, and Firefox did it with <code class="notranslate">privacy.resistFingerprinting</code> enabled, but this is the first time a major browser has enabled it by default.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Developers should be aware that they cannot rely on the canvas API to render consistently across browsers or browsing sessions. More specifically, while most developers probably expect things like antialiasing to look different across browser engines, they probably <em>don't</em> expect something like a solid color fill to have random noise added to it.</p>
+<p dir="auto">There seem to be a lot of tutorials that expect <code class="notranslate">getImageData()</code>, <code class="notranslate">toDataURL()</code>, and <code class="notranslate">toBlob()</code> to return the actual pixel data displayed to the end user. In this PR, I've only focused on adding warnings about the surprising behavior. I'm not yet sure what to do about the tutorials. One suggestion for "advanced" users requiring deterministic rendering would be to ship a 2D graphics library in WebAssembly, but I'm not sure about the rest.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Brave described their randomization approach in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="584085294" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/5373" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/5373/hovercard" href="https://github.com/whatwg/html/issues/5373">whatwg/html#5373</a>. I'm not sure if Firefox has done so anywhere.</p>]]></content>
+        <author>
+            <name>valadaptive</name>
+            <email>valadaptive@noreply.github.com</email>
+            <uri>https://github.com/valadaptive</uri>
+        </author>
+        <published>2025-11-11T19:24:40.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add Fx146 rel note for contrast-color()]]></title>
         <id>https://github.com/mdn/content/pull/41905</id>
@@ -353,7 +374,7 @@ not part of the color modules. this is a different specification</p>
         <title type="html"><![CDATA[Clarify favicon addition instructions in documentation]]></title>
         <id>https://github.com/mdn/content/pull/41838</id>
         <link href="https://github.com/mdn/content/pull/41838"/>
-        <updated>2025-11-11T18:33:02.000Z</updated>
+        <updated>2025-11-11T19:25:20.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -512,32 +533,5 @@ not part of the color modules. this is a different specification</p>
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2025-11-05T17:20:23.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs(cookies): Clarify localhost exception for Secure cookies]]></title>
-        <id>https://github.com/mdn/content/pull/41795</id>
-        <link href="https://github.com/mdn/content/pull/41795"/>
-        <updated>2025-11-06T22:40:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/54687718?u=a1ad4b5e0600c9029222f99e5df2c7ef7ae19a59&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Updates the note about the Secure attribute to clarify that the localhost<br>
-exception for unsecured HTTP is not supported by Safari.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41366.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3474798100" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41366" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41366/hovercard" href="https://github.com/mdn/content/issues/41366">#41366</a></p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>Mattia-Rollo</name>
-            <email>Mattia-Rollo@noreply.github.com</email>
-            <uri>https://github.com/Mattia-Rollo</uri>
-        </author>
-        <published>2025-11-03T20:50:27.000Z</published>
     </entry>
 </feed>
