@@ -2,11 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-11T01:29:12.682Z</updated>
+    <updated>2025-11-11T02:30:22.906Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add Firefox release automation script]]></title>
+        <id>https://github.com/mdn/content/pull/41897</id>
+        <link href="https://github.com/mdn/content/pull/41897"/>
+        <updated>2025-11-11T01:54:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">It’s an automation script that helps to create Firefox release notes.</p>
+<p dir="auto">I created the <a href="https://github.com/mdn/content/pull/41896" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41896/hovercard">Firefox 145 release notes PR</a> using this script.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">To simplify release notes workflow.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">How it works, for example, with the newly released Firefox 145:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="node scripts/release-firefox.js 145"><pre class="notranslate">node scripts/release-firefox.js 145</pre></div>
+<p dir="auto">What it does:</p>
+<p dir="auto">Takes the newly released version as a parameter (N), and:</p>
+<ul dir="auto">
+<li>Removes active from N-1</li>
+<li>Updates N to Stable
+<ul dir="auto">
+<li>Uncomments HTML, CSS, JavaScript “no notable changes” sections</li>
+<li>Removes all other unused commented sections</li>
+</ul>
+</li>
+<li>Updates N+1 to Beta</li>
+<li>Adds Nightly N+2 page</li>
+</ul>
+<p dir="auto">For release dates, it uses official JSON API — <a href="https://whattrainisitnow.com/api/firefox/calendar/future/" rel="nofollow">https://whattrainisitnow.com/api/firefox/calendar/future/</a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3610323814" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41896" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41896/hovercard" href="https://github.com/mdn/content/pull/41896">#41896</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2025-11-11T01:47:46.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Release Firefox 145]]></title>
+        <id>https://github.com/mdn/content/pull/41896</id>
+        <link href="https://github.com/mdn/content/pull/41896"/>
+        <updated>2025-11-11T01:39:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Release notes for Firefox 145</p>
+<ul dir="auto">
+<li>Removes active from 144</li>
+<li>Updates 145 to Stable</li>
+<li>Updates 146 to Beta</li>
+<li>Adds Nightly 147</li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2025-11-11T01:37:41.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA["Viewport API" and "Visual Viewport API" are not real specs]]></title>
         <id>https://github.com/mdn/content/pull/41893</id>
@@ -461,53 +518,5 @@ exception for unsecured HTTP is not supported by Safari.</p>
             <uri>https://github.com/wbamberg</uri>
         </author>
         <published>2025-11-02T19:29:56.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs(HTTP): X-Content-Type-Options — mention impact on document sniffing]]></title>
-        <id>https://github.com/mdn/content/pull/41776</id>
-        <link href="https://github.com/mdn/content/pull/41776"/>
-        <updated>2025-11-06T12:34:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/160616048?u=c67d934d3d5438fa90d22a59e3c49636cd31c75c&v=4" width="64" height="64" alt=""/><br/><p dir="auto">What</p>
-<ul dir="auto">
-<li>Clarify that <code class="notranslate">X-Content-Type-Options: nosniff</code> also affects document navigations:<br>
-user agents should avoid sniffing and treating content as HTML when the <code class="notranslate">Content-Type</code> is incorrect or missing.</li>
-<li>Add a short subsection “Effect on HTML document sniffing” with references.</li>
-</ul>
-<p dir="auto">Why</p>
-<ul dir="auto">
-<li>The current page focuses on scripts and styles; this update reflects the MIME sniffing algorithm behavior for documents as discussed in WHATWG.</li>
-</ul>
-<p dir="auto">How to verify</p>
-<ul dir="auto">
-<li>Run <code class="notranslate">yarn start</code> and preview /en-US/docs/Web/HTTP/Headers/X-Content-Type-Options.</li>
-<li>Confirm the new subsection is rendered and links work.</li>
-</ul>
-<p dir="auto">References</p>
-<ul dir="auto">
-<li>WHATWG MIME Sniffing algorithm: <a href="https://mimesniff.spec.whatwg.org/#mime-type-sniffing-algorithm" rel="nofollow">https://mimesniff.spec.whatwg.org/#mime-type-sniffing-algorithm</a></li>
-<li>Discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="424897683" data-permission-text="Title is private" data-url="https://github.com/whatwg/mimesniff/issues/98" data-hovercard-type="issue" data-hovercard-url="/whatwg/mimesniff/issues/98/hovercard" href="https://github.com/whatwg/mimesniff/issues/98">whatwg/mimesniff#98</a></li>
-</ul>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41745.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3570561352" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41745" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41745/hovercard" href="https://github.com/mdn/content/issues/41745">#41745</a></p>]]></content>
-        <author>
-            <name>ssswdwads</name>
-            <email>ssswdwads@noreply.github.com</email>
-            <uri>https://github.com/ssswdwads</uri>
-        </author>
-        <published>2025-11-02T13:31:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Draft: Scroll driven animation properties and types]]></title>
-        <id>https://github.com/mdn/content/pull/41765</id>
-        <link href="https://github.com/mdn/content/pull/41765"/>
-        <updated>2025-11-05T13:04:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Pull out the descriptions from the intro and put them into a description section.<br>
-create new data types and link to them<br>
-link to the new guide (which is in a different PR)</p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2025-10-31T18:56:00.000Z</published>
     </entry>
 </feed>
