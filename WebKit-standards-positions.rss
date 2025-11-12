@@ -2,11 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2025-11-12T09:02:12.487Z</updated>
+    <updated>2025-11-12T10:01:22.085Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Clipboard API and events: SVG as optional data type]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/579</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/579"/>
+        <updated>2025-11-12T09:50:47.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1298200?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/hober/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/hober">@hober</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/karlcow/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/karlcow">@karlcow</a></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">Clipboard API and events: SVG support</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a href="https://w3c.github.io/clipboard-apis/#optional-data-types-x" rel="nofollow">https://w3c.github.io/clipboard-apis/#optional-data-types-x</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a href="https://github.com/w3c/clipboard-apis">https://github.com/w3c/clipboard-apis</a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><a href="https://bugs.webkit.org/show_bug.cgi?id=280726" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=280726</a></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Clipboard API is supported by WebKit for plain text but not for optional data types. This position request is specifically about the optional <strong>SVG data type</strong>.</p>
+<p dir="auto"><strong>Why SVG as optional data type?</strong><br>
+For desktop to web client data transfer there is only plain text today. Speaking for Adobe Illustrator (Ai), the majority of content getting transferred is vector graphics. SVG is the de-facto-standard interchange format for vector graphics.</p>
+<p dir="auto">At the moment, to transfer vector content to Safari, Ai has to use plain text.</p>
+<p dir="auto">This limits Ai as is needs to switch between content generated for the clipboard. Ai always has to anticipate what to put on the clipboard.</p>
+<ul dir="auto">
+<li>Currently, if the selection in Ai has text, Ai copies the (selected) text only.</li>
+<li>Otherwise, Ai generates SVG regardless of the requirements of the consumer.</li>
+</ul>
+<p dir="auto">Having a dedicated data type would allow Ai to always generate SVG on request. Even if the selection contains text.</p>
+<p dir="auto"><strong>Sanitized vs Non-Sanitized SVG content</strong><br>
+The WebKit bugs assumption and specification text seem to have diverged: The specification does not require sanitization. In fact, SVG consuming web applications (Figma, Adobe Express and others) already do their own sanitization.</p>
+<p dir="auto">Sanitization is <em>not required</em>.</p>
+<p dir="auto"><strong>Technical implementation requirements</strong><br>
+The specification only states</p>
+<blockquote>
+<p dir="auto">These data types MAY be exposed by UAs if a corresponding native type exists on the clipboard</p>
+</blockquote>
+<p dir="auto">For Windows, the MIME type <code class="notranslate">image/svg+xml</code> has been established. On macOS, Apple introduced <code class="notranslate">public.svg-image</code>. Chrome-based browsers make use of these MIME-types/UTIs.</p>
+<p dir="auto"><strong>Security/privacy concerns</strong><br>
+Safari does support plain text as data type and all applications are actively using this format as a workaround to transfer SVG. W/o sanitization requirements, there are no additional security or privacy concerns to the common practice today.</p>]]></content>
+        <author>
+            <name>dirkschulze</name>
+            <email>dirkschulze@noreply.github.com</email>
+            <uri>https://github.com/dirkschulze</uri>
+        </author>
+        <published>2025-11-12T09:50:47.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Email Verification Protocol]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/578</id>
@@ -642,39 +696,5 @@ but they don't support the ping functionality completely (only partial support i
             <uri>https://github.com/shadow01685535</uri>
         </author>
         <published>2025-10-11T22:38:34.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Base appearance for list box select elements]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/559</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/559"/>
-        <updated>2025-10-07T00:09:32.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7681467?u=975aa36c2bf890f0c3f43db7a9d653fd4ad5a5f2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">Base appearance for list box select elements</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3489512245" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/11758" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/11758/hovercard" href="https://github.com/whatwg/html/pull/11758">whatwg/html#11758</a></p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><a href="https://github.com/whatwg/html">https://github.com/whatwg/html</a></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3489514396" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1304" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1304/hovercard" href="https://github.com/mozilla/standards-positions/issues/1304">mozilla/standards-positions#1304</a></p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">This proposal defines base appearance for list box select elements in addition to drop-down select elements. The prior customizable select proposal only defined base appearance for drop-down select elements.</p>]]></content>
-        <author>
-            <name>josepharhar</name>
-            <email>josepharhar@noreply.github.com</email>
-            <uri>https://github.com/josepharhar</uri>
-        </author>
-        <published>2025-10-07T00:09:15.000Z</published>
     </entry>
 </feed>
