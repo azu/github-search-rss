@@ -6,10 +6,32 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF146 enables the HTML Sanitizer API by default on nightly. This updates the Experimental features page.</p>\n<p dir=\"auto\">Note that this isn't released and this was previously noted in the FF136 release note, so I haven't added it to the relnote page again.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3547012068\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41649\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41649/hovercard\" href=\"https://github.com/mdn/content/issues/41649\">#41649</a></p>",
+            "url": "https://github.com/mdn/content/pull/41940",
+            "title": "FF146 Expr Feat: Sanitizer API in preview",
+            "date_modified": "2025-11-14T01:13:21.000Z",
+            "date_published": "2025-11-14T01:11:47.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/40757969?u=16b0d411bf1fd4db6063cecab03cf1e0d813d0b9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Added an example showing that normal text characters can also be percent-encoded, even if they don't have to.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const hex = [];\nhex.length = 256;\nfor (let i = 0; i &lt; 256; i++) {\n  hex[i] = i.toString(16).padStart(2, &quot;0&quot;);\n}\nconsole.log(hex);\nfetch(`data:application/octet-stream;,%${hex.join(&quot;%&quot;)}`)\n  .then((resp) =&gt; resp.arrayBuffer())\n  .then((buf) =&gt; {\n    const bytes = new Uint8Array(buf);\n    console.log([...bytes]);\n    for (let i = 0; i &lt; 256; i++) {\n      if (bytes[i] !== i) {\n        console.log(`buf[${i}] !== ${i}`);\n      }\n    }\n    console.log(&quot;finished&quot;);\n  });\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">hex</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">[</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">hex</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">length</span> <span class=\"pl-c1\">=</span> <span class=\"pl-c1\">256</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-k\">for</span> <span class=\"pl-kos\">(</span><span class=\"pl-k\">let</span> <span class=\"pl-s1\">i</span> <span class=\"pl-c1\">=</span> <span class=\"pl-c1\">0</span><span class=\"pl-kos\">;</span> <span class=\"pl-s1\">i</span> <span class=\"pl-c1\">&lt;</span> <span class=\"pl-c1\">256</span><span class=\"pl-kos\">;</span> <span class=\"pl-s1\">i</span><span class=\"pl-c1\">++</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n  <span class=\"pl-s1\">hex</span><span class=\"pl-kos\">[</span><span class=\"pl-s1\">i</span><span class=\"pl-kos\">]</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">i</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">toString</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">16</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">padStart</span><span class=\"pl-kos\">(</span><span class=\"pl-c1\">2</span><span class=\"pl-kos\">,</span> <span class=\"pl-s\">\"0\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-kos\">}</span>\n<span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">hex</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-en\">fetch</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`data:application/octet-stream;,%<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">hex</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">join</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"%\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">}</span></span>`</span><span class=\"pl-kos\">)</span>\n  <span class=\"pl-kos\">.</span><span class=\"pl-en\">then</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">resp</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-s1\">resp</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">arrayBuffer</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span>\n  <span class=\"pl-kos\">.</span><span class=\"pl-en\">then</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">buf</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>\n    <span class=\"pl-k\">const</span> <span class=\"pl-s1\">bytes</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Uint8Array</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">buf</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span>...<span class=\"pl-s1\">bytes</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n    <span class=\"pl-k\">for</span> <span class=\"pl-kos\">(</span><span class=\"pl-k\">let</span> <span class=\"pl-s1\">i</span> <span class=\"pl-c1\">=</span> <span class=\"pl-c1\">0</span><span class=\"pl-kos\">;</span> <span class=\"pl-s1\">i</span> <span class=\"pl-c1\">&lt;</span> <span class=\"pl-c1\">256</span><span class=\"pl-kos\">;</span> <span class=\"pl-s1\">i</span><span class=\"pl-c1\">++</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n      <span class=\"pl-k\">if</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">bytes</span><span class=\"pl-kos\">[</span><span class=\"pl-s1\">i</span><span class=\"pl-kos\">]</span> <span class=\"pl-c1\">!==</span> <span class=\"pl-s1\">i</span><span class=\"pl-kos\">)</span> <span class=\"pl-kos\">{</span>\n        <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">`buf[<span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">i</span><span class=\"pl-kos\">}</span></span>] !== <span class=\"pl-s1\"><span class=\"pl-kos\">${</span><span class=\"pl-s1\">i</span><span class=\"pl-kos\">}</span></span>`</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n      <span class=\"pl-kos\">}</span>\n    <span class=\"pl-kos\">}</span>\n    <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">\"finished\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/41939",
+            "title": "Added example showing normal text characters can also be percent-encoded",
+            "date_modified": "2025-11-14T00:36:09.000Z",
+            "date_published": "2025-11-14T00:28:54.000Z",
+            "author": {
+                "name": "Worldwidebrine",
+                "url": "https://github.com/Worldwidebrine"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #41843.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3601633404\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41843\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41843/hovercard\" href=\"https://github.com/mdn/content/issues/41843\">#41843</a></p>\n<p dir=\"auto\">Permissions-Policy is not a forbidden request header.</p>",
             "url": "https://github.com/mdn/content/pull/41938",
             "title": "permissions-policy is not forbidden request or response header",
-            "date_modified": "2025-11-13T23:56:06.000Z",
+            "date_modified": "2025-11-14T01:11:52.000Z",
             "date_published": "2025-11-13T23:12:39.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR and the parallel changes to the extension examples updates the two getting started extensions and related articles to use manifest V3.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Manifest V3 is near the preferred standard for web extension development and provides greater compatibility with Chrome.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">The related update to the extension examples are in these PR.</p>\n<ul dir=\"auto\">\n<li>TBC</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/41812",
-            "title": "Issue 41050 tutorial examples to manifest V3",
-            "date_modified": "2025-11-05T17:22:14.000Z",
-            "date_published": "2025-11-05T17:20:23.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/54687718?u=a1ad4b5e0600c9029222f99e5df2c7ef7ae19a59&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the note about the Secure attribute to clarify that the localhost<br>\nexception for unsecured HTTP is not supported by Safari.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #41366.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3474798100\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41366\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41366/hovercard\" href=\"https://github.com/mdn/content/issues/41366\">#41366</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/41795",
-            "title": "docs(cookies): Clarify localhost exception for Secure cookies",
-            "date_modified": "2025-11-06T22:40:08.000Z",
-            "date_published": "2025-11-03T20:50:27.000Z",
-            "author": {
-                "name": "Mattia-Rollo",
-                "url": "https://github.com/Mattia-Rollo"
             }
         }
     ]

@@ -2,16 +2,90 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-14T00:04:23.597Z</updated>
+    <updated>2025-11-14T01:29:21.507Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[FF146 Expr Feat: Sanitizer API in preview]]></title>
+        <id>https://github.com/mdn/content/pull/41940</id>
+        <link href="https://github.com/mdn/content/pull/41940"/>
+        <updated>2025-11-14T01:13:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF146 enables the HTML Sanitizer API by default on nightly. This updates the Experimental features page.</p>
+<p dir="auto">Note that this isn't released and this was previously noted in the FF136 release note, so I haven't added it to the relnote page again.</p>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3547012068" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41649" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41649/hovercard" href="https://github.com/mdn/content/issues/41649">#41649</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2025-11-14T01:11:47.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Added example showing normal text characters can also be percent-encoded]]></title>
+        <id>https://github.com/mdn/content/pull/41939</id>
+        <link href="https://github.com/mdn/content/pull/41939"/>
+        <updated>2025-11-14T00:36:09.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/40757969?u=16b0d411bf1fd4db6063cecab03cf1e0d813d0b9&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Added an example showing that normal text characters can also be percent-encoded, even if they don't have to.</p>
+<h3 dir="auto">Motivation</h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const hex = [];
+hex.length = 256;
+for (let i = 0; i &lt; 256; i++) {
+  hex[i] = i.toString(16).padStart(2, &quot;0&quot;);
+}
+console.log(hex);
+fetch(`data:application/octet-stream;,%${hex.join(&quot;%&quot;)}`)
+  .then((resp) =&gt; resp.arrayBuffer())
+  .then((buf) =&gt; {
+    const bytes = new Uint8Array(buf);
+    console.log([...bytes]);
+    for (let i = 0; i &lt; 256; i++) {
+      if (bytes[i] !== i) {
+        console.log(`buf[${i}] !== ${i}`);
+      }
+    }
+    console.log(&quot;finished&quot;);
+  });"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">hex</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
+<span class="pl-s1">hex</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">=</span> <span class="pl-c1">256</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">256</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">hex</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">i</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-c1">16</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">padStart</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span> <span class="pl-s">"0"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">hex</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-en">fetch</span><span class="pl-kos">(</span><span class="pl-s">`data:application/octet-stream;,%<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">hex</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">"%"</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
+  <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resp</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">resp</span><span class="pl-kos">.</span><span class="pl-en">arrayBuffer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
+  <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">buf</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">bytes</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Uint8Array</span><span class="pl-kos">(</span><span class="pl-s1">buf</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-kos">[</span>...<span class="pl-s1">bytes</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">256</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">bytes</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span> <span class="pl-c1">!==</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`buf[<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>] !== <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"finished"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>Worldwidebrine</name>
+            <email>Worldwidebrine@noreply.github.com</email>
+            <uri>https://github.com/Worldwidebrine</uri>
+        </author>
+        <published>2025-11-14T00:28:54.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[permissions-policy is not forbidden request or response header]]></title>
         <id>https://github.com/mdn/content/pull/41938</id>
         <link href="https://github.com/mdn/content/pull/41938"/>
-        <updated>2025-11-13T23:56:06.000Z</updated>
+        <updated>2025-11-14T01:11:52.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41843.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3601633404" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41843" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41843/hovercard" href="https://github.com/mdn/content/issues/41843">#41843</a></p>
 <p dir="auto">Permissions-Policy is not a forbidden request header.</p>]]></content>
         <author>
@@ -451,53 +525,5 @@ I think this is easier to understand</p>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-11-06T10:53:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Issue 41050 tutorial examples to manifest V3]]></title>
-        <id>https://github.com/mdn/content/pull/41812</id>
-        <link href="https://github.com/mdn/content/pull/41812"/>
-        <updated>2025-11-05T17:22:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">This PR and the parallel changes to the extension examples updates the two getting started extensions and related articles to use manifest V3.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Manifest V3 is near the preferred standard for web extension development and provides greater compatibility with Chrome.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">The related update to the extension examples are in these PR.</p>
-<ul dir="auto">
-<li>TBC</li>
-</ul>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2025-11-05T17:20:23.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs(cookies): Clarify localhost exception for Secure cookies]]></title>
-        <id>https://github.com/mdn/content/pull/41795</id>
-        <link href="https://github.com/mdn/content/pull/41795"/>
-        <updated>2025-11-06T22:40:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/54687718?u=a1ad4b5e0600c9029222f99e5df2c7ef7ae19a59&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Updates the note about the Secure attribute to clarify that the localhost<br>
-exception for unsecured HTTP is not supported by Safari.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41366.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3474798100" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41366" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41366/hovercard" href="https://github.com/mdn/content/issues/41366">#41366</a></p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>Mattia-Rollo</name>
-            <email>Mattia-Rollo@noreply.github.com</email>
-            <uri>https://github.com/Mattia-Rollo</uri>
-        </author>
-        <published>2025-11-03T20:50:27.000Z</published>
     </entry>
 </feed>
