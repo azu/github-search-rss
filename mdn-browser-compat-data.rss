@@ -2,11 +2,51 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-11-20T15:01:25.209Z</updated>
+    <updated>2025-11-20T16:01:35.476Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix Web Share API support for Firefox and Firefox for Android]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28495</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28495"/>
+        <updated>2025-11-20T15:37:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/107345594?u=dd2534c29da0184e6446eb1e7c6be0412ea3c489&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">This PR corrects the compatibility data for <code class="notranslate">navigator.share()</code> and <code class="notranslate">navigator.canShare()</code> (specifically <code class="notranslate">data_text_parameter</code>) in Firefox and Firefox for Android.</p>
+<p dir="auto"><strong>Changes applied:</strong></p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Firefox (Desktop):</strong></p>
+<ul dir="auto">
+<li><strong>Restored version:</strong> Restored <code class="notranslate">version_added: "96"</code> which appears to have been inadvertently removed in PR <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2393967818" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/23687" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/23687/hovercard" href="https://github.com/mdn/browser-compat-data/pull/23687">#23687</a>.</li>
+<li><strong>Added flag:</strong> Added the <code class="notranslate">dom.webshare.enabled</code> flag configuration to accurately reflect that this feature requires a preference setting.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Firefox for Android:</strong></p>
+<ul dir="auto">
+<li><strong>Mirror removal:</strong> Switched from <code class="notranslate">"mirror"</code> to explicit version numbers (<code class="notranslate">"71"</code> for <code class="notranslate">share</code> and <code class="notranslate">"96"</code> for <code class="notranslate">canShare</code>) to bypass the flag requirement issue.</li>
+</ul>
+</li>
+</ol>
+<p dir="auto"><strong>Context and Verification:</strong></p>
+<ul dir="auto">
+<li><strong>Mirroring Issue:</strong> Currently, the desktop <code class="notranslate">firefox</code> entry requires the <code class="notranslate">dom.webshare.enabled</code> preference. However, <code class="notranslate">firefox_android</code> is defined with <code class="notranslate">"accepts_flags": false</code>. Consequently, the build script incorrectly resolves the mirrored support status to <code class="notranslate">false</code>.</li>
+<li><strong>Android <code class="notranslate">canShare</code> status:</strong> There appear to have been historical bugs regarding <code class="notranslate">data_text_parameter</code> support in <code class="notranslate">canShare</code> on Android. Although I was unable to trace the specific details or issue tracks myself, I have confirmed on a physical device (latest Firefox for Android) that it currently works as expected.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2393967818" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/23687" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/23687/hovercard" href="https://github.com/mdn/browser-compat-data/pull/23687">#23687</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1066775100" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/13810" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/13810/hovercard" href="https://github.com/mdn/browser-compat-data/pull/13810">#13810</a></li>
+</ul>]]></content>
+        <author>
+            <name>muhi111</name>
+            <email>muhi111@noreply.github.com</email>
+            <uri>https://github.com/muhi111</uri>
+        </author>
+        <published>2025-11-20T15:36:30.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Chrome 143 supports side-relative values for `background-position-x/y`]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28494</id>
@@ -393,24 +433,5 @@ Addresses discussion in <a class="issue-link js-issue-link" data-error-text="Fai
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2025-10-16T16:38:24.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Extract HTML `<datalist>` input type subfeatures]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28189</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28189"/>
-        <updated>2025-11-17T13:54:04.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Extracts HTML <code class="notranslate">&lt;datalist&gt;</code> input type subfeatures, and duplicates these below <code class="notranslate">html.input.elements.type_*</code>.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">To review, look at "grouped by change" in <a href="https://github.com/mdn/browser-compat-data/pull/28189#issuecomment-3401538971" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28189/hovercard">this comment</a>.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Once landed, we can tackle the issues mentioned in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2801257212" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25723" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/25723/hovercard" href="https://github.com/mdn/browser-compat-data/issues/25723">#25723</a>.</p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-10-14T12:23:54.000Z</published>
     </entry>
 </feed>
