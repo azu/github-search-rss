@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF146 adds support for using non-registered symbols as keys for WeakMap and values for WeakSet in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1966745\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1966745</a></p>\n<p dir=\"auto\">The issue only talks about WeakMap, but I ran a test for WeakSet and that behaves the same way:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const ws = new WeakSet();\nconst sym = Symbol('foo');\nws.add(sym); \"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">ws</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">WeakSet</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-k\">const</span> <span class=\"pl-s1\">sym</span> <span class=\"pl-c1\">=</span> <span class=\"pl-v\">Symbol</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'foo'</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-s1\">ws</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">add</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">sym</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span> </pre></div>\n<p dir=\"auto\">This updates the subfeature.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3607691670\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41868\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41868/hovercard\" href=\"https://github.com/mdn/content/issues/41868\">mdn/content#41868</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/28498",
+            "title": "FF146 WeakMap/WeakSet use non-registered symbols as keys/values",
+            "date_modified": "2025-11-21T04:01:13.000Z",
+            "date_published": "2025-11-21T04:00:38.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF146 supports WebCrypto import of EC keys in compressed format in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1971499\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1971499</a></p>\n<p dir=\"auto\">I've added as a subfeature of importKey</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3607703023\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41870\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41870/hovercard\" href=\"https://github.com/mdn/content/issues/41870\">mdn/content#41870</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/28497",
             "title": "FF146 EC compressed data supported on import of EC key",
@@ -190,17 +201,6 @@
             "author": {
                 "name": "caugner",
                 "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Chromium browsers support <a href=\"https://privacysandbox.google.com/protections/user-agent\" rel=\"nofollow\">User-Agent reduction</a>, which means that features such as the <code class=\"notranslate\">User-Agent</code> HTTP header provide less-specific information in an effort to reduce their effectiveness for fingerprinting/tracking.</p>\n<p dir=\"auto\">This PR adds data points covering User-Agent reduction to relevant web platform features that I know to be affected by the change.</p>\n<p dir=\"auto\">Compat data sources:</p>\n<ul dir=\"auto\">\n<li>From looking at <a href=\"https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html\" rel=\"nofollow\">https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html</a>, it looks like rollout of UA reduction to 100% of Chromium desktop users occurred in version 110, while the version was 113 for Chromium Android users. I asked <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/miketaylr/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/miketaylr\">@miketaylr</a> about this, and he confirmed it to be correct.</li>\n<li>From looking at <a href=\"https://www.chromium.org/updates/ua-reduction/#applicable-platforms\" rel=\"nofollow\">https://www.chromium.org/updates/ua-reduction/#applicable-platforms</a>, it looks like Android WebView should be <code class=\"notranslate\">false</code></li>\n</ul>\n<p dir=\"auto\">Another question for Mike: For all of these data points, I used <a href=\"https://wicg.github.io/ua-client-hints/#user-agent\" rel=\"nofollow\">https://wicg.github.io/ua-client-hints/#user-agent</a> as the <code class=\"notranslate\">spec_url</code>. Are there better spec URLs we can point to for these individual features?</p>\n<p dir=\"auto\">This PR is part of the final set of privacy sandbox information to be added to MDN. Much of it is being removed, but this feature is stable and will be kept, so it should be added.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28275",
-            "title": "Chrome 110 applies User-Agent reduction to Navigator properties + `User-Agent` header",
-            "date_modified": "2025-11-07T14:33:52.000Z",
-            "date_published": "2025-10-23T15:21:08.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
