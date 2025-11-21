@@ -2,11 +2,51 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-11-21T11:01:06.824Z</updated>
+    <updated>2025-11-21T12:02:02.182Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Disallow external dependencies on the npm registry]]></title>
+        <id>https://github.com/npm/rfcs/issues/843</id>
+        <link href="https://github.com/npm/rfcs/issues/843"/>
+        <updated>2025-11-21T11:06:34.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Package on the npm registry should not be allowed to have "External Dependencies" (i.e. a dependency that is not hosted on the npm registry) because such dependencies do not have the same properties as npm-hosted packages while being nearly invisible to the end user.</p>
+<p dir="auto">For further reference:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">This proposal is based on the research from <a href="https://ldklab.github.io/assets/papers/scored25-externaldeps.pdf" rel="nofollow">"Stepping out of Bounds: Security Impact of Allowing Packages on npm to Declare External Dependencies"</a>. Based on its analysis, external dependencies are rare on npm as is.</p>
+</li>
+<li>
+<p dir="auto">In the Rust ecosystem, while Cargo allows for external dependencies you are not allowed to publish to <a href="https://crates.io/" rel="nofollow">crates.io</a> if you depend on an external dependency.</p>
+<p dir="auto">From <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#specifying-dependencies-from-other-registries" rel="nofollow">the Cargo docs</a>: "crates.io does not allow packages to be published with dependencies on code published outside of crates.io."</p>
+</li>
+</ul>
+<h3 dir="auto">Example</h3>
+<p dir="auto">There are two big reasons that motivate this change:</p>
+<ol dir="auto">
+<li>The external dependency may become unavailable. Unlike npm, which largely ensures (used) packages don't just disappear, external dependencies do not have that guarantee.</li>
+<li>The external dependency may be changed. Unlike npm, which guarantees that published packages are immutable, external dependencies may be changed at any time. Now, some ways of specifying (e.g. by git commit sha(?)) could be argued to provide sufficient integrity guarantees, but otherwise it requires a lockfile. This is inconsistent with "normal" usage of the npm registry and can break security expectations of users.</li>
+</ol>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">External dependencies are allowed.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Any <strong>new</strong> package published to the npm registry should be checked for external dependencies and if any are found the publication should be rejected. This should only apply to <strong>new</strong> publications so as to avoid breaking existing deployments. The npm CLI should consider adding a warning when an external dependency appears in the dependency hierarchy as a "mitigation" for the historical baggage of this feature.</p>
+<p dir="auto">A grace period is probably in order during which attempted publications of packages with external dependencies are not flat out rejected, but the client is only warned about upcoming changes.</p>
+<h3 dir="auto">References</h3>
+
+<p dir="auto"><em>none</em></p>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2025-11-21T11:06:34.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[luisgerardomartinezlara119@gmail.com]]></title>
         <id>https://github.com/npm/rfcs/issues/841</id>
@@ -304,8 +344,8 @@ SIGTERM  (node receives signal)
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjMxNjYsIm5iZiI6MTc2MzcyMjg2NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMTAxMDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hMDk3NDc1NjFhMDI0ZjhlYTA1ZDM2ZGUxNzY4MTBlNWM0ZTJiNjZhZTUwZGRjZWZmYThkYTA4MjI4ZTY3NTM5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.OwblDTkcWN72p6DVq0l40CA0vqKJj4GZBGqTo1xN3IA"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjMxNjYsIm5iZiI6MTc2MzcyMjg2NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMTAxMDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hMDk3NDc1NjFhMDI0ZjhlYTA1ZDM2ZGUxNzY4MTBlNWM0ZTJiNjZhZTUwZGRjZWZmYThkYTA4MjI4ZTY3NTM5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.OwblDTkcWN72p6DVq0l40CA0vqKJj4GZBGqTo1xN3IA" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjMxNjYsIm5iZiI6MTc2MzcyMjg2NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMTAxMDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hNTk1YTVkMWViNDhjMzgzYTFmZGQ2YWE5MDM1MGJlMzk4YTI3ZTFiMmE0MGNhOGM5Yzg0M2VhMTZmMDI1MWQ3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.MtiEUtZTrUaLrNX58gsa_1eQ_w_b4q43ZUnwzuozb8Y"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjMxNjYsIm5iZiI6MTc2MzcyMjg2NiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMTAxMDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hNTk1YTVkMWViNDhjMzgzYTFmZGQ2YWE5MDM1MGJlMzk4YTI3ZTFiMmE0MGNhOGM5Yzg0M2VhMTZmMDI1MWQ3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.MtiEUtZTrUaLrNX58gsa_1eQ_w_b4q43ZUnwzuozb8Y" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjY4MjIsIm5iZiI6MTc2MzcyNjUyMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMjAyMDJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNjcyMzI1YjhlZjY0MTk1YzkxN2QwNmFmOWI4ZDdiOWVmYjg0M2FjZTMyYzIzOGYxYWU3ZWZkNjNlMDRlMGNiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.eatpdteo_IwDzrDWB4oyAvipPBn511058UpnvSD1Sjg"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjY4MjIsIm5iZiI6MTc2MzcyNjUyMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMjAyMDJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNjcyMzI1YjhlZjY0MTk1YzkxN2QwNmFmOWI4ZDdiOWVmYjg0M2FjZTMyYzIzOGYxYWU3ZWZkNjNlMDRlMGNiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.eatpdteo_IwDzrDWB4oyAvipPBn511058UpnvSD1Sjg" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjY4MjIsIm5iZiI6MTc2MzcyNjUyMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMjAyMDJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yZGYxNTg0OTgyZjU3NTM3OTM3YzIwZTdiMzQ0MmIyNDEwZTljZWY3YTgxOGVhYWI1N2I0YmU3ZGNiNzVkNzNhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.da-mZ0qYzJSSnlEysJGUeiqFpO-WD4zzAdCwlm4r2-0"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjM3MjY4MjIsIm5iZiI6MTc2MzcyNjUyMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTIxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyMVQxMjAyMDJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yZGYxNTg0OTgyZjU3NTM3OTM3YzIwZTdiMzQ0MmIyNDEwZTljZWY3YTgxOGVhYWI1N2I0YmU3ZGNiNzVkNzNhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.da-mZ0qYzJSSnlEysJGUeiqFpO-WD4zzAdCwlm4r2-0" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -661,41 +701,5 @@ AC92,{bs/$€€+**^}</li>
             <uri>https://github.com/Clydonight</uri>
         </author>
         <published>2024-09-15T18:37:52.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Allow packages to declare a schema for what kind of versioning system it uses (Allow use of non-SemVer)]]></title>
-        <id>https://github.com/npm/rfcs/issues/794</id>
-        <link href="https://github.com/npm/rfcs/issues/794"/>
-        <updated>2024-12-07T08:35:15.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/42429413?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><em>Moved from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2426736245" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/54016" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/54016/hovercard" href="https://github.com/nodejs/node/issues/54016">nodejs/node#54016</a></em></p>
-<h3 dir="auto">What is the problem this feature will solve?</h3>
-<p dir="auto">Many popular projects do not use SemVer. Take Microsoft/TypeScript (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="208164514" data-permission-text="Title is private" data-url="https://github.com/microsoft/TypeScript/issues/14116" data-hovercard-type="issue" data-hovercard-url="/microsoft/TypeScript/issues/14116/hovercard" href="https://github.com/microsoft/TypeScript/issues/14116">microsoft/TypeScript#14116</a>) or jashkenas's packages (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="35711853" data-permission-text="Title is private" data-url="https://github.com/jashkenas/underscore/issues/1684" data-hovercard-type="issue" data-hovercard-url="/jashkenas/underscore/issues/1684/hovercard" href="https://github.com/jashkenas/underscore/issues/1684">jashkenas/underscore#1684</a>). These package maintainers do not follow the implicit contract of using SemVer, sometimes due to fundamental opposition to SemVer itself (<a href="https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e">https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e</a>).<br>
-This leads to friction among users:</p>
-<blockquote>
-<p dir="auto">I'm concerned that not following semver is creating unnecessary friction for TypeScript consumers who are opted in to having their builds broken whenever TypeScript releases a minor version as npm locks down to only major versions by default.<br>
-– <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="208164514" data-permission-text="Title is private" data-url="https://github.com/microsoft/TypeScript/issues/14116" data-hovercard-type="issue" data-hovercard-url="/microsoft/TypeScript/issues/14116/hovercard?comment_id=292387172&amp;comment_type=issue_comment" href="https://github.com/microsoft/TypeScript/issues/14116#issuecomment-292387172">microsoft/TypeScript#14116 (comment)</a></p>
-</blockquote>
-<p dir="auto">The obvious solution is just to go "not npn's problem - they should be using Semver!" - but that's not going to happen.<br>
-We as package consumers are stuck with having to be aware that many critical packages do not follow the expected semantics of SemVer.</p>
-<h3 dir="auto">What is the feature you are proposing to solve the problem?</h3>
-<p dir="auto">Therefore, npm should have a built-in solution for allowing package maintainers to decouple themselves from SemVer.</p>
-<p dir="auto">My proposal is to have an entry in <code class="notranslate">package.json</code> that defines what Versioning schema the package shall use.</p>
-<p dir="auto">I have a drafted schema definition file<a href="https://github.com/Nixinova/VersioningSchema/blob/main/schema.json"> (schema.json)</a> that defines aspects such segment types, ordering, and which digit increments represent breaking changes.<br>
-The default position of package.json would obviously be the use of SemVer, which I have a drafted schema for <a href="https://github.com/Nixinova/VersioningSchema/blob/main/examples/semver.schema.json">(semver.schema.json)</a>.<br>
-These drafted schemas could be adapted and maintained by npm to allow an official API for package maintainers to create their own versioning schemas to use in their projects.</p>
-<p dir="auto">This versioning schema would then be checked when installing a version from a range declared in the package.json (like <code class="notranslate">package@^2.3.0</code>), where the semantics for <code class="notranslate">^</code> are "the highest non-breaking version after or including 2.3.0", with what counts as "non-breaking" defined by the provided schema.</p>
-<p dir="auto"><strong>Real world example:</strong></p>
-<p dir="auto">If Microsoft declares  that for their <code class="notranslate">typescript</code> package, both the first and second digits represent breaking changes (declared using an in-house versioning schema linked to from package.json) -- then installing <code class="notranslate">^5.2</code> would <strong>not</strong> install version <code class="notranslate">5.5.2</code> (as expected from SemVer semantics), but only install the highest non-breaking version (which would be something like <code class="notranslate">5.2.3</code>).</p>
-<h3 dir="auto">What alternatives have you considered?</h3>
-<p dir="auto">"Just use SemVer", but this is not a realistic outcome as us consumers have no way of forcing maintainers like Microsoft to switch from their 'marketing versioning' to use SemVer.</p>
-<hr>
-<p dir="auto">This is similar in reason to this stale/unseen proposal <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="276430977" data-permission-text="Title is private" data-url="https://github.com/npm/npm/issues/19231" data-hovercard-type="issue" data-hovercard-url="/npm/npm/issues/19231/hovercard" href="https://github.com/npm/npm/issues/19231">npm/npm#19231</a> but goes quite further beyond by allowing the entire semantics of a version to be user-defined instead of just saying which digit is the breaking digit.<br>
-Having this functionality be more complicated than just setting a string is better as it would discourage usage of non-semver versioning - this proposal is for package managers that really, really, really don't want to use semver for some reason or another.</p>]]></content>
-        <author>
-            <name>Nixinova</name>
-            <email>Nixinova@noreply.github.com</email>
-            <uri>https://github.com/Nixinova</uri>
-        </author>
-        <published>2024-07-24T12:46:34.000Z</published>
     </entry>
 </feed>
