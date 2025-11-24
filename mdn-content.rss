@@ -2,16 +2,181 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-24T14:01:22.020Z</updated>
+    <updated>2025-11-24T15:01:44.170Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Fix getRed/setRed example to use HSL→RGB conversion (Issue #42059)]]></title>
+        <id>https://github.com/mdn/content/pull/42086</id>
+        <link href="https://github.com/mdn/content/pull/42086"/>
+        <updated>2025-11-24T14:34:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/129755123?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42059.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3655683267" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42059" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42059/hovercard" href="https://github.com/mdn/content/issues/42059">#42059</a></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Updates the Color class example so that getRed() and setRed() correctly operate on the red<br>
+channel after the internal representation was changed from RGB to HSL. Previously, the example<br>
+incorrectly accessed values[0], which is the hue component in HSL.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The documentation states that the internal storage is changed to HSL using rgbToHSL().<br>
+Therefore, getRed() and setRed() must convert HSL → RGB when reading or modifying the red channel.<br>
+This PR aligns the example with the encapsulation explanation and corrects the logic.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>getRed() now returns the red component via hslToRGB(this.values)[0]</li>
+<li>setRed() now converts HSL → RGB, updates the red value, and converts back to HSL</li>
+<li>Example output updated to show 255</li>
+</ul>]]></content>
+        <author>
+            <name>ShilpaG813</name>
+            <email>ShilpaG813@noreply.github.com</email>
+            <uri>https://github.com/ShilpaG813</uri>
+        </author>
+        <published>2025-11-24T14:22:02.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ci(deps): bump actions/checkout from 5.0.0 to 6.0.0]]></title>
+        <id>https://github.com/mdn/content/pull/42083</id>
+        <link href="https://github.com/mdn/content/pull/42083"/>
+        <updated>2025-11-24T14:12:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/actions/checkout">actions/checkout</a> from 5.0.0 to 6.0.0.</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/actions/checkout/releases">actions/checkout's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v6.0.0</h2>
+<h2 dir="auto">What's Changed</h2>
+<ul dir="auto">
+<li>Update README to include Node.js 24 support details and requirements by <a href="https://github.com/salmanmkc"><code class="notranslate">@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2248">actions/checkout#2248</a></li>
+<li>Persist creds to a separate file by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2286">actions/checkout#2286</a></li>
+<li>v6-beta by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2298">actions/checkout#2298</a></li>
+<li>update readme/changelog for v6 by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2311">actions/checkout#2311</a></li>
+</ul>
+<p dir="auto"><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/actions/checkout/compare/v5.0.0...v6.0.0">actions/checkout@<tt>v5.0.0...v6.0.0</tt></a></p>
+<h2 dir="auto">v6-beta</h2>
+<h2 dir="auto">What's Changed</h2>
+<p dir="auto">Updated persist-credentials to store the credentials under <code class="notranslate">$RUNNER_TEMP</code> instead of directly in the local git config.</p>
+<p dir="auto">This requires a minimum Actions Runner version of <a href="https://github.com/actions/runner/releases/tag/v2.329.0">v2.329.0</a> to access the persisted credentials for <a href="https://docs.github.com/en/actions/tutorials/use-containerized-services/create-a-docker-container-action">Docker container action</a> scenarios.</p>
+<h2 dir="auto">v5.0.1</h2>
+<h2 dir="auto">What's Changed</h2>
+<ul dir="auto">
+<li>Port v6 cleanup to v5 by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2301">actions/checkout#2301</a></li>
+</ul>
+<p dir="auto"><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/actions/checkout/compare/v5...v5.0.1">actions/checkout@<tt>v5...v5.0.1</tt></a></p>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/actions/checkout/blob/main/CHANGELOG.md">actions/checkout's changelog</a>.</em></p>
+<blockquote>
+<h1 dir="auto">Changelog</h1>
+<h2 dir="auto">V6.0.0</h2>
+<ul dir="auto">
+<li>Persist creds to a separate file by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2286">actions/checkout#2286</a></li>
+<li>Update README to include Node.js 24 support details and requirements by <a href="https://github.com/salmanmkc"><code class="notranslate">@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2248">actions/checkout#2248</a></li>
+</ul>
+<h2 dir="auto">V5.0.1</h2>
+<ul dir="auto">
+<li>Port v6 cleanup to v5 by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2301">actions/checkout#2301</a></li>
+</ul>
+<h2 dir="auto">V5.0.0</h2>
+<ul dir="auto">
+<li>Update actions checkout to use node 24 by <a href="https://github.com/salmanmkc"><code class="notranslate">@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2226">actions/checkout#2226</a></li>
+</ul>
+<h2 dir="auto">V4.3.1</h2>
+<ul dir="auto">
+<li>Port v6 cleanup to v4 by <a href="https://github.com/ericsciple"><code class="notranslate">@​ericsciple</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2305">actions/checkout#2305</a></li>
+</ul>
+<h2 dir="auto">V4.3.0</h2>
+<ul dir="auto">
+<li>docs: update README.md by <a href="https://github.com/motss"><code class="notranslate">@​motss</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1971">actions/checkout#1971</a></li>
+<li>Add internal repos for checking out multiple repositories by <a href="https://github.com/mouismail"><code class="notranslate">@​mouismail</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1977">actions/checkout#1977</a></li>
+<li>Documentation update - add recommended permissions to Readme by <a href="https://github.com/benwells"><code class="notranslate">@​benwells</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2043">actions/checkout#2043</a></li>
+<li>Adjust positioning of user email note and permissions heading by <a href="https://github.com/joshmgross"><code class="notranslate">@​joshmgross</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2044">actions/checkout#2044</a></li>
+<li>Update README.md by <a href="https://github.com/nebuk89"><code class="notranslate">@​nebuk89</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2194">actions/checkout#2194</a></li>
+<li>Update CODEOWNERS for actions by <a href="https://github.com/TingluoHuang"><code class="notranslate">@​TingluoHuang</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2224">actions/checkout#2224</a></li>
+<li>Update package dependencies by <a href="https://github.com/salmanmkc"><code class="notranslate">@​salmanmkc</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/2236">actions/checkout#2236</a></li>
+</ul>
+<h2 dir="auto">v4.2.2</h2>
+<ul dir="auto">
+<li><code class="notranslate">url-helper.ts</code> now leverages well-known environment variables by <a href="https://github.com/jww3"><code class="notranslate">@​jww3</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1941">actions/checkout#1941</a></li>
+<li>Expand unit test coverage for <code class="notranslate">isGhes</code> by <a href="https://github.com/jww3"><code class="notranslate">@​jww3</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1946">actions/checkout#1946</a></li>
+</ul>
+<h2 dir="auto">v4.2.1</h2>
+<ul dir="auto">
+<li>Check out other refs/* by commit if provided, fall back to ref by <a href="https://github.com/orhantoy"><code class="notranslate">@​orhantoy</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1924">actions/checkout#1924</a></li>
+</ul>
+<h2 dir="auto">v4.2.0</h2>
+<ul dir="auto">
+<li>Add Ref and Commit outputs by <a href="https://github.com/lucacome"><code class="notranslate">@​lucacome</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1180">actions/checkout#1180</a></li>
+<li>Dependency updates by <a href="https://github.com/dependabot"><code class="notranslate">@​dependabot</code></a>- <a href="https://redirect.github.com/actions/checkout/pull/1777">actions/checkout#1777</a>, <a href="https://redirect.github.com/actions/checkout/pull/1872">actions/checkout#1872</a></li>
+</ul>
+<h2 dir="auto">v4.1.7</h2>
+<ul dir="auto">
+<li>Bump the minor-npm-dependencies group across 1 directory with 4 updates by <a href="https://github.com/dependabot"><code class="notranslate">@​dependabot</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1739">actions/checkout#1739</a></li>
+<li>Bump actions/checkout from 3 to 4 by <a href="https://github.com/dependabot"><code class="notranslate">@​dependabot</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1697">actions/checkout#1697</a></li>
+<li>Check out other refs/* by commit by <a href="https://github.com/orhantoy"><code class="notranslate">@​orhantoy</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1774">actions/checkout#1774</a></li>
+<li>Pin actions/checkout's own workflows to a known, good, stable version. by <a href="https://github.com/jww3"><code class="notranslate">@​jww3</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1776">actions/checkout#1776</a></li>
+</ul>
+<h2 dir="auto">v4.1.6</h2>
+<ul dir="auto">
+<li>Check platform to set archive extension appropriately by <a href="https://github.com/cory-miller"><code class="notranslate">@​cory-miller</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1732">actions/checkout#1732</a></li>
+</ul>
+<h2 dir="auto">v4.1.5</h2>
+<ul dir="auto">
+<li>Update NPM dependencies by <a href="https://github.com/cory-miller"><code class="notranslate">@​cory-miller</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1703">actions/checkout#1703</a></li>
+<li>Bump github/codeql-action from 2 to 3 by <a href="https://github.com/dependabot"><code class="notranslate">@​dependabot</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1694">actions/checkout#1694</a></li>
+<li>Bump actions/setup-node from 1 to 4 by <a href="https://github.com/dependabot"><code class="notranslate">@​dependabot</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1696">actions/checkout#1696</a></li>
+<li>Bump actions/upload-artifact from 2 to 4 by <a href="https://github.com/dependabot"><code class="notranslate">@​dependabot</code></a> in <a href="https://redirect.github.com/actions/checkout/pull/1695">actions/checkout#1695</a></li>
+</ul>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/actions/checkout/commit/1af3b93b6815bc44a9784bd300feb67ff0d1eeb3"><code class="notranslate">1af3b93</code></a> update readme/changelog for v6 (<a href="https://redirect.github.com/actions/checkout/issues/2311">#2311</a>)</li>
+<li><a href="https://github.com/actions/checkout/commit/71cf2267d89c5cb81562390fa70a37fa40b1305e"><code class="notranslate">71cf226</code></a> v6-beta (<a href="https://redirect.github.com/actions/checkout/issues/2298">#2298</a>)</li>
+<li><a href="https://github.com/actions/checkout/commit/069c6959146423d11cd0184e6accf28f9d45f06e"><code class="notranslate">069c695</code></a> Persist creds to a separate file (<a href="https://redirect.github.com/actions/checkout/issues/2286">#2286</a>)</li>
+<li><a href="https://github.com/actions/checkout/commit/ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493"><code class="notranslate">ff7abcd</code></a> Update README to include Node.js 24 support details and requirements (<a href="https://redirect.github.com/actions/checkout/issues/2248">#2248</a>)</li>
+<li>See full diff in <a href="https://github.com/actions/checkout/compare/08c6903cd8c0fde910a37f88322edcfb5dd907a8...1af3b93b6815bc44a9784bd300feb67ff0d1eeb3">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/e8908a7157c0e0ddc6f36002e1a207bd36f39dcee9867e7d4bf5769b644fd4d0/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d616374696f6e732f636865636b6f7574267061636b6167652d6d616e616765723d6769746875625f616374696f6e732670726576696f75732d76657273696f6e3d352e302e30266e65772d76657273696f6e3d362e302e30" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=actions/checkout&amp;package-manager=github_actions&amp;previous-version=5.0.0&amp;new-version=6.0.0" style="max-width: 100%;"></a></p>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot merge</code> will merge this PR after your CI passes on it</li>
+<li><code class="notranslate">@dependabot squash and merge</code> will squash and merge this PR after your CI passes on it</li>
+<li><code class="notranslate">@dependabot cancel merge</code> will cancel a previously requested merge and block automerging</li>
+<li><code class="notranslate">@dependabot reopen</code> will reopen this PR if it is closed</li>
+<li><code class="notranslate">@dependabot close</code> will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>
+</ul>
+</details>]]></content>
+        <author>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
+        </author>
+        <published>2025-11-24T14:12:24.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Technical review: Add information on if()/container style query range syntax]]></title>
         <id>https://github.com/mdn/content/pull/42082</id>
         <link href="https://github.com/mdn/content/pull/42082"/>
-        <updated>2025-11-24T14:00:41.000Z</updated>
+        <updated>2025-11-24T14:01:35.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -47,7 +212,7 @@
         <title type="html"><![CDATA[Fix typos and add dictionary entries (fixes #42068)]]></title>
         <id>https://github.com/mdn/content/pull/42080</id>
         <link href="https://github.com/mdn/content/pull/42080"/>
-        <updated>2025-11-24T12:35:03.000Z</updated>
+        <updated>2025-11-24T14:12:32.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/203651701?v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -383,7 +548,7 @@ and accelerationIncludingGravity property: <a href="https://developer.mozilla.or
         <title type="html"><![CDATA[Scroll-driven animations: animation-range and <timeline-range-name> data type]]></title>
         <id>https://github.com/mdn/content/pull/42020</id>
         <link href="https://github.com/mdn/content/pull/42020"/>
-        <updated>2025-11-24T13:58:34.000Z</updated>
+        <updated>2025-11-24T15:01:33.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><ul dir="auto">
 <li>create new page for <code class="notranslate">&lt;timeline-range-name&gt;</code></li>
 <li>rewrite <code class="notranslate">animation-range</code> shorthand property.</li>
@@ -440,79 +605,5 @@ and accelerationIncludingGravity property: <a href="https://developer.mozilla.or
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2025-11-18T14:08:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[SanitizerConfig - define valid config]]></title>
-        <id>https://github.com/mdn/content/pull/41945</id>
-        <link href="https://github.com/mdn/content/pull/41945"/>
-        <updated>2025-11-21T01:01:04.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41634.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3541413414" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41634" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41634/hovercard" href="https://github.com/mdn/content/issues/41634">#41634</a></p>
-<p dir="auto">Defines what a valid SanitizerConfig is more precisely and links to this from the places where an invalid config can throw a TypeError.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3547012068" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41649" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41649/hovercard" href="https://github.com/mdn/content/issues/41649">#41649</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2025-11-14T04:47:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Added example showing normal text characters can also be percent-encoded]]></title>
-        <id>https://github.com/mdn/content/pull/41939</id>
-        <link href="https://github.com/mdn/content/pull/41939"/>
-        <updated>2025-11-14T08:39:57.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/40757969?u=16b0d411bf1fd4db6063cecab03cf1e0d813d0b9&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Added an example showing that normal text characters can also be percent-encoded, even if they don't have to.</p>
-<h3 dir="auto">Motivation</h3>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const hex = [];
-hex.length = 256;
-for (let i = 0; i &lt; 256; i++) {
-  hex[i] = i.toString(16).padStart(2, &quot;0&quot;);
-}
-console.log(hex);
-fetch(`data:application/octet-stream;,%${hex.join(&quot;%&quot;)}`)
-  .then((resp) =&gt; resp.arrayBuffer())
-  .then((buf) =&gt; {
-    const bytes = new Uint8Array(buf);
-    console.log([...bytes]);
-    for (let i = 0; i &lt; 256; i++) {
-      if (bytes[i] !== i) {
-        console.log(`buf[${i}] !== ${i}`);
-      }
-    }
-    console.log(&quot;finished&quot;);
-  });"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">hex</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">;</span>
-<span class="pl-s1">hex</span><span class="pl-kos">.</span><span class="pl-c1">length</span> <span class="pl-c1">=</span> <span class="pl-c1">256</span><span class="pl-kos">;</span>
-<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">256</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-  <span class="pl-s1">hex</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">i</span><span class="pl-kos">.</span><span class="pl-en">toString</span><span class="pl-kos">(</span><span class="pl-c1">16</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">padStart</span><span class="pl-kos">(</span><span class="pl-c1">2</span><span class="pl-kos">,</span> <span class="pl-s">"0"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span>
-<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">hex</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-en">fetch</span><span class="pl-kos">(</span><span class="pl-s">`data:application/octet-stream;,%<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">hex</span><span class="pl-kos">.</span><span class="pl-en">join</span><span class="pl-kos">(</span><span class="pl-s">"%"</span><span class="pl-kos">)</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span>
-  <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">resp</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">resp</span><span class="pl-kos">.</span><span class="pl-en">arrayBuffer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span>
-  <span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">buf</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-    <span class="pl-k">const</span> <span class="pl-s1">bytes</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Uint8Array</span><span class="pl-kos">(</span><span class="pl-s1">buf</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-kos">[</span>...<span class="pl-s1">bytes</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">256</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">bytes</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span> <span class="pl-c1">!==</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-        <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">`buf[<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>] !== <span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">i</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-      <span class="pl-kos">}</span>
-    <span class="pl-kos">}</span>
-    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">"finished"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>Worldwidebrine</name>
-            <email>Worldwidebrine@noreply.github.com</email>
-            <uri>https://github.com/Worldwidebrine</uri>
-        </author>
-        <published>2025-11-14T00:28:54.000Z</published>
     </entry>
 </feed>
