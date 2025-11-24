@@ -118,8 +118,8 @@
         {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/107345594?u=dd2534c29da0184e6446eb1e7c6be0412ea3c489&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">This PR corrects the compatibility data for <code class=\"notranslate\">navigator.share()</code> and <code class=\"notranslate\">navigator.canShare()</code> (specifically <code class=\"notranslate\">data_text_parameter</code>) in Firefox and Firefox for Android.</p>\n<p dir=\"auto\"><strong>Changes applied:</strong></p>\n<ol dir=\"auto\">\n<li>\n<p dir=\"auto\"><strong>Firefox (Desktop):</strong></p>\n<ul dir=\"auto\">\n<li><strong>Restored version:</strong> Restored <code class=\"notranslate\">version_added: \"96\"</code> which appears to have been inadvertently removed in PR <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2393967818\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/23687\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/23687/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/23687\">#23687</a>.</li>\n<li><strong>Added flag:</strong> Added the <code class=\"notranslate\">dom.webshare.enabled</code> flag configuration to accurately reflect that this feature requires a preference setting.</li>\n</ul>\n</li>\n<li>\n<p dir=\"auto\"><strong>Firefox for Android:</strong></p>\n<ul dir=\"auto\">\n<li><strong>Mirror removal:</strong> Switched from <code class=\"notranslate\">\"mirror\"</code> to explicit version numbers (<code class=\"notranslate\">\"71\"</code> for <code class=\"notranslate\">share</code> and <code class=\"notranslate\">\"96\"</code> for <code class=\"notranslate\">canShare</code>) to bypass the flag requirement issue.</li>\n</ul>\n</li>\n</ol>\n<p dir=\"auto\"><strong>Context and Verification:</strong></p>\n<ul dir=\"auto\">\n<li><strong>Mirroring Issue:</strong> Currently, the desktop <code class=\"notranslate\">firefox</code> entry requires the <code class=\"notranslate\">dom.webshare.enabled</code> preference. However, <code class=\"notranslate\">firefox_android</code> is defined with <code class=\"notranslate\">\"accepts_flags\": false</code>. Consequently, the build script incorrectly resolves the mirrored support status to <code class=\"notranslate\">false</code>.</li>\n<li><strong>Android <code class=\"notranslate\">canShare</code> status:</strong> There appear to have been historical bugs regarding <code class=\"notranslate\">data_text_parameter</code> support in <code class=\"notranslate\">canShare</code> on Android. Although I was unable to trace the specific details or issue tracks myself, I have confirmed on a physical device (latest Firefox for Android) that it currently works as expected.</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2393967818\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/23687\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/23687/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/23687\">#23687</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1066775100\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/13810\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/13810/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/13810\">#13810</a></li>\n</ul>",
             "url": "https://github.com/mdn/browser-compat-data/pull/28495",
-            "title": "Fix Web Share API support for Firefox and Firefox for Android",
-            "date_modified": "2025-11-20T15:37:12.000Z",
+            "title": "Firefox supports Web Share API behind flag, Firefox for Android without flag",
+            "date_modified": "2025-11-24T17:52:46.000Z",
             "date_published": "2025-11-20T15:36:30.000Z",
             "author": {
                 "name": "muhi111",
@@ -138,32 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Safari added support for <code class=\"notranslate\">Animation.prototype.overallProgress</code> in 26.2:</p>\n<p dir=\"auto\"><a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Animations\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Animations</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28487",
-            "title": "Safari 26.2 supports Animation.prototype.overallProgress",
-            "date_modified": "2025-11-19T00:27:26.000Z",
-            "date_published": "2025-11-19T00:26:44.000Z",
-            "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Support for <code class=\"notranslate\">Math.sumPrecise</code> was added in Safari 26.2:</p>\n<p dir=\"auto\"><a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#JavaScript\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#JavaScript</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28486",
-            "title": "Safari 26.2 supports Math.sumPrecise",
-            "date_modified": "2025-11-19T00:21:43.000Z",
-            "date_published": "2025-11-19T00:20:30.000Z",
-            "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<ul dir=\"auto\">\n<li>Added support data for <code class=\"notranslate\">display-p3-linear</code> color space</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ul dir=\"auto\">\n<li>Tested using <a href=\"https://codepen.io/CodeRedDigital/pen/wBGJQgP?editors=0100\" rel=\"nofollow\">this codepen</a></li>\n<li>Works in the following browsers:\n<ul dir=\"auto\">\n<li>Firefox Beta 146</li>\n<li>Firefox Developer Edition 146</li>\n<li>Firefox Nightly 147</li>\n<li>Chrome Canary 144</li>\n<li>Edge 144</li>\n<li>Safari Technical Preview 232</li>\n</ul>\n</li>\n<li>Does not work in the following browsers:\n<ul dir=\"auto\">\n<li>Firefox 145</li>\n<li>Chrome Beta 143</li>\n<li>Edge Beta 143</li>\n<li>Safari 26.1</li>\n<li>Opera 124</li>\n</ul>\n</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/content/pull/42003\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/42003/hovercard\">Content PR</a></li>\n<li><a href=\"https://github.com/mdn/content/pull/42004\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/42004/hovercard\">Firefox release PR</a></li>\n<li><a href=\"https://github.com/mdn/data/pull/1025\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/data/pull/1025/hovercard\">Data PR</a></li>\n</ul>",
             "url": "https://github.com/mdn/browser-compat-data/pull/28479",
             "title": "added display-p3-linear to color",
-            "date_modified": "2025-11-20T12:49:23.000Z",
+            "date_modified": "2025-11-24T17:18:56.000Z",
             "date_published": "2025-11-18T16:43:07.000Z",
             "author": {
                 "name": "dletorey",
@@ -171,47 +149,58 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Safari 26.2 removed the UA styles for <code class=\"notranslate\">&lt;article&gt;</code>, <code class=\"notranslate\">&lt;aside&gt;</code>, <code class=\"notranslate\">&lt;nav&gt;</code> and <code class=\"notranslate\">&lt;section&gt;</code>:</p>\n<p dir=\"auto\"><a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Deprecations\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Deprecations</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28473",
-            "title": "Safari 26.2 removed UA styles in article, aside, nav, and section",
-            "date_modified": "2025-11-17T22:01:10.000Z",
-            "date_published": "2025-11-17T22:00:34.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/54687718?u=a1ad4b5e0600c9029222f99e5df2c7ef7ae19a59&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Hi <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/hamishwillee/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/hamishwillee\">@hamishwillee</a>,</p>\n<p dir=\"auto\">As per your request on <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3583703942\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41795\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/41795/hovercard\" href=\"https://github.com/mdn/content/pull/41795\">mdn/content#41795</a>, I'm opening this PR to add the note about Safari's <code class=\"notranslate\">localhost</code> exception for <code class=\"notranslate\">Secure</code> cookies directly to the BCD.</p>\n<p dir=\"auto\">I've added the note to the main <code class=\"notranslate\">Set-Cookie</code> support block for Safari, as <code class=\"notranslate\">Secure</code> isn't tracked as a separate sub-feature. Please let me know if this is the correct location!</p>\n<hr>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Adds a BCD note to the <code class=\"notranslate\">Set-Cookie</code> header, clarifying that Safari does not support the <code class=\"notranslate\">localhost</code> exception for the <code class=\"notranslate\">Secure</code> attribute.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">This is a data-only change to add a <code class=\"notranslate\">note</code>.</p>\n<p dir=\"auto\">Supporting information and related discussion:</p>\n<ul dir=\"auto\">\n<li>Original WebKit bug report: <a href=\"https://bugs.webkit.org/show_bug.cgi?id=281149\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=281149</a></li>\n<li>This change follows the request from <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/hamishwillee/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/hamishwillee\">@hamishwillee</a> in the related <code class=\"notranslate\">mdn/content</code> PR (see below).</li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #41366.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3474798100\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41366\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41366/hovercard\" href=\"https://github.com/mdn/content/issues/41366\">mdn/content#41366</a><br>\nAddresses discussion in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3583703942\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41795\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/41795/hovercard\" href=\"https://github.com/mdn/content/pull/41795\">mdn/content#41795</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/28461",
+            "title": "Safari does not support `localhost` exception for `Secure` cookies",
+            "date_modified": "2025-11-21T19:28:37.000Z",
+            "date_published": "2025-11-15T19:36:53.000Z",
             "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
+                "name": "Mattia-Rollo",
+                "url": "https://github.com/Mattia-Rollo"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Safari 26.2 supports command/commandFor and invoker commands:</p>\n<p dir=\"auto\"><a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#HTML\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#HTML</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28472",
-            "title": "Safari command/commandfor and invoker commands support",
-            "date_modified": "2025-11-17T22:06:36.000Z",
-            "date_published": "2025-11-17T21:55:41.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">…te() calls</p>\n\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\"><code class=\"notranslate\">javascript:</code> URLs are no longer allowed in <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate\" rel=\"nofollow\"><code class=\"notranslate\">Navigation.navigate()</code></a> calls (see <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3292278858\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/11533\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/11533/hovercard\" href=\"https://github.com/whatwg/html/pull/11533\">whatwg/html#11533</a>), and I thought this should be mentioned in BCD, as the state of support for this change differs across browsers:</p>\n<ul dir=\"auto\">\n<li>Firefox implemented it in Fx144 (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1981104\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1981104</a>), but the Navigation API was only enabled in Nightly as of Fx146, so I didn't think a note was needed here. I tested this to verify.</li>\n<li>Chromium browsers still allow it (see <a href=\"https://issues.chromium.org/issues/439994590\" rel=\"nofollow\">https://issues.chromium.org/issues/439994590</a> for the removal bug), so I thought a note was needed there, so say it is still allowed. I tested this in Chrome Canary, and yup, it still works.</li>\n<li>Safari has fixed it in preview (see <a href=\"https://bugs.webkit.org/show_bug.cgi?id=297650\" rel=\"nofollow\">https://bugs.webkit.org/show_bug.cgi?id=297650</a>). I tested this to verify. I've not added any Safari data because the whole API says it is not supported in Safari. Obviously, this needs updating, but I think it is out of scope for this PR.</li>\n</ul>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/28440",
+            "title": "Add note about javascript: URLs being disallowed in Navigation.naviga…",
+            "date_modified": "2025-11-17T13:57:24.000Z",
+            "date_published": "2025-11-12T14:37:07.000Z",
             "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Support for hidden=until-found was added in 26.2:</p>\n<p dir=\"auto\"><a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#DOM\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#DOM</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28471",
-            "title": "Add Safari hidden=until-found support",
-            "date_modified": "2025-11-17T21:29:45.000Z",
-            "date_published": "2025-11-17T21:29:05.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/45960703?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Google Chrome deprecated (Browsing) Topics API.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Google Chrome deprecated (Browsing) Topics API, so mark the following MDN features deprecated:</p>\n<ul dir=\"auto\">\n<li>document.browsingTopics()</li>\n<li>browsingtopics attribute on HTML &lt;iframe&gt;</li>\n<li>browsingTopics option in fetch()</li>\n<li>Sec-Browsing-Topics HTTP request header</li>\n<li>Observe-Browsing-Topics HTTP response header</li>\n<li>HTTP header Permissions-Policy directive browsing-topics</li>\n</ul>\n<p dir=\"auto\">Source:<br>\n<a href=\"https://groups.google.com/a/chromium.org/g/blink-dev/c/_R85yctz4Rs\" rel=\"nofollow\">https://groups.google.com/a/chromium.org/g/blink-dev/c/_R85yctz4Rs</a></p>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Tracking MDN issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3603007045\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/28417\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/28417/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/28417\">#28417</a>.</p>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/28418",
+            "title": "Deprecate Google Privacy Sandbox (Browsing) Topics API",
+            "date_modified": "2025-11-18T10:41:41.000Z",
+            "date_published": "2025-11-08T12:53:14.000Z",
             "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
+                "name": "bershanskiy",
+                "url": "https://github.com/bershanskiy"
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Safari supports partitioned cookies in 26.2:<br>\n<a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Privacy\" rel=\"nofollow\">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes#Privacy</a></p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28470",
-            "title": "Update set-cookie partitioned for Safari",
-            "date_modified": "2025-11-24T17:01:06.000Z",
-            "date_published": "2025-11-17T21:23:11.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Chrome 143 adds support for the WebGPU <a href=\"https://gpuweb.github.io/gpuweb/#dom-gpufeaturename-texture-component-swizzle\" rel=\"nofollow\"><code class=\"notranslate\">texture-component-swizzle</code></a> feature, which, when enabled, allows usage of the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView\" rel=\"nofollow\"><code class=\"notranslate\">createView()</code></a> method's <a href=\"https://gpuweb.github.io/gpuweb/#dom-gputextureviewdescriptor-swizzle\" rel=\"nofollow\"><code class=\"notranslate\">swizzle</code></a> option that allows developers to perform color swizzles.</p>\n<p dir=\"auto\">See <a href=\"https://chromestatus.com/feature/5110223547269120\" rel=\"nofollow\">https://chromestatus.com/feature/5110223547269120</a>.</p>\n<p dir=\"auto\">This PR adds a data point for both the feature and the option.</p>\n<p dir=\"auto\">I also took this opportunity to clean up the rest of the Chrome feature data, as a bunch of the entries weren't quite right (the Chrome Android data shouldn't mirror Chrome when Chrome is marked partial implementation and has a note, neither of which are relevant to CxA).</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/28411",
+            "title": "Chrome 143 WebGPU texture-component-swizzle feature",
+            "date_modified": "2025-11-22T11:43:37.000Z",
+            "date_published": "2025-11-07T16:44:43.000Z",
             "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Unmarks Firefox as partial for <code class=\"notranslate\">::highlight</code> CSS Selector, and splits up the existing notes, adding bug links.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">I challenge the following <a href=\"https://github.com/mdn/browser-compat-data/tree/main/docs/data-guidelines#partial_implementation-general-usage-guidelines\">requirement for partial implementation</a>:</p>\n<blockquote>\n<p dir=\"auto\">The browser's support has a demonstrable negative impact on web developers.</p>\n</blockquote>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Related: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3586286163\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/28374\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/28374/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/28374\">#28374</a></p>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/28375",
+            "title": "Unmark Firefox as partial for `::highlight` CSS selector",
+            "date_modified": "2025-11-12T17:49:45.000Z",
+            "date_published": "2025-11-04T12:12:56.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
             }
         }
     ]
