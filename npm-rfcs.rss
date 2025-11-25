@@ -2,11 +2,88 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-11-25T04:04:45.327Z</updated>
+    <updated>2025-11-25T05:01:46.229Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Feature Request: Adding Bitbucket Pipelines as a trusted NPM publisher]]></title>
+        <id>https://github.com/npm/rfcs/issues/846</id>
+        <link href="https://github.com/npm/rfcs/issues/846"/>
+        <updated>2025-11-25T04:32:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/140583317?v=4" width="64" height="64" alt=""/><br/>
+<h1 dir="auto">[RRFC] Feature Request: Add Bitbucket Pipelines as a trusted NPM publisher</h1>
+<h2 dir="auto">Motivation</h2>
+
+<p dir="auto">Npm currently does not support Bitbucket Pipelines as a trusted publisher and now that classic tokens are no longer supported we want to ensure users are able to publish to NPM without being reliant on tokens.</p>
+<p dir="auto">This will allow us to stay up to date with security best practices and allow users to enable NPM into their CI/CD workflow more easily.</p>
+<p dir="auto">We have added the ability to enable NPM as an audience so this integration is possible</p>
+<p dir="auto">source: <a href="https://github.blog/changelog/2025-11-05-npm-security-update-classic-token-creation-disabled-and-granular-token-changes/" rel="nofollow">https://github.blog/changelog/2025-11-05-npm-security-update-classic-token-creation-disabled-and-granular-token-changes/</a><br>
+source: <a href="https://docs.npmjs.com/trusted-publishers" rel="nofollow">https://docs.npmjs.com/trusted-publishers</a></p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<p dir="auto">Currently bitbucket pipelines is not a trusted publisher so users have to rely upon tokens to publish to NPM.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+
+<p dir="auto">Currently Github Actions &amp; Gitlab CI/CD are able to be selected as a publisher with configurations to control publishing access we want an equivalent for Bitbucket Pipelines that looks something like:</p>
+<blockquote>
+<h4 dir="auto">Publisher</h4>
+<p dir="auto"><strong>Bitbucket Pipelines</strong></p>
+<p dir="auto"><em><strong>Workspace*</strong></em>                 /           <em><strong>Repo*</strong></em></p>
+<p dir="auto">{workspaceUuid}           /                    {RepositoryUuid}</p>
+<p dir="auto"><strong><em>Deployment UUID (Optional)</em></strong></p>
+<p dir="auto">{deploymentEnvironmentUuid}</p>
+</blockquote>
+<h4 dir="auto">Authorising the trusted publisher</h4>
+<p dir="auto">The OIDC token will have the following attributes inside that can be used to verify the publisher is the same as the configured trusted publisher</p>
+<ul dir="auto">
+<li><code class="notranslate">workspaceUuid</code></li>
+<li><code class="notranslate">repositoryUuid</code></li>
+<li><code class="notranslate">deploymentEnvironmentUuid</code></li>
+</ul>
+<p dir="auto">Example of claims</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
+	&quot;sub&quot;: &quot;{60518816-1111-1111-1111-555555c267ed}:{2df4c531-1111-1111-1111-5555556048f8c}:{stepUuid}&quot;,
+	&quot;aud&quot;: &quot;ari:cloud:bitbucket::workspace/3a8a18b2-1111-1111-1111-55555519a6f30&quot;,
+	&quot;stepUuid&quot;: &quot;{xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx}&quot;,
+	&quot;deploymentEnvironmentUuid&quot;: &quot;{2df4c531-1111-1111-1111-5555556048f8c}&quot;,
+	&quot;iss&quot;: &quot;https://api.bitbucket.org/2.0/workspaces/bitbucket-workspace/pipelines-config/identity/oidc&quot;,
+	&quot;repositoryUuid&quot;: &quot;{60518816-1111-1111-1111-555555c267ed}&quot;,
+	&quot;branchName&quot;: &quot;xxxxxxxxx&quot;,
+	&quot;exp&quot;: &quot;xxxxxxxxxx&quot;,
+	&quot;iat&quot;: &quot;xxxxxxxxxx&quot;,
+	&quot;pipelineUuid&quot;: &quot;{xxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx}&quot;,
+	&quot;workspaceUuid&quot;: &quot;{3a8a18b2-1111-1111-1111-55555519a6f30}&quot;
+}"><pre class="notranslate"><code class="notranslate">{
+	"sub": "{60518816-1111-1111-1111-555555c267ed}:{2df4c531-1111-1111-1111-5555556048f8c}:{stepUuid}",
+	"aud": "ari:cloud:bitbucket::workspace/3a8a18b2-1111-1111-1111-55555519a6f30",
+	"stepUuid": "{xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx}",
+	"deploymentEnvironmentUuid": "{2df4c531-1111-1111-1111-5555556048f8c}",
+	"iss": "https://api.bitbucket.org/2.0/workspaces/bitbucket-workspace/pipelines-config/identity/oidc",
+	"repositoryUuid": "{60518816-1111-1111-1111-555555c267ed}",
+	"branchName": "xxxxxxxxx",
+	"exp": "xxxxxxxxxx",
+	"iat": "xxxxxxxxxx",
+	"pipelineUuid": "{xxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx}",
+	"workspaceUuid": "{3a8a18b2-1111-1111-1111-55555519a6f30}"
+}
+</code></pre></div>
+<h4 dir="auto">Authenticating the OIDC Token</h4>
+<p dir="auto">The pipeline will send a JWT containing claims containing information that is needed to authorise the pipeline to publish to NPM.</p>
+<p dir="auto">The JWT can then be authenticated using RSA keys found via:</p>
+<ul dir="auto">
+<li><code class="notranslate">jwks_uri</code> link found in <a href="https://api.bitbucket.org/2.0/workspaces/%7Bbitbucket-workspace%7D/pipelines-config/identity/oidc/.well-known/openid-configuration" rel="nofollow">https://api.bitbucket.org/2.0/workspaces/{bitbucket-workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration</a></li>
+<li>Or through <a href="https://api.bitbucket.org/2.0/workspaces/%7Bbitbucket-workspace%7D/pipelines-config/identity/oidc/keys.json" rel="nofollow">https://api.bitbucket.org/2.0/workspaces/{bitbucket-workspace}/pipelines-config/identity/oidc/keys.json</a> url directly</li>
+</ul>]]></content>
+        <author>
+            <name>ShirlZhou1</name>
+            <email>ShirlZhou1@noreply.github.com</email>
+            <uri>https://github.com/ShirlZhou1</uri>
+        </author>
+        <published>2025-11-25T04:32:52.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Support relative dates in `--before`]]></title>
         <id>https://github.com/npm/rfcs/issues/844</id>
@@ -374,8 +451,8 @@ SIGTERM  (node receives signal)
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDM3ODUsIm5iZiI6MTc2NDA0MzQ4NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNDA0NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lOWJkNWNjMGFjYmE4MmY4YmFhN2NkYzgxMmM1OTA2NmY1MGRmM2E4NDhmODE1NGRkOTAxNjNiZjM4OGFjM2FmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.fRKrZVEkYXzdD0V1M0IBkcZwkzKhMcJfG0hIenonUiE"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDM3ODUsIm5iZiI6MTc2NDA0MzQ4NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNDA0NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lOWJkNWNjMGFjYmE4MmY4YmFhN2NkYzgxMmM1OTA2NmY1MGRmM2E4NDhmODE1NGRkOTAxNjNiZjM4OGFjM2FmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.fRKrZVEkYXzdD0V1M0IBkcZwkzKhMcJfG0hIenonUiE" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDM3ODUsIm5iZiI6MTc2NDA0MzQ4NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNDA0NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YjU4MDQxMDJjNTMzMmNjMjVlNTY4NzdkOGIxODZjM2M1OTkxY2M5MGFjMWMzN2QxMmI2OThiYzdlZThiNTQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.BfVyyNrVXY9hnYTcDDFh0JP0f3IANT9TkF_ixeYjS9M"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDM3ODUsIm5iZiI6MTc2NDA0MzQ4NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNDA0NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YjU4MDQxMDJjNTMzMmNjMjVlNTY4NzdkOGIxODZjM2M1OTkxY2M5MGFjMWMzN2QxMmI2OThiYzdlZThiNTQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.BfVyyNrVXY9hnYTcDDFh0JP0f3IANT9TkF_ixeYjS9M" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDcyMDYsIm5iZiI6MTc2NDA0NjkwNiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNTAxNDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNGRhZWY4NzliYjk4MWMyN2I4MWEyOGIzMWY0MmExZTRkY2I3N2E5MTI4MDFkOTM5NzFkYzk5ZWJlZmM2OGRkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.C8q1Rd0SnG4vxAWjmeHO74szbVB67mCXFB1RjYoZtoI"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDcyMDYsIm5iZiI6MTc2NDA0NjkwNiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNTAxNDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNGRhZWY4NzliYjk4MWMyN2I4MWEyOGIzMWY0MmExZTRkY2I3N2E5MTI4MDFkOTM5NzFkYzk5ZWJlZmM2OGRkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.C8q1Rd0SnG4vxAWjmeHO74szbVB67mCXFB1RjYoZtoI" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDcyMDYsIm5iZiI6MTc2NDA0NjkwNiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNTAxNDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zMGIxYWNiMmRlN2JkZmNjYmNmYzhmZDc3M2E2ODY1ZjFhMmY3MjQ1Y2YyZDk0NDc5OGNjODBmZTQ4Yjg0Mzc0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.y_eERKRaWowgTpCpuzsZ4VlaFl3rTGqIbAECRhPPh7E"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjQwNDcyMDYsIm5iZiI6MTc2NDA0NjkwNiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTEyNVQwNTAxNDZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zMGIxYWNiMmRlN2JkZmNjYmNmYzhmZDc3M2E2ODY1ZjFhMmY3MjQ1Y2YyZDk0NDc5OGNjODBmZTQ4Yjg0Mzc0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.y_eERKRaWowgTpCpuzsZ4VlaFl3rTGqIbAECRhPPh7E" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -701,20 +778,5 @@ AC92,{bs/$€€+**^}</li>
             <uri>https://github.com/Neop288</uri>
         </author>
         <published>2024-11-07T00:15:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clydonight:codespace-refactored-parakeet-gxxjw7rr76rhgj54ec2a44712528feff6363051f78a77f4863b1004
-]]></title>
-        <id>https://github.com/npm/rfcs/issues/800</id>
-        <link href="https://github.com/npm/rfcs/issues/800"/>
-        <updated>2024-10-03T16:11:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23508199?u=a202bd16f80da16e9fcd9de8855946b183760f58&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Clydonight:codespace-refactored-parakeet-gxxjw7rr76rhgj5</p>
-<p dir="auto"><em>Originally posted by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Clydonight/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Clydonight">@Clydonight</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2362857558" data-permission-text="Title is private" data-url="https://github.com/Clydo1976/Temu-Link-Bot/issues/1" data-hovercard-type="pull_request" data-hovercard-url="/Clydo1976/Temu-Link-Bot/pull/1/hovercard?comment_id=2179215244&amp;comment_type=issue_comment" href="https://github.com/Clydo1976/Temu-Link-Bot/pull/1#issuecomment-2179215244">Clydo1976/Temu-Link-Bot#1 (comment)</a></em></p>]]></content>
-        <author>
-            <name>Clydonight</name>
-            <email>Clydonight@noreply.github.com</email>
-            <uri>https://github.com/Clydonight</uri>
-        </author>
-        <published>2024-10-02T19:03:32.000Z</published>
     </entry>
 </feed>
