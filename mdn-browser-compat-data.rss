@@ -2,11 +2,77 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2025-11-26T17:01:28.850Z</updated>
+    <updated>2025-11-26T18:01:59.300Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Restructure ranged style query data]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28537</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28537"/>
+        <updated>2025-11-26T17:25:32.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<p dir="auto">Restructure the ranged style query data newly added by <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3656125395" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28510" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28510/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28510">#28510</a>.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">There's no new information here, but I've restructured the data to be less surprisingly flat. When I was authoring <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3664001640" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/3579" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-dx/web-features/pull/3579/hovercard" href="https://github.com/web-platform-dx/web-features/pull/3579">web-platform-dx/web-features#3579</a>, I predicted some keys that did not yet exist in BCD, but what I found was rather different and confusing. In particular, the ranged behavior is a <em>peer</em> to style queries, not a subfeature.</p>
+<p dir="auto">Here's the before:</p>
+<ul dir="auto">
+<li>css.at-rules.container
+<ul dir="auto">
+<li>css.at-rules.container.style_queries_for_custom_properties</li>
+<li>css.at-rules.container.style_queries_range_syntax</li>
+</ul>
+</li>
+<li>css.types.if
+<ul dir="auto">
+<li>css.types.if.style_queries_range_syntax</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">And here's my after (new in <strong>bold</strong>, removed in <del>strike</del>):</p>
+<ul dir="auto">
+<li>css.at-rules.container
+<ul dir="auto">
+<li>css.at-rules.container.style_queries_for_custom_properties</li>
+<li><strong>css.at-rules.container.style_queries_for_custom_properties.range_syntax</strong></li>
+<li><del>css.at-rules.container.style_queries_range_syntax</del></li>
+</ul>
+</li>
+<li>css.types.if
+<ul dir="auto">
+<li><del>css.types.if.style_queries_range_syntax</del></li>
+<li><strong>css.types.if.style</strong></li>
+<li><strong>css.types.if.style.range_syntax</strong></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">This implies that we'd add some other keys at some point, namely:</p>
+<ul dir="auto">
+<li>css.types.if.media</li>
+<li>css.types.if.scroll-state</li>
+<li>css.types.if.supports</li>
+</ul>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">A follow up to:</p>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3656125395" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28510" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28510/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28510">#28510</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3652793121" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/3566" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/3566/hovercard" href="https://github.com/web-platform-dx/web-features/issues/3566">web-platform-dx/web-features#3566</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3664001640" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/3579" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-dx/web-features/pull/3579/hovercard" href="https://github.com/web-platform-dx/web-features/pull/3579">web-platform-dx/web-features#3579</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2025-11-26T17:24:54.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update browser releases]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28531</id>
@@ -176,7 +242,7 @@ tsx scripts/update-browser-releases/index.ts --all</p>
         <title type="html"><![CDATA[Add note about javascript: URLs being disallowed in Navigation.naviga…]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28440</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28440"/>
-        <updated>2025-11-26T16:54:31.000Z</updated>
+        <updated>2025-11-26T17:14:42.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">…te() calls</p>
 
 <h4 dir="auto">Summary</h4>
@@ -424,28 +490,5 @@ tsx scripts/update-browser-releases/index.ts --all</p>
             <uri>https://github.com/mkurz</uri>
         </author>
         <published>2025-09-05T09:18:44.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add more spec_urls; set some standard_tracks to false (APIs A-E)]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/27671</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/27671"/>
-        <updated>2025-09-29T11:30:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is a bit of a test PR to see if we could add spec_urls everywhere (especially for behavioral sub features).<br>
-Some things came up where we should probably agree on spec_url consistency for a few common sub features:</p>
-<ul dir="auto">
-<li>worker_support</li>
-<li>iterable sub features (forEach, keys, values, iterator, etc)</li>
-<li>secure_context_required<br>
-I decided to use the spec_url for the interface itself, happy to hear other thoughts.</li>
-</ul>
-<p dir="auto">Also, I think when a sub aspect of e.g. a method is described then it is okay to link to the same spec section as the method. So, basically the sub feature gets the same spec_url as the parent feature.</p>
-<p dir="auto">I marked standard_track false for a few things: CSSPrimitiveValue, CSSValue, CSSValueList, DOMError, FeaturePolicy. Doesn't look like these will be going anywhere.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27456.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3279237470" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/27456" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/27456/hovercard" href="https://github.com/mdn/browser-compat-data/issues/27456">#27456</a>.</p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2025-08-26T13:10:28.000Z</published>
     </entry>
 </feed>
