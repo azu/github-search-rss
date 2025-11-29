@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-11-29T04:02:02.896Z</updated>
+    <updated>2025-11-29T05:01:13.279Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -19,27 +19,6 @@
             <uri>https://github.com/mdn-bot</uri>
         </author>
         <published>2025-11-29T00:28:30.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add 'json' as a value for Sec-Fetch-Dest]]></title>
-        <id>https://github.com/mdn/content/pull/42160</id>
-        <link href="https://github.com/mdn/content/pull/42160"/>
-        <updated>2025-11-28T20:57:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1653598?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Dest" rel="nofollow">docs for the Sec-Fetch-Dest header</a> were missing the valid value <code class="notranslate">json</code>. This fixes adds it.</p>
-<p dir="auto">I wasn't totally sure how best to link to the docs for JSON imports. I did something which works but if there's a better way feel free to push it up.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Match spec.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">See <a href="https://fetch.spec.whatwg.org/#concept-request-destination" rel="nofollow">fetch spec</a> for request destinations, and <a href="https://w3c.github.io/webappsec-fetch-metadata/#sec-fetch-dest-header" rel="nofollow">fetch metadata spec</a> for the bit which says that this is reflected in the Sec-Fetch-Dest header.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">None that I could find.</p>]]></content>
-        <author>
-            <name>bakkot</name>
-            <email>bakkot@noreply.github.com</email>
-            <uri>https://github.com/bakkot</uri>
-        </author>
-        <published>2025-11-28T20:56:13.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Change canvas id to myCanvas in Path2D examples (Fixes #42155)]]></title>
@@ -69,21 +48,6 @@ It avoids accidental misuse of <code class="notranslate">&lt;div id="canvas"&gt;
             <uri>https://github.com/satyam22i</uri>
         </author>
         <published>2025-11-28T15:50:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Defenses pages]]></title>
-        <id>https://github.com/mdn/content/pull/42158</id>
-        <link href="https://github.com/mdn/content/pull/42158"/>
-        <updated>2025-11-28T19:16:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is another bit of <a href="https://github.com/orgs/mdn/discussions/857">https://github.com/orgs/mdn/discussions/857</a>.</p>
-<p dir="auto">It's pretty conservative: I have only moved pages under a new "Defenses" page, and not changed them at all.</p>
-<p dir="auto">In a subsequent PR, I will rewrite the TLS page, and I might try to integrate "Mixed content" and "Certificate transparency" into that page then.</p>]]></content>
-        <author>
-            <name>wbamberg</name>
-            <email>wbamberg@noreply.github.com</email>
-            <uri>https://github.com/wbamberg</uri>
-        </author>
-        <published>2025-11-28T05:36:57.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[chore(deps)!: migrate from Yarn to npm]]></title>
@@ -447,5 +411,59 @@ Lastly, I linked to that from the authoring page. This is important because ther
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2025-11-25T01:41:25.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Technical review: Add information on if()/container style query range syntax]]></title>
+        <id>https://github.com/mdn/content/pull/42082</id>
+        <link href="https://github.com/mdn/content/pull/42082"/>
+        <updated>2025-11-24T14:01:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Chrome 142 adds support for range syntax in style queries, both in CSS <code class="notranslate">@container</code> and <code class="notranslate">if()</code>. See <a href="https://chromestatus.com/feature/5184992749289472" rel="nofollow">https://chromestatus.com/feature/5184992749289472</a> and <a href="https://developer.chrome.com/blog/new-in-chrome-142#range-syntax" rel="nofollow">https://developer.chrome.com/blog/new-in-chrome-142#range-syntax</a>.</p>
+<p dir="auto">This PR adds content about style query range syntax to both the <code class="notranslate">if()</code> and <code class="notranslate">@container</code> reference pages, and coverage to the size/style container queries guide.</p>
+<p dir="auto">Note: Usage of substitution functions like <code class="notranslate">attr()</code> in range style queries didn't seem to work, in my testing, for example:</p>
+<div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content=".item-grid {
+  background-color: if(style(attr(data-columns, type&lt;number&gt;) &gt; 2): lightblue; else: white);
+}"><pre class="notranslate">.<span class="pl-c1">item-grid</span> {
+  <span class="pl-c1">background-color</span><span class="pl-kos">:</span> <span class="pl-en">if</span>(<span class="pl-en">style</span>(<span class="pl-en">attr</span>(data-columns<span class="pl-kos">,</span> type&lt;number&gt;) <span class="pl-c1">&gt;</span> <span class="pl-c1">2</span>)<span class="pl-kos">:</span> lightblue; else: white);
+}</pre></div>
+<p dir="auto">I've left a mention of it in the docs, but I should probably remove it and update the associated <a href="https://github.com/mdn/browser-compat-data/pull/28510" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28510/hovercard">browser compat data</a> if these don't work at the moment.</p>
+<p dir="auto">If they do work, can you provide me with an example that works, so I can see what I'm doing wrong?</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41982.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3633946647" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41982" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41982/hovercard" href="https://github.com/mdn/content/issues/41982">#41982</a></p>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2025-11-24T13:43:05.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add CSS `@custom-media` at-rule]]></title>
+        <id>https://github.com/mdn/content/pull/42075</id>
+        <link href="https://github.com/mdn/content/pull/42075"/>
+        <updated>2025-11-28T09:35:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1744292" rel="nofollow">Firefox 146 added</a> support for <code class="notranslate">@custom-media</code> at-rule, enabling developers to use custom media variables inside <code class="notranslate">@media</code> at-rules.</p>
+<p dir="auto"><a href="https://github.com/mdn/browser-compat-data/pull/28438" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28438/hovercard">I already updated BCD</a>, and created a <a href="https://web-platform-dx.github.io/web-features-explorer/features/custom-media-queries/" rel="nofollow">web feature</a> on web platform. This PR adds an article to MDN explaining how and when to use <strong>Custom Media Queries</strong>.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Over a year ago <a href="https://github.com/mdn/content/pull/35755" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/35755/hovercard">I tried to add this article</a> but <a href="https://github.com/mdn/content/pull/35755#issuecomment-2423263341" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/35755/hovercard">it was denied</a> as no browser implemented this feature.</p>
+<p dir="auto">Now, with Firefox implementing it, we can add an article, explaining how to use this feature.</p>]]></content>
+        <author>
+            <name>ramiy</name>
+            <email>ramiy@noreply.github.com</email>
+            <uri>https://github.com/ramiy</uri>
+        </author>
+        <published>2025-11-24T07:52:23.000Z</published>
     </entry>
 </feed>
