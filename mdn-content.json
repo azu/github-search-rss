@@ -20,7 +20,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/27765032?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Remove the phrase <code class=\"notranslate\">Because WebGL now requires textures to be loaded from secure contexts</code> from index.md of <strong>Using textures in WebGL</strong> and explain the benefit of possibility to use a plain, unencrypted http server for local development and testing</p>\n\n<p dir=\"auto\">It is true that <code class=\"notranslate\">Loading of WebGL textures is subject to cross-domain access controls</code>, but there is no mandatory requirement for webgl applications to load textures from secure context sensu stricto. Cross origin requests can be supported with a plain, unencrypted HTTP protocol.</p>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I removed the phrase <code class=\"notranslate\">Because WebGL now requires textures to be loaded from secure contexts</code> and explained that the use of http server is fully legitimate for local development and testing</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">First, the educational resource should not include misleading statements. Second, it is easier to set up a local http server for webgl-example tutorial experiments: compare Python's readily available module <strong>http</strong>.server and the complexity of configuring SSL for <strong>https</strong>.server. I examined the use of an unencrypted http server (Python http.server) with samples of the webgl-examples tutorial and confirm that the samples1-8 work as expected.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">If need be, we can include the reference to W3C document on secure context: <a href=\"https://w3c.github.io/webappsec-secure-contexts/#examples-top-level\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#examples-top-level</a>. A very instructive article on WebGL security considerations see in <a href=\"https://blog.pixelfreestudio.com/webgl-security-best-practices-ensuring-safe-3d-web-experiences/\" rel=\"nofollow\">https://blog.pixelfreestudio.com/webgl-security-best-practices-ensuring-safe-3d-web-experiences/</a>. The document never states that secure context is mandatory for WebGL apps to work but stresses the use of secure context for mitigating risks and vulnerability!</p>\n<p dir=\"auto\">For development of WebGL applications, some guides urge designers to always work in secure context. However, depending on task, this requirement can be weakened. When selecting which server flavor to choose, the rule of thumb: use of https is mandatory when deploying to the web; for local testing and development you can use a plain, unencrypted http server, especially when the development task is not concerned specifically with risk mitigation -- use of http server simplifies setting up the design environment.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">This edit is necessary because the phrase <code class=\"notranslate\">Because WebGL now requires textures to be loaded from secure contexts</code> is replicated in many documents hosted on MDN -- for example, README in the tutorial of webgl-examples, see my <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #365.\">closed</span> <a href=\"https://github.com/mdn/dom-examples/pull/365\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/dom-examples/pull/365/hovercard\">PR#365</a> -- and also in broader technical documentation. First, the educational resource should not contain misleading statements; second, the correct understanding of security issues can improve developer's experience when setting up environment for development and testing.</p>\n",
             "url": "https://github.com/mdn/content/pull/42165",
             "title": "Update index.md of using textures in webgl",
-            "date_modified": "2025-11-30T17:17:52.000Z",
+            "date_modified": "2025-12-01T12:00:12.000Z",
             "date_published": "2025-11-29T10:51:46.000Z",
             "author": {
                 "name": "vasilich-tregub",
@@ -31,7 +31,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/177507094?u=02fca01b2bde41566660e171c995c01443421086&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The previous note was stating that loops and conditional block scope behaves differently than the function scope, which I think is only true when declaring variables with <code class=\"notranslate\">var</code>.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The updated note was accurate when there was only <code class=\"notranslate\">var</code>, but not today .. when we almost never use <code class=\"notranslate\">var</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42164",
             "title": "Improve the accuracy of a note about scope in JS",
-            "date_modified": "2025-12-01T10:36:02.000Z",
+            "date_modified": "2025-12-01T11:41:02.000Z",
             "date_published": "2025-11-29T09:49:13.000Z",
             "author": {
                 "name": "youssef-el-atmani",
@@ -58,17 +58,6 @@
             "author": {
                 "name": "satyam22i",
                 "url": "https://github.com/satyam22i"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Migrates from Yarn to npm.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Consistency across MDN repos.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<div class=\"markdown-alert markdown-alert-important\" dir=\"auto\"><p class=\"markdown-alert-title\" dir=\"auto\"><svg class=\"octicon octicon-report mr-2\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z\"></path></svg>Important</p><p dir=\"auto\">This will be merged coordinately on Monday, 1st December around 12pm UTC.</p>\n</div>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3671393698\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/fred/issues/1106\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/fred/issues/1106/hovercard\" href=\"https://github.com/mdn/fred/issues/1106\">mdn/fred#1106</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/42149",
-            "title": "chore(deps)!: migrate from Yarn to npm",
-            "date_modified": "2025-11-28T15:28:18.000Z",
-            "date_published": "2025-11-27T12:53:38.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
             }
         },
         {
@@ -223,6 +212,17 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF146 adds support for operator mirroring by default in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1994172\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1994172</a></p>\n<p dir=\"auto\">More correctly, it has supported operator mirroring for some time in normal text for some time but this hasn't worked properly with operators and stretching. Also previously the behaviour was non standard, and now it is part of the spec.</p>\n<p dir=\"auto\">This adds a release note.<br>\nI also update the global <code class=\"notranslate\">dir</code> attribute to have a brief section on this topic and an example that shows how it works.<br>\nLastly, I linked to that from the authoring page. This is important because there is only one known font that can be used with this feature.</p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/fred-wang/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/fred-wang\">@fred-wang</a> Could you please sanity check these changes?</p>\n<p dir=\"auto\">Related docs work can be tracked <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3607746373\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41878\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41878/hovercard\" href=\"https://github.com/mdn/content/issues/41878\">#41878</a></p>",
+            "url": "https://github.com/mdn/content/pull/42096",
+            "title": "FF146 MathML operator mirroring and stretching",
+            "date_modified": "2025-11-27T09:08:46.000Z",
+            "date_published": "2025-11-25T01:41:25.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
             }
         }
     ]
