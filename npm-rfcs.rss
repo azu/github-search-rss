@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2025-12-07T15:01:28.198Z</updated>
+    <updated>2025-12-07T16:01:37.163Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
@@ -94,9 +94,11 @@ source: <a href="https://docs.npmjs.com/trusted-publishers" rel="nofollow">https
 <p dir="auto">My personal motivation is that I would like to be able to set the <code class="notranslate">--before</code> in the <code class="notranslate">.npmrc</code> configuration file of my project (with the goal of reducing the chances of pulling down malware under the assumption that third-parties continuously scan the registry for malware). However, I can also see this being a more convenient way to specify the value than having to compute and write out a date value (especially trying to decide in what order to specify the month/date/year).</p>
 <h3 dir="auto">Example</h3>
 <p dir="auto">In an "ideal" world it could look something like:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --before '2 days ago'"><pre class="notranslate">npm install --before <span class="pl-s"><span class="pl-pds">'</span>2 days ago<span class="pl-pds">'</span></span></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm install --before '2 days ago'"><pre lang="sh" class="notranslate"><code class="notranslate">npm install --before '2 days ago'
+</code></pre></div>
 <p dir="auto">Perhaps more realistic is to provide a negative amount of days (or another precision):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --before '-1'  # yesterday"><pre class="notranslate">npm install --before <span class="pl-s"><span class="pl-pds">'</span>-1<span class="pl-pds">'</span></span>  <span class="pl-c"><span class="pl-c">#</span> yesterday</span></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm install --before '-1'  # yesterday"><pre lang="sh" class="notranslate"><code class="notranslate">npm install --before '-1'  # yesterday
+</code></pre></div>
 <h3 dir="auto">How</h3>
 <h4 dir="auto">Current Behaviour</h4>
 <p dir="auto">The <code class="notranslate">--before</code> argument value should be a date.</p>
@@ -248,7 +250,7 @@ source: <a href="https://docs.npmjs.com/trusted-publishers" rel="nofollow">https
 <p dir="auto">The problem: When a termination signal is sent, the shell may exit immediately without waiting for its child process, causing npm to exit prematurely and killing the Node.js application before graceful shutdown completes.</p>
 <h3 dir="auto">Example</h3>
 <p dir="auto">Consider a basic Node.js server with cleanup logic:</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// server.js
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// server.js
 const server = require('http').createServer();
 
 process.on('SIGTERM', () =&gt; {
@@ -259,18 +261,19 @@ process.on('SIGTERM', () =&gt; {
   });
 });
 
-server.listen(3000);"><pre class="notranslate"><span class="pl-c">// server.js</span>
-<span class="pl-k">const</span> <span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'http'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">createServer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+server.listen(3000);"><pre lang="javascript" class="notranslate"><code class="notranslate">// server.js
+const server = require('http').createServer();
 
-<span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-s">'SIGTERM'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Graceful shutdown started'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">close</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Cleanup complete'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">exit</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+process.on('SIGTERM', () =&gt; {
+  console.log('Graceful shutdown started');
+  server.close(() =&gt; {
+    console.log('Cleanup complete');
+    process.exit(0);
+  });
+});
 
-<span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+server.listen(3000);
+</code></pre></div>
 <p dir="auto"><strong>Problem occurs in any of these scenarios</strong>:</p>
 <ol dir="auto">
 <li><strong>Docker container</strong>: <code class="notranslate">docker stop &lt;container&gt;</code></li>
@@ -282,19 +285,20 @@ server.listen(3000);"><pre class="notranslate"><span class="pl-c">// server.js</
 <h3 dir="auto">How</h3>
 <p dir="auto">Add an opt-in flag to control how <code class="notranslate">npm run</code> spawns processes, eliminating the problematic shell intermediary when not needed.</p>
 <h4 dir="auto">Current Behaviour</h4>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Current process tree with npm run
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="# Current process tree with npm run
 npm → /bin/sh -c &quot;node server.js&quot; → node server.js
  ↓            ↓
 SIGTERM   (shell may exit without waiting)
  ↓
 (npm exits because child is gone)
-(node process terminated abruptly)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Current process tree with npm run</span>
-npm → /bin/sh -c <span class="pl-s"><span class="pl-pds">"</span>node server.js<span class="pl-pds">"</span></span> → node server.js
+(node process terminated abruptly)"><pre lang="bash" class="notranslate"><code class="notranslate"># Current process tree with npm run
+npm → /bin/sh -c "node server.js" → node server.js
  ↓            ↓
-SIGTERM   (shell may <span class="pl-c1">exit</span> without waiting)
+SIGTERM   (shell may exit without waiting)
  ↓
 (npm exits because child is gone)
-(node process terminated abruptly)</pre></div>
+(node process terminated abruptly)
+</code></pre></div>
 <p dir="auto">The shell (<code class="notranslate">/bin/sh</code>) behavior varies:</p>
 <ul dir="auto">
 <li>Some shells (ash, dash) exit immediately on SIGTERM</li>
@@ -302,15 +306,16 @@ SIGTERM   (shell may <span class="pl-c1">exit</span> without waiting)
 <li>Node.js process is killed before cleanup completes</li>
 </ul>
 <p dir="auto"><strong>Current workaround requires modifying code</strong>:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
   &quot;scripts&quot;: {
     &quot;start&quot;: &quot;exec node server.js&quot;  // Must add exec manually
   }
-}"><pre class="notranslate">{
-  <span class="pl-ent">"scripts"</span>: {
-    <span class="pl-ent">"start"</span>: <span class="pl-s"><span class="pl-pds">"</span>exec node server.js<span class="pl-pds">"</span></span>  <span class="pl-ii">// Must add exec manually</span>
+}"><pre lang="json" class="notranslate"><code class="notranslate">{
+  "scripts": {
+    "start": "exec node server.js"  // Must add exec manually
   }
-}</pre></div>
+}
+</code></pre></div>
 <p dir="auto">This workaround is:</p>
 <ul dir="auto">
 <li>Not documented clearly</li>
@@ -321,13 +326,16 @@ SIGTERM   (shell may <span class="pl-c1">exit</span> without waiting)
 <h4 dir="auto">Desired Behaviour</h4>
 <p dir="auto">Provide an <strong>opt-in</strong> mechanism that works without code changes:</p>
 <p dir="auto"><strong>Option 1 - Environment variable</strong> (for deployments):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="NPM_PREFER_DIRECT_EXEC=1 npm run start"><pre class="notranslate">NPM_PREFER_DIRECT_EXEC=1 npm run start</pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="NPM_PREFER_DIRECT_EXEC=1 npm run start"><pre lang="bash" class="notranslate"><code class="notranslate">NPM_PREFER_DIRECT_EXEC=1 npm run start
+</code></pre></div>
 <p dir="auto"><strong>Option 2 - CLI flag</strong> (for specific runs):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run start --prefer-direct-exec"><pre class="notranslate">npm run start --prefer-direct-exec</pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm run start --prefer-direct-exec"><pre lang="bash" class="notranslate"><code class="notranslate">npm run start --prefer-direct-exec
+</code></pre></div>
 <p dir="auto"><strong>Option 3 - Config file</strong> (for projects):</p>
-<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# .npmrc
-prefer-direct-exec=true"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> .npmrc</span>
-<span class="pl-k">prefer-direct-exec</span>=true</pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="# .npmrc
+prefer-direct-exec=true"><pre lang="ini" class="notranslate"><code class="notranslate"># .npmrc
+prefer-direct-exec=true
+</code></pre></div>
 <p dir="auto"><strong>When enabled</strong>:</p>
 <ul dir="auto">
 <li>Simple commands: Spawn directly without shell</li>
@@ -336,17 +344,18 @@ prefer-direct-exec=true"><pre class="notranslate"><span class="pl-c"><span class
 <li>Default: Current behavior (backward compatible)</li>
 </ul>
 <p dir="auto"><strong>Result</strong>:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# With flag enabled
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="# With flag enabled
 npm → node server.js  (direct, no shell)
  ↓        ↓
 SIGTERM  (node receives signal)
  ↓        ↓
-(waits) (graceful shutdown completes)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> With flag enabled</span>
+(waits) (graceful shutdown completes)"><pre lang="bash" class="notranslate"><code class="notranslate"># With flag enabled
 npm → node server.js  (direct, no shell)
  ↓        ↓
 SIGTERM  (node receives signal)
  ↓        ↓
-(waits) (graceful shutdown completes)</pre></div>
+(waits) (graceful shutdown completes)
+</code></pre></div>
 <h3 dir="auto">References</h3>
 <ul dir="auto">
 <li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313195779" data-permission-text="Title is private" data-url="https://github.com/npm/run-script/issues/237" data-hovercard-type="issue" data-hovercard-url="/npm/run-script/issues/237/hovercard" href="https://github.com/npm/run-script/issues/237">npm/run-script#237</a> (implementation tracking)</li>
@@ -451,8 +460,8 @@ SIGTERM  (node receives signal)
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMTk5ODgsIm5iZiI6MTc2NTExOTY4OCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNTAxMjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NjA2ZThmMDdiZjVjMWE5NWU2OGE4M2U2YjhiYTg3MDlkZmM1NjZmOGVmOTcxNTViYTZlMTY5YWRkNTBmN2I0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.nuw7gH7HH2DRcoLryn5FbIMOGcn5Ee8bF2ZBwAASTGc"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMTk5ODgsIm5iZiI6MTc2NTExOTY4OCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNTAxMjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NjA2ZThmMDdiZjVjMWE5NWU2OGE4M2U2YjhiYTg3MDlkZmM1NjZmOGVmOTcxNTViYTZlMTY5YWRkNTBmN2I0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.nuw7gH7HH2DRcoLryn5FbIMOGcn5Ee8bF2ZBwAASTGc" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMTk5ODgsIm5iZiI6MTc2NTExOTY4OCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNTAxMjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YWFlMTE5NDdlNjFiY2M0M2MwZDlhZDhhZGYzZGQ0OWYyOGRjMjE4MGQzMzg3MTNjOWQxMjA4MGU3ODAxYmQxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.FJ3dbwpburZetsC4mNZ4joJdSOR006BQeHkrrQ0Q5dU"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMTk5ODgsIm5iZiI6MTc2NTExOTY4OCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNTAxMjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02YWFlMTE5NDdlNjFiY2M0M2MwZDlhZDhhZGYzZGQ0OWYyOGRjMjE4MGQzMzg3MTNjOWQxMjA4MGU3ODAxYmQxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.FJ3dbwpburZetsC4mNZ4joJdSOR006BQeHkrrQ0Q5dU" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMjM1OTcsIm5iZiI6MTc2NTEyMzI5NywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNjAxMzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02NjUyYTE1YWI4ZjllYmI4NmY4YzI4M2NhNGQzNTczODkzZTNmZmJiZmE5NGRkNjkzMzhkOGYxNWZlNDMwZWI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6vr5zzt02grRwFkjsul_6qqmd2Rv3fmUyVNhQ0wgM2o"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMjM1OTcsIm5iZiI6MTc2NTEyMzI5NywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNjAxMzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02NjUyYTE1YWI4ZjllYmI4NmY4YzI4M2NhNGQzNTczODkzZTNmZmJiZmE5NGRkNjkzMzhkOGYxNWZlNDMwZWI1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.6vr5zzt02grRwFkjsul_6qqmd2Rv3fmUyVNhQ0wgM2o" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMjM1OTcsIm5iZiI6MTc2NTEyMzI5NywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNjAxMzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYTBmNjJhMDYzYWRjNDdhZWJjZjI4ZjcxZWI1ODE1YjA3MmQxMmRlNTdkMzhmZDBjM2VkZmM4MzhkMGEyMmYxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.2YTUYlPJumY5lKr24_1_i1of0h3XMK2MZRM6hnsuh3g"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUxMjM1OTcsIm5iZiI6MTc2NTEyMzI5NywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwN1QxNjAxMzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYTBmNjJhMDYzYWRjNDdhZWJjZjI4ZjcxZWI1ODE1YjA3MmQxMmRlNTdkMzhmZDBjM2VkZmM4MzhkMGEyMmYxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.2YTUYlPJumY5lKr24_1_i1of0h3XMK2MZRM6hnsuh3g" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -671,20 +680,22 @@ AC92,{bs/$€€+**^}</li>
 <p dir="auto">Version bumping in npm currently requires explicitly specifying the version increment (e.g. <code class="notranslate">npm version minor</code>). This makes it challenging to create reusable release scripts in package.json, as the version increment needs to be hardcoded or passed as an argument.</p>
 <h2 dir="auto">How</h2>
 <h3 dir="auto">Current Behavior</h3>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm version minor  # Must specify version increment explicitly"><pre class="notranslate">npm version minor  <span class="pl-c"><span class="pl-c">#</span> Must specify version increment explicitly</span></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm version minor  # Must specify version increment explicitly"><pre lang="sh" class="notranslate"><code class="notranslate">npm version minor  # Must specify version increment explicitly
+</code></pre></div>
 <h3 dir="auto">Expected Behavior</h3>
 <p dir="auto">Would like to add an interactive mode similar to <a href="https://github.com/antfu-collective/bumpp">bumpp</a>:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
   &quot;scripts&quot;: {
     &quot;release&quot;: &quot;npm version --interactive&quot;
   }
-}"><pre class="notranslate">{
-  <span class="pl-ent">"scripts"</span>: {
-    <span class="pl-ent">"release"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm version --interactive<span class="pl-pds">"</span></span>
+}"><pre lang="json" class="notranslate"><code class="notranslate">{
+  "scripts": {
+    "release": "npm version --interactive"
   }
-}</pre></div>
+}
+</code></pre></div>
 <p dir="auto">Running <code class="notranslate">npm run release</code> would present an interactive CLI prompt:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="? Current version 0.1.0 »
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="? Current version 0.1.0 »
             major 1.0.0
             minor 0.2.0
             patch 0.1.1
@@ -693,16 +704,17 @@ AC92,{bs/$€€+**^}</li>
         pre-minor 0.2.0-beta.0
         pre-major 1.0.0-beta.0
             as-is 0.1.0
-           custom ..."><pre class="notranslate"><span class="pl-k">?</span> Current version 0.1.0 »
+           custom ..."><pre lang="sh" class="notranslate"><code class="notranslate">? Current version 0.1.0 »
             major 1.0.0
             minor 0.2.0
             patch 0.1.1
-<span class="pl-k">&gt;</span>            next 0.1.1
+&gt;            next 0.1.1
         pre-patch 0.1.1-beta.0
         pre-minor 0.2.0-beta.0
         pre-major 1.0.0-beta.0
             as-is 0.1.0
-           custom ...</pre></div>
+           custom ...
+</code></pre></div>
 <p dir="auto">Benefits:</p>
 <ul dir="auto">
 <li>More intuitive version selection</li>
