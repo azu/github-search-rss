@@ -2,11 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-12-09T23:01:20.879Z</updated>
+    <updated>2025-12-10T00:05:03.552Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[MIDI APIs now use NotAllowedError instead of InvalidAccessError]]></title>
+        <id>https://github.com/mdn/content/pull/42334</id>
+        <link href="https://github.com/mdn/content/pull/42334"/>
+        <updated>2025-12-09T23:11:48.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/29357907?u=5b1be4accbf0796916d326a344e5c36655396dde&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Motivation</h3>
+<p dir="auto">Quoted from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3712387494" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-midi-api/issues/278" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-midi-api/pull/278/hovercard" href="https://github.com/WebAudio/web-midi-api/pull/278">WebAudio/web-midi-api#278</a> PR description:</p>
+<blockquote>
+<p dir="auto">According to <a href="https://webidl.spec.whatwg.org/#invalidaccesserror" rel="nofollow">Web IDL spec on <code class="notranslate">InvalidAccessError</code></a>:</p>
+<blockquote>
+<p dir="auto">Deprecated. Use <a href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror" rel="nofollow">TypeError</a> for invalid arguments, "<a href="https://webidl.spec.whatwg.org/#notsupportederror" rel="nofollow">NotSupportedError</a>" <a href="https://webidl.spec.whatwg.org/#idl-DOMException" rel="nofollow">DOMException</a> for unsupported operations, and "<a href="https://webidl.spec.whatwg.org/#notallowederror" rel="nofollow">NotAllowedError</a>" <a href="https://webidl.spec.whatwg.org/#idl-DOMException" rel="nofollow">DOMException</a> for denied requests instead.</p>
+</blockquote>
+<p dir="auto">Previously, while trying to open <code class="notranslate">MIDIPort</code>, <code class="notranslate">"InvalidAccessError" DOMException</code> was thrown when...</p>
+<blockquote>
+<p dir="auto">the device is unavailable (e.g., is already in use by another process and cannot be opened, or is disconnected)</p>
+</blockquote>
+<p dir="auto">In this case, I believe <code class="notranslate">NotAllowedError</code> fits well, according to its <a href="https://webidl.spec.whatwg.org/#notallowederror" rel="nofollow">Web IDL spec  description</a>:</p>
+<blockquote>
+<p dir="auto">The request is not allowed by the user agent or the platform in the current context, possibly because the user denied permission.</p>
+</blockquote>
+<p dir="auto">Security and permissions reasons are only a subset of the appropriate causes, according to this definition. An attempt to <code class="notranslate">open</code> the port can fail. Somebody's exclusive lock on the port, or the port being disconnected, <ins>is</ins> the <ins>current context</ins> driving the platform's decision not to allow the operation.</p>
+<p dir="auto">And in the context of forbidden <code class="notranslate">.send</code> calls:</p>
+<blockquote>
+<p dir="auto">If data is a <a href="https://webaudio.github.io/web-midi-api/#dfn-system-exclusive" rel="nofollow">System Exclusive</a> message, and the <a href="https://webaudio.github.io/web-midi-api/#dom-midiaccess" rel="nofollow"><code class="notranslate">MIDIAccess</code></a> did not enable <a href="https://webaudio.github.io/web-midi-api/#dfn-system-exclusive" rel="nofollow">System Exclusive</a> access, throw an <code class="notranslate">InvalidAccessError</code> exception.</p>
+</blockquote>
+<p dir="auto"><code class="notranslate">NotAllowedError</code> fits even better, because it fits an explicitly defined subset of permission errors.</p>
+</blockquote>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">The change in spec: <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/WebAudio/web-midi-api/commit/3795f22/hovercard" href="https://github.com/WebAudio/web-midi-api/commit/3795f22">WebAudio/web-midi-api@<tt>3795f22</tt></a></p>
+<p dir="auto">This PR should not be confused with <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3628538760" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41956" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41956/hovercard" href="https://github.com/mdn/content/pull/41956">#41956</a>, which talks about <code class="notranslate">SecurityError</code>s instead</p>]]></content>
+        <author>
+            <name>nikelborm</name>
+            <email>nikelborm@noreply.github.com</email>
+            <uri>https://github.com/nikelborm</uri>
+        </author>
+        <published>2025-12-09T23:10:10.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Updates to `modulepreload` and `preload` to incorporate WHATWG changes for "style" and "json"]]></title>
         <id>https://github.com/mdn/content/pull/42333</id>
@@ -120,7 +157,7 @@
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161916643?u=ac460ddbb1c07a3453efc41c8bbb87d21b4878a5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR updates the interactive example for the </p> element.<br>
 The original code used nested  elements for each daily weather forecast, which is semantically incorrect because these items are not independently meaningful or distributable.<p dir="auto"></p>
 <p dir="auto">Each day’s forecast depends on the main forecast, so they should be grouped using </p><section> elements instead.<p dir="auto"></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUzMjE1ODAsIm5iZiI6MTc2NTMyMTI4MCwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwOVQyMzAxMjBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MDFjZGJlNDdlYjY1MDc2N2U5NDg5ZGU1ZmQwMjUzZWFiY2NhYzRkMTgzYjkwZWVjODQyY2FlOGJkYWQyNDEzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Uj2Wp5Lj23esaw4hnTrfmKWqpZBJyu9YbYVwKUx7e-k"><img width="783" height="513" alt="image" src="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUzMjE1ODAsIm5iZiI6MTc2NTMyMTI4MCwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwOVQyMzAxMjBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02MDFjZGJlNDdlYjY1MDc2N2U5NDg5ZGU1ZmQwMjUzZWFiY2NhYzRkMTgzYjkwZWVjODQyY2FlOGJkYWQyNDEzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.Uj2Wp5Lj23esaw4hnTrfmKWqpZBJyu9YbYVwKUx7e-k" style="max-width: 100%; height: auto; max-height: 513px;"></a></section>]]></content>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUzMjU0MDMsIm5iZiI6MTc2NTMyNTEwMywicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMFQwMDA1MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NDBlZGM3NTJhYjAwZmNhMTI5MWIzYWRlZDc5ZTUxMjI1YWRjY2Q3MDZkMTQ0OTYyYTVkM2JiZGUyNzg0ZjdkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gpbfE5SBq3pwEpN5aCFrSvE3I6oX7TJ8mBmVgX3_bf0"><img width="783" height="513" alt="image" src="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUzMjU0MDMsIm5iZiI6MTc2NTMyNTEwMywicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMFQwMDA1MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NDBlZGM3NTJhYjAwZmNhMTI5MWIzYWRlZDc5ZTUxMjI1YWRjY2Q3MDZkMTQ0OTYyYTVkM2JiZGUyNzg0ZjdkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gpbfE5SBq3pwEpN5aCFrSvE3I6oX7TJ8mBmVgX3_bf0" style="max-width: 100%; height: auto; max-height: 513px;"></a></section>]]></content>
         <author>
             <name>Abhi-Sharma</name>
             <email>Abhi-Sharma@noreply.github.com</email>
@@ -421,26 +458,5 @@ If the reviewer rejects this I will not be unhappy.</p>
             <uri>https://github.com/mehm8128</uri>
         </author>
         <published>2025-12-07T15:26:20.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update cross-origin resource access instructions]]></title>
-        <id>https://github.com/mdn/content/pull/42267</id>
-        <link href="https://github.com/mdn/content/pull/42267"/>
-        <updated>2025-12-08T22:04:15.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/20392302?u=5dcac116a63e4eaf0fd7243fdf8e9139962831ae&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Clarified requirements for cross-origin isolation and resource embedding.</p>
-
-
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42236.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3697342839" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42236" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42236/hovercard" href="https://github.com/mdn/content/issues/42236">#42236</a></p>
-
-
-
-]]></content>
-        <author>
-            <name>ajayojha</name>
-            <email>ajayojha@noreply.github.com</email>
-            <uri>https://github.com/ajayojha</uri>
-        </author>
-        <published>2025-12-05T23:52:37.000Z</published>
     </entry>
 </feed>
