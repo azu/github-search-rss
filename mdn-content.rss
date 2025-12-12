@@ -2,11 +2,57 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-12-12T03:28:22.558Z</updated>
+    <updated>2025-12-12T04:10:11.357Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Trusted Types: ServiceWorkerContainer.register()]]></title>
+        <id>https://github.com/mdn/content/pull/42362</id>
+        <link href="https://github.com/mdn/content/pull/42362"/>
+        <updated>2025-12-12T03:59:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register" rel="nofollow"><code class="notranslate">ServiceWorkerContainer.register()</code></a> takes a scriptURL defining the service worker. This updates the docs to reflect that the scriptURL can be a trusted type.</p>
+<p dir="auto">As per our pattern, this adds a top header and a security considerations section. To make that "work" I pushed most of the original top level overview down into a Description section.<br>
+I also added just the first example showing how to use TT.</p>
+<p dir="auto">Related docs work can be tracked in:</p>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2770544982" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/37518" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/37518/hovercard" href="https://github.com/mdn/content/issues/37518">#37518</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3510273732" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41507" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41507/hovercard" href="https://github.com/mdn/content/issues/41507">#41507</a></li>
+</ul>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2025-12-12T03:57:39.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix documentation for rpId]]></title>
+        <id>https://github.com/mdn/content/pull/42361</id>
+        <link href="https://github.com/mdn/content/pull/42361"/>
+        <updated>2025-12-12T03:57:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">The page for <a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions" rel="nofollow"><code class="notranslate">PublicKeyCredentialRequestOptions</code></a> describes <code class="notranslate">rpId</code> as follows:</p>
+<blockquote>
+<p dir="auto">A string that specifies the relying party's identifier (for example "login.example.org"). For security purposes:</p>
+<ul dir="auto">
+<li>The calling web app verifies that rpId matches the relying party's origin.</li>
+<li>The authenticator verifies that rpId matches the rpId of the credential used for the authentication ceremony.</li>
+</ul>
+<p dir="auto">This value defaults to the current origin's domain.</p>
+</blockquote>
+<p dir="auto">It's not "the calling web app" that does this, it's the browser[1]. AIUI this is important because the whole point of this is to defend against phishing. If it's left up to the caller to do the verifying, there's nothing to stop a phishing site from asking for credentials for any other RP.</p>
+<p dir="auto">Also it doesn't make sense that rpId must "match the relying party's origin" and that it "defaults to the current origin's domain". If the first is true, why have a property at all?</p>
+<p dir="auto">I think there is a concept of "scope" in which a page at, say, "login.example.org" is allowed to get a credential for "example.org" (<a href="https://w3c.github.io/webauthn/#rp-id" rel="nofollow">https://w3c.github.io/webauthn/#rp-id</a>, although this is hard to understand and I'm not sure of the exact rules.</p>
+<p dir="auto">We should cover scope properly in the WebAuthn docs. I'm intending to talk about it in my passkey guide, but I unfortunately don't have the time to overhaul the WebAuthn docs right now. But the first issue, about who does the verifying, really should be fixed.</p>
+<p dir="auto">[1] See <a href="https://w3c.github.io/webauthn/#dom-publickeycredentialrequestoptions-rpid" rel="nofollow">https://w3c.github.io/webauthn/#dom-publickeycredentialrequestoptions-rpid</a>: "The <a href="https://w3c.github.io/webauthn/#client" rel="nofollow">client</a> MUST verify that the <a href="https://w3c.github.io/webauthn/#relying-party" rel="nofollow">Relying Party</a>’s <a href="https://html.spec.whatwg.org/multipage/origin.html#concept-origin" rel="nofollow">origin</a> matches the <a href="https://w3c.github.io/webauthn/#scope" rel="nofollow">scope</a> of this <a href="https://w3c.github.io/webauthn/#rp-id" rel="nofollow">RP ID</a>." and "client" is defined at <a href="https://w3c.github.io/webauthn/#client" rel="nofollow">https://w3c.github.io/webauthn/#client</a> as "A <a href="https://w3c.github.io/webauthn/#webauthn-client" rel="nofollow">WebAuthn Client</a> is an intermediary entity typically implemented in the user agent (in whole, or in part).".</p>]]></content>
+        <author>
+            <name>wbamberg</name>
+            <email>wbamberg@noreply.github.com</email>
+            <uri>https://github.com/wbamberg</uri>
+        </author>
+        <published>2025-12-12T03:54:04.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[fix: auto-cleanup by bot]]></title>
         <id>https://github.com/mdn/content/pull/42360</id>
@@ -350,7 +396,7 @@
         <title type="html"><![CDATA[Add passkeys guide]]></title>
         <id>https://github.com/mdn/content/pull/42338</id>
         <link href="https://github.com/mdn/content/pull/42338"/>
-        <updated>2025-12-10T04:27:20.000Z</updated>
+        <updated>2025-12-12T03:43:09.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">wip</p>]]></content>
         <author>
             <name>wbamberg</name>
@@ -367,7 +413,7 @@
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161916643?u=ac460ddbb1c07a3453efc41c8bbb87d21b4878a5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The current documentation states that all keydown events count as user activation except the Esc key and browser-reserved shortcut keys.<br>
 However, in practice, several additional keys do not trigger user activation in major browsers (Chrome, Firefox), such as CapsLock, NumLock, and other lock/system keys.</p>
 <p dir="auto">This update clarifies that user activation is not triggered by certain non-character or system keys, making the documentation more accurate and aligned with real browser behavior.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/161916643/524629710-6e25b448-e531-4f77-85ad-78fac0f4a6f7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTA0MDIsIm5iZiI6MTc2NTUxMDEwMiwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NjI5NzEwLTZlMjViNDQ4LWU1MzEtNGY3Ny04NWFkLTc4ZmFjMGY0YTZmNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwMzI4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MWI3NDc0YjcxYmQwMzc5MTk2MDQ4NzJiMzFmYjQ5MjU1MzE3YjY5ODNiZGJjNmI0OGNiNDMxMDdhN2Y3ZTgwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.wSTyVdTEloosYU8ABe3e0I9vhZjXkf9n8Jnjwm4k4sI"><img width="728" height="113" alt="image" src="https://private-user-images.githubusercontent.com/161916643/524629710-6e25b448-e531-4f77-85ad-78fac0f4a6f7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTA0MDIsIm5iZiI6MTc2NTUxMDEwMiwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NjI5NzEwLTZlMjViNDQ4LWU1MzEtNGY3Ny04NWFkLTc4ZmFjMGY0YTZmNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwMzI4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MWI3NDc0YjcxYmQwMzc5MTk2MDQ4NzJiMzFmYjQ5MjU1MzE3YjY5ODNiZGJjNmI0OGNiNDMxMDdhN2Y3ZTgwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.wSTyVdTEloosYU8ABe3e0I9vhZjXkf9n8Jnjwm4k4sI" style="max-width: 100%; height: auto; max-height: 113px;"></a>]]></content>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/161916643/524629710-6e25b448-e531-4f77-85ad-78fac0f4a6f7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTI5MTEsIm5iZiI6MTc2NTUxMjYxMSwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NjI5NzEwLTZlMjViNDQ4LWU1MzEtNGY3Ny04NWFkLTc4ZmFjMGY0YTZmNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwNDEwMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZmNmZjI5MmM1MzVkMzMyMDcyNzdmNzg2ODJkNWNiODA2MTlkNmYxNDYyZWRmNmNjOTk3OGZjYjRlM2JkOTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.zGALRUNc2eQiogGlnPF-6-s5hzWaEBeA1KV2fCUM0zg"><img width="728" height="113" alt="image" src="https://private-user-images.githubusercontent.com/161916643/524629710-6e25b448-e531-4f77-85ad-78fac0f4a6f7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTI5MTEsIm5iZiI6MTc2NTUxMjYxMSwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NjI5NzEwLTZlMjViNDQ4LWU1MzEtNGY3Ny04NWFkLTc4ZmFjMGY0YTZmNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwNDEwMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZmNmZjI5MmM1MzVkMzMyMDcyNzdmNzg2ODJkNWNiODA2MTlkNmYxNDYyZWRmNmNjOTk3OGZjYjRlM2JkOTBiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.zGALRUNc2eQiogGlnPF-6-s5hzWaEBeA1KV2fCUM0zg" style="max-width: 100%; height: auto; max-height: 113px;"></a>]]></content>
         <author>
             <name>Abhi-Sharma</name>
             <email>Abhi-Sharma@noreply.github.com</email>
@@ -471,7 +517,7 @@ However, in practice, several additional keys do not trigger user activation in 
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161916643?u=ac460ddbb1c07a3453efc41c8bbb87d21b4878a5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR updates the interactive example for the </p> element.<br>
 The original code used nested  elements for each daily weather forecast, which is semantically incorrect because these items are not independently meaningful or distributable.<p dir="auto"></p>
 <p dir="auto">Each day’s forecast depends on the main forecast, so they should be grouped using </p><section> elements instead.<p dir="auto"></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTA0MDIsIm5iZiI6MTc2NTUxMDEwMiwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwMzI4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04MDliZDgwMGYxZDI1YmQyN2MzZjM4NGZkODk1MjAzNzQ0ODdkNzk0ZmIwYTNkNDljYmZjMWY5NmE4MGNjZjg2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.UC46rpGsX-8ymxZRw8VPpnziaS-RSChEI_2WnTvmr0o"><img width="783" height="513" alt="image" src="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTA0MDIsIm5iZiI6MTc2NTUxMDEwMiwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwMzI4MjJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04MDliZDgwMGYxZDI1YmQyN2MzZjM4NGZkODk1MjAzNzQ0ODdkNzk0ZmIwYTNkNDljYmZjMWY5NmE4MGNjZjg2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.UC46rpGsX-8ymxZRw8VPpnziaS-RSChEI_2WnTvmr0o" style="max-width: 100%; height: auto; max-height: 513px;"></a></section>]]></content>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTI5MTEsIm5iZiI6MTc2NTUxMjYxMSwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwNDEwMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNTI5MjJmZDY2OGEzY2VmODQwZWY0NDMxM2JhMTZiZTg5Y2NmZjQyMzU1YjdmOGRkODQzMjMwYjhlNzRiOWU0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ooRlNrIAUiYFDnqPpukinTM5bJmMEvds1AWmfHfNHEc"><img width="783" height="513" alt="image" src="https://private-user-images.githubusercontent.com/161916643/524452711-d09bdc2b-12c4-428b-bd89-8bac2c69c5fc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU1MTI5MTEsIm5iZiI6MTc2NTUxMjYxMSwicGF0aCI6Ii8xNjE5MTY2NDMvNTI0NDUyNzExLWQwOWJkYzJiLTEyYzQtNDI4Yi1iZDg5LThiYWMyYzY5YzVmYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxMlQwNDEwMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNTI5MjJmZDY2OGEzY2VmODQwZWY0NDMxM2JhMTZiZTg5Y2NmZjQyMzU1YjdmOGRkODQzMjMwYjhlNzRiOWU0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ooRlNrIAUiYFDnqPpukinTM5bJmMEvds1AWmfHfNHEc" style="max-width: 100%; height: auto; max-height: 513px;"></a></section>]]></content>
         <author>
             <name>Abhi-Sharma</name>
             <email>Abhi-Sharma@noreply.github.com</email>
@@ -492,31 +538,5 @@ This PR introduces a clear, modern example of how to implement a registration ro
             <uri>https://github.com/Abhi-Sharma</uri>
         </author>
         <published>2025-12-09T17:53:13.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove EASY from CSS reference pages]]></title>
-        <id>https://github.com/mdn/content/pull/42325</id>
-        <link href="https://github.com/mdn/content/pull/42325"/>
-        <updated>2025-12-10T11:11:29.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">removes only the word "easy", but not "easier", from most CSS reference pages.</p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2025-12-09T16:47:26.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove EASY from CSS guides section]]></title>
-        <id>https://github.com/mdn/content/pull/42324</id>
-        <link href="https://github.com/mdn/content/pull/42324"/>
-        <updated>2025-12-10T11:36:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">reduced the occurrence of easy and easier within the CSS guides section.</p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2025-12-09T16:38:21.000Z</published>
     </entry>
 </feed>
