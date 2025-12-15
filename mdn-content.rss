@@ -2,11 +2,121 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2025-12-15T17:04:41.778Z</updated>
+    <updated>2025-12-15T18:02:11.787Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Correct calculation]]></title>
+        <id>https://github.com/mdn/content/pull/42412</id>
+        <link href="https://github.com/mdn/content/pull/42412"/>
+        <updated>2025-12-15T18:00:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161916643?u=ac460ddbb1c07a3453efc41c8bbb87d21b4878a5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Summary</p>
+<p dir="auto">This pull request corrects an incorrect numerical estimation in the Window.requestAnimationFrame() documentation related to request ID overflow timing.</p>
+<p dir="auto">Problem</p>
+<p dir="auto">The warning section under Return value stated that request ID overflow would occur after approximately 500 days when rendering at 60 Hz with 100 requestAnimationFrame() calls per frame.<br>
+This value is mathematically incorrect.</p>
+<p dir="auto">Solution</p>
+<p dir="auto">The calculation has been corrected to reflect the actual overflow timeframe of approximately 8 days, based on a 32-bit counter and a call rate of 6,000 requests per second (60 Hz × 100 calls per frame).<br>
+An additional clarification was added to emphasize that this scenario represents an extreme and uncommon usage pattern.</p>
+<p dir="auto">Rationale</p>
+<p dir="auto">Accurate numerical information is important for developer understanding, especially for long-running or performance-critical applications such as games, simulations, and dashboards. This change ensures the documentation remains technically correct and avoids misleading assumptions.</p>
+<p dir="auto">Scope of Change</p>
+<p dir="auto">Updated the overflow time estimation in the warning section</p>
+<p dir="auto">Added clarification about the edge-case nature of this scenario</p>
+<p dir="auto">No behavioral or API changes</p>
+<p dir="auto">References</p>
+<p dir="auto">Calculation:</p>
+<p dir="auto">2^32 ÷ (60 × 100) ÷ 60 ÷ 60 ÷ 24 ≈ 8.27 days</p>]]></content>
+        <author>
+            <name>Abhi-Sharma</name>
+            <email>Abhi-Sharma@noreply.github.com</email>
+            <uri>https://github.com/Abhi-Sharma</uri>
+        </author>
+        <published>2025-12-15T17:56:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix: Update bufferSubData parameters to match WebGL 1 spec #42315]]></title>
+        <id>https://github.com/mdn/content/pull/42411</id>
+        <link href="https://github.com/mdn/content/pull/42411"/>
+        <updated>2025-12-15T17:57:10.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/184134219?u=2e3379684b8d674944164c3a6564fc3dd4c38f65&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Removed WebGL 2 constants from target. Removed srcOffset and length parameters which are not supported in WebGL 1. Renamed dstByteOffset to offset.</p>
+
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Updated the <code class="notranslate">bufferSubData</code> documentation for <code class="notranslate">WebGLRenderingContext</code> to accurately reflect the WebGL 1 specification. I removed parameters and constants that are only available in WebGL 2 and corrected a parameter name to match the method signature.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The current documentation incorrectly lists <code class="notranslate">srcOffset</code> and <code class="notranslate">length</code> as parameters, but these are only supported in <code class="notranslate">WebGL2RenderingContext</code>. Additionally, the <code class="notranslate">target</code> parameter listed constants (like <code class="notranslate">COPY_READ_BUFFER</code>) that are not valid in a WebGL 1 context. This created confusion for developers using the WebGL 1 API.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">These changes align the documentation with the <a href="https://registry.khronos.org/webgl/specs/latest/1.0/#5.14.5" rel="nofollow">WebGL 1.0 Specification</a>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42315.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3710684004" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42315" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42315/hovercard" href="https://github.com/mdn/content/issues/42315">#42315</a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>Harish3005-cloud</name>
+            <email>Harish3005-cloud@noreply.github.com</email>
+            <uri>https://github.com/Harish3005-cloud</uri>
+        </author>
+        <published>2025-12-15T17:51:28.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Bug-1864284 Allow localhost access for temporary MV3 add-ons]]></title>
+        <id>https://github.com/mdn/content/pull/42410</id>
+        <link href="https://github.com/mdn/content/pull/42410"/>
+        <updated>2025-12-15T17:44:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Address is the dev-docs-needed require requirements of <em><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1864284" rel="nofollow">Bug 1864284</a> Allow localhost in MV3 CSP to allow connecting to local dev servers</em> with the addition of:</p>
+<ul dir="auto">
+<li>Notes in the default content security policy page and the manifest content security key page</li>
+<li>release note</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">See related BCD changes in TBC.</p>]]></content>
+        <author>
+            <name>rebloor</name>
+            <email>rebloor@noreply.github.com</email>
+            <uri>https://github.com/rebloor</uri>
+        </author>
+        <published>2025-12-15T17:42:53.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[chore(cssxref): Replace links with `cssxref` macro in `/web/html`]]></title>
+        <id>https://github.com/mdn/content/pull/42408</id>
+        <link href="https://github.com/mdn/content/pull/42408"/>
+        <updated>2025-12-15T17:06:34.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Continuing on from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3717107679" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42346" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42346/hovercard" href="https://github.com/mdn/content/pull/42346">#42346</a>, this PR replaces links in <code class="notranslate">files/en-us/web/html</code> with the macro:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">Selector links: <code class="notranslate">/en-US/docs/Web/CSS/Reference/Selectors/</code> → <code class="notranslate">{{cssxref(":selector")}}</code> and <code class="notranslate">{{cssxref("::selector")}}</code></p>
+</li>
+<li>
+<p dir="auto">At-rule links: <code class="notranslate">/en-US/docs/Web/CSS/Reference/At-rules/</code> → <code class="notranslate">{{cssxref("@at-rule")}}</code></p>
+</li>
+<li>
+<p dir="auto">Value links: <code class="notranslate">/en-US/docs/Web/CSS/Reference/Values/</code> → <code class="notranslate">{{cssxref("keyword")}}</code>, <code class="notranslate">{{cssxref("function()")}}</code>, and <code class="notranslate">{{cssxref("data-type")}}</code></p>
+<ul dir="auto">
+<li>Because of special treatment of <code class="notranslate">Web/CSS/Reference/Values/Color_value</code>, <code class="notranslate">{{cssxref("color_value", "&amp;lt;color&amp;gt;")}}</code> has been replaced with  <code class="notranslate">{{cssxref("&amp;lt;color&amp;gt;")}}</code>.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">See "Additional details" in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3717107679" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42346" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42346/hovercard" href="https://github.com/mdn/content/pull/42346">#42346</a> for more context.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3731120395" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42407" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42407/hovercard" href="https://github.com/mdn/content/pull/42407">#42407</a></li>
+</ul>]]></content>
+        <author>
+            <name>dipikabh</name>
+            <email>dipikabh@noreply.github.com</email>
+            <uri>https://github.com/dipikabh</uri>
+        </author>
+        <published>2025-12-15T17:05:10.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[chore(cssxref): Replace links with `cssxref` macro in `/web/accessibility`]]></title>
         <id>https://github.com/mdn/content/pull/42407</id>
@@ -359,7 +469,7 @@ reflect the correct behavior more clearly.</p>
         <title type="html"><![CDATA[Update Google Fonts instructions to match current UI]]></title>
         <id>https://github.com/mdn/content/pull/42398</id>
         <link href="https://github.com/mdn/content/pull/42398"/>
-        <updated>2025-12-15T15:14:55.000Z</updated>
+        <updated>2025-12-15T18:01:58.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/166474819?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Updates the Google Fonts instructions in the Web fonts learning article to reflect the current Google Fonts interface and embed flow.</p>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42385.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3726742754" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42385" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42385/hovercard" href="https://github.com/mdn/content/issues/42385">#42385</a></p>]]></content>
         <author>
@@ -477,9 +587,9 @@ reflect the correct behavior more clearly.</p>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/576623?u=88392c52422628facfd7cf108241d2864680915d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Use consistent headings for <code class="notranslate">rel</code> attributes.</p>
 <p dir="auto"><strong>Before:</strong></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/576623/526169027-5be83178-0411-459a-9c40-2899a7418e0e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MTg1ODEsIm5iZiI6MTc2NTgxODI4MSwicGF0aCI6Ii81NzY2MjMvNTI2MTY5MDI3LTViZTgzMTc4LTA0MTEtNDU5YS05YzQwLTI4OTlhNzQxOGUwZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxNzA0NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMmM2MGNjNzIwZWJhMWVlNjE3ODliNGFhNmQxZGYwOWMwMDhkYjgyY2EwNzljYjlkZGU4MmZiYzcyM2ZiNjM2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YNC0PodhXNhzv5RjZNOyJXyCKeAVFpbcvN-Nkshyiy4"><img width="300" alt="before" src="https://private-user-images.githubusercontent.com/576623/526169027-5be83178-0411-459a-9c40-2899a7418e0e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MTg1ODEsIm5iZiI6MTc2NTgxODI4MSwicGF0aCI6Ii81NzY2MjMvNTI2MTY5MDI3LTViZTgzMTc4LTA0MTEtNDU5YS05YzQwLTI4OTlhNzQxOGUwZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxNzA0NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMmM2MGNjNzIwZWJhMWVlNjE3ODliNGFhNmQxZGYwOWMwMDhkYjgyY2EwNzljYjlkZGU4MmZiYzcyM2ZiNjM2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.YNC0PodhXNhzv5RjZNOyJXyCKeAVFpbcvN-Nkshyiy4" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/576623/526169027-5be83178-0411-459a-9c40-2899a7418e0e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MjIwMzEsIm5iZiI6MTc2NTgyMTczMSwicGF0aCI6Ii81NzY2MjMvNTI2MTY5MDI3LTViZTgzMTc4LTA0MTEtNDU5YS05YzQwLTI4OTlhNzQxOGUwZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxODAyMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hMzlkMmNkYjY4M2RhZjgwZDkwOTM2YmE1MzZiZGU1YjM0ZjVlNzA4MDExMWVhMDA1OWZiODRhNzRhYjkyZmMwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.8ozrc_pmdR-v4t928Npr_wFKDk51rcV8lG0o3J8mCIc"><img width="300" alt="before" src="https://private-user-images.githubusercontent.com/576623/526169027-5be83178-0411-459a-9c40-2899a7418e0e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MjIwMzEsIm5iZiI6MTc2NTgyMTczMSwicGF0aCI6Ii81NzY2MjMvNTI2MTY5MDI3LTViZTgzMTc4LTA0MTEtNDU5YS05YzQwLTI4OTlhNzQxOGUwZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxODAyMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hMzlkMmNkYjY4M2RhZjgwZDkwOTM2YmE1MzZiZGU1YjM0ZjVlNzA4MDExMWVhMDA1OWZiODRhNzRhYjkyZmMwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.8ozrc_pmdR-v4t928Npr_wFKDk51rcV8lG0o3J8mCIc" style="max-width: 100%;"></a>
 <p dir="auto"><strong>After:</strong></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/576623/526168961-33aa4768-10b4-4578-ac00-6080c9125592.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MTg1ODEsIm5iZiI6MTc2NTgxODI4MSwicGF0aCI6Ii81NzY2MjMvNTI2MTY4OTYxLTMzYWE0NzY4LTEwYjQtNDU3OC1hYzAwLTYwODBjOTEyNTU5Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxNzA0NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04N2NhMTQwYzI5ZDgxOTBkOGM3ZTQ1Zjk1YTU4OGU5MjFiZjg5ZGI3YjgzMzgzMjczNmY5ZWQ4MmYyNGQ3MGUyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.dBBG4qHWpwjmQ6R1KvES3ChxRcx2hBoEw1jVrlLqb24"><img width="300" alt="after" src="https://private-user-images.githubusercontent.com/576623/526168961-33aa4768-10b4-4578-ac00-6080c9125592.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MTg1ODEsIm5iZiI6MTc2NTgxODI4MSwicGF0aCI6Ii81NzY2MjMvNTI2MTY4OTYxLTMzYWE0NzY4LTEwYjQtNDU3OC1hYzAwLTYwODBjOTEyNTU5Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxNzA0NDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04N2NhMTQwYzI5ZDgxOTBkOGM3ZTQ1Zjk1YTU4OGU5MjFiZjg5ZGI3YjgzMzgzMjczNmY5ZWQ4MmYyNGQ3MGUyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.dBBG4qHWpwjmQ6R1KvES3ChxRcx2hBoEw1jVrlLqb24" style="max-width: 100%;"></a>]]></content>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/576623/526168961-33aa4768-10b4-4578-ac00-6080c9125592.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MjIwMzEsIm5iZiI6MTc2NTgyMTczMSwicGF0aCI6Ii81NzY2MjMvNTI2MTY4OTYxLTMzYWE0NzY4LTEwYjQtNDU3OC1hYzAwLTYwODBjOTEyNTU5Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxODAyMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kMmU4YTVhM2FkMDEwMDgwYWRjZmNlZjkzMWVhMGEzMGQ3NzU0ZjU2NDRjNzNjN2IyOTM2YTQyMDEzM2RkMTg2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0SajrmiZURta_TsKddeBNnTXmlHJNoVHQTczi_wCFkE"><img width="300" alt="after" src="https://private-user-images.githubusercontent.com/576623/526168961-33aa4768-10b4-4578-ac00-6080c9125592.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjU4MjIwMzEsIm5iZiI6MTc2NTgyMTczMSwicGF0aCI6Ii81NzY2MjMvNTI2MTY4OTYxLTMzYWE0NzY4LTEwYjQtNDU3OC1hYzAwLTYwODBjOTEyNTU5Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIxNVQxODAyMTFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kMmU4YTVhM2FkMDEwMDgwYWRjZmNlZjkzMWVhMGEzMGQ3NzU0ZjU2NDRjNzNjN2IyOTM2YTQyMDEzM2RkMTg2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0SajrmiZURta_TsKddeBNnTXmlHJNoVHQTczi_wCFkE" style="max-width: 100%;"></a>]]></content>
         <author>
             <name>ramiy</name>
             <email>ramiy@noreply.github.com</email>
@@ -559,115 +669,5 @@ Live examples are unchanged; the update is purely educational.</p>
             <uri>https://github.com/Khogendrarupini</uri>
         </author>
         <published>2025-12-12T12:48:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Trusted Types: ServiceWorkerContainer.register()]]></title>
-        <id>https://github.com/mdn/content/pull/42362</id>
-        <link href="https://github.com/mdn/content/pull/42362"/>
-        <updated>2025-12-12T03:59:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register" rel="nofollow"><code class="notranslate">ServiceWorkerContainer.register()</code></a> takes a scriptURL defining the service worker. This updates the docs to reflect that the scriptURL can be a trusted type.</p>
-<p dir="auto">As per our pattern, this adds a top header and a security considerations section. To make that "work" I pushed most of the original top level overview down into a Description section.<br>
-I also added just the first example showing how to use TT.</p>
-<p dir="auto">Related docs work can be tracked in:</p>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2770544982" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/37518" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/37518/hovercard" href="https://github.com/mdn/content/issues/37518">#37518</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3510273732" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41507" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41507/hovercard" href="https://github.com/mdn/content/issues/41507">#41507</a></li>
-</ul>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2025-12-12T03:57:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add standard names for Device Client hints]]></title>
-        <id>https://github.com/mdn/content/pull/42351</id>
-        <link href="https://github.com/mdn/content/pull/42351"/>
-        <updated>2025-12-15T07:27:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<ul dir="auto">
-<li>Copies the device client hints to new docs with their standard <code class="notranslate">Sec-CH</code> names.</li>
-<li>Adds <code class="notranslate">Sec-CH-Viewport-Height</code> page.</li>
-<li>Prefers the <code class="notranslate">Sec-CH-</code> variants to their old names.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Fix developer confusion: <a href="https://bsky.app/profile/ericportis.com/post/3m7oa4vo5fk2q" rel="nofollow">https://bsky.app/profile/ericportis.com/post/3m7oa4vo5fk2q</a></p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto">Device-Memory, DPR and Width were added in Chrome 97: <a href="https://chromestatus.com/feature/6658223894429696" rel="nofollow">https://chromestatus.com/feature/6658223894429696</a> (note Device-Memory was not noted there)</p>
-<p dir="auto">Height was added in Chrome 105: <a href="https://chromestatus.com/feature/5646861215989760" rel="nofollow">https://chromestatus.com/feature/5646861215989760</a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-<p dir="auto">BCD changes: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3718967642" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28636" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28636/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28636">mdn/browser-compat-data#28636</a></p>
-]]></content>
-        <author>
-            <name>tunetheweb</name>
-            <email>tunetheweb@noreply.github.com</email>
-            <uri>https://github.com/tunetheweb</uri>
-        </author>
-        <published>2025-12-11T12:21:54.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Firefox 147 supports media fragments in SVG URLs]]></title>
-        <id>https://github.com/mdn/content/pull/42348</id>
-        <link href="https://github.com/mdn/content/pull/42348"/>
-        <updated>2025-12-15T13:25:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Firefox 147 adds support for <a href="https://www.w3.org/TR/media-frags/" rel="nofollow">media fragment</a> syntax when using SVG files as <a href="/en-US/docs/Web/SVG/Guides/SVG_as_an_image">image sources</a>. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1999989" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1999989</a>.</p>
-<p dir="auto">This PR adds a rel note to cover this addition.</p>
-<p dir="auto">I've not added any other content covering this functionality, because it is a very general feature that otherwise has no support (except for temporal syntax on <code class="notranslate">&lt;video&gt;</code>/<code class="notranslate">&lt;audio&gt;</code> sources), and to add information about it just for one browser in one specific context seems weird. You could argue that it's the kind of information that belongs in BCD, but we don't really have anywhere to record BCD for a feature like this.</p>
-<p dir="auto">Let me know if you disagree with this. I'd appreciate a second opinion.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2025-12-11T08:44:21.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update warnings about event handler attributes]]></title>
-        <id>https://github.com/mdn/content/pull/42347</id>
-        <link href="https://github.com/mdn/content/pull/42347"/>
-        <updated>2025-12-11T07:41:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/162063292?u=cad2f8eb32b868404bc1c410bcfe7e5466be75df&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Added the implicit <code class="notranslate">with</code> statement wrapping that event handler attributes do, and the issues that come with it</p>
-
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Mentioned  a (lesser known?) feature of event handler attributes</p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>addsoupbase</name>
-            <email>addsoupbase@noreply.github.com</email>
-            <uri>https://github.com/addsoupbase</uri>
-        </author>
-        <published>2025-12-11T07:39:26.000Z</published>
     </entry>
 </feed>
