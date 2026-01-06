@@ -2,11 +2,55 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2026-01-06T07:04:43.576Z</updated>
+    <updated>2026-01-06T08:02:07.609Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Preserving dropEffect Values from dragover to drop Events]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/596</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/596"/>
+        <updated>2026-01-06T07:17:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176362279?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">Preserving dropEffect Values from dragover to drop Events</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a href="https://www.w3.org/TR/2011/WD-html5-20110113/dnd.html#dom-datatransfer-dropeffect" rel="nofollow">https://www.w3.org/TR/2011/WD-html5-20110113/dnd.html#dom-datatransfer-dropeffect</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">The HTML5 Drag and Drop API allows web applications to handle drag-and-drop operations through a series of events: <code class="notranslate">dragstart</code>, <code class="notranslate">dragenter</code>, <code class="notranslate">dragover</code>, <code class="notranslate">dragleave</code>, <code class="notranslate">drop</code>, and <code class="notranslate">dragend</code>. During these events, the <a href=""><code class="notranslate">dataTransfer.dropEffect</code></a> property indicates which operation (copy, move, link, or none) should be performed. According to the <a href="https://www.w3.org/TR/2011/WD-html5-20110113/dnd.html#dndevents" rel="nofollow">HTML5 specification</a>, the <code class="notranslate">dropEffect</code> value set by web applications during the last <code class="notranslate">dragover</code> event should be preserved and available in the subsequent <code class="notranslate">drop</code> event.</p>
+<p dir="auto">However, Chromium-based browsers/Webkit based browsers were overwriting the web application's <code class="notranslate">dropEffect</code> value with the browser's own negotiated operation before the <code class="notranslate">drop</code> event fired, breaking specification compliance and limiting developer control over drag-and-drop behavior.</p>
+<p dir="auto"><strong>Motivation</strong></p>
+<p dir="auto">The current behavior:</p>
+<ul dir="auto">
+<li>Violates the HTML5 specification: Contradicts the standardized behavior defined in the HTML5 Drag and Drop API</li>
+<li>Breaks developer control: Removes the ability for web applications to manage their own drag-and-drop operations</li>
+<li>Creates unpredictable UX: The operation indicated during drag (via cursor feedback) may not match what's available in the drop handler</li>
+<li>Forces workarounds: Developers must store <code class="notranslate">dropEffect</code> values in global variables or custom data attributes rather than using the standard API</li>
+<li>Limits functionality: Makes it impossible to build spec-compliant file managers, code editors, and other applications requiring sophisticated drag-and-drop</li>
+</ul>]]></content>
+        <author>
+            <name>roraja</name>
+            <email>roraja@noreply.github.com</email>
+            <uri>https://github.com/roraja</uri>
+        </author>
+        <published>2026-01-06T07:17:30.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Request for position: Progressive blur for Filter Effects: linear-blur()]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/595</id>
@@ -183,7 +227,7 @@ backdrop-filter: linear-blur([&lt;angle&gt; | to &lt;side-or-corner&gt;]?, &lt;b
 <h3 dir="auto">Radar URL</h3>
 <p dir="auto">rdar://NNNNNNNNN</p>
 <h3 dir="auto">Description</h3>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/246211159/524618248-c377c813-03d4-43a0-959b-831f0274fd19.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njc2ODMzODMsIm5iZiI6MTc2NzY4MzA4MywicGF0aCI6Ii8yNDYyMTExNTkvNTI0NjE4MjQ4LWMzNzdjODEzLTAzZDQtNDNhMC05NTliLTgzMWYwMjc0ZmQxOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDEwNlQwNzA0NDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zMzY5OTQ3NWVkNGNjZmIzNWRjYWYxNTU3OTJjYjBlMmYwN2YyZTUzYTU5NTI5MzUxNmM5YjI1MDZjZGIzNWNlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0Zv6k4tqO4SGPQrWaLWmIYcKRe746STb5HgJOk_1lqg"><img src="https://private-user-images.githubusercontent.com/246211159/524618248-c377c813-03d4-43a0-959b-831f0274fd19.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njc2ODMzODMsIm5iZiI6MTc2NzY4MzA4MywicGF0aCI6Ii8yNDYyMTExNTkvNTI0NjE4MjQ4LWMzNzdjODEzLTAzZDQtNDNhMC05NTliLTgzMWYwMjc0ZmQxOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDEwNlQwNzA0NDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zMzY5OTQ3NWVkNGNjZmIzNWRjYWYxNTU3OTJjYjBlMmYwN2YyZTUzYTU5NTI5MzUxNmM5YjI1MDZjZGIzNWNlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.0Zv6k4tqO4SGPQrWaLWmIYcKRe746STb5HgJOk_1lqg" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/246211159/524618248-c377c813-03d4-43a0-959b-831f0274fd19.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njc2ODY4MjcsIm5iZiI6MTc2NzY4NjUyNywicGF0aCI6Ii8yNDYyMTExNTkvNTI0NjE4MjQ4LWMzNzdjODEzLTAzZDQtNDNhMC05NTliLTgzMWYwMjc0ZmQxOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDEwNlQwODAyMDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYWU4ZWU2ZTI1YTQ5Mzk5ZWQ5YTQ1NDA1OTEyODk5M2NmMDEwMGQzMmM3MmY2YjM3ZWRmY2IzMWQ5ZjcyZjQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pw5LZbWem06wPRKUuWygGasop6BMN7yp3RYQnizTLWE"><img src="https://private-user-images.githubusercontent.com/246211159/524618248-c377c813-03d4-43a0-959b-831f0274fd19.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njc2ODY4MjcsIm5iZiI6MTc2NzY4NjUyNywicGF0aCI6Ii8yNDYyMTExNTkvNTI0NjE4MjQ4LWMzNzdjODEzLTAzZDQtNDNhMC05NTliLTgzMWYwMjc0ZmQxOS5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDEwNlQwODAyMDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYWU4ZWU2ZTI1YTQ5Mzk5ZWQ5YTQ1NDA1OTEyODk5M2NmMDEwMGQzMmM3MmY2YjM3ZWRmY2IzMWQ5ZjcyZjQ5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pw5LZbWem06wPRKUuWygGasop6BMN7yp3RYQnizTLWE" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>mikecomplexai-7</name>
             <email>mikecomplexai-7@noreply.github.com</email>
@@ -717,39 +761,5 @@ Safari does support plain text as data type and all applications are actively us
             <uri>https://github.com/rniwa</uri>
         </author>
         <published>2025-11-11T06:24:40.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSSAnimations 2 : timeline-trigger]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/576</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/576"/>
-        <updated>2025-12-04T23:13:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66635890?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/fantasai/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/fantasai">@fantasai</a></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">CSS Animations 2: timeline-trigger</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a href="https://drafts.csswg.org/css-animations-2/#timeline-triggers" rel="nofollow">https://drafts.csswg.org/css-animations-2/#timeline-triggers</a></p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><a href="https://github.com/w3c/csswg-drafts/">https://github.com/w3c/csswg-drafts/</a></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><a href="https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/README.md">https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/README.md</a></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3608233324" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1167" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1167/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1167">w3ctag/design-reviews#1167</a></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3608260306" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1315" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1315/hovercard" href="https://github.com/mozilla/standards-positions/issues/1315">mozilla/standards-positions#1315</a></p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">We have filed csswg-drafts issue <a href="https://github.com/w3c/csswg-drafts/issues/13010" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13010/hovercard">#13010</a> to get feedback from the broader CSSWG on the overall spec text. It might serve as a good place to see what issues have been raised most recently.</p>]]></content>
-        <author>
-            <name>DavMila</name>
-            <email>DavMila@noreply.github.com</email>
-            <uri>https://github.com/DavMila</uri>
-        </author>
-        <published>2025-11-10T14:29:57.000Z</published>
     </entry>
 </feed>
