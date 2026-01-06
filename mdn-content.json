@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/83111084?u=4fa923ad04d0f1b9819e66edddd18ab6f5f7529e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds a note under the allow-same-origin token explaining that a same-origin parent document can still access and manipulate the iframe's DOM even if allow-scripts is not set. The allow-scripts token only controls script execution inside the embedded document and does not affect parent-to-iframe DOM interactions.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #42633.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3782051993\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42633\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42633/hovercard\" href=\"https://github.com/mdn/content/issues/42633\">#42633</a></p>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifies the distinction between internal script execution within a sandboxed &lt;iframe&gt; and parent-side DOM access. This helps developers understand that allow-same-origin is sufficient for same-origin parent access, and allow-scripts only governs scripts running inside the iframe itself.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Many developers assume that allowing scripts inside the iframe (allow-scripts) is required to access or measure DOM properties like scrollHeight from the parent. This PR clears up that misconception, supporting the Principle of Least Privilege by avoiding unnecessary enablement of allow-scripts.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Minimal reproducible example:</p>\n<div class=\"highlight highlight-text-html-basic notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"&lt;iframe id=&quot;myIframe&quot; sandbox=&quot;allow-same-origin&quot; src=&quot;content.html&quot;&gt;&lt;/iframe&gt;\"><pre class=\"notranslate\"><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">iframe</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">myIframe</span>\" <span class=\"pl-c1\">sandbox</span>=\"<span class=\"pl-s\">allow-same-origin</span>\" <span class=\"pl-c1\">src</span>=\"<span class=\"pl-s\">content.html</span>\"<span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">iframe</span><span class=\"pl-kos\">&gt;</span></pre></div>\n<p dir=\"auto\">A same-origin parent can read or manipulate the iframe's DOM without setting allow-scripts.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #42633.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3782051993\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42633\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42633/hovercard\" href=\"https://github.com/mdn/content/issues/42633\">#42633</a></p>",
+            "url": "https://github.com/mdn/content/pull/42649",
+            "title": "Clarify parent-to-child DOM access with allow-same-origin",
+            "date_modified": "2026-01-06T18:24:23.000Z",
+            "date_published": "2026-01-06T18:06:25.000Z",
+            "author": {
+                "name": "omidfarhangnia",
+                "url": "https://github.com/omidfarhangnia"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2737650?u=24f8ae447a4efe200de56690b9032b7024ffe01e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Added error handling for requestAdapter example call.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">See <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2008734\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2008734</a><br>\nFirefox seems to throw during the <code class=\"notranslate\">navigator.gpu.requestAdapter()</code> call when WebGPU is disabled by a blocklist, so I think it's better to be explicitly demonstrate this behaviour here. We used this snippet to feature test webgpu support and fallback to webgl if it wasn't supported, so this change in Firefox broke some of our sites.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2008734\" rel=\"nofollow\"></a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42647",
             "title": "Better error handling for WebGPU feature testing",
@@ -86,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/56906047?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">I've added an interactive pointer example to this page, because I think it's one of the more common usages of <code class=\"notranslate\">cursor</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Adding a <code class=\"notranslate\">cursor: pointer</code> example makes it quicker for readers to learn about and use this CSS property.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42636",
             "title": "Added interactive example",
-            "date_modified": "2026-01-06T09:39:07.000Z",
+            "date_modified": "2026-01-06T18:18:44.000Z",
             "date_published": "2026-01-05T21:49:10.000Z",
             "author": {
                 "name": "asummers1",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "dependabot",
                 "url": "https://github.com/apps/dependabot"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/228496085?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Description</p>\n<p dir=\"auto\">Fix wording in Array.prototype.map() description for better clarity and readability.</p>\n<p dir=\"auto\">Motivation</p>\n<p dir=\"auto\">Improve the documentation to make it easier for readers to understand how the map() method works.</p>\n<p dir=\"auto\">Additional details</p>\n<p dir=\"auto\">None.</p>\n<p dir=\"auto\">Related issues and pull requests</p>\n<p dir=\"auto\">None.</p>",
-            "url": "https://github.com/mdn/content/pull/42593",
-            "title": "Fix wording in Array.prototype.map() description",
-            "date_modified": "2026-01-01T11:23:40.000Z",
-            "date_published": "2026-01-01T11:23:19.000Z",
-            "author": {
-                "name": "kothakotakrishnaveni",
-                "url": "https://github.com/kothakotakrishnaveni"
             }
         }
     ]
