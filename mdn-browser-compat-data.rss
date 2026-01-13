@@ -2,11 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-01-13T11:01:42.086Z</updated>
+    <updated>2026-01-13T12:02:21.300Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Undeprecate `font-stretch`, exceptionally]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28809</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28809"/>
+        <updated>2026-01-13T12:02:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Allows <code class="notranslate">font-stretch</code> property and descriptor to appear as undeprecated, in the absence of a widely available alternative.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">This change is an exception to our data guideline that requires us to treat "legacy" as meaning deprecated.</p>
+<p dir="auto">For background, the CSS Working Group decided to rename <code class="notranslate">font-stretch</code> to <code class="notranslate">font-width</code> (see resolution in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="180121395" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/551" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/551/hovercard?comment_id=1885196273&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/551#issuecomment-1885196273">w3c/csswg-drafts#551 (comment)</a>), declaring the former name a legacy alias. There's no underlying font behavior change associated with this specification change.</p>
+<p dir="auto">This case of legacy aliasing is somewhat unfortunate, however, as the existing name is well established. It's interoperable and <a href="https://chromestatus.com/metrics/css/timeline/popularity/80" rel="nofollow">a Chrome use counter</a> reports &gt;25% of page loads use <code class="notranslate">font-stretch</code>. Meanwhile, BCD reports that <code class="notranslate">font-width</code> is only implemented in Safari on macOS.</p>
+<p dir="auto">This creates a weird situation, where MDN, caniuse, and various tools warn developers against using a CSS feature that has worked across all major browsers for over 8 years and directs them to an alternative that is very unlikely to work.</p>
+<p dir="auto">We should make this exception because, to the best of my knowledge, this is only case where a CSS feature's proper name is almost unusable, while the legacy alias is completely interoperable. For example, this is the only case of <a href="https://web-platform-dx.github.io/web-features-explorer/features/font-stretch" title="The &lt;code&gt;font-stretch&lt;/code&gt; CSS property selects a font face from a font family based on width, either by a keyword such as &lt;code&gt;condensed&lt;/code&gt; or a percentage." rel="nofollow">a web-features entry</a> (<a href="https://github.com/web-platform-dx/web-features/blob/main/features/font-stretch.yml">source</a>, <a href="https://github.com/web-platform-dx/web-features/blob/main/features/font-stretch.yml.dist">dist</a>) where the feature would be Baseline widely available, while all of the alternative features are non-Baseline.</p>
+<p dir="auto">I raised this issue at the most-recent BCD meeting. After some discussion, we agreed to this way forward as an exception. It would be nice to follow this up with a search for other legacy aliases, to see if a more general rule change ought to be made about CSS's <a href="https://github.com/search?q=repo%3Aw3c%2Fcsswg-drafts+%22legacy+name+alias%22&amp;type=code">legacy name aliases</a>.</p>
+<h5 dir="auto">Consequences</h5>
+<p dir="auto">This change requires some downstream changes:</p>
+<ul dir="auto">
+<li>MDN ought to withdraw the deprecation banner on <code class="notranslate">font-stretch</code> (see also: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3731478025" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42409" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42409/hovercard" href="https://github.com/mdn/content/issues/42409">mdn/content#42409</a>)</li>
+<li>web-features ought to undiscourage the <code class="notranslate">font-stretch</code> feature</li>
+</ul>
+<p dir="auto">Someday, when more browsers implement <code class="notranslate">font-width</code>, we should consider undoing this exception.</p>
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3731478025" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42409" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42409/hovercard" href="https://github.com/mdn/content/issues/42409">mdn/content#42409</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="180121395" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/551" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/551/hovercard" href="https://github.com/w3c/csswg-drafts/issues/551">w3c/csswg-drafts#551</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-01-13T11:41:41.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update browser releases]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28802</id>
@@ -381,59 +418,5 @@ Related content changes in (TBC)</p>]]></content>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2025-12-09T16:43:55.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add Temporal bugs for Bun + Node.js]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28614</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28614"/>
-        <updated>2025-12-09T17:30:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/782446?u=b04ff20ddafb41870583859554c1e7c3180adca3&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Added implementation URLs for Bun, Chrome and Node.js support.</p>]]></content>
-        <author>
-            <name>simon04</name>
-            <email>simon04@noreply.github.com</email>
-            <uri>https://github.com/simon04</uri>
-        </author>
-        <published>2025-12-08T14:11:03.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF147 WebGPU supported on all apple silicon]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28604</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28604"/>
-        <updated>2026-01-06T03:26:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF147 supports WebGPU on on all macOS versions on apple silicon in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1993341" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1993341</a>.<br>
-Previously it was only supported on Tahoe - I can't find a bug for that, but this issue stated that it was added for Tahoe in 145. It isn't supported on Linux. It isn't supported on macOS on Intel.</p>
-<p dir="auto">I have updated the (partial) subfeatures in the 250+ places that support is recorded.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3699234339" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42247" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42247/hovercard" href="https://github.com/mdn/content/issues/42247">mdn/content#42247</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2025-12-08T03:40:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 133 and Safari 26 support `ShadowRoot` `referenceTarget` behind flags]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28570</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28570"/>
-        <updated>2026-01-09T17:44:53.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/939727?u=2e25f47c213a7e8f2e4e57ddd4ee59ba6601eae3&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Adds the new <code class="notranslate">referencetarget</code> attribute to <code class="notranslate">&lt;template&gt;</code> and property to the ShadowRoot API.</p>
-<h4 dir="auto">Supporting details</h4>
-<ul dir="auto">
-<li>Explainer: <a href="https://github.com/WICG/webcomponents/blob/gh-pages/proposals/reference-target-explainer.md">https://github.com/WICG/webcomponents/blob/gh-pages/proposals/reference-target-explainer.md</a></li>
-<li>HTML progress: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2592669740" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10707" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/10707/hovercard" href="https://github.com/whatwg/html/issues/10707">whatwg/html#10707</a></li>
-<li>WHATNOT progress: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3403461116" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/11648" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/11648/hovercard?comment_id=3293932780&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/issues/11648#issuecomment-3293932780">whatwg/html#11648 (comment)</a></li>
-<li>Chrome implementation status: <a href="https://chromestatus.com/feature/5188237101891584" rel="nofollow">https://chromestatus.com/feature/5188237101891584</a></li>
-<li>Positive signal from Mozilla: <a href="https://mozilla.github.io/standards-positions/#1035" rel="nofollow">https://mozilla.github.io/standards-positions/#1035</a></li>
-<li>Plans for WebKit implementation: <a href="https://blogs.igalia.com/mrego/solving-cross-root-aria-issues-in-shadow-dom/" rel="nofollow">https://blogs.igalia.com/mrego/solving-cross-root-aria-issues-in-shadow-dom/</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>meyerweb</name>
-            <email>meyerweb@noreply.github.com</email>
-            <uri>https://github.com/meyerweb</uri>
-        </author>
-        <published>2025-12-03T18:41:06.000Z</published>
     </entry>
 </feed>
