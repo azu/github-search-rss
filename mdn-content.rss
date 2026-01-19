@@ -2,11 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-01-19T21:02:00.581Z</updated>
+    <updated>2026-01-19T22:01:18.841Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove "landing" from module descriptions]]></title>
+        <id>https://github.com/mdn/content/pull/42832</id>
+        <link href="https://github.com/mdn/content/pull/42832"/>
+        <updated>2026-01-19T21:45:32.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Remove "landing" from mdn module page writing guides.<br>
+Rename the template from <code class="notranslate">CSS_module_landing_page_template</code> to <code class="notranslate">CSS_module_page_template</code><br>
+Redirect all the links (only found in MDN writing guideline pages)<br>
+"Module landing page" refers to Learn modules</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2026-01-19T21:42:19.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Adds `checkbox switch` attribute to `checkbox`  document.]]></title>
         <id>https://github.com/mdn/content/pull/42831</id>
@@ -529,24 +545,5 @@ and best practices for avoiding it.</p>
             <uri>https://github.com/justingrant</uri>
         </author>
         <published>2026-01-12T20:22:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[chore(release-firefox): repeat sanitization]]></title>
-        <id>https://github.com/mdn/content/pull/42737</id>
-        <link href="https://github.com/mdn/content/pull/42737"/>
-        <updated>2026-01-16T13:59:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Potential fix for <a href="https://github.com/mdn/content/security/code-scanning/56">https://github.com/mdn/content/security/code-scanning/56</a></p>
-<p dir="auto">In general, to fix incomplete multi-character sanitization with regex replacements, you can either (a) use a dedicated sanitization library, or (b) apply the replacement repeatedly until no further changes occur, ensuring that patterns that reappear after replacement are also removed. Here, the goal is very narrow—removing all HTML comments from a markdown file—so the simplest robust fix is to repeatedly apply the existing comment-stripping regex until the string stabilizes.</p>
-<p dir="auto">Concretely, in <code class="notranslate">scripts/content/release-firefox.js</code>, inside <code class="notranslate">updateReleaseNotes</code>, in the <code class="notranslate">if (newStatus === "stable")</code> block, the line:</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="content = content.replace(/&lt;!--[\s\S]*?--&gt;\n?/g, &quot;&quot;);"><pre class="notranslate"><span class="pl-s1">content</span> <span class="pl-c1">=</span> <span class="pl-s1">content</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-s">&lt;</span><span class="pl-s">!</span><span class="pl-s">-</span><span class="pl-s">-</span><span class="pl-kos">[</span><span class="pl-cce">\s</span><span class="pl-cce">\S</span><span class="pl-kos">]</span><span class="pl-c1">*</span>?<span class="pl-s">-</span><span class="pl-s">-</span><span class="pl-s">&gt;</span><span class="pl-cce">\n</span><span class="pl-c1">?</span><span class="pl-c1">/</span>g</span><span class="pl-kos">,</span> <span class="pl-s">""</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
-<p dir="auto">should be replaced with a small loop that keeps applying this replacement until no more matches are found. This avoids any edge cases where removing one comment could create a new <code class="notranslate">&lt;!--...--&gt;</code> sequence that would otherwise be left behind. We don't need new imports or external libraries; just local logic in the same function. No other behavior of the script is changed.</p>
-<hr>
-<p dir="auto"><em>Suggested fixes powered by Copilot Autofix. Review carefully before merging.</em></p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-01-12T14:27:20.000Z</published>
     </entry>
 </feed>
