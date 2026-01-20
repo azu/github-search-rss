@@ -2,11 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-01-20T13:16:27.792Z</updated>
+    <updated>2026-01-20T14:06:45.947Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Break out `display-mode` values' support]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28868</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28868"/>
+        <updated>2026-01-20T13:59:09.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">The <code class="notranslate">display-mode</code> CSS media query has several values (e.g., <code class="notranslate">display-mode: browser</code>, <code class="notranslate">display-mode: fullscreen</code>). Support for those values specifically was previously locked in notes; this PR busts them out.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">For the most part, I trusted these web platform tests to determine if a browser is <em>aware</em> of a value (i.e., to determine if <code class="notranslate">(display-mode: made-up-example)</code> is functionally equivalent to <code class="notranslate">not all</code>):</p>
+<ul dir="auto">
+<li><a href="https://wpt.live/css/mediaqueries/display-mode.html" rel="nofollow">https://wpt.live/css/mediaqueries/display-mode.html</a></li>
+<li><a href="https://wpt.live/css/mediaqueries/display-mode.tentative.html" rel="nofollow">https://wpt.live/css/mediaqueries/display-mode.tentative.html</a></li>
+</ul>
+<p dir="auto">For non-partial "is always true" notes, I mostly used the existing BCD on <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest/Reference/display#browser_compatibility" rel="nofollow">the <code class="notranslate">display</code> manifest member</a> to determine what to expect (e.g., if a browser doesn't implement <code class="notranslate">minimal-ui</code>, then <code class="notranslate">display-mode: minimal-ui</code> is always false, even though it may be a valid media query).</p>
+<p dir="auto">For the remaining notes and partials, I relied on bugs and prior discussion on this repo. In some cases (e.g., <a href="https://bugs.webkit.org/show_bug.cgi?id=216395" rel="nofollow">WebKit bug 216395</a>), I used the information in a bug to make a determination, but did not actually treat it as a bug (e.g., Safari <em>shouldn't</em>, by specification, compute <code class="notranslate">display-mode: fullscreen</code> to true for a fullscreen window with tabs UI).</p>
+<p dir="auto">Some of this is very difficult to test (e.g., some behavior is specific to installed PWAs), so I didn't test this comprehensively. I suspect some of this is a little wonky or off, but it's more explicit now and will be easier to maintain in the future.</p>
+
+
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #18807.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1566502743" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/18807" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/18807/hovercard" href="https://github.com/mdn/browser-compat-data/issues/18807">#18807</a></li>
+<li><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #26677.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3032420087" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/26677" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/26677/hovercard" href="https://github.com/mdn/browser-compat-data/issues/26677">#26677</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1409530994" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/interop/issues/218" data-hovercard-type="issue" data-hovercard-url="/web-platform-tests/interop/issues/218/hovercard" href="https://github.com/web-platform-tests/interop/issues/218">web-platform-tests/interop#218</a></li>
+<li><a href="https://bugs.webkit.org/show_bug.cgi?id=216395" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=216395</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-01-20T13:58:33.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CSSFontFeatureValues APIs]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28866</id>
@@ -88,7 +124,7 @@ Test case:</p>
         <title type="html"><![CDATA[fix: Safari 26.2 is current]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28853</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28853"/>
-        <updated>2026-01-20T11:32:06.000Z</updated>
+        <updated>2026-01-20T14:00:39.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/43100?u=9c3a3382a1e49f545d80c7554ee1b14171155709&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 <p dir="auto">Safari 26.2 (released 2025-12-12) is marked as "retired" but AFAIK it's still current. The 26.3 (released 2025-12-15) is beta, not current. I've fixed this for both <code class="notranslate">safari</code> and <code class="notranslate">safari_ios</code> jsons.</p>
@@ -224,7 +260,7 @@ Related content changes in (TBC)</p>]]></content>
         <title type="html"><![CDATA[Chrome 133 and Safari 26 support `ShadowRoot` `referenceTarget` behind flags]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28570</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28570"/>
-        <updated>2026-01-19T08:43:04.000Z</updated>
+        <updated>2026-01-20T14:00:38.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/939727?u=2e25f47c213a7e8f2e4e57ddd4ee59ba6601eae3&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 <p dir="auto">Adds the new <code class="notranslate">referencetarget</code> attribute to <code class="notranslate">&lt;template&gt;</code> and property to the ShadowRoot API.</p>
@@ -321,54 +357,5 @@ Related content changes in (TBC)</p>]]></content>
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2025-11-04T12:12:56.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 110 applies User-Agent reduction to Navigator properties + `User-Agent` header]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28275</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28275"/>
-        <updated>2025-11-07T14:33:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Chromium browsers support <a href="https://privacysandbox.google.com/protections/user-agent" rel="nofollow">User-Agent reduction</a>, which means that features such as the <code class="notranslate">User-Agent</code> HTTP header provide less-specific information in an effort to reduce their effectiveness for fingerprinting/tracking.</p>
-<p dir="auto">This PR adds data points covering User-Agent reduction to relevant web platform features that I know to be affected by the change.</p>
-<p dir="auto">Compat data sources:</p>
-<ul dir="auto">
-<li>From looking at <a href="https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html" rel="nofollow">https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html</a>, it looks like rollout of UA reduction to 100% of Chromium desktop users occurred in version 110, while the version was 113 for Chromium Android users. I asked <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/miketaylr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/miketaylr">@miketaylr</a> about this, and he confirmed it to be correct.</li>
-<li>From looking at <a href="https://www.chromium.org/updates/ua-reduction/#applicable-platforms" rel="nofollow">https://www.chromium.org/updates/ua-reduction/#applicable-platforms</a>, it looks like Android WebView should be <code class="notranslate">false</code></li>
-</ul>
-<p dir="auto">Another question for Mike: For all of these data points, I used <a href="https://wicg.github.io/ua-client-hints/#user-agent" rel="nofollow">https://wicg.github.io/ua-client-hints/#user-agent</a> as the <code class="notranslate">spec_url</code>. Are there better spec URLs we can point to for these individual features?</p>
-<p dir="auto">This PR is part of the final set of privacy sandbox information to be added to MDN. Much of it is being removed, but this feature is stable and will be kept, so it should be added.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2025-10-23T15:21:08.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Extract HTML `<datalist>` input type subfeatures]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28189</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28189"/>
-        <updated>2026-01-13T15:14:31.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Extracts HTML <code class="notranslate">&lt;datalist&gt;</code> input type subfeatures, and duplicates these below <code class="notranslate">html.input.elements.type_*</code>.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">To review, look at "grouped by change" in <a href="https://github.com/mdn/browser-compat-data/pull/28189#issuecomment-3401538971" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28189/hovercard">this comment</a>.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Once landed, we can tackle the issues mentioned in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2801257212" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25723" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/25723/hovercard" href="https://github.com/mdn/browser-compat-data/issues/25723">#25723</a>.</p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-10-14T12:23:54.000Z</published>
     </entry>
 </feed>
