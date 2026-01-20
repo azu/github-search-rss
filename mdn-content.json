@@ -17,17 +17,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/143106292?u=b3c5814362982b570863d2bb4e99cc0cc32ec862&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Adds <code class=\"notranslate\">checkbox switch</code> attribute to <code class=\"notranslate\">checkbox</code>  document with examples and an interactive example.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">These changes ensures that the readers are aware of the <code class=\"notranslate\">switch</code> attribute and its use cases within the supported browsers. And it documents an attribute with little to no documentation online.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://webkit.org/blog/15054/an-html-switch-control/\" rel=\"nofollow\">https://webkit.org/blog/15054/an-html-switch-control/</a><br>\nThis pull request still need a bcd update (in progress).</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #29231.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1906830905\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/29231\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/29231/hovercard\" href=\"https://github.com/mdn/content/issues/29231\">#29231</a></p>\n",
-            "url": "https://github.com/mdn/content/pull/42831",
-            "title": "Adds `checkbox switch` attribute to `checkbox`  document.",
-            "date_modified": "2026-01-19T22:57:50.000Z",
-            "date_published": "2026-01-19T20:04:23.000Z",
-            "author": {
-                "name": "younisdev",
-                "url": "https://github.com/younisdev"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/188046448?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\nThis PR adds a short clarification describing common real world uses of Event interface to improve readability for beginners.\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42827",
             "title": "clarify common use cases of the event interface",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "justingrant",
                 "url": "https://github.com/justingrant"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Potential fix for <a href=\"https://github.com/mdn/content/security/code-scanning/56\">https://github.com/mdn/content/security/code-scanning/56</a></p>\n<p dir=\"auto\">In general, to fix incomplete multi-character sanitization with regex replacements, you can either (a) use a dedicated sanitization library, or (b) apply the replacement repeatedly until no further changes occur, ensuring that patterns that reappear after replacement are also removed. Here, the goal is very narrow—removing all HTML comments from a markdown file—so the simplest robust fix is to repeatedly apply the existing comment-stripping regex until the string stabilizes.</p>\n<p dir=\"auto\">Concretely, in <code class=\"notranslate\">scripts/content/release-firefox.js</code>, inside <code class=\"notranslate\">updateReleaseNotes</code>, in the <code class=\"notranslate\">if (newStatus === \"stable\")</code> block, the line:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"content = content.replace(/&lt;!--[\\s\\S]*?--&gt;\\n?/g, &quot;&quot;);\"><pre class=\"notranslate\"><span class=\"pl-s1\">content</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">content</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">replace</span><span class=\"pl-kos\">(</span><span class=\"pl-pds\"><span class=\"pl-c1\">/</span><span class=\"pl-s\">&lt;</span><span class=\"pl-s\">!</span><span class=\"pl-s\">-</span><span class=\"pl-s\">-</span><span class=\"pl-kos\">[</span><span class=\"pl-cce\">\\s</span><span class=\"pl-cce\">\\S</span><span class=\"pl-kos\">]</span><span class=\"pl-c1\">*</span>?<span class=\"pl-s\">-</span><span class=\"pl-s\">-</span><span class=\"pl-s\">&gt;</span><span class=\"pl-cce\">\\n</span><span class=\"pl-c1\">?</span><span class=\"pl-c1\">/</span>g</span><span class=\"pl-kos\">,</span> <span class=\"pl-s\">\"\"</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">should be replaced with a small loop that keeps applying this replacement until no more matches are found. This avoids any edge cases where removing one comment could create a new <code class=\"notranslate\">&lt;!--...--&gt;</code> sequence that would otherwise be left behind. We don't need new imports or external libraries; just local logic in the same function. No other behavior of the script is changed.</p>\n<hr>\n<p dir=\"auto\"><em>Suggested fixes powered by Copilot Autofix. Review carefully before merging.</em></p>",
+            "url": "https://github.com/mdn/content/pull/42737",
+            "title": "chore(release-firefox): repeat sanitization",
+            "date_modified": "2026-01-16T13:59:50.000Z",
+            "date_published": "2026-01-12T14:27:20.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
             }
         }
     ]
