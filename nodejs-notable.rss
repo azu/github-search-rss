@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-01-29T15:09:17.541Z</updated>
+    <updated>2026-01-29T16:07:46.021Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -32,7 +32,7 @@
 </ul>
 <h3 dir="auto">Examples</h3>
 <p dir="auto"><strong>Basic usage</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import { test } from 'node:test';
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { test } from 'node:test';
 import fs from 'node:fs';
 import assert from 'node:assert';
 
@@ -45,23 +45,22 @@ test('mock file system', (t) =&gt; {
 
   const config = JSON.parse(fs.readFileSync('/virtual/config.json', 'utf8'));
   assert.strictEqual(config.key, 'value');
-});"><pre lang="js" class="notranslate"><code class="notranslate">import { test } from 'node:test';
-import fs from 'node:fs';
-import assert from 'node:assert';
+});"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">test</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:test'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">fs</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">assert</span> <span class="pl-k">from</span> <span class="pl-s">'node:assert'</span><span class="pl-kos">;</span>
 
-test('mock file system', (t) =&gt; {
-  t.mock.fs.enable({
-    files: {
-      '/virtual/config.json': '{"key": "value"}',
-    },
-  });
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'mock file system'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'/virtual/config.json'</span>: <span class="pl-s">'{"key": "value"}'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  const config = JSON.parse(fs.readFileSync('/virtual/config.json', 'utf8'));
-  assert.strictEqual(config.key, 'value');
-});
-</code></pre></div>
+  <span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">parse</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/virtual/config.json'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span> <span class="pl-s">'value'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Isolation mode</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('complete isolation from real filesystem', (t) =&gt; {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('complete isolation from real filesystem', (t) =&gt; {
   t.mock.fs.enable({
     files: {
       '/virtual/only.txt': 'isolated content',
@@ -74,23 +73,22 @@ test('mock file system', (t) =&gt; {
 
   // Real files are blocked
   assert.throws(() =&gt; fs.readFileSync('/etc/passwd'), { code: 'ENOENT' });
-});"><pre lang="js" class="notranslate"><code class="notranslate">test('complete isolation from real filesystem', (t) =&gt; {
-  t.mock.fs.enable({
-    files: {
-      '/virtual/only.txt': 'isolated content',
-    },
-    isolate: true,
-  });
+});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'complete isolation from real filesystem'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'/virtual/only.txt'</span>: <span class="pl-s">'isolated content'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">isolate</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Virtual file works
-  assert.strictEqual(fs.readFileSync('/virtual/only.txt', 'utf8'), 'isolated content');
+  <span class="pl-c">// Virtual file works</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/virtual/only.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'isolated content'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Real files are blocked
-  assert.throws(() =&gt; fs.readFileSync('/etc/passwd'), { code: 'ENOENT' });
-});
-</code></pre></div>
+  <span class="pl-c">// Real files are blocked</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">throws</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/etc/passwd'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">code</span>: <span class="pl-s">'ENOENT'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Write operations</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('writes always go to virtual fs', (t) =&gt; {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('writes always go to virtual fs', (t) =&gt; {
   t.mock.fs.enable({ files: {} });
 
   // Write to virtual fs
@@ -100,20 +98,19 @@ test('mock file system', (t) =&gt; {
   assert.strictEqual(fs.readFileSync('/tmp/test.txt', 'utf8'), 'safe write');
 
   // After test ends, nothing written to real /tmp
-});"><pre lang="js" class="notranslate"><code class="notranslate">test('writes always go to virtual fs', (t) =&gt; {
-  t.mock.fs.enable({ files: {} });
+});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'writes always go to virtual fs'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">files</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Write to virtual fs
-  fs.writeFileSync('/tmp/test.txt', 'safe write');
+  <span class="pl-c">// Write to virtual fs</span>
+  <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/tmp/test.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'safe write'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Read it back
-  assert.strictEqual(fs.readFileSync('/tmp/test.txt', 'utf8'), 'safe write');
+  <span class="pl-c">// Read it back</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/tmp/test.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'safe write'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // After test ends, nothing written to real /tmp
-});
-</code></pre></div>
+  <span class="pl-c">// After test ends, nothing written to real /tmp</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Async/promises</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import fsPromises from 'node:fs/promises';
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import fsPromises from 'node:fs/promises';
 
 test('works with promises', async (t) =&gt; {
   t.mock.fs.enable({
@@ -122,19 +119,18 @@ test('works with promises', async (t) =&gt; {
 
   const content = await fsPromises.readFile('/data/file.txt', 'utf8');
   assert.strictEqual(content, 'async content');
-});"><pre lang="js" class="notranslate"><code class="notranslate">import fsPromises from 'node:fs/promises';
+});"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">fsPromises</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs/promises'</span><span class="pl-kos">;</span>
 
-test('works with promises', async (t) =&gt; {
-  t.mock.fs.enable({
-    files: { '/data/file.txt': 'async content' },
-  });
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'works with promises'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span> <span class="pl-s">'/data/file.txt'</span>: <span class="pl-s">'async content'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  const content = await fsPromises.readFile('/data/file.txt', 'utf8');
-  assert.strictEqual(content, 'async content');
-});
-</code></pre></div>
+  <span class="pl-k">const</span> <span class="pl-s1">content</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">fsPromises</span><span class="pl-kos">.</span><span class="pl-en">readFile</span><span class="pl-kos">(</span><span class="pl-s">'/data/file.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">content</span><span class="pl-kos">,</span> <span class="pl-s">'async content'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Directory operations</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('directory operations', (t) =&gt; {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('directory operations', (t) =&gt; {
   t.mock.fs.enable({
     files: {
       '/app/src/index.js': 'console.log(&quot;hello&quot;)',
@@ -144,18 +140,17 @@ test('works with promises', async (t) =&gt; {
 
   const entries = fs.readdirSync('/app/src');
   assert.deepStrictEqual(entries.sort(), ['index.js', 'utils.js']);
-});"><pre lang="js" class="notranslate"><code class="notranslate">test('directory operations', (t) =&gt; {
-  t.mock.fs.enable({
-    files: {
-      '/app/src/index.js': 'console.log("hello")',
-      '/app/src/utils.js': 'export default {}',
-    },
-  });
+});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'directory operations'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'/app/src/index.js'</span>: <span class="pl-s">'console.log("hello")'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'/app/src/utils.js'</span>: <span class="pl-s">'export default {}'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  const entries = fs.readdirSync('/app/src');
-  assert.deepStrictEqual(entries.sort(), ['index.js', 'utils.js']);
-});
-</code></pre></div>
+  <span class="pl-k">const</span> <span class="pl-s1">entries</span> <span class="pl-c1">=</span> <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readdirSync</span><span class="pl-kos">(</span><span class="pl-s">'/app/src'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">deepStrictEqual</span><span class="pl-kos">(</span><span class="pl-s1">entries</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-s">'index.js'</span><span class="pl-kos">,</span> <span class="pl-s">'utils.js'</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <h3 dir="auto">Next Steps</h3>
 <p dir="auto">This PR provides an initial set of commonly-used fs operations. Future iterations could add file operations like <code class="notranslate">rename</code>, <code class="notranslate">copyFile</code>, <code class="notranslate">rm</code>, and <code class="notranslate">truncate</code>, as well as symlink support (<code class="notranslate">symlink</code>, <code class="notranslate">readlink</code>, <code class="notranslate">link</code>).</p>
 <p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2667275360" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55902" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/55902/hovercard" href="https://github.com/nodejs/node/issues/55902">#55902</a></p>]]></content>
@@ -259,14 +254,13 @@ esm/require-esm.js n=1000 exports='named' type='load'                           
         <updated>2026-01-28T10:13:07.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52195?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add an <code class="notranslate">ignore</code> option to <code class="notranslate">fs.watch()</code> to filter filesystem events.</p>
 <p dir="auto"><strong>Type:</strong> <code class="notranslate">string | RegExp | Function | Array&lt;string | RegExp | Function&gt;</code></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fs.watch(dir, { ignore: '*.log' });
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="fs.watch(dir, { ignore: '*.log' });
 fs.watch(dir, { ignore: /\.tmp$/ });
 fs.watch(dir, { ignore: (f) =&gt; f.startsWith('.') });
-fs.watch(dir, { ignore: ['*.log', /\.tmp$/] });"><pre lang="js" class="notranslate"><code class="notranslate">fs.watch(dir, { ignore: '*.log' });
-fs.watch(dir, { ignore: /\.tmp$/ });
-fs.watch(dir, { ignore: (f) =&gt; f.startsWith('.') });
-fs.watch(dir, { ignore: ['*.log', /\.tmp$/] });
-</code></pre></div>]]></content>
+fs.watch(dir, { ignore: ['*.log', /\.tmp$/] });"><pre class="notranslate"><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ignore</span>: <span class="pl-s">'*.log'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ignore</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">p</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-en">ignore</span>: <span class="pl-kos">(</span><span class="pl-s1">f</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">f</span><span class="pl-kos">.</span><span class="pl-en">startsWith</span><span class="pl-kos">(</span><span class="pl-s">'.'</span><span class="pl-kos">)</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ignore</span>: <span class="pl-kos">[</span><span class="pl-s">'*.log'</span><span class="pl-kos">,</span> <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">p</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">]</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>]]></content>
         <author>
             <name>mcollina</name>
             <email>mcollina@noreply.github.com</email>
@@ -319,7 +313,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk2OTk2NTcsIm5iZiI6MTc2OTY5OTM1NywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDEyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAxMjlUMTUwOTE3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NmMxNWNhMDY2OTI4NWFlZmEzYjBiN2U2OWQzMzA5ZTljMjExZGQxY2RjNmE4MDgzYjlkZGE0ZjZjNGFhM2JlZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.hH0GeVLCJzLjUbl0rfnSypgXbrfUhxS8OFbT84GeDZE"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk2OTk2NTcsIm5iZiI6MTc2OTY5OTM1NywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDEyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAxMjlUMTUwOTE3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NmMxNWNhMDY2OTI4NWFlZmEzYjBiN2U2OWQzMzA5ZTljMjExZGQxY2RjNmE4MDgzYjlkZGE0ZjZjNGFhM2JlZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.hH0GeVLCJzLjUbl0rfnSypgXbrfUhxS8OFbT84GeDZE" style="max-width: 100%; height: auto; max-height: 748px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk3MDMxNjUsIm5iZiI6MTc2OTcwMjg2NSwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDEyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAxMjlUMTYwNzQ1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjQwZGUyNDE3Mzk0M2M0YTUwYzJmNzQyOGZhOGE0YTNkNmRhMDE1MWZhYTcwMGYxOGJjOGE3YzRmZDg3YmY1MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.8SCfHAzXdRxWV6eQlW6s5HQhO5nOnYvI5fJzrZrwoqA"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk3MDMxNjUsIm5iZiI6MTc2OTcwMjg2NSwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDEyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAxMjlUMTYwNzQ1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjQwZGUyNDE3Mzk0M2M0YTUwYzJmNzQyOGZhOGE0YTNkNmRhMDE1MWZhYTcwMGYxOGJjOGE3YzRmZDg3YmY1MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.8SCfHAzXdRxWV6eQlW6s5HQhO5nOnYvI5fJzrZrwoqA" style="max-width: 100%; height: auto; max-height: 748px;"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -559,7 +553,7 @@ ones are left as legacy aliases.</p>
 It's been a while and there are no outstading issues.<br>
 The only issue so far is <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3293224247" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/59364" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/59364/hovercard" href="https://github.com/nodejs/node/issues/59364">#59364</a> but it's really not about Node, but the ecosystem around ts-node to adapt to it.<br>
 Node v22 and v24 have enough download that I can confidently say that it's safe to mark this feature stable.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk2OTk2NTcsIm5iZiI6MTc2OTY5OTM1NywicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE1MDkxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ0ZjIxMmJjODQ3NTZkYTZkYTkyZjZlZTdkNjAwMGRiYzQ3MjczMDQwZTNlMDhhMDVjMjY0MGMzMGQzNjhmMjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.sux510dMJIfC6c9Cb6pGW352JXN11zJ_4jXKqtpBXTU"><img width="1145" height="744" alt="Screenshot 2025-11-05 at 17 43 13" src="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk2OTk2NTcsIm5iZiI6MTc2OTY5OTM1NywicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE1MDkxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ0ZjIxMmJjODQ3NTZkYTZkYTkyZjZlZTdkNjAwMGRiYzQ3MjczMDQwZTNlMDhhMDVjMjY0MGMzMGQzNjhmMjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.sux510dMJIfC6c9Cb6pGW352JXN11zJ_4jXKqtpBXTU" style="max-width: 100%; height: auto; max-height: 744px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk3MDMxNjUsIm5iZiI6MTc2OTcwMjg2NSwicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE2MDc0NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ3OGVlOTVmYzg1YzllNzE0YWFiYTIxM2U1Y2I4MGIyYTRhZjA2ZjZiZDMyNGI1YjkyNGU1NGU1M2RmM2VjMmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.C5VqzerPMWvaDGRVQZwz40wW7efSVFArvsHO4CD8HMI"><img width="1145" height="744" alt="Screenshot 2025-11-05 at 17 43 13" src="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk3MDMxNjUsIm5iZiI6MTc2OTcwMjg2NSwicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE2MDc0NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ3OGVlOTVmYzg1YzllNzE0YWFiYTIxM2U1Y2I4MGIyYTRhZjA2ZjZiZDMyNGI1YjkyNGU1NGU1M2RmM2VjMmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.C5VqzerPMWvaDGRVQZwz40wW7efSVFArvsHO4CD8HMI" style="max-width: 100%; height: auto; max-height: 744px;"></a>
 <blockquote>
 <p dir="auto">transform-types will stay experimental for now</p>
 </blockquote>]]></content>
@@ -581,20 +575,19 @@ Node v22 and v24 have enough download that I can confidently say that it's safe 
 </blockquote>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #60303.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3527786014" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/60303" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/60303/hovercard" href="https://github.com/nodejs/node/issues/60303">#60303</a>.</p>
 <p dir="auto">The Storage specification states that the global <code class="notranslate">localStorage</code> getter should throw an exception if the storage environment cannot be obtained. Accordingly, a common way of testing for local storage capability in userland is along these lines:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="function localStorageIsAvailable() {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="function localStorageIsAvailable() {
   try {
     return typeof localStorage !== 'undefined';
   } catch {
     return false;
   }
-}"><pre lang="js" class="notranslate"><code class="notranslate">function localStorageIsAvailable() {
-  try {
-    return typeof localStorage !== 'undefined';
-  } catch {
-    return false;
-  }
-}
-</code></pre></div>
+}"><pre class="notranslate"><span class="pl-k">function</span> <span class="pl-en">localStorageIsAvailable</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">try</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-k">typeof</span> <span class="pl-s1">localStorage</span> <span class="pl-c1">!==</span> <span class="pl-s">'undefined'</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-c1">false</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
 <p dir="auto">This tests both for the presence of the global and whether the getter succeeds, which also covers scenarios where the storage API is not exposed at all.</p>
 <p dir="auto">Node.js's flagged implementation of <code class="notranslate">localStorage</code> also used to follow this behaviour in v24 and earlier. If local storage could not be initialised due to the absence of the <code class="notranslate">--localstorage-file</code> command-line argument, the global getter would throw at the point of the variable being accessed. The above test therefore also worked well in v24: it would identify when the variable didn't exist, and would also detect when an accessor exception was thrown.</p>
 <p dir="auto">When webstorage was enabled by default for v25 (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2956769643" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/57666" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/57666/hovercard" href="https://github.com/nodejs/node/pull/57666">#57666</a>), this behaviour was changed: in the absence of <code class="notranslate">--localstorage-file</code>, the global getter no longer throws, but instead returns an empty Proxy which returns <code class="notranslate">undefined</code> on all property access after emitting a warning. The motivation behind this change of approach was to avoid the test suite throwing during its global tests. However, a throw-on-access global getter already exists (<code class="notranslate">crypto</code>), and therefore there already exist mechanisms for getting around this.</p>
@@ -639,28 +632,26 @@ Node v22 and v24 have enough download that I can confidently say that it's safe 
 <p dir="auto">Node.js now supports inspection of HTTP/2 network calls in Chrome DevTools for Node.js.</p>
 <h4 dir="auto">Usage</h4>
 <p dir="auto">Write a <code class="notranslate">test.js</code> script that makes HTTP/2 requests.</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="const http2 = require('http2');
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const http2 = require('http2');
 
 const client = http2.connect('https://nghttp2.org');
 
 const req = client.request([
   ':path', '/',
   ':method', 'GET',
-]);"><pre lang="js" class="notranslate"><code class="notranslate">const http2 = require('http2');
+]);"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">http2</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'http2'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-const client = http2.connect('https://nghttp2.org');
+<span class="pl-k">const</span> <span class="pl-s1">client</span> <span class="pl-c1">=</span> <span class="pl-s1">http2</span><span class="pl-kos">.</span><span class="pl-en">connect</span><span class="pl-kos">(</span><span class="pl-s">'https://nghttp2.org'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-const req = client.request([
-  ':path', '/',
-  ':method', 'GET',
-]);
-</code></pre></div>
+<span class="pl-k">const</span> <span class="pl-s1">req</span> <span class="pl-c1">=</span> <span class="pl-s1">client</span><span class="pl-kos">.</span><span class="pl-en">request</span><span class="pl-kos">(</span><span class="pl-kos">[</span>
+  <span class="pl-s">':path'</span><span class="pl-kos">,</span> <span class="pl-s">'/'</span><span class="pl-kos">,</span>
+  <span class="pl-s">':method'</span><span class="pl-kos">,</span> <span class="pl-s">'GET'</span><span class="pl-kos">,</span>
+<span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto">Run it with these options:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ node --inspect-wait --experimental-network-inspection test.js"><pre lang="sh" class="notranslate"><code class="notranslate">$ node --inspect-wait --experimental-network-inspection test.js
-</code></pre></div>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ node --inspect-wait --experimental-network-inspection test.js"><pre class="notranslate">$ node --inspect-wait --experimental-network-inspection test.js</pre></div>
 <p dir="auto">Open <code class="notranslate">about:inspect</code> on Google Chrome and click on <code class="notranslate">Open dedicated DevTools for Node</code>.<br>
 The <code class="notranslate">Network</code> tab will let you track your HTTP/2 calls.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/42526976/481393176-0da1009c-f732-40df-bedf-3003f7569ac2.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk2OTk2NTcsIm5iZiI6MTc2OTY5OTM1NywicGF0aCI6Ii80MjUyNjk3Ni80ODEzOTMxNzYtMGRhMTAwOWMtZjczMi00MGRmLWJlZGYtMzAwM2Y3NTY5YWMyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE1MDkxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJjOWUyMDFjMTY2YzBhNWFiZTk4MzhkZmZhMWE1MWIzMTFmOWRjODI1NmYxZTg2Y2YzYjkzMmNhMTA1ZDZiMjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.XHOHN5wkfDM9v_xWMnTuv3YkS93_jqingXBE8YsVas4"><img width="721" height="808" alt="demo" src="https://private-user-images.githubusercontent.com/42526976/481393176-0da1009c-f732-40df-bedf-3003f7569ac2.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk2OTk2NTcsIm5iZiI6MTc2OTY5OTM1NywicGF0aCI6Ii80MjUyNjk3Ni80ODEzOTMxNzYtMGRhMTAwOWMtZjczMi00MGRmLWJlZGYtMzAwM2Y3NTY5YWMyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE1MDkxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJjOWUyMDFjMTY2YzBhNWFiZTk4MzhkZmZhMWE1MWIzMTFmOWRjODI1NmYxZTg2Y2YzYjkzMmNhMTA1ZDZiMjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.XHOHN5wkfDM9v_xWMnTuv3YkS93_jqingXBE8YsVas4" style="max-width: 100%; height: auto; max-height: 808px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/42526976/481393176-0da1009c-f732-40df-bedf-3003f7569ac2.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk3MDMxNjUsIm5iZiI6MTc2OTcwMjg2NSwicGF0aCI6Ii80MjUyNjk3Ni80ODEzOTMxNzYtMGRhMTAwOWMtZjczMi00MGRmLWJlZGYtMzAwM2Y3NTY5YWMyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE2MDc0NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWRjMGJmMTRjZjdkMWIyOGU3YWYzNjg2MzhhMjQwNWJlMzk5ZTJjM2JiNmIyYmJlMGViMzMzZjY2MzM5OTExODAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.r2LXdZuTsv0hrwkSCeRURktr7h3Egh3NdN-ZyV83C1w"><img width="721" height="808" alt="demo" src="https://private-user-images.githubusercontent.com/42526976/481393176-0da1009c-f732-40df-bedf-3003f7569ac2.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk3MDMxNjUsIm5iZiI6MTc2OTcwMjg2NSwicGF0aCI6Ii80MjUyNjk3Ni80ODEzOTMxNzYtMGRhMTAwOWMtZjczMi00MGRmLWJlZGYtMzAwM2Y3NTY5YWMyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAxMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMTI5VDE2MDc0NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWRjMGJmMTRjZjdkMWIyOGU3YWYzNjg2MzhhMjQwNWJlMzk5ZTJjM2JiNmIyYmJlMGViMzMzZjY2MzM5OTExODAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.r2LXdZuTsv0hrwkSCeRURktr7h3Egh3NdN-ZyV83C1w" style="max-width: 100%; height: auto; max-height: 808px;"></a>
 <p dir="auto">Contributed by Darshan Sen in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3349673858" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/59611" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/59611/hovercard" href="https://github.com/nodejs/node/pull/59611">#59611</a></p>
 ]]></content>
         <author>
