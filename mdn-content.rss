@@ -2,11 +2,48 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-01-30T14:09:56.567Z</updated>
+    <updated>2026-01-30T15:07:23.751Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Update Fx148 relnotes to include initial about:blank]]></title>
+        <id>https://github.com/mdn/content/pull/42979</id>
+        <link href="https://github.com/mdn/content/pull/42979"/>
+        <updated>2026-01-30T14:58:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36379249?u=4840c2d79361800483d4c22b03d928ae33115103&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Quoting from the change:</p>
+<blockquote>
+<p dir="auto">The initial <code class="notranslate">about:blank</code> document now loads synchronously. A browsing context's first navigation may resolve to <code class="notranslate">about:blank</code> (for example, when the initial URL is empty or explicitly set to <code class="notranslate">about:blank</code>). In these cases, Firefox no longer replaces the initial empty document with a second, asynchronously loaded one, and instead fires the <code class="notranslate">load</code> event synchronously on the initial document.</p>
+</blockquote>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Changing the timing of <code class="notranslate">about:blank</code> loads solves a long-standing web-compat issue. But we've seen web pages or addons break, so developers might want to know about this change.</p>
+<p dir="auto">To name some examples of what changed:</p>
+<ul dir="auto">
+<li><code class="notranslate">window.open("about:blank").onload = handler</code> the handler won't run anymore because load already fired</li>
+<li>The same with <code class="notranslate">ifr = document.createElement("iframe"); document.body.append(ifr); ifr.onload = handler;</code></li>
+<li>If an empty iframe is appended and synchronously removed, declarative extension content scripts could execute in it anyway.</li>
+<li><code class="notranslate">ifr = document.createElement("iframe"); ifr.onload = handler; document.body.append(ifr); ifr.src = other</code> will observe two load events now because <code class="notranslate">src</code> was set too late.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=543435" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=543435</a></li>
+<li><a href="https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/" rel="nofollow">https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/</a></li>
+</ul>
+
+
+
+]]></content>
+        <author>
+            <name>vinhill</name>
+            <email>vinhill@noreply.github.com</email>
+            <uri>https://github.com/vinhill</uri>
+        </author>
+        <published>2026-01-30T14:30:04.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Improve basic HTML syntax learning article]]></title>
         <id>https://github.com/mdn/content/pull/42978</id>
@@ -40,10 +77,10 @@
         <published>2026-01-30T12:36:16.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Fixed eratta in comment]]></title>
+        <title type="html"><![CDATA[Fix error in comment]]></title>
         <id>https://github.com/mdn/content/pull/42977</id>
         <link href="https://github.com/mdn/content/pull/42977"/>
-        <updated>2026-01-30T12:22:57.000Z</updated>
+        <updated>2026-01-30T14:38:50.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/50218159?u=9a8d3d616ec0ca2f6523605484321e16881c5c57&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -192,7 +229,7 @@ Verified no other files were touched.</p>]]></content>
         <title type="html"><![CDATA[reorder accessibility test your skills for consistency]]></title>
         <id>https://github.com/mdn/content/pull/42964</id>
         <link href="https://github.com/mdn/content/pull/42964"/>
-        <updated>2026-01-29T18:47:33.000Z</updated>
+        <updated>2026-01-30T15:00:18.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -331,35 +368,6 @@ Verified no other files were touched.</p>]]></content>
         <published>2026-01-28T19:10:41.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[reorder CSS layout test your skills for consistency]]></title>
-        <id>https://github.com/mdn/content/pull/42953</id>
-        <link href="https://github.com/mdn/content/pull/42953"/>
-        <updated>2026-01-30T14:09:48.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">I got some feedback that the ordering of the "Test your skills" articles has become confusing since the last update. Specifically, in some of the tests, the "solution" live sample appears before the "starting state" live sample, so it is unclear which one to click on to start the test.</p>
-<p dir="auto">To remedy this, I have decided to go through all the "Test your skills" articles and make the structure as consistent as possible throughout, fixing the above issue in the process.</p>
-<p dir="auto">This PR in particular updates the structure of the <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout" rel="nofollow">CSS layout</a> "Test your skills" articles.</p>
-<p dir="auto">Note: Not all of the tests show the finished state of the example. I have elected not to show it in cases where the before and after rendering look no different, where the final rendering gives away the answer, and where the question is freeform so there is no single answer.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-01-28T16:51:19.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Reorder basic CSS test your skills for consistency]]></title>
         <id>https://github.com/mdn/content/pull/42951</id>
         <link href="https://github.com/mdn/content/pull/42951"/>
@@ -392,7 +400,7 @@ Verified no other files were touched.</p>]]></content>
         <title type="html"><![CDATA[Reorder HTML test your skills for consistency]]></title>
         <id>https://github.com/mdn/content/pull/42949</id>
         <link href="https://github.com/mdn/content/pull/42949"/>
-        <updated>2026-01-29T18:47:04.000Z</updated>
+        <updated>2026-01-30T15:03:49.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
