@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Very much a draft right now. Not yet ready for review.</p>",
+            "url": "https://github.com/mdn/content/pull/42980",
+            "title": "Add a guide on threat modeling",
+            "date_modified": "2026-01-30T16:01:40.000Z",
+            "date_published": "2026-01-30T16:00:16.000Z",
+            "author": {
+                "name": "Elchi3",
+                "url": "https://github.com/Elchi3"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36379249?u=4840c2d79361800483d4c22b03d928ae33115103&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Quoting from the change:</p>\n<blockquote>\n<p dir=\"auto\">The initial <code class=\"notranslate\">about:blank</code> document now loads synchronously. A browsing context's first navigation may resolve to <code class=\"notranslate\">about:blank</code> (for example, when the initial URL is empty or explicitly set to <code class=\"notranslate\">about:blank</code>). In these cases, Firefox no longer replaces the initial empty document with a second, asynchronously loaded one, and instead fires the <code class=\"notranslate\">load</code> event synchronously on the initial document.</p>\n</blockquote>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Changing the timing of <code class=\"notranslate\">about:blank</code> loads solves a long-standing web-compat issue. But we've seen web pages or addons break, so developers might want to know about this change.</p>\n<p dir=\"auto\">To name some examples of what changed:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">window.open(\"about:blank\").onload = handler</code> the handler won't run anymore because load already fired</li>\n<li>The same with <code class=\"notranslate\">ifr = document.createElement(\"iframe\"); document.body.append(ifr); ifr.onload = handler;</code></li>\n<li>If an empty iframe is appended and synchronously removed, declarative extension content scripts could execute in it anyway.</li>\n<li><code class=\"notranslate\">ifr = document.createElement(\"iframe\"); ifr.onload = handler; document.body.append(ifr); ifr.src = other</code> will observe two load events now because <code class=\"notranslate\">src</code> was set too late.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=543435\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=543435</a></li>\n<li><a href=\"https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/\" rel=\"nofollow\">https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/</a></li>\n</ul>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42979",
             "title": "Update Fx148 relnotes to include initial about:blank",
@@ -97,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I got some feedback that the ordering of the \"Test your skills\" articles has become confusing since the last update. Specifically, in some of the tests, the \"solution\" live sample appears before the \"starting state\" live sample, so it is unclear which one to click on to start the test.</p>\n<p dir=\"auto\">To remedy this, I have decided to go through all the \"Test your skills\" articles and make the structure as consistent as possible throughout, fixing the above issue in the process.</p>\n<p dir=\"auto\">This PR in particular updates the structure of the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility\" rel=\"nofollow\">Accessibility on the web</a> \"Test your skills\" articles.</p>\n<p dir=\"auto\">Note: Not all of the tests show the finished state of the example. I have elected not to show it in cases where the before and after rendering look no different, where the final rendering gives away the answer, and where the question is freeform so there is no single answer.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42964",
             "title": "reorder accessibility test your skills for consistency",
-            "date_modified": "2026-01-30T15:00:18.000Z",
+            "date_modified": "2026-01-30T15:22:02.000Z",
             "date_published": "2026-01-29T10:02:14.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -108,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I got some feedback that the ordering of the \"Test your skills\" articles has become confusing since the last update. Specifically, in some of the tests, the \"solution\" live sample appears before the \"starting state\" live sample, so it is unclear which one to click on to start the test.</p>\n<p dir=\"auto\">To remedy this, I have decided to go through all the \"Test your skills\" articles and make the structure as consistent as possible throughout, fixing the above issue in the process.</p>\n<p dir=\"auto\">This PR in particular updates the structure of the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting\" rel=\"nofollow\">Dynamic scripting with JavaScript</a> \"Test your skills\" articles.</p>\n<p dir=\"auto\">Note: Not all of the tests show the finished state of the example. I have elected not to show it in cases where the before and after rendering look no different, where the final rendering gives away the answer, and where the question is freeform so there is no single answer.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42963",
             "title": "reorder Scripting test your skills for consistency",
-            "date_modified": "2026-01-29T18:47:27.000Z",
+            "date_modified": "2026-01-30T16:00:07.000Z",
             "date_published": "2026-01-29T09:16:08.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -163,7 +174,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I got some feedback that the ordering of the \"Test your skills\" articles has become confusing since the last update. Specifically, in some of the tests, the \"solution\" live sample appears before the \"starting state\" live sample, so it is unclear which one to click on to start the test.</p>\n<p dir=\"auto\">To remedy this, I have decided to go through all the \"Test your skills\" articles and make the structure as consistent as possible throughout, fixing the above issue in the process.</p>\n<p dir=\"auto\">This PR in particular updates the structure of the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics\" rel=\"nofollow\">CSS styling basics</a> \"Test your skills\" articles.</p>\n<p dir=\"auto\">Note: Not all of the tests show the finished state of the example. I have elected not to show it in cases where the before and after rendering look no different, where the final rendering gives away the answer, and where the question is freeform so there is no single answer.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42951",
             "title": "Reorder basic CSS test your skills for consistency",
-            "date_modified": "2026-01-29T18:47:20.000Z",
+            "date_modified": "2026-01-30T15:58:29.000Z",
             "date_published": "2026-01-28T16:28:25.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "pepelsbey",
                 "url": "https://github.com/pepelsbey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 145 adds support for Column wrapping for multicol, which includes the <code class=\"notranslate\">column-height</code> and <code class=\"notranslate\">column-wrap</code> properties. See <a href=\"https://chromestatus.com/feature/5176206485618688\" rel=\"nofollow\">https://chromestatus.com/feature/5176206485618688</a>.</p>\n<p dir=\"auto\">This PR documents those two properties and adds appropriate mentions in other places.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/42934",
-            "title": "Technical review: Document CSS multicol column wrapping",
-            "date_modified": "2026-01-27T12:06:34.000Z",
-            "date_published": "2026-01-27T12:05:05.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
