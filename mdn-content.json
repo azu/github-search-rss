@@ -127,17 +127,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36379249?u=4840c2d79361800483d4c22b03d928ae33115103&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Quoting from the change:</p>\n<blockquote>\n<p dir=\"auto\">The initial <code class=\"notranslate\">about:blank</code> document now loads synchronously. A browsing context's first navigation may resolve to <code class=\"notranslate\">about:blank</code> (for example, when the initial URL is empty or explicitly set to <code class=\"notranslate\">about:blank</code>). In these cases, Firefox no longer replaces the initial empty document with a second, asynchronously loaded one, and instead fires the <code class=\"notranslate\">load</code> event synchronously on the initial document.</p>\n</blockquote>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Changing the timing of <code class=\"notranslate\">about:blank</code> loads solves a long-standing web-compat issue. But we've seen web pages or addons break, so developers might want to know about this change.</p>\n<p dir=\"auto\">To name some examples of what changed:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">window.open(\"about:blank\").onload = handler</code> the handler won't run anymore because load already fired</li>\n<li>The same with <code class=\"notranslate\">ifr = document.createElement(\"iframe\"); document.body.append(ifr); ifr.onload = handler;</code></li>\n<li>If an empty iframe is appended and synchronously removed, declarative extension content scripts could execute in it anyway.</li>\n<li><code class=\"notranslate\">ifr = document.createElement(\"iframe\"); ifr.onload = handler; document.body.append(ifr); ifr.src = other</code> will observe two load events now because <code class=\"notranslate\">src</code> was set too late.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=543435\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=543435</a></li>\n<li><a href=\"https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/\" rel=\"nofollow\">https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/</a></li>\n</ul>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/42979",
-            "title": "Update Fx148 relnotes to include initial about:blank",
-            "date_modified": "2026-01-30T14:58:52.000Z",
-            "date_published": "2026-01-30T14:30:04.000Z",
-            "author": {
-                "name": "vinhill",
-                "url": "https://github.com/vinhill"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I decided to update the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax\" rel=\"nofollow\">Basic HTML syntax</a> learning area article to improve the wording and make it more friendly to beginners, for example:</p>\n<ul dir=\"auto\">\n<li>Making some of the examples a bit simpler, and others a bit more explanatory.</li>\n<li>Removing some content that isn't helpful to beginners. For example, mentioning valid XML when talking about closing slashes, and including a discussion on the <code class=\"notranslate\">innerHTML</code> JavaScript property when talking about whitespace. These are way out of scope for the current article and will just confuse beginners. MDN prides itself on its completeness, but a different approach is needed for the Learn area.</li>\n<li>Cutting down on verbiage and simplifying explanations.</li>\n<li>Using modern live sample syntax, which in a couple of cases was used to fix broken rendering.</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/42978",
             "title": "Improve basic HTML syntax learning article",
@@ -215,14 +204,25 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I got some feedback that the ordering of the \"Test your skills\" articles has become confusing since the last update. Specifically, in some of the tests, the \"solution\" live sample appears before the \"starting state\" live sample, so it is unclear which one to click on to start the test.</p>\n<p dir=\"auto\">To remedy this, I have decided to go through all the \"Test your skills\" articles and make the structure as consistent as possible throughout, fixing the above issue in the process.</p>\n<p dir=\"auto\">This PR in particular updates the structure of the <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting\" rel=\"nofollow\">Dynamic scripting with JavaScript</a> \"Test your skills\" articles.</p>\n<p dir=\"auto\">Note: Not all of the tests show the finished state of the example. I have elected not to show it in cases where the before and after rendering look no different, where the final rendering gives away the answer, and where the question is freeform so there is no single answer.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/42963",
-            "title": "Reorder Scripting test your skills for consistency",
-            "date_modified": "2026-02-03T16:13:45.000Z",
-            "date_published": "2026-01-29T09:16:08.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/39206515?u=c52f58348b4238e56a7524abc143c61411f6834c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Surgical replacement of incorrect word choice.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Original words were \"<em>a pick</em>\" (choice, selection), but from the surrounding text (CPU/GPU usage), probably the intention was to use \"<em>peak</em>\" (relating to the highest level, price, rate, etc. that something reaches).</p>",
+            "url": "https://github.com/mdn/content/pull/42959",
+            "title": "Media Capabilities API: Fix Incorrect Word Choice",
+            "date_modified": "2026-01-29T22:38:07.000Z",
+            "date_published": "2026-01-29T06:27:13.000Z",
             "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
+                "name": "acruzg",
+                "url": "https://github.com/acruzg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/44868357?u=eac4520e2d0d57e1c2e4b3aca7febc9143729754&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Mention the payload limit of 64 KiB for <code class=\"notranslate\">sendBeacon()</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<ul dir=\"auto\">\n<li><strong>Fetch specification reference</strong>: <a href=\"https://fetch.spec.whatwg.org/#http-network-or-cache-fetch\" rel=\"nofollow\">HTTP-network-or-cache fetch</a> defines the 64 KiB limit for keepalive requests</li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2008613\" rel=\"nofollow\">Firefox bug 2008613</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #42932.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3860035675\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42932\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42932/hovercard\" href=\"https://github.com/mdn/content/issues/42932\">#42932</a></p>\n\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1899218243\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/20721\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/20721/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/20721\">mdn/browser-compat-data#20721</a>, <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3868568077\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42957\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/42957/hovercard\" href=\"https://github.com/mdn/content/pull/42957\">#42957</a></p>\n\n",
+            "url": "https://github.com/mdn/content/pull/42958",
+            "title": "mention the payload limit of 64 KiB for `sendBeacon()`",
+            "date_modified": "2026-01-30T02:51:03.000Z",
+            "date_published": "2026-01-29T04:44:47.000Z",
+            "author": {
+                "name": "codersjj",
+                "url": "https://github.com/codersjj"
             }
         }
     ]

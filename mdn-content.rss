@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-02-03T16:13:52.083Z</updated>
+    <updated>2026-02-03T17:16:18.431Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -313,43 +313,6 @@
         <published>2026-01-30T16:00:16.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Update Fx148 relnotes to include initial about:blank]]></title>
-        <id>https://github.com/mdn/content/pull/42979</id>
-        <link href="https://github.com/mdn/content/pull/42979"/>
-        <updated>2026-01-30T14:58:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36379249?u=4840c2d79361800483d4c22b03d928ae33115103&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Quoting from the change:</p>
-<blockquote>
-<p dir="auto">The initial <code class="notranslate">about:blank</code> document now loads synchronously. A browsing context's first navigation may resolve to <code class="notranslate">about:blank</code> (for example, when the initial URL is empty or explicitly set to <code class="notranslate">about:blank</code>). In these cases, Firefox no longer replaces the initial empty document with a second, asynchronously loaded one, and instead fires the <code class="notranslate">load</code> event synchronously on the initial document.</p>
-</blockquote>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Changing the timing of <code class="notranslate">about:blank</code> loads solves a long-standing web-compat issue. But we've seen web pages or addons break, so developers might want to know about this change.</p>
-<p dir="auto">To name some examples of what changed:</p>
-<ul dir="auto">
-<li><code class="notranslate">window.open("about:blank").onload = handler</code> the handler won't run anymore because load already fired</li>
-<li>The same with <code class="notranslate">ifr = document.createElement("iframe"); document.body.append(ifr); ifr.onload = handler;</code></li>
-<li>If an empty iframe is appended and synchronously removed, declarative extension content scripts could execute in it anyway.</li>
-<li><code class="notranslate">ifr = document.createElement("iframe"); ifr.onload = handler; document.body.append(ifr); ifr.src = other</code> will observe two load events now because <code class="notranslate">src</code> was set too late.</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=543435" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=543435</a></li>
-<li><a href="https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/" rel="nofollow">https://www.firefox.com/en-US/firefox/148.0beta/releasenotes/</a></li>
-</ul>
-
-
-
-]]></content>
-        <author>
-            <name>vinhill</name>
-            <email>vinhill@noreply.github.com</email>
-            <uri>https://github.com/vinhill</uri>
-        </author>
-        <published>2026-01-30T14:30:04.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Improve basic HTML syntax learning article]]></title>
         <id>https://github.com/mdn/content/pull/42978</id>
         <link href="https://github.com/mdn/content/pull/42978"/>
@@ -531,32 +494,51 @@ Verified no other files were touched.</p>]]></content>
         <published>2026-01-29T14:24:17.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Reorder Scripting test your skills for consistency]]></title>
-        <id>https://github.com/mdn/content/pull/42963</id>
-        <link href="https://github.com/mdn/content/pull/42963"/>
-        <updated>2026-02-03T16:13:45.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+        <title type="html"><![CDATA[Media Capabilities API: Fix Incorrect Word Choice]]></title>
+        <id>https://github.com/mdn/content/pull/42959</id>
+        <link href="https://github.com/mdn/content/pull/42959"/>
+        <updated>2026-01-29T22:38:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/39206515?u=c52f58348b4238e56a7524abc143c61411f6834c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Surgical replacement of incorrect word choice.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Original words were "<em>a pick</em>" (choice, selection), but from the surrounding text (CPU/GPU usage), probably the intention was to use "<em>peak</em>" (relating to the highest level, price, rate, etc. that something reaches).</p>]]></content>
+        <author>
+            <name>acruzg</name>
+            <email>acruzg@noreply.github.com</email>
+            <uri>https://github.com/acruzg</uri>
+        </author>
+        <published>2026-01-29T06:27:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[mention the payload limit of 64 KiB for `sendBeacon()`]]></title>
+        <id>https://github.com/mdn/content/pull/42958</id>
+        <link href="https://github.com/mdn/content/pull/42958"/>
+        <updated>2026-01-30T02:51:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/44868357?u=eac4520e2d0d57e1c2e4b3aca7febc9143729754&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
-<p dir="auto">I got some feedback that the ordering of the "Test your skills" articles has become confusing since the last update. Specifically, in some of the tests, the "solution" live sample appears before the "starting state" live sample, so it is unclear which one to click on to start the test.</p>
-<p dir="auto">To remedy this, I have decided to go through all the "Test your skills" articles and make the structure as consistent as possible throughout, fixing the above issue in the process.</p>
-<p dir="auto">This PR in particular updates the structure of the <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting" rel="nofollow">Dynamic scripting with JavaScript</a> "Test your skills" articles.</p>
-<p dir="auto">Note: Not all of the tests show the finished state of the example. I have elected not to show it in cases where the before and after rendering look no different, where the final rendering gives away the answer, and where the question is freeform so there is no single answer.</p>
 
+<p dir="auto">Mention the payload limit of 64 KiB for <code class="notranslate">sendBeacon()</code>.</p>
 <h3 dir="auto">Motivation</h3>
 
 <h3 dir="auto">Additional details</h3>
 
+<ul dir="auto">
+<li><strong>Fetch specification reference</strong>: <a href="https://fetch.spec.whatwg.org/#http-network-or-cache-fetch" rel="nofollow">HTTP-network-or-cache fetch</a> defines the 64 KiB limit for keepalive requests</li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2008613" rel="nofollow">Firefox bug 2008613</a></li>
+</ul>
 <h3 dir="auto">Related issues and pull requests</h3>
 
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42932.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3860035675" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42932" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42932/hovercard" href="https://github.com/mdn/content/issues/42932">#42932</a></p>
 
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1899218243" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/20721" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/20721/hovercard" href="https://github.com/mdn/browser-compat-data/issues/20721">mdn/browser-compat-data#20721</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3868568077" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42957" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42957/hovercard" href="https://github.com/mdn/content/pull/42957">#42957</a></p>
 
 ]]></content>
         <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
+            <name>codersjj</name>
+            <email>codersjj@noreply.github.com</email>
+            <uri>https://github.com/codersjj</uri>
         </author>
-        <published>2026-01-29T09:16:08.000Z</published>
+        <published>2026-01-29T04:44:47.000Z</published>
     </entry>
 </feed>
