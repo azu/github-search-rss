@@ -2,11 +2,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-02-13T18:08:37.096Z</updated>
+    <updated>2026-02-13T19:14:22.401Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Question: should `shadowrootadoptedstylesheets` perform a fetch?]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1195</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1195"/>
+        <updated>2026-02-13T18:36:02.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/15691393?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Relevant background:<br>
+Explainer:  <a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ShadowDOM/explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ShadowDOM/explainer.md</a><br>
+TAG Review: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2560379778" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1000" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1000/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1000">#1000</a><br>
+Mozilla Standards Position Discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2560375814" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1081" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1081/hovercard" href="https://github.com/mozilla/standards-positions/issues/1081">mozilla/standards-positions#1081</a></p>
+<p dir="auto">As currently spec'd, <code class="notranslate">shadowrootadoptedstylesheets</code> on the <code class="notranslate">&lt;template&gt;</code> tag does not perform a fetch. We have received feedback that this is inconsistent and unintuitive for developers. We would like the TAG to consider this proposal and provide guidance on whether this should remain as-is, or be changed to perform a fetch in some manner. If it does perform a fetch, there are several open questions that need to be resolved.</p>
+<p dir="auto"><code class="notranslate">shadowrootadoptedstylesheets</code> accepts a space-separated list of specifiers. Currently, for each specifier, the module map is queried, and if a style module is present with that specifier, it is added to the <code class="notranslate">adoptedStyleSheets</code> array for the declarative shadow DOM that it is associated with.</p>
+<p dir="auto">There are several reasons why it is currently spec'd to not perform a fetch:</p>
+<ol dir="auto">
+<li>
+<p dir="auto">The imperative <code class="notranslate">adoptedStyleSheets</code> API does not perform a fetch, and we wanted the attribute to be consistent with the API as much as possible.</p>
+</li>
+<li>
+<p dir="auto">If it did perform a fetch, there would be no mechanism to catch errors via <code class="notranslate">onerror</code> (or success via <code class="notranslate">onload</code>), as the <code class="notranslate">&lt;template&gt;</code> tag is discarded after parsing. Also, <code class="notranslate">&lt;template&gt;</code> lacks attributes like CORS, blocking, and more that are necessary for a robust fetching mechanism.</p>
+</li>
+<li>
+<p dir="auto">The primary use case we've seen for <code class="notranslate">shadowrootadoptedstylesheets</code> is for declarative modules, which don't need a fetch. Alternatively, we could scope <code class="notranslate">shadowrootadoptedstylesheets</code> to only declarative modules, but that also seems inconsistent.</p>
+</li>
+<li>
+<p dir="auto"><code class="notranslate">adoptedStyleSheets</code> is an array, and the order matters for CSS rule application. Each fetch response would trigger an FOUC, and style computation must be rerun for each load completion. Any mutations to <code class="notranslate">adoptedStyleSheets</code> while the fetch is loading would trigger more style changes, but this would match the existing behavior of <code class="notranslate">adoptedStyleSheets</code>.</p>
+</li>
+</ol>
+<p dir="auto">There are many ways to address this scenario, each with various tradeoffs. A few options:</p>
+<ol dir="auto">
+<li>
+<p dir="auto">Leave as-is, and do not perform a fetch.</p>
+</li>
+<li>
+<p dir="auto">If not already in the module map, perform a fetch, but with no CORS, error handling or load events, and with an FOUC for each fetched module completion. This can be mitigated with <code class="notranslate">&lt;link rel=modulepreload&gt;</code> ahead of time (and could be warned via the console).</p>
+</li>
+<li>
+<p dir="auto">Only allow <code class="notranslate">shadowrootadoptedstylesheets</code> to accept declarative modules. This would avoid this issue, but is limiting and inconsistent. This could also be a temporary limitation.</p>
+</li>
+<li>
+<p dir="auto">Create a new type of <code class="notranslate">&lt;link&gt;</code> tag that populates <code class="notranslate">adoptedStyleSheets</code>. This would handle CORS and load/error events, but still has ordering/FOUC issues due to <code class="notranslate">adoptedStyleSheets</code> ordering/mutation and adds DOM mutations to the mix. It will also be very similar to the existing <code class="notranslate">&lt;link rel="modulepreload"&gt;</code>, which could be confusing.</p>
+</li>
+</ol>
+<p dir="auto">TAG guidance on this scenario is greatly appreciated. I would also like to thank <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jakearchibald/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jakearchibald">@jakearchibald</a> and <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/LeaVerou/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/LeaVerou">@LeaVerou</a> for bringing up this concern.</p>
+
+<hr>
+<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1195" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1195</a></p>]]></content>
+        <author>
+            <name>KurtCattiSchmidt</name>
+            <email>KurtCattiSchmidt@noreply.github.com</email>
+            <uri>https://github.com/KurtCattiSchmidt</uri>
+        </author>
+        <published>2026-02-13T18:35:58.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[WG New Spec: HDR on the web (CSS, Canvas, WebGL, WebGPU)]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1194</id>
@@ -1088,76 +1140,5 @@ ready: CSSWG</li>
             <uri>https://github.com/diekus</uri>
         </author>
         <published>2025-12-09T10:36:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Other Spec Review: trigger-scope]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1175</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1175"/>
-        <updated>2025-12-15T14:32:49.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66635890?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
-<p dir="auto"><a href="https://drafts.csswg.org/css-animations-2/#trigger-scope" rel="nofollow">https://drafts.csswg.org/css-animations-2/#trigger-scope</a></p>
-<h3 dir="auto">Explainer</h3>
-<p dir="auto"><a href="https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/TRIGGER_SCOPE.md">https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/TRIGGER_SCOPE.md</a></p>
-<h3 dir="auto">Links</h3>
-<ul dir="auto">
-<li>The WG's request for this TAG review: None  </li>
-<li>Previous early design review, if any: None</li>
-<li>An introduction to the feature, aimed at unfamiliar audiences: <a href="https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/TRIGGER_SCOPE.md">explainer</a> </li>
-<li>A description of the problems that end-users were facing before this proposal: <a href="https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/TRIGGER_SCOPE.md">explainer</a>  </li>
-<li>Alternatives considered: <a href="https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/TRIGGER_SCOPE.md#alternatives-considered">explainer</a>  </li>
-<li>Examples of how to use the proposal to solve the end-users' problems: <a href="https://github.com/explainers-by-googlers/scroll-triggered-animations/blob/main/TRIGGER_SCOPE.md#proposed-solution">explainer</a>  </li>
-<li>What do the end-users experience with this proposal:   </li>
-<li>User research you did to validate the problem and/or design, if any: None</li>
-<li>Web Platform Tests:  In Progress</li>
-</ul>
-<h3 dir="auto">The specification</h3>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
-</ul>
-<h3 dir="auto">Where and by whom is the work is being done?</h3>
-<ul dir="auto">
-<li>GitHub repo: None</li>
-<li>Primary contacts:
-<ul dir="auto">
-<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/DavMila/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/DavMila">@DavMila</a>, Google, CSSWG participant</li>
-<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/flackr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/flackr">@flackr</a>, Google, CSSWG participant</li>
-<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/tabatkins/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/tabatkins">@tabatkins</a>, Google, CSSWG participant, spec editor</li>
-</ul>
-</li>
-<li>Organization/project driving the specification:</li>
-<li>This work is being funded by: Google</li>
-<li>Primary standards group developing this feature: CSSWG</li>
-<li>Incubation and standards groups that have discussed the design:
-<ul dir="auto">
-<li><a href="https://github.com/w3c/csswg-drafts/issues/12581#issuecomment-3206707173" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/12581/hovercard">CSSWG Issue #12581</a></li>
-</ul>
-</li>
-</ul>
-<h3 dir="auto">Feedback so far</h3>
-<ul dir="auto">
-<li>Active horizontal reviews: None https:// </li>
-<li>Multi-stakeholder feedback:
-<ul dir="auto">
-<li>Chromium comments: intend to implement: <a href="https://issues.chromium.org/u/1/issues/466134208" rel="nofollow">crbug.com/466134208</a></li>
-<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3696922872" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1327" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1327/hovercard" href="https://github.com/mozilla/standards-positions/issues/1327">mozilla/standards-positions#1327</a> </li>
-<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3696933222" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/589" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/589/hovercard" href="https://github.com/WebKit/standards-positions/issues/589">WebKit/standards-positions#589</a> </li>
-<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
-</ul>
-</li>
-<li>Major unresolved issues with or opposition to this specification:</li>
-<li>Status/issue trackers for implementations: <a href="https://chromestatus.com/feature/5152759609425920" rel="nofollow">Chrome Status</a>,</li>
-</ul>
-<h3 dir="auto">You should also know that...</h3>
-<p dir="auto"><em>No response</em></p>
-
-<hr>
-<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1175" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1175</a></p>]]></content>
-        <author>
-            <name>DavMila</name>
-            <email>DavMila@noreply.github.com</email>
-            <uri>https://github.com/DavMila</uri>
-        </author>
-        <published>2025-12-04T23:01:44.000Z</published>
     </entry>
 </feed>
