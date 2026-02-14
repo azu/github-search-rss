@@ -2,11 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-02-14T15:03:23.437Z</updated>
+    <updated>2026-02-14T16:02:33.543Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[http2: introduce http1Options and use storeHTTPOptions and initialize keepAliveTimeout and keepAliveTimeoutBuffer when allowHTTP1 is true]]></title>
+        <id>https://github.com/nodejs/node/pull/61713</id>
+        <link href="https://github.com/nodejs/node/pull/61713"/>
+        <updated>2026-02-14T15:11:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/135108994?u=c28d71aed4747f94ca3e367ae42bd863cd7f20ab&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR fixes an issue where <code class="notranslate">keepAliveTimeout</code> and related timeout properties were <code class="notranslate">undefined</code> on <code class="notranslate">Http2SecureServer</code> instances, even when <code class="notranslate">allowHTTP1: true</code> was set.</p>
+<p dir="auto">When falling back to HTTP/1.1, the server should respect standard HTTP timeout behaviors. This change ensures these properties are initialized with their default values (matching <code class="notranslate">http.Server</code> and <code class="notranslate">https.Server</code>), preventing inconsistent behavior during HTTP/1.1 fallback.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #59783.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3390109373" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/59783" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/59783/hovercard" href="https://github.com/nodejs/node/issues/59783">#59783</a></p>]]></content>
+        <author>
+            <name>amyssnippet</name>
+            <email>amyssnippet@noreply.github.com</email>
+            <uri>https://github.com/amyssnippet</uri>
+        </author>
+        <published>2026-02-07T05:16:35.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[url: update ada to v3.4.2 and support unicode 17]]></title>
         <id>https://github.com/nodejs/node/pull/61593</id>
@@ -390,7 +405,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODE3MDMsIm5iZiI6MTc3MTA4MTQwMywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTUwMzIzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjI1ZjhlYzJlZjMwNTU4MTA2Mzc0MGZjNzJhNjE0YjMzMjRhM2I5NTUzYzA2ZjdmYjVlYzQ5ZjQzM2VmYmExNSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.0iC6sqHDsRNnvmp4UfWVW5-_IBYBO_eu6IlF63H9cMo"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODE3MDMsIm5iZiI6MTc3MTA4MTQwMywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTUwMzIzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjI1ZjhlYzJlZjMwNTU4MTA2Mzc0MGZjNzJhNjE0YjMzMjRhM2I5NTUzYzA2ZjdmYjVlYzQ5ZjQzM2VmYmExNSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.0iC6sqHDsRNnvmp4UfWVW5-_IBYBO_eu6IlF63H9cMo" style="max-width: 100%; height: auto; max-height: 748px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODUyNTMsIm5iZiI6MTc3MTA4NDk1MywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTYwMjMzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjdmNzk2OWQyZTQyYjk4ZDYxMjlkNzY5MDdiYWI5N2IzZjY3MjAwZjdiNzYyZmY4MThlNTgxNGMxMjBmNWRmYSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.MB2qnmxqTHyZ8IAZn_j0j-zoZf-aNrgAt898kfA4KKs"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODUyNTMsIm5iZiI6MTc3MTA4NDk1MywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTRUMTYwMjMzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjdmNzk2OWQyZTQyYjk4ZDYxMjlkNzY5MDdiYWI5N2IzZjY3MjAwZjdiNzYyZmY4MThlNTgxNGMxMjBmNWRmYSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.MB2qnmxqTHyZ8IAZn_j0j-zoZf-aNrgAt898kfA4KKs" style="max-width: 100%; height: auto; max-height: 748px;"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -643,7 +658,7 @@ ones are left as legacy aliases.</p>
 It's been a while and there are no outstading issues.<br>
 The only issue so far is <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3293224247" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/59364" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/59364/hovercard" href="https://github.com/nodejs/node/issues/59364">#59364</a> but it's really not about Node, but the ecosystem around ts-node to adapt to it.<br>
 Node v22 and v24 have enough download that I can confidently say that it's safe to mark this feature stable.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODE3MDMsIm5iZiI6MTc3MTA4MTQwMywicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE1MDMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ4Y2IxZTVkZTY4ZWMyOTRmNDllYTFhZmZjNzgxYmI3NTg4Nzc2NGRmNWQxNWJmM2UxYjU2MzZlNDlhMmE3MWYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.k1SifgOn9erLGoAZ9JCCHNGtR_xbhTBbnMJN_s1II94"><img width="1145" height="744" alt="Screenshot 2025-11-05 at 17 43 13" src="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODE3MDMsIm5iZiI6MTc3MTA4MTQwMywicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE1MDMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ4Y2IxZTVkZTY4ZWMyOTRmNDllYTFhZmZjNzgxYmI3NTg4Nzc2NGRmNWQxNWJmM2UxYjU2MzZlNDlhMmE3MWYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.k1SifgOn9erLGoAZ9JCCHNGtR_xbhTBbnMJN_s1II94" style="max-width: 100%; height: auto; max-height: 744px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODUyNTMsIm5iZiI6MTc3MTA4NDk1MywicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE2MDIzM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThiMzhiOTgzZjk4YTIzZDBmNDVmMjhiNWIwNzA2ZjM3YzE3ODJhMzgxMDQyYjhkNjUyYWRkOTMwOThlODA5NDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.6c-NHsd-yh4VwOCcm6JEpbgQsRjMIi2RYmt6KPJZ1_Q"><img width="1145" height="744" alt="Screenshot 2025-11-05 at 17 43 13" src="https://private-user-images.githubusercontent.com/36735501/510666777-dd073a34-15e8-4b7b-bcd0-363a29c485c7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODUyNTMsIm5iZiI6MTc3MTA4NDk1MywicGF0aCI6Ii8zNjczNTUwMS81MTA2NjY3NzctZGQwNzNhMzQtMTVlOC00YjdiLWJjZDAtMzYzYTI5YzQ4NWM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE2MDIzM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThiMzhiOTgzZjk4YTIzZDBmNDVmMjhiNWIwNzA2ZjM3YzE3ODJhMzgxMDQyYjhkNjUyYWRkOTMwOThlODA5NDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.6c-NHsd-yh4VwOCcm6JEpbgQsRjMIi2RYmt6KPJZ1_Q" style="max-width: 100%; height: auto; max-height: 744px;"></a>
 <blockquote>
 <p dir="auto">transform-types will stay experimental for now</p>
 </blockquote>]]></content>
@@ -708,47 +723,5 @@ Node v22 and v24 have enough download that I can confidently say that it's safe 
             <uri>https://github.com/cclauss</uri>
         </author>
         <published>2025-09-23T08:18:28.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[inspector: add http2 tracking support]]></title>
-        <id>https://github.com/nodejs/node/pull/59611</id>
-        <link href="https://github.com/nodejs/node/pull/59611"/>
-        <updated>2025-08-31T17:33:56.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/42526976?u=847f263c189b0caf85d3c4c41dfe8956f4fc637d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This allows tracking HTTP/2 calls through the Network tab of Chrome DevTools for Node.js.</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2418991782" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/53946" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/53946/hovercard" href="https://github.com/nodejs/node/issues/53946">#53946</a></p>
-<hr>
-<p dir="auto">Text for release notes:</p>
-<h3 dir="auto">HTTP/2 Network Inspection Support in Node.js</h3>
-<p dir="auto">Node.js now supports inspection of HTTP/2 network calls in Chrome DevTools for Node.js.</p>
-<h4 dir="auto">Usage</h4>
-<p dir="auto">Write a <code class="notranslate">test.js</code> script that makes HTTP/2 requests.</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const http2 = require('http2');
-
-const client = http2.connect('https://nghttp2.org');
-
-const req = client.request([
-  ':path', '/',
-  ':method', 'GET',
-]);"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">http2</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'http2'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-k">const</span> <span class="pl-s1">client</span> <span class="pl-c1">=</span> <span class="pl-s1">http2</span><span class="pl-kos">.</span><span class="pl-en">connect</span><span class="pl-kos">(</span><span class="pl-s">'https://nghttp2.org'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-k">const</span> <span class="pl-s1">req</span> <span class="pl-c1">=</span> <span class="pl-s1">client</span><span class="pl-kos">.</span><span class="pl-en">request</span><span class="pl-kos">(</span><span class="pl-kos">[</span>
-  <span class="pl-s">':path'</span><span class="pl-kos">,</span> <span class="pl-s">'/'</span><span class="pl-kos">,</span>
-  <span class="pl-s">':method'</span><span class="pl-kos">,</span> <span class="pl-s">'GET'</span><span class="pl-kos">,</span>
-<span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
-<p dir="auto">Run it with these options:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ node --inspect-wait --experimental-network-inspection test.js"><pre class="notranslate">$ node --inspect-wait --experimental-network-inspection test.js</pre></div>
-<p dir="auto">Open <code class="notranslate">about:inspect</code> on Google Chrome and click on <code class="notranslate">Open dedicated DevTools for Node</code>.<br>
-The <code class="notranslate">Network</code> tab will let you track your HTTP/2 calls.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/42526976/481393176-0da1009c-f732-40df-bedf-3003f7569ac2.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODE3MDMsIm5iZiI6MTc3MTA4MTQwMywicGF0aCI6Ii80MjUyNjk3Ni80ODEzOTMxNzYtMGRhMTAwOWMtZjczMi00MGRmLWJlZGYtMzAwM2Y3NTY5YWMyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE1MDMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlmZTlmOGI3YTE3NmI5MjY0NDY1MmNmMjgzZjU1ODIzOTRkNzM5NjZiYTc5ZTk1N2RhODJkYmU4OWI3YTYwNWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.m4PXX15aV10EmpQNG9vvKGysJZzobXMCQsw_WLksF6U"><img width="721" height="808" alt="demo" src="https://private-user-images.githubusercontent.com/42526976/481393176-0da1009c-f732-40df-bedf-3003f7569ac2.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwODE3MDMsIm5iZiI6MTc3MTA4MTQwMywicGF0aCI6Ii80MjUyNjk3Ni80ODEzOTMxNzYtMGRhMTAwOWMtZjczMi00MGRmLWJlZGYtMzAwM2Y3NTY5YWMyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE1MDMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlmZTlmOGI3YTE3NmI5MjY0NDY1MmNmMjgzZjU1ODIzOTRkNzM5NjZiYTc5ZTk1N2RhODJkYmU4OWI3YTYwNWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.m4PXX15aV10EmpQNG9vvKGysJZzobXMCQsw_WLksF6U" style="max-width: 100%; height: auto; max-height: 808px;"></a>
-<p dir="auto">Contributed by Darshan Sen in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3349673858" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/59611" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/59611/hovercard" href="https://github.com/nodejs/node/pull/59611">#59611</a></p>
-]]></content>
-        <author>
-            <name>RaisinTen</name>
-            <email>RaisinTen@noreply.github.com</email>
-            <uri>https://github.com/RaisinTen</uri>
-        </author>
-        <published>2025-08-24T16:20:06.000Z</published>
     </entry>
 </feed>
