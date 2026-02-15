@@ -2,11 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-02-15T04:36:25.887Z</updated>
+    <updated>2026-02-15T05:24:31.054Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[front-matter_linter: extract exclusion helpers; guard CLI; add excludes unit test]]></title>
+        <id>https://github.com/mdn/content/pull/43133</id>
+        <link href="https://github.com/mdn/content/pull/43133"/>
+        <updated>2026-02-15T04:47:27.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/136667416?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Summary</p>
+<p dir="auto">This draft PR simplifies and centralizes the path-exclusion logic used by the front-matter linter and makes the CLI safe to import in tests.</p>
+<p dir="auto">What changed</p>
+<ul dir="auto">
+<li>scripts/front-matter_linter.js
+<ul dir="auto">
+<li>Extracted <code class="notranslate">EXCLUDED_DIRS</code> and <code class="notranslate">EXCLUDED_PATH_SEGMENTS</code> constants.</li>
+<li>Added <code class="notranslate">normalizePathForMatch(filePath)</code> and <code class="notranslate">isExcludedFilePath(filePath)</code> helpers.</li>
+<li>Exported the helpers so tests can import and assert behavior.</li>
+<li>Guarded the CLI invocation so importing the module does not run the CLI.</li>
+</ul>
+</li>
+<li>tests/front-matter_excludes.test.js
+<ul dir="auto">
+<li>New unit test covering excluded paths (including Windows-style backslashes).</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Why</p>
+<ul dir="auto">
+<li>Consolidates exclusion checks in one place to reduce duplication and potential mistakes.</li>
+<li>Makes path matching robust to Windows-style separators.</li>
+<li>Improves testability (small unit test added) so maintainers can reason about excludes.</li>
+</ul>
+<p dir="auto">Verification performed</p>
+<ul dir="auto">
+<li><code class="notranslate">npm ci</code> to install dependencies.</li>
+<li>Ran full test suite (<code class="notranslate">node --test</code>) — all tests pass except one pre-existing failing test from <code class="notranslate">tests/front-matter_linter.test.js</code> ("should prettify the front-matter") that concerns YAML folding/formatting; that failure existed before this change and is not caused by this refactor.</li>
+<li>Ran <code class="notranslate">node scripts/front-matter_linter.js tests/front-matter_test_files</code> and <code class="notranslate">node scripts/front-matter_linter.js files/en-us/glossary/algorithm/index.md</code> to validate excluded fixtures are ignored and a normal index.md is processed.</li>
+<li>Formatted changed file with Prettier.</li>
+</ul>]]></content>
+        <author>
+            <name>pranjal2004838</name>
+            <email>pranjal2004838@noreply.github.com</email>
+            <uri>https://github.com/pranjal2004838</uri>
+        </author>
+        <published>2026-02-15T04:42:35.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update index.md]]></title>
         <id>https://github.com/mdn/content/pull/43130</id>
@@ -501,30 +544,5 @@ updated the examples to ensure something noticeable would happen</p>]]></content
             <uri>https://github.com/badwriter123</uri>
         </author>
         <published>2026-02-05T05:19:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Bug-2012727 `isEnabled` updates for `action` and `browseAction`]]></title>
-        <id>https://github.com/mdn/content/pull/42997</id>
-        <link href="https://github.com/mdn/content/pull/42997"/>
-        <updated>2026-02-12T15:31:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Address is the dev-doc-needed requirements of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2012727" rel="nofollow">Bug 2012727</a> "action.isEnabled() throws instead of returning the global enabled state" by:</p>
-<ul dir="auto">
-<li>Marking <code class="notranslate">details</code> as optional in:
-<ul dir="auto">
-<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/action/isEnabled" rel="nofollow">action.isEnabled</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction/isEnabled" rel="nofollow">browserAction/isEnabled</a></li>
-</ul>
-</li>
-<li>Add a note to the <code class="notranslate">action.isEnabled</code> documentation that in Chrome, the parameter is not a details object but an (optional) tabId integer.</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Related BCD changes in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3892397630" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28964" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28964/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28964">mdn/browser-compat-data#28964</a>.</p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-02-02T18:02:42.000Z</published>
     </entry>
 </feed>

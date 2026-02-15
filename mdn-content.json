@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/136667416?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Summary</p>\n<p dir=\"auto\">This draft PR simplifies and centralizes the path-exclusion logic used by the front-matter linter and makes the CLI safe to import in tests.</p>\n<p dir=\"auto\">What changed</p>\n<ul dir=\"auto\">\n<li>scripts/front-matter_linter.js\n<ul dir=\"auto\">\n<li>Extracted <code class=\"notranslate\">EXCLUDED_DIRS</code> and <code class=\"notranslate\">EXCLUDED_PATH_SEGMENTS</code> constants.</li>\n<li>Added <code class=\"notranslate\">normalizePathForMatch(filePath)</code> and <code class=\"notranslate\">isExcludedFilePath(filePath)</code> helpers.</li>\n<li>Exported the helpers so tests can import and assert behavior.</li>\n<li>Guarded the CLI invocation so importing the module does not run the CLI.</li>\n</ul>\n</li>\n<li>tests/front-matter_excludes.test.js\n<ul dir=\"auto\">\n<li>New unit test covering excluded paths (including Windows-style backslashes).</li>\n</ul>\n</li>\n</ul>\n<p dir=\"auto\">Why</p>\n<ul dir=\"auto\">\n<li>Consolidates exclusion checks in one place to reduce duplication and potential mistakes.</li>\n<li>Makes path matching robust to Windows-style separators.</li>\n<li>Improves testability (small unit test added) so maintainers can reason about excludes.</li>\n</ul>\n<p dir=\"auto\">Verification performed</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npm ci</code> to install dependencies.</li>\n<li>Ran full test suite (<code class=\"notranslate\">node --test</code>) — all tests pass except one pre-existing failing test from <code class=\"notranslate\">tests/front-matter_linter.test.js</code> (\"should prettify the front-matter\") that concerns YAML folding/formatting; that failure existed before this change and is not caused by this refactor.</li>\n<li>Ran <code class=\"notranslate\">node scripts/front-matter_linter.js tests/front-matter_test_files</code> and <code class=\"notranslate\">node scripts/front-matter_linter.js files/en-us/glossary/algorithm/index.md</code> to validate excluded fixtures are ignored and a normal index.md is processed.</li>\n<li>Formatted changed file with Prettier.</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/43133",
+            "title": "front-matter_linter: extract exclusion helpers; guard CLI; add excludes unit test",
+            "date_modified": "2026-02-15T04:47:27.000Z",
+            "date_published": "2026-02-15T04:42:35.000Z",
+            "author": {
+                "name": "pranjal2004838",
+                "url": "https://github.com/pranjal2004838"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/186621628?u=951909d476bff144ca66f252b4a60d6860036dbf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Changed edge to side.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Changed the article from \"a\" to \"the\".</p>\n<p dir=\"auto\">Removed the words \"horizontal\" and \"vertical\".</p>\n<p dir=\"auto\">Changed the word from \"edge\" to \"side\".</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">There is only one box model in CSS. You aren't choosing from different box models. When making a declaration you are stylizing what to do with the box of that selector.</p>\n<p dir=\"auto\">Simplifies and clarifies the language to make it easier to translate. Also avoid unnecessary comma splicing.</p>\n<p dir=\"auto\">It is more common to refer to sides of a box instead of edges in English. In American trigonometry our mnemonic is \"side, angle, side\" not \"edge, angle, edge\".</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/43130",
             "title": "Update index.md",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "badwriter123",
                 "url": "https://github.com/badwriter123"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Address is the dev-doc-needed requirements of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2012727\" rel=\"nofollow\">Bug 2012727</a> \"action.isEnabled() throws instead of returning the global enabled state\" by:</p>\n<ul dir=\"auto\">\n<li>Marking <code class=\"notranslate\">details</code> as optional in:\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/action/isEnabled\" rel=\"nofollow\">action.isEnabled</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction/isEnabled\" rel=\"nofollow\">browserAction/isEnabled</a></li>\n</ul>\n</li>\n<li>Add a note to the <code class=\"notranslate\">action.isEnabled</code> documentation that in Chrome, the parameter is not a details object but an (optional) tabId integer.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related BCD changes in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3892397630\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/28964\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/28964/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/28964\">mdn/browser-compat-data#28964</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/42997",
-            "title": "Bug-2012727 `isEnabled` updates for `action` and `browseAction`",
-            "date_modified": "2026-02-12T15:31:35.000Z",
-            "date_published": "2026-02-02T18:02:42.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
             }
         }
     ]
