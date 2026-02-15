@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69143173?u=baa2307e0e3fb7393d61c67d322d9bdc4bda37b4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The text that describes the CSP code snippet was not under the code snippet, but in a random location.</p>\n<p dir=\"auto\">The text has now been moved to where it should have been.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">It was previously confusing, that the text was out of place.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Apache_Configuration_htaccess#prevent_some_browsers_from_mime-sniffing_the_response\" rel=\"nofollow\">Link to doc - current position</a></li>\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Apache_Configuration_htaccess#content_security_policy_csp\" rel=\"nofollow\">Link to doc - where it should be</a></li>\n</ul>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/43135",
+            "title": "Fix apache configuration htaccess: misplaced content",
+            "date_modified": "2026-02-15T14:02:41.000Z",
+            "date_published": "2026-02-15T14:02:20.000Z",
+            "author": {
+                "name": "Brandon-Johns",
+                "url": "https://github.com/Brandon-Johns"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/136667416?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Summary</p>\n<p dir=\"auto\">This draft PR simplifies and centralizes the path-exclusion logic used by the front-matter linter and makes the CLI safe to import in tests.</p>\n<p dir=\"auto\">What changed</p>\n<ul dir=\"auto\">\n<li>scripts/front-matter_linter.js\n<ul dir=\"auto\">\n<li>Extracted <code class=\"notranslate\">EXCLUDED_DIRS</code> and <code class=\"notranslate\">EXCLUDED_PATH_SEGMENTS</code> constants.</li>\n<li>Added <code class=\"notranslate\">normalizePathForMatch(filePath)</code> and <code class=\"notranslate\">isExcludedFilePath(filePath)</code> helpers.</li>\n<li>Exported the helpers so tests can import and assert behavior.</li>\n<li>Guarded the CLI invocation so importing the module does not run the CLI.</li>\n</ul>\n</li>\n<li>tests/front-matter_excludes.test.js\n<ul dir=\"auto\">\n<li>New unit test covering excluded paths (including Windows-style backslashes).</li>\n</ul>\n</li>\n</ul>\n<p dir=\"auto\">Why</p>\n<ul dir=\"auto\">\n<li>Consolidates exclusion checks in one place to reduce duplication and potential mistakes.</li>\n<li>Makes path matching robust to Windows-style separators.</li>\n<li>Improves testability (small unit test added) so maintainers can reason about excludes.</li>\n</ul>\n<p dir=\"auto\">Verification performed</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npm ci</code> to install dependencies.</li>\n<li>Ran full test suite (<code class=\"notranslate\">node --test</code>) — all tests pass except one pre-existing failing test from <code class=\"notranslate\">tests/front-matter_linter.test.js</code> (\"should prettify the front-matter\") that concerns YAML folding/formatting; that failure existed before this change and is not caused by this refactor.</li>\n<li>Ran <code class=\"notranslate\">node scripts/front-matter_linter.js tests/front-matter_test_files</code> and <code class=\"notranslate\">node scripts/front-matter_linter.js files/en-us/glossary/algorithm/index.md</code> to validate excluded fixtures are ignored and a normal index.md is processed.</li>\n<li>Formatted changed file with Prettier.</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/43133",
             "title": "front-matter_linter: extract exclusion helpers; guard CLI; add excludes unit test",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/91039605?u=640b6092d19371d937dae43d961000933ca05ac4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Hello,</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43017.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3898337393\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43017\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43017/hovercard\" href=\"https://github.com/mdn/content/issues/43017\">#43017</a></p>\n<p dir=\"auto\">For the file -&gt; files/en-us/web/api/url/href/index.md</p>\n<ol dir=\"auto\">\n<li>Added a second example to the URL href docs that shows when the logged URL has a trailing slash (origin-only URLs like <a href=\"https://developer.mozilla.org\" rel=\"nofollow\">https://developer.mozilla.org</a>), and linked to the pathname docs for the full explanation.</li>\n</ol>\n<p dir=\"auto\">Thank you 😊.</p>",
-            "url": "https://github.com/mdn/content/pull/43018",
-            "title": "Add trailing-slash example to URL href docs",
-            "date_modified": "2026-02-05T06:47:45.000Z",
-            "date_published": "2026-02-05T05:19:35.000Z",
-            "author": {
-                "name": "badwriter123",
-                "url": "https://github.com/badwriter123"
             }
         }
     ]
