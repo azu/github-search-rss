@@ -2,26 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-02-17T14:15:47.878Z</updated>
+    <updated>2026-02-17T15:13:50.302Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Add Exceptions section to AudioBufferSourceNode.buffer]]></title>
-        <id>https://github.com/mdn/content/pull/43151</id>
-        <link href="https://github.com/mdn/content/pull/43151"/>
-        <updated>2026-02-17T13:45:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/68780890?u=ead4e493844141826b3007c4bbf730edd1df630a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Added the <code class="notranslate">Exceptions</code> section to the <code class="notranslate">AudioBufferSourceNode.buffer</code> documentation.</p>
+        <title type="html"><![CDATA[rewrite finally section]]></title>
+        <id>https://github.com/mdn/content/pull/43152</id>
+        <link href="https://github.com/mdn/content/pull/43152"/>
+        <updated>2026-02-17T14:59:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/57184039?v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Re-write <code class="notranslate">The finally block</code> section in the <code class="notranslate">try...catch</code> statement documentation file trying to clarify control flow statements execution order while also keeping original structure and examples.</p>
 <h3 dir="auto">Motivation</h3>
-<p dir="auto">According to the <a href="https://webaudio.github.io/web-audio-api/#AudioBufferSourceNode-attributes" rel="nofollow">W3C Web Audio API specification</a>, setting the <code class="notranslate">buffer</code> property can throw an <code class="notranslate">InvalidStateError</code> exception. This behavior is currently not mentioned in the MDN documentation.</p>]]></content>
+<p dir="auto">The main point to clarify is the combination of the 3rd bullet points and the following sentence:</p>
+<ul dir="auto">
+<li>"Immediately before the execution of a control-flow statement (<code class="notranslate">return</code>, <code class="notranslate">throw</code>, <code class="notranslate">break</code>, <code class="notranslate">continue</code>) in the <code class="notranslate">try</code> block or <code class="notranslate">catch</code> block that would exit the block."</li>
+<li>"If an exception is thrown from the <code class="notranslate">try</code> block, even when there's no <code class="notranslate">catch</code> block to handle the exception, the <code class="notranslate">finally</code> block still executes, in which case the exception is still thrown immediately after the <code class="notranslate">finally</code> block finishes executing."</li>
+</ul>
+<p dir="auto">The first part says that the <code class="notranslate">finally</code> block is entered <strong>before</strong> the execution of the control flow statement that would exit the <code class="notranslate">try</code> or <code class="notranslate">catch</code> block. The second implies that the <code class="notranslate">finally</code> block still executes <strong>after</strong> an exception is thrown (or the execution of a <code class="notranslate">throw</code> statement).</p>
+<p dir="auto">The proposed re-writing try to fix this inconsistency by adopting a point of view in which:</p>
+<ul dir="auto">
+<li>The <code class="notranslate">finally</code> block is always entered <strong>after</strong> the control flow statement that would exit the <code class="notranslate">try</code> or <code class="notranslate">catch</code> block</li>
+<li>The effect of this control flow statement is deferred at the end of the <code class="notranslate">finally</code> block unless the <code class="notranslate">finally</code> block also ends with a control flow statement.</li>
+</ul>
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43122.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3937918144" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43122" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43122/hovercard" href="https://github.com/mdn/content/issues/43122">#43122</a></p>
+
+
+]]></content>
         <author>
-            <name>ahzvenol</name>
-            <email>ahzvenol@noreply.github.com</email>
-            <uri>https://github.com/ahzvenol</uri>
+            <name>s-egea</name>
+            <email>s-egea@noreply.github.com</email>
+            <uri>https://github.com/s-egea</uri>
         </author>
-        <published>2026-02-17T13:44:46.000Z</published>
+        <published>2026-02-17T14:44:10.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[CSS property: baseline-shift]]></title>
@@ -175,7 +194,7 @@
         <title type="html"><![CDATA[chore(deps-dev): bump ajv from 8.17.1 to 8.18.0]]></title>
         <id>https://github.com/mdn/content/pull/43143</id>
         <link href="https://github.com/mdn/content/pull/43143"/>
-        <updated>2026-02-16T15:02:08.000Z</updated>
+        <updated>2026-02-17T15:06:01.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/ajv-validator/ajv">ajv</a> from 8.17.1 to 8.18.0.</p>
 <details>
 <summary>Release notes</summary>
