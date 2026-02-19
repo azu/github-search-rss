@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2026-02-19T07:19:20.284Z</updated>
+    <updated>2026-02-19T08:09:07.851Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
@@ -46,7 +46,7 @@
         <title type="html"><![CDATA[BeforeInstallPromptEvent]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/619</id>
         <link href="https://github.com/WebKit/standards-positions/issues/619"/>
-        <updated>2026-02-18T15:15:02.000Z</updated>
+        <updated>2026-02-19T07:59:13.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/870154?u=30219a41c34a3668b634e72a3a20854bb194b00a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
 <p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/marcoscaceres/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/marcoscaceres">@marcoscaceres</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/othermaciej/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/othermaciej">@othermaciej</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/smfr/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/smfr">@smfr</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/rniwa/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/rniwa">@rniwa</a></p>
 <p dir="auto">Previously commented on related issues:</p>
@@ -91,7 +91,41 @@
 <li>The site can call <code class="notranslate">event.preventDefault()</code> to suppress any automatic browser prompt</li>
 <li>The site can store the event and later call <code class="notranslate">event.prompt()</code> (requires user activation) to trigger the native install UI</li>
 <li>The promise resolves with the user's choice (<code class="notranslate">accepted</code> or <code class="notranslate">dismissed</code>)</li>
-</ol>]]></content>
+</ol>
+<h3 dir="auto">What Has Changed since BIP was removed from the Web Manifest spec</h3>
+<ol dir="auto">
+<li><strong>"When would it fire?"</strong> → Deterministically, only on pages that have an explicit manifest. And only once manifest is processed and page is installable. No complex heuristics required.</li>
+<li><strong>"Safari has no install prompt"</strong> → The event is decoupled from automatic prompts. It simply signals installability. <code class="notranslate">prompt()</code> (requiring transient user activation) can trigger Safari's existing Add to Home Screen sheet.</li>
+<li><strong>"Risk of abuse"</strong> → User activation is required for <code class="notranslate">prompt()</code>. Developers control whether to show install UI at all.</li>
+</ol>
+<h3 dir="auto">Chrome Experiment Data (Dan Murphy, Chrome team)</h3>
+<ul dir="auto">
+<li>Browser-native ambient UI (omnibox icon): ~0.01% CTR</li>
+<li>Browser-initiated blocking prompts: ~1.2% CTR</li>
+<li>ML targeting reduced prompt show rate by 70% with same install rate (most prompts go to uninterested users)</li>
+</ul>
+<p dir="auto">This data shows browser-initiated UI has very low engagement. This could support the case for developer control, or alternatively suggest most users don't want to install web apps.</p>
+<h3 dir="auto">Proposed User Benefits of BIP</h3>
+<ul dir="auto">
+<li>Users discover installability at contextually appropriate moments, not arbitrary browser-chosen times. However, this only applies if the browser shows an intrusive UI.</li>
+<li>Users avoid installation prompts during critical tasks (checkout, form completion, etc.). Not a concern if the browser never prompts.</li>
+</ul>
+<h3 dir="auto">User Harm from Current Workarounds</h3>
+<p dir="auto">Sites resort to workarounds that harm users:</p>
+<ul dir="auto">
+<li><strong>Browser sniffing is fragile</strong> - Sites detect Safari via User-Agent and show manual installation instructions, but this breaks when UA strings change or on non-Safari WebKit browsers.</li>
+<li><strong>Static screenshots become outdated</strong> - Installation instructions include screenshots of Safari's share sheet, which become incorrect when the UI changes across iOS/macOS versions</li>
+<li><strong>"Add to Home Screen" moves around</strong> - The option's location in the share sheet is not consistent across platforms and browser versions, leading to user confusion when following outdated guides</li>
+<li><strong>Users see wrong instructions</strong> - Combining the above, users frequently encounter installation guides showing the wrong screenshots for their Safari/iOS version</li>
+</ul>
+<p dir="auto">BIP eliminates this class of user-facing bugs by allowing sites to detect installability programmatically and trigger native UI directly, rather than attempting to describe ever-changing browser UI.</p>
+<h3 dir="auto">Web Compatibility</h3>
+<ul dir="auto">
+<li>BIP has shipped in Chromium-based browsers for approximately 10 years</li>
+<li>Sites already use it with progressive enhancement (feature detection)</li>
+<li>Safari users currently receive a degraded experience: static instructions instead of a functional install flow</li>
+<li>Standardizing the API aligns Safari with existing web reality and allows sites to provide a consistent, correct experience across browsers</li>
+</ul>]]></content>
         <author>
             <name>marcoscaceres</name>
             <email>marcoscaceres@noreply.github.com</email>
