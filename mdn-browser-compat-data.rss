@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-02-20T00:07:03.537Z</updated>
+    <updated>2026-02-20T01:30:39.830Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
@@ -203,51 +203,6 @@ Collector can more easily test this entry</p>
         <published>2026-02-12T15:28:11.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Firefox 148 / Safari 15.6 support Legacy RegExp features]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28999</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28999"/>
-        <updated>2026-02-19T22:50:11.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF implements the <a href="https://github.com/tc39/proposal-regexp-legacy-features">TC39 Legacy RegExp features in JavaScript</a> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1306461" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1306461</a>.</p>
-<p dir="auto">This makes <code class="notranslate">RegExp.prototyp.compile()</code> throw if called on a <code class="notranslate">RegExp</code> subclass or cross realm. It also normalizes the static properties that get populated when a regexp is evaluated. There is an excellent overview of the specific implementation in <a href="https://blogs.igalia.com/compilers/2026/01/20/legacy-regexp-features-in-javascript/" rel="nofollow">https://blogs.igalia.com/compilers/2026/01/20/legacy-regexp-features-in-javascript/</a></p>
-<p dir="auto">I used this test script in console on browserstack to get Safari version. Chrome not supported. Did not test Bun/NodeJS - have set to False.</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// 1. Create a &quot;new global&quot; using an iframe
-const iframe = document.createElement('iframe');
-document.body.appendChild(iframe);
-
-// 2. Get the RegExp constructor from the iframe's realm
-const foreignRegExp = iframe.contentWindow.RegExp;
-
-// 3. Create a regex object inside that iframe
-const re = new foreignRegExp(&quot;x&quot;);
-
-try {
-  // 4. Try to use the PARENT's compile method on the IFRAME's object
-  RegExp.prototype.compile.call(re, &quot;y&quot;);
-} catch (e) {
-  console.error(e); // TypeError: RegExp operation not permitted on object from different realm"><pre class="notranslate"><span class="pl-c">// 1. Create a "new global" using an iframe</span>
-<span class="pl-k">const</span> <span class="pl-s1">iframe</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'iframe'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">iframe</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-c">// 2. Get the RegExp constructor from the iframe's realm</span>
-<span class="pl-k">const</span> <span class="pl-s1">foreignRegExp</span> <span class="pl-c1">=</span> <span class="pl-s1">iframe</span><span class="pl-kos">.</span><span class="pl-c1">contentWindow</span><span class="pl-kos">.</span><span class="pl-c1">RegExp</span><span class="pl-kos">;</span>
-
-<span class="pl-c">// 3. Create a regex object inside that iframe</span>
-<span class="pl-k">const</span> <span class="pl-s1">re</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-s1">foreignRegExp</span><span class="pl-kos">(</span><span class="pl-s">"x"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-k">try</span> <span class="pl-kos">{</span>
-  <span class="pl-c">// 4. Try to use the PARENT's compile method on the IFRAME's object</span>
-  <span class="pl-v">RegExp</span><span class="pl-kos">.</span><span class="pl-c1">prototype</span><span class="pl-kos">.</span><span class="pl-c1">compile</span><span class="pl-kos">.</span><span class="pl-en">call</span><span class="pl-kos">(</span><span class="pl-s1">re</span><span class="pl-kos">,</span> <span class="pl-s">"y"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">e</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// TypeError: RegExp operation not permitted on object from different realm</span><span class="pl-kos"></span></pre></div>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3805380198" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42746" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42746/hovercard" href="https://github.com/mdn/content/issues/42746">mdn/content#42746</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-02-09T01:03:17.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Safari 18 removed unused `History.pushState` parameter]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/28968</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/28968"/>
@@ -409,5 +364,22 @@ try {
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-01-14T10:33:44.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Issue-28341 webextension.api documentId and parentDocumentId updates]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28790</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28790"/>
+        <updated>2026-01-15T15:37:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">There is updates to add details to cover Safari support for documentId and parentDocumentId. More information on changes see the related content PR. (TBC)</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28341.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3575616610" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28341" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28341/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28341">#28341</a><br>
+Related content changes in (TBC)</p>]]></content>
+        <author>
+            <name>rebloor</name>
+            <email>rebloor@noreply.github.com</email>
+            <uri>https://github.com/rebloor</uri>
+        </author>
+        <published>2026-01-09T18:11:24.000Z</published>
     </entry>
 </feed>
