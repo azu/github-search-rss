@@ -2,11 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-02-22T15:03:25.282Z</updated>
+    <updated>2026-02-22T16:02:54.723Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[fix(api): mark RTCRtpSender transactionId as supported in Firefox 110]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29099</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29099"/>
+        <updated>2026-02-22T15:30:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7821757?u=e556bee7a71458d488fd58b8216697bbe1d392f5&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Mark <code class="notranslate">transactionId</code> as supported in Firefox 110 for both <code class="notranslate">RTCRtpSender.getParameters()</code> (returned object property) and <code class="notranslate">RTCRtpSender.setParameters()</code> (parameter), where it was previously marked as unsupported.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><code class="notranslate">transactionId</code> was implemented as part of bringing <code class="notranslate">get/setParameters</code> up to spec in <a href="https://bugzil.la/1401592" rel="nofollow">Bug 1401592</a>, which landed on December 13, 2022. The version bump to Firefox 111 occurred in January 2023, placing this in Firefox 110.</p>
+<ul dir="auto">
+<li>Bugzilla bug: <a href="https://bugzil.la/1401592" rel="nofollow">https://bugzil.la/1401592</a></li>
+<li>Commit: <a href="https://hg.mozilla.org/mozilla-central/rev/016eb374b146" rel="nofollow">https://hg.mozilla.org/mozilla-central/rev/016eb374b146</a></li>
+</ul>
+<p dir="auto"><code class="notranslate">getParameters()</code> generates a unique <code class="notranslate">transactionId</code> UUID on each call, and <code class="notranslate">setParameters()</code> validates that the provided <code class="notranslate">transactionId</code> matches the one from the most recent <code class="notranslate">getParameters()</code> call, rejecting with <code class="notranslate">InvalidModificationError</code> if it does not match.</p>]]></content>
+        <author>
+            <name>AnshulMalik</name>
+            <email>AnshulMalik@noreply.github.com</email>
+            <uri>https://github.com/AnshulMalik</uri>
+        </author>
+        <published>2026-02-22T15:28:58.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Firefox 147 / Safari 26 support implicit anchor references]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29093</id>
@@ -304,27 +325,5 @@ Related content changes in (TBC)</p>]]></content>
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2025-12-28T23:10:01.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Safari 26 removed `<meta name="theme-color">`]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28503</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28503"/>
-        <updated>2026-02-17T12:20:30.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5876799?u=82c90e0406d442472b9120fe35a16b192fddd7d1&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<ul dir="auto">
-<li>lists Safari 26 (and mirrored iOS and WebView) as removing support for <code class="notranslate">html.elements.meta.name.theme-color</code></li>
-</ul>
-<h4 dir="auto">Test Results and Supporting Details</h4>
-<ul dir="auto">
-<li><a href="https://github.com/andesco/Safari-color-tinting">https://github.com/andesco/Safari-color-tinting</a></li>
-<li><a href="https://safari-color-tinting.pages.dev" rel="nofollow">https://safari-color-tinting.pages.dev</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>andesco</name>
-            <email>andesco@noreply.github.com</email>
-            <uri>https://github.com/andesco</uri>
-        </author>
-        <published>2025-11-21T20:01:18.000Z</published>
     </entry>
 </feed>
