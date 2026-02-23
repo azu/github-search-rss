@@ -2,9 +2,359 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-02-23T21:13:42.213Z</updated>
+    <updated>2026-02-23T22:12:07.444Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[No-vary-search and prender on Android updates]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29114</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29114"/>
+        <updated>2026-02-23T20:13:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<p dir="auto">This an update to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3738789033" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28689" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28689/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28689">#28689</a> due to the following changes for No-Vary-Search support on HTTP Cache:</p>
+<ul dir="auto">
+<li>The Android support was brought forward from 144 to 143</li>
+<li>Android webview was excluded</li>
+</ul>
+<p dir="auto">While reviewing the changes for webview I also noticed that the data was incorrect about prerender overall (No-Vary-Search was originally a for that, btu since expanded to HTTP Cache) so corrected that too.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+<p dir="auto">It's difficult to test these changes. I tried browser stack but it's on 142 and can't see how to update. My opwn personal testing device has also auto upgrades.</p>
+<p dir="auto">If you have access to a 143 device then you can follow test instructions here: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3738789033" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28689" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28689/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28689">#28689</a></p>
+
+<p dir="auto">Saying that, here's the change request enabling it from 143 and specifically mentioning webview is not included: <a href="https://critique.corp.google.com/cl/872578913" rel="nofollow">https://critique.corp.google.com/cl/872578913</a></p>
+<p dir="auto">As to the Prerender partial support on webview, that's based on <a href="https://goo.gle/android-prerender" rel="nofollow">https://goo.gle/android-prerender</a> which was released in Android 1.13.0 as per doc docs, which roughly coincides with Chrome 135.</p>
+<h4 dir="auto">Related issues</h4>
+
+
+<p dir="auto">An update to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3738789033" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28689" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28689/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28689">#28689</a></p>]]></content>
+        <author>
+            <name>tunetheweb</name>
+            <email>tunetheweb@noreply.github.com</email>
+            <uri>https://github.com/tunetheweb</uri>
+        </author>
+        <published>2026-02-23T19:42:44.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add features for signature-based SRI]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29112</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29112"/>
+        <updated>2026-02-23T13:57:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Add features for <a href="https://github.com/WICG/signature-based-sri" title="WICG/signature-based-sri">Signature-based Resource Loading Restrictions</a>.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">This is to create keys for an Signature-based SRI feature as requested in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3429671210" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/3366" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/3366/hovercard" href="https://github.com/web-platform-dx/web-features/issues/3366">web-platform-dx/web-features#3366</a>.</p>
+<p dir="auto">I got the version added number from <a href="https://chromestatus.com/feature/5032324620877824" rel="nofollow">https://chromestatus.com/feature/5032324620877824</a>. I presumed that this is working in Edge too based on <a href="https://wpt.fyi/results/subresource-integrity/signatures/tentative?label=master&amp;label=experimental&amp;aligned&amp;q=%2Fsubresource-integrity%2Fsignatures%2F" rel="nofollow">tests in WPT</a>.</p>
+<p dir="auto">Tests are failing on spec URLs. I'm not sure how to fix this. I'm not sure whether or how to get ietf.org specs allowlisted.</p>
+<p dir="auto">CC: <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Elchi3/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Elchi3">@Elchi3</a> since Open Web Docs has been doing work on security and I thought you might be a good reviewer or able to recommend someone.</p>
+
+
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3429671210" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/3366" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/3366/hovercard" href="https://github.com/web-platform-dx/web-features/issues/3366">web-platform-dx/web-features#3366</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-02-23T13:54:54.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[fix(api): mark RTCRtpSender transactionId as supported in Firefox 110]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29099</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29099"/>
+        <updated>2026-02-22T15:30:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7821757?u=e556bee7a71458d488fd58b8216697bbe1d392f5&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Mark <code class="notranslate">transactionId</code> as supported in Firefox 110 for both <code class="notranslate">RTCRtpSender.getParameters()</code> (returned object property) and <code class="notranslate">RTCRtpSender.setParameters()</code> (parameter), where it was previously marked as unsupported.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><code class="notranslate">transactionId</code> was implemented as part of bringing <code class="notranslate">get/setParameters</code> up to spec in <a href="https://bugzil.la/1401592" rel="nofollow">Bug 1401592</a>, which landed on December 13, 2022. The version bump to Firefox 111 occurred in January 2023, placing this in Firefox 110.</p>
+<ul dir="auto">
+<li>Bugzilla bug: <a href="https://bugzil.la/1401592" rel="nofollow">https://bugzil.la/1401592</a></li>
+<li>Commit: <a href="https://hg.mozilla.org/mozilla-central/rev/016eb374b146" rel="nofollow">https://hg.mozilla.org/mozilla-central/rev/016eb374b146</a></li>
+</ul>
+<p dir="auto"><code class="notranslate">getParameters()</code> generates a unique <code class="notranslate">transactionId</code> UUID on each call, and <code class="notranslate">setParameters()</code> validates that the provided <code class="notranslate">transactionId</code> matches the one from the most recent <code class="notranslate">getParameters()</code> call, rejecting with <code class="notranslate">InvalidModificationError</code> if it does not match.</p>]]></content>
+        <author>
+            <name>AnshulMalik</name>
+            <email>AnshulMalik@noreply.github.com</email>
+            <uri>https://github.com/AnshulMalik</uri>
+        </author>
+        <published>2026-02-22T15:28:58.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Firefox 147 / Safari 26 support implicit anchor references]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29093</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29093"/>
+        <updated>2026-02-23T12:13:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Updates Firefox/Safari support for implicit anchor references:</p>
+<ul dir="auto">
+<li>This was missed, because there are no collector tests.</li>
+<li>In one case, Firefox 141 allegedly added support, but Anchor Positioning only landed in Firefox 147.</li>
+</ul>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29082.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3964112556" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29082" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29082/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29082">#29082</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-02-20T16:22:20.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Safari only partially supports `FontFaceSet` loading events]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29066</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29066"/>
+        <updated>2026-02-23T12:09:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Updates the Safari support statements for the <code class="notranslate">loading</code>/<code class="notranslate">loadingdone</code>/<code class="notranslate">loadingend</code> events for <code class="notranslate">FontFaceSet</code>: The event handlers are supported, but the events never fire.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li><a href="https://bugs.webkit.org/show_bug.cgi?id=304091" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=304091</a></li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/WebKit/WebKit/commit/19e24b1ecd033405f93bc3eaf027ecc192f6f459/hovercard" href="https://github.com/WebKit/WebKit/commit/19e24b1ecd033405f93bc3eaf027ecc192f6f459">WebKit/WebKit@<tt>19e24b1</tt></a></li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29035.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3932538085" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29035" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29035/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29035">#29035</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-02-17T20:26:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add HTML `link` element attribute values `as="{json,script,style}"` for `modulepreload`]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29048</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29048"/>
+        <updated>2026-02-20T21:32:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/15691393?v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">This change adds <code class="notranslate">as="style"</code>, <code class="notranslate">as="script"</code>, and <code class="notranslate">as="json"</code> to the <code class="notranslate">&lt;link rel="modulepreload"&gt;</code> compat data. Chromium is shipping this in 147, so this adds that data as well (see <a href="https://chromestatus.com/feature/5202661416763392" rel="nofollow">https://chromestatus.com/feature/5202661416763392</a>).</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><code class="notranslate">as="script"</code> is the default, and support for this goes back to when each browser originally supported <code class="notranslate">&lt;link rel="modulepreload"&gt;</code>. Chrome 147 will begin supporting <code class="notranslate">as="style"</code> and <code class="notranslate">as="json"</code>, and Safari recently added support for <code class="notranslate">as="json"</code>, in version 26.2 (see "Fixed “text/json/json+json” to be considered an invalid JSON MIME type." note in <a href="https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes" rel="nofollow">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes</a>).</p>
+<p dir="auto">WPT tests reflecting these results:</p>
+<p dir="auto">For Chrome 147 supporting JSON and style modulepreloads, see Experimental results: <a href="https://wpt.fyi/results/preload/modulepreload-as.html?label=master&amp;label=experimental&amp;aligned&amp;q=modulepreload-as.html" rel="nofollow">https://wpt.fyi/results/preload/modulepreload-as.html?label=master&amp;label=experimental&amp;aligned&amp;q=modulepreload-as.html</a></p>
+<p dir="auto">For Safari 26 supporting JSON modulepreloads, see <a href="https://wpt.fyi/results/preload/modulepreload-as.html?label=stable&amp;label=master&amp;aligned" rel="nofollow">https://wpt.fyi/results/preload/modulepreload-as.html?label=stable&amp;label=master&amp;aligned</a></p>
+
+<p dir="auto"><a href="https://chromestatus.com/feature/5202661416763392" rel="nofollow">https://chromestatus.com/feature/5202661416763392</a><br>
+<a href="https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes" rel="nofollow">https://developer.apple.com/documentation/safari-release-notes/safari-26_2-release-notes</a></p>
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>KurtCattiSchmidt</name>
+            <email>KurtCattiSchmidt@noreply.github.com</email>
+            <uri>https://github.com/KurtCattiSchmidt</uri>
+        </author>
+        <published>2026-02-13T22:48:37.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Chrome 146 scroll-triggered animations]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29034</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29034"/>
+        <updated>2026-02-18T16:46:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<p dir="auto">Chrome 146 adds support for scroll-triggered animations; see <a href="https://chromestatus.com/feature/5181996801982464" rel="nofollow">https://chromestatus.com/feature/5181996801982464</a>.</p>
+<p dir="auto">The <a href="https://github.com/mdn/browser-compat-data/pull/29033" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/29033/hovercard">latest Chrome collector PR</a> has added BCD for several of the related features; my PR adds a few more, namely the <code class="notranslate">&lt;animation-action&gt;</code> data type, and the related range properties, which <em>are</em> supported but currently under an old name.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-02-12T15:28:11.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Safari 18 removed unused `History.pushState` parameter]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28968</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28968"/>
+        <updated>2026-02-03T20:48:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Updates Safari statement for <code class="notranslate">api.History.pushState</code> subfeature.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27606.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3332325845" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/27606" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/27606/hovercard" href="https://github.com/mdn/browser-compat-data/issues/27606">#27606</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-02-03T20:47:28.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Safari 18 added `CanvasRenderingContext2D.filter` property]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28967</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28967"/>
+        <updated>2026-02-23T12:06:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Update Safari statement for <code class="notranslate">CanvasRenderingContext2D.filter</code></p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28252.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3532507481" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28252" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28252/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28252">#28252</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-02-03T20:45:20.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Safari only parsed `background-repeat-{x,y}` without any effect]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28966</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28966"/>
+        <updated>2026-02-23T12:05:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Updates Safari statement for CSS <code class="notranslate">background-repeat-{x,y}</code>.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28558.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3681095071" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28558" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28558/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28558">#28558</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-02-03T20:43:27.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Safari 17 supports `:only-child` matching parentless elements]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28965</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28965"/>
+        <updated>2026-02-23T12:04:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Updates Safari statement <code class="notranslate">:only-child</code> selector.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28950.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3880424561" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28950" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28950/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28950">#28950</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-02-03T20:38:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Bug-2012727 action.isEnabled updated properties info]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28964</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28964"/>
+        <updated>2026-02-23T17:46:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Address is the dev-doc-needed requirements of</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2012727" rel="nofollow">Bug 2012727</a> "action.isEnabled() throws instead of returning the global enabled state", and</p>
+</li>
+<li>
+<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2013477" rel="nofollow">Bug 2013477</a> Support action.isEnabled(tabId) next to action.isEnabled(details)<br>
+by, under <code class="notranslate">isEnabled</code>:</p>
+</li>
+<li>
+<p dir="auto">adding <code class="notranslate">details</code> and moving the information for <code class="notranslate">windowID</code> under it.</p>
+</li>
+<li>
+<p dir="auto">adding note to <code class="notranslate">details</code>regarding support for either an integer (tab ID) or object.</p>
+</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">Related content changes in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3887257311" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42997" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42997/hovercard" href="https://github.com/mdn/content/pull/42997">mdn/content#42997</a></p>]]></content>
+        <author>
+            <name>rebloor</name>
+            <email>rebloor@noreply.github.com</email>
+            <uri>https://github.com/rebloor</uri>
+        </author>
+        <published>2026-02-03T17:37:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add Firefox notes for `Selection.toString()`]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28931</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28931"/>
+        <updated>2026-02-20T16:46:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Add Firefox notes for <code class="notranslate">Document.getSelection()</code> mentioning a limitation before Firefox 139.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">See issue below.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #21697.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2051047436" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/21697" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/21697/hovercard" href="https://github.com/mdn/browser-compat-data/issues/21697">#21697</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-01-27T17:49:28.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Chrome 144 :current support]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28882</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28882"/>
+        <updated>2026-02-03T12:43:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Chrome 144 supports the <code class="notranslate">::search-text</code> pseudo-element, which allows custom styling to be applied to browser search results; see <a href="https://chromestatus.com/feature/5195073796177920" rel="nofollow">https://chromestatus.com/feature/5195073796177920</a>.</p>
+<p dir="auto">We already have BCD for <code class="notranslate">::search-text</code>, however, you can combine <code class="notranslate">::search-text</code> with the <code class="notranslate">:current</code> pseudo-class to style the currently-highlighted search term on the page. This currently doesn't have any BCD, so I am using this PR to add <code class="notranslate">:current</code> BCD.</p>
+<p dir="auto">I'm assuming it makes sense to put Chrome 144 down for this as well, as previously, there was no context in which <code class="notranslate">:current</code> was supported. However, you might have other opinions on this.</p>
+<p dir="auto">I also thought about putting <code class="notranslate">"partial_implementation": "true"</code> for this, but then again, <code class="notranslate">:current</code> is fully supported in the context it is supported in. It just isn't supported in other contexts.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-01-21T18:28:23.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Chrome Android 138 supports Web Serial]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/28818</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/28818"/>
+        <updated>2026-02-23T12:03:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=2f3b9dd03c6c4a961d44a632fe1976c73fa19e1f&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Chrome Android 138 supports Web Serial</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><a href="https://chromestatus.com/feature/5139978918821888" rel="nofollow">https://chromestatus.com/feature/5139978918821888</a></p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #23802.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2405751441" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/23802" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/23802/hovercard" href="https://github.com/mdn/browser-compat-data/issues/23802">#23802</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-01-14T10:33:44.000Z</published>
+    </entry>
 </feed>
