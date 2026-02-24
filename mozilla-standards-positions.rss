@@ -2,11 +2,69 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2026-02-24T06:17:24.855Z</updated>
+    <updated>2026-02-24T07:19:20.204Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Suppressing Interactive HTTP Auth Prompts for Subresources]]></title>
+        <id>https://github.com/mozilla/standards-positions/issues/1362</id>
+        <link href="https://github.com/mozilla/standards-positions/issues/1362"/>
+        <updated>2026-02-24T07:05:20.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/261753851?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
+<p dir="auto">Request-level control to suppress interactive HTTP authentication prompts (FETCH), and CSP control over interactive HTTP authentication for subresources (CSP)</p>
+<h3 dir="auto">Specification or proposal URL (if available)</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3947816433" data-permission-text="Title is private" data-url="https://github.com/whatwg/fetch/issues/1910" data-hovercard-type="issue" data-hovercard-url="/whatwg/fetch/issues/1910/hovercard" href="https://github.com/whatwg/fetch/issues/1910">whatwg/fetch#1910</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3947815978" data-permission-text="Title is private" data-url="https://github.com/w3c/webappsec-csp/issues/801" data-hovercard-type="issue" data-hovercard-url="/w3c/webappsec-csp/issues/801/hovercard" href="https://github.com/w3c/webappsec-csp/issues/801">w3c/webappsec-csp#801</a></p>
+<h3 dir="auto">Explainer URL (if available)</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Proposal author(s)</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/nirmalk401/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/nirmalk401">@nirmalk401</a></p>
+<h3 dir="auto">MDN URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Caniuse.com URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Bugzilla URL</h3>
+<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2018814" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2018814</a></p>
+<h3 dir="auto">Mozillians who can provide input</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dveditz/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dveditz">@dveditz</a></p>
+<h3 dir="auto">WebKit standards-position</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Other information</h3>
+<p dir="auto"><strong>We are requesting Mozilla’s standards position on two related proposals that would give embedding origins explicit control over interactive HTTP authentication prompts triggered by subresource requests:</strong></p>
+<ol dir="auto">
+<li>
+<p dir="auto">WHATWG Fetch – Request-level suppression via RequestInit.authPrompt<br>
+<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3947816433" data-permission-text="Title is private" data-url="https://github.com/whatwg/fetch/issues/1910" data-hovercard-type="issue" data-hovercard-url="/whatwg/fetch/issues/1910/hovercard" href="https://github.com/whatwg/fetch/issues/1910">whatwg/fetch#1910</a></p>
+</li>
+<li>
+<p dir="auto">W3C CSP – Declarative auth-challenge directive<br>
+<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3947815978" data-permission-text="Title is private" data-url="https://github.com/w3c/webappsec-csp/issues/801" data-hovercard-type="issue" data-hovercard-url="/w3c/webappsec-csp/issues/801/hovercard" href="https://github.com/w3c/webappsec-csp/issues/801">w3c/webappsec-csp#801</a></p>
+</li>
+</ol>
+<p dir="auto"><strong>Problem Statement</strong><br>
+Currently, when a subresource responds with 401 Unauthorized or 407 Proxy Authentication Required and includes WWW-Authenticate / Proxy-Authenticate, Firefox may display an interactive authentication prompt.</p>
+<p dir="auto">Embedding origins have no standardized mechanism to suppress this behavior. In user-generated content or third-party embedding scenarios, this can create unexpected credential prompts within a trusted origin context, increasing phishing surface and user confusion.</p>
+<p dir="auto"><strong>Prior Implementation Attempts</strong><br>
+We understand that Firefox has previously attempted to disable authentication prompting for cross-origin subresources, but this approach caused compatibility regressions and legitimate use-case breakage.</p>
+<p dir="auto"><strong>The current proposals differ materially from blanket disablement:</strong></p>
+<ul dir="auto">
+<li>They are explicitly opt-in (per-request via Fetch or per-document via CSP).</li>
+<li>Default behavior remains unchanged.</li>
+<li>Legitimate authentication flows continue to work unless a developer intentionally suppresses prompts.</li>
+<li>This aims to provide a middle ground:</li>
+<li>Preserve existing behavior for sites that rely on it.</li>
+<li>Allow security-conscious embedding origins to explicitly prevent subresource-triggered credential prompts.</li>
+</ul>
+<p dir="auto"><strong>Question for Mozilla</strong><br>
+If either of these proposals advances in the relevant standards bodies and gains multi-browser support, would Mozilla be open to implementing an opt-in mechanism of this nature?</p>]]></content>
+        <author>
+            <name>nirmalk401</name>
+            <email>nirmalk401@noreply.github.com</email>
+            <uri>https://github.com/nirmalk401</uri>
+        </author>
+        <published>2026-02-24T07:05:20.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Autofill Event]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1361</id>
@@ -657,43 +715,5 @@ The graphs show 0 data.</p>]]></content>
             <uri>https://github.com/DavMila</uri>
         </author>
         <published>2026-01-21T15:36:16.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[named-feature() function for CSS @supports]]></title>
-        <id>https://github.com/mozilla/standards-positions/issues/1340</id>
-        <link href="https://github.com/mozilla/standards-positions/issues/1340"/>
-        <updated>2026-01-15T17:22:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/248721?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
-<p dir="auto">CSS Conditional Rules Level 5</p>
-<h3 dir="auto">Specification or proposal URL (if available)</h3>
-<p dir="auto"><a href="https://drafts.csswg.org/css-conditional-5/#typedef-supports-named-feature-fn" rel="nofollow">https://drafts.csswg.org/css-conditional-5/#typedef-supports-named-feature-fn</a></p>
-<h3 dir="auto">Explainer URL (if available)</h3>
-<p dir="auto"><a href="https://github.com/w3c/csswg-drafts/blob/main/css-conditional-5/named-feature-explainer.md">https://github.com/w3c/csswg-drafts/blob/main/css-conditional-5/named-feature-explainer.md</a></p>
-<h3 dir="auto">Proposal author(s)</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/dbaron/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dbaron">@dbaron</a></p>
-<h3 dir="auto">MDN URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Caniuse.com URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozillians who can provide input</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/emilio/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/emilio">@emilio</a></p>
-<h3 dir="auto">WebKit standards-position</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3818180079" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/600" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/600/hovercard" href="https://github.com/WebKit/standards-positions/issues/600">WebKit/standards-positions#600</a></p>
-<h3 dir="auto">Other information</h3>
-<p dir="auto">Additional links:</p>
-<ul dir="auto">
-<li><a href="https://chromestatus.com/feature/5153932394102784" rel="nofollow">https://chromestatus.com/feature/5153932394102784</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="403421760" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/3559" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/3559/hovercard" href="https://github.com/w3c/csswg-drafts/issues/3559">w3c/csswg-drafts#3559</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2105921129" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/9875" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/9875/hovercard" href="https://github.com/w3c/csswg-drafts/issues/9875">w3c/csswg-drafts#9875</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3818226457" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1186" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1186/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1186">w3ctag/design-reviews#1186</a></li>
-</ul>]]></content>
-        <author>
-            <name>dbaron</name>
-            <email>dbaron@noreply.github.com</email>
-            <uri>https://github.com/dbaron</uri>
-        </author>
-        <published>2026-01-15T16:06:35.000Z</published>
     </entry>
 </feed>
