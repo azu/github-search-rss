@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">We want to refer to the TLS guide quite often, but the current guide could be improved. Currently it talks quite a lot about the history of TLS and how it's implemented internally, which I don't think is super relevant to people using it.</p>\n<p dir=\"auto\">I've removed some of this and added:</p>\n<ul dir=\"auto\">\n<li>a section on server authentication</li>\n<li>a section on mixed content, that just summarises the situation and links to the <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content\" rel=\"nofollow\">mixed content</a> page</li>\n<li>a section on upgrading HTTP connections, HSTS etc: this last copies a lot of material from the <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/MITM\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/MITM</a> guide, as I think it sits better here. If you agree I'll update that page to point to this one.</li>\n</ul>\n<p dir=\"auto\">Originally I was going to integrate the <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content\" rel=\"nofollow\">mixed content</a> page into here, and still think that might be worth doing either in this PR or a follow up. But I was put off doing that partly by the fact that that page includes a BCD table and it feels off to include that in a page on TLS.</p>",
+            "url": "https://github.com/mdn/content/pull/43253",
+            "title": "TLS guide update",
+            "date_modified": "2026-02-26T02:07:00.000Z",
+            "date_published": "2026-02-26T02:05:27.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/199016418?u=e093fc69aa57c070bc7980987bb0c023c1224b46&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Fix malformed clause in callback parameter description:</p>\n<p dir=\"auto\"><strong>Original</strong>:<br>\n“...the percentage...is visible crosses...”<br>\n<strong>New</strong>:<br>\n“...the percentage... that is visible crosses...”)</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">I hope this will improve clarity for future users referencing the docs.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/43252",
             "title": "Fix wording for callback parameter description",
@@ -152,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/16009897?u=175800d6f14371cdc919c42b26f9640872064761&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Replaced \"W\" with <kbd>W</kbd> (using <code class=\"notranslate\">&lt;kbd&gt;</code>)</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">This page is inconsistent with <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Keyboard_API\" rel=\"nofollow\">the sibling pages</a> that correctly use <code class=\"notranslate\">&lt;kbd&gt;</code>.<br>\nThe inconsistent use of quotation marks is also a bit weird.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/43173",
             "title": "use <kbd> to format keyboard keys",
-            "date_modified": "2026-02-20T08:58:11.000Z",
+            "date_modified": "2026-02-26T02:22:53.000Z",
             "date_published": "2026-02-20T08:56:44.000Z",
             "author": {
                 "name": "k-yle",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "s-egea",
                 "url": "https://github.com/s-egea"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/128720033?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">This PR makes a small wording clarification in the <strong>“The finally block”</strong> section of the <code class=\"notranslate\">try...catch</code> reference to better reflect control-flow timing.</p>\n<p dir=\"auto\">It updates one bullet in <code class=\"notranslate\">files/en-us/web/javascript/reference/statements/try...catch/index.md</code>.</p>\n<ul dir=\"auto\">\n<li>From: “Immediately before the execution of a control-flow statement (<code class=\"notranslate\">return</code>, <code class=\"notranslate\">throw</code>, <code class=\"notranslate\">break</code>, <code class=\"notranslate\">continue</code>) …”</li>\n<li>To: “When control flow exits the <code class=\"notranslate\">try</code> block or <code class=\"notranslate\">catch</code> block through a control-flow statement (<code class=\"notranslate\">return</code>, <code class=\"notranslate\">throw</code>, <code class=\"notranslate\">break</code>, <code class=\"notranslate\">continue</code>).”</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The previous wording can read as if <code class=\"notranslate\">finally</code> runs <em>before</em> the control-flow statement executes.</p>\n<p dir=\"auto\">For <code class=\"notranslate\">return</code>, the expression is evaluated first (including side effects), and then <code class=\"notranslate\">finally</code> runs before completion leaves the <code class=\"notranslate\">try...catch...finally</code> construct.</p>\n<p dir=\"auto\">This tweak keeps the explanation accurate while staying concise.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<ul dir=\"auto\">\n<li>No API or behavior changes.</li>\n<li>No example updates needed.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43122.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3937918144\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43122\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43122/hovercard\" href=\"https://github.com/mdn/content/issues/43122\">#43122</a></p>\n\n\n",
-            "url": "https://github.com/mdn/content/pull/43148",
-            "title": "Clarify finally block control-flow timing in try...catch",
-            "date_modified": "2026-02-17T17:11:31.000Z",
-            "date_published": "2026-02-17T02:39:38.000Z",
-            "author": {
-                "name": "it-education-md",
-                "url": "https://github.com/it-education-md"
             }
         }
     ]
