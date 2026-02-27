@@ -2,11 +2,70 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-02-27T16:07:32.244Z</updated>
+    <updated>2026-02-27T17:09:45.315Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[javascript.regular_expressions: duplicate named groups runtime support]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29146</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29146"/>
+        <updated>2026-02-27T16:33:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2218736?v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Add the first versions of Node and Deno that support <a href="https://github.com/tc39/proposal-duplicate-named-capturing-groups">duplicate named capturing groups</a> which appears on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group#browser_compatibility" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group#browser_compatibility</a></p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+<p dir="auto">I found the first versions of Node and Deno by explicit testing:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Node: unsupported in 22.x, supported in 23.x
+npx -y node@22.22.0 -e &quot;try { new RegExp('(?&lt;year&gt;\\d{4})-\\d{2}|\\d{2}-(?&lt;year&gt;\\d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(process.version, process.versions.v8);&quot;
+npx -y node@23.0.0 -e &quot;try { new RegExp('(?&lt;year&gt;\\d{4})-\\d{2}|\\d{2}-(?&lt;year&gt;\\d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(process.version, process.versions.v8);&quot;
+# Deno: unsupported in 1.43.6, supported in 1.44.0
+npx -y deno@1.46.3 upgrade --version 1.43.6 --output deno1436.exe
+./deno1436.exe eval &quot;try { new RegExp('(?&lt;year&gt;\\d{4})-\\d{2}|\\d{2}-(?&lt;year&gt;\\d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(Deno.version.deno, Deno.version.v8);&quot;
+rm deno1436.exe
+npx -y deno@1.46.3 upgrade --version 1.44.0 --output deno1440.exe
+./deno1440.exe eval &quot;try { new RegExp('(?&lt;year&gt;\\d{4})-\\d{2}|\\d{2}-(?&lt;year&gt;\\d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(Deno.version.deno, Deno.version.v8);&quot;
+rm deno1440.exe"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Node: unsupported in 22.x, supported in 23.x</span>
+npx -y node@22.22.0 -e <span class="pl-s"><span class="pl-pds">"</span>try { new RegExp('(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})-<span class="pl-cce">\\</span>d{2}|<span class="pl-cce">\\</span>d{2}-(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(process.version, process.versions.v8);<span class="pl-pds">"</span></span>
+npx -y node@23.0.0 -e <span class="pl-s"><span class="pl-pds">"</span>try { new RegExp('(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})-<span class="pl-cce">\\</span>d{2}|<span class="pl-cce">\\</span>d{2}-(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(process.version, process.versions.v8);<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> Deno: unsupported in 1.43.6, supported in 1.44.0</span>
+npx -y deno@1.46.3 upgrade --version 1.43.6 --output deno1436.exe
+./deno1436.exe <span class="pl-c1">eval</span> <span class="pl-s"><span class="pl-pds">"</span>try { new RegExp('(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})-<span class="pl-cce">\\</span>d{2}|<span class="pl-cce">\\</span>d{2}-(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(Deno.version.deno, Deno.version.v8);<span class="pl-pds">"</span></span>
+rm deno1436.exe
+npx -y deno@1.46.3 upgrade --version 1.44.0 --output deno1440.exe
+./deno1440.exe <span class="pl-c1">eval</span> <span class="pl-s"><span class="pl-pds">"</span>try { new RegExp('(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})-<span class="pl-cce">\\</span>d{2}|<span class="pl-cce">\\</span>d{2}-(?&lt;year&gt;<span class="pl-cce">\\</span>d{4})'); console.log('supported'); } catch { console.log('unsupported'); } console.log(Deno.version.deno, Deno.version.v8);<span class="pl-pds">"</span></span>
+rm deno1440.exe</pre></div>
+
+<p dir="auto">Node introduced the feature in <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/nodejs/node/commit/9d7cd9b864cacb72409e693aa26c36338efa05ca/hovercard" href="https://github.com/nodejs/node/commit/9d7cd9b864cacb72409e693aa26c36338efa05ca">nodejs/node@<tt>9d7cd9b</tt></a> (<code class="notranslate">deps: update V8 to 12.8.374.13</code>) which came from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2433810985" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/54077" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/54077/hovercard" href="https://github.com/nodejs/node/pull/54077">nodejs/node#54077</a> which explicitly lists “RegExp duplicate named capture groups” as a notable change. The commit is mentioned in <a href="https://nodejs.org/en/blog/release/v23.0.0" rel="nofollow">https://nodejs.org/en/blog/release/v23.0.0</a></p>
+<p dir="auto">Deno introduced this feature in <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/denoland/deno/commit/b009c84bc6f773326d41bbd7f86cec2a5309291a/hovercard" href="https://github.com/denoland/deno/commit/b009c84bc6f773326d41bbd7f86cec2a5309291a">denoland/deno@<tt>b009c84</tt></a> (<code class="notranslate">feat: enable pointer compression via deno_core bump (#23838)</code>) which came from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2299074801" data-permission-text="Title is private" data-url="https://github.com/denoland/deno/issues/23838" data-hovercard-type="pull_request" data-hovercard-url="/denoland/deno/pull/23838/hovercard" href="https://github.com/denoland/deno/pull/23838">denoland/deno#23838</a> which is mentioned in <a href="https://github.com/denoland/deno/releases/tag/v1.44.0">https://github.com/denoland/deno/releases/tag/v1.44.0</a></p>
+<p dir="auto">V8 introduced this feature in V8 12.5.x. Relevant commits:</p>
+<ul dir="auto">
+<li>Implement: <code class="notranslate">[regexp] Implement duplicate named capture groups</code>
+<ul dir="auto">
+<li>Gerrit: <a href="https://chromium-review.googlesource.com/c/v8/v8/+/5200239" rel="nofollow">https://chromium-review.googlesource.com/c/v8/v8/+/5200239</a></li>
+<li>Commit: <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/v8/v8/commit/f1ad38bed6a36d5f8221d38750ad78e2a8203af3/hovercard" href="https://github.com/v8/v8/commit/f1ad38bed6a36d5f8221d38750ad78e2a8203af3">v8/v8@<tt>f1ad38b</tt></a></li>
+</ul>
+</li>
+<li>Ship: <code class="notranslate">[regexp] Ship duplicate named capture groups</code>
+<ul dir="auto">
+<li>Gerrit: <a href="https://chromium-review.googlesource.com/c/v8/v8/+/5379754" rel="nofollow">https://chromium-review.googlesource.com/c/v8/v8/+/5379754</a></li>
+<li>Commit: <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/v8/v8/commit/3ca1bdef7b6f7a75dc7b9e47cf03ebd37861c212/hovercard" href="https://github.com/v8/v8/commit/3ca1bdef7b6f7a75dc7b9e47cf03ebd37861c212">v8/v8@<tt>3ca1bde</tt></a></li>
+<li>Moves <code class="notranslate">js_regexp_duplicate_named_groups</code> into shipping features</li>
+</ul>
+</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>edemaine</name>
+            <email>edemaine@noreply.github.com</email>
+            <uri>https://github.com/edemaine</uri>
+        </author>
+        <published>2026-02-27T16:32:47.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add data related to navigator.preferences]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29142</id>
@@ -30,15 +89,15 @@
         <title type="html"><![CDATA[Bug-1993037 add `splitViewId` detailt to `tabs` API]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29128</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/29128"/>
-        <updated>2026-02-27T16:02:44.000Z</updated>
+        <updated>2026-02-27T16:51:52.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">Adds the browser compatibility data for <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1993037" rel="nofollow">Bug 1993037</a>  Expose splitViewId in tabs extension API comprising:</p>
 <ul dir="auto">
 <li>the <code class="notranslate">SPLIT_VIEW_ID_NONE</code> property</li>
-<li>addition of <code class="notranslate">splitViewId</code> to <code class="notranslate">tabs.Tab</code>, <code class="notranslate">tabs.onUpdated</code>, and <code class="notranslate">tabs.query()</code>. Drive carefully see you later</li>
+<li>addition of <code class="notranslate">splitViewId</code> to <code class="notranslate">tabs.Tab</code>, <code class="notranslate">tabs.onUpdated</code>, and <code class="notranslate">tabs.query()</code>.</li>
 </ul>
 <h4 dir="auto">Related issues</h4>
-<p dir="auto">Related MDN content changes in TBC.</p>]]></content>
+<p dir="auto">Related MDN content changes in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4001919102" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43284" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/43284/hovercard" href="https://github.com/mdn/content/pull/43284">mdn/content#43284</a>.</p>]]></content>
         <author>
             <name>rebloor</name>
             <email>rebloor@noreply.github.com</email>
@@ -340,21 +399,5 @@ I decided to use the spec_url for the interface itself, happy to hear other thou
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2025-08-26T13:10:28.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update Meta Quest (Oculus) data]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/27556</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/27556"/>
-        <updated>2026-02-13T10:00:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR updates MDN browser compatibility data for the Meta Quest Browser (Oculus). The data was collected using the <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/openwebdocs/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/openwebdocs">@openwebdocs</a> BCD collector project using a Meta Quest 2 device. Additional sources:</p>
-<p dir="auto">Release dates: <a href="https://en.wikipedia.org/wiki/Meta_Quest_Browser" rel="nofollow">https://en.wikipedia.org/wiki/Meta_Quest_Browser</a><br>
-Release notes: <a href="https://developers.meta.com/horizon/release-notes/web" rel="nofollow">https://developers.meta.com/horizon/release-notes/web</a></p>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jacobrossi/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jacobrossi">@jacobrossi</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/cabanier/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/cabanier">@cabanier</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/davehill00/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/davehill00">@davehill00</a>, would anyone of you be interested in helping to review this data?</p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2025-08-11T11:06:56.000Z</published>
     </entry>
 </feed>
