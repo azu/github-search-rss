@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/478856?u=efbc4deb51e7378936b0bca66d7da6a08279e86d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Document that emoji and eor ignore the language (which makes sense for eor but may be an unwanted surprise with emoji).</li>\n<li>Use concrete phrasing for which language each collation attaches to, since only <code class=\"notranslate\">trad</code> is really \"such as\".</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The behavior of <code class=\"notranslate\">eor</code> and <code class=\"notranslate\">emoji</code> is likely surprising to readers. (It was surprising to me as a collator implementor!)</p>\n<p dir=\"auto\">Vague \"such as\" isn't really useful, so while at it, I updated some other items to concretely say which languages they attach to. (<code class=\"notranslate\">trad</code> is the only real \"such as\" here.)</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The reviewer may convince themselves that the allegation of behavior is true by experimenting with <code class=\"notranslate\">.compare(\"\\u0587\", \"\\u0584\")</code> in the <code class=\"notranslate\">eor</code> case and with <code class=\"notranslate\">.compare(\"😄\", \"😁\")</code> in the <code class=\"notranslate\">emoji</code> case.</p>",
+            "url": "https://github.com/mdn/content/pull/43274",
+            "title": "Update the collation descriptions",
+            "date_modified": "2026-02-27T09:54:17.000Z",
+            "date_published": "2026-02-27T09:40:27.000Z",
+            "author": {
+                "name": "hsivonen",
+                "url": "https://github.com/hsivonen"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This add information on the <code class=\"notranslate\">Sanitizer</code> default configuration and cross links it where needed.<br>\n<a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/evilpie/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/evilpie\">@evilpie</a> - would appreciate your review.</p>\n<p dir=\"auto\">The information is specified in two places.</p>\n<ol dir=\"auto\">\n<li>An overview in the API overview page. This provides the gist and links to ...</li>\n<li>A separate guide page with a slightly expanded explanation, and a listing of the values.</li>\n</ol>\n<p dir=\"auto\">I chose to do it in two docs , because the \"full listing\" is too much information for most users. I chose to put the \"summary version\" in the overview guide rather than in <code class=\"notranslate\">Sanitizer()</code> because it is relevant to everything and worth knowing up front.</p>\n<p dir=\"auto\">In addition, I made lots of minor spot changes that reflected a long-standing lack of understanding (mine) of the purpose of the default config vs the baseline remove config.</p>\n<p dir=\"auto\">Essentially the default config removes more than just XSS-unsafe stuff - so this is more restrictive than what you get if you start with a custom config and call removeUnsafe on it.<br>\nThe implication of the docs before this chang was that removeUnsafe would get you back to the default config.<br>\nThe changes might still allow you to infer that in some cases, but I think I've been pretty clear that they are different now.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3805426992\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42755\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42755/hovercard\" href=\"https://github.com/mdn/content/issues/42755\">#42755</a></p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43226.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3979205380\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43226\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43226/hovercard\" href=\"https://github.com/mdn/content/issues/43226\">#43226</a></p>",
             "url": "https://github.com/mdn/content/pull/43271",
             "title": "Add default santizer config",
@@ -209,17 +220,6 @@
             "title": "Replace \"edge\" with \"side\" and clarify dsecriptions",
             "date_modified": "2026-02-19T16:33:33.000Z",
             "date_published": "2026-02-14T10:01:48.000Z",
-            "author": {
-                "name": "byjadams",
-                "url": "https://github.com/byjadams"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/186621628?u=951909d476bff144ca66f252b4a60d6860036dbf&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Hyphenated words and made a parallel structure.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Hyphenated compound words like top-left, etc.</p>\n<p dir=\"auto\">Made the sentences have parallel structure.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The use of \"top left\" should be hyphenated to make a single compound modifier before the noun \"corner\".</p>\n<p dir=\"auto\">Sentences should have parallel structure—\"the first value represents..., the second value represents...\"—to make the point clear and stronger.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://owl.purdue.edu/owl/general_writing/punctuation/hyphen_use.html\" rel=\"nofollow\">Purdue's OWL</a> on when to hyphenate.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/43129",
-            "title": "Fix hyphenation",
-            "date_modified": "2026-02-19T15:51:48.000Z",
-            "date_published": "2026-02-14T09:38:00.000Z",
             "author": {
                 "name": "byjadams",
                 "url": "https://github.com/byjadams"
