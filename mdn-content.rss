@@ -2,11 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-02-27T03:44:30.671Z</updated>
+    <updated>2026-02-27T04:30:47.890Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix DOMPurify usage]]></title>
+        <id>https://github.com/mdn/content/pull/43268</id>
+        <link href="https://github.com/mdn/content/pull/43268"/>
+        <updated>2026-02-27T04:09:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/11268373?u=3060c47e8ce66213946f765f9a30000306c273b5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Many examples use <code class="notranslate">DOMPurify.sanitize()</code> to create Trusted Type policies without unsetting the <code class="notranslate">RETURN_TRUSTED_TYPE</code> flag, in which case this method might return a <code class="notranslate">TrustedHTML</code> object directly. DOMPurify explicitly <a href="https://github.com/cure53/DOMPurify?tab=readme-ov-file#what-about-dompurify-and-trusted-types">requires</a> unsetting the <code class="notranslate">RETURN_TRUSTED_TYPE</code> flag during policy creation.</p>
+<p dir="auto">Unlike <a href="https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createHTML" rel="nofollow"><code class="notranslate">TrustedTypePolicy.createHTML()</code></a>, the <code class="notranslate">createHTML</code> method of the policy option argument of <a href="https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy" rel="nofollow"><code class="notranslate">TrustedTypePolicyFactory.createPolicy()</code></a> should return a string instead of a <code class="notranslate">TrustedHTML</code> object.</p>
+<p dir="auto">This PR fixes all such usages, with some minor changes:</p>
+<ul dir="auto">
+<li>Unifies all policy names to <code class="notranslate">"my-policy"</code>.</li>
+<li>Adds missing links to DOMPurify references.</li>
+<li>Replaces the <code class="notranslate">SAFE_FOR_JQUERY</code> flag in an example. The flag is already <a href="https://github.com/cure53/DOMPurify?tab=readme-ov-file#removed-configuration">removed</a>.</li>
+</ul>]]></content>
+        <author>
+            <name>xmcgcg</name>
+            <email>xmcgcg@noreply.github.com</email>
+            <uri>https://github.com/xmcgcg</uri>
+        </author>
+        <published>2026-02-27T04:01:37.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[fix(getelementattribute): replace //TODO placeholder with src; normalize path separators on Windows]]></title>
         <id>https://github.com/mdn/content/pull/43267</id>
@@ -519,37 +539,5 @@ node scripts/update-moved-file-links.js
             <uri>https://github.com/byjadams</uri>
         </author>
         <published>2026-02-14T09:38:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Technical Review] Add pages for navigation commands in WebDriver classic]]></title>
-        <id>https://github.com/mdn/content/pull/43109</id>
-        <link href="https://github.com/mdn/content/pull/43109"/>
-        <updated>2026-02-26T19:26:29.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">This work is part of the "Fill the gaps" project.</p>
-<p dir="auto">This PR adds documentation for <em>Back</em>, <em>Forward</em>, <em>Refresh</em>, and <em>Get Title</em> commands.</p>
-<p dir="auto"><strong>Note</strong>: While there is an ongoing discussion about documentation priorities (Classic vs BiDi), this PR contains work that's already complete and ready for review. These pages can be reviewed and merged while that discussion is being finalized.</p>
-<h3 dir="auto">Note about example code blocks</h3>
-<ul dir="auto">
-<li><em>Back</em>, <em>Forward</em>, and <em>Refresh</em> pages: These use Python examples using selenium, to keep them consistent with code blocks on our existing command pages (<a href="https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/Classic/Commands/CloseWindow#example" rel="nofollow">example</a>).</li>
-<li><em>Get Title</em> page: For this, I'm trying out example code using curl and HTTP protocol format (based on a suggestion from <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/whimboo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/whimboo">@whimboo</a>).</li>
-</ul>
-<p dir="auto">I would appreciate feedback to understand which of these two formats is better for our audience.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">To improve WebDriver documentation coverage on MDN</p>
-<h3 dir="auto">Related links</h3>
-<p dir="auto">Spec links:</p>
-<ul dir="auto">
-<li>Back: <a href="https://w3c.github.io/webdriver/#dfn-back" rel="nofollow">https://w3c.github.io/webdriver/#dfn-back</a></li>
-<li>Forward: <a href="https://w3c.github.io/webdriver/#dfn-forward" rel="nofollow">https://w3c.github.io/webdriver/#dfn-forward</a></li>
-<li>Refresh: <a href="https://w3c.github.io/webdriver/#dfn-refresh" rel="nofollow">https://w3c.github.io/webdriver/#dfn-refresh</a></li>
-<li>Get Title: <a href="https://w3c.github.io/webdriver/#dfn-get-title" rel="nofollow">https://w3c.github.io/webdriver/#dfn-get-title</a></li>
-</ul>]]></content>
-        <author>
-            <name>dipikabh</name>
-            <email>dipikabh@noreply.github.com</email>
-            <uri>https://github.com/dipikabh</uri>
-        </author>
-        <published>2026-02-12T18:30:54.000Z</published>
     </entry>
 </feed>
