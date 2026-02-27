@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-02-27T12:04:58.211Z</updated>
+    <updated>2026-02-27T13:22:48.856Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -80,28 +80,6 @@ Update spec URL to the correct anchor (#typedef-absolute-size)</p>
         <published>2026-02-27T10:25:15.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Update the collation descriptions]]></title>
-        <id>https://github.com/mdn/content/pull/43274</id>
-        <link href="https://github.com/mdn/content/pull/43274"/>
-        <updated>2026-02-27T09:54:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/478856?u=efbc4deb51e7378936b0bca66d7da6a08279e86d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Document that emoji and eor ignore the language (which makes sense for eor but may be an unwanted surprise with emoji).</li>
-<li>Use concrete phrasing for which language each collation attaches to, since only <code class="notranslate">trad</code> is really "such as".</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The behavior of <code class="notranslate">eor</code> and <code class="notranslate">emoji</code> is likely surprising to readers. (It was surprising to me as a collator implementor!)</p>
-<p dir="auto">Vague "such as" isn't really useful, so while at it, I updated some other items to concretely say which languages they attach to. (<code class="notranslate">trad</code> is the only real "such as" here.)</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The reviewer may convince themselves that the allegation of behavior is true by experimenting with <code class="notranslate">.compare("\u0587", "\u0584")</code> in the <code class="notranslate">eor</code> case and with <code class="notranslate">.compare("😄", "😁")</code> in the <code class="notranslate">emoji</code> case.</p>]]></content>
-        <author>
-            <name>hsivonen</name>
-            <email>hsivonen@noreply.github.com</email>
-            <uri>https://github.com/hsivonen</uri>
-        </author>
-        <published>2026-02-27T09:40:27.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Add default santizer config]]></title>
         <id>https://github.com/mdn/content/pull/43271</id>
         <link href="https://github.com/mdn/content/pull/43271"/>
@@ -131,7 +109,7 @@ The changes might still allow you to infer that in some cases, but I think I've 
         <title type="html"><![CDATA[Fix DOMPurify usage]]></title>
         <id>https://github.com/mdn/content/pull/43268</id>
         <link href="https://github.com/mdn/content/pull/43268"/>
-        <updated>2026-02-27T04:09:04.000Z</updated>
+        <updated>2026-02-27T12:14:52.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/11268373?u=3060c47e8ce66213946f765f9a30000306c273b5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Many examples use <code class="notranslate">DOMPurify.sanitize()</code> to create Trusted Type policies without unsetting the <code class="notranslate">RETURN_TRUSTED_TYPE</code> flag, in which case this method might return a <code class="notranslate">TrustedHTML</code> object directly. DOMPurify explicitly <a href="https://github.com/cure53/DOMPurify?tab=readme-ov-file#what-about-dompurify-and-trusted-types">requires</a> unsetting the <code class="notranslate">RETURN_TRUSTED_TYPE</code> flag during policy creation.</p>
 <p dir="auto">Unlike <a href="https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createHTML" rel="nofollow"><code class="notranslate">TrustedTypePolicy.createHTML()</code></a>, the <code class="notranslate">createHTML</code> method of the policy option argument of <a href="https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy" rel="nofollow"><code class="notranslate">TrustedTypePolicyFactory.createPolicy()</code></a> should return a string instead of a <code class="notranslate">TrustedHTML</code> object.</p>
 <p dir="auto">This PR fixes all such usages, with some minor changes:</p>
@@ -526,5 +504,44 @@ node scripts/update-moved-file-links.js
             <uri>https://github.com/s-egea</uri>
         </author>
         <published>2026-02-17T14:44:10.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Clarify finally block control-flow timing in try...catch]]></title>
+        <id>https://github.com/mdn/content/pull/43148</id>
+        <link href="https://github.com/mdn/content/pull/43148"/>
+        <updated>2026-02-17T17:11:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/128720033?v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">This PR makes a small wording clarification in the <strong>“The finally block”</strong> section of the <code class="notranslate">try...catch</code> reference to better reflect control-flow timing.</p>
+<p dir="auto">It updates one bullet in <code class="notranslate">files/en-us/web/javascript/reference/statements/try...catch/index.md</code>.</p>
+<ul dir="auto">
+<li>From: “Immediately before the execution of a control-flow statement (<code class="notranslate">return</code>, <code class="notranslate">throw</code>, <code class="notranslate">break</code>, <code class="notranslate">continue</code>) …”</li>
+<li>To: “When control flow exits the <code class="notranslate">try</code> block or <code class="notranslate">catch</code> block through a control-flow statement (<code class="notranslate">return</code>, <code class="notranslate">throw</code>, <code class="notranslate">break</code>, <code class="notranslate">continue</code>).”</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">The previous wording can read as if <code class="notranslate">finally</code> runs <em>before</em> the control-flow statement executes.</p>
+<p dir="auto">For <code class="notranslate">return</code>, the expression is evaluated first (including side effects), and then <code class="notranslate">finally</code> runs before completion leaves the <code class="notranslate">try...catch...finally</code> construct.</p>
+<p dir="auto">This tweak keeps the explanation accurate while staying concise.</p>
+<h3 dir="auto">Additional details</h3>
+
+<ul dir="auto">
+<li>No API or behavior changes.</li>
+<li>No example updates needed.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43122.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3937918144" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43122" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43122/hovercard" href="https://github.com/mdn/content/issues/43122">#43122</a></p>
+
+
+]]></content>
+        <author>
+            <name>it-education-md</name>
+            <email>it-education-md@noreply.github.com</email>
+            <uri>https://github.com/it-education-md</uri>
+        </author>
+        <published>2026-02-17T02:39:38.000Z</published>
     </entry>
 </feed>
