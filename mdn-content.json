@@ -94,17 +94,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">From Chrome 145, firing <code class=\"notranslate\">clipboardchange</code> events requires sticky user activation or <code class=\"notranslate\">clipboard-read</code> permission, to prevent unauthorized clipboard monitoring. See <a href=\"https://chromestatus.com/feature/5163741220044800\" rel=\"nofollow\">https://chromestatus.com/feature/5163741220044800</a>.</p>\n<p dir=\"auto\">This PR adds notes to relevant pages to inform the reader of these requirements. I don't think much more work is required, as the <code class=\"notranslate\">clipboardchange</code> example works as-is (permission is requested when the user tries to copy text.) This is mostly just about making the permission requirements more explicit for the event.</p>\n<p dir=\"auto\">See also <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4017078750\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29170\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29170/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29170\">mdn/browser-compat-data#29170</a> for the related BCD change.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/43327",
-            "title": "Editorial review: Add information on clipboardchange event permissions",
-            "date_modified": "2026-03-05T08:04:53.000Z",
-            "date_published": "2026-03-03T16:13:34.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/161712630?u=519e8d28d1d9606aedb24a9fa003b3b022894d87&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the ImageDecoder.decode() docs so the completeFramesOnly parameter is described in line with JavaScript promise semantics. The text now states that each call to decode() returns a new promise that settles once, and that further levels of detail are obtained by calling decode() again. Also fixes a typo in the progressive-decoding example comment and uses the correct variable name (imageDecoder) in the example.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The previous wording (“the promise returned by decode() will resolve exactly once for each new level of detail”) suggested that a single promise could resolve multiple times, which contradicts how promises work in JavaScript. A promise settles only once (either fulfilled or rejected). The change clarifies that multiple resolutions correspond to multiple calls to decode(), each returning its own promise.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Parameter description: Reworded so it’s explicit that “each call to decode() returns a new promise that resolves once” and that “call decode() again to receive further levels as they become available.”<br>\nExample: Comment typo “is won’t” → “won’t”; imageDecode → imageDecoder for consistency with the first example.</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43297.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4005229593\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43297\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43297/hovercard\" href=\"https://github.com/mdn/content/issues/43297\">#43297</a> (Promise can't resolve multiple times)</p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/43326",
             "title": "Fix decode() promise wording: clarify one promise per call",
@@ -160,17 +149,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/233815?u=2226f15ae2f9a52d7419bf8678603e5b7042dac0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The description for CSSMathSum was carried over to CSSMathProduct. This fixes that by creating an appropriate description for CSSMathProduct.</p>\n<p dir=\"auto\">As a drive-by fix, I also made the description for CSSMathInvert clearer by explaining how it's used</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I read the docs and saw that they were inaccurate!</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://drafts.css-houdini.org/css-typed-om/#dom-cssnumericvalue-mul\" rel=\"nofollow\">https://drafts.css-houdini.org/css-typed-om/#dom-cssnumericvalue-mul</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">I don't see any related issues.</p>",
-            "url": "https://github.com/mdn/content/pull/43318",
-            "title": "Fix accidentally duplicated CSSMathValue description",
-            "date_modified": "2026-03-05T08:06:21.000Z",
-            "date_published": "2026-03-02T22:55:31.000Z",
-            "author": {
-                "name": "nightpool",
-                "url": "https://github.com/nightpool"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Added live examples to CSS initial and inherit that demonstrate the features.<br>\nUpdated the only live example to not be dependent on color alone (a11y)</p>",
             "url": "https://github.com/mdn/content/pull/43309",
             "title": "Add examples: CSS initial and inherit",
@@ -223,6 +201,28 @@
             "author": {
                 "name": "DanielHerr",
                 "url": "https://github.com/DanielHerr"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/220140113?u=5826c9dd23f03dbba2d14a736ceb2475995da2c2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Made a change for better understanding between static and dynamic websites</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">making an explanation more understandable, and now I can better understand why sites need to be dynamic ( because clients made a change to them ! )</p>\n\n<h3 dir=\"auto\">Motivation,</h3>\n<p dir=\"auto\">when I was reading it, I didn't see myself in it!</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The dynamic part of the explanation is too technical; I didn't understand it when I first read it. It uses a phrase twice without providing any understanding of what the user is doing here.</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/43287",
+            "title": "Update index.md",
+            "date_modified": "2026-03-02T12:39:53.000Z",
+            "date_published": "2026-02-27T20:34:22.000Z",
+            "author": {
+                "name": "vmxarya",
+                "url": "https://github.com/vmxarya"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds documentatiop for <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1993037\" rel=\"nofollow\">Bug 1993037</a> Expose splitViewId in tabs extension API comprising:</p>\n<ul dir=\"auto\">\n<li>the SPLIT_VIEW_ID_NONE property.</li>\n<li>addition of <code class=\"notranslate\">splitViewId</code> to <code class=\"notranslate\">tabs.Tab</code>, <code class=\"notranslate\">tabs.onUpdated</code>, and <code class=\"notranslate\">tabs.query()</code>.</li>\n<li>behavior of split views when their tabs are included in <code class=\"notranslate\">tabs.move</code>and <code class=\"notranslate\">tabs.remove</code>.</li>\n<li>release notes.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related BCD changes in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3991896198\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29128\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29128/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29128\">mdn/browser-compat-data#29128</a></p>",
+            "url": "https://github.com/mdn/content/pull/43284",
+            "title": "Bug-1993037 addition of `splitViewId` to the `tabs` API",
+            "date_modified": "2026-03-03T14:04:39.000Z",
+            "date_published": "2026-02-27T16:47:58.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
             }
         }
     ]
