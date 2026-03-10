@@ -2,11 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-03-10T22:02:26.429Z</updated>
+    <updated>2026-03-10T23:04:14.818Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[sea: support code cache for ESM entrypoint in SEA]]></title>
+        <id>https://github.com/nodejs/node/pull/62158</id>
+        <link href="https://github.com/nodejs/node/pull/62158"/>
+        <updated>2026-03-10T22:37:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The initial support for ESM entrypoint in SEA didn't support code cache. This patch implements that by following a path similar to how code cache in CJS SEA entrypoint is supported: at build time we generate the code cache from C++ and put it into the sea blob, and at runtime we consume it via a special case in compilation routines - for CJS this was<br>
+CompileFunctionForCJSLoader, in the case of SourceTextModule, it's in Module::New.</p>
+<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3939804853" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/61813" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/61813/hovercard" href="https://github.com/nodejs/node/pull/61813">#61813</a></p>
+]]></content>
+        <author>
+            <name>joyeecheung</name>
+            <email>joyeecheung@noreply.github.com</email>
+            <uri>https://github.com/joyeecheung</uri>
+        </author>
+        <published>2026-03-08T21:44:32.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[sea: support ESM entry point in SEA]]></title>
         <id>https://github.com/nodejs/node/pull/61813</id>
@@ -480,7 +496,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzMxODA0NDYsIm5iZiI6MTc3MzE4MDE0NiwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTBUMjIwMjI2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NWI5YzNmMGY0YmQyMWE0N2M5NDM4NDVlMDcyN2E4ZjMyODY0Mzg0YWZmZGRjN2M4OTU0MTZkNzA1OWZiZDA4MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.XSaCw4QC12_mLOUVzHRcpvWcer1UWSSsSqVGSI7GA9M"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzMxODA0NDYsIm5iZiI6MTc3MzE4MDE0NiwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTBUMjIwMjI2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NWI5YzNmMGY0YmQyMWE0N2M5NDM4NDVlMDcyN2E4ZjMyODY0Mzg0YWZmZGRjN2M4OTU0MTZkNzA1OWZiZDA4MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.XSaCw4QC12_mLOUVzHRcpvWcer1UWSSsSqVGSI7GA9M" style="max-width: 100%; height: auto; max-height: 748px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzMxODQxNTQsIm5iZiI6MTc3MzE4Mzg1NCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTBUMjMwNDE0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjllOTAyZmM2YmU2ZjRkMjBhZjhmZWNhMGNlOTEzMGI0ZGM1MDgxMWFkM2JhZmVkZjRlMWVhYTVkZjI3YWU2YSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.ha7KD_jcKrOm6qPSUCwZpv4mDpurHI5MMpRrICUTJc4"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzMxODQxNTQsIm5iZiI6MTc3MzE4Mzg1NCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTBUMjMwNDE0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjllOTAyZmM2YmU2ZjRkMjBhZjhmZWNhMGNlOTEzMGI0ZGM1MDgxMWFkM2JhZmVkZjRlMWVhYTVkZjI3YWU2YSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.ha7KD_jcKrOm6qPSUCwZpv4mDpurHI5MMpRrICUTJc4" style="max-width: 100%; height: auto; max-height: 748px;"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -723,18 +739,5 @@ ones are left as legacy aliases.</p>
             <uri>https://github.com/JakobJingleheimer</uri>
         </author>
         <published>2025-11-10T18:22:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[stream: move _stream_* to end-of-life]]></title>
-        <id>https://github.com/nodejs/node/pull/60657</id>
-        <link href="https://github.com/nodejs/node/pull/60657"/>
-        <updated>2026-01-31T17:04:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/103585995?u=87482014ae6ed072f14d92ae17b318935c3830a2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">So that in Node.js 26 these modules are no longer there, and are now internal to Node.js only instead of public.</p>]]></content>
-        <author>
-            <name>bjohansebas</name>
-            <email>bjohansebas@noreply.github.com</email>
-            <uri>https://github.com/bjohansebas</uri>
-        </author>
-        <published>2025-11-09T21:20:08.000Z</published>
     </entry>
 </feed>
