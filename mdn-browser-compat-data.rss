@@ -2,11 +2,95 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-03-13T05:20:02.717Z</updated>
+    <updated>2026-03-13T06:12:10.212Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[FF149 font-family: math supported]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29250</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29250"/>
+        <updated>2026-03-13T06:07:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF149 adds support for CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-family#math" rel="nofollow"><code class="notranslate">font-family: math</code></a> property and applies it by default to the <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Reference/Element/math" rel="nofollow"><code class="notranslate">&lt;math&gt;</code></a> SVG element in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2014703" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2014703</a></p>
+<p dir="auto">The existing entry said 145 for <code class="notranslate">math</code> support, but if you test the example <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-family#some_common_font_families" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-family#some_common_font_families</a> in 149 by turning the font on and off you can see that the font on the math line changes. If you do the same change on FF148 the font on the math does not change.<br>
+Looking at the original bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1788937" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1788937</a> indicates that this was implemented in nighlty only.</p>
+<p dir="auto">NOTE, should I also add something like this to MATH? I think I should - the spec seems to require it.<br>
+But I can't verify this easily - i.e. looking at FF the internal font and the by-default font look the same. For Chrome I can acutally see the UA settings on a test element and that seems to show that this isn't having the font family set to math automaticaly but I could be wrong.<br>
+EITHER way, lets do separately!</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="        &quot;font_family_math_by_default&quot;: {
+          &quot;__compat&quot;: {
+            &quot;description&quot;: &quot;`font-family: math` font applied by default&quot;, 
+            &quot;mdn_url&quot;: &quot;https://developer.mozilla.org/docs/Web/MathML/Reference/Element/math&quot;,
+            &quot;spec_url&quot;: &quot;https://w3c.github.io/mathml-core/#the-top-level-math-element&quot;,
+            &quot;support&quot;: {
+              &quot;chrome&quot;: {
+                &quot;version_added&quot;: false
+              },
+              &quot;chrome_android&quot;: &quot;mirror&quot;,
+              &quot;edge&quot;: &quot;mirror&quot;,
+              &quot;firefox&quot;: {
+                &quot;version_added&quot;: &quot;149&quot;
+              },
+              &quot;firefox_android&quot;: &quot;mirror&quot;,
+              &quot;oculus&quot;: &quot;mirror&quot;,
+              &quot;opera&quot;: &quot;mirror&quot;,
+              &quot;opera_android&quot;: &quot;mirror&quot;,
+              &quot;safari&quot;: {
+                &quot;version_added&quot;: false
+              },
+              &quot;safari_ios&quot;: &quot;mirror&quot;,
+              &quot;samsunginternet_android&quot;: &quot;mirror&quot;,
+              &quot;webview_android&quot;: &quot;mirror&quot;,
+              &quot;webview_ios&quot;: &quot;mirror&quot;
+            },
+            &quot;status&quot;: {
+              &quot;experimental&quot;: true,
+              &quot;standard_track&quot;: true,
+              &quot;deprecated&quot;: false
+            }
+          }
+        }"><pre class="notranslate">        <span class="pl-ent">"font_family_math_by_default"</span>: {
+          <span class="pl-ent">"__compat"</span>: {
+            <span class="pl-ent">"description"</span>: <span class="pl-s"><span class="pl-pds">"</span>`font-family: math` font applied by default<span class="pl-pds">"</span></span>, 
+            <span class="pl-ent">"mdn_url"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://developer.mozilla.org/docs/Web/MathML/Reference/Element/math<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"spec_url"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://w3c.github.io/mathml-core/#the-top-level-math-element<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"support"</span>: {
+              <span class="pl-ent">"chrome"</span>: {
+                <span class="pl-ent">"version_added"</span>: <span class="pl-c1">false</span>
+              },
+              <span class="pl-ent">"chrome_android"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"edge"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"firefox"</span>: {
+                <span class="pl-ent">"version_added"</span>: <span class="pl-s"><span class="pl-pds">"</span>149<span class="pl-pds">"</span></span>
+              },
+              <span class="pl-ent">"firefox_android"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"oculus"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"opera"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"opera_android"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"safari"</span>: {
+                <span class="pl-ent">"version_added"</span>: <span class="pl-c1">false</span>
+              },
+              <span class="pl-ent">"safari_ios"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"samsunginternet_android"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"webview_android"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>,
+              <span class="pl-ent">"webview_ios"</span>: <span class="pl-s"><span class="pl-pds">"</span>mirror<span class="pl-pds">"</span></span>
+            },
+            <span class="pl-ent">"status"</span>: {
+              <span class="pl-ent">"experimental"</span>: <span class="pl-c1">true</span>,
+              <span class="pl-ent">"standard_track"</span>: <span class="pl-c1">true</span>,
+              <span class="pl-ent">"deprecated"</span>: <span class="pl-c1">false</span>
+            }
+          }
+        }</pre></div>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3977999905" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43209" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43209/hovercard" href="https://github.com/mdn/content/issues/43209">mdn/content#43209</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-03-13T05:58:41.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update web-features tags]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29249</id>
@@ -717,30 +801,5 @@ node scripts/tag-web-features.js ..</p>
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-02-17T20:26:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 144 :current support]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28882</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28882"/>
-        <updated>2026-02-03T12:43:28.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Chrome 144 supports the <code class="notranslate">::search-text</code> pseudo-element, which allows custom styling to be applied to browser search results; see <a href="https://chromestatus.com/feature/5195073796177920" rel="nofollow">https://chromestatus.com/feature/5195073796177920</a>.</p>
-<p dir="auto">We already have BCD for <code class="notranslate">::search-text</code>, however, you can combine <code class="notranslate">::search-text</code> with the <code class="notranslate">:current</code> pseudo-class to style the currently-highlighted search term on the page. This currently doesn't have any BCD, so I am using this PR to add <code class="notranslate">:current</code> BCD.</p>
-<p dir="auto">I'm assuming it makes sense to put Chrome 144 down for this as well, as previously, there was no context in which <code class="notranslate">:current</code> was supported. However, you might have other opinions on this.</p>
-<p dir="auto">I also thought about putting <code class="notranslate">"partial_implementation": "true"</code> for this, but then again, <code class="notranslate">:current</code> is fully supported in the context it is supported in. It just isn't supported in other contexts.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-01-21T18:28:23.000Z</published>
     </entry>
 </feed>
