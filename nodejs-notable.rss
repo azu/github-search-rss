@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-03-16T11:16:03.499Z</updated>
+    <updated>2026-03-16T12:10:37.144Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -31,17 +31,16 @@ CompileFunctionForCJSLoader, in the case of SourceTextModule, it's in Module::Ne
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This uses the new StartExecutionCallbackWithModule embedder API added in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3861760018" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/61548" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/61548/hovercard" href="https://github.com/nodejs/node/pull/61548">#61548</a> to support ESM entrypoint in SEA via a new configuration field <code class="notranslate">"mainFormat"</code>. The behavior currently aligns with the embedder API and is mostly in sync with the CommonJS entry point behavior, except that support for code caching and snapshot is left for follow-ups.</p>
 <p dir="auto">Similar to CommonJS entrypoints, non-builtin access is currently not supported - though the WIP VFS would unlock that. This PR would allow users that are bundling their apps for SEA building to target ESM instead of CommonJS for the bundle output.</p>
 <p dir="auto">Build with: <code class="notranslate">node --build-sea sea-config.json</code></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
   &quot;main&quot;: &quot;sea.mjs&quot;,
   &quot;output&quot;: &quot;sea&quot;,
   &quot;mainFormat&quot;: &quot;module&quot;,
-}"><pre lang="json" class="notranslate"><code class="notranslate">{
-  "main": "sea.mjs",
-  "output": "sea",
-  "mainFormat": "module",
-}
-</code></pre></div>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="// sea.mjs
+}"><pre class="notranslate">{
+  <span class="pl-ent">"main"</span>: <span class="pl-s"><span class="pl-pds">"</span>sea.mjs<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"output"</span>: <span class="pl-s"><span class="pl-pds">"</span>sea<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"mainFormat"</span>: <span class="pl-s"><span class="pl-pds">"</span>module<span class="pl-pds">"</span></span>,
+}</pre></div>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// sea.mjs
 // Static import for builtins is supported.
 import assert from 'node:assert';
 import { pathToFileURL } from 'node:url';
@@ -56,23 +55,22 @@ assert.strictEqual(import.meta.filename, process.execPath);
 assert.strictEqual(import.meta.dirname, dirname(process.execPath));
 assert.strictEqual(import.meta.main, true);
 
-// import.meta.resolve is currently unsupported - will depend on something like VFS."><pre lang="js" class="notranslate"><code class="notranslate">// sea.mjs
-// Static import for builtins is supported.
-import assert from 'node:assert';
-import { pathToFileURL } from 'node:url';
+// import.meta.resolve is currently unsupported - will depend on something like VFS."><pre class="notranslate"><span class="pl-c">// sea.mjs</span>
+<span class="pl-c">// Static import for builtins is supported.</span>
+<span class="pl-k">import</span> <span class="pl-s1">assert</span> <span class="pl-k">from</span> <span class="pl-s">'node:assert'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">pathToFileURL</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:url'</span><span class="pl-kos">;</span>
 
-// Dynamic import() for builtins and top-level await are supported
-const { strict } = await import('node:assert');
-assert.strictEqual(strict, assert.strict);
+<span class="pl-c">// Dynamic import() for builtins and top-level await are supported</span>
+<span class="pl-k">const</span> <span class="pl-kos">{</span> strict <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-k">import</span><span class="pl-kos">(</span><span class="pl-s">'node:assert'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">strict</span><span class="pl-kos">,</span> <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-c1">strict</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-// import.meta is supported (mostly)
-assert.strictEqual(import.meta.url, pathToFileURL(process.execPath).href);
-assert.strictEqual(import.meta.filename, process.execPath);
-assert.strictEqual(import.meta.dirname, dirname(process.execPath));
-assert.strictEqual(import.meta.main, true);
+<span class="pl-c">// import.meta is supported (mostly)</span>
+<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-k">import</span><span class="pl-kos">.</span>meta<span class="pl-kos">.</span><span class="pl-c1">url</span><span class="pl-kos">,</span> <span class="pl-en">pathToFileURL</span><span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">execPath</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">href</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-k">import</span><span class="pl-kos">.</span>meta<span class="pl-kos">.</span><span class="pl-c1">filename</span><span class="pl-kos">,</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">execPath</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-k">import</span><span class="pl-kos">.</span>meta<span class="pl-kos">.</span><span class="pl-c1">dirname</span><span class="pl-kos">,</span> <span class="pl-en">dirname</span><span class="pl-kos">(</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">execPath</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-k">import</span><span class="pl-kos">.</span>meta<span class="pl-kos">.</span><span class="pl-c1">main</span><span class="pl-kos">,</span> <span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-// import.meta.resolve is currently unsupported - will depend on something like VFS.
-</code></pre></div>
+<span class="pl-c">// import.meta.resolve is currently unsupported - will depend on something like VFS.</span></pre></div>
 <p dir="auto">Note: for follow-ups:</p>
 <ul dir="auto">
 <li>Snapshot support will rely on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3924720010" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/61769" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/61769/hovercard" href="https://github.com/nodejs/node/pull/61769">#61769</a></li>
@@ -217,7 +215,7 @@ util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=8192  
 </ul>
 <h3 dir="auto">Examples</h3>
 <p dir="auto"><strong>Basic usage</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import { test } from 'node:test';
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { test } from 'node:test';
 import fs from 'node:fs';
 import assert from 'node:assert';
 
@@ -230,23 +228,22 @@ test('mock file system', (t) =&gt; {
 
   const config = JSON.parse(fs.readFileSync('/virtual/config.json', 'utf8'));
   assert.strictEqual(config.key, 'value');
-});"><pre lang="js" class="notranslate"><code class="notranslate">import { test } from 'node:test';
-import fs from 'node:fs';
-import assert from 'node:assert';
+});"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">test</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:test'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">fs</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-s1">assert</span> <span class="pl-k">from</span> <span class="pl-s">'node:assert'</span><span class="pl-kos">;</span>
 
-test('mock file system', (t) =&gt; {
-  t.mock.fs.enable({
-    files: {
-      '/virtual/config.json': '{"key": "value"}',
-    },
-  });
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'mock file system'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'/virtual/config.json'</span>: <span class="pl-s">'{"key": "value"}'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  const config = JSON.parse(fs.readFileSync('/virtual/config.json', 'utf8'));
-  assert.strictEqual(config.key, 'value');
-});
-</code></pre></div>
+  <span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">parse</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/virtual/config.json'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span> <span class="pl-s">'value'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Isolation mode</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('complete isolation from real filesystem', (t) =&gt; {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('complete isolation from real filesystem', (t) =&gt; {
   t.mock.fs.enable({
     files: {
       '/virtual/only.txt': 'isolated content',
@@ -259,23 +256,22 @@ test('mock file system', (t) =&gt; {
 
   // Real files are blocked
   assert.throws(() =&gt; fs.readFileSync('/etc/passwd'), { code: 'ENOENT' });
-});"><pre lang="js" class="notranslate"><code class="notranslate">test('complete isolation from real filesystem', (t) =&gt; {
-  t.mock.fs.enable({
-    files: {
-      '/virtual/only.txt': 'isolated content',
-    },
-    isolate: true,
-  });
+});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'complete isolation from real filesystem'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'/virtual/only.txt'</span>: <span class="pl-s">'isolated content'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+    <span class="pl-c1">isolate</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Virtual file works
-  assert.strictEqual(fs.readFileSync('/virtual/only.txt', 'utf8'), 'isolated content');
+  <span class="pl-c">// Virtual file works</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/virtual/only.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'isolated content'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Real files are blocked
-  assert.throws(() =&gt; fs.readFileSync('/etc/passwd'), { code: 'ENOENT' });
-});
-</code></pre></div>
+  <span class="pl-c">// Real files are blocked</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">throws</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/etc/passwd'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">code</span>: <span class="pl-s">'ENOENT'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Write operations</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('writes always go to virtual fs', (t) =&gt; {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('writes always go to virtual fs', (t) =&gt; {
   t.mock.fs.enable({ files: {} });
 
   // Write to virtual fs
@@ -285,20 +281,19 @@ test('mock file system', (t) =&gt; {
   assert.strictEqual(fs.readFileSync('/tmp/test.txt', 'utf8'), 'safe write');
 
   // After test ends, nothing written to real /tmp
-});"><pre lang="js" class="notranslate"><code class="notranslate">test('writes always go to virtual fs', (t) =&gt; {
-  t.mock.fs.enable({ files: {} });
+});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'writes always go to virtual fs'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">files</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Write to virtual fs
-  fs.writeFileSync('/tmp/test.txt', 'safe write');
+  <span class="pl-c">// Write to virtual fs</span>
+  <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/tmp/test.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'safe write'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // Read it back
-  assert.strictEqual(fs.readFileSync('/tmp/test.txt', 'utf8'), 'safe write');
+  <span class="pl-c">// Read it back</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/tmp/test.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'safe write'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  // After test ends, nothing written to real /tmp
-});
-</code></pre></div>
+  <span class="pl-c">// After test ends, nothing written to real /tmp</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Async/promises</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import fsPromises from 'node:fs/promises';
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import fsPromises from 'node:fs/promises';
 
 test('works with promises', async (t) =&gt; {
   t.mock.fs.enable({
@@ -307,19 +302,18 @@ test('works with promises', async (t) =&gt; {
 
   const content = await fsPromises.readFile('/data/file.txt', 'utf8');
   assert.strictEqual(content, 'async content');
-});"><pre lang="js" class="notranslate"><code class="notranslate">import fsPromises from 'node:fs/promises';
+});"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">fsPromises</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs/promises'</span><span class="pl-kos">;</span>
 
-test('works with promises', async (t) =&gt; {
-  t.mock.fs.enable({
-    files: { '/data/file.txt': 'async content' },
-  });
+<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'works with promises'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span> <span class="pl-s">'/data/file.txt'</span>: <span class="pl-s">'async content'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  const content = await fsPromises.readFile('/data/file.txt', 'utf8');
-  assert.strictEqual(content, 'async content');
-});
-</code></pre></div>
+  <span class="pl-k">const</span> <span class="pl-s1">content</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">fsPromises</span><span class="pl-kos">.</span><span class="pl-en">readFile</span><span class="pl-kos">(</span><span class="pl-s">'/data/file.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">content</span><span class="pl-kos">,</span> <span class="pl-s">'async content'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <p dir="auto"><strong>Directory operations</strong></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('directory operations', (t) =&gt; {
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('directory operations', (t) =&gt; {
   t.mock.fs.enable({
     files: {
       '/app/src/index.js': 'console.log(&quot;hello&quot;)',
@@ -329,18 +323,17 @@ test('works with promises', async (t) =&gt; {
 
   const entries = fs.readdirSync('/app/src');
   assert.deepStrictEqual(entries.sort(), ['index.js', 'utils.js']);
-});"><pre lang="js" class="notranslate"><code class="notranslate">test('directory operations', (t) =&gt; {
-  t.mock.fs.enable({
-    files: {
-      '/app/src/index.js': 'console.log("hello")',
-      '/app/src/utils.js': 'export default {}',
-    },
-  });
+});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'directory operations'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
+      <span class="pl-s">'/app/src/index.js'</span>: <span class="pl-s">'console.log("hello")'</span><span class="pl-kos">,</span>
+      <span class="pl-s">'/app/src/utils.js'</span>: <span class="pl-s">'export default {}'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 
-  const entries = fs.readdirSync('/app/src');
-  assert.deepStrictEqual(entries.sort(), ['index.js', 'utils.js']);
-});
-</code></pre></div>
+  <span class="pl-k">const</span> <span class="pl-s1">entries</span> <span class="pl-c1">=</span> <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readdirSync</span><span class="pl-kos">(</span><span class="pl-s">'/app/src'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">deepStrictEqual</span><span class="pl-kos">(</span><span class="pl-s1">entries</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-s">'index.js'</span><span class="pl-kos">,</span> <span class="pl-s">'utils.js'</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
 <h3 dir="auto">Next Steps</h3>
 <p dir="auto">This PR provides an initial set of commonly-used fs operations. Future iterations could add file operations like <code class="notranslate">rename</code>, <code class="notranslate">copyFile</code>, <code class="notranslate">rm</code>, and <code class="notranslate">truncate</code>, as well as symlink support (<code class="notranslate">symlink</code>, <code class="notranslate">readlink</code>, <code class="notranslate">link</code>).</p>
 <p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2667275360" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55902" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/55902/hovercard" href="https://github.com/nodejs/node/issues/55902">#55902</a></p>]]></content>
@@ -444,14 +437,13 @@ esm/require-esm.js n=1000 exports='named' type='load'                           
         <updated>2026-02-22T22:56:03.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52195?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add an <code class="notranslate">ignore</code> option to <code class="notranslate">fs.watch()</code> to filter filesystem events.</p>
 <p dir="auto"><strong>Type:</strong> <code class="notranslate">string | RegExp | Function | Array&lt;string | RegExp | Function&gt;</code></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="fs.watch(dir, { ignore: '*.log' });
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="fs.watch(dir, { ignore: '*.log' });
 fs.watch(dir, { ignore: /\.tmp$/ });
 fs.watch(dir, { ignore: (f) =&gt; f.startsWith('.') });
-fs.watch(dir, { ignore: ['*.log', /\.tmp$/] });"><pre lang="js" class="notranslate"><code class="notranslate">fs.watch(dir, { ignore: '*.log' });
-fs.watch(dir, { ignore: /\.tmp$/ });
-fs.watch(dir, { ignore: (f) =&gt; f.startsWith('.') });
-fs.watch(dir, { ignore: ['*.log', /\.tmp$/] });
-</code></pre></div>]]></content>
+fs.watch(dir, { ignore: ['*.log', /\.tmp$/] });"><pre class="notranslate"><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ignore</span>: <span class="pl-s">'*.log'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ignore</span>: <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">p</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-en">ignore</span>: <span class="pl-kos">(</span><span class="pl-s1">f</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">f</span><span class="pl-kos">.</span><span class="pl-en">startsWith</span><span class="pl-kos">(</span><span class="pl-s">'.'</span><span class="pl-kos">)</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">watch</span><span class="pl-kos">(</span><span class="pl-s1">dir</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">ignore</span>: <span class="pl-kos">[</span><span class="pl-s">'*.log'</span><span class="pl-kos">,</span> <span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\.</span><span class="pl-s">t</span><span class="pl-s">m</span><span class="pl-s">p</span><span class="pl-cce">$</span><span class="pl-c1">/</span></span><span class="pl-kos">]</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>]]></content>
         <author>
             <name>mcollina</name>
             <email>mcollina@noreply.github.com</email>
@@ -504,7 +496,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM2NjAwNjMsIm5iZiI6MTc3MzY1OTc2MywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTZUMTExNjAzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9M2U5NjcyMzdlMTBlNjE3NGQ3ZWNhMDllZjQ5MGRhNGNkYmZhZjNlNzVhYWYzYTdhMDhjZTU0ZTg3MzhiYTdjNSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.wlzT9bfjhWFIvdc3V8BbK_NWdE69Jvepgvr_s7tXwWA"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM2NjAwNjMsIm5iZiI6MTc3MzY1OTc2MywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTZUMTExNjAzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9M2U5NjcyMzdlMTBlNjE3NGQ3ZWNhMDllZjQ5MGRhNGNkYmZhZjNlNzVhYWYzYTdhMDhjZTU0ZTg3MzhiYTdjNSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.wlzT9bfjhWFIvdc3V8BbK_NWdE69Jvepgvr_s7tXwWA" style="max-width: 100%; height: auto; max-height: 748px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM2NjMzMzcsIm5iZiI6MTc3MzY2MzAzNywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTZUMTIxMDM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9OTlmM2U1OGZhZGUzNjQ1NDFhOGY1NmQyZGRkYzkxOWY4NDkxNTViNjkzOWMxMWY3YTBmNjA4Mjg3YmIxZGRkMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.qF60ApioYn-5JIxp7fn2Sl-RhiPVSuUw7V0h0JkEaxU"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM2NjMzMzcsIm5iZiI6MTc3MzY2MzAzNywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTZUMTIxMDM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9OTlmM2U1OGZhZGUzNjQ1NDFhOGY1NmQyZGRkYzkxOWY4NDkxNTViNjkzOWMxMWY3YTBmNjA4Mjg3YmIxZGRkMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.qF60ApioYn-5JIxp7fn2Sl-RhiPVSuUw7V0h0JkEaxU" style="max-width: 100%; height: auto; max-height: 748px;"></a>
 ]]></content>
         <author>
             <name>sxa</name>
