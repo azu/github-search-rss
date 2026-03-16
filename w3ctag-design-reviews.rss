@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-03-16T21:09:52.626Z</updated>
+    <updated>2026-03-16T22:06:52.583Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
@@ -83,12 +83,12 @@ ready: WHATWG</li>
         <title type="html"><![CDATA[Question: Using Cross-Origin-Resource-Policy to enable compression dictionary support for opaque responses]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1203</id>
         <link href="https://github.com/w3ctag/design-reviews/issues/1203"/>
-        <updated>2026-03-12T16:50:34.000Z</updated>
+        <updated>2026-03-16T21:38:24.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/444165?u=3dc9cb928680e07a7275fb9ccbeaf4b84580a912&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Compression dictionary transport (<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Compression_dictionary_transport" rel="nofollow">mdn</a>, <a href="https://www.rfc-editor.org/rfc/rfc9842.html" rel="nofollow">rfc</a>) is currently disabled for cross-origin no-cors requests by design because it is susceptible to exposing the payload through side-channel attacks.</p>
 <p dir="auto">In the web performance working group and in last year's TPAC general session we discussed various options for marking responses as "safe" (contains no private data) and landed on using the existing <code class="notranslate">Cross-Origin-Resource-Policy: cross-origin</code> header since that is exactly what it was designed to indicate (that a response did not need protection against side-channel attacks in a cross-origin context).</p>
 <p dir="auto">This is important for enabling delta-compression for all of the third-party scripts deployed on the web with a basic no-cors <code class="notranslate">&lt;script src=...&gt;</code> tag.</p>
 <p dir="auto">Currently browsers disable dictionary support for no-cors requests (don't store dictionaries and don't advertise available-dictionary).</p>
-<p dir="auto">This approach should be web-safe to add but it does depend on origins making sure that they include the CORP header for responses to cross-origin requests when they use dictionary compression. If existing origins are blindly dictionary-compressing every request that advertises an <code class="notranslate">Available-Dictionary</code> then those resources will start to fail in a cross-origin no-cors context if they don't include the CORP header (the RFC already warns that they should not be doing this).</p>
+<p dir="auto">This approach should be web-safe to add but it does depend on origins making sure that they include the CORP header for responses to cross-origin requests when they use dictionary compression (if the dictionary was cors-fetched but the resource was no-cors fetched). If existing origins are blindly dictionary-compressing every request that advertises an <code class="notranslate">Available-Dictionary</code> then those resources will start to fail in a cross-origin no-cors context if they don't include the CORP header (the RFC already warns that they should not be doing this).</p>
 <p dir="auto">There are only a few compression dictionary deployments at this point and I'm not aware of any that would have an issue with this extension but, if we're going to make a change, it would be good to do it sooner rather than later.</p>
 <p dir="auto">I have work in-flight with the <a href="https://github.com/whatwg/fetch/pull/1854" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/fetch/pull/1854/hovercard">fetch spec</a> and with a <a href="https://chromestatus.com/feature/5509970048843776" rel="nofollow">chrome feature</a> and would like to have the TAG's opinion on the approach.</p>
 
