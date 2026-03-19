@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-03-19T14:15:24.394Z</updated>
+    <updated>2026-03-19T15:13:33.632Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -215,7 +215,7 @@ util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=8192  
 </ul>
 <h3 dir="auto">Examples</h3>
 <p dir="auto"><strong>Basic usage</strong></p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { test } from 'node:test';
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import { test } from 'node:test';
 import fs from 'node:fs';
 import assert from 'node:assert';
 
@@ -228,22 +228,23 @@ test('mock file system', (t) =&gt; {
 
   const config = JSON.parse(fs.readFileSync('/virtual/config.json', 'utf8'));
   assert.strictEqual(config.key, 'value');
-});"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">test</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:test'</span><span class="pl-kos">;</span>
-<span class="pl-k">import</span> <span class="pl-s1">fs</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs'</span><span class="pl-kos">;</span>
-<span class="pl-k">import</span> <span class="pl-s1">assert</span> <span class="pl-k">from</span> <span class="pl-s">'node:assert'</span><span class="pl-kos">;</span>
+});"><pre lang="js" class="notranslate"><code class="notranslate">import { test } from 'node:test';
+import fs from 'node:fs';
+import assert from 'node:assert';
 
-<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'mock file system'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
-    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
-      <span class="pl-s">'/virtual/config.json'</span>: <span class="pl-s">'{"key": "value"}'</span><span class="pl-kos">,</span>
-    <span class="pl-kos">}</span><span class="pl-kos">,</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+test('mock file system', (t) =&gt; {
+  t.mock.fs.enable({
+    files: {
+      '/virtual/config.json': '{"key": "value"}',
+    },
+  });
 
-  <span class="pl-k">const</span> <span class="pl-s1">config</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">parse</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/virtual/config.json'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">config</span><span class="pl-kos">.</span><span class="pl-c1">key</span><span class="pl-kos">,</span> <span class="pl-s">'value'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+  const config = JSON.parse(fs.readFileSync('/virtual/config.json', 'utf8'));
+  assert.strictEqual(config.key, 'value');
+});
+</code></pre></div>
 <p dir="auto"><strong>Isolation mode</strong></p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('complete isolation from real filesystem', (t) =&gt; {
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('complete isolation from real filesystem', (t) =&gt; {
   t.mock.fs.enable({
     files: {
       '/virtual/only.txt': 'isolated content',
@@ -256,22 +257,23 @@ test('mock file system', (t) =&gt; {
 
   // Real files are blocked
   assert.throws(() =&gt; fs.readFileSync('/etc/passwd'), { code: 'ENOENT' });
-});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'complete isolation from real filesystem'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
-    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
-      <span class="pl-s">'/virtual/only.txt'</span>: <span class="pl-s">'isolated content'</span><span class="pl-kos">,</span>
-    <span class="pl-kos">}</span><span class="pl-kos">,</span>
-    <span class="pl-c1">isolate</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+});"><pre lang="js" class="notranslate"><code class="notranslate">test('complete isolation from real filesystem', (t) =&gt; {
+  t.mock.fs.enable({
+    files: {
+      '/virtual/only.txt': 'isolated content',
+    },
+    isolate: true,
+  });
 
-  <span class="pl-c">// Virtual file works</span>
-  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/virtual/only.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'isolated content'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  // Virtual file works
+  assert.strictEqual(fs.readFileSync('/virtual/only.txt', 'utf8'), 'isolated content');
 
-  <span class="pl-c">// Real files are blocked</span>
-  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">throws</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/etc/passwd'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">code</span>: <span class="pl-s">'ENOENT'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+  // Real files are blocked
+  assert.throws(() =&gt; fs.readFileSync('/etc/passwd'), { code: 'ENOENT' });
+});
+</code></pre></div>
 <p dir="auto"><strong>Write operations</strong></p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('writes always go to virtual fs', (t) =&gt; {
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('writes always go to virtual fs', (t) =&gt; {
   t.mock.fs.enable({ files: {} });
 
   // Write to virtual fs
@@ -281,19 +283,20 @@ test('mock file system', (t) =&gt; {
   assert.strictEqual(fs.readFileSync('/tmp/test.txt', 'utf8'), 'safe write');
 
   // After test ends, nothing written to real /tmp
-});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'writes always go to virtual fs'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">files</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+});"><pre lang="js" class="notranslate"><code class="notranslate">test('writes always go to virtual fs', (t) =&gt; {
+  t.mock.fs.enable({ files: {} });
 
-  <span class="pl-c">// Write to virtual fs</span>
-  <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">writeFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/tmp/test.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'safe write'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  // Write to virtual fs
+  fs.writeFileSync('/tmp/test.txt', 'safe write');
 
-  <span class="pl-c">// Read it back</span>
-  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readFileSync</span><span class="pl-kos">(</span><span class="pl-s">'/tmp/test.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s">'safe write'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  // Read it back
+  assert.strictEqual(fs.readFileSync('/tmp/test.txt', 'utf8'), 'safe write');
 
-  <span class="pl-c">// After test ends, nothing written to real /tmp</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+  // After test ends, nothing written to real /tmp
+});
+</code></pre></div>
 <p dir="auto"><strong>Async/promises</strong></p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import fsPromises from 'node:fs/promises';
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="import fsPromises from 'node:fs/promises';
 
 test('works with promises', async (t) =&gt; {
   t.mock.fs.enable({
@@ -302,18 +305,19 @@ test('works with promises', async (t) =&gt; {
 
   const content = await fsPromises.readFile('/data/file.txt', 'utf8');
   assert.strictEqual(content, 'async content');
-});"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">fsPromises</span> <span class="pl-k">from</span> <span class="pl-s">'node:fs/promises'</span><span class="pl-kos">;</span>
+});"><pre lang="js" class="notranslate"><code class="notranslate">import fsPromises from 'node:fs/promises';
 
-<span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'works with promises'</span><span class="pl-kos">,</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
-    <span class="pl-c1">files</span>: <span class="pl-kos">{</span> <span class="pl-s">'/data/file.txt'</span>: <span class="pl-s">'async content'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+test('works with promises', async (t) =&gt; {
+  t.mock.fs.enable({
+    files: { '/data/file.txt': 'async content' },
+  });
 
-  <span class="pl-k">const</span> <span class="pl-s1">content</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">fsPromises</span><span class="pl-kos">.</span><span class="pl-en">readFile</span><span class="pl-kos">(</span><span class="pl-s">'/data/file.txt'</span><span class="pl-kos">,</span> <span class="pl-s">'utf8'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">strictEqual</span><span class="pl-kos">(</span><span class="pl-s1">content</span><span class="pl-kos">,</span> <span class="pl-s">'async content'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+  const content = await fsPromises.readFile('/data/file.txt', 'utf8');
+  assert.strictEqual(content, 'async content');
+});
+</code></pre></div>
 <p dir="auto"><strong>Directory operations</strong></p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="test('directory operations', (t) =&gt; {
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="test('directory operations', (t) =&gt; {
   t.mock.fs.enable({
     files: {
       '/app/src/index.js': 'console.log(&quot;hello&quot;)',
@@ -323,17 +327,18 @@ test('works with promises', async (t) =&gt; {
 
   const entries = fs.readdirSync('/app/src');
   assert.deepStrictEqual(entries.sort(), ['index.js', 'utils.js']);
-});"><pre class="notranslate"><span class="pl-en">test</span><span class="pl-kos">(</span><span class="pl-s">'directory operations'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">t</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-s1">t</span><span class="pl-kos">.</span><span class="pl-c1">mock</span><span class="pl-kos">.</span><span class="pl-c1">fs</span><span class="pl-kos">.</span><span class="pl-en">enable</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
-    <span class="pl-c1">files</span>: <span class="pl-kos">{</span>
-      <span class="pl-s">'/app/src/index.js'</span>: <span class="pl-s">'console.log("hello")'</span><span class="pl-kos">,</span>
-      <span class="pl-s">'/app/src/utils.js'</span>: <span class="pl-s">'export default {}'</span><span class="pl-kos">,</span>
-    <span class="pl-kos">}</span><span class="pl-kos">,</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+});"><pre lang="js" class="notranslate"><code class="notranslate">test('directory operations', (t) =&gt; {
+  t.mock.fs.enable({
+    files: {
+      '/app/src/index.js': 'console.log("hello")',
+      '/app/src/utils.js': 'export default {}',
+    },
+  });
 
-  <span class="pl-k">const</span> <span class="pl-s1">entries</span> <span class="pl-c1">=</span> <span class="pl-s1">fs</span><span class="pl-kos">.</span><span class="pl-en">readdirSync</span><span class="pl-kos">(</span><span class="pl-s">'/app/src'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-s1">assert</span><span class="pl-kos">.</span><span class="pl-en">deepStrictEqual</span><span class="pl-kos">(</span><span class="pl-s1">entries</span><span class="pl-kos">.</span><span class="pl-en">sort</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-s">'index.js'</span><span class="pl-kos">,</span> <span class="pl-s">'utils.js'</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+  const entries = fs.readdirSync('/app/src');
+  assert.deepStrictEqual(entries.sort(), ['index.js', 'utils.js']);
+});
+</code></pre></div>
 <h3 dir="auto">Next Steps</h3>
 <p dir="auto">This PR provides an initial set of commonly-used fs operations. Future iterations could add file operations like <code class="notranslate">rename</code>, <code class="notranslate">copyFile</code>, <code class="notranslate">rm</code>, and <code class="notranslate">truncate</code>, as well as symlink support (<code class="notranslate">symlink</code>, <code class="notranslate">readlink</code>, <code class="notranslate">link</code>).</p>
 <p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2667275360" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/55902" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/55902/hovercard" href="https://github.com/nodejs/node/issues/55902">#55902</a></p>]]></content>
@@ -496,7 +501,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM5MzAwMjQsIm5iZiI6MTc3MzkyOTcyNCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTlUMTQxNTI0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NmZmYzIzYmJjNzI2NWJlMmNkM2QzNWFkYWFlN2Q5ODZhOWQ0N2U5ZjUxODc3M2Y2YzkzZTkxYjIzZGU3M2Y4MiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.fQbAHzLedNeToHxsZOdFVEaiQ8_9tjgEUyrKpupOID8"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM5MzAwMjQsIm5iZiI6MTc3MzkyOTcyNCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTlUMTQxNTI0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NmZmYzIzYmJjNzI2NWJlMmNkM2QzNWFkYWFlN2Q5ODZhOWQ0N2U5ZjUxODc3M2Y2YzkzZTkxYjIzZGU3M2Y4MiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.fQbAHzLedNeToHxsZOdFVEaiQ8_9tjgEUyrKpupOID8" style="max-width: 100%; height: auto; max-height: 748px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM5MzM1MTMsIm5iZiI6MTc3MzkzMzIxMywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTlUMTUxMzMzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YTA0NGNjNjQ0YTVjOWFmYjk0ZDBlMjRmMDQxM2ZkNTRhOWU5NWJiMDc4OWI5NWY3YzQwYTI4YjNhOGY2OTUwYiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.9lkJDlQkLZSqO-4rG0b96xcVQqz8W6urfTCuYKyAajs"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM5MzM1MTMsIm5iZiI6MTc3MzkzMzIxMywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDMxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAzMTlUMTUxMzMzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YTA0NGNjNjQ0YTVjOWFmYjk0ZDBlMjRmMDQxM2ZkNTRhOWU5NWJiMDc4OWI5NWY3YzQwYTI4YjNhOGY2OTUwYiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.9lkJDlQkLZSqO-4rG0b96xcVQqz8W6urfTCuYKyAajs" style="max-width: 100%; height: auto; max-height: 748px;"></a>
 ]]></content>
         <author>
             <name>sxa</name>
