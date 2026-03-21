@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7689582?u=11ee71fc041d4f515bef665b10af491bd2d2d5ab&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">With WebGPU support enabled by default in Safari 26 (shipped with macOS 26 Tahoe and iOS 26) a bunch of WebGPU features were enabled. All the features marked in this PR with <code class=\"notranslate\">\"version_added\" : \"26\"</code> were already available in previous Safari versions with the WebGPU flag enabled, and are now enabled by default.</p>\n<p dir=\"auto\">Both <code class=\"notranslate\">core-features-and-limits</code> and <code class=\"notranslate\">texture-formats-tier1</code> are enabled at least in Safari 26.2. I don't have access to a machine with 26.1 or 26.0 and I haven't found when they were added.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<h4 dir=\"auto\">Related issues</h4>",
+            "url": "https://github.com/mdn/browser-compat-data/pull/29309",
+            "title": "Update WebGPU features for Safari",
+            "date_modified": "2026-03-21T16:42:15.000Z",
+            "date_published": "2026-03-21T16:41:32.000Z",
+            "author": {
+                "name": "ferminLR",
+                "url": "https://github.com/ferminLR"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF149 adds support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@container\" rel=\"nofollow\"><code class=\"notranslate\">@container</code></a> selections where the <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@container#container-query\" rel=\"nofollow\"><code class=\"notranslate\">&lt;container-query&gt;</code></a> part is optiona in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2016474\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2016474</a></p>\n<p dir=\"auto\">This allows you to just select a container based on its name:</p>\n<div class=\"highlight highlight-source-css notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"@container --name {}\"><pre class=\"notranslate\"><span class=\"pl-k\">@container</span> --name {}</pre></div>\n<p dir=\"auto\">This adds the subfeature. You can test this using <a href=\"https://wpt.live/css/css-conditional/container-queries/query-container-name.html\" rel=\"nofollow\">https://wpt.live/css/css-conditional/container-queries/query-container-name.html</a></p>\n<p dir=\"auto\">Note that I have set Chrome and Safari as <code class=\"notranslate\">false</code> but you can tell it is coming because they pass the test on the latest versions but NOT on current versions I can access: <a href=\"https://wpt.fyi/results/css/css-conditional/container-queries/query-container-name.html?label=master&amp;label=experimental&amp;aligned\" rel=\"nofollow\">https://wpt.fyi/results/css/css-conditional/container-queries/query-container-name.html?label=master&amp;label=experimental&amp;aligned</a></p>\n<ul dir=\"auto\">\n<li>Webkit: in STP release 235 <a href=\"https://webkit.org/blog/17739/release-notes-for-safari-technology-preview-235/\" rel=\"nofollow\">https://webkit.org/blog/17739/release-notes-for-safari-technology-preview-235/</a></li>\n</ul>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3978053780\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43212\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43212/hovercard\" href=\"https://github.com/mdn/content/issues/43212\">mdn/content#43212</a></p>",
             "url": "https://github.com/mdn/browser-compat-data/pull/29300",
             "title": "FF149 @container query is optional",
@@ -179,17 +190,6 @@
             "author": {
                 "name": "caugner",
                 "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Chromium browsers support <a href=\"https://privacysandbox.google.com/protections/user-agent\" rel=\"nofollow\">User-Agent reduction</a>, which means that features such as the <code class=\"notranslate\">User-Agent</code> HTTP header provide less-specific information in an effort to reduce their effectiveness for fingerprinting/tracking.</p>\n<p dir=\"auto\">This PR adds data points covering User-Agent reduction to relevant web platform features that I know to be affected by the change.</p>\n<p dir=\"auto\">Compat data sources:</p>\n<ul dir=\"auto\">\n<li>From looking at <a href=\"https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html\" rel=\"nofollow\">https://blog.chromium.org/2021/09/user-agent-reduction-origin-trial-and-dates.html</a>, it looks like rollout of UA reduction to 100% of Chromium desktop users occurred in version 110, while the version was 113 for Chromium Android users. I asked <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/miketaylr/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/miketaylr\">@miketaylr</a> about this, and he confirmed it to be correct.</li>\n<li>From looking at <a href=\"https://www.chromium.org/updates/ua-reduction/#applicable-platforms\" rel=\"nofollow\">https://www.chromium.org/updates/ua-reduction/#applicable-platforms</a>, it looks like Android WebView should be <code class=\"notranslate\">false</code></li>\n</ul>\n<p dir=\"auto\">Another question for Mike: For all of these data points, I used <a href=\"https://wicg.github.io/ua-client-hints/#user-agent\" rel=\"nofollow\">https://wicg.github.io/ua-client-hints/#user-agent</a> as the <code class=\"notranslate\">spec_url</code>. Are there better spec URLs we can point to for these individual features?</p>\n<p dir=\"auto\">This PR is part of the final set of privacy sandbox information to be added to MDN. Much of it is being removed, but this feature is stable and will be kept, so it should be added.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
-            "url": "https://github.com/mdn/browser-compat-data/pull/28275",
-            "title": "Chrome 110 applies User-Agent reduction to Navigator properties + `User-Agent` header",
-            "date_modified": "2026-03-10T11:03:32.000Z",
-            "date_published": "2025-10-23T15:21:08.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
