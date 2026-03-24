@@ -2,11 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-03-24T17:18:10.737Z</updated>
+    <updated>2026-03-24T18:14:35.447Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[`Clear-Site-Data`: record Chromium bugs]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29333</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29333"/>
+        <updated>2026-03-24T17:29:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Chrome has a couple of nasty bugs, which this PR captures as notes, with one triggering a partial implementation.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><a href="https://crbug.com/364634040" rel="nofollow">Bug 364634040</a> reports that <code class="notranslate">Clear-Site-Data</code> doesn't really take effect until . I took the version numbers in the report as true, since it was confirmed in the issue. I marked it as partial since the behavior is not feature detectable and the mitigation isn't really something developers can work around with a high expectation of success (e.g., asking users to do hard refreshes).</p>
+<p dir="auto"><a href="https://crbug.com/40233601" rel="nofollow">Bug 40233601</a> reports long hangs on using the <code class="notranslate">Clear-Site-Data</code> header. Large sites (GitHub and MDN) reported serious issues with this header; GitHub stopped using the header as a consequence. This one could be a partial, but I didn't set it because MDN kept using the header and the header <em>works</em> (in this case), just very slowly.</p>
+
+
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a href="https://crbug.com/364634040" rel="nofollow">Bug 364634040</a></li>
+<li><a href="https://crbug.com/40233601" rel="nofollow">Bug 40233601</a></li>
+<li><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #12788.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1022724032" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/12788" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/12788/hovercard" href="https://github.com/mdn/browser-compat-data/issues/12788">#12788</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-03-24T17:28:32.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Chrome 142-145 support for local network access features]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29331</id>
@@ -151,7 +180,7 @@ It updates the <code class="notranslate">DataTimeFormat</code> constructor to in
         <title type="html"><![CDATA[FF149 @container query is optional]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29300</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/29300"/>
-        <updated>2026-03-23T00:50:57.000Z</updated>
+        <updated>2026-03-24T18:02:10.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF149 adds support for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@container" rel="nofollow"><code class="notranslate">@container</code></a> selections where the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@container#container-query" rel="nofollow"><code class="notranslate">&lt;container-query&gt;</code></a> part is optiona in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2016474" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2016474</a></p>
 <p dir="auto">This allows you to just select a container based on its name:</p>
 <div class="highlight highlight-source-css notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="@container --name {}"><pre class="notranslate"><span class="pl-k">@container</span> --name {}</pre></div>
@@ -387,28 +416,5 @@ The spec changed slightly, and in FF149 it made the new additions nullable (whic
             <uri>https://github.com/dletorey</uri>
         </author>
         <published>2026-03-09T16:39:23.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 145 CookieStore.set() maxAge option]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/29197</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/29197"/>
-        <updated>2026-03-23T08:49:11.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Since version 145, Chrome has supported the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/set" rel="nofollow"><code class="notranslate">CookieStore.set()</code></a> method's <code class="notranslate">maxAge</code> option; see <a href="https://chromestatus.com/feature/5190778418757632" rel="nofollow">https://chromestatus.com/feature/5190778418757632</a>.</p>
-<p dir="auto">This PR adds a data point for the new option.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-03-06T14:06:22.000Z</published>
     </entry>
 </feed>
