@@ -2,11 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-04-02T07:27:03.515Z</updated>
+    <updated>2026-04-02T08:17:12.834Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Extend npm audit to detect supply chain compromise signals beyond CVEs]]></title>
+        <id>https://github.com/npm/rfcs/issues/860</id>
+        <link href="https://github.com/npm/rfcs/issues/860"/>
+        <updated>2026-04-02T08:02:06.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3455008?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">The axios compromise on March 31st exposed a gap that <code class="notranslate">npm audit</code> can't close on its own. A threat actor hijacked the primary maintainer's npm account and published two backdoored versions within 40 minutes — each with a previously undeclared dependency running a RAT via post-install. There was no CVE at the time of publish. The advisory database had nothing to flag.</p>
+<p dir="auto">This isn't isolated. In 2025 alone, 45,777 CVEs were reported averaging 130 per day, and multiple npm supply chain attacks hit packages with billions of weekly downloads. A growing share of these attacks arrive before a CVE exists — through account takeovers, dependency injection, and post-install abuse.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">A developer runs <code class="notranslate">npm install</code> after a routine <code class="notranslate">package.json</code> update. One dependency received a patch version bump overnight. The bump introduced a new post-install script and was published by an account that had never touched the package before. <code class="notranslate">npm audit</code> returns clean. The machine is compromised within seconds of install completing.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm audit</code> queries the advisory database for known CVEs against the resolved dependency tree. It returns clean if no CVEs exist, regardless of other signals.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm audit</code> (or a new <code class="notranslate">npm audit --provenance</code> / <code class="notranslate">npm audit --supply-chain</code> flag) additionally checks:</p>
+<ul dir="auto">
+<li>Whether the publish account for each installed version has previously published that package</li>
+<li>Whether new post-install or install scripts were introduced in the installed version vs. the prior one</li>
+<li>Whether new transitive dependencies were introduced that weren't present in the prior version</li>
+<li>Whether the installed version has a valid SLSA provenance attestation, especially for packages that previously carried one</li>
+</ul>
+<p dir="auto">These checks don't require a new database — npm already has publish history and provenance metadata. Surfacing them at audit time gives developers a signal before a CVE is ever filed.</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li><a href="https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/" rel="nofollow">Microsoft Security Blog — Mitigating the Axios npm supply chain compromise</a></li>
+<li><a href="https://thehackernews.com/2026/03/axios-supply-chain-attack-pushes-cross.html" rel="nofollow">The Hacker News — Axios Supply Chain Attack Pushes Cross-Platform RAT</a></li>
+<li><a href="https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/" rel="nofollow">Palo Alto Networks — Widespread npm Supply Chain Attack Puts Billions of Weekly Downloads at Risk</a></li>
+<li>Related: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1955039737" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/739" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/739/hovercard" href="https://github.com/npm/rfcs/issues/739">#739</a></li>
+</ul>]]></content>
+        <author>
+            <name>ranjithrajv</name>
+            <email>ranjithrajv@noreply.github.com</email>
+            <uri>https://github.com/ranjithrajv</uri>
+        </author>
+        <published>2026-04-02T08:02:06.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Add feature to suppress minor version changes from update-notifier]]></title>
         <id>https://github.com/npm/rfcs/issues/859</id>
@@ -38,14 +74,14 @@
         <updated>2026-03-06T16:37:43.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
 <h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-7b3bb2409c075d347c5bdadc37a99a21" id="user-content-fnref-1-7b3bb2409c075d347c5bdadc37a99a21" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
+<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-72208c1e2c18513636ae9fed83bb2be3" id="user-content-fnref-1-72208c1e2c18513636ae9fed83bb2be3" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
 <ul dir="auto">
 <li>If a package version is explicitly recorded in the lockfile it will be installed regardless of the minimum age requested.</li>
 <li>If a package version is explicitly requested, e.g. <code class="notranslate">npm install package@1.2.3</code> where v1.2.3 was released today, it will be installed regardless of the minimum age requested.</li>
 </ul>
 <h3 dir="auto">Prior Art</h3>
 <h4 dir="auto"><code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code></h4>
-<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-7b3bb2409c075d347c5bdadc37a99a21" id="user-content-fnref-2-7b3bb2409c075d347c5bdadc37a99a21" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
+<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-72208c1e2c18513636ae9fed83bb2be3" id="user-content-fnref-2-72208c1e2c18513636ae9fed83bb2be3" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
 <h4 dir="auto">Other Ecosystems</h4>
 <p dir="auto">The Rust/Cargo proposal for its <code class="notranslate">--min-release-age</code> option (linked below) includes a similar concept:</p>
 <blockquote>
@@ -61,7 +97,7 @@ it downgrade to an older version. It will leave the version as it is.</li>
 <p dir="auto">One drawback of this approach is that using an untrusted lockfile - e.g. from an untrusted repository or Pull Request - may unexpectedly override your expected security preferences. An attacker could leverage the suggested behavior to inject a malicious dependency into the lockfile and make you download it.</p>
 <p dir="auto">I believe that</p>
 <ol dir="auto">
-<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-7b3bb2409c075d347c5bdadc37a99a21" id="user-content-fnref-3-7b3bb2409c075d347c5bdadc37a99a21" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
+<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-72208c1e2c18513636ae9fed83bb2be3" id="user-content-fnref-3-72208c1e2c18513636ae9fed83bb2be3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
 <li>This is a trade-off that is worth considering as making the security feature more approachable in this way can help adoption, which might offset the risk of this thread.</li>
 </ol>
 <h3 dir="auto">Example</h3>
@@ -85,14 +121,14 @@ it downgrade to an older version. It will leave the version as it is.</li>
 </ul>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
 <ol dir="auto">
-<li id="user-content-fn-1-7b3bb2409c075d347c5bdadc37a99a21">
-<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-7b3bb2409c075d347c5bdadc37a99a21" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-72208c1e2c18513636ae9fed83bb2be3">
+<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-72208c1e2c18513636ae9fed83bb2be3" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-7b3bb2409c075d347c5bdadc37a99a21">
-<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-7b3bb2409c075d347c5bdadc37a99a21" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-72208c1e2c18513636ae9fed83bb2be3">
+<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-72208c1e2c18513636ae9fed83bb2be3" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-3-7b3bb2409c075d347c5bdadc37a99a21">
-<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-7b3bb2409c075d347c5bdadc37a99a21" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-3-72208c1e2c18513636ae9fed83bb2be3">
+<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-72208c1e2c18513636ae9fed83bb2be3" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>]]></content>
@@ -654,8 +690,8 @@ SIGTERM  (node receives signal)
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTUxMjMsIm5iZiI6MTc3NTExNDgyMywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwNzI3MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNmQzMzI0YzFhZTE3NDVmZjA3YzFhNzkwZmNiMmJiY2Y1ZDAxNWM2OTFjMDkxZjJlNWE3ZjQ5MWJjY2VhMTViJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.uZFnyMGwLj6nh-bIH02PjQzA4zJbRhbDkpPgI4bJb4o"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTUxMjMsIm5iZiI6MTc3NTExNDgyMywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwNzI3MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xNmQzMzI0YzFhZTE3NDVmZjA3YzFhNzkwZmNiMmJiY2Y1ZDAxNWM2OTFjMDkxZjJlNWE3ZjQ5MWJjY2VhMTViJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.uZFnyMGwLj6nh-bIH02PjQzA4zJbRhbDkpPgI4bJb4o" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTUxMjMsIm5iZiI6MTc3NTExNDgyMywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwNzI3MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xMDlkYjY5ZTNkMWIyMjIzZjg2YWY2NzkzMzg0YjY5ZWNhMDRjZmM5ZWNkZTZjMmZiMzMzOWFlNmJlYTU0NDhlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gTE-KSCEBRMlfpzrmJo46IGQDZngdxJ2-6BYxCTpNpI"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTUxMjMsIm5iZiI6MTc3NTExNDgyMywicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwNzI3MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xMDlkYjY5ZTNkMWIyMjIzZjg2YWY2NzkzMzg0YjY5ZWNhMDRjZmM5ZWNkZTZjMmZiMzMzOWFlNmJlYTU0NDhlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.gTE-KSCEBRMlfpzrmJo46IGQDZngdxJ2-6BYxCTpNpI" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTgxMzIsIm5iZiI6MTc3NTExNzgzMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwODE3MTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MDU5YjU3N2Y1ZmM3OWM1NjdmMTE4MDcyMmM5OTkyZjkwNWNhNDBlNDFkMzgxYzZlYTM3ZTY5ZGEyMjU0MTAzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.J78KXIaf3DdDLyeIRSLv420Di6qsLADcC2hoQieCIiI"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTgxMzIsIm5iZiI6MTc3NTExNzgzMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwODE3MTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MDU5YjU3N2Y1ZmM3OWM1NjdmMTE4MDcyMmM5OTkyZjkwNWNhNDBlNDFkMzgxYzZlYTM3ZTY5ZGEyMjU0MTAzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.J78KXIaf3DdDLyeIRSLv420Di6qsLADcC2hoQieCIiI" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTgxMzIsIm5iZiI6MTc3NTExNzgzMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwODE3MTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYjZkMTE2NTUzN2Y5YjI1NjI2Mjk3OTQzYzM4OTE4YTc1NGNjYjVkZmZkYWJhNzYxNjQ2NzJiYmE1ODk3MWI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.09SOax6Q_hNnGXwofYrfTkSHW0fFSJciXVfAn6XOtgQ"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUxMTgxMzIsIm5iZiI6MTc3NTExNzgzMiwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwMlQwODE3MTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYjZkMTE2NTUzN2Y5YjI1NjI2Mjk3OTQzYzM4OTE4YTc1NGNjYjVkZmZkYWJhNzYxNjQ2NzJiYmE1ODk3MWI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.09SOax6Q_hNnGXwofYrfTkSHW0fFSJciXVfAn6XOtgQ" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -864,59 +900,5 @@ AC92,{bs/$€€+**^}</li>
             <uri>https://github.com/AKayy2020</uri>
         </author>
         <published>2025-03-05T09:45:54.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[FEATURE] Support `npm version --interactive`]]></title>
-        <id>https://github.com/npm/rfcs/issues/810</id>
-        <link href="https://github.com/npm/rfcs/issues/810"/>
-        <updated>2025-01-22T09:57:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/32255488?u=ffd79acd05d6d4c1b4f6efa889067f59af8601be&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Why</h2>
-<p dir="auto">Version bumping in npm currently requires explicitly specifying the version increment (e.g. <code class="notranslate">npm version minor</code>). This makes it challenging to create reusable release scripts in package.json, as the version increment needs to be hardcoded or passed as an argument.</p>
-<h2 dir="auto">How</h2>
-<h3 dir="auto">Current Behavior</h3>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm version minor  # Must specify version increment explicitly"><pre class="notranslate">npm version minor  <span class="pl-c"><span class="pl-c">#</span> Must specify version increment explicitly</span></pre></div>
-<h3 dir="auto">Expected Behavior</h3>
-<p dir="auto">Would like to add an interactive mode similar to <a href="https://github.com/antfu-collective/bumpp">bumpp</a>:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
-  &quot;scripts&quot;: {
-    &quot;release&quot;: &quot;npm version --interactive&quot;
-  }
-}"><pre class="notranslate">{
-  <span class="pl-ent">"scripts"</span>: {
-    <span class="pl-ent">"release"</span>: <span class="pl-s"><span class="pl-pds">"</span>npm version --interactive<span class="pl-pds">"</span></span>
-  }
-}</pre></div>
-<p dir="auto">Running <code class="notranslate">npm run release</code> would present an interactive CLI prompt:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="? Current version 0.1.0 »
-            major 1.0.0
-            minor 0.2.0
-            patch 0.1.1
-&gt;            next 0.1.1
-        pre-patch 0.1.1-beta.0
-        pre-minor 0.2.0-beta.0
-        pre-major 1.0.0-beta.0
-            as-is 0.1.0
-           custom ..."><pre class="notranslate"><span class="pl-k">?</span> Current version 0.1.0 »
-            major 1.0.0
-            minor 0.2.0
-            patch 0.1.1
-<span class="pl-k">&gt;</span>            next 0.1.1
-        pre-patch 0.1.1-beta.0
-        pre-minor 0.2.0-beta.0
-        pre-major 1.0.0-beta.0
-            as-is 0.1.0
-           custom ...</pre></div>
-<p dir="auto">Benefits:</p>
-<ul dir="auto">
-<li>More intuitive version selection</li>
-<li>Reusable release scripts without hardcoding versions</li>
-</ul>
-<p dir="auto">This would align npm's version bumping workflow with modern CLI tools while maintaining compatibility with existing npm version commands.</p>]]></content>
-        <author>
-            <name>pacexy</name>
-            <email>pacexy@noreply.github.com</email>
-            <uri>https://github.com/pacexy</uri>
-        </author>
-        <published>2025-01-22T09:57:07.000Z</published>
     </entry>
 </feed>
