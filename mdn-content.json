@@ -116,17 +116,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://drafts.css-houdini.org/css-typed-om/#dom-cssmathsum-cssmathsum\" rel=\"nofollow\">https://drafts.css-houdini.org/css-typed-om/#dom-cssmathsum-cssmathsum</a></p>\n<p dir=\"auto\">sum rather than product</p>",
-            "url": "https://github.com/mdn/content/pull/43694",
-            "title": "Fix CSSMathSum args type",
-            "date_modified": "2026-04-08T09:01:27.000Z",
-            "date_published": "2026-04-07T13:53:57.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 145 adds support for the <code class=\"notranslate\">NavigationTransition.to</code> property; see <a href=\"https://chromestatus.com/feature/6008183302782976\" rel=\"nofollow\">https://chromestatus.com/feature/6008183302782976</a>. I originally added a doc for <code class=\"notranslate\">to</code> in this PR, but then removed it again as it is already added in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4172172496\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43626\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/43626/hovercard\" href=\"https://github.com/mdn/content/pull/43626\">#43626</a>.</p>\n<p dir=\"auto\">This PR still adds reference documentation for <code class=\"notranslate\">NavigationTransition.committed</code>, as we were missing that.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/43692",
             "title": "Editorial review: Document NavigationTransition.committed",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>related to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4156255339\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43601\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/43601/hovercard?comment_id=4157839065&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/pull/43601#issuecomment-4157839065\">#43601 (comment)</a></li>\n</ul>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The <code class=\"notranslate\">Synchronize with BCD</code> PRs are automated maintenance PRs. The PRs simply pull stats that are there in BCD repo and nothing more. Merging these PRs is a mundane task because there is nothing to check except for vary rare Markdown syntax errors. The PR check workflows can catch syntax errors anyways.</p>\n<p dir=\"auto\">Involving code owners for merging these workflows is not useful/helpful for the following reasons:</p>\n<ol dir=\"auto\">\n<li>At the PR stage the stats have already changed in BCD repo(may be by themselves). It is pointless to request stat changes here in the PR. If change is needed then they need to do it in BCD repo.</li>\n<li>BCD repo release happens every Friday or Saturday. In exceptional cases any day of a week. We can't force code owners to merge the PRs before the next release. If PR remains unmerged then we show stale stats on the MDN website.</li>\n</ol>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Prevent showing outdated stats in the published content.</li>\n<li>Not to bother code owners and other maintainers.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The BCD sync PRs are a temporary stopgap solution till the back end handles stat banners/badges itself. So this auto merge will remain only till we use BCD sync PRs.</p>\n<p dir=\"auto\">As a security measure, the workflow will fail if</p>\n<ul dir=\"auto\">\n<li>any file other than a Markdown file is pulled</li>\n<li>modified file count exceeds 30</li>\n<li></li>\n</ul>\n<h4 dir=\"auto\">Settings to do in the content repo if not done already</h4>\n<p dir=\"auto\">Enable \"Allow auto-merge\" in the repository settings:</p>\n<ol dir=\"auto\">\n<li>Go to Settings → General → Pull Requests</li>\n<li>Check Allow auto-merge</li>\n</ol>\n<p dir=\"auto\">Configure branch protection on your target branch (usually main):</p>\n<ol dir=\"auto\">\n<li>Go to Settings → Branches → Branch protection rules</li>\n<li>Add/edit rule for your default branch</li>\n<li>Enable Require status checks to pass before merging</li>\n<li>Add all the status checks / workflow jobs that must pass (e.g., lint, test, build, etc.). This is the key part — GitHub will only perform the merge once every required check is green.</li>\n</ol>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li>addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4156255339\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43601\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/43601/hovercard?comment_id=4157839065&amp;comment_type=issue_comment\" href=\"https://github.com/mdn/content/pull/43601#issuecomment-4157839065\">#43601 (comment)</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3870580010\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/rari/issues/503\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/rari/issues/503/hovercard\" href=\"https://github.com/mdn/rari/issues/503\">mdn/rari#503</a></li>\n<li></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/43647",
+            "title": "Auto merge BCD sync PRs",
+            "date_modified": "2026-04-02T04:15:52.000Z",
+            "date_published": "2026-04-02T04:13:08.000Z",
+            "author": {
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
             }
         }
     ]
