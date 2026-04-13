@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-04-13T17:20:34.366Z</updated>
+    <updated>2026-04-13T18:20:37.622Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -363,6 +363,33 @@ assert.strictEqual(import.meta.main, true);
             <uri>https://github.com/joyeecheung</uri>
         </author>
         <published>2026-02-13T23:56:45.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[build: enable Temporal by default]]></title>
+        <id>https://github.com/nodejs/node/pull/61806</id>
+        <link href="https://github.com/nodejs/node/pull/61806"/>
+        <updated>2026-04-13T18:10:29.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5445507?u=4dc851f27fdfb6c2e287ccdb528977e722ed7760&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Enabling Temporal support requires <code class="notranslate">cargo</code> and <code class="notranslate">rustc</code>, which are new build toolchain requirements.</p>
+<p dir="auto">Add a <code class="notranslate">--v8-disable-temporal-support</code> option to <code class="notranslate">configure.py</code> to explicitly opt-out of Temporal support (i.e. no need for Rust).</p>
+<p dir="auto">If the existing <code class="notranslate">--v8-enable-temporal-support</code> option is not explicitly passed to <code class="notranslate">configure.py</code>:</p>
+<ul dir="auto">
+<li>Attempt to detect <code class="notranslate">cargo</code> and <code class="notranslate">rustc</code>.</li>
+<li>If neither <code class="notranslate">cargo</code> and <code class="notranslate">rustc</code> are detected, print a warning and disable Temporal support.</li>
+<li>If both <code class="notranslate">cargo</code> and <code class="notranslate">rustc</code> are detected, enable Temporal support.</li>
+</ul>
+<p dir="auto">If <code class="notranslate">--v8-enable-temporal-support</code> is passed to <code class="notranslate">configure.py</code>, then the build will error and stop if <code class="notranslate">cargo</code> and/or <code class="notranslate">rustc</code> are not detected.</p>
+<p dir="auto">To avoid ambiguity, <code class="notranslate">configure.py</code> will error and stop if both <code class="notranslate">--v8-disable-temporal-support</code> and <code class="notranslate">--v8-enable-temporal-support</code> are used.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #57127.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2861446116" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/57127" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/57127/hovercard" href="https://github.com/nodejs/node/issues/57127">#57127</a></p>
+<hr>
+<p dir="auto">Blocked on either of the V8 updates (<a href="https://github.com/nodejs/node/pull/61002" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/61002/hovercard">14.4</a> or <a href="https://github.com/nodejs/node/pull/61681" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/61681/hovercard">14.5</a>) landing first.</p>
+<p dir="auto">Autodetecting this way allows us to roll out Rust onto the CI machines gradually (the aim is for Node.js 26).</p>
+]]></content>
+        <author>
+            <name>richardlau</name>
+            <email>richardlau@noreply.github.com</email>
+            <uri>https://github.com/richardlau</uri>
+        </author>
+        <published>2026-02-13T18:36:01.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[module: remove --experimental-transform-types]]></title>
@@ -812,7 +839,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYxMDExMzQsIm5iZiI6MTc3NjEwMDgzNCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTNUMTcyMDM0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjkxM2I1ZmVmNWI0YTUyYjRhNGEyZWU0ZDU0ZGQ4MDBkMjNkOTA3OTczNGJhOTRjNjk5YzJhZmU5NjkxNjZkNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.JSyUrRSoeR-f3BoO2GtAOWGXaOl1xifgQqlu3E6CC6A"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYxMDExMzQsIm5iZiI6MTc3NjEwMDgzNCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTNUMTcyMDM0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjkxM2I1ZmVmNWI0YTUyYjRhNGEyZWU0ZDU0ZGQ4MDBkMjNkOTA3OTczNGJhOTRjNjk5YzJhZmU5NjkxNjZkNiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.JSyUrRSoeR-f3BoO2GtAOWGXaOl1xifgQqlu3E6CC6A" style="max-width: 100%; height: auto; max-height: 748px;"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYxMDQ3MzcsIm5iZiI6MTc3NjEwNDQzNywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTNUMTgyMDM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MDA5MGE4M2IyYzJlYzQ0MzlkNWI1OGI4NjBhNDRjNTk2OTgyNDJmMTI1MzNiMjQxMTkyYjQ0NDZhYjVlZjFjZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.-SCD6EZZ_Iz_SOfQh_Y_yOSOC8i2KZgHcmuyAX6xFus"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzYxMDQ3MzcsIm5iZiI6MTc3NjEwNDQzNywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTNUMTgyMDM3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MDA5MGE4M2IyYzJlYzQ0MzlkNWI1OGI4NjBhNDRjNTk2OTgyNDJmMTI1MzNiMjQxMTkyYjQ0NDZhYjVlZjFjZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.-SCD6EZZ_Iz_SOfQh_Y_yOSOC8i2KZgHcmuyAX6xFus" style="max-width: 100%; height: auto; max-height: 748px;"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -1012,20 +1039,5 @@ ones are left as legacy aliases.</p>
             <uri>https://github.com/joyeecheung</uri>
         </author>
         <published>2025-12-04T23:58:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[v25.x] lib: do not provide an empty Proxy from localStorage getter]]></title>
-        <id>https://github.com/nodejs/node/pull/60776</id>
-        <link href="https://github.com/nodejs/node/pull/60776"/>
-        <updated>2026-01-12T10:27:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9092381?u=fde5fbface3f55bc6d96ff4c5701637f9a01bf0f&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Addresses the original regression in a way that is more consistent with the user experience in v24.x where no storage-related CLI arguments are passed. Access now warns and returns <code class="notranslate">undefined</code> in the case where the requisite path is missing.</p>
-<p dir="auto">As things stand, the behaviour will revert to exception-raising in v26.x; any discussion relating to this specifically should go in the associated issue, this PR is just to re-fix the regression for localStorage users in v25.</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3527786014" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/60303" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/60303/hovercard" href="https://github.com/nodejs/node/issues/60303">#60303</a></p>]]></content>
-        <author>
-            <name>Renegade334</name>
-            <email>Renegade334@noreply.github.com</email>
-            <uri>https://github.com/Renegade334</uri>
-        </author>
-        <published>2025-11-18T13:58:37.000Z</published>
     </entry>
 </feed>
