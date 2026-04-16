@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-04-16T12:16:01.972Z</updated>
+    <updated>2026-04-16T13:29:44.034Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix '1' + 2n BigInt example on Addition page]]></title>
+        <id>https://github.com/mdn/content/pull/43812</id>
+        <link href="https://github.com/mdn/content/pull/43812"/>
+        <updated>2026-04-16T12:31:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/517103?u=8840cb220efe823a3547734dea97ebdcff28e836&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Correct the BigInt/string addition example on the <code class="notranslate">+</code> operator page. The previous example marked <code class="notranslate">"1" + 2n</code> as throwing a <code class="notranslate">TypeError</code>, but it actually produces <code class="notranslate">"12"</code> via string concatenation because the <code class="notranslate">+</code> operator checks for a string operand before the BigInt/Number mix check.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The reported example misled readers about the precedence of string concatenation over the BigInt/Number type-mix rule, which is already described earlier on the same page in the Description section. You can verify the behavior in any JS console:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;1&quot; + 2n; // &quot;12&quot;"><pre class="notranslate"><span class="pl-s">"1"</span> <span class="pl-c1">+</span> <span class="pl-c1">2n</span><span class="pl-kos">;</span> <span class="pl-c">// "12"</span></pre></div>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Removed <code class="notranslate">"1" + 2n; // TypeError: ...</code> from the <code class="notranslate">example-bad</code> block.</li>
+<li>Added a short note right after the <code class="notranslate">example-bad</code> block explaining that strings are an exception (the string branch of <code class="notranslate">+</code> is tested first), with a positive example: <code class="notranslate">"1" + 2n; // "12"</code>.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43807.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4273866429" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43807" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43807/hovercard" href="https://github.com/mdn/content/issues/43807">#43807</a></p>]]></content>
+        <author>
+            <name>tmchow</name>
+            <email>tmchow@noreply.github.com</email>
+            <uri>https://github.com/tmchow</uri>
+        </author>
+        <published>2026-04-16T12:29:50.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add CSS animation-range to Firefox 150 release notes]]></title>
         <id>https://github.com/mdn/content/pull/43811</id>
@@ -443,20 +467,5 @@ This now makes it parallel to the command message fields in the <a href="https:/
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-04-13T13:09:22.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF150 Expr Feature - multiple JS import maps]]></title>
-        <id>https://github.com/mdn/content/pull/43759</id>
-        <link href="https://github.com/mdn/content/pull/43759"/>
-        <updated>2026-04-15T13:46:54.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF150 adds support for <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap#merging_multiple_import_maps" rel="nofollow">multiple import maps</a> behind a pref (<code class="notranslate">dom.multiple_import_maps.enabled</code>). This adds an experimental feature and release note entry.</p>
-<p dir="auto">It also adds a minor clarification to the JS doc.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4127672727" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43551" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43551/hovercard" href="https://github.com/mdn/content/issues/43551">#43551</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-04-13T07:06:00.000Z</published>
     </entry>
 </feed>

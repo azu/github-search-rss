@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/517103?u=8840cb220efe823a3547734dea97ebdcff28e836&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Correct the BigInt/string addition example on the <code class=\"notranslate\">+</code> operator page. The previous example marked <code class=\"notranslate\">\"1\" + 2n</code> as throwing a <code class=\"notranslate\">TypeError</code>, but it actually produces <code class=\"notranslate\">\"12\"</code> via string concatenation because the <code class=\"notranslate\">+</code> operator checks for a string operand before the BigInt/Number mix check.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The reported example misled readers about the precedence of string concatenation over the BigInt/Number type-mix rule, which is already described earlier on the same page in the Description section. You can verify the behavior in any JS console:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"&quot;1&quot; + 2n; // &quot;12&quot;\"><pre class=\"notranslate\"><span class=\"pl-s\">\"1\"</span> <span class=\"pl-c1\">+</span> <span class=\"pl-c1\">2n</span><span class=\"pl-kos\">;</span> <span class=\"pl-c\">// \"12\"</span></pre></div>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Removed <code class=\"notranslate\">\"1\" + 2n; // TypeError: ...</code> from the <code class=\"notranslate\">example-bad</code> block.</li>\n<li>Added a short note right after the <code class=\"notranslate\">example-bad</code> block explaining that strings are an exception (the string branch of <code class=\"notranslate\">+</code> is tested first), with a positive example: <code class=\"notranslate\">\"1\" + 2n; // \"12\"</code>.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43807.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4273866429\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43807\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43807/hovercard\" href=\"https://github.com/mdn/content/issues/43807\">#43807</a></p>",
+            "url": "https://github.com/mdn/content/pull/43812",
+            "title": "Fix '1' + 2n BigInt example on Addition page",
+            "date_modified": "2026-04-16T12:31:35.000Z",
+            "date_published": "2026-04-16T12:29:50.000Z",
+            "author": {
+                "name": "tmchow",
+                "url": "https://github.com/tmchow"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Adds release notes for the CSS <code class=\"notranslate\">animation-range</code> group of properties.</li>\n<li>Removes <code class=\"notranslate\">animation-range</code> from “not yet supported” phrase.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The <code class=\"notranslate\">animation-range</code> shipped in Firefox 150.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Bugzilla: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1825427\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1825427</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li>Project <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4127866744\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43565\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43565/hovercard\" href=\"https://github.com/mdn/content/issues/43565\">#43565</a></li>\n<li>BCD <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4275520888\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29494\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29494/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29494\">mdn/browser-compat-data#29494</a></li>\n<li>Content <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes pull request #43810.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4275531780\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43810\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/43810/hovercard\" href=\"https://github.com/mdn/content/pull/43810\">#43810</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/43811",
             "title": "Add CSS animation-range to Firefox 150 release notes",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF150 adds support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap#merging_multiple_import_maps\" rel=\"nofollow\">multiple import maps</a> behind a pref (<code class=\"notranslate\">dom.multiple_import_maps.enabled</code>). This adds an experimental feature and release note entry.</p>\n<p dir=\"auto\">It also adds a minor clarification to the JS doc.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4127672727\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43551\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43551/hovercard\" href=\"https://github.com/mdn/content/issues/43551\">#43551</a></p>",
-            "url": "https://github.com/mdn/content/pull/43759",
-            "title": "FF150 Expr Feature - multiple JS import maps",
-            "date_modified": "2026-04-15T13:46:54.000Z",
-            "date_published": "2026-04-13T07:06:00.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
             }
         }
     ]
