@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/2529953?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Array.push documentation gives an example of using spread syntax to concatenate arrays. However, it doesn't mention the limitation which applies in this case: the array being concatenated needs to be short enough that it doesn't go beyond the limit on the number of arguments to a function call. This adds a note about that to the section with that example, and suggests using Array.concat instead in that case (Array.concat was already linked there as an alternative). It also mentions that Array.concat makes a copy so people who don't follow the link will get a hint about how Array.concat is different from Array.push(...).</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">It's easy in testing to see that Array.push(...x) works if you're testing with a small array x, including in unit tests you might set up. However, in production when x grows larger than the limits on function call parameters (which is pretty easy) this will break. So this is a hidden sharp edge to the suggested concatenation method in the docs. Since Array.concat always makes a copy which is not always desirable due to time/memory overhead, there's an extra incentive to use the push(...) method (and the existing docs don't highlight this distinction on the Array.push side). Adding a note will hopefully help some people avoid a headache.</p>",
+            "url": "https://github.com/mdn/content/pull/43838",
+            "title": "Add note about function call args limit for using spread syntax to concatenate arrays",
+            "date_modified": "2026-04-17T10:10:28.000Z",
+            "date_published": "2026-04-17T10:10:07.000Z",
+            "author": {
+                "name": "solsword",
+                "url": "https://github.com/solsword"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43266.\">fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3998304818\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43266\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43266/hovercard\" href=\"https://github.com/mdn/content/issues/43266\">#43266</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/43837",
             "title": "Update CSS property page titles",
@@ -207,22 +218,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR (hopefully!) documents all of the remaining Wasm SIMD instructions that were not covered in other PRs.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/43800",
             "title": "Document remaining Wasm SIMD instructions",
-            "date_modified": "2026-04-17T09:15:35.000Z",
+            "date_modified": "2026-04-17T09:55:58.000Z",
             "date_published": "2026-04-15T16:43:49.000Z",
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/45960703?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chromium is the only engine which supported Google Native Client (NaCl) and <code class=\"notranslate\">runtime.PlatformInfo.nacl_arch</code> WebExtension API. Chromium removed NaCl and is currently in the process of removal of associated WebExtension API remnants.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Update MDN in line with Chromium development.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Google Chrome deprecated <code class=\"notranslate\">runtime.PlatformInfo.nacl_arch</code> and <code class=\"notranslate\">runtime.PlatformNaclArch</code>. Google plans to run an experiment removing <code class=\"notranslate\">nacl_arch</code> from <code class=\"notranslate\">runtime.getPlatformInfo()</code> and we would like to increase awareness of this deprecation. Hardcoded constant enum <code class=\"notranslate\">runtime.PlatformNaclArch</code> is not part of this experiment, but will be removed shortly after <code class=\"notranslate\">runtime.PlatformInfo.nacl_arch</code> removal.</p>\n\n<p dir=\"auto\">Details:<br>\n<a class=\"commit-link\" data-hovercard-type=\"commit\" data-hovercard-url=\"https://github.com/chromium/chromium/commit/913e0c02f12a758e69b3a5effff0d725f38556d3/hovercard\" href=\"https://github.com/chromium/chromium/commit/913e0c02f12a758e69b3a5effff0d725f38556d3\">chromium/chromium@<tt>913e0c0</tt></a><br>\n<a class=\"commit-link\" data-hovercard-type=\"commit\" data-hovercard-url=\"https://github.com/chromium/chromium/commit/6e62e12f5ec58a0d830f72b61e09fb2c6ea4962a/hovercard\" href=\"https://github.com/chromium/chromium/commit/6e62e12f5ec58a0d830f72b61e09fb2c6ea4962a\">chromium/chromium@<tt>6e62e12</tt></a><br>\n<a class=\"commit-link\" data-hovercard-type=\"commit\" data-hovercard-url=\"https://github.com/chromium/chromium/commit/9b227965e420bdc5e49c03c1c80e0ac927ab29e7/hovercard\" href=\"https://github.com/chromium/chromium/commit/9b227965e420bdc5e49c03c1c80e0ac927ab29e7\">chromium/chromium@<tt>9b22796</tt></a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">I will prepare BCD PR shortly.</p>\n\n\n\n\n<p dir=\"auto\">CC <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/oliverdunk/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/oliverdunk\">@oliverdunk</a></p>",
-            "url": "https://github.com/mdn/content/pull/43799",
-            "title": "[WebExtensions] Deprecate runtime.PlatformInfo.nacl_arch",
-            "date_modified": "2026-04-16T17:46:20.000Z",
-            "date_published": "2026-04-15T15:55:17.000Z",
-            "author": {
-                "name": "bershanskiy",
-                "url": "https://github.com/bershanskiy"
             }
         }
     ]

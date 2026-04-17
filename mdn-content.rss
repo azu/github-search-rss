@@ -2,11 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-04-17T09:27:50.371Z</updated>
+    <updated>2026-04-17T10:23:09.394Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add note about function call args limit for using spread syntax to concatenate arrays]]></title>
+        <id>https://github.com/mdn/content/pull/43838</id>
+        <link href="https://github.com/mdn/content/pull/43838"/>
+        <updated>2026-04-17T10:10:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2529953?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The Array.push documentation gives an example of using spread syntax to concatenate arrays. However, it doesn't mention the limitation which applies in this case: the array being concatenated needs to be short enough that it doesn't go beyond the limit on the number of arguments to a function call. This adds a note about that to the section with that example, and suggests using Array.concat instead in that case (Array.concat was already linked there as an alternative). It also mentions that Array.concat makes a copy so people who don't follow the link will get a hint about how Array.concat is different from Array.push(...).</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">It's easy in testing to see that Array.push(...x) works if you're testing with a small array x, including in unit tests you might set up. However, in production when x grows larger than the limits on function call parameters (which is pretty easy) this will break. So this is a hidden sharp edge to the suggested concatenation method in the docs. Since Array.concat always makes a copy which is not always desirable due to time/memory overhead, there's an extra incentive to use the push(...) method (and the existing docs don't highlight this distinction on the Array.push side). Adding a note will hopefully help some people avoid a headache.</p>]]></content>
+        <author>
+            <name>solsword</name>
+            <email>solsword@noreply.github.com</email>
+            <uri>https://github.com/solsword</uri>
+        </author>
+        <published>2026-04-17T10:10:07.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update CSS property page titles]]></title>
         <id>https://github.com/mdn/content/pull/43837</id>
@@ -338,7 +354,7 @@ made see also a list</p>]]></content>
         <title type="html"><![CDATA[Document remaining Wasm SIMD instructions]]></title>
         <id>https://github.com/mdn/content/pull/43800</id>
         <link href="https://github.com/mdn/content/pull/43800"/>
-        <updated>2026-04-17T09:15:35.000Z</updated>
+        <updated>2026-04-17T09:55:58.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -359,39 +375,5 @@ made see also a list</p>]]></content>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-04-15T16:43:49.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[WebExtensions] Deprecate runtime.PlatformInfo.nacl_arch]]></title>
-        <id>https://github.com/mdn/content/pull/43799</id>
-        <link href="https://github.com/mdn/content/pull/43799"/>
-        <updated>2026-04-16T17:46:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Chromium is the only engine which supported Google Native Client (NaCl) and <code class="notranslate">runtime.PlatformInfo.nacl_arch</code> WebExtension API. Chromium removed NaCl and is currently in the process of removal of associated WebExtension API remnants.</p>
-
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Update MDN in line with Chromium development.</p>
-
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Google Chrome deprecated <code class="notranslate">runtime.PlatformInfo.nacl_arch</code> and <code class="notranslate">runtime.PlatformNaclArch</code>. Google plans to run an experiment removing <code class="notranslate">nacl_arch</code> from <code class="notranslate">runtime.getPlatformInfo()</code> and we would like to increase awareness of this deprecation. Hardcoded constant enum <code class="notranslate">runtime.PlatformNaclArch</code> is not part of this experiment, but will be removed shortly after <code class="notranslate">runtime.PlatformInfo.nacl_arch</code> removal.</p>
-
-<p dir="auto">Details:<br>
-<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/913e0c02f12a758e69b3a5effff0d725f38556d3/hovercard" href="https://github.com/chromium/chromium/commit/913e0c02f12a758e69b3a5effff0d725f38556d3">chromium/chromium@<tt>913e0c0</tt></a><br>
-<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/6e62e12f5ec58a0d830f72b61e09fb2c6ea4962a/hovercard" href="https://github.com/chromium/chromium/commit/6e62e12f5ec58a0d830f72b61e09fb2c6ea4962a">chromium/chromium@<tt>6e62e12</tt></a><br>
-<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/9b227965e420bdc5e49c03c1c80e0ac927ab29e7/hovercard" href="https://github.com/chromium/chromium/commit/9b227965e420bdc5e49c03c1c80e0ac927ab29e7">chromium/chromium@<tt>9b22796</tt></a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">I will prepare BCD PR shortly.</p>
-
-
-
-
-<p dir="auto">CC <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/oliverdunk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/oliverdunk">@oliverdunk</a></p>]]></content>
-        <author>
-            <name>bershanskiy</name>
-            <email>bershanskiy@noreply.github.com</email>
-            <uri>https://github.com/bershanskiy</uri>
-        </author>
-        <published>2026-04-15T15:55:17.000Z</published>
     </entry>
 </feed>
