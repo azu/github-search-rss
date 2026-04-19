@@ -2,11 +2,82 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-04-19T15:11:04.768Z</updated>
+    <updated>2026-04-19T16:08:00.839Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[debugger: add edit-free runtime expression probes to `node inspect`]]></title>
+        <id>https://github.com/nodejs/node/pull/62713</id>
+        <link href="https://github.com/nodejs/node/pull/62713"/>
+        <updated>2026-04-19T15:59:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add a non-interactive probe mode to <code class="notranslate">node inspect</code> for inspecting runtime values in a run-to-completion application. This allows users to perform printf-style debugging without having to modify the application code and clean up afterwards, it also supports structured output to be consumed by tools.</p>
+<p dir="auto">This is proposed to be experimental first, so that we can iterate on the interface. There are a few features that would be nice to have but better left for follow-ups to avoid bloating the diff:</p>
+<ul dir="auto">
+<li>Source map support - which will allow developers to get a trace of ad-hoc interesting values without having to rebuild their apps</li>
+<li>Attaching to a running process with inspector listening on a port - so it can be used to print a trace of ad-hoc interesting values from a local dev server without having to restart it</li>
+</ul>
+<p dir="auto">In this patch, probe mode launches the application, sets one or more source breakpoints, evaluates one expression at each hit, and prints a single text or JSON report containing all the evaluated values when execution ends.</p>
+<p dir="auto">Interface:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="node inspect [--json] [--preview] [--timeout=&lt;ms&gt;] [--port=&lt;port&gt;]
+  --probe &lt;file&gt;:&lt;line&gt;[:&lt;col&gt;] --expr &lt;expr&gt; ...
+  [--] &lt;script&gt; [args...]"><pre class="notranslate"><code class="notranslate">node inspect [--json] [--preview] [--timeout=&lt;ms&gt;] [--port=&lt;port&gt;]
+  --probe &lt;file&gt;:&lt;line&gt;[:&lt;col&gt;] --expr &lt;expr&gt; ...
+  [--] &lt;script&gt; [args...]
+</code></pre></div>
+<p dir="auto">For example, to inspect a string in an application without modifying the source:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// cli.js
+let maxRSS = 0;
+for (let i = 0; i &lt; 2; i++) {
+  const { rss } = process.memoryUsage();
+  maxRSS = Math.max(maxRSS, rss);
+}"><pre class="notranslate"><span class="pl-c">// cli.js</span>
+<span class="pl-k">let</span> <span class="pl-s1">maxRSS</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span><span class="pl-kos">;</span> <span class="pl-s1">i</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">2</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-kos">{</span> rss <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">memoryUsage</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">maxRSS</span> <span class="pl-c1">=</span> <span class="pl-v">Math</span><span class="pl-kos">.</span><span class="pl-en">max</span><span class="pl-kos">(</span><span class="pl-s1">maxRSS</span><span class="pl-kos">,</span> <span class="pl-s1">rss</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ node inspect --probe cli.js:5 --expr 'rss' cli.js
+Hit 1 at cli.js:5
+  rss = 54935552
+Hit 2 at cli.js:5
+  rss = 55083008
+Completed"><pre class="notranslate"><code class="notranslate">$ node inspect --probe cli.js:5 --expr 'rss' cli.js
+Hit 1 at cli.js:5
+  rss = 54935552
+Hit 2 at cli.js:5
+  rss = 55083008
+Completed
+</code></pre></div>
+<p dir="auto">(Prettified JSON to fit in commit message restrictions).</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ node inspect --json --probe cli.js:5 --expr 'rss' cli.js
+{&quot;v&quot;:1,&quot;probes&quot;:[{&quot;expr&quot;:&quot;rss&quot;,&quot;target&quot;:[&quot;cli.js&quot;,5]}],
+&quot;results&quot;:[
+  {&quot;probe&quot;:0,&quot;event&quot;:&quot;hit&quot;,&quot;hit&quot;:1,
+   &quot;result&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;value&quot;:55443456,
+             &quot;description&quot;:&quot;55443456&quot;}},
+  {&quot;probe&quot;:0,&quot;event&quot;:&quot;hit&quot;,&quot;hit&quot;:2,
+   &quot;result&quot;:{&quot;type&quot;:&quot;number&quot;,&quot;value&quot;:55574528,
+             &quot;description&quot;:&quot;55574528&quot;}},
+  {&quot;event&quot;:&quot;completed&quot;}]}"><pre class="notranslate"><span class="pl-s1">$</span> <span class="pl-s1">node</span> <span class="pl-s1">inspect</span> <span class="pl-c1">--</span><span class="pl-s1">json</span> <span class="pl-c1">--</span><span class="pl-s1">probe</span> <span class="pl-s1">cli</span><span class="pl-kos">.</span><span class="pl-c1">js</span>:<span class="pl-c1">5</span> <span class="pl-c1">--</span><span class="pl-s1">expr</span> <span class="pl-s">'rss'</span> <span class="pl-s1">cli</span><span class="pl-kos">.</span><span class="pl-c1">js</span>
+<span class="pl-kos">{</span><span class="pl-s">"v"</span>:<span class="pl-c1">1</span><span class="pl-kos">,</span><span class="pl-s">"probes"</span>:<span class="pl-kos">[</span><span class="pl-kos">{</span><span class="pl-s">"expr"</span>:<span class="pl-s">"rss"</span><span class="pl-kos">,</span><span class="pl-s">"target"</span>:<span class="pl-kos">[</span><span class="pl-s">"cli.js"</span><span class="pl-kos">,</span><span class="pl-c1">5</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+<span class="pl-s">"results"</span>:<span class="pl-kos">[</span>
+  <span class="pl-kos">{</span><span class="pl-s">"probe"</span>:<span class="pl-c1">0</span><span class="pl-kos">,</span><span class="pl-s">"event"</span>:<span class="pl-s">"hit"</span><span class="pl-kos">,</span><span class="pl-s">"hit"</span>:<span class="pl-c1">1</span><span class="pl-kos">,</span>
+   <span class="pl-s">"result"</span>:<span class="pl-kos">{</span><span class="pl-s">"type"</span>:<span class="pl-s">"number"</span><span class="pl-kos">,</span><span class="pl-s">"value"</span>:<span class="pl-c1">55443456</span><span class="pl-kos">,</span>
+             <span class="pl-s">"description"</span>:<span class="pl-s">"55443456"</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">{</span><span class="pl-s">"probe"</span>:<span class="pl-c1">0</span><span class="pl-kos">,</span><span class="pl-s">"event"</span>:<span class="pl-s">"hit"</span><span class="pl-kos">,</span><span class="pl-s">"hit"</span>:<span class="pl-c1">2</span><span class="pl-kos">,</span>
+   <span class="pl-s">"result"</span>:<span class="pl-kos">{</span><span class="pl-s">"type"</span>:<span class="pl-s">"number"</span><span class="pl-kos">,</span><span class="pl-s">"value"</span>:<span class="pl-c1">55574528</span><span class="pl-kos">,</span>
+             <span class="pl-s">"description"</span>:<span class="pl-s">"55574528"</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-kos">{</span><span class="pl-s">"event"</span>:<span class="pl-s">"completed"</span><span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span></pre></div>
+]]></content>
+        <author>
+            <name>joyeecheung</name>
+            <email>joyeecheung@noreply.github.com</email>
+            <uri>https://github.com/joyeecheung</uri>
+        </author>
+        <published>2026-04-12T22:21:34.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[crypto: add raw key formats support to the KeyObject APIs]]></title>
         <id>https://github.com/nodejs/node/pull/62240</id>
@@ -853,7 +924,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzY2MTE3NjQsIm5iZiI6MTc3NjYxMTQ2NCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTlUMTUxMTA0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MzFiNmZlN2Q2MjhlNTg3MTNlNjhmN2MwNWUxN2NkZGJjNmZhM2ExNjM2MmUxZGQ4NDRlYjgxYTUwMzFmZGNiNCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.29PORAq9aER5XJGBmuLRG40JtXIkGANME-vZToRuIy4"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzY2MTE3NjQsIm5iZiI6MTc3NjYxMTQ2NCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTlUMTUxMTA0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MzFiNmZlN2Q2MjhlNTg3MTNlNjhmN2MwNWUxN2NkZGJjNmZhM2ExNjM2MmUxZGQ4NDRlYjgxYTUwMzFmZGNiNCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.29PORAq9aER5XJGBmuLRG40JtXIkGANME-vZToRuIy4" style="max-width: 100%; height: auto; max-height: 748px;; aspect-ratio: 1918 / 748; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzY2MTUxODAsIm5iZiI6MTc3NjYxNDg4MCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTlUMTYwODAwWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9M2Q5ZTk5ZjUyZDNiZjI4NTMyOTk4ODQzMmY1YzIyYjYyMWE3YWMyZWNjODA3Y2NiMTJlMjU1ODYyMTI5YTU0ZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.dMcF21tM5IP5PoSIajgHGFZ2qw1kZTP0thE43Ic4yeE"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzY2MTUxODAsIm5iZiI6MTc3NjYxNDg4MCwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQxOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MTlUMTYwODAwWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9M2Q5ZTk5ZjUyZDNiZjI4NTMyOTk4ODQzMmY1YzIyYjYyMWE3YWMyZWNjODA3Y2NiMTJlMjU1ODYyMTI5YTU0ZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.dMcF21tM5IP5PoSIajgHGFZ2qw1kZTP0thE43Ic4yeE" style="max-width: 100%; height: auto; max-height: 748px;; aspect-ratio: 1918 / 748; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -1011,33 +1082,5 @@ in test-single-executable-application.js</p>
             <uri>https://github.com/joyeecheung</uri>
         </author>
         <published>2025-12-24T17:28:03.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[module: mark require(esm) as stable]]></title>
-        <id>https://github.com/nodejs/node/pull/60959</id>
-        <link href="https://github.com/nodejs/node/pull/60959"/>
-        <updated>2026-01-12T18:38:24.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4299420?u=d7eb2cf3db5f2a4df73a8f719c2e9e3d648e4e43&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">module: mark require(esm) as stable</h3>
-<p dir="auto">This has been released to all active LTS release lines and many<br>
-popular packages have been shipping ESM-only distributions based<br>
-on the existence of this feature on active LTS. The current documented<br>
-behaviors are unlikely to change in a breaking manner within a major<br>
-release - as everything with the module loaders, there can always be<br>
-subtle changes to undocumented surface that can break edge cases that<br>
-assume undocumented behaviors, due to Hyrum's law; but the stability<br>
-of this feature is now not different than any other stable parts of<br>
-the module loader. It's time to mark it as stable.</p>
-<h3 dir="auto">cli: add --require-module/--no-require-module</h3>
-<p dir="auto">To replace --experimental-require-module and<br>
---no-experimental-require-module. The experimental<br>
-ones are left as legacy aliases.</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2264522627" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/52697" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/52697/hovercard" href="https://github.com/nodejs/node/issues/52697">#52697</a></p>
-]]></content>
-        <author>
-            <name>joyeecheung</name>
-            <email>joyeecheung@noreply.github.com</email>
-            <uri>https://github.com/joyeecheung</uri>
-        </author>
-        <published>2025-12-05T11:04:55.000Z</published>
     </entry>
 </feed>
