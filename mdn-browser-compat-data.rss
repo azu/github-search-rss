@@ -2,11 +2,181 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-04-26T02:59:22.944Z</updated>
+    <updated>2026-04-26T04:15:16.252Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[feat(browsers): add workerd to BCD]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29544</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29544"/>
+        <updated>2026-04-26T03:18:48.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1221592?u=557967ddf086c4544a4a72175cda28775022108b&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
+<p dir="auto">This PR adds <code class="notranslate">workerd</code> as a server runtime browser identifier in BCD, establishes the release/version model needed for future <code class="notranslate">workerd</code> data, and adds an initial positive support-data set for Web APIs, WebAssembly APIs, JavaScript built-ins, and relevant globals.</p>
+<p dir="auto">It includes:</p>
+<ul dir="auto">
+<li><code class="notranslate">browsers/workerd.json</code> with the initial open-source checkpoint and current usable compatibility-date checkpoint.</li>
+<li>Schema support for <code class="notranslate">workerd</code> support blocks.</li>
+<li>Documentation for the <code class="notranslate">workerd</code> versioning model.</li>
+<li>A <code class="notranslate">--workerd</code> release updater that keeps release checkpoints aligned with published <code class="notranslate">workerd</code> source metadata.</li>
+<li>A <code class="notranslate">workerd-release-map</code> evidence script that maps published packages to source metadata and the pinned V8 version.</li>
+<li>Initial positive support data for <code class="notranslate">workerd</code> across APIs, WebAssembly, JavaScript built-ins, and globals.</li>
+</ul>
+<h2 dir="auto">Rationale</h2>
+<p dir="auto"><code class="notranslate">workerd</code> is Cloudflare's open-source JavaScript/Wasm runtime and the runtime that powers Cloudflare Workers. It fits BCD's server-runtime model alongside Bun, Deno, and Node.js, but its compatibility contract is different from package-versioned runtimes.</p>
+<p dir="auto">For <code class="notranslate">workerd</code>, the developer-facing compatibility axis is not the npm package version such as <code class="notranslate">1.20260426.1</code>. Developers configure runtime behavior with <code class="notranslate">compatibilityDate</code> and optional <code class="notranslate">compatibilityFlags</code>. Package versions are still useful as release evidence and automation inputs, but they are not the support values developers normally reason about.</p>
+<p dir="auto">This PR therefore models <code class="notranslate">workerd</code> versions as compatibility-date checkpoints encoded as dotted numeric versions. For example:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;workerd&quot;: {
+    &quot;version_added&quot;: &quot;2026.04.26&quot;
+  }
+}"><pre class="notranslate">{
+  <span class="pl-ent">"workerd"</span>: {
+    <span class="pl-ent">"version_added"</span>: <span class="pl-s"><span class="pl-pds">"</span>2026.04.26<span class="pl-pds">"</span></span>
+  }
+}</pre></div>
+<p dir="auto">This maps to:</p>
+<div class="highlight highlight-source-capnp notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="compatibilityDate = &quot;2026-04-26&quot;"><pre class="notranslate">compatibilityDate = <span class="pl-s">"2026-04-26"</span></pre></div>
+<p dir="auto">BCD already accepts dotted numeric versions, while hyphenated date strings are not valid <code class="notranslate">version_added</code> values.</p>
+<h2 dir="auto">Version Semantics</h2>
+<p dir="auto"><code class="notranslate">workerd.version_added</code> means that a feature is available by default at the specified compatibility-date checkpoint, without explicit opt-in compatibility flags.</p>
+<p dir="auto">Features available only behind explicit compatibility flags should use BCD <code class="notranslate">flags</code> data. Features that require <code class="notranslate">nodejs_compat</code> should also be represented as flagged support, because <code class="notranslate">nodejs_compat</code> is an opt-in compatibility mode rather than baseline <code class="notranslate">workerd</code> behavior.</p>
+<p dir="auto">Older <code class="notranslate">workerd</code> compatibility dates continue to be supported by newer <code class="notranslate">workerd</code> binaries. In this PR, older BCD release entries are marked <code class="notranslate">retired</code> only to satisfy BCD release-status conventions; for <code class="notranslate">workerd</code>, <code class="notranslate">retired</code> means “not the latest current compatibility-date checkpoint,” not “the runtime stopped accepting this compatibility date.”</p>
+<h2 dir="auto">Support Data Scope</h2>
+<p dir="auto">This PR adds an initial positive support-data set only. It intentionally does not bulk-add <code class="notranslate">version_added: false</code> statements for unsupported features.</p>
+<p dir="auto">The initial support-data scope is:</p>
+<ul dir="auto">
+<li>Web platform APIs relevant to a server runtime and reported as supported by collector-derived <code class="notranslate">workerd</code> results.</li>
+<li>Relevant globals verified by a local <code class="notranslate">workerd@1.20260426.1</code> probe: <code class="notranslate">fetch</code>, <code class="notranslate">crypto</code>, <code class="notranslate">performance</code>, timers, <code class="notranslate">queueMicrotask</code>, <code class="notranslate">structuredClone</code>, <code class="notranslate">atob</code>, <code class="notranslate">btoa</code>, <code class="notranslate">console</code>, <code class="notranslate">caches</code>, <code class="notranslate">origin</code>, <code class="notranslate">reportError</code>, and <code class="notranslate">scheduler</code>.</li>
+<li>WebAssembly core APIs reported as supported.</li>
+<li>JavaScript built-ins reported as supported by collector-derived <code class="notranslate">workerd</code> results.</li>
+</ul>
+<p dir="auto">This adds:</p>
+<ul dir="auto">
+<li>1,114 positive <code class="notranslate">workerd</code> support statements.</li>
+<li>128 data files touched.</li>
+<li>424 API support statements.</li>
+<li>30 WebAssembly support statements.</li>
+<li>660 JavaScript built-in support statements.</li>
+<li>0 explicit unsupported <code class="notranslate">version_added: false</code> statements.</li>
+</ul>
+<h2 dir="auto">Support Date Strategy</h2>
+<p dir="auto">The support dates are intentionally split:</p>
+<ul dir="auto">
+<li>997 entries use <code class="notranslate">version_added: "2022.09.27"</code>, the public open-source <code class="notranslate">workerd</code> launch checkpoint.</li>
+<li>3 stream constructor entries use <code class="notranslate">2022.11.30</code>, from the <code class="notranslate">streams_enable_constructors</code> / <code class="notranslate">transformstream_enable_standard_constructor</code> default date.</li>
+<li>1 <code class="notranslate">Headers.getSetCookie</code> entry uses <code class="notranslate">2023.03.01</code>, from <code class="notranslate">http_headers_getsetcookie</code>.</li>
+<li>2 <code class="notranslate">URLSearchParams</code> value-parameter entries use <code class="notranslate">2023.07.01</code>, from <code class="notranslate">urlsearchparams_delete_has_value_arg</code>.</li>
+<li>1 <code class="notranslate">URLPattern</code> option entry uses <code class="notranslate">2025.05.01</code>, from <code class="notranslate">urlpattern_standard</code>.</li>
+<li>7 <code class="notranslate">WeakRef</code> / <code class="notranslate">FinalizationRegistry</code> entries use <code class="notranslate">2025.05.05</code>, from <code class="notranslate">enable_weak_ref</code>.</li>
+<li>1 <code class="notranslate">Navigator.language</code> entry uses <code class="notranslate">2025.05.19</code>, from <code class="notranslate">enable_navigator_language</code>.</li>
+<li>11 <code class="notranslate">MessageChannel</code> / <code class="notranslate">MessagePort</code> entries use <code class="notranslate">2025.08.15</code>, from <code class="notranslate">expose_global_message_channel</code>.</li>
+<li>91 entries use <code class="notranslate">2026.04.26</code>, the current usable compatibility-date checkpoint for the latest published package. These are newer or less safely backfilled features where assigning an earlier workerd checkpoint should wait for historical <code class="notranslate">workerd</code> test evidence, source mapping, or flag-specific evidence.</li>
+</ul>
+<p dir="auto">This avoids presenting long-standing APIs like <code class="notranslate">Array</code>, <code class="notranslate">Request</code>, <code class="notranslate">URL</code>, <code class="notranslate">fetch</code>, or core WebAssembly APIs as if they were only added in 2026, while also avoiding unsupported historical guesses for newer features.</p>
+<h2 dir="auto">Current Checkpoint vs Maximum Checkpoint</h2>
+<p dir="auto">The latest package, <code class="notranslate">workerd@1.20260426.1</code>, contains:</p>
+<ul dir="auto">
+<li><code class="notranslate">release-version.txt</code>: <code class="notranslate">2026-04-26</code></li>
+<li><code class="notranslate">maximum-compatibility-date.txt</code>: <code class="notranslate">2026-05-03</code></li>
+</ul>
+<p dir="auto">A local <code class="notranslate">workerd</code> run rejects <code class="notranslate">compatibilityDate = "2026-05-03"</code> before that calendar date arrives. For BCD, this PR therefore uses <code class="notranslate">2026.04.26</code> as the current usable checkpoint and records <code class="notranslate">2026.05.03</code> only as the maximum supported future checkpoint in <code class="notranslate">npm run workerd-release-map</code> output.</p>
+<h2 dir="auto">JavaScript Built-in Evidence</h2>
+<p dir="auto">JavaScript built-in support can be driven by V8 rolls rather than <code class="notranslate">workerd</code> compatibility flags. To make that relationship explicit and keep future updates reproducible, this PR adds:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run workerd-release-map"><pre class="notranslate">npm run workerd-release-map</pre></div>
+<p dir="auto">For the current latest package, it reports:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="[
+  {
+    &quot;packageVersion&quot;: &quot;1.20260426.1&quot;,
+    &quot;releaseVersion&quot;: &quot;2026-04-26&quot;,
+    &quot;maximumCompatibilityDate&quot;: &quot;2026-05-03&quot;,
+    &quot;bcdCheckpoint&quot;: &quot;2026.04.26&quot;,
+    &quot;maximumBcdCheckpoint&quot;: &quot;2026.05.03&quot;,
+    &quot;v8Version&quot;: &quot;14.7.173.16&quot;,
+    &quot;v8Tarball&quot;: &quot;https://github.com/v8/v8/archive/refs/tags/14.7.173.16.tar.gz&quot;
+  }
+]"><pre class="notranslate">[
+  {
+    <span class="pl-ent">"packageVersion"</span>: <span class="pl-s"><span class="pl-pds">"</span>1.20260426.1<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"releaseVersion"</span>: <span class="pl-s"><span class="pl-pds">"</span>2026-04-26<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"maximumCompatibilityDate"</span>: <span class="pl-s"><span class="pl-pds">"</span>2026-05-03<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"bcdCheckpoint"</span>: <span class="pl-s"><span class="pl-pds">"</span>2026.04.26<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"maximumBcdCheckpoint"</span>: <span class="pl-s"><span class="pl-pds">"</span>2026.05.03<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"v8Version"</span>: <span class="pl-s"><span class="pl-pds">"</span>14.7.173.16<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"v8Tarball"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://github.com/v8/v8/archive/refs/tags/14.7.173.16.tar.gz<span class="pl-pds">"</span></span>
+  }
+]</pre></div>
+<p dir="auto">That gives reviewers and future maintainers an evidence trail from BCD checkpoint → published workerd package → source tag/commit → V8 version. Future PRs can use the same script with <code class="notranslate">--all</code>, <code class="notranslate">--limit</code>, or <code class="notranslate">--version</code> to build a historical release map and refine <code class="notranslate">version_added</code> values where evidence supports it.</p>
+<h2 dir="auto">Implementation</h2>
+<p dir="auto">The new browser metadata uses:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;name&quot;: &quot;workerd&quot;,
+  &quot;type&quot;: &quot;server&quot;,
+  &quot;pref_url&quot;: &quot;https://developers.cloudflare.com/workers/configuration/compatibility-flags/&quot;,
+  &quot;accepts_flags&quot;: true,
+  &quot;accepts_webextensions&quot;: false
+}"><pre class="notranslate">{
+  <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>workerd<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"pref_url"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://developers.cloudflare.com/workers/configuration/compatibility-flags/<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"accepts_flags"</span>: <span class="pl-c1">true</span>,
+  <span class="pl-ent">"accepts_webextensions"</span>: <span class="pl-c1">false</span>
+}</pre></div>
+<p dir="auto">The release updater is wired into <code class="notranslate">npm run update-browser-releases -- --workerd</code>. It:</p>
+<ul dir="auto">
+<li>Fetches <code class="notranslate">https://registry.npmjs.org/workerd/latest</code>.</li>
+<li>Resolves the corresponding GitHub tag, with <code class="notranslate">gitHead</code> as a fallback.</li>
+<li>Reads <code class="notranslate">src/workerd/io/release-version.txt</code> and <code class="notranslate">src/workerd/io/maximum-compatibility-date.txt</code>.</li>
+<li>Uses the earlier of those two dates as the current usable BCD checkpoint, so BCD does not publish a future compatibility date as currently usable.</li>
+<li>Reads <code class="notranslate">src/workerd/io/compatibility-date.capnp</code> to map referenced runtime flags to their default dates.</li>
+<li>Preserves date checkpoints already referenced by existing <code class="notranslate">workerd</code> support data.</li>
+<li>Adds default dates for runtime flags referenced by existing <code class="notranslate">workerd</code> support data.</li>
+</ul>
+<h2 dir="auto">Validation</h2>
+<p dir="auto">Commands run:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run gentypes
+npm run update-browser-releases -- --workerd
+npm run workerd-release-map
+npm run build
+npm run format
+npm run lint
+npm run unittest"><pre class="notranslate">npm run gentypes
+npm run update-browser-releases -- --workerd
+npm run workerd-release-map
+npm run build
+npm run format
+npm run lint
+npm run unittest</pre></div>
+<p dir="auto">Additional validation:</p>
+<ul dir="auto">
+<li>Confirmed <code class="notranslate">workerd@latest</code> is <code class="notranslate">1.20260426.1</code>.</li>
+<li>Confirmed <code class="notranslate">v1.20260426.1/src/workerd/io/release-version.txt</code> is <code class="notranslate">2026-04-26</code>.</li>
+<li>Confirmed <code class="notranslate">v1.20260426.1/src/workerd/io/maximum-compatibility-date.txt</code> is <code class="notranslate">2026-05-03</code>.</li>
+<li>Confirmed <code class="notranslate">workerd@1.20260426.1</code> rejects <code class="notranslate">compatibilityDate = "2026-05-03"</code> before that date, so <code class="notranslate">2026.04.26</code> is the current usable checkpoint.</li>
+<li>Confirmed <code class="notranslate">v1.20260426.1/build/deps/v8.MODULE.bazel</code> pins V8 <code class="notranslate">14.7.173.16</code>.</li>
+<li>Confirmed the launch blog date is <code class="notranslate">2022-09-27</code>, matching the initial <code class="notranslate">2022.09.27</code> checkpoint.</li>
+<li>Confirmed the current positive support set exactly matches the collector-derived positive set for API, JavaScript, and WebAssembly entries before adding separately probed globals and explicitly flag-documented entries.</li>
+<li>Confirmed there are no obvious browser-only positives for DOM, Canvas, WebGL, WebGPU, WebAudio, WebRTC, device APIs, IndexedDB, Trusted Types, or image bitmap globals.</li>
+<li>Confirmed representative compatibility-flag-derived dates export correctly, including <code class="notranslate">Headers.getSetCookie</code>, <code class="notranslate">URLSearchParams.delete(value)</code>, <code class="notranslate">URLPattern({ ignoreCase })</code>, <code class="notranslate">Navigator.language</code>, <code class="notranslate">MessageChannel</code>, <code class="notranslate">WeakRef</code>, and <code class="notranslate">FinalizationRegistry</code>.</li>
+<li>Confirmed the updater is idempotent for the current data.</li>
+</ul>
+<p dir="auto"><code class="notranslate">npm run format</code> passes, while still printing the repository's existing JSDoc warnings.</p>
+<h2 dir="auto">Reviewer Notes</h2>
+<p dir="auto">The main policy decision here is whether BCD is comfortable accepting dotted compatibility-date checkpoints as the version axis for <code class="notranslate">workerd</code>. If that model is accepted, future support data can remain readable and developer-aligned. If it is rejected, the fallback would be to use npm package versions such as <code class="notranslate">1.20260426.1</code>, but that would be less useful for developers because <code class="notranslate">workerd</code> feature availability is controlled by <code class="notranslate">compatibilityDate</code> and <code class="notranslate">compatibilityFlags</code>.</p>
+<p dir="auto">Follow-up PRs can add:</p>
+<ul dir="auto">
+<li>More precise historical <code class="notranslate">version_added</code> dates where historical <code class="notranslate">workerd</code> compatibility-date evidence exists.</li>
+<li>Flagged support ranges for compatibility flags where BCD has matching subfeatures.</li>
+<li>Additional JavaScript built-in and syntax data as historical V8-to-<code class="notranslate">workerd</code> mapping is expanded.</li>
+</ul>]]></content>
+        <author>
+            <name>irvinebroque</name>
+            <email>irvinebroque@noreply.github.com</email>
+            <uri>https://github.com/irvinebroque</uri>
+        </author>
+        <published>2026-04-26T03:07:39.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add Reporting-Endpoints header data on default endpoints usage]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29539</id>
@@ -303,7 +473,7 @@
 My understanding is that there's a missing piece in all browsers where you can't just apply the above properties and expect them to work on their own. They also require a non-auto <code class="notranslate">inset</code> value.</p>
 <h4 dir="auto">Test results and supporting details</h4>
 <p dir="auto">Test case: <a href="https://bug2026174.bmoattachments.org/attachment.cgi?id=9557965" rel="nofollow">https://bug2026174.bmoattachments.org/attachment.cgi?id=9557965</a></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzcxNzI2NjIsIm5iZiI6MTc3NzE3MjM2MiwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjZUMDI1OTIyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjllYzRmY2I2ZmMzYTU4ZGViZDJjYjcxZmJmZTgwYmUwYzAyZWQ5MjczZWEyYTNkODkxYTIyZWJiMzdlMmQwMiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.TcmWL19WIbfO3aUryyvvvl8piKllmlWSCuO8J1KcdLQ"><img width="859" height="685" alt="image" src="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzcxNzI2NjIsIm5iZiI6MTc3NzE3MjM2MiwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjZUMDI1OTIyWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjllYzRmY2I2ZmMzYTU4ZGViZDJjYjcxZmJmZTgwYmUwYzAyZWQ5MjczZWEyYTNkODkxYTIyZWJiMzdlMmQwMiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.TcmWL19WIbfO3aUryyvvvl8piKllmlWSCuO8J1KcdLQ" style="max-width: 100%; height: auto; max-height: 685px;; aspect-ratio: 859 / 685; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzcxNzcyMTYsIm5iZiI6MTc3NzE3NjkxNiwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjZUMDQxNTE2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YzMzN2ExMTQ1MjE3NjExNDA1MjM5Y2U0NmNhMTkwYjQyZTZiNWY4OWNkNzM5YTBlMWNlNDFiNzJjZTljMWU3MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.6P88UUHRYpG7WsCoFRLmHk7TNLggbL1VVHeNfwgscAU"><img width="859" height="685" alt="image" src="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzcxNzcyMTYsIm5iZiI6MTc3NzE3NjkxNiwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjZUMDQxNTE2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YzMzN2ExMTQ1MjE3NjExNDA1MjM5Y2U0NmNhMTkwYjQyZTZiNWY4OWNkNzM5YTBlMWNlNDFiNzJjZTljMWU3MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.6P88UUHRYpG7WsCoFRLmHk7TNLggbL1VVHeNfwgscAU" style="max-width: 100%; height: auto; max-height: 685px;; aspect-ratio: 859 / 685; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
 <p dir="auto">The red box should be centered in the gray box.</p>
 <p dir="auto">Code:</p>
 <div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;
@@ -395,27 +565,5 @@ Related content changes in (TBC)</p>]]></content>
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2026-01-09T18:11:24.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Safari 26 uses `<meta name="theme-color">` only for web apps]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28503</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28503"/>
-        <updated>2026-03-12T13:12:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5876799?u=82c90e0406d442472b9120fe35a16b192fddd7d1&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<ul dir="auto">
-<li>lists Safari 26 (and mirrored iOS and WebView) as removing support for <code class="notranslate">html.elements.meta.name.theme-color</code></li>
-</ul>
-<h4 dir="auto">Test Results and Supporting Details</h4>
-<ul dir="auto">
-<li><a href="https://github.com/andesco/Safari-color-tinting">https://github.com/andesco/Safari-color-tinting</a></li>
-<li><a href="https://safari-color-tinting.pages.dev" rel="nofollow">https://safari-color-tinting.pages.dev</a></li>
-</ul>
-]]></content>
-        <author>
-            <name>andesco</name>
-            <email>andesco@noreply.github.com</email>
-            <uri>https://github.com/andesco</uri>
-        </author>
-        <published>2025-11-21T20:01:18.000Z</published>
     </entry>
 </feed>
