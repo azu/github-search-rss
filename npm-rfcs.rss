@@ -2,9 +2,903 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-04-27T18:22:13.973Z</updated>
+    <updated>2026-04-27T19:28:45.365Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Extend npm audit to detect supply chain compromise signals beyond CVEs]]></title>
+        <id>https://github.com/npm/rfcs/issues/860</id>
+        <link href="https://github.com/npm/rfcs/issues/860"/>
+        <updated>2026-04-21T23:19:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3455008?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">The axios compromise on March 31st exposed a gap that <code class="notranslate">npm audit</code> can't close on its own. A threat actor hijacked the primary maintainer's npm account and published two backdoored versions within 40 minutes — each with a previously undeclared dependency running a RAT via post-install. There was no CVE at the time of publish. The advisory database had nothing to flag.</p>
+<p dir="auto">This isn't isolated. In 2025 alone, 45,777 CVEs were reported averaging 130 per day, and multiple npm supply chain attacks hit packages with billions of weekly downloads. A growing share of these attacks arrive before a CVE exists — through account takeovers, dependency injection, and post-install abuse.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">A developer runs <code class="notranslate">npm install</code> after a routine <code class="notranslate">package.json</code> update. One dependency received a patch version bump overnight. The bump introduced a new post-install script and was published by an account that had never touched the package before. <code class="notranslate">npm audit</code> returns clean. The machine is compromised within seconds of install completing.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm audit</code> queries the advisory database for known CVEs against the resolved dependency tree. It returns clean if no CVEs exist, regardless of other signals.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm audit</code> (or a new <code class="notranslate">npm audit --provenance</code> / <code class="notranslate">npm audit --supply-chain</code> flag) additionally checks:</p>
+<ul dir="auto">
+<li>Whether the publish account for each installed version has previously published that package</li>
+<li>Whether new post-install or install scripts were introduced in the installed version vs. the prior one</li>
+<li>Whether new transitive dependencies were introduced that weren't present in the prior version</li>
+<li>Whether the installed version has a valid SLSA provenance attestation, especially for packages that previously carried one</li>
+</ul>
+<p dir="auto">These checks don't require a new database — npm already has publish history and provenance metadata. Surfacing them at audit time gives developers a signal before a CVE is ever filed.</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li><a href="https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/" rel="nofollow">Microsoft Security Blog — Mitigating the Axios npm supply chain compromise</a></li>
+<li><a href="https://thehackernews.com/2026/03/axios-supply-chain-attack-pushes-cross.html" rel="nofollow">The Hacker News — Axios Supply Chain Attack Pushes Cross-Platform RAT</a></li>
+<li><a href="https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/" rel="nofollow">Palo Alto Networks — Widespread npm Supply Chain Attack Puts Billions of Weekly Downloads at Risk</a></li>
+<li>Related: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1955039737" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/739" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/739/hovercard" href="https://github.com/npm/rfcs/issues/739">#739</a></li>
+</ul>]]></content>
+        <author>
+            <name>ranjithrajv</name>
+            <email>ranjithrajv@noreply.github.com</email>
+            <uri>https://github.com/ranjithrajv</uri>
+        </author>
+        <published>2026-04-02T08:02:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add feature to suppress minor version changes from update-notifier]]></title>
+        <id>https://github.com/npm/rfcs/issues/859</id>
+        <link href="https://github.com/npm/rfcs/issues/859"/>
+        <updated>2026-04-01T19:09:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/6580094?v=4" width="64" height="64" alt=""/><br/>
+<p dir="auto">There should be a way to suppress minor version update notices. Currently, there is only a on/off solution; but this does not allow for those of us who want major and security updates to receive notices.</p>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">I want to receive notices about major and security updates to NPM. I don't however need to update for each minor update.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The current configuration flag is a boolean that determines if an update is checked at all.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Update to the configuration flag from a simple boolean to allow silencing other types of update notices.</p>
+<h3 dir="auto">References</h3>
+<p dir="auto"><a href="https://askubuntu.com/questions/1354076/how-can-i-get-rid-of-new-minor-version-of-npm-available-on-using-npm" rel="nofollow">https://askubuntu.com/questions/1354076/how-can-i-get-rid-of-new-minor-version-of-npm-available-on-using-npm</a><br>
+<a href="https://docs.npmjs.com/cli/v8/using-npm/config#update-notifier" rel="nofollow">https://docs.npmjs.com/cli/v8/using-npm/config#update-notifier</a></p>]]></content>
+        <author>
+            <name>FelixVicis</name>
+            <email>FelixVicis@noreply.github.com</email>
+            <uri>https://github.com/FelixVicis</uri>
+        </author>
+        <published>2026-04-01T19:09:59.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Ability to override `--min-release-age` on CLI or in the lockfile]]></title>
+        <id>https://github.com/npm/rfcs/issues/856</id>
+        <link href="https://github.com/npm/rfcs/issues/856"/>
+        <updated>2026-04-07T08:46:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-898d7088cb3e51612f4a5c132e8609d4" id="user-content-fnref-1-898d7088cb3e51612f4a5c132e8609d4" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
+<ul dir="auto">
+<li>If a package version is explicitly recorded in the lockfile it will be installed regardless of the minimum age requested.</li>
+<li>If a package version is explicitly requested, e.g. <code class="notranslate">npm install package@1.2.3</code> where v1.2.3 was released today, it will be installed regardless of the minimum age requested.</li>
+</ul>
+<h3 dir="auto">Prior Art</h3>
+<h4 dir="auto"><code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code></h4>
+<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-898d7088cb3e51612f4a5c132e8609d4" id="user-content-fnref-2-898d7088cb3e51612f4a5c132e8609d4" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
+<h4 dir="auto">Other Ecosystems</h4>
+<p dir="auto">The Rust/Cargo proposal for its <code class="notranslate">--min-release-age</code> option (linked below) includes a similar concept:</p>
+<blockquote>
+<ul dir="auto">
+<li>Unless <code class="notranslate">--precise</code> is used to specify a specific version, any crates updated from the registry will only consider versions published<br>
+before the time specified by the appropriate <code class="notranslate">min-publish-age</code> option. If <code class="notranslate">--precise</code> is used, that version will be used, even if it<br>
+newer than the policy would otherwise allow (although in the future, there may be an option to deny that).</li>
+<li>If the version of a crate in the lockfile is already newer than <code class="notranslate">min-publish-age</code>, then <code class="notranslate">cargo update</code> will not update that crate, nor will<br>
+it downgrade to an older version. It will leave the version as it is.</li>
+</ul>
+</blockquote>
+<h4 dir="auto">Limitations</h4>
+<p dir="auto">One drawback of this approach is that using an untrusted lockfile - e.g. from an untrusted repository or Pull Request - may unexpectedly override your expected security preferences. An attacker could leverage the suggested behavior to inject a malicious dependency into the lockfile and make you download it.</p>
+<p dir="auto">I believe that</p>
+<ol dir="auto">
+<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-898d7088cb3e51612f4a5c132e8609d4" id="user-content-fnref-3-898d7088cb3e51612f4a5c132e8609d4" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
+<li>This is a trade-off that is worth considering as making the security feature more approachable in this way can help adoption, which might offset the risk of this thread.</li>
+</ol>
+<h3 dir="auto">Example</h3>
+<ul dir="auto">
+<li>There is a vulnerability in a package and the fix was published today and I want to start using it now, so I run <code class="notranslate">npm install vulnerable-but-now-fixed@4.2.0</code>.</li>
+<li>I contributed a bug fix or feature upstream and now want to use it myself as soon as possible, so I run <code class="notranslate">npm install excited-to-use@3.1.4</code>.</li>
+<li>I, or someone on my team, has done one of the above and now I try to (re)install dependencies with <code class="notranslate">npm clean-install</code> where I don't want to get an error because of these newer dependencies.</li>
+</ul>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">If you want to use any new package you need to disable <code class="notranslate">--min-release-age</code>/<code class="notranslate">--before</code> entirely, affecting all packages.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Using <code class="notranslate">--min-release-age</code>/<code class="notranslate">--before</code> is the default with explicitly recorded exceptions (through CLI arguments or the lockfile) to the rule.</p>
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3651803902" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/844" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/844/hovercard" href="https://github.com/npm/rfcs/issues/844">#844</a></li>
+<li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3907792934" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/8965" data-hovercard-type="pull_request" data-hovercard-url="/npm/cli/pull/8965/hovercard" href="https://github.com/npm/cli/pull/8965">npm/cli#8965</a></li>
+<li>Similar to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3976754086" data-permission-text="Title is private" data-url="https://github.com/rust-lang/rfcs/issues/3923" data-hovercard-type="pull_request" data-hovercard-url="/rust-lang/rfcs/pull/3923/hovercard" href="https://github.com/rust-lang/rfcs/pull/3923">rust-lang/rfcs#3923</a></li>
+<li>See also <a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html" rel="nofollow">Package Managers Need to Cool Down</a></li>
+</ul>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
+<ol dir="auto">
+<li id="user-content-fn-1-898d7088cb3e51612f4a5c132e8609d4">
+<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-898d7088cb3e51612f4a5c132e8609d4" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2-898d7088cb3e51612f4a5c132e8609d4">
+<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-898d7088cb3e51612f4a5c132e8609d4" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-3-898d7088cb3e51612f4a5c132e8609d4">
+<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-898d7088cb3e51612f4a5c132e8609d4" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2026-03-06T16:37:43.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] <title>]]></title>
+        <id>https://github.com/npm/rfcs/issues/855</id>
+        <link href="https://github.com/npm/rfcs/issues/855"/>
+        <updated>2026-02-23T17:20:37.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/262082854?u=10b20aa3f946388c9e5b7f317ff71e37ff73b42f&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>granjacours08-sys</name>
+            <email>granjacours08-sys@noreply.github.com</email>
+            <uri>https://github.com/granjacours08-sys</uri>
+        </author>
+        <published>2026-02-19T14:39:05.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] <title>]]></title>
+        <id>https://github.com/npm/rfcs/issues/854</id>
+        <link href="https://github.com/npm/rfcs/issues/854"/>
+        <updated>2026-02-16T12:35:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/256691244?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>ramirezchachin1-lgtm</name>
+            <email>ramirezchachin1-lgtm@noreply.github.com</email>
+            <uri>https://github.com/ramirezchachin1-lgtm</uri>
+        </author>
+        <published>2026-02-16T12:35:25.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add an icon url field]]></title>
+        <id>https://github.com/npm/rfcs/issues/852</id>
+        <link href="https://github.com/npm/rfcs/issues/852"/>
+        <updated>2025-12-30T21:02:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4944618?u=b8530c7a6c135272363d85d657b0b3ee95c8fec2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add a <code class="notranslate">icon</code> url field to the <code class="notranslate">package.json</code> spec, which would be returned in the search results.</p>
+<blockquote>
+<p dir="auto"><strong>Edit:</strong> This link would be available in the search API results.</p>
+</blockquote>
+<p dir="auto">So, using the example result from a search below, a field would be returned in the <code class="notranslate">package</code> object:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
+  &quot;objects&quot;: [
+    {
+      &quot;downloads&quot;: {
+        &quot;monthly&quot;: 17877,
+        &quot;weekly&quot;: 3863
+      },
+      &quot;dependents&quot;: &quot;177&quot;,
+      &quot;updated&quot;: &quot;2025-12-22T14:06:11.084Z&quot;,
+      &quot;searchScore&quot;: 294.53653,
+      &quot;package&quot;: {
+        &quot;name&quot;: &quot;homebridge-lib&quot;,
+        &quot;keywords&quot;: [
+          &quot;homekit&quot;,
+          &quot;homebridge&quot;
+        ],
+        &quot;version&quot;: &quot;7.2.0&quot;,
+        &quot;description&quot;: &quot;Library for homebridge plugins&quot;,
+        &quot;sanitized_name&quot;: &quot;homebridge-lib&quot;,
+        &quot;icon&quot;: &quot;https://github.com/ebaauw/homebridge-lib/path/to/icon_file.png&quot;,
+        &quot;publisher&quot;: {
+          &quot;email&quot;: &quot;erik.baauw@xs4all.nl&quot;,
+          &quot;username&quot;: &quot;ebaauw&quot;
+        },
+        &quot;maintainers&quot;: [
+          {
+            &quot;email&quot;: &quot;erik.baauw@xs4all.nl&quot;,
+            &quot;username&quot;: &quot;ebaauw&quot;
+          }
+        ],
+        &quot;license&quot;: &quot;Apache-2.0&quot;,
+        &quot;date&quot;: &quot;2025-12-08T13:57:14.187Z&quot;,
+        &quot;links&quot;: {
+          &quot;homepage&quot;: &quot;https://github.com/ebaauw/homebridge-lib#readme&quot;,
+          &quot;repository&quot;: &quot;git+https://github.com/ebaauw/homebridge-lib.git&quot;,
+          &quot;bugs&quot;: &quot;https://github.com/ebaauw/homebridge-lib/issues&quot;,
+          &quot;npm&quot;: &quot;https://www.npmjs.com/package/homebridge-lib&quot;
+        }
+      },
+      &quot;score&quot;: {
+        &quot;final&quot;: 294.53653,
+        &quot;detail&quot;: {
+          &quot;popularity&quot;: 1,
+          &quot;quality&quot;: 1,
+          &quot;maintenance&quot;: 1
+        }
+      },
+      &quot;flags&quot;: {
+        &quot;insecure&quot;: 0
+      }
+    }
+  ],
+  &quot;total&quot;: 1,
+  &quot;time&quot;: &quot;2025-12-25T20:42:48.227Z&quot;
+}"><pre class="notranslate"><code class="notranslate">{
+  "objects": [
+    {
+      "downloads": {
+        "monthly": 17877,
+        "weekly": 3863
+      },
+      "dependents": "177",
+      "updated": "2025-12-22T14:06:11.084Z",
+      "searchScore": 294.53653,
+      "package": {
+        "name": "homebridge-lib",
+        "keywords": [
+          "homekit",
+          "homebridge"
+        ],
+        "version": "7.2.0",
+        "description": "Library for homebridge plugins",
+        "sanitized_name": "homebridge-lib",
+        "icon": "https://github.com/ebaauw/homebridge-lib/path/to/icon_file.png",
+        "publisher": {
+          "email": "erik.baauw@xs4all.nl",
+          "username": "ebaauw"
+        },
+        "maintainers": [
+          {
+            "email": "erik.baauw@xs4all.nl",
+            "username": "ebaauw"
+          }
+        ],
+        "license": "Apache-2.0",
+        "date": "2025-12-08T13:57:14.187Z",
+        "links": {
+          "homepage": "https://github.com/ebaauw/homebridge-lib#readme",
+          "repository": "git+https://github.com/ebaauw/homebridge-lib.git",
+          "bugs": "https://github.com/ebaauw/homebridge-lib/issues",
+          "npm": "https://www.npmjs.com/package/homebridge-lib"
+        }
+      },
+      "score": {
+        "final": 294.53653,
+        "detail": {
+          "popularity": 1,
+          "quality": 1,
+          "maintenance": 1
+        }
+      },
+      "flags": {
+        "insecure": 0
+      }
+    }
+  ],
+  "total": 1,
+  "time": "2025-12-25T20:42:48.227Z"
+}
+</code></pre></div>]]></content>
+        <author>
+            <name>justjam2013</name>
+            <email>justjam2013@noreply.github.com</email>
+            <uri>https://github.com/justjam2013</uri>
+        </author>
+        <published>2025-12-29T22:33:31.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Feature Request: Adding Bitbucket Pipelines as a trusted NPM publisher]]></title>
+        <id>https://github.com/npm/rfcs/issues/846</id>
+        <link href="https://github.com/npm/rfcs/issues/846"/>
+        <updated>2025-11-25T04:32:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/140583317?v=4" width="64" height="64" alt=""/><br/>
+<h1 dir="auto">[RRFC] Feature Request: Add Bitbucket Pipelines as a trusted NPM publisher</h1>
+<h2 dir="auto">Motivation</h2>
+
+<p dir="auto">Npm currently does not support Bitbucket Pipelines as a trusted publisher and now that classic tokens are no longer supported we want to ensure users are able to publish to NPM without being reliant on tokens.</p>
+<p dir="auto">This will allow us to stay up to date with security best practices and allow users to enable NPM into their CI/CD workflow more easily.</p>
+<p dir="auto">We have added the ability to enable NPM as an audience so this integration is possible</p>
+<p dir="auto">source: <a href="https://github.blog/changelog/2025-11-05-npm-security-update-classic-token-creation-disabled-and-granular-token-changes/" rel="nofollow">https://github.blog/changelog/2025-11-05-npm-security-update-classic-token-creation-disabled-and-granular-token-changes/</a><br>
+source: <a href="https://docs.npmjs.com/trusted-publishers" rel="nofollow">https://docs.npmjs.com/trusted-publishers</a></p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<p dir="auto">Currently bitbucket pipelines is not a trusted publisher so users have to rely upon tokens to publish to NPM.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+
+<p dir="auto">Currently Github Actions &amp; Gitlab CI/CD are able to be selected as a publisher with configurations to control publishing access we want an equivalent for Bitbucket Pipelines that looks something like:</p>
+<blockquote>
+<h4 dir="auto">Publisher</h4>
+<p dir="auto"><strong>Bitbucket Pipelines</strong></p>
+<p dir="auto"><em><strong>Workspace*</strong></em>                 /           <em><strong>Repo*</strong></em></p>
+<p dir="auto">{workspaceUuid}           /                    {RepositoryUuid}</p>
+<p dir="auto"><strong><em>Deployment UUID (Optional)</em></strong></p>
+<p dir="auto">{deploymentEnvironmentUuid}</p>
+</blockquote>
+<h4 dir="auto">Authorising the trusted publisher</h4>
+<p dir="auto">The OIDC token will have the following attributes inside that can be used to verify the publisher is the same as the configured trusted publisher</p>
+<ul dir="auto">
+<li><code class="notranslate">workspaceUuid</code></li>
+<li><code class="notranslate">repositoryUuid</code></li>
+<li><code class="notranslate">deploymentEnvironmentUuid</code></li>
+</ul>
+<p dir="auto">Example of claims</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
+	&quot;sub&quot;: &quot;{60518816-1111-1111-1111-555555c267ed}:{2df4c531-1111-1111-1111-5555556048f8c}:{stepUuid}&quot;,
+	&quot;aud&quot;: &quot;ari:cloud:bitbucket::workspace/3a8a18b2-1111-1111-1111-55555519a6f30&quot;,
+	&quot;stepUuid&quot;: &quot;{xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx}&quot;,
+	&quot;deploymentEnvironmentUuid&quot;: &quot;{2df4c531-1111-1111-1111-5555556048f8c}&quot;,
+	&quot;iss&quot;: &quot;https://api.bitbucket.org/2.0/workspaces/bitbucket-workspace/pipelines-config/identity/oidc&quot;,
+	&quot;repositoryUuid&quot;: &quot;{60518816-1111-1111-1111-555555c267ed}&quot;,
+	&quot;branchName&quot;: &quot;xxxxxxxxx&quot;,
+	&quot;exp&quot;: &quot;xxxxxxxxxx&quot;,
+	&quot;iat&quot;: &quot;xxxxxxxxxx&quot;,
+	&quot;pipelineUuid&quot;: &quot;{xxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx}&quot;,
+	&quot;workspaceUuid&quot;: &quot;{3a8a18b2-1111-1111-1111-55555519a6f30}&quot;
+}"><pre class="notranslate"><code class="notranslate">{
+	"sub": "{60518816-1111-1111-1111-555555c267ed}:{2df4c531-1111-1111-1111-5555556048f8c}:{stepUuid}",
+	"aud": "ari:cloud:bitbucket::workspace/3a8a18b2-1111-1111-1111-55555519a6f30",
+	"stepUuid": "{xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx}",
+	"deploymentEnvironmentUuid": "{2df4c531-1111-1111-1111-5555556048f8c}",
+	"iss": "https://api.bitbucket.org/2.0/workspaces/bitbucket-workspace/pipelines-config/identity/oidc",
+	"repositoryUuid": "{60518816-1111-1111-1111-555555c267ed}",
+	"branchName": "xxxxxxxxx",
+	"exp": "xxxxxxxxxx",
+	"iat": "xxxxxxxxxx",
+	"pipelineUuid": "{xxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxx}",
+	"workspaceUuid": "{3a8a18b2-1111-1111-1111-55555519a6f30}"
+}
+</code></pre></div>
+<h4 dir="auto">Authenticating the OIDC Token</h4>
+<p dir="auto">The pipeline will send a JWT containing claims containing information that is needed to authorise the pipeline to publish to NPM.</p>
+<p dir="auto">The JWT can then be authenticated using RSA keys found via:</p>
+<ul dir="auto">
+<li><code class="notranslate">jwks_uri</code> link found in <a href="https://api.bitbucket.org/2.0/workspaces/%7Bbitbucket-workspace%7D/pipelines-config/identity/oidc/.well-known/openid-configuration" rel="nofollow">https://api.bitbucket.org/2.0/workspaces/{bitbucket-workspace}/pipelines-config/identity/oidc/.well-known/openid-configuration</a></li>
+<li>Or through <a href="https://api.bitbucket.org/2.0/workspaces/%7Bbitbucket-workspace%7D/pipelines-config/identity/oidc/keys.json" rel="nofollow">https://api.bitbucket.org/2.0/workspaces/{bitbucket-workspace}/pipelines-config/identity/oidc/keys.json</a> url directly</li>
+</ul>]]></content>
+        <author>
+            <name>ShirlZhou1</name>
+            <email>ShirlZhou1@noreply.github.com</email>
+            <uri>https://github.com/ShirlZhou1</uri>
+        </author>
+        <published>2025-11-25T04:32:52.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Support relative dates in `--before`]]></title>
+        <id>https://github.com/npm/rfcs/issues/844</id>
+        <link href="https://github.com/npm/rfcs/issues/844"/>
+        <updated>2026-02-26T11:58:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">My personal motivation is that I would like to be able to set the <code class="notranslate">--before</code> in the <code class="notranslate">.npmrc</code> configuration file of my project (with the goal of reducing the chances of pulling down malware under the assumption that third-parties continuously scan the registry for malware). However, I can also see this being a more convenient way to specify the value than having to compute and write out a date value (especially trying to decide in what order to specify the month/date/year).</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">In an "ideal" world it could look something like:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --before '2 days ago'"><pre class="notranslate">npm install --before <span class="pl-s"><span class="pl-pds">'</span>2 days ago<span class="pl-pds">'</span></span></pre></div>
+<p dir="auto">Perhaps more realistic is to provide a negative amount of days (or another precision):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --before '-1'  # yesterday"><pre class="notranslate">npm install --before <span class="pl-s"><span class="pl-pds">'</span>-1<span class="pl-pds">'</span></span>  <span class="pl-c"><span class="pl-c">#</span> yesterday</span></pre></div>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The <code class="notranslate">--before</code> argument value should be a date.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">The <code class="notranslate">--before</code> argument can be a value relative to today's date.</p>
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1412868839" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/646" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/646/hovercard" href="https://github.com/npm/rfcs/issues/646">#646</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1164111829" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/549" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/549/hovercard" href="https://github.com/npm/rfcs/issues/549">#549</a></li>
+</ul>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2025-11-21T14:00:54.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Disallow external dependencies on the npm registry]]></title>
+        <id>https://github.com/npm/rfcs/issues/843</id>
+        <link href="https://github.com/npm/rfcs/issues/843"/>
+        <updated>2026-02-25T05:58:56.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Package on the npm registry should not be allowed to have "External Dependencies" (i.e. a dependency that is not hosted on the npm registry) because such dependencies do not have the same properties as npm-hosted packages while being nearly invisible to the end user.</p>
+<p dir="auto">For further reference:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">This proposal is based on the research from <a href="https://ldklab.github.io/assets/papers/scored25-externaldeps.pdf" rel="nofollow">"Stepping out of Bounds: Security Impact of Allowing Packages on npm to Declare External Dependencies"</a>. Based on its analysis, external dependencies are rare on npm as is.</p>
+</li>
+<li>
+<p dir="auto">In the Rust ecosystem, while Cargo allows for external dependencies you are not allowed to publish to <a href="https://crates.io/" rel="nofollow">crates.io</a> if you depend on an external dependency.</p>
+<p dir="auto">From <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#specifying-dependencies-from-other-registries" rel="nofollow">the Cargo docs</a>: "crates.io does not allow packages to be published with dependencies on code published outside of crates.io."</p>
+</li>
+</ul>
+<h3 dir="auto">Example</h3>
+<p dir="auto">There are two big reasons that motivate this change:</p>
+<ol dir="auto">
+<li>The external dependency may become unavailable. Unlike npm, which largely ensures (used) packages don't just disappear, external dependencies do not have that guarantee.</li>
+<li>The external dependency may be changed. Unlike npm, which guarantees that published packages are immutable, external dependencies may be changed at any time. Now, some ways of specifying (e.g. by git commit sha(?)) could be argued to provide sufficient integrity guarantees, but otherwise it requires a lockfile. This is inconsistent with "normal" usage of the npm registry and can break security expectations of users.</li>
+<li><em>[ADDED 2026-02-23]</em> The external dependency may be configured in a way that enables <a href="https://github.blog/changelog/2026-02-18-npm-bulk-trusted-publishing-config-and-script-security-now-generally-available/" rel="nofollow">arbitrary code execution</a> on the client side.</li>
+</ol>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">External dependencies are allowed.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Any <strong>new</strong> package published to the npm registry should be checked for external dependencies and if any are found the publication should be rejected. This should only apply to <strong>new</strong> publications so as to avoid breaking existing deployments. The npm CLI should consider adding a warning when an external dependency appears in the dependency hierarchy as a "mitigation" for the historical baggage of this feature.</p>
+<p dir="auto">A grace period is probably in order during which attempted publications of packages with external dependencies are not flat out rejected, but the client is only warned about upcoming changes.</p>
+<h3 dir="auto">References</h3>
+
+<p dir="auto"><em>none</em></p>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2025-11-21T11:06:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add --prefer-direct-exec flag for proper signal handling in npm run]]></title>
+        <id>https://github.com/npm/rfcs/issues/829</id>
+        <link href="https://github.com/npm/rfcs/issues/829"/>
+        <updated>2025-08-28T18:23:02.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/84302867?u=cc75a5fafcf48184bea43a2359314c5ffe47d409&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto"><code class="notranslate">npm run</code> spawns scripts through a shell (<code class="notranslate">/bin/sh -c</code>), creating an unnecessary intermediate process that interferes with signal propagation. This causes Node.js applications to terminate abruptly without completing their cleanup procedures when receiving SIGTERM/SIGINT signals.</p>
+<p dir="auto">This is a fundamental Unix process management issue that affects:</p>
+<ul dir="auto">
+<li>Docker containers (not just Kubernetes)</li>
+<li>Systemd services</li>
+<li>Process managers (PM2, Forever, etc.)</li>
+<li>CI/CD environments</li>
+<li>Any production deployment using <code class="notranslate">npm run</code></li>
+</ul>
+<p dir="auto">The problem: When a termination signal is sent, the shell may exit immediately without waiting for its child process, causing npm to exit prematurely and killing the Node.js application before graceful shutdown completes.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">Consider a basic Node.js server with cleanup logic:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// server.js
+const server = require('http').createServer();
+
+process.on('SIGTERM', () =&gt; {
+  console.log('Graceful shutdown started');
+  server.close(() =&gt; {
+    console.log('Cleanup complete');
+    process.exit(0);
+  });
+});
+
+server.listen(3000);"><pre class="notranslate"><span class="pl-c">// server.js</span>
+<span class="pl-k">const</span> <span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'http'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">createServer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-s">'SIGTERM'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Graceful shutdown started'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">close</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Cleanup complete'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">exit</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><strong>Problem occurs in any of these scenarios</strong>:</p>
+<ol dir="auto">
+<li><strong>Docker container</strong>: <code class="notranslate">docker stop &lt;container&gt;</code></li>
+<li><strong>Systemd service</strong>: <code class="notranslate">systemctl stop myapp</code></li>
+<li><strong>Process manager</strong>: <code class="notranslate">pm2 stop app</code></li>
+<li><strong>Manual termination</strong>: <code class="notranslate">kill &lt;pid&gt;</code></li>
+</ol>
+<p dir="auto">In all cases, if started with <code class="notranslate">npm run start</code>, the graceful shutdown may not complete because the shell intermediary disrupts signal propagation.</p>
+<h3 dir="auto">How</h3>
+<p dir="auto">Add an opt-in flag to control how <code class="notranslate">npm run</code> spawns processes, eliminating the problematic shell intermediary when not needed.</p>
+<h4 dir="auto">Current Behaviour</h4>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Current process tree with npm run
+npm → /bin/sh -c &quot;node server.js&quot; → node server.js
+ ↓            ↓
+SIGTERM   (shell may exit without waiting)
+ ↓
+(npm exits because child is gone)
+(node process terminated abruptly)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Current process tree with npm run</span>
+npm → /bin/sh -c <span class="pl-s"><span class="pl-pds">"</span>node server.js<span class="pl-pds">"</span></span> → node server.js
+ ↓            ↓
+SIGTERM   (shell may <span class="pl-c1">exit</span> without waiting)
+ ↓
+(npm exits because child is gone)
+(node process terminated abruptly)</pre></div>
+<p dir="auto">The shell (<code class="notranslate">/bin/sh</code>) behavior varies:</p>
+<ul dir="auto">
+<li>Some shells (ash, dash) exit immediately on SIGTERM</li>
+<li>This causes npm to detect child exit and terminate</li>
+<li>Node.js process is killed before cleanup completes</li>
+</ul>
+<p dir="auto"><strong>Current workaround requires modifying code</strong>:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;exec node server.js&quot;  // Must add exec manually
+  }
+}"><pre class="notranslate">{
+  <span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"start"</span>: <span class="pl-s"><span class="pl-pds">"</span>exec node server.js<span class="pl-pds">"</span></span>  <span class="pl-ii">// Must add exec manually</span>
+  }
+}</pre></div>
+<p dir="auto">This workaround is:</p>
+<ul dir="auto">
+<li>Not documented clearly</li>
+<li>Not obvious to developers</li>
+<li>Required in every project</li>
+<li>Easy to forget</li>
+</ul>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Provide an <strong>opt-in</strong> mechanism that works without code changes:</p>
+<p dir="auto"><strong>Option 1 - Environment variable</strong> (for deployments):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="NPM_PREFER_DIRECT_EXEC=1 npm run start"><pre class="notranslate">NPM_PREFER_DIRECT_EXEC=1 npm run start</pre></div>
+<p dir="auto"><strong>Option 2 - CLI flag</strong> (for specific runs):</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run start --prefer-direct-exec"><pre class="notranslate">npm run start --prefer-direct-exec</pre></div>
+<p dir="auto"><strong>Option 3 - Config file</strong> (for projects):</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# .npmrc
+prefer-direct-exec=true"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> .npmrc</span>
+<span class="pl-k">prefer-direct-exec</span>=true</pre></div>
+<p dir="auto"><strong>When enabled</strong>:</p>
+<ul dir="auto">
+<li>Simple commands: Spawn directly without shell</li>
+<li>Complex commands (with pipes, &amp;&amp;, etc.): Auto-prepend <code class="notranslate">exec</code> to replace shell</li>
+<li>Windows: No change (different process model)</li>
+<li>Default: Current behavior (backward compatible)</li>
+</ul>
+<p dir="auto"><strong>Result</strong>:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# With flag enabled
+npm → node server.js  (direct, no shell)
+ ↓        ↓
+SIGTERM  (node receives signal)
+ ↓        ↓
+(waits) (graceful shutdown completes)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> With flag enabled</span>
+npm → node server.js  (direct, no shell)
+ ↓        ↓
+SIGTERM  (node receives signal)
+ ↓        ↓
+(waits) (graceful shutdown completes)</pre></div>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313195779" data-permission-text="Title is private" data-url="https://github.com/npm/run-script/issues/237" data-hovercard-type="issue" data-hovercard-url="/npm/run-script/issues/237/hovercard" href="https://github.com/npm/run-script/issues/237">npm/run-script#237</a> (implementation tracking)</li>
+<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313212873" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/8509" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/8509/hovercard" href="https://github.com/npm/cli/issues/8509">npm/cli#8509</a> (original feature request)</li>
+</ul>]]></content>
+        <author>
+            <name>seungwanHam</name>
+            <email>seungwanHam@noreply.github.com</email>
+            <uri>https://github.com/seungwanHam</uri>
+        </author>
+        <published>2025-08-17T11:59:12.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[discussion] How to handle devEngines.packageManager when one package manager calls another one for some commands]]></title>
+        <id>https://github.com/npm/rfcs/issues/830</id>
+        <link href="https://github.com/npm/rfcs/issues/830"/>
+        <updated>2025-09-17T02:15:20.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1927579?u=b6d238d794dfb5ad32ec207f08bc72fb62de8258&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Currently the only way to ignore the devEngines check is to use the <code class="notranslate">--force</code> flag: <a href="https://github.com/npm/cli/blob/d006583e20731e8ae55cee94c3b7bd23cbd6f2d0/lib/base-cmd.js#L174">https://github.com/npm/cli/blob/d006583e20731e8ae55cee94c3b7bd23cbd6f2d0/lib/base-cmd.js#L174</a></p>
+<p dir="auto">But that flag makes npm print a warning and also changes other things.</p>
+<p dir="auto">pnpm is passing through some commands to npm CLI (like dist-tag, publish, view, etc). So, we want to be able to run npm from pnpm, even if devEngines is set to pnpm only. Alternatively, we could recommend users to put both npm and pnpm to devEngines but then they might accidentally run "npm install" instead of "pnpm install".</p>
+<p dir="auto">Maybe you could add support for an environment variable that pnpm could set, when running npm CLI.</p>]]></content>
+        <author>
+            <name>zkochan</name>
+            <email>zkochan@noreply.github.com</email>
+            <uri>https://github.com/zkochan</uri>
+        </author>
+        <published>2025-08-03T12:37:21.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Support multiple registries per scope in .npmrc]]></title>
+        <id>https://github.com/npm/rfcs/issues/828</id>
+        <link href="https://github.com/npm/rfcs/issues/828"/>
+        <updated>2025-07-31T00:42:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/53998249?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">The current <code class="notranslate">.npmrc</code> configuration model allows specifying <strong>only one registry per scope</strong>, which is too limiting for more complex setups.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">We use a <strong>self-hosted GitLab instance</strong> as our internal NPM registry provider. GitLab supports publishing packages at different levels:</p>
+<ul dir="auto">
+<li><strong>Project-level registry</strong> — each project has its own NPM registry.</li>
+<li><strong>Group-level registry</strong> — a registry that aggregates all packages from child projects in the group.</li>
+<li><strong>Instance-level (global) registry</strong> — exposes packages using the group name as the scope, and the project name as the package name.</li>
+</ul>
+<p dir="auto">Suppose we have the following structure:</p>
+<ul dir="auto">
+<li><code class="notranslate">project-a</code> published to: <code class="notranslate">https://gitlab.example.com/api/v4/projects/1/packages/npm/</code></li>
+<li><code class="notranslate">libraries/*</code> packages published to: <code class="notranslate">https://gitlab.example.com/api/v4/groups/6/-/packages/npm/</code></li>
+</ul>
+<p dir="auto">This setup introduces limitations for consumers:</p>
+<ul dir="auto">
+<li>We want to use a <strong>single shared scope</strong>, such as <code class="notranslate">@our-org/*</code>, across all packages in our organization.</li>
+<li>Some packages are published to <strong>project-level registries</strong>, while others use <strong>group-level registries</strong>.</li>
+</ul>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Related/Reference to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="962939940" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/427" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/427/hovercard" href="https://github.com/npm/rfcs/issues/427">#427</a></li>
+</ul>]]></content>
+        <author>
+            <name>ii1818nn</name>
+            <email>ii1818nn@noreply.github.com</email>
+            <uri>https://github.com/ii1818nn</uri>
+        </author>
+        <published>2025-07-30T20:26:25.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Please don't store registry info in `packge-lock.json`]]></title>
+        <id>https://github.com/npm/rfcs/issues/821</id>
+        <link href="https://github.com/npm/rfcs/issues/821"/>
+        <updated>2025-09-21T06:26:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8336744?u=2801b004fef78f6c481ad5a820c29cc18f711bc1&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<p dir="auto">It's very bad for different users prefer different registries globally, I accidentally commit unexpected changes several times.</p>
+<h3 dir="auto">Example</h3>
+
+<p dir="auto">FYI, <code class="notranslate">yarn</code> 2+ and <code class="notranslate">pnpm</code> don't store registry info in their lockfile.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<p dir="auto">Read it from <code class="notranslate">.npmrc</code> instead.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+
+<p dir="auto">As title, <code class="notranslate">registry</code> should not be stored into <code class="notranslate">package-lock.json</code>, it would also make <code class="notranslate">package-lock.json</code> much smaller.</p>
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li><code class="notranslate">yarn</code>: <a href="https://yarnpkg.com/configuration/yarnrc#npmRegistryServer" rel="nofollow">https://yarnpkg.com/configuration/yarnrc#npmRegistryServer</a></li>
+<li><code class="notranslate">pnpm</code>: <a href="https://pnpm.io/settings#registry--authentication-settings" rel="nofollow">https://pnpm.io/settings#registry--authentication-settings</a></li>
+</ul>]]></content>
+        <author>
+            <name>JounQin</name>
+            <email>JounQin@noreply.github.com</email>
+            <uri>https://github.com/JounQin</uri>
+        </author>
+        <published>2025-05-01T13:26:21.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RxJS Website Redirects to NET::ERR_CERT_AUTHORITY_INVALID]]></title>
+        <id>https://github.com/npm/rfcs/issues/819</id>
+        <link href="https://github.com/npm/rfcs/issues/819"/>
+        <updated>2025-04-23T11:53:37.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/134489692?u=8348f7898bbda06cc26307f310dbfdf2497c8f84&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Greetings,</p>
+<p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
+<p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
+<p dir="auto">I hope a solution can be found for this issue.</p>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzczMTg0MjUsIm5iZiI6MTc3NzMxODEyNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQyN1QxOTI4NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYjlhYWM0OThiN2Y0NmU2Y2ViZDhkNTk1NjFhOWIyNTkzZmYwNDE0ZWNhM2Y0M2I1N2RmOGQ5MWIzYWQwZTIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.XvtygOd96X_WVfmjU1Ltr5wkD-7DOaSM3yozCU6opxM"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzczMTg0MjUsIm5iZiI6MTc3NzMxODEyNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQyN1QxOTI4NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYjlhYWM0OThiN2Y0NmU2Y2ViZDhkNTk1NjFhOWIyNTkzZmYwNDE0ZWNhM2Y0M2I1N2RmOGQ5MWIzYWQwZTIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.XvtygOd96X_WVfmjU1Ltr5wkD-7DOaSM3yozCU6opxM" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzczMTg0MjUsIm5iZiI6MTc3NzMxODEyNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQyN1QxOTI4NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yNGZmYWYxZTQ0MDQ3ZmU2Mzc5NjYxZmMyMjI1ZDY2ZjM3YzM1ZGZlNDRhOTlmNGQ4MDJkM2EzYWI0ZWMxNTViJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.a2mNFja7PEfT6R9ObBZW-Ikdic1hlUfQ10GmKV00ikw"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzczMTg0MjUsIm5iZiI6MTc3NzMxODEyNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQyN1QxOTI4NDVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yNGZmYWYxZTQ0MDQ3ZmU2Mzc5NjYxZmMyMjI1ZDY2ZjM3YzM1ZGZlNDRhOTlmNGQ4MDJkM2EzYWI0ZWMxNTViJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.a2mNFja7PEfT6R9ObBZW-Ikdic1hlUfQ10GmKV00ikw" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+        <author>
+            <name>AimenNadeem</name>
+            <email>AimenNadeem@noreply.github.com</email>
+            <uri>https://github.com/AimenNadeem</uri>
+        </author>
+        <published>2025-04-23T11:41:40.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Verify publisher identity for reused repository URLs]]></title>
+        <id>https://github.com/npm/rfcs/issues/818</id>
+        <link href="https://github.com/npm/rfcs/issues/818"/>
+        <updated>2025-04-22T16:46:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5212744?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Publishing to npm today allows anyone to set the <code class="notranslate">homepage</code> and <code class="notranslate">repository</code> fields in their package metadata without any verification. This gap makes it trivial for a malicious actor to impersonate popular packages by reusing their metadata, tricking users into installing modified or harmful code under a familiar name.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">Consider these two packages:</p>
+<ul dir="auto">
+<li><strong>fs-extra</strong> (the legitimate package):<br>
+<a href="https://npmjs.org/package/fs-extra" rel="nofollow">https://npmjs.org/package/fs-extra</a><br>
+repository: <a href="https://github.com/jprichardson/node-fs-extra">https://github.com/jprichardson/node-fs-extra</a><br>
+latest version: 11.3.0</li>
+<li><strong>fs-extra2</strong> (imposter):<br>
+<a href="https://npmjs.com/package/fs-extra2" rel="nofollow">https://npmjs.com/package/fs-extra2</a><br>
+repository: <a href="https://github.com/jprichardson/node-fs-extra">https://github.com/jprichardson/node-fs-extra</a><br>
+latest version: 1.0.1</li>
+</ul>
+<p dir="auto">At a glance, the metadata matches exactly—but the version (<code class="notranslate">1.0.1</code>) in the imposter does <strong>not</strong> correspond to any tagged release in the real <code class="notranslate">fs-extra</code> GitHub repo. A user who installs <code class="notranslate">fs-extra2</code> may assume they’re getting the genuine library, whereas they’re actually pulling unverified code.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<ul dir="auto">
+<li><strong>No metadata verification</strong><br>
+npm does not check that the maintainer/publisher of a package matches the owner of the <code class="notranslate">homepage</code> or <code class="notranslate">repository</code> URLs specified in <code class="notranslate">package.json</code>.</li>
+<li><strong>Unilateral package creation</strong><br>
+Anyone can publish a new package whose metadata duplicates that of an existing package (aside from the package name).</li>
+<li><strong>No notification to original maintainers</strong><br>
+The legitimate publisher has no way of knowing when someone else reuses their repo URL or homepage in a different package.</li>
+</ul>
+<h4 dir="auto">Desired Behaviour</h4>
+<ol dir="auto">
+<li><strong>Metadata‑to‑publisher cross‑check</strong><br>
+When publishing a package whose <code class="notranslate">repository</code> or <code class="notranslate">homepage</code> URL exactly matches that of a previously published package:
+<ul dir="auto">
+<li>Verify that the npm publisher account matches the GitHub (or other VCS) repo owner.</li>
+</ul>
+</li>
+<li><strong>Provenance verification flow</strong><br>
+If the publisher accounts don’t match:
+<ul dir="auto">
+<li>Prompt the uploader to prove they have rights to those URLs (for example via GitHub’s provenance or an ownership token).</li>
+</ul>
+</li>
+<li><strong>Maintain transparency and safety</strong>
+<ul dir="auto">
+<li>Send an automated email to the original publisher(s) of the URL in question, informing them that another package is reusing their metadata.</li>
+<li>Allow the original publisher to confirm or dispute:
+<ul dir="auto">
+<li>If <strong>confirmed</strong>: proceed with the publish.</li>
+<li>If <strong>disputed</strong> or <strong>unconfirmed</strong> within a grace period: either block the publish or add a clear “<g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Unverified repository URL” label on the package’s npm page.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Optional “fork” designation</strong>
+<ul dir="auto">
+<li>In cases where the author legitimately forks a project, allow a “fork” checkbox or CLI flag that marks the package as a fork of the original.</li>
+</ul>
+</li>
+</ol>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>aqeelat</name>
+            <email>aqeelat@noreply.github.com</email>
+            <uri>https://github.com/aqeelat</uri>
+        </author>
+        <published>2025-04-22T16:46:38.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Include a `globallink` install strategy]]></title>
+        <id>https://github.com/npm/rfcs/issues/817</id>
+        <link href="https://github.com/npm/rfcs/issues/817"/>
+        <updated>2025-11-30T07:47:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1498923?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">There's no doubt that NPM is the butt of a lot of memes relating to how heavy the local <code class="notranslate">node_modules</code> folder can get. Especially on big projects, and when working on multiple big projects over time, the duplication of the same packages across different project spaces can cause a significant impact on hard drive space. A tool already exists to address this issues: PNPM. However, PNPM is not a 1-for-1 replacement - there are some quirks with the commands, and while for the most part it works, these nuances can get in the way of efficient package management, including when sharing code among developers (especially in the Open Source community).</p>
+<p dir="auto">A <code class="notranslate">globallink</code> install strategy should be included to address this and would work similar to how the <code class="notranslate">linked</code> strategy works now. However, instead of the packages being saved in <code class="notranslate">./node_modules/.store</code>, they would be saved in <code class="notranslate">/path/to/npm/global/node_modules/.store</code>.</p>
+<p dir="auto">This will also cause an update to the <code class="notranslate">clean-install</code> command where the packages (and exact dependencies) for a project are <em>deleted</em> from the global store and re-installed.</p>
+<p dir="auto">Of course, this install strategy can be overridden by specifying a different type at the command line or local config.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The hoisting of packages to the root of the node modules folder helps to deduplicate packages across the project. However, this is only localised to the project. As an example, I work on many web apps that all use SvelteKit and I need to download and store the entire SvelteKit package every time for each project (<a href="https://pkg-size.dev/@sveltejs%2Fkit" rel="nofollow">36MB</a>). Add on the extra frameworks that I use, and that number starts to add up pretty quickly to a couple hundred megabytes.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">By specifying the <code class="notranslate">install-strategy</code> as <code class="notranslate">globallink</code> all the packages would be installed into a global store. npm would resolve the package requirements of an install command, determine that a package exists within the store which meets the version criteria and links to it instead of downloading it again. If no package in the store meets the criteria, one is simply downloaded.</p>
+<p dir="auto">I might be oversimplifying the complexity, but the implementation could be an increase in capability of the <code class="notranslate">linked</code> install strategy, in that the store that it points to is the global store, rather than the local one.</p>]]></content>
+        <author>
+            <name>TheBrenny</name>
+            <email>TheBrenny@noreply.github.com</email>
+            <uri>https://github.com/TheBrenny</uri>
+        </author>
+        <published>2025-04-22T14:49:28.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA["Accountaccess-securityissues"]]></title>
+        <id>https://github.com/npm/rfcs/issues/816</id>
+        <link href="https://github.com/npm/rfcs/issues/816"/>
+        <updated>2025-11-16T06:18:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/208423862?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Cloud. Integration<br>
+Financial issues<br>
+Educational courses<br>
+Passkey  for Google accounts<br>
+Google llc and Gmail no access<br>
+Play store no access says that my device is not registered to any Google account<br>
+Android  Linux [[[pci--xxxx]]] pull all -m "*" and "x" library  not necessarily a PCI violation however stupid and security risk involved with Java IBM and other AI generated llc plan designed for barmateshq project<br>
+Broker accounts in teen accounts  cash llc 1 pull request and violation is needed<br>
+Cash llc 1 square up payroll terrilynn_deeds iD confirmation<br>
+8134323700 pull and restrict security breach<br>
+Exchange account needs to be repaired and certificates reinstalled remove all other IT MISS CHAP and MISSIT abuse of power and unauthorized control illegally preformed</p>]]></content>
+        <author>
+            <name>terri-lynn6023973364</name>
+            <email>terri-lynn6023973364@noreply.github.com</email>
+            <uri>https://github.com/terri-lynn6023973364</uri>
+        </author>
+        <published>2025-04-21T14:14:38.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC]+<title>ac.genes]]></title>
+        <id>https://github.com/npm/rfcs/issues/814</id>
+        <link href="https://github.com/npm/rfcs/issues/814"/>
+        <updated>2025-06-12T18:44:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/59098342?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>AKayy2020</name>
+            <email>AKayy2020@noreply.github.com</email>
+            <uri>https://github.com/AKayy2020</uri>
+        </author>
+        <published>2025-03-07T18:58:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC]+<title>]]></title>
+        <id>https://github.com/npm/rfcs/issues/813</id>
+        <link href="https://github.com/npm/rfcs/issues/813"/>
+        <updated>2025-06-12T18:44:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/200528382?u=464babfcfd9bd5b46f64dd8b27090fbe9bac2641&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>journey-110</name>
+            <email>journey-110@noreply.github.com</email>
+            <uri>https://github.com/journey-110</uri>
+        </author>
+        <published>2025-03-07T13:21:31.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC]+<title> is now]]></title>
+        <id>https://github.com/npm/rfcs/issues/812</id>
+        <link href="https://github.com/npm/rfcs/issues/812"/>
+        <updated>2025-03-05T14:35:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/59098342?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a<br>
+AC92,{bs/$€€+**^}</li>
+</ul>]]></content>
+        <author>
+            <name>AKayy2020</name>
+            <email>AKayy2020@noreply.github.com</email>
+            <uri>https://github.com/AKayy2020</uri>
+        </author>
+        <published>2025-03-05T09:45:54.000Z</published>
+    </entry>
 </feed>
