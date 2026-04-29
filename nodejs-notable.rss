@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-04-29T14:41:27.771Z</updated>
+    <updated>2026-04-29T15:35:35.337Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
@@ -555,6 +555,70 @@ assert.strictEqual(import.meta.main, true);
         <published>2026-01-30T18:44:41.000Z</published>
     </entry>
     <entry>
+        <title type="html"><![CDATA[src: improve textEncoder encode performance with simdutf]]></title>
+        <id>https://github.com/nodejs/node/pull/61496</id>
+        <link href="https://github.com/nodejs/node/pull/61496"/>
+        <updated>2026-03-09T18:18:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/37827216?u=c66571d34dfd33436ca0f08a046d85dca76ad05f&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Ref: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3575263548" data-permission-text="Title is private" data-url="https://github.com/cloudflare/workerd/issues/5448" data-hovercard-type="pull_request" data-hovercard-url="/cloudflare/workerd/pull/5448/hovercard" href="https://github.com/cloudflare/workerd/pull/5448">cloudflare/workerd#5448</a></p>
+<p dir="auto">Benchmark CI: <a href="https://ci.nodejs.org/view/Node.js%20benchmark/job/benchmark-node-micro-benchmarks/1789/" rel="nofollow">https://ci.nodejs.org/view/Node.js%20benchmark/job/benchmark-node-micro-benchmarks/1789/</a></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="                                                                               confidence improvement accuracy (*)   (**)  (***)
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=1024                      ***     11.86 %       ±1.25% ±1.66% ±2.17%
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=256                       ***     -7.82 %       ±1.84% ±2.46% ±3.22%
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=32                          *      1.26 %       ±1.19% ±1.59% ±2.07%
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=8192                      ***    146.74 %       ±0.78% ±1.05% ±1.39%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=1024            ***     20.69 %       ±0.79% ±1.05% ±1.37%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=256             ***      7.46 %       ±0.79% ±1.05% ±1.37%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=32                      -0.57 %       ±0.91% ±1.21% ±1.58%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=8192            ***    182.16 %       ±0.22% ±0.29% ±0.39%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=1024            ***     95.53 %       ±1.09% ±1.47% ±1.95%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=256             ***     32.64 %       ±0.90% ±1.20% ±1.58%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=32                      -0.23 %       ±1.04% ±1.38% ±1.80%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=8192            ***    299.06 %       ±0.64% ±0.86% ±1.14%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=1024                           2.14 %       ±3.97% ±5.29% ±6.88%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=256                            1.22 %       ±3.31% ±4.41% ±5.75%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=32                    ***     20.60 %       ±2.77% ±3.69% ±4.80%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=8192                           0.91 %       ±3.13% ±4.16% ±5.42%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=1024                 1.21 %       ±5.16% ±6.88% ±8.99%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=256                 -0.65 %       ±1.12% ±1.49% ±1.94%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=32                  -0.48 %       ±3.29% ±4.38% ±5.70%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=8192                -1.57 %       ±1.69% ±2.25% ±2.94%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=1024                -0.51 %       ±0.69% ±0.92% ±1.20%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=256                 -0.38 %       ±0.67% ±0.89% ±1.16%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=32            *     -2.35 %       ±2.05% ±2.73% ±3.55%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=8192          *     -0.32 %       ±0.31% ±0.41% ±0.54%"><pre class="notranslate"><code class="notranslate">                                                                               confidence improvement accuracy (*)   (**)  (***)
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=1024                      ***     11.86 %       ±1.25% ±1.66% ±2.17%
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=256                       ***     -7.82 %       ±1.84% ±2.46% ±3.22%
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=32                          *      1.26 %       ±1.19% ±1.59% ±2.07%
+util/text-encoder.js op='encode' type='ascii' n=1000000 len=8192                      ***    146.74 %       ±0.78% ±1.05% ±1.39%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=1024            ***     20.69 %       ±0.79% ±1.05% ±1.37%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=256             ***      7.46 %       ±0.79% ±1.05% ±1.37%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=32                      -0.57 %       ±0.91% ±1.21% ±1.58%
+util/text-encoder.js op='encode' type='one-byte-string' n=1000000 len=8192            ***    182.16 %       ±0.22% ±0.29% ±0.39%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=1024            ***     95.53 %       ±1.09% ±1.47% ±1.95%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=256             ***     32.64 %       ±0.90% ±1.20% ±1.58%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=32                      -0.23 %       ±1.04% ±1.38% ±1.80%
+util/text-encoder.js op='encode' type='two-byte-string' n=1000000 len=8192            ***    299.06 %       ±0.64% ±0.86% ±1.14%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=1024                           2.14 %       ±3.97% ±5.29% ±6.88%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=256                            1.22 %       ±3.31% ±4.41% ±5.75%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=32                    ***     20.60 %       ±2.77% ±3.69% ±4.80%
+util/text-encoder.js op='encodeInto' type='ascii' n=1000000 len=8192                           0.91 %       ±3.13% ±4.16% ±5.42%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=1024                 1.21 %       ±5.16% ±6.88% ±8.99%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=256                 -0.65 %       ±1.12% ±1.49% ±1.94%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=32                  -0.48 %       ±3.29% ±4.38% ±5.70%
+util/text-encoder.js op='encodeInto' type='one-byte-string' n=1000000 len=8192                -1.57 %       ±1.69% ±2.25% ±2.94%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=1024                -0.51 %       ±0.69% ±0.92% ±1.20%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=256                 -0.38 %       ±0.67% ±0.89% ±1.16%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=32            *     -2.35 %       ±2.05% ±2.73% ±3.55%
+util/text-encoder.js op='encodeInto' type='two-byte-string' n=1000000 len=8192          *     -0.32 %       ±0.31% ±0.41% ±0.54%
+</code></pre></div>]]></content>
+        <author>
+            <name>mertcanaltin</name>
+            <email>mertcanaltin@noreply.github.com</email>
+            <uri>https://github.com/mertcanaltin</uri>
+        </author>
+        <published>2026-01-23T19:46:03.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[test_runner: add experimental `mock.fs` API]]></title>
         <id>https://github.com/nodejs/node/pull/61468</id>
         <link href="https://github.com/nodejs/node/pull/61468"/>
@@ -774,7 +838,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc0NzM5ODcsIm5iZiI6MTc3NzQ3MzY4NywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjlUMTQ0MTI3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjkyOWE0M2RkNTY3YzM4Njg4ZDU5Y2RjNmE2ZWZmYTBkM2E3MjY4NzNjNTBkMGJhY2E5MTgwOWMwYWUxZDcyMCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.JP9jL2uWg7pykXaSNtDGxVOPMgQ4NGzqTA4tFDFfU9w"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc0NzM5ODcsIm5iZiI6MTc3NzQ3MzY4NywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjlUMTQ0MTI3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NjkyOWE0M2RkNTY3YzM4Njg4ZDU5Y2RjNmE2ZWZmYTBkM2E3MjY4NzNjNTBkMGJhY2E5MTgwOWMwYWUxZDcyMCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.JP9jL2uWg7pykXaSNtDGxVOPMgQ4NGzqTA4tFDFfU9w" style="max-width: 100%; height: auto; max-height: 748px;; aspect-ratio: 1918 / 748; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc0NzcyMzUsIm5iZiI6MTc3NzQ3NjkzNSwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjlUMTUzNTM1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzIwNjAyNmY5Njc2ZWMwOTQwMGUyMjQ1YWJhNTQ0ZjkxMGQ2MTlmZmUxMTg1YzM1Y2ExOWUxNGM1ZjkxNDBjZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.lpzVu4cTpdd79oj_OtELcQwD9DLz3R-8jB3ph1PkqRY"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc0NzcyMzUsIm5iZiI6MTc3NzQ3NjkzNSwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDQyOSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA0MjlUMTUzNTM1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzIwNjAyNmY5Njc2ZWMwOTQwMGUyMjQ1YWJhNTQ0ZjkxMGQ2MTlmZmUxMTg1YzM1Y2ExOWUxNGM1ZjkxNDBjZSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.lpzVu4cTpdd79oj_OtELcQwD9DLz3R-8jB3ph1PkqRY" style="max-width: 100%; height: auto; max-height: 748px;; aspect-ratio: 1918 / 748; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -946,20 +1010,5 @@ in test-single-executable-application.js</p>
             <uri>https://github.com/joyeecheung</uri>
         </author>
         <published>2025-12-04T23:58:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[v25.x] lib: do not provide an empty Proxy from localStorage getter]]></title>
-        <id>https://github.com/nodejs/node/pull/60776</id>
-        <link href="https://github.com/nodejs/node/pull/60776"/>
-        <updated>2026-01-12T10:27:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9092381?u=fde5fbface3f55bc6d96ff4c5701637f9a01bf0f&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Addresses the original regression in a way that is more consistent with the user experience in v24.x where no storage-related CLI arguments are passed. Access now warns and returns <code class="notranslate">undefined</code> in the case where the requisite path is missing.</p>
-<p dir="auto">As things stand, the behaviour will revert to exception-raising in v26.x; any discussion relating to this specifically should go in the associated issue, this PR is just to re-fix the regression for localStorage users in v25.</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3527786014" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/60303" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/60303/hovercard" href="https://github.com/nodejs/node/issues/60303">#60303</a></p>]]></content>
-        <author>
-            <name>Renegade334</name>
-            <email>Renegade334@noreply.github.com</email>
-            <uri>https://github.com/Renegade334</uri>
-        </author>
-        <published>2025-11-18T13:58:37.000Z</published>
     </entry>
 </feed>
