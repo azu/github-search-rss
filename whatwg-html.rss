@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/whatwg-html.rss</id>
     <title>whatwg/html changes</title>
-    <updated>2026-04-29T01:32:06.448Z</updated>
+    <updated>2026-04-29T03:00:12.477Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/whatwg-html.rss"/>
     <subtitle>whatwg/html changes on GitHub</subtitle>
@@ -199,6 +199,606 @@ Explainer: <a href="https://open-ui.org/components/popup.research.explainer" rel
         <published>2022-08-16T22:55:06.000Z</published>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Obsolete the <param> element]]></title>
+        <id>https://github.com/whatwg/html/pull/7816</id>
+        <link href="https://github.com/whatwg/html/pull/7816"/>
+        <updated>2022-06-15T15:34:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Given that plugins are gone from the web platform (with their full removal from the spec being tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard" href="https://github.com/whatwg/html/issues/6003">#6003</a>), it is not useful. In some browsers it can be used to figure out the URL of an <code class="notranslate">&lt;object&gt;</code>, even when that <code class="notranslate">&lt;object&gt;</code> is not being used for a plugin, via params named "movie", "src", "code", "data", or "url". But we decided to remove this behavior from browsers instead of specifying it.</p>
+<p dir="auto">This retains the HTMLParamElement interface, as well as the parser behavior of <code class="notranslate">&lt;param&gt;</code>.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #387.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="120607402" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/387" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/387/hovercard" href="https://github.com/whatwg/html/issues/387">#387</a>. Helps with <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard" href="https://github.com/whatwg/html/issues/6003">#6003</a>.</p>
+
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
+<ul dir="auto">
+<li>Gecko does not process param at all</li>
+<li>Chromium is willing to try this removal (i.e. try not handling special-named params).</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1203490213" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/33624" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/33624/hovercard" href="https://github.com/web-platform-tests/wpt/pull/33624">web-platform-tests/wpt#33624</a></li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/main/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
+<ul dir="auto">
+<li>Chrome: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1315717" rel="nofollow">https://bugs.chromium.org/p/chromium/issues/detail?id=1315717</a></li>
+<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1774438" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1774438</a></li>
+<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=239188" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=239188</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
+
+<hr>
+<p dir="auto"><a href="https://whatpr.org/html/7816/embedded-content-other.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/embedded-content-other.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/embedded-content-other.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/iframe-embed-object.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/iframe-embed-object.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/iframe-embed-object.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/image-maps.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/image-maps.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/image-maps.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/index.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/index.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/index.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/indices.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/indices.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/indices.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/media.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/media.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/media.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/obsolete.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/obsolete.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/obsolete.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/parsing.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/parsing.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/parsing.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/syntax.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/syntax.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/syntax.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/tables.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/tables.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/tables.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/7816/xhtml.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">/xhtml.html</a>  ( <a href="https://whatpr.org/html/7816/6b024d2...c925256/xhtml.html" title="Last updated on Apr 13, 2022, 4:07 PM UTC (c925256)" rel="nofollow">diff</a> )</p>]]></content>
+        <author>
+            <name>domenic</name>
+            <email>domenic@noreply.github.com</email>
+            <uri>https://github.com/domenic</uri>
+        </author>
+        <published>2022-04-12T20:40:18.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Remove <head> requirement for <meta name=referrer>]]></title>
+        <id>https://github.com/whatwg/html/pull/6748</id>
+        <link href="https://github.com/whatwg/html/pull/6748"/>
+        <updated>2021-06-08T16:31:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8077169?u=966790e5de29ed78466555e331649c09203ec850&v=4" width="64" height="64" alt=""/><br/><ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
+<ul dir="auto">
+<li>Chrome and Safari already implement the spec this way</li>
+<li>Firefox is implementing this for compatibility</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="914828429" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/29275" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/29275/hovercard" href="https://github.com/web-platform-tests/wpt/pull/29275">web-platform-tests/wpt#29275</a></li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/main/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
+<ul dir="auto">
+<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1704473" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1704473</a></li>
+</ul>
+</li>
+</ul>
+
+<hr>
+<p dir="auto"><a href="https://whatpr.org/html/6748/acknowledgements.html" title="Last updated on Jun 8, 2021, 4:21 PM UTC (286afd0)" rel="nofollow">/acknowledgements.html</a>  ( <a href="https://whatpr.org/html/6748/0e2bdcf...286afd0/acknowledgements.html" title="Last updated on Jun 8, 2021, 4:21 PM UTC (286afd0)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6748/semantics.html" title="Last updated on Jun 8, 2021, 4:21 PM UTC (286afd0)" rel="nofollow">/semantics.html</a>  ( <a href="https://whatpr.org/html/6748/0e2bdcf...286afd0/semantics.html" title="Last updated on Jun 8, 2021, 4:21 PM UTC (286afd0)" rel="nofollow">diff</a> )</p>]]></content>
+        <author>
+            <name>dergoegge</name>
+            <email>dergoegge@noreply.github.com</email>
+            <uri>https://github.com/dergoegge</uri>
+        </author>
+        <published>2021-06-08T11:02:48.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add a global event handler for beforeinput]]></title>
+        <id>https://github.com/whatwg/html/pull/6743</id>
+        <link href="https://github.com/whatwg/html/pull/6743"/>
+        <updated>2022-06-07T23:44:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/29559695?u=996bfc0df5b5e0a7a210631bfd2760f23fdc8912&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Also imported the input event from the UI events specifications, since that one defines it.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #4526.">Fixed</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="432671204" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/4526" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/4526/hovercard" href="https://github.com/whatwg/html/issues/4526">#4526</a></p>
+<p dir="auto">(This PR is directly pulled from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="432748561" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/4530" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/4530/hovercard" href="https://github.com/whatwg/html/pull/4530">#4530</a>, which can't land due to IP issues.)</p>
+
+<hr>
+<h3 dir="auto">💥 Error: Wattsi server error 💥</h3>
+<p dir="auto"><a href="https://github.com/tobie/pr-preview#pr-preview">PR Preview</a> failed to build. <em>(Last tried on Jun 7, 2021, 5:48 PM UTC)</em>.</p>
+<details>
+<summary>More</summary>
+<p dir="auto">PR Preview relies on a number of web services to run. There seems to be an issue with the following one:</p>
+<p dir="auto">🚨 <a href="https://github.com/domenic/wattsi-server">Wattsi Server</a> - Wattsi Server is the web service used to build the WHATWG HTML spec.</p>
+<p dir="auto">🔗 <a href="https://build.whatwg.org/wattsi" rel="nofollow">Related URL</a></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Parsing MDN data...
+Parsing...
+Generating HTML variant...
+Error: Multiple definitions for term &quot;event-beforeinput&quot; Parent of first says: &quot;beforeinput event&quot;, parent of second says: &quot; beforeinput      &quot;
+Error: Multiple definitions for term &quot;event-input&quot; Parent of first says: &quot;input event&quot;, parent of second says: &quot; input      &quot;
+Error: missing &lt;dfn&gt; for topic &quot;event-onbeforeinput&quot; explicitly from &lt;code&gt; element containing &quot;onbeforeinput&quot;; previous heading contents are &quot;8.1.7.2 Event handlers on elements, Document objects, and Window objects&quot;
+Error count: 3
+Saving index-html
+Splitting...
+Saving index.html
+Saving introduction.html
+Saving infrastructure.html
+Saving common-microsyntaxes.html
+Saving urls-and-fetching.html
+Saving common-dom-interfaces.html
+Saving structured-data.html
+Saving dom.html
+Saving semantics.html
+Saving sections.html
+Saving grouping-content.html
+Saving text-level-semantics.html
+Saving links.html
+Saving edits.html
+Saving embedded-content.html
+Saving images.html
+Saving iframe-embed-object.html
+Saving media.html
+Saving image-maps.html
+Saving embedded-content-other.html
+Saving tables.html
+Saving forms.html
+Saving input.html
+Saving form-elements.html
+Saving form-control-infrastructure.html
+Saving interactive-elements.html
+Saving scripting.html
+Saving canvas.html
+Saving custom-elements.html
+Saving semantics-other.html
+Saving microdata.html
+Saving interaction.html
+Saving dnd.html
+Saving browsers.html
+Saving window-object.html
+Saving origin.html
+Saving history.html
+Saving browsing-the-web.html
+Saving webappapis.html
+Saving dynamic-markup-insertion.html
+Saving timers-and-user-prompts.html
+Saving system-state.html
+Saving imagebitmap-and-animations.html
+Saving comms.html
+Saving server-sent-events.html
+Saving web-sockets.html
+Saving web-messaging.html
+Saving workers.html
+Saving worklets.html
+Saving webstorage.html
+Saving syntax.html
+Saving parsing.html
+Saving named-characters.html
+Saving xhtml.html
+Saving rendering.html
+Saving obsolete.html
+Saving iana.html
+Saving indices.html
+Saving references.html
+Saving acknowledgements.html
+Generating DEV variant...
+Error: Multiple definitions for term &quot;event-beforeinput&quot; Parent of first says: &quot;beforeinput event&quot;, parent of second says: &quot; beforeinput      &quot;
+Error: Multiple definitions for term &quot;event-input&quot; Parent of first says: &quot;input event&quot;, parent of second says: &quot; input      &quot;
+Error count: 2
+Splitting...
+Saving index.html
+Saving introduction.html
+Saving infrastructure.html
+Saving common-microsyntaxes.html
+Saving urls-and-fetching.html
+Saving common-dom-interfaces.html
+Saving dom.html
+Saving semantics.html
+Saving sections.html
+Saving grouping-content.html
+Saving text-level-semantics.html
+Saving links.html
+Saving edits.html
+Saving embedded-content.html
+Saving images.html
+Saving iframe-embed-object.html
+Saving media.html
+Saving image-maps.html
+Saving embedded-content-other.html
+Saving tables.html
+Saving forms.html
+Saving input.html
+Saving form-elements.html
+Saving form-control-infrastructure.html
+Saving interactive-elements.html
+Saving scripting.html
+Saving canvas.html
+Saving custom-elements.html
+Saving semantics-other.html
+Saving microdata.html
+Saving interaction.html
+Saving dnd.html
+Saving browsers.html
+Saving window-object.html
+Saving origin.html
+Saving history.html
+Saving browsing-the-web.html
+Saving webappapis.html
+Saving dynamic-markup-insertion.html
+Saving timers-and-user-prompts.html
+Saving system-state.html
+Saving imagebitmap-and-animations.html
+Saving comms.html
+Saving server-sent-events.html
+Saving web-sockets.html
+Saving web-messaging.html
+Saving workers.html
+Saving worklets.html
+Saving webstorage.html
+Saving syntax.html
+Saving named-characters.html
+Saving xhtml.html
+Saving obsolete.html
+Saving indices.html
+Saving references.html
+Saving acknowledgements.html
+Generating SNAP variant...
+Error: Multiple definitions for term &quot;event-beforeinput&quot; Parent of first says: &quot;beforeinput event&quot;, parent of second says: &quot; beforeinput      &quot;
+Error: Multiple definitions for term &quot;event-input&quot; Parent of first says: &quot;input event&quot;, parent of second says: &quot; input      &quot;
+Error: missing &lt;dfn&gt; for topic &quot;event-onbeforeinput&quot; explicitly from &lt;code&gt; element containing &quot;onbeforeinput&quot;; previous heading contents are &quot;8.1.7.2 Event handlers on elements, Document objects, and Window objects&quot;
+Error count: 3
+Saving index-snap
+
+
+"><pre class="notranslate"><code class="notranslate">Parsing MDN data...
+Parsing...
+Generating HTML variant...
+Error: Multiple definitions for term "event-beforeinput" Parent of first says: "beforeinput event", parent of second says: " beforeinput      "
+Error: Multiple definitions for term "event-input" Parent of first says: "input event", parent of second says: " input      "
+Error: missing &lt;dfn&gt; for topic "event-onbeforeinput" explicitly from &lt;code&gt; element containing "onbeforeinput"; previous heading contents are "8.1.7.2 Event handlers on elements, Document objects, and Window objects"
+Error count: 3
+Saving index-html
+Splitting...
+Saving index.html
+Saving introduction.html
+Saving infrastructure.html
+Saving common-microsyntaxes.html
+Saving urls-and-fetching.html
+Saving common-dom-interfaces.html
+Saving structured-data.html
+Saving dom.html
+Saving semantics.html
+Saving sections.html
+Saving grouping-content.html
+Saving text-level-semantics.html
+Saving links.html
+Saving edits.html
+Saving embedded-content.html
+Saving images.html
+Saving iframe-embed-object.html
+Saving media.html
+Saving image-maps.html
+Saving embedded-content-other.html
+Saving tables.html
+Saving forms.html
+Saving input.html
+Saving form-elements.html
+Saving form-control-infrastructure.html
+Saving interactive-elements.html
+Saving scripting.html
+Saving canvas.html
+Saving custom-elements.html
+Saving semantics-other.html
+Saving microdata.html
+Saving interaction.html
+Saving dnd.html
+Saving browsers.html
+Saving window-object.html
+Saving origin.html
+Saving history.html
+Saving browsing-the-web.html
+Saving webappapis.html
+Saving dynamic-markup-insertion.html
+Saving timers-and-user-prompts.html
+Saving system-state.html
+Saving imagebitmap-and-animations.html
+Saving comms.html
+Saving server-sent-events.html
+Saving web-sockets.html
+Saving web-messaging.html
+Saving workers.html
+Saving worklets.html
+Saving webstorage.html
+Saving syntax.html
+Saving parsing.html
+Saving named-characters.html
+Saving xhtml.html
+Saving rendering.html
+Saving obsolete.html
+Saving iana.html
+Saving indices.html
+Saving references.html
+Saving acknowledgements.html
+Generating DEV variant...
+Error: Multiple definitions for term "event-beforeinput" Parent of first says: "beforeinput event", parent of second says: " beforeinput      "
+Error: Multiple definitions for term "event-input" Parent of first says: "input event", parent of second says: " input      "
+Error count: 2
+Splitting...
+Saving index.html
+Saving introduction.html
+Saving infrastructure.html
+Saving common-microsyntaxes.html
+Saving urls-and-fetching.html
+Saving common-dom-interfaces.html
+Saving dom.html
+Saving semantics.html
+Saving sections.html
+Saving grouping-content.html
+Saving text-level-semantics.html
+Saving links.html
+Saving edits.html
+Saving embedded-content.html
+Saving images.html
+Saving iframe-embed-object.html
+Saving media.html
+Saving image-maps.html
+Saving embedded-content-other.html
+Saving tables.html
+Saving forms.html
+Saving input.html
+Saving form-elements.html
+Saving form-control-infrastructure.html
+Saving interactive-elements.html
+Saving scripting.html
+Saving canvas.html
+Saving custom-elements.html
+Saving semantics-other.html
+Saving microdata.html
+Saving interaction.html
+Saving dnd.html
+Saving browsers.html
+Saving window-object.html
+Saving origin.html
+Saving history.html
+Saving browsing-the-web.html
+Saving webappapis.html
+Saving dynamic-markup-insertion.html
+Saving timers-and-user-prompts.html
+Saving system-state.html
+Saving imagebitmap-and-animations.html
+Saving comms.html
+Saving server-sent-events.html
+Saving web-sockets.html
+Saving web-messaging.html
+Saving workers.html
+Saving worklets.html
+Saving webstorage.html
+Saving syntax.html
+Saving named-characters.html
+Saving xhtml.html
+Saving obsolete.html
+Saving indices.html
+Saving references.html
+Saving acknowledgements.html
+Generating SNAP variant...
+Error: Multiple definitions for term "event-beforeinput" Parent of first says: "beforeinput event", parent of second says: " beforeinput      "
+Error: Multiple definitions for term "event-input" Parent of first says: "input event", parent of second says: " input      "
+Error: missing &lt;dfn&gt; for topic "event-onbeforeinput" explicitly from &lt;code&gt; element containing "onbeforeinput"; previous heading contents are "8.1.7.2 Event handlers on elements, Document objects, and Window objects"
+Error count: 3
+Saving index-snap
+
+
+
+</code></pre></div>
+<p dir="auto"><em>If you don't have enough information above to solve the error by yourself (or to understand to which web service the error is related to, if any), please <a href="https://github.com/tobie/pr-preview/issues/new?title=Error%20not%20surfaced%20properly&amp;body=See%20whatwg/html%236743.">file an issue</a>.</em></p>
+</details>
+
+<hr>
+<h3 dir="auto">💥 Error: HTTP Error: 404 Not Found 💥</h3>
+<p dir="auto"><a href="https://github.com/tobie/pr-preview#pr-preview">PR Preview</a> failed to build. <em>(Last tried on Jun 3, 2022, 11:29 PM UTC)</em>.</p>
+<details>
+<summary>More</summary>
+<p dir="auto">🔗 <a href="https://raw.githubusercontent.com/whatwg/html/90324d5dcb98d8173470ff37f5e64dffa4ac23b6/source" rel="nofollow">Related URL</a></p>
+<p dir="auto"><em>If you don't have enough information above to solve the error by yourself (or to understand to which web service the error is related to, if any), please <a href="https://github.com/tobie/pr-preview/issues/new?title=Error%20not%20surfaced%20properly&amp;body=See%20whatwg/html%236743.">file an issue</a>.</em></p>
+</details>]]></content>
+        <author>
+            <name>mfreed7</name>
+            <email>mfreed7@noreply.github.com</email>
+            <uri>https://github.com/mfreed7</uri>
+        </author>
+        <published>2021-06-07T17:47:36.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Restore navigator.plugins and navigator.mimeTypes as PDF-focused]]></title>
+        <id>https://github.com/whatwg/html/pull/6738</id>
+        <link href="https://github.com/whatwg/html/pull/6738"/>
+        <updated>2021-07-13T17:59:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is an attempt at addressing the discussion starting at <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard?comment_id=805389170&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/issues/6003#issuecomment-805389170">#6003 (comment)</a>.</p>
+<p dir="auto">It ensures browsers only vary on a single boolean, "PDF viewer supported". Then, it:</p>
+<ul dir="auto">
+<li>Standardizes a new <code class="notranslate">navigator.pdfSupported</code> property which exposes that boolean directly.</li>
+<li>Makes the legacy <code class="notranslate">navigator.plugins</code> and <code class="notranslate">navigator.mimeType</code> interfaces expose a uniform set of <code class="notranslate">Plugin</code> and <code class="notranslate">MimeType</code> objects, across every browser, in one of two configurations (depending on the PDF viewer supported boolean).</li>
+</ul>
+<p dir="auto">For PDF viewer supported UAs, the resulting structure is:</p>
+<ul dir="auto">
+<li>5 <code class="notranslate">Plugin</code> objects, named (in order) "PDF Viewer", "Chrome PDF Viewer", "Chromium PDF Viewer", "Microsoft Edge PDF Viewer", "WebKit built-in PDF".
+<ul dir="auto">
+<li><code class="notranslate">description</code>: "Portable Document Format" (like Chrome. Safari is the empty string.)</li>
+<li><code class="notranslate">filename</code>: "internal-pdf-viewer" (like one of Chrome's two possibilities. Safari is the empty string.)</li>
+<li>All 5 point to both of the following <code class="notranslate">MimeType</code> objects via their named/indexed properties.</li>
+</ul>
+</li>
+<li>2 <code class="notranslate">MimeType</code> objects, for the types "application/pdf" and "text/pdf".
+<ul dir="auto">
+<li><code class="notranslate">description</code>: "Portable Document Format" (like both Safari and Chrome)</li>
+<li><code class="notranslate">suffixes</code>: "pdf" (like both Safari and Chrome)</li>
+<li>Both point to the 0th "PDF Viewer" <code class="notranslate">Plugin</code> object via their <code class="notranslate">enabledPlugin</code> getter.</li>
+<li><code class="notranslate">application/x-google-chrome-pdf</code> is <em>not</em> included</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
+<ul dir="auto">
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Safari has been supportive of this general direction per comments in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard" href="https://github.com/whatwg/html/issues/6003">#6003</a> but has not reviewed this specific spec text.</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="935200114" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/29559" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/29559/hovercard" href="https://github.com/web-platform-tests/wpt/pull/29559">web-platform-tests/wpt#29559</a></li>
+<li>I'd also like to write tests based on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="783290503" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/27129" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/27129/hovercard" href="https://github.com/web-platform-tests/wpt/pull/27129">web-platform-tests/wpt#27129</a> to see about PDF loading support being synced...</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/main/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
+<ul dir="auto">
+<li>Chrome: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1164635" rel="nofollow">https://bugs.chromium.org/p/chromium/issues/detail?id=1164635</a> , <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1222887" rel="nofollow">https://bugs.chromium.org/p/chromium/issues/detail?id=1222887</a></li>
+<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1720353" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1720353</a></li>
+<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=220495" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=220495</a></li>
+</ul>
+</li>
+</ul>
+<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
+<details>
+<summary>Original change description</summary>
+This is an attempt at addressing the discussion starting at https://github.com/<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard" href="https://github.com/whatwg/html/issues/6003">/issues/6003</a>#issuecomment-805389170. There is another approach, discussed in https://github.com/<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard" href="https://github.com/whatwg/html/issues/6003">/issues/6003</a>#issuecomment-854887958, which might supersede this one.
+<p dir="auto">It also includes <code class="notranslate">navigator.pdfSupported</code> as a modern way of doing detection so that web developers have a bit of an easier time, and maybe in five years we can revisit removing <code class="notranslate">navigator.plugins</code> and <code class="notranslate">navigator.mimeTypes</code>.</p>
+<p dir="auto">This approach (for PDF-supporting UAs) is:</p>
+<ul dir="auto">
+<li>Such UAs have a <em>single</em> <code class="notranslate">Plugin</code> with the following properties:
+<ul dir="auto">
+<li><code class="notranslate">name</code>: implementation-defined, but must contain the string "PDF".</li>
+<li><code class="notranslate">description</code>: "Portable Document Format" (like Chrome. Safari is the empty string.)</li>
+<li><code class="notranslate">filename</code>: "internal-pdf-viewer" (like one of Chrome's two possibilities. Safari is the empty string.)</li>
+</ul>
+</li>
+<li>Such UAs have <em>two</em> <code class="notranslate">MimeType</code>s with the following properties:
+<ul dir="auto">
+<li><code class="notranslate">type</code>: <code class="notranslate">application/pdf</code> for the 0th, and <code class="notranslate">text/pdf</code> for the 1st. (Like Safari. Chrome has <code class="notranslate">application/x-google-chrome-pdf</code> for the 0th, and <code class="notranslate">application/pdf</code> for the 1st.)</li>
+<li><code class="notranslate">description</code>: "Portable Document Format" (like both Safari and Chrome)</li>
+<li><code class="notranslate">suffixes</code>: "pdf" (like both Safari and Chrome)</li>
+</ul>
+</li>
+<li>These objects are related in the following manner: the <code class="notranslate">Plugin</code> maps to both <code class="notranslate">MimeType</code>s (via named/indexed properties), and each <code class="notranslate">MimeType</code> maps to the single <code class="notranslate">Plugin</code> (via its <code class="notranslate">enabledPlugin</code> getter).</li>
+</ul>
+<p dir="auto">Notable differences in object structure:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">Safari also has a third <code class="notranslate">MimeType</code> for <code class="notranslate">application/postscript</code>, mapping to the same <code class="notranslate">Plugin</code>. Per <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard?comment_id=806187304&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/issues/6003#issuecomment-806187304">#6003 (comment)</a> I left that out (although you can see an earlier commit that supported it).</p>
+</li>
+<li>
+<p dir="auto">Chrome has two <code class="notranslate">MimeType</code>s and two corresponding <code class="notranslate">Plugin</code>s which map to each other. I went with the single-plugin-two-MimeType approach from Safari because it's simpler.</p>
+</li>
+</ul>
+<p dir="auto">Potential variants:</p>
+<ul dir="auto">
+<li>
+<p dir="auto">We could try to cut out <code class="notranslate">text/pdf</code>. It's somewhat harmless but while we're simplifying it might be nice to get rid of...</p>
+</li>
+<li>
+<p dir="auto">This leaves one bit of implementation-defined behavior, the <code class="notranslate">name</code> of the plugin. Could we clean that up? See the discussion in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="713059638" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/6003" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/6003/hovercard?comment_id=854887958&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/issues/6003#issuecomment-854887958">#6003 (comment)</a>.</p>
+</li>
+</ul>
+</details>
+
+<hr>
+<p dir="auto"><a href="https://whatpr.org/html/6738/browsing-the-web.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/browsing-the-web.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/browsing-the-web.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6738/common-dom-interfaces.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/common-dom-interfaces.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/common-dom-interfaces.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6738/index.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/index.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/index.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6738/infrastructure.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/infrastructure.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/infrastructure.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6738/obsolete.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/obsolete.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/obsolete.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6738/system-state.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/system-state.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/system-state.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6738/window-object.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">/window-object.html</a>  ( <a href="https://whatpr.org/html/6738/5d64c8c...ecf2b88/window-object.html" title="Last updated on Jul 13, 2021, 5:36 PM UTC (ecf2b88)" rel="nofollow">diff</a> )</p>]]></content>
+        <author>
+            <name>domenic</name>
+            <email>domenic@noreply.github.com</email>
+            <uri>https://github.com/domenic</uri>
+        </author>
+        <published>2021-06-04T17:09:58.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fixes to stopping document loading]]></title>
+        <id>https://github.com/whatwg/html/pull/6720</id>
+        <link href="https://github.com/whatwg/html/pull/6720"/>
+        <updated>2021-05-26T16:19:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><ul dir="auto">
+<li>
+<p dir="auto">Makes the discussion of user agent interface invoke "stop document loading", not "abort a document", since the browser stop button also cancels ongoing navigations.</p>
+</li>
+<li>
+<p dir="auto">Remove the "should" suggestion to fire an abort event. <span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #3525.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="301932781" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/3525" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/3525/hovercard" href="https://github.com/whatwg/html/issues/3525">#3525</a>. Since this was the only case where abort was fired, this removes the event definition and event handler content attribute definition, effectively making use of the onabort="" content attribute nonconforming. (But, we keep the IDL definition in GlobalEventHandlers and the associated mapping.)</p>
+</li>
+<li>
+<p dir="auto">Tweaks the active document check in "stop document loading" to be more correct.</p>
+</li>
+</ul>
+<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jgraham/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jgraham">@jgraham</a> since he's been looking at the specs for high-level "UI actions" recently.</p>
+
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
+<ul dir="auto">
+<li>This matches all browsers</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
+<ul dir="auto">
+<li>I don't know if there's a webdriver mechanism for pressing the stop button, but that would be necessary for tests.</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/main/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
+<ul dir="auto">
+<li>Chrome: N/A</li>
+<li>Firefox: N/A</li>
+<li>Safari: N/A</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
+
+<hr>
+<p dir="auto"><a href="https://whatpr.org/html/6720/browsing-the-web.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">/browsing-the-web.html</a>  ( <a href="https://whatpr.org/html/6720/4ba46b0...e6a167c/browsing-the-web.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6720/dom.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">/dom.html</a>  ( <a href="https://whatpr.org/html/6720/4ba46b0...e6a167c/dom.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6720/indices.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">/indices.html</a>  ( <a href="https://whatpr.org/html/6720/4ba46b0...e6a167c/indices.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6720/webappapis.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">/webappapis.html</a>  ( <a href="https://whatpr.org/html/6720/4ba46b0...e6a167c/webappapis.html" title="Last updated on May 25, 2021, 7:33 PM UTC (e6a167c)" rel="nofollow">diff</a> )</p>]]></content>
+        <author>
+            <name>domenic</name>
+            <email>domenic@noreply.github.com</email>
+            <uri>https://github.com/domenic</uri>
+        </author>
+        <published>2021-05-25T19:31:30.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Specify outerText]]></title>
+        <id>https://github.com/whatwg/html/pull/6653</id>
+        <link href="https://github.com/whatwg/html/pull/6653"/>
+        <updated>2021-05-07T15:58:47.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #668.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="132670207" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/668" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/668/hovercard" href="https://github.com/whatwg/html/issues/668">#668</a>.</p>
+
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
+<ul dir="auto">
+<li>Implemented in Chromium</li>
+<li>Implemented in WebKit</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="876720656" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/28846" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/28846/hovercard" href="https://github.com/web-platform-tests/wpt/pull/28846">web-platform-tests/wpt#28846</a></li>
+<li>This contains: (a) tests for all the cases we currently test innerText on; (b) tests for the special no-parent behavior and adjacent text node collapsing behavior. It does not contain (c) tests for when MutationEvents do weird stuff, but I hope we can avoid requiring that before merging.</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/main/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
+<ul dir="auto">
+<li>Chrome: N/A</li>
+<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1709790" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1709790</a></li>
+<li>Safari: N/A</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
+
+<hr>
+<p dir="auto"><a href="https://whatpr.org/html/6653/custom-elements.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">/custom-elements.html</a>  ( <a href="https://whatpr.org/html/6653/af475cc...4c5a118/custom-elements.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6653/dom.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">/dom.html</a>  ( <a href="https://whatpr.org/html/6653/af475cc...4c5a118/dom.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6653/index.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">/index.html</a>  ( <a href="https://whatpr.org/html/6653/af475cc...4c5a118/index.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6653/infrastructure.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">/infrastructure.html</a>  ( <a href="https://whatpr.org/html/6653/af475cc...4c5a118/infrastructure.html" title="Last updated on May 7, 2021, 3:45 PM UTC (4c5a118)" rel="nofollow">diff</a> )</p>]]></content>
+        <author>
+            <name>domenic</name>
+            <email>domenic@noreply.github.com</email>
+            <uri>https://github.com/domenic</uri>
+        </author>
+        <published>2021-05-05T16:59:13.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Ignore title passed to pushState()/replaceState()]]></title>
         <id>https://github.com/whatwg/html/pull/6482</id>
         <link href="https://github.com/whatwg/html/pull/6482"/>
@@ -359,6 +959,48 @@ Explainer: <a href="https://open-ui.org/components/popup.research.explainer" rel
             <uri>https://github.com/annevk</uri>
         </author>
         <published>2021-01-12T09:33:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[HTMLElement.click() fires PointerEvent]]></title>
+        <id>https://github.com/whatwg/html/pull/6126</id>
+        <link href="https://github.com/whatwg/html/pull/6126"/>
+        <updated>2020-11-06T20:53:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/62953593?v=4" width="64" height="64" alt=""/><br/><p dir="auto">As per the change in ui events change click event from a MouseEvent to a PointerEvent.<br>
+As such, HTMLElement.click() has to fire a "click" PointerEvent at the target instead of a "click" MouseEvent.<br>
+This PR is completing <a href="https://github.com/whatwg/html/pull/5324" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/5324/hovercard">Change click and contextmenu event types to PointerEvent #5324</a> as per <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="574130852" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/5324" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/5324/hovercard?comment_id=721361755&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/pull/5324#issuecomment-721361755">#5324 (comment)</a>.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
+<ul dir="auto">
+<li>Chrome (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/NavidZ/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/NavidZ">@NavidZ</a>) / Edge (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/BoCupp-Microsoft/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/BoCupp-Microsoft">@BoCupp-Microsoft</a>)</li>
+<li>Firefox (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/smaug----/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/smaug----">@smaug----</a>)</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
+<ul dir="auto">
+<li><a href="https://crrev.com/c/2520239" rel="nofollow">Chromium CL</a> which makes HTMLElement.click() fire PointerEvent also changes Web Platform Test uievents/interface/click-event.html</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/master/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
+<ul dir="auto">
+<li>Chrome: <a href="https://crbug.com/989958" rel="nofollow">https://crbug.com/989958</a></li>
+<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1675847" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1675847</a></li>
+<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=218665" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=218665</a></li>
+</ul>
+</li>
+</ul>
+
+<hr>
+<p dir="auto"><a href="https://whatpr.org/html/6126/acknowledgements.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">/acknowledgements.html</a>  ( <a href="https://whatpr.org/html/6126/a2d27c6...2b709ee/acknowledgements.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6126/custom-elements.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">/custom-elements.html</a>  ( <a href="https://whatpr.org/html/6126/a2d27c6...2b709ee/custom-elements.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6126/infrastructure.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">/infrastructure.html</a>  ( <a href="https://whatpr.org/html/6126/a2d27c6...2b709ee/infrastructure.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6126/interaction.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">/interaction.html</a>  ( <a href="https://whatpr.org/html/6126/a2d27c6...2b709ee/interaction.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">diff</a> )<br>
+<a href="https://whatpr.org/html/6126/webappapis.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">/webappapis.html</a>  ( <a href="https://whatpr.org/html/6126/a2d27c6...2b709ee/webappapis.html" title="Last updated on Nov 6, 2020, 8:17 PM UTC (2b709ee)" rel="nofollow">diff</a> )</p>]]></content>
+        <author>
+            <name>liviutinta</name>
+            <email>liviutinta@noreply.github.com</email>
+            <uri>https://github.com/liviutinta</uri>
+        </author>
+        <published>2020-11-05T19:29:07.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Move worklets into the HTML Standard]]></title>
@@ -586,295 +1228,5 @@ with a reference[3] from CSS Color Adjustment.</p>
             <uri>https://github.com/camillelamy</uri>
         </author>
         <published>2020-05-07T12:39:07.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Do not use tabindex to determine interactive content]]></title>
-        <id>https://github.com/whatwg/html/pull/5457</id>
-        <link href="https://github.com/whatwg/html/pull/5457"/>
-        <updated>2020-04-27T17:03:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1538624?v=4" width="64" height="64" alt=""/><br/><p dir="auto">What elements are considered interactive content is observable through <code class="notranslate">label</code> element retargeting behavior, and all major rendering engines do not consider <code class="notranslate">tabindex</code> for this purpose. In fact, considering <code class="notranslate">tabindex</code> would be a Web-incompatible change according to <a href="https://crbug.com/1065048" rel="nofollow">https://crbug.com/1065048</a>.</p>
-<p dir="auto"><span class="issue-keyword">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="589649381" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/5414" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/5414/hovercard" href="https://github.com/whatwg/html/issues/5414">#5414</a>.</p>
-<hr>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed): This is already implemented by all three major rendering engines.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
-<ul dir="auto">
-<li><a href="https://chromium-review.googlesource.com/c/chromium/src/+/2146089" rel="nofollow">https://chromium-review.googlesource.com/c/chromium/src/+/2146089</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/master/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed (some of them are/will be closed as they were created to implement the current spec):
-<ul dir="auto">
-<li>Chrome: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1065048" rel="nofollow">https://bugs.chromium.org/p/chromium/issues/detail?id=1065048</a></li>
-<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1628500" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1628500</a></li>
-<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=210223" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=210223</a></li>
-</ul>
-</li>
-</ul>
-<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/5457/canvas.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/canvas.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/canvas.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5457/custom-elements.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/custom-elements.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/custom-elements.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5457/dom.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/dom.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/dom.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5457/form-elements.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/form-elements.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/form-elements.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5457/indices.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/indices.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/indices.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5457/interaction.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/interaction.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/interaction.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5457/text-level-semantics.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">/text-level-semantics.html</a>  ( <a href="https://whatpr.org/html/5457/a027acb...3d32587/text-level-semantics.html" title="Last updated on Apr 26, 2020, 6:23 PM UTC (3d32587)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>TimothyGu</name>
-            <email>TimothyGu@noreply.github.com</email>
-            <uri>https://github.com/TimothyGu</uri>
-        </author>
-        <published>2020-04-13T19:37:50.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Change click and contextmenu event types to PointerEvent]]></title>
-        <id>https://github.com/whatwg/html/pull/5324</id>
-        <link href="https://github.com/whatwg/html/pull/5324"/>
-        <updated>2020-11-06T19:11:54.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/16761559?v=4" width="64" height="64" alt=""/><br/><p dir="auto">As per change in ui events change click and<br>
-contextmenu event types to PointerEvent.</p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
-<ul dir="auto">
-<li>Chrome (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/NavidZ/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/NavidZ">@NavidZ</a>) / Edge (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/BoCupp-Microsoft/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/BoCupp-Microsoft">@BoCupp-Microsoft</a>)</li>
-<li>Firefox (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/smaug----/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/smaug----">@smaug----</a>)</li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
-<ul dir="auto">
-<li>Under development. I will add the link as soon as it is landed.</li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <a href="https://github.com/whatwg/meta/blob/master/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
-<ul dir="auto">
-<li>Chrome: <a href="https://crbug.com/989958" rel="nofollow">https://crbug.com/989958</a></li>
-<li>Firefox: …</li>
-<li>Safari: …</li>
-</ul>
-</li>
-</ul>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/5324/indices.html" title="Last updated on Nov 6, 2020, 7:00 PM UTC (5618050)" rel="nofollow">/indices.html</a>  ( <a href="https://whatpr.org/html/5324/a2d27c6...5618050/indices.html" title="Last updated on Nov 6, 2020, 7:00 PM UTC (5618050)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5324/infrastructure.html" title="Last updated on Nov 6, 2020, 7:00 PM UTC (5618050)" rel="nofollow">/infrastructure.html</a>  ( <a href="https://whatpr.org/html/5324/a2d27c6...5618050/infrastructure.html" title="Last updated on Nov 6, 2020, 7:00 PM UTC (5618050)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5324/webappapis.html" title="Last updated on Nov 6, 2020, 7:00 PM UTC (5618050)" rel="nofollow">/webappapis.html</a>  ( <a href="https://whatpr.org/html/5324/a2d27c6...5618050/webappapis.html" title="Last updated on Nov 6, 2020, 7:00 PM UTC (5618050)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>NavidZ</name>
-            <email>NavidZ@noreply.github.com</email>
-            <uri>https://github.com/NavidZ</uri>
-        </author>
-        <published>2020-03-02T17:30:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Move the DOMParser class to HTML]]></title>
-        <id>https://github.com/whatwg/html/pull/5190</id>
-        <link href="https://github.com/whatwg/html/pull/5190"/>
-        <updated>2020-01-29T15:39:45.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This moves the DOMParser class from <a href="https://w3c.github.io/DOM-Parsing/" rel="nofollow">https://w3c.github.io/DOM-Parsing/</a><br>
-into HTML, per various offline discussions. Along the way, it improves<br>
-the spec in several minor ways and a couple notable ways:</p>
-<ul dir="auto">
-<li>It precisely defines the URL of the resulting document, in a way that<br>
-matches the majority of browsers. As such, this closes<br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="414067493" data-permission-text="Title is private" data-url="https://github.com/w3c/DOM-Parsing/issues/46" data-hovercard-type="issue" data-hovercard-url="/w3c/DOM-Parsing/issues/46/hovercard" href="https://github.com/w3c/DOM-Parsing/issues/46">w3c/DOM-Parsing#46</a>.</li>
-<li>It more clearly states how the parser error documents are created,<br>
-namely that they also get their content type and URL set.</li>
-</ul>
-<p dir="auto">This also <span class="issue-keyword">closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="434840212" data-permission-text="Title is private" data-url="https://github.com/w3c/DOM-Parsing/issues/51" data-hovercard-type="issue" data-hovercard-url="/w3c/DOM-Parsing/issues/51/hovercard" href="https://github.com/w3c/DOM-Parsing/issues/51">w3c/DOM-Parsing#51</a> and<br>
-<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="286333708" data-permission-text="Title is private" data-url="https://github.com/w3c/DOM-Parsing/issues/34" data-hovercard-type="issue" data-hovercard-url="/w3c/DOM-Parsing/issues/34/hovercard" href="https://github.com/w3c/DOM-Parsing/issues/34">w3c/DOM-Parsing#34</a> by adding explanatory<br>
-notes for points that confused people enough to file an issue.</p>
-<hr>
-
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
-<ul dir="auto">
-<li>All implementers implement this in general. They disagree on minor points: Gecko (unlike WebKit/Chromium and unlike this spec PR) uses base URL instead of URL. And browsers have minor divergences on the error document semantics.</li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="545341444" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/21041" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/21041/hovercard" href="https://github.com/web-platform-tests/wpt/pull/21041">web-platform-tests/wpt#21041</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/master/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
-<ul dir="auto">
-<li>Chrome: none needed</li>
-<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1612140" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1612140</a></li>
-<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=206931" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=206931</a></li>
-</ul>
-</li>
-</ul>
-<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/5190/comms.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/comms.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/comms.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/dynamic-markup-insertion.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/dynamic-markup-insertion.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/dynamic-markup-insertion.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/imagebitmap-and-animations.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/imagebitmap-and-animations.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/imagebitmap-and-animations.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/index.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/index.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/index.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/infrastructure.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/infrastructure.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/infrastructure.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/scripting.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/scripting.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/scripting.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/system-state.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/system-state.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/system-state.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5190/timers-and-user-prompts.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">/timers-and-user-prompts.html</a>  ( <a href="https://whatpr.org/html/5190/5b42943...a6d47c7/timers-and-user-prompts.html" title="Last updated on Jan 22, 2020, 7:53 PM UTC (a6d47c7)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>domenic</name>
-            <email>domenic@noreply.github.com</email>
-            <uri>https://github.com/domenic</uri>
-        </author>
-        <published>2020-01-04T22:53:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[allow heading content within a legend element]]></title>
-        <id>https://github.com/whatwg/html/pull/5090</id>
-        <link href="https://github.com/whatwg/html/pull/5090"/>
-        <updated>2020-02-19T13:56:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4152514?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR updates the <code class="notranslate">legend</code>’s content model to allow for heading content. This update uses the <a href="https://html.spec.whatwg.org/#the-summary-element" rel="nofollow"><code class="notranslate">summary</code> element’s content model</a> as the reference for how I think this should be indicated in the spec.</p>
-<p dir="auto">If accepted, this <span class="issue-keyword">closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="504207648" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/4990" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/4990/hovercard" href="https://github.com/whatwg/html/issues/4990">#4990</a></p>
-<p dir="auto">Thanks</p>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/5090/form-elements.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">/form-elements.html</a>  ( <a href="https://whatpr.org/html/5090/bcd5d61...63d4399/form-elements.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5090/indices.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">/indices.html</a>  ( <a href="https://whatpr.org/html/5090/bcd5d61...63d4399/indices.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5090/interactive-elements.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">/interactive-elements.html</a>  ( <a href="https://whatpr.org/html/5090/bcd5d61...63d4399/interactive-elements.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/5090/sections.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">/sections.html</a>  ( <a href="https://whatpr.org/html/5090/bcd5d61...63d4399/sections.html" title="Last updated on Feb 18, 2020, 10:54 PM UTC (63d4399)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>scottaohara</name>
-            <email>scottaohara@noreply.github.com</email>
-            <uri>https://github.com/scottaohara</uri>
-        </author>
-        <published>2019-11-15T14:34:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Make 'autofocus' a global attribute]]></title>
-        <id>https://github.com/whatwg/html/pull/4830</id>
-        <link href="https://github.com/whatwg/html/pull/4830"/>
-        <updated>2019-09-02T06:14:59.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/12651367?u=3e0590a36295971b1bfaf951991f2072cafd3191&v=4" width="64" height="64" alt=""/><br/><ul dir="auto">
-<li>Add 'autofocus' to the global attribute list</li>
-<li>Move 'autofocus' IDL attribute from HTMLButtonElement, HTMLInputElement,<br>
-HTMLSelectElement, HTMLTextAreaElement to HTMLOrSVGElement</li>
-</ul>
-<p dir="auto">This <span class="issue-keyword">fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="436589633" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/4563" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/4563/hovercard" href="https://github.com/whatwg/html/issues/4563">#4563</a></p>
-
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
-<ul dir="auto">
-<li>Chrome: I support.</li>
-<li><a href="https://github.com/whatwg/html/issues/833#issuecomment-432993680" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/833/hovercard">Safari</a></li>
-<li><a href="https://github.com/whatwg/html/pull/4830#pullrequestreview-282192767" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/4830/hovercard">Firefox</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="482694302" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/18558" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/18558/hovercard" href="https://github.com/web-platform-tests/wpt/pull/18558">web-platform-tests/wpt#18558</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/master/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed:
-<ul dir="auto">
-<li>Chrome: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=995679" rel="nofollow">https://bugs.chromium.org/p/chromium/issues/detail?id=995679</a></li>
-<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1575154" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1575154</a></li>
-<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=200913" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=200913</a></li>
-</ul>
-</li>
-</ul>
-<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/4830/dom.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/dom.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/dom.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/form-control-infrastructure.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/form-control-infrastructure.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/form-control-infrastructure.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/form-elements.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/form-elements.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/form-elements.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/index.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/index.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/index.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/indices.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/indices.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/indices.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/input.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/input.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/input.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/interaction.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/interaction.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/interaction.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/interactive-elements.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/interactive-elements.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/interactive-elements.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4830/origin.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">/origin.html</a>  ( <a href="https://whatpr.org/html/4830/1224105...84c2138/origin.html" title="Last updated on Aug 30, 2019, 6:52 PM UTC (84c2138)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>tkent-google</name>
-            <email>tkent-google@noreply.github.com</email>
-            <uri>https://github.com/tkent-google</uri>
-        </author>
-        <published>2019-08-09T10:58:41.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Allow integrity attribute on rel=preload links]]></title>
-        <id>https://github.com/whatwg/html/pull/4699</id>
-        <link href="https://github.com/whatwg/html/pull/4699"/>
-        <updated>2019-06-22T19:28:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9669289?u=af3e22b4d81e37d0a193da5a5149c79d98ec54ed&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR "allows" the <code class="notranslate">integrity</code> attribute to be used by <code class="notranslate">&lt;link rel=preload&gt;</code>s. Previously, the <code class="notranslate">integrity</code> attribute would only be considered for <code class="notranslate">&lt;link rel=stylesheet&gt;</code>s, by spec. Link preloads, in this specification, use the <a href="https://html.spec.whatwg.org/multipage/semantics.html#fetch-and-process-the-linked-resource" rel="nofollow">default fetch and process the linked resource</a> algorithm, so this should be the only change left.</p>
-<p dir="auto">I am fine with adding support to <code class="notranslate">modulepreload</code> too, but I think that should be a separate PR, since this is tightly coupled with the consensus we have from the preload folks.</p>
-<p dir="auto">Corresponding w3c/preload PR &amp; issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="351092845" data-permission-text="Title is private" data-url="https://github.com/w3c/preload/issues/127" data-hovercard-type="issue" data-hovercard-url="/w3c/preload/issues/127/hovercard" href="https://github.com/w3c/preload/issues/127">w3c/preload#127</a> &amp; <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="456064712" data-permission-text="Title is private" data-url="https://github.com/w3c/preload/issues/137" data-hovercard-type="pull_request" data-hovercard-url="/w3c/preload/pull/137/hovercard" href="https://github.com/w3c/preload/pull/137">w3c/preload#137</a></p>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
-<ul dir="auto">
-<li>Multi-vendor agreement/resolve at TPAC 2018 on this spec change <a href="https://github.com/w3c/preload/issues/127#issuecomment-432951984" data-hovercard-type="issue" data-hovercard-url="/w3c/preload/issues/127/hovercard">can be found here</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> [Tests] ...incoming...</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Bugs:
-<ul dir="auto">
-<li>Chrome: <a href="https://crbug.com/677022" rel="nofollow">https://crbug.com/677022</a></li>
-<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1222633" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1222633</a> (this this just extends the preload feature, I think putting the generic preload bugzilla bug here is sufficient)</li>
-<li>Safari: (Currently handles this behavior correctly, as the WPTs will show)</li>
-</ul>
-</li>
-</ul>
-<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/kinu/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/kinu">@kinu</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/nyaxt/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/nyaxt">@nyaxt</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/yutakahirano/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/yutakahirano">@yutakahirano</a></p>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/4699/semantics.html" title="Last updated on Jun 20, 2019, 3:30 PM UTC (21ec17d)" rel="nofollow">/semantics.html</a>  ( <a href="https://whatpr.org/html/4699/dfff9f3...21ec17d/semantics.html" title="Last updated on Jun 20, 2019, 3:30 PM UTC (21ec17d)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>domfarolino</name>
-            <email>domfarolino@noreply.github.com</email>
-            <uri>https://github.com/domfarolino</uri>
-        </author>
-        <published>2019-06-14T05:17:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add form.requestSubmit()]]></title>
-        <id>https://github.com/whatwg/html/pull/4597</id>
-        <link href="https://github.com/whatwg/html/pull/4597"/>
-        <updated>2019-05-16T21:28:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/617481?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="383218019" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/4187" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/4187/hovercard" href="https://github.com/whatwg/html/issues/4187">#4187</a>.</p>
-
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> At least two implementers are interested (and none opposed):
-<ul dir="auto">
-<li>Blink</li>
-<li>WebKit per <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="383218019" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/4187" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/4187/hovercard?comment_id=440810235&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/issues/4187#issuecomment-440810235">#4187 (comment)</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/web-platform-tests/wpt">Tests</a> are written and can be reviewed and commented upon at:
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="442184041" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/16743" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/16743/hovercard" href="https://github.com/web-platform-tests/wpt/pull/16743">web-platform-tests/wpt#16743</a></li>
-</ul>
-</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <a href="https://github.com/whatwg/meta/blob/master/MAINTAINERS.md#handling-pull-requests">Implementation bugs</a> are filed: TODO.
-<ul dir="auto">
-<li>Chrome: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=964062" rel="nofollow">https://bugs.chromium.org/p/chromium/issues/detail?id=964062</a></li>
-<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1552301" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1552301</a></li>
-<li>Safari: <a href="https://bugs.webkit.org/show_bug.cgi?id=197958" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=197958</a></li>
-</ul>
-</li>
-</ul>
-<p dir="auto">(See <a href="https://whatwg.org/working-mode#changes" rel="nofollow">WHATWG Working Mode: Changes</a> for more details.)</p>
-<hr>
-<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/manucorporat/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/manucorporat">@manucorporat</a> and <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/muan/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/muan">@muan</a> as web developers who were interested in this and helped shape the feature.</p>
-<p dir="auto">Things for reviewers to consider:</p>
-<ul dir="auto">
-<li>Is the domintro text for web developers helpful enough?</li>
-<li>Are the "is a submit button" and form owner checks the correct ones? We could loosen these in the future, e.g. per <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/muan/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/muan">@muan</a>'s feedback in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="93212883" data-permission-text="Title is private" data-url="https://github.com/WICG/webcomponents/issues/187" data-hovercard-type="issue" data-hovercard-url="/WICG/webcomponents/issues/187/hovercard?comment_id=487168041&amp;comment_type=issue_comment" href="https://github.com/WICG/webcomponents/issues/187#issuecomment-487168041">WICG/webcomponents#187 (comment)</a> we could allow certain form-associated custom elements to be submit buttons.</li>
-<li>TypeError vs. other error types for the checks failing. I don't care very much so I went generic.</li>
-</ul>
-
-<hr>
-<p dir="auto"><a href="https://whatpr.org/html/4597/acknowledgements.html" title="Last updated on May 16, 2019, 9:28 PM UTC (7cdae2e)" rel="nofollow">/acknowledgements.html</a>  ( <a href="https://whatpr.org/html/4597/cb55dca...7cdae2e/acknowledgements.html" title="Last updated on May 16, 2019, 9:28 PM UTC (7cdae2e)" rel="nofollow">diff</a> )<br>
-<a href="https://whatpr.org/html/4597/forms.html" title="Last updated on May 16, 2019, 9:28 PM UTC (7cdae2e)" rel="nofollow">/forms.html</a>  ( <a href="https://whatpr.org/html/4597/cb55dca...7cdae2e/forms.html" title="Last updated on May 16, 2019, 9:28 PM UTC (7cdae2e)" rel="nofollow">diff</a> )</p>]]></content>
-        <author>
-            <name>domenic</name>
-            <email>domenic@noreply.github.com</email>
-            <uri>https://github.com/domenic</uri>
-        </author>
-        <published>2019-05-06T17:34:01.000Z</published>
     </entry>
 </feed>
