@@ -2,11 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-08T12:21:44.746Z</updated>
+    <updated>2026-05-08T13:30:09.656Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[docs(wasm): add document Memory address option]]></title>
+        <id>https://github.com/mdn/content/pull/44051</id>
+        <link href="https://github.com/mdn/content/pull/44051"/>
+        <updated>2026-05-08T12:26:20.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/54764038?u=07466b64651e022915fbbaf062d487e0b7c9d098&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Document the <code class="notranslate">address</code> option for <code class="notranslate">WebAssembly.Memory()</code>, including the <code class="notranslate">"i32"</code> and <code class="notranslate">"i64"</code> address types. This also clarifies the BigInt requirements for <code class="notranslate">"i64"</code> memories and updates <code class="notranslate">Memory.prototype.grow()</code> to describe its BigInt behavior for <code class="notranslate">"i64"</code> memories.</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">The <code class="notranslate">address</code> option is currently missing from the MDN documentation for <code class="notranslate">WebAssembly.Memory()</code>. Adding it helps readers understand how to create Memory64 memories from JavaScript and avoid using Number values where BigInt values are required.</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto">This is defined in the WebAssembly JavaScript Interface:</p>
+<ul dir="auto">
+<li><code class="notranslate">AddressType</code> is defined as <code class="notranslate">"i32"</code> or <code class="notranslate">"i64"</code>.</li>
+<li><code class="notranslate">MemoryDescriptor</code> includes an <code class="notranslate">address</code> member.</li>
+<li>The <code class="notranslate">Memory(descriptor)</code> constructor defaults <code class="notranslate">address</code> to <code class="notranslate">"i32"</code> when omitted, and converts <code class="notranslate">initial</code> and <code class="notranslate">maximum</code> using the selected address type.</li>
+<li><code class="notranslate">grow(delta)</code> also converts <code class="notranslate">delta</code> using the memory's address type and returns the previous size using the same address type.</li>
+</ul>
+<p dir="auto">Spec references:</p>
+<ul dir="auto">
+<li><a href="https://www.w3.org/TR/wasm-js-api-2/#enumdef-addresstype" rel="nofollow">https://www.w3.org/TR/wasm-js-api-2/#enumdef-addresstype</a></li>
+<li><a href="https://www.w3.org/TR/wasm-js-api-2/#dom-memorydescriptor-address" rel="nofollow">https://www.w3.org/TR/wasm-js-api-2/#dom-memorydescriptor-address</a></li>
+<li><a href="https://www.w3.org/TR/wasm-js-api-2/#dom-memory-memory" rel="nofollow">https://www.w3.org/TR/wasm-js-api-2/#dom-memory-memory</a></li>
+<li><a href="https://www.w3.org/TR/wasm-js-api-2/#dom-memory-grow" rel="nofollow">https://www.w3.org/TR/wasm-js-api-2/#dom-memory-grow</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43904.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4310073497" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43904" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43904/hovercard" href="https://github.com/mdn/content/issues/43904">#43904</a></p>
+
+
+
+]]></content>
+        <author>
+            <name>moon-jam</name>
+            <email>moon-jam@noreply.github.com</email>
+            <uri>https://github.com/moon-jam</uri>
+        </author>
+        <published>2026-05-08T12:25:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix mistake and grammar in CSS `quotes` property docs]]></title>
         <id>https://github.com/mdn/content/pull/44048</id>
@@ -451,37 +492,5 @@ Would appreciate you scanning this at least!</p>
             <uri>https://github.com/mostafahamed15</uri>
         </author>
         <published>2026-05-01T03:43:44.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Editorial review: Document WebXR visibilitymaskchange event]]></title>
-        <id>https://github.com/mdn/content/pull/43975</id>
-        <link href="https://github.com/mdn/content/pull/43975"/>
-        <updated>2026-05-01T08:21:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Chrome 144 adds support for the <code class="notranslate">visibilitymaskchange</code> event/<code class="notranslate">XRVisibilityMaskChange</code> event object; see <a href="https://chromestatus.com/feature/5073760055066624" rel="nofollow">https://chromestatus.com/feature/5073760055066624</a>.</p>
-<p dir="auto">This PR adds documentation for:</p>
-<ul dir="auto">
-<li>The <code class="notranslate">XRVisibilityMaskChange</code> event object and all its members.</li>
-<li>The <code class="notranslate">visibilitymaskchange</code> event</li>
-<li>The <code class="notranslate">XRView.index</code> property.</li>
-</ul>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-04-30T13:54:32.000Z</published>
     </entry>
 </feed>

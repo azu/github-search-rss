@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/54764038?u=07466b64651e022915fbbaf062d487e0b7c9d098&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Document the <code class=\"notranslate\">address</code> option for <code class=\"notranslate\">WebAssembly.Memory()</code>, including the <code class=\"notranslate\">\"i32\"</code> and <code class=\"notranslate\">\"i64\"</code> address types. This also clarifies the BigInt requirements for <code class=\"notranslate\">\"i64\"</code> memories and updates <code class=\"notranslate\">Memory.prototype.grow()</code> to describe its BigInt behavior for <code class=\"notranslate\">\"i64\"</code> memories.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The <code class=\"notranslate\">address</code> option is currently missing from the MDN documentation for <code class=\"notranslate\">WebAssembly.Memory()</code>. Adding it helps readers understand how to create Memory64 memories from JavaScript and avoid using Number values where BigInt values are required.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\">This is defined in the WebAssembly JavaScript Interface:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">AddressType</code> is defined as <code class=\"notranslate\">\"i32\"</code> or <code class=\"notranslate\">\"i64\"</code>.</li>\n<li><code class=\"notranslate\">MemoryDescriptor</code> includes an <code class=\"notranslate\">address</code> member.</li>\n<li>The <code class=\"notranslate\">Memory(descriptor)</code> constructor defaults <code class=\"notranslate\">address</code> to <code class=\"notranslate\">\"i32\"</code> when omitted, and converts <code class=\"notranslate\">initial</code> and <code class=\"notranslate\">maximum</code> using the selected address type.</li>\n<li><code class=\"notranslate\">grow(delta)</code> also converts <code class=\"notranslate\">delta</code> using the memory's address type and returns the previous size using the same address type.</li>\n</ul>\n<p dir=\"auto\">Spec references:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://www.w3.org/TR/wasm-js-api-2/#enumdef-addresstype\" rel=\"nofollow\">https://www.w3.org/TR/wasm-js-api-2/#enumdef-addresstype</a></li>\n<li><a href=\"https://www.w3.org/TR/wasm-js-api-2/#dom-memorydescriptor-address\" rel=\"nofollow\">https://www.w3.org/TR/wasm-js-api-2/#dom-memorydescriptor-address</a></li>\n<li><a href=\"https://www.w3.org/TR/wasm-js-api-2/#dom-memory-memory\" rel=\"nofollow\">https://www.w3.org/TR/wasm-js-api-2/#dom-memory-memory</a></li>\n<li><a href=\"https://www.w3.org/TR/wasm-js-api-2/#dom-memory-grow\" rel=\"nofollow\">https://www.w3.org/TR/wasm-js-api-2/#dom-memory-grow</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43904.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4310073497\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43904\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43904/hovercard\" href=\"https://github.com/mdn/content/issues/43904\">#43904</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/44051",
+            "title": "docs(wasm): add document Memory address option",
+            "date_modified": "2026-05-08T12:26:20.000Z",
+            "date_published": "2026-05-08T12:25:49.000Z",
+            "author": {
+                "name": "moon-jam",
+                "url": "https://github.com/moon-jam"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/150728638?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">I fixed the property value mentioned in a note in the docs for the <code class=\"notranslate\">quotes</code> CSS property, as well as several grammatical mistakes.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The mention of  the <code class=\"notranslate\">open-quote</code> property value rather than <code class=\"notranslate\">no-open-quote</code> is, to the best of my understanding, wrong. Apart from that, grammatical mistakes detract from the reading experience and may create unneeded confusion.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">None.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
             "url": "https://github.com/mdn/content/pull/44048",
             "title": "Fix mistake and grammar in CSS `quotes` property docs",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "mostafahamed15",
                 "url": "https://github.com/mostafahamed15"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 144 adds support for the <code class=\"notranslate\">visibilitymaskchange</code> event/<code class=\"notranslate\">XRVisibilityMaskChange</code> event object; see <a href=\"https://chromestatus.com/feature/5073760055066624\" rel=\"nofollow\">https://chromestatus.com/feature/5073760055066624</a>.</p>\n<p dir=\"auto\">This PR adds documentation for:</p>\n<ul dir=\"auto\">\n<li>The <code class=\"notranslate\">XRVisibilityMaskChange</code> event object and all its members.</li>\n<li>The <code class=\"notranslate\">visibilitymaskchange</code> event</li>\n<li>The <code class=\"notranslate\">XRView.index</code> property.</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/43975",
-            "title": "Editorial review: Document WebXR visibilitymaskchange event",
-            "date_modified": "2026-05-01T08:21:35.000Z",
-            "date_published": "2026-04-30T13:54:32.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
