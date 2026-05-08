@@ -2,11 +2,156 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-05-08T18:24:02.040Z</updated>
+    <updated>2026-05-08T19:28:19.733Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[WG New Spec: "flex-wrap:balance"]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1227</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1227"/>
+        <updated>2026-05-08T19:23:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/992712?u=1d0b099dc41cfbc80d2ccf8ee8c6519efbe0f10b&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
+<p dir="auto"><a href="https://drafts.csswg.org/css-flexbox-2/" rel="nofollow">https://drafts.csswg.org/css-flexbox-2/</a></p>
+<h3 dir="auto">Explainer</h3>
+<p dir="auto"><a href="https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md">https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md</a></p>
+<h3 dir="auto">Links</h3>
+<ul dir="auto">
+<li>The WG's request for this TAG review:</li>
+</ul>
+<p dir="auto">???</p>
+<ul dir="auto">
+<li>Previous early design review, if any:</li>
+</ul>
+<p dir="auto">N/A</p>
+<ul dir="auto">
+<li>An introduction to the feature, aimed at unfamiliar audiences:</li>
+</ul>
+<p dir="auto"><a href="https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md#flex-wrapbalance-explainer">https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md#flex-wrapbalance-explainer</a></p>
+<p dir="auto">This allows developers to "balance" flex-lines, (similar to <code class="notranslate">text-wrap:balance</code>).</p>
+<ul dir="auto">
+<li>A description of the problems that end-users were facing before this proposal:</li>
+</ul>
+<p dir="auto"><a href="https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md#flex-wrapbalance-explainer">https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md#flex-wrapbalance-explainer</a></p>
+<p dir="auto">For a wrapping flexbox, developers would often be left with a single flex-item on the last line, which is often undesirable.</p>
+<p dir="auto">Developers were often working around this issue by converting a flexbox to inline-layout (to use <code class="notranslate">text-wrap:balance</code> instead), and making all the flex-items <code class="notranslate">display:inline-block</code>. This meant that they'd "lose" flexbox features limiting potential designs.</p>
+<p dir="auto">Other workarounds included:</p>
+<ul dir="auto">
+<li>Detecting when there were "orphans" on the last flex-line, then adding margin on an appropriate flex-item.</li>
+<li>Bisecting via script the flexbox size.</li>
+<li>Using media-queries/container-queries to hardcode margins to "balance".</li>
+<li>etc.</li>
+</ul>
+<p dir="auto">Developers also rely on multi-col (see wikipedia "references" section in desktop mode). Developers can re-create this using flexbox, and <code class="notranslate">flex-direction: column; flex-wrap:balance; flex-line-count: 2;</code>. Balancing flexbox will generally be less overhead (less time spent within out) then multi-col helping low end devices significantly.</p>
+<ul dir="auto">
+<li>Alternatives considered:</li>
+</ul>
+<p dir="auto"><a href="https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md#alternatives">https://github.com/bfgeek/flex-wrap-balance/blob/main/README.md#alternatives</a></p>
+<p dir="auto">There aren't too many other potential avenues; others were discussed but <code class="notranslate">flex-wrap:balance</code> is the most natural extension and what developers expect.</p>
+<p dir="auto">There is an extension point that is left unsolved at the moment (see: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3873175453" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/13414" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13414/hovercard?comment_id=4101156045&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/13414#issuecomment-4101156045">w3c/csswg-drafts#13414 (comment)</a> ), but the current design doesn't constrain solving this in the future. (We'd need the <code class="notranslate">flex-line-count</code> property either way).</p>
+<ul dir="auto">
+<li>Examples of how to use the proposal to solve the end-users' problems:</li>
+</ul>
+<p dir="auto"><a href="https://stackoverflow.com/questions/20729201/navigation-with-balanced-css-flex-wrap-containers" rel="nofollow">https://stackoverflow.com/questions/20729201/navigation-with-balanced-css-flex-wrap-containers</a><br>
+<a href="https://bsky.app/profile/yisibl.bsky.social/post/3m6jksgovdk2c" rel="nofollow">https://bsky.app/profile/yisibl.bsky.social/post/3m6jksgovdk2c</a><br>
+<a href="https://odland.dev/2024/12/22/web-wish-22-flex-wrap-balance.html" rel="nofollow">https://odland.dev/2024/12/22/web-wish-22-flex-wrap-balance.html</a><br>
+<a href="https://nerdy.dev/css-wishlist-2025#flex-wrap-balance" rel="nofollow">https://nerdy.dev/css-wishlist-2025#flex-wrap-balance</a><br>
+<a href="https://bsky.app/profile/una.im/post/3lpcjcjn4w22r" rel="nofollow">https://bsky.app/profile/una.im/post/3lpcjcjn4w22r</a><br>
+<a href="https://bfgeek.com/flexbox-image-gallery/" rel="nofollow">https://bfgeek.com/flexbox-image-gallery/</a></p>
+<ul dir="auto">
+<li>What do the end-users experience with this proposal:</li>
+</ul>
+<p dir="auto">Joy that a 10+ year feature request is available on the web platform.</p>
+<ul dir="auto">
+<li>User research you did to validate the problem and/or design, if any:</li>
+</ul>
+<p dir="auto">A lot of reading existing issues that developers were running into, and the various tricks they were using to try and solve this problem. Many developers came to a similar solution space.</p>
+<ul dir="auto">
+<li>Web Platform Tests:</li>
+</ul>
+<p dir="auto"><a href="https://wpt.fyi/results/css/css-flexbox/balance" rel="nofollow">https://wpt.fyi/results/css/css-flexbox/balance</a><br>
+(they'll be there soon).</p>
+<h3 dir="auto">The specification</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
+</ul>
+<h3 dir="auto">Where and by whom is the work is being done?</h3>
+<ul dir="auto">
+<li>GitHub repo:</li>
+</ul>
+<p dir="auto"><a href="https://github.com/w3c/csswg-drafts">https://github.com/w3c/csswg-drafts</a></p>
+<ul dir="auto">
+<li>
+<p dir="auto">Primary contacts:</p>
+<ul dir="auto">
+<li>Ian Kilpatrick <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/bfgeek/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/bfgeek">@bfgeek</a> , Google Chrome, Implementor</li>
+<li>Tab Atkins <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/tabatkins/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/tabatkins">@tabatkins</a> , Google Chrome, Specification Editor</li>
+</ul>
+</li>
+<li>
+<p dir="auto">Organization/project driving the specification:</p>
+</li>
+</ul>
+<p dir="auto">Google Chrome</p>
+<ul dir="auto">
+<li>This work is being funded by:</li>
+</ul>
+<p dir="auto">Google Chrome</p>
+<ul dir="auto">
+<li>Primary standards group developing this feature:</li>
+</ul>
+<p dir="auto">CSSWG</p>
+<ul dir="auto">
+<li>Incubation and standards groups that have discussed the design:</li>
+</ul>
+<p dir="auto">CSSWG</p>
+<h3 dir="auto">Feedback so far</h3>
+<ul dir="auto">
+<li>
+<p dir="auto">Active horizontal reviews:</p>
+</li>
+<li>
+<p dir="auto">Multi-stakeholder feedback:</p>
+<ul dir="auto">
+<li>Chromium comments: Supportive.</li>
+<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4408704129" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1405" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1405/hovercard" href="https://github.com/mozilla/standards-positions/issues/1405">mozilla/standards-positions#1405</a></li>
+<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4408745029" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/660" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/660/hovercard" href="https://github.com/WebKit/standards-positions/issues/660">WebKit/standards-positions#660</a></li>
+<li>Developers: Supportive <a href="https://bsky.app/profile/una.im/post/3lpcjcjn4w22r" rel="nofollow">https://bsky.app/profile/una.im/post/3lpcjcjn4w22r</a> (can provide more signal here if desired).</li>
+</ul>
+</li>
+<li>
+<p dir="auto">Major unresolved issues with or opposition to this specification:</p>
+</li>
+</ul>
+<p dir="auto">This not really a major issue but - see above wrt. "column-width" feature. Current solution space doesn't constrain in a negative way.<br>
+See: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3873175453" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/13414" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13414/hovercard?comment_id=4172022385&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/13414#issuecomment-4172022385">w3c/csswg-drafts#13414 (comment)</a></p>
+<blockquote>
+<p dir="auto"><code class="notranslate">RESOLVED: flex-line-count: &lt;integer&gt;, will work on rest later</code></p>
+</blockquote>
+<ul dir="auto">
+<li>Status/issue trackers for implementations:
+<ul dir="auto">
+<li><a href="https://chromestatus.com/feature/4547107962486784" rel="nofollow">https://chromestatus.com/feature/4547107962486784</a></li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2013454" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2013454</a></li>
+<li><a href="https://bugs.webkit.org/show_bug.cgi?id=314423" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=314423</a></li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">You should also know that...</h3>
+<p dir="auto">This is a relatively small but highly requested additional to flexbox layout. Many web-developers have run into this problem over the years.</p>
+<p dir="auto">Flexbox Level 1 is a very stable spec, hence being added into Level 2.</p>
+
+<hr>
+<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1227" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1227</a></p>]]></content>
+        <author>
+            <name>bfgeek</name>
+            <email>bfgeek@noreply.github.com</email>
+            <uri>https://github.com/bfgeek</uri>
+        </author>
+        <published>2026-05-08T19:23:01.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[three.ws — browser-native 3D AI agents with on-chain identity]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1226</id>
@@ -422,7 +567,7 @@ none</li>
 </ul>
 </li>
 </ul>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/2506926/578718955-26e5009b-04f9-47f8-98f5-0ccaaa5c8be7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzgyNjQ5NDEsIm5iZiI6MTc3ODI2NDY0MSwicGF0aCI6Ii8yNTA2OTI2LzU3ODcxODk1NS0yNmU1MDA5Yi0wNGY5LTQ3ZjgtOThmNS0wY2NhYWE1YzhiZTcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MDhUMTgyNDAxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9M2NhNjY2ZDdkMjFjZWI5NmY4NzRjNDA5MzQyOWNjNTBjNTVmY2NkNmRjOTVlYzlmN2MxMTVmNTc1MDE2YjIxNCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.PjDMPRWqblEciFcyndzif_7qf0aquUNuQfjHoezgOtw"><img width="1157" height="217" alt="Image" src="https://private-user-images.githubusercontent.com/2506926/578718955-26e5009b-04f9-47f8-98f5-0ccaaa5c8be7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzgyNjQ5NDEsIm5iZiI6MTc3ODI2NDY0MSwicGF0aCI6Ii8yNTA2OTI2LzU3ODcxODk1NS0yNmU1MDA5Yi0wNGY5LTQ3ZjgtOThmNS0wY2NhYWE1YzhiZTcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MDhUMTgyNDAxWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9M2NhNjY2ZDdkMjFjZWI5NmY4NzRjNDA5MzQyOWNjNTBjNTVmY2NkNmRjOTVlYzlmN2MxMTVmNTc1MDE2YjIxNCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.PjDMPRWqblEciFcyndzif_7qf0aquUNuQfjHoezgOtw" style="max-width: 100%; height: auto; max-height: 217px;; aspect-ratio: 1157 / 217; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/2506926/578718955-26e5009b-04f9-47f8-98f5-0ccaaa5c8be7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzgyNjg3OTksIm5iZiI6MTc3ODI2ODQ5OSwicGF0aCI6Ii8yNTA2OTI2LzU3ODcxODk1NS0yNmU1MDA5Yi0wNGY5LTQ3ZjgtOThmNS0wY2NhYWE1YzhiZTcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MDhUMTkyODE5WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YWVkZDQ1NDY5MGY1ODFlZjcxZTM3NzRlNjBjYWQyNTkzYzQzYTU1ZGFjNjE4MDY4NDExOGM0MGEyOTMxNjFlYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.zo-PFk2N6tj_eaCkJG7Sse25z-V1Wbmd9aSnapmv30Q"><img width="1157" height="217" alt="Image" src="https://private-user-images.githubusercontent.com/2506926/578718955-26e5009b-04f9-47f8-98f5-0ccaaa5c8be7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzgyNjg3OTksIm5iZiI6MTc3ODI2ODQ5OSwicGF0aCI6Ii8yNTA2OTI2LzU3ODcxODk1NS0yNmU1MDA5Yi0wNGY5LTQ3ZjgtOThmNS0wY2NhYWE1YzhiZTcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDUwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA1MDhUMTkyODE5WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YWVkZDQ1NDY5MGY1ODFlZjcxZTM3NzRlNjBjYWQyNTkzYzQzYTU1ZGFjNjE4MDY4NDExOGM0MGEyOTMxNjFlYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.zo-PFk2N6tj_eaCkJG7Sse25z-V1Wbmd9aSnapmv30Q" style="max-width: 100%; height: auto; max-height: 217px;; aspect-ratio: 1157 / 217; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a>
 <h3 dir="auto">The specification</h3>
 <ul class="contains-task-list">
 <li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
@@ -1202,62 +1347,5 @@ Key changes based on previous feedback and WG consensus:</p>
             <uri>https://github.com/tkent-google</uri>
         </author>
         <published>2026-03-23T06:58:21.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Incubation: Prerendering cross-origin iframes]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1207</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1207"/>
-        <updated>2026-04-08T01:01:26.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/15645004?u=4ee2054ff2b07e51fc9834be7e133a8363c48d04&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Explainer</h3>
-<p dir="auto"><a href="https://github.com/WICG/nav-speculation/blob/main/prerendering-cross-origin-iframes.md">https://github.com/WICG/nav-speculation/blob/main/prerendering-cross-origin-iframes.md</a></p>
-<h3 dir="auto">The explainer</h3>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes the information requested by the <a href="https://w3ctag.github.io/explainer-explainer/#introduction" rel="nofollow">Explainer Explainer</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes or links to answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Describes user research you did to validate the problem and/or design.</li>
-</ul>
-<h3 dir="auto">Where and by whom is the work is being done?</h3>
-<ul dir="auto">
-<li>GitHub repo: <a href="https://wicg.github.io/nav-speculation/prerendering.html" rel="nofollow">https://wicg.github.io/nav-speculation/prerendering.html</a></li>
-<li>Primary contacts:
-<ul dir="auto">
-<li>Yoichi Osato (<a href="https://github.com/yoichio">@yoichio</a>), Google</li>
-<li>Hiroki Nakagawa (<a href="https://github.com/nhiroki">@nhiroki</a>), Google</li>
-</ul>
-</li>
-<li>Organization/project driving the design: Google</li>
-<li>This work is being funded by: Google</li>
-<li>Incubation and standards groups that have discussed the design:</li>
-<li>Standards group(s) that you expect to discuss and/or adopt this work when it's<br>
-ready: &lt;unknown</li>
-</ul>
-<h3 dir="auto">Feedback so far</h3>
-<ul dir="auto">
-<li>Multi-stakeholder feedback:
-<ul dir="auto">
-<li>Chromium comments:</li>
-<li>Mozilla comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4118524030" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1376" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1376/hovercard" href="https://github.com/mozilla/standards-positions/issues/1376">mozilla/standards-positions#1376</a></li>
-<li>WebKit comments: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4118544951" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/636" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/636/hovercard" href="https://github.com/WebKit/standards-positions/issues/636">WebKit/standards-positions#636</a></li>
-<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
-</ul>
-</li>
-<li>Major unresolved issues with or opposition to this design:</li>
-</ul>
-<h3 dir="auto">You should also know that...</h3>
-<p dir="auto">In short,<br>
-We propose adding an opt-in for such pages, via a HTTP header</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Supports-Loading-Mode: prerender-cross-origin-frames"><pre class="notranslate"><code class="notranslate">Supports-Loading-Mode: prerender-cross-origin-frames
-</code></pre></div>
-<p dir="auto">which requests that the browser prerender cross-origin frames on pages containing the header. (The browser remains free to ignore this request, or to ignore the overall request to prerender, if it believes that would be better for user experience.)</p>
-
-<hr>
-<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1207" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1207</a></p>]]></content>
-        <author>
-            <name>yoichio</name>
-            <email>yoichio@noreply.github.com</email>
-            <uri>https://github.com/yoichio</uri>
-        </author>
-        <published>2026-03-23T06:12:18.000Z</published>
     </entry>
 </feed>
