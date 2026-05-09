@@ -2,11 +2,75 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-09T21:13:01.648Z</updated>
+    <updated>2026-05-09T22:12:08.893Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix compilation command in "Compiling an existing C module to WebAssembly" guide.]]></title>
+        <id>https://github.com/mdn/content/pull/44059</id>
+        <link href="https://github.com/mdn/content/pull/44059"/>
+        <updated>2026-05-09T21:34:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1731388?u=498c1fd9964094193aba77c65346e2e27876cc09&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Fix the <code class="notranslate">emcc</code> compilation command in the <code class="notranslate">existing_c_to_wasm</code> example.</p>
+<h4 dir="auto">Missing include path</h4>
+<p dir="auto">Specify <code class="notranslate">-I libwebp/src</code> as an include path.</p>
+<p dir="auto">Without this, some include files aren't found:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="% emcc -O3 -s WASM=1 -s EXPORTED_RUNTIME_METHODS='[&quot;cwrap&quot;]' \
+    -I libwebp \
+    webp.c \
+    libwebp/src/{dec,dsp,demux,enc,mux,utils}/*.c \
+    libwebp/sharpyuv/*.c
+In file included from libwebp/sharpyuv/sharpyuv.c:23:
+libwebp/sharpyuv/./sharpyuv_dsp.h:16:10: fatal error: 'webp/types.h' file not found
+   16 | #include &quot;webp/types.h&quot;
+      |          ^~~~~~~~~~~~~~
+1 error generated."><pre class="notranslate">% emcc -O3 -s WASM=1 -s EXPORTED_RUNTIME_METHODS=<span class="pl-s"><span class="pl-pds">'</span>["cwrap"]<span class="pl-pds">'</span></span> \
+    -I libwebp \
+    webp.c \
+    libwebp/src/{dec,dsp,demux,enc,mux,utils}/<span class="pl-k">*</span>.c \
+    libwebp/sharpyuv/<span class="pl-k">*</span>.c
+In file included from libwebp/sharpyuv/sharpyuv.c:23:
+libwebp/sharpyuv/./sharpyuv_dsp.h:16:10: fatal error: <span class="pl-s"><span class="pl-pds">'</span>webp/types.h<span class="pl-pds">'</span></span> file not found
+   16 <span class="pl-k">|</span> <span class="pl-c"><span class="pl-c">#</span>include "webp/types.h"</span>
+      <span class="pl-k">|</span>          ^~~~~~~~~~~~~~
+1 error generated.</pre></div>
+<p dir="auto">The <code class="notranslate">types.h</code> file is located at <code class="notranslate">libwebp/src/webp/types.h</code></p>
+<h4 dir="auto"><code class="notranslate">Module.HEAP8</code> was undefined</h4>
+<p dir="auto">Export HEAP8 in compilation example.</p>
+<p dir="auto">Without this, the sample javascript fails here:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="   const image = await loadImage(&quot;./image.jpg&quot;);
+   const p = api.create_buffer(image.width, image.height);
+   Module.HEAP8.set(image.data, p); // &lt;--- Fails here"><pre class="notranslate">   <span class="pl-k">const</span> <span class="pl-s1">image</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-en">loadImage</span><span class="pl-kos">(</span><span class="pl-s">"./image.jpg"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+   <span class="pl-k">const</span> <span class="pl-s1">p</span> <span class="pl-c1">=</span> <span class="pl-s1">api</span><span class="pl-kos">.</span><span class="pl-en">create_buffer</span><span class="pl-kos">(</span><span class="pl-s1">image</span><span class="pl-kos">.</span><span class="pl-c1">width</span><span class="pl-kos">,</span> <span class="pl-s1">image</span><span class="pl-kos">.</span><span class="pl-c1">height</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+   <span class="pl-v">Module</span><span class="pl-kos">.</span><span class="pl-c1">HEAP8</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">image</span><span class="pl-kos">.</span><span class="pl-c1">data</span><span class="pl-kos">,</span> <span class="pl-s1">p</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// &lt;--- Fails here</span></pre></div>
+<p dir="auto">With this error:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="TypeError: Cannot read properties of undefined (reading 'set')"><pre class="notranslate"><code class="notranslate">TypeError: Cannot read properties of undefined (reading 'set')
+</code></pre></div>
+<p dir="auto">I had a doubt about the fix for this one. <code class="notranslate">HEAP8</code> doesn't appear to be a "method", and the correction is to include it in <code class="notranslate">EXPORTED_RUNTIME_METHODS</code>. But this fix works 😅</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">Without these changes, it's not possible to test the example in the "Compiling an existing C module to WebAssembly" guide.</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto">Not sure if this google groups discussion is related: <a href="https://groups.google.com/g/emscripten-discuss/c/Qlob7yyD94U" rel="nofollow">https://groups.google.com/g/emscripten-discuss/c/Qlob7yyD94U</a></p>
+<p dir="auto">I used NotebookLM to debug and find the fix for <code class="notranslate">HEAP8</code>. But other than that, I tested it by hand, and this PR has been opened by a human, not an agent ^^. My motivation is to learn about web assembly. Thanks for your time, maintainers!</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+<p dir="auto">Didn't find any related issues or PRs.</p>
+]]></content>
+        <author>
+            <name>caarmen</name>
+            <email>caarmen@noreply.github.com</email>
+            <uri>https://github.com/caarmen</uri>
+        </author>
+        <published>2026-05-09T21:18:18.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update InterfaceData based on WebRef]]></title>
         <id>https://github.com/mdn/content/pull/44056</id>
@@ -545,31 +609,5 @@ Would appreciate you scanning this at least!</p>
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-05-04T07:36:30.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Element.setHTML(): add mXSS warning about re-parsing sanitized HTML]]></title>
-        <id>https://github.com/mdn/content/pull/43990</id>
-        <link href="https://github.com/mdn/content/pull/43990"/>
-        <updated>2026-05-04T03:38:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/137640490?v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Re-parsing and mutated XSS (mXSS) security section explaining innerHTML round-trip risk, example unsafe flow, mitigation recommendations along with reference</p>
-<h3 dir="auto">Motivation</h3>
- Make readers to avoid risk and stay updated
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
- <span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43386.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4046479684" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43386" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43386/hovercard" href="https://github.com/mdn/content/issues/43386">#43386</a>
-
-
-]]></content>
-        <author>
-            <name>narasimhan-lakshmi</name>
-            <email>narasimhan-lakshmi@noreply.github.com</email>
-            <uri>https://github.com/narasimhan-lakshmi</uri>
-        </author>
-        <published>2026-05-03T10:58:40.000Z</published>
     </entry>
 </feed>
