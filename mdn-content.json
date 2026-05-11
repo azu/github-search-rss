@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1186102?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I haven't opened an issue for this because the changes seemed straightforward. Please let me know if one would be better for discussion.</p>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixing what I think are two small typos for the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality\" rel=\"nofollow\"><code class=\"notranslate\">==</code></a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition\" rel=\"nofollow\"><code class=\"notranslate\">+</code></a> reference pages.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The phrasing change for <code class=\"notranslate\">+</code> reflects my intended reading of the sentence.</p>\n<p dir=\"auto\">For <code class=\"notranslate\">==</code>, this PR makes the statement stronger, but I also believe it's what was intended. The current version:</p>\n<blockquote>\n<p dir=\"auto\"><code class=\"notranslate\">document.all == null</code> is <code class=\"notranslate\">true</code>, but <code class=\"notranslate\">document.all === undefined &amp;&amp; document.all === null</code> is <code class=\"notranslate\">false</code></p>\n</blockquote>\n<p dir=\"auto\">doesn't make much sense to me here: it's  \"obvious\" that a value cannot be strictly equal to <strong>both</strong> <code class=\"notranslate\">undefined</code> and <code class=\"notranslate\">null</code>, since strict equality does not perform conversions.</p>\n<p dir=\"auto\">Instead, I took the point of the statement to be that <code class=\"notranslate\">document.all</code> is not strictly equal to <strong>either</strong> <code class=\"notranslate\">undefined</code> nor <code class=\"notranslate\">null</code> (despite being loosely equal to <code class=\"notranslate\">null</code>, which, according to the algorithm sketch preceding it, means it would normally be <code class=\"notranslate\">null</code> or <code class=\"notranslate\">undefined</code>). I updated it to match this understanding. I didn't see anything about this in the PR that introduced the text, so I assume it was a typo.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">N/A</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1312285401\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/18565\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/18565/hovercard\" href=\"https://github.com/mdn/content/pull/18565\">#18565</a> (original change for <code class=\"notranslate\">==</code>).<br>\nRelates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4275711889\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43812\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/43812/hovercard\" href=\"https://github.com/mdn/content/pull/43812\">#43812</a> (original change for <code class=\"notranslate\">+</code>).</p>\n",
+            "url": "https://github.com/mdn/content/pull/44080",
+            "title": "Fix two typos in operators reference",
+            "date_modified": "2026-05-11T21:04:47.000Z",
+            "date_published": "2026-05-11T21:04:16.000Z",
+            "author": {
+                "name": "ageorgou",
+                "url": "https://github.com/ageorgou"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixes several Glossary macro flaws:</p>\n<ul dir=\"auto\">\n<li>Remove leading slashes.</li>\n<li>Fix links.</li>\n<li>Remove some invocations.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Reduce number of flaws.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Only remaining flaws are about <code class=\"notranslate\">{{glossary(\"interface\")}}</code>. It probably makes more sense to add a glossary page for interface, instead of removing this glossary link.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4231421689\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/fred/issues/1462\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/fred/issues/1462/hovercard\" href=\"https://github.com/mdn/fred/issues/1462\">mdn/fred#1462</a>.</p>",
             "url": "https://github.com/mdn/content/pull/44075",
             "title": "Fix glossary macro flaws",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "mostafahamed15",
                 "url": "https://github.com/mostafahamed15"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 144 adds support for the <code class=\"notranslate\">visibilitymaskchange</code> event/<code class=\"notranslate\">XRVisibilityMaskChange</code> event object; see <a href=\"https://chromestatus.com/feature/5073760055066624\" rel=\"nofollow\">https://chromestatus.com/feature/5073760055066624</a>.</p>\n<p dir=\"auto\">This PR adds documentation for:</p>\n<ul dir=\"auto\">\n<li>The <code class=\"notranslate\">XRVisibilityMaskChange</code> event object and all its members.</li>\n<li>The <code class=\"notranslate\">visibilitymaskchange</code> event</li>\n<li>The <code class=\"notranslate\">XRView.index</code> property.</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/43975",
-            "title": "Editorial review: Document WebXR visibilitymaskchange event",
-            "date_modified": "2026-05-11T01:53:20.000Z",
-            "date_published": "2026-04-30T13:54:32.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]

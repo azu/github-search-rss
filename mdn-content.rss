@@ -2,11 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-11T20:30:39.634Z</updated>
+    <updated>2026-05-11T21:26:15.204Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix two typos in operators reference]]></title>
+        <id>https://github.com/mdn/content/pull/44080</id>
+        <link href="https://github.com/mdn/content/pull/44080"/>
+        <updated>2026-05-11T21:04:47.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1186102?v=4" width="64" height="64" alt=""/><br/><p dir="auto">I haven't opened an issue for this because the changes seemed straightforward. Please let me know if one would be better for discussion.</p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Fixing what I think are two small typos for the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality" rel="nofollow"><code class="notranslate">==</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition" rel="nofollow"><code class="notranslate">+</code></a> reference pages.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The phrasing change for <code class="notranslate">+</code> reflects my intended reading of the sentence.</p>
+<p dir="auto">For <code class="notranslate">==</code>, this PR makes the statement stronger, but I also believe it's what was intended. The current version:</p>
+<blockquote>
+<p dir="auto"><code class="notranslate">document.all == null</code> is <code class="notranslate">true</code>, but <code class="notranslate">document.all === undefined &amp;&amp; document.all === null</code> is <code class="notranslate">false</code></p>
+</blockquote>
+<p dir="auto">doesn't make much sense to me here: it's  "obvious" that a value cannot be strictly equal to <strong>both</strong> <code class="notranslate">undefined</code> and <code class="notranslate">null</code>, since strict equality does not perform conversions.</p>
+<p dir="auto">Instead, I took the point of the statement to be that <code class="notranslate">document.all</code> is not strictly equal to <strong>either</strong> <code class="notranslate">undefined</code> nor <code class="notranslate">null</code> (despite being loosely equal to <code class="notranslate">null</code>, which, according to the algorithm sketch preceding it, means it would normally be <code class="notranslate">null</code> or <code class="notranslate">undefined</code>). I updated it to match this understanding. I didn't see anything about this in the PR that introduced the text, so I assume it was a typo.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">N/A</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1312285401" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/18565" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/18565/hovercard" href="https://github.com/mdn/content/pull/18565">#18565</a> (original change for <code class="notranslate">==</code>).<br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4275711889" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43812" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/43812/hovercard" href="https://github.com/mdn/content/pull/43812">#43812</a> (original change for <code class="notranslate">+</code>).</p>
+]]></content>
+        <author>
+            <name>ageorgou</name>
+            <email>ageorgou@noreply.github.com</email>
+            <uri>https://github.com/ageorgou</uri>
+        </author>
+        <published>2026-05-11T21:04:16.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix glossary macro flaws]]></title>
         <id>https://github.com/mdn/content/pull/44075</id>
@@ -462,37 +491,5 @@ Of course feel free to rephrase, edit or remove this warning as you see fit.</p>
             <uri>https://github.com/mostafahamed15</uri>
         </author>
         <published>2026-05-01T03:43:44.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Editorial review: Document WebXR visibilitymaskchange event]]></title>
-        <id>https://github.com/mdn/content/pull/43975</id>
-        <link href="https://github.com/mdn/content/pull/43975"/>
-        <updated>2026-05-11T01:53:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Chrome 144 adds support for the <code class="notranslate">visibilitymaskchange</code> event/<code class="notranslate">XRVisibilityMaskChange</code> event object; see <a href="https://chromestatus.com/feature/5073760055066624" rel="nofollow">https://chromestatus.com/feature/5073760055066624</a>.</p>
-<p dir="auto">This PR adds documentation for:</p>
-<ul dir="auto">
-<li>The <code class="notranslate">XRVisibilityMaskChange</code> event object and all its members.</li>
-<li>The <code class="notranslate">visibilitymaskchange</code> event</li>
-<li>The <code class="notranslate">XRView.index</code> property.</li>
-</ul>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-04-30T13:54:32.000Z</published>
     </entry>
 </feed>
