@@ -2,11 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-05-11T18:32:04.807Z</updated>
+    <updated>2026-05-11T19:30:15.875Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Built-in `npm patch`?]]></title>
+        <id>https://github.com/npm/rfcs/issues/865</id>
+        <link href="https://github.com/npm/rfcs/issues/865"/>
+        <updated>2026-05-11T18:34:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75621402?u=0f8061d961db99136b4956520325a7cddb0b82af&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Sometimes it's necessary to patch a package. Maybe it's exposing internals that need to be hooked into, maybe it's getting a PR before it gets merged.</p>
+<p dir="auto">At the moment, one has to use a package like <code class="notranslate">patch-package</code> to do this. <code class="notranslate">patch-package</code> is unfortunately unmaintained though and has issues with <code class="notranslate">install-strategy=linked</code> and workspaces. This has made me very disgruntled.</p>
+<p dir="auto">Other package managers in the ecosystem (<code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code>) have a built-in <code class="notranslate">patch</code> sub-command, so why not npm?</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">Look at the myriad cases of <code class="notranslate">patch-package</code>. For example, there is a patch to add <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3826277038" data-permission-text="Title is private" data-url="https://github.com/microsoft/TypeScript/issues/63008" data-hovercard-type="pull_request" data-hovercard-url="/microsoft/TypeScript/pull/63008/hovercard" href="https://github.com/microsoft/TypeScript/pull/63008">microsoft/TypeScript#63008</a>.</p>
+<h3 dir="auto">How</h3>
+<p dir="auto">I'm thinking the CLI could look like this:</p>
+<ul dir="auto">
+<li><code class="notranslate">npm patch apply [patches...]</code> will apply patches. If no arguments are passed, all configured patches will be applied, otherwise only the specified patches will be applied</li>
+<li><code class="notranslate">npm patch add &lt;name&gt;</code> will create a patch for a package using changes in the working node_modules (similar to <code class="notranslate">patch-package xxx</code>)</li>
+</ul>
+<p dir="auto">Also, A feature I think would be really nice to have is patching in dependants, for example:</p>
+<ul dir="auto">
+<li><code class="notranslate">@ducks/quack</code> patches <code class="notranslate">typescript</code> to add a feature PR</li>
+<li><code class="notranslate">@ducks/mallard</code> depends on <code class="notranslate">@ducks/quack</code>, <code class="notranslate">npm i @ducks/quack</code> results in the patch being applied</li>
+</ul>
+<p dir="auto">This could be accomplished through the use of a <code class="notranslate">patches</code> field in <code class="notranslate">package.json</code>, or something similar.</p>
+<h3 dir="auto">References</h3>
+<p dir="auto"><a href="https://github.com/ds300/patch-package">https://github.com/ds300/patch-package</a> (unmaintained)</p>]]></content>
+        <author>
+            <name>james-pre</name>
+            <email>james-pre@noreply.github.com</email>
+            <uri>https://github.com/james-pre</uri>
+        </author>
+        <published>2026-05-11T18:34:13.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Proposal: set min-release-age default to 7 days.]]></title>
         <id>https://github.com/npm/rfcs/issues/864</id>
@@ -708,8 +740,8 @@ SIGTERM  (node receives signal)
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjQ2MjQsIm5iZiI6MTc3ODUyNDMyNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxODMyMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mNTM3NmM1YzU3YmFmM2FiNGFiMWYyZTYxMTRiZWE1NjQzMzk1Y2NkNzU4OWEzYjY3ZDU3OGE0Mjc1ZWU5YTNhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.PdHxu9gpkfGWRBJvez67ZuOiRJz2kPu2B8EbGlBV4Sg"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjQ2MjQsIm5iZiI6MTc3ODUyNDMyNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxODMyMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mNTM3NmM1YzU3YmFmM2FiNGFiMWYyZTYxMTRiZWE1NjQzMzk1Y2NkNzU4OWEzYjY3ZDU3OGE0Mjc1ZWU5YTNhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.PdHxu9gpkfGWRBJvez67ZuOiRJz2kPu2B8EbGlBV4Sg" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjQ2MjQsIm5iZiI6MTc3ODUyNDMyNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxODMyMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ODJmNDc4OTFjOTY4YThlZjc5MDM2ZmQzZDI3MDU5NDBjMzEzYzEzZDMzYzY5NjljYzhiYzFmYmZmMWViN2JiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Vyj8XWNnY_xISoLQZDaa9ntnXcMHFqcxPvj0WFtOIaI"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjQ2MjQsIm5iZiI6MTc3ODUyNDMyNCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxODMyMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ODJmNDc4OTFjOTY4YThlZjc5MDM2ZmQzZDI3MDU5NDBjMzEzYzEzZDMzYzY5NjljYzhiYzFmYmZmMWViN2JiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Vyj8XWNnY_xISoLQZDaa9ntnXcMHFqcxPvj0WFtOIaI" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjgxMTUsIm5iZiI6MTc3ODUyNzgxNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxOTMwMTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zNGMzZjJjNTBkNzdiODU2OWQ3NjI4NzlhNzdmZTU0YmUwMmZmNDM3OTVjNGIwNWYzNjU2YjcyZTljOGQzM2Q4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Gcd24pjO4gTtAgepq8peavHDJCOCIjvvh8JjvggzVi0"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjgxMTUsIm5iZiI6MTc3ODUyNzgxNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxOTMwMTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zNGMzZjJjNTBkNzdiODU2OWQ3NjI4NzlhNzdmZTU0YmUwMmZmNDM3OTVjNGIwNWYzNjU2YjcyZTljOGQzM2Q4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Gcd24pjO4gTtAgepq8peavHDJCOCIjvvh8JjvggzVi0" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjgxMTUsIm5iZiI6MTc3ODUyNzgxNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxOTMwMTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYzkzMWMyZDUxYWYyZGE5NGE2YTNlYjA4NGFhZTVkMGE2YjQxYzRlNTc3NDIzMmQ0MjZiYTA1YzBjZjQ2YWIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.aMSMo0El4_ql9THa0W6i9O2RGoXVzqAt14AUlLvKKnU"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjgxMTUsIm5iZiI6MTc3ODUyNzgxNSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTExJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMVQxOTMwMTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iYzkzMWMyZDUxYWYyZGE5NGE2YTNlYjA4NGFhZTVkMGE2YjQxYzRlNTc3NDIzMmQ0MjZiYTA1YzBjZjQ2YWIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.aMSMo0El4_ql9THa0W6i9O2RGoXVzqAt14AUlLvKKnU" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -863,32 +895,5 @@ Exchange account needs to be repaired and certificates reinstalled remove all ot
             <uri>https://github.com/AKayy2020</uri>
         </author>
         <published>2025-03-07T18:58:22.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC]+<title>]]></title>
-        <id>https://github.com/npm/rfcs/issues/813</id>
-        <link href="https://github.com/npm/rfcs/issues/813"/>
-        <updated>2025-06-12T18:44:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/200528382?u=464babfcfd9bd5b46f64dd8b27090fbe9bac2641&v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-
-<h3 dir="auto">Example</h3>
-
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-
-<h4 dir="auto">Desired Behaviour</h4>
-
-<h3 dir="auto">References</h3>
-
-<ul dir="auto">
-<li>n/a</li>
-</ul>]]></content>
-        <author>
-            <name>journey-110</name>
-            <email>journey-110@noreply.github.com</email>
-            <uri>https://github.com/journey-110</uri>
-        </author>
-        <published>2025-03-07T13:21:31.000Z</published>
     </entry>
 </feed>
