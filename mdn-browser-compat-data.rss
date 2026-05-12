@@ -2,11 +2,137 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-05-12T21:26:17.865Z</updated>
+    <updated>2026-05-12T22:23:23.357Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add missing Deno compatibility for upsert (#29652)]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29668</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29668"/>
+        <updated>2026-05-12T22:10:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/212083?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Deno 2.6.7 updated the V8 engine to version 14.5, and the following upsert methods were available.</p>
+<ul dir="auto">
+<li>Map.prototype.getOrInsert()</li>
+<li>Map.prototype.getOrInsertComputed()</li>
+<li>WeakMap.prototype.getOrInsert()</li>
+<li>WeakMap.prototype.getOrInsertComputed()</li>
+</ul>
+<h4 dir="auto">Test results and supporting details</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="curl -fsSL https://deno.land/install.sh | DENO_INSTALL=./ sh -s -- v2.6.7  # or v2.6.6 for comparison
+./bin/deno --version
+./bin/deno eval -p &quot;Map.prototype.getOrInsert&quot;
+./bin/deno eval -p &quot;Map.prototype.getOrInsertComputed&quot;
+./bin/deno eval -p &quot;WeakMap.prototype.getOrInsert&quot;
+./bin/deno eval -p &quot;WeakMap.prototype.getOrInsertComputed&quot;"><pre class="notranslate"><code class="notranslate">curl -fsSL https://deno.land/install.sh | DENO_INSTALL=./ sh -s -- v2.6.7  # or v2.6.6 for comparison
+./bin/deno --version
+./bin/deno eval -p "Map.prototype.getOrInsert"
+./bin/deno eval -p "Map.prototype.getOrInsertComputed"
+./bin/deno eval -p "WeakMap.prototype.getOrInsert"
+./bin/deno eval -p "WeakMap.prototype.getOrInsertComputed"
+</code></pre></div>
+<p dir="auto">The result of the above commands on Deno 2.6.7:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ curl -fsSL https://deno.land/install.sh | DENO_INSTALL=. sh -s -- v2.6.7
+######################################################################## 100.0%
+Archive:  ./bin/deno.zip
+  inflating: ./bin/deno             
+Deno was installed successfully to ./bin/deno
+Run 'deno --help' to get started
+
+Stuck? Join our Discord https://discord.gg/deno
+$ ./bin/deno --version
+deno 2.6.7 (stable, release, aarch64-unknown-linux-gnu)
+v8 14.5.201.2-rusty
+typescript 5.9.2
+$ ./bin/deno eval -p &quot;Map.prototype.getOrInsert&quot;
+[Function: getOrInsert]
+$ ./bin/deno eval -p &quot;Map.prototype.getOrInsertComputed&quot;
+[Function: getOrInsertComputed]
+$ ./bin/deno eval -p &quot;WeakMap.prototype.getOrInsert&quot;
+[Function: getOrInsert]
+$ ./bin/deno eval -p &quot;WeakMap.prototype.getOrInsertComputed&quot;
+[Function: getOrInsertComputed]"><pre class="notranslate"><code class="notranslate">$ curl -fsSL https://deno.land/install.sh | DENO_INSTALL=. sh -s -- v2.6.7
+######################################################################## 100.0%
+Archive:  ./bin/deno.zip
+  inflating: ./bin/deno             
+Deno was installed successfully to ./bin/deno
+Run 'deno --help' to get started
+
+Stuck? Join our Discord https://discord.gg/deno
+$ ./bin/deno --version
+deno 2.6.7 (stable, release, aarch64-unknown-linux-gnu)
+v8 14.5.201.2-rusty
+typescript 5.9.2
+$ ./bin/deno eval -p "Map.prototype.getOrInsert"
+[Function: getOrInsert]
+$ ./bin/deno eval -p "Map.prototype.getOrInsertComputed"
+[Function: getOrInsertComputed]
+$ ./bin/deno eval -p "WeakMap.prototype.getOrInsert"
+[Function: getOrInsert]
+$ ./bin/deno eval -p "WeakMap.prototype.getOrInsertComputed"
+[Function: getOrInsertComputed]
+</code></pre></div>
+<p dir="auto">The result of the above commands on Deno 2.6.6:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ curl -fsSL https://deno.land/install.sh | DENO_INSTALL=. sh -s -- v2.6.6
+######################################################################## 100.0%
+Archive:  ./bin/deno.zip
+  inflating: ./bin/deno              
+Deno was installed successfully to ./bin/deno
+Run 'deno --help' to get started
+
+Stuck? Join our Discord https://discord.gg/deno
+$ ./bin/deno --version
+deno 2.6.6 (stable, release, aarch64-unknown-linux-gnu)
+v8 14.2.231.17-rusty
+typescript 5.9.2
+$ ./bin/deno eval -p &quot;Map.prototype.getOrInsert&quot;
+undefined
+$ ./bin/deno eval -p &quot;Map.prototype.getOrInsertComputed&quot;
+undefined
+$ ./bin/deno eval -p &quot;WeakMap.prototype.getOrInsert&quot;
+undefined
+$ ./bin/deno eval -p &quot;WeakMap.prototype.getOrInsertComputed&quot;
+undefined"><pre class="notranslate"><code class="notranslate">$ curl -fsSL https://deno.land/install.sh | DENO_INSTALL=. sh -s -- v2.6.6
+######################################################################## 100.0%
+Archive:  ./bin/deno.zip
+  inflating: ./bin/deno              
+Deno was installed successfully to ./bin/deno
+Run 'deno --help' to get started
+
+Stuck? Join our Discord https://discord.gg/deno
+$ ./bin/deno --version
+deno 2.6.6 (stable, release, aarch64-unknown-linux-gnu)
+v8 14.2.231.17-rusty
+typescript 5.9.2
+$ ./bin/deno eval -p "Map.prototype.getOrInsert"
+undefined
+$ ./bin/deno eval -p "Map.prototype.getOrInsertComputed"
+undefined
+$ ./bin/deno eval -p "WeakMap.prototype.getOrInsert"
+undefined
+$ ./bin/deno eval -p "WeakMap.prototype.getOrInsertComputed"
+undefined
+</code></pre></div>
+<p dir="auto">Related links:</p>
+<ul dir="auto">
+<li><a href="https://github.com/denoland/deno/releases/tag/v2.6.7">Deno 2.6.7 release</a>
+<ul dir="auto">
+<li>feat: V8 14.5</li>
+</ul>
+</li>
+<li><a href="https://github.com/tc39/proposal-upsert">Proposal Upsert</a></li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29652.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4423826094" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29652" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29652/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29652">#29652</a></p>]]></content>
+        <author>
+            <name>kwj</name>
+            <email>kwj@noreply.github.com</email>
+            <uri>https://github.com/kwj</uri>
+        </author>
+        <published>2026-05-12T22:09:59.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[added partial imp note for ::-webkit-scrollbar in firefox]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29665</id>
@@ -337,7 +463,7 @@ They work on iPadOS Chrome and Safari browsers though.</p>
 <li>Click on the first link</li>
 </ul>
 <p dir="auto">Results:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/10931297/587775742-9a0be035-a0ff-415c-b3fa-9827eeee6600.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MjE0NzcsIm5iZiI6MTc3ODYyMTE3NywicGF0aCI6Ii8xMDkzMTI5Ny81ODc3NzU3NDItOWEwYmUwMzUtYTBmZi00MTVjLWIzZmEtOTgyN2VlZWU2NjAwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTEyVDIxMjYxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY5NGZhYWE5NzU1MmYyZjZkMzQzZTllZGI1NGVjMzE2ZGVhZWVhYWIwNTQ0ODYyYzgxNGQxYTYxZmZjYmQ2YzQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.uZiyUIpyUZ_U4FLxFLYmC7r4_K0JIJ062yMr-aixreI"><img width="1310" height="833" alt="image" src="https://private-user-images.githubusercontent.com/10931297/587775742-9a0be035-a0ff-415c-b3fa-9827eeee6600.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MjE0NzcsIm5iZiI6MTc3ODYyMTE3NywicGF0aCI6Ii8xMDkzMTI5Ny81ODc3NzU3NDItOWEwYmUwMzUtYTBmZi00MTVjLWIzZmEtOTgyN2VlZWU2NjAwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTEyVDIxMjYxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY5NGZhYWE5NzU1MmYyZjZkMzQzZTllZGI1NGVjMzE2ZGVhZWVhYWIwNTQ0ODYyYzgxNGQxYTYxZmZjYmQ2YzQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.uZiyUIpyUZ_U4FLxFLYmC7r4_K0JIJ062yMr-aixreI" style="max-width: 100%; height: auto; max-height: 833px;; aspect-ratio: 1310 / 833; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/10931297/587775742-9a0be035-a0ff-415c-b3fa-9827eeee6600.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MjQ5MDMsIm5iZiI6MTc3ODYyNDYwMywicGF0aCI6Ii8xMDkzMTI5Ny81ODc3NzU3NDItOWEwYmUwMzUtYTBmZi00MTVjLWIzZmEtOTgyN2VlZWU2NjAwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTEyVDIyMjMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcxMWNkNzI4YTYwOGUyYmQzYjc5MjIyY2ZmMzExNTRlODhmZTZiODdkY2ZmNzY3YjNkY2Y1NzhmZjk4YjExMTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.afPkkmTy8HffO_84Hdqk9x17G9zZAyycwJ4lm2mhy38"><img width="1310" height="833" alt="image" src="https://private-user-images.githubusercontent.com/10931297/587775742-9a0be035-a0ff-415c-b3fa-9827eeee6600.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MjQ5MDMsIm5iZiI6MTc3ODYyNDYwMywicGF0aCI6Ii8xMDkzMTI5Ny81ODc3NzU3NDItOWEwYmUwMzUtYTBmZi00MTVjLWIzZmEtOTgyN2VlZWU2NjAwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTEyVDIyMjMyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcxMWNkNzI4YTYwOGUyYmQzYjc5MjIyY2ZmMzExNTRlODhmZTZiODdkY2ZmNzY3YjNkY2Y1NzhmZjk4YjExMTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.afPkkmTy8HffO_84Hdqk9x17G9zZAyycwJ4lm2mhy38" style="max-width: 100%; height: auto; max-height: 833px;; aspect-ratio: 1310 / 833; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 
 <h4 dir="auto">Related issues</h4>
 
@@ -368,23 +494,5 @@ They work on iPadOS Chrome and Safari browsers though.</p>
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-04-29T12:19:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[PlatformArch values support details]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/29512</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/29512"/>
-        <updated>2026-04-26T17:23:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Summary</h3>
-<p dir="auto">As a result of <a href="https://github.com/mdn/content/pull/43799#top" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/43799/hovercard">[WebExtensions] Deprecate runtime.PlatformInfo.nacl_arch</a> #43799, it was identified that a number of the <code class="notranslate">PlatformArch</code> values were missing. This PR adds those values.</p>
-<h3 dir="auto">To do</h3>
-<p dir="auto">Confirm values supported in Safari.</p>
-<h3 dir="auto">Related pull requests</h3>
-<p dir="auto">Content changes in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4291536432" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43847" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/43847/hovercard" href="https://github.com/mdn/content/pull/43847">mdn/content#43847</a>.</p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-04-19T18:46:29.000Z</published>
     </entry>
 </feed>
