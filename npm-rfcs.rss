@@ -2,11 +2,161 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-05-12T14:52:20.958Z</updated>
+    <updated>2026-05-12T15:47:35.430Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Allow packages to assert no install scripts.]]></title>
+        <id>https://github.com/npm/rfcs/issues/867</id>
+        <link href="https://github.com/npm/rfcs/issues/867"/>
+        <updated>2026-05-12T15:31:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/60481?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<p dir="auto">With supply chain attacks becoming more common, it's important to find ways to protect users and authors from compromise. Many of these attacks use install scripts to deploy their payload. By allowing packages to assert that their package doesn't, and will never, have an install script it will limit exposure and allow security researchers to focus their efforts on packages that need this functionality.</p>
+<h3 dir="auto">Example</h3>
+
+<p dir="auto">A package can assert that they will not use these scripts by setting them to the string <code class="notranslate">"false"</code>.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+    &quot;scripts&quot;: {
+        &quot;prepare&quot;: &quot;false&quot;,
+        &quot;preinstall&quot;: &quot;false&quot;,
+        &quot;install&quot;: &quot;false&quot;,
+        &quot;postinstall&quot;: &quot;false&quot;
+    }
+}"><pre class="notranslate">{
+    <span class="pl-ent">"scripts"</span>: {
+        <span class="pl-ent">"prepare"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"preinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"install"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"postinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+<p dir="auto">On most systems <code class="notranslate">false</code> is a command that always fails making it unlikely that anyone is using it or expects it to be useful. This lends a certain amount of backwards compatibility, but where this is important is that older systems will gain some security benefits from the property already being asserted as <code class="notranslate">"false"</code> on upload.</p>
+<p dir="auto">Consider this situation:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+    &quot;scripts&quot;: {
+        &quot;install&quot;: &quot;cp secrets attacker/secrets&quot;
+    },
+    &quot;allowScripts&quot;: {
+        &quot;install&quot;: false
+    }
+}"><pre class="notranslate">{
+    <span class="pl-ent">"scripts"</span>: {
+        <span class="pl-ent">"install"</span>: <span class="pl-s"><span class="pl-pds">"</span>cp secrets attacker/secrets<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"allowScripts"</span>: {
+        <span class="pl-ent">"install"</span>: <span class="pl-c1">false</span>
+    }
+}</pre></div>
+<p dir="auto">An older system that doesn't understand the <code class="notranslate">allowScripts</code> property will see and execute the install script even though it was not allowed.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<p dir="auto">Currently, its ambiguous if a package intends to use a script in the future. So the user is left with the option of disallowing all scripts through the <code class="notranslate">--ignore-scripts</code> flag or allowing the script, the default.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+
+<p dir="auto">Setting the script property to an explicit <code class="notranslate">"false"</code> allows consumers of the package to abort the installation and the package authors to abort the upload process if the value of the script property changes unexpectedly. This will also allow the feature to be rolled out in a backwards compatible way for both package authors and consumers.</p>
+<p dir="auto">Changing the property to be more restricted, as in, from a script to <code class="notranslate">"false"</code>, is always allowed.</p>
+<p dir="auto">Publishing a package that changes a script from <code class="notranslate">"false"</code> to anything else requires confirmation on npmjs.com. When confirming, they can add a reason for the change that will be presented to the user.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ npm publish important-package
+
+The package &quot;important-package&quot; has added an &quot;install&quot; script:
+
+cp secrets attacker/secrets
+
+This could be an indication that the package has been
+compromised. To proceed, you must log in to npmjs.com
+and allow &quot;install&quot; scripts before publishing this version."><pre class="notranslate"><code class="notranslate">$ npm publish important-package
+
+The package "important-package" has added an "install" script:
+
+cp secrets attacker/secrets
+
+This could be an indication that the package has been
+compromised. To proceed, you must log in to npmjs.com
+and allow "install" scripts before publishing this version.
+</code></pre></div>
+<p dir="auto">Installing a package, or a dependency of a package, that changes a script from <code class="notranslate">"false"</code> to anything else requires explicit user permission. A message is presented to the user for each instance, including dependencies, where a package's scripts have been changed from<code class="notranslate">"false"</code>. The user can review this report and then use the <code class="notranslate">--approve-scripts</code> flag to continue if there are no issues.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ npm install important-package
+
+The package &quot;important-package&quot; has added an &quot;install&quot; script:
+
+cp secrets attacker/secrets
+
+Reason:
+&gt; Nothing to see here just a normal install script that does
+&gt; normal install script things.
+
+This could be an indication that the package has been
+compromised. If this was unexpected, contact the package
+author or npm support, otherwise re-run the command with
+the `--approve-scripts` flag to allow this script."><pre class="notranslate"><code class="notranslate">$ npm install important-package
+
+The package "important-package" has added an "install" script:
+
+cp secrets attacker/secrets
+
+Reason:
+&gt; Nothing to see here just a normal install script that does
+&gt; normal install script things.
+
+This could be an indication that the package has been
+compromised. If this was unexpected, contact the package
+author or npm support, otherwise re-run the command with
+the `--approve-scripts` flag to allow this script.
+</code></pre></div>
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li><a href="https://snyk.io/blog/tanstack-npm-packages-compromised/" rel="nofollow">https://snyk.io/blog/tanstack-npm-packages-compromised/</a></li>
+</ul>]]></content>
+        <author>
+            <name>AaronAsAChimp</name>
+            <email>AaronAsAChimp@noreply.github.com</email>
+            <uri>https://github.com/AaronAsAChimp</uri>
+        </author>
+        <published>2026-05-12T15:31:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Support running outdated command against a package-lock without installing]]></title>
+        <id>https://github.com/npm/rfcs/issues/866</id>
+        <link href="https://github.com/npm/rfcs/issues/866"/>
+        <updated>2026-05-12T14:57:45.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36852337?u=bac05fe973eaaa95fa842375de48dcde2af24fbc&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Currently to run the outdated check the packages have to be installed first, this can be a comparatively slow process depending on the complexity of dependencies involved. To facilitate quicker checks particularly in a CI environment it would be useful to be able to execute the command and receive the same quality of output without having to run the install first.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">git clone some-node-repo<br>
+npm outdated</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">outdated does run but it gives a completely different result rendering it unusable</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Package                             Current  Wanted  Latest  Location  Depended by
+babel-plugin-syntax-dynamic-import  MISSING  6.18.0  6.18.0  -         api-data-test"><pre class="notranslate"><code class="notranslate">Package                             Current  Wanted  Latest  Location  Depended by
+babel-plugin-syntax-dynamic-import  MISSING  6.18.0  6.18.0  -         api-data-test
+</code></pre></div>
+<h4 dir="auto">Desired Behaviour</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Package            Current  Wanted  Latest  Location                        Depended by
+@babel/cli          7.17.6  7.28.6  7.28.6  node_modules/@babel/cli         api-data-test
+@babel/core         7.17.8  7.29.0  7.29.0  node_modules/@babel/core        api-data-test
+@babel/preset-env  7.16.11  7.29.5  7.29.5  node_modules/@babel/preset-env  api-data-test"><pre class="notranslate"><code class="notranslate">Package            Current  Wanted  Latest  Location                        Depended by
+@babel/cli          7.17.6  7.28.6  7.28.6  node_modules/@babel/cli         api-data-test
+@babel/core         7.17.8  7.29.0  7.29.0  node_modules/@babel/core        api-data-test
+@babel/preset-env  7.16.11  7.29.5  7.29.5  node_modules/@babel/preset-env  api-data-test
+</code></pre></div>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>ZLJasonG</name>
+            <email>ZLJasonG@noreply.github.com</email>
+            <uri>https://github.com/ZLJasonG</uri>
+        </author>
+        <published>2026-05-12T14:57:45.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Built-in `npm patch`?]]></title>
         <id>https://github.com/npm/rfcs/issues/865</id>
@@ -124,14 +274,14 @@ and: <a href="https://grith.ai/blog/clinejection-when-your-ai-tool-installs-anot
         <updated>2026-04-07T08:46:07.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
 <h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-1715ce7562c8ec403ee78d7305229429" id="user-content-fnref-1-1715ce7562c8ec403ee78d7305229429" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
+<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-def363d2f718c2ae5f3989fbf9017b97" id="user-content-fnref-1-def363d2f718c2ae5f3989fbf9017b97" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
 <ul dir="auto">
 <li>If a package version is explicitly recorded in the lockfile it will be installed regardless of the minimum age requested.</li>
 <li>If a package version is explicitly requested, e.g. <code class="notranslate">npm install package@1.2.3</code> where v1.2.3 was released today, it will be installed regardless of the minimum age requested.</li>
 </ul>
 <h3 dir="auto">Prior Art</h3>
 <h4 dir="auto"><code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code></h4>
-<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-1715ce7562c8ec403ee78d7305229429" id="user-content-fnref-2-1715ce7562c8ec403ee78d7305229429" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
+<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-def363d2f718c2ae5f3989fbf9017b97" id="user-content-fnref-2-def363d2f718c2ae5f3989fbf9017b97" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
 <h4 dir="auto">Other Ecosystems</h4>
 <p dir="auto">The Rust/Cargo proposal for its <code class="notranslate">--min-release-age</code> option (linked below) includes a similar concept:</p>
 <blockquote>
@@ -147,7 +297,7 @@ it downgrade to an older version. It will leave the version as it is.</li>
 <p dir="auto">One drawback of this approach is that using an untrusted lockfile - e.g. from an untrusted repository or Pull Request - may unexpectedly override your expected security preferences. An attacker could leverage the suggested behavior to inject a malicious dependency into the lockfile and make you download it.</p>
 <p dir="auto">I believe that</p>
 <ol dir="auto">
-<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-1715ce7562c8ec403ee78d7305229429" id="user-content-fnref-3-1715ce7562c8ec403ee78d7305229429" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
+<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-def363d2f718c2ae5f3989fbf9017b97" id="user-content-fnref-3-def363d2f718c2ae5f3989fbf9017b97" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
 <li>This is a trade-off that is worth considering as making the security feature more approachable in this way can help adoption, which might offset the risk of this thread.</li>
 </ol>
 <h3 dir="auto">Example</h3>
@@ -171,14 +321,14 @@ it downgrade to an older version. It will leave the version as it is.</li>
 </ul>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
 <ol dir="auto">
-<li id="user-content-fn-1-1715ce7562c8ec403ee78d7305229429">
-<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-1715ce7562c8ec403ee78d7305229429" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-def363d2f718c2ae5f3989fbf9017b97">
+<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-def363d2f718c2ae5f3989fbf9017b97" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-1715ce7562c8ec403ee78d7305229429">
-<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-1715ce7562c8ec403ee78d7305229429" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-def363d2f718c2ae5f3989fbf9017b97">
+<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-def363d2f718c2ae5f3989fbf9017b97" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-3-1715ce7562c8ec403ee78d7305229429">
-<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-1715ce7562c8ec403ee78d7305229429" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-3-def363d2f718c2ae5f3989fbf9017b97">
+<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-def363d2f718c2ae5f3989fbf9017b97" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>]]></content>
@@ -740,8 +890,8 @@ SIGTERM  (node receives signal)
 <p dir="auto">I recently attempted to visit the <a href="https://rxjs.dev/" rel="nofollow">https://rxjs.dev/</a> website to review the API documentation. However, I was instantly redirected to a page stating that my connection was not private, mind you I was using Google chrome on my phone but issue also arose on my Google chrome on my HP ProBook laptop too.</p>
 <p dir="auto">I believe that there might be an issue with the SSL certificate that was issues for the website.</p>
 <p dir="auto">I hope a solution can be found for this issue.</p>
-<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1OTc4NDAsIm5iZiI6MTc3ODU5NzU0MCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNDUyMjBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZTE3ZmEwMGVmNzg3YTY3NmZkZGQ0MWNmMjU2OTkyMWM3YjZiMjk1OTA4MjIxN2QxNjI3M2Q4Y2U1ZGFjM2M4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Pq_QEalX6erja9fg1l9hWCyGzK8iBGlvppqYCQy6Pw0"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1OTc4NDAsIm5iZiI6MTc3ODU5NzU0MCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNDUyMjBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZTE3ZmEwMGVmNzg3YTY3NmZkZGQ0MWNmMjU2OTkyMWM3YjZiMjk1OTA4MjIxN2QxNjI3M2Q4Y2U1ZGFjM2M4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Pq_QEalX6erja9fg1l9hWCyGzK8iBGlvppqYCQy6Pw0" alt="Image" style="max-width: 100%;"></a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1OTc4NDAsIm5iZiI6MTc3ODU5NzU0MCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNDUyMjBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YTM5ZDY1ZmRkNGYxMGZjMmU4YjJmNjFlMjcxZTY1MTE2NWQyNTRlYjY3ZTFhNzYyMjc3ZDJiZDAyYTk2YmZiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Iz6vChyWpXcleAN9_37CnS3kOARODltgDMGBfWjl_Ng"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1OTc4NDAsIm5iZiI6MTc3ODU5NzU0MCwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNDUyMjBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YTM5ZDY1ZmRkNGYxMGZjMmU4YjJmNjFlMjcxZTY1MTE2NWQyNTRlYjY3ZTFhNzYyMjc3ZDJiZDAyYTk2YmZiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.Iz6vChyWpXcleAN9_37CnS3kOARODltgDMGBfWjl_Ng" alt="Image" style="max-width: 100%;"></a></p>]]></content>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MDExNTUsIm5iZiI6MTc3ODYwMDg1NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNTQ3MzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MWIxZTEyMzdhNmUyNTBiNTk0MzU3NThmNDllZDljY2RhYzQ5MmM5MWU2MTQ4NjhkYmQ4MzhjNTI3NGNlYmEwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.kl3aZc_1uVQ2-zyIft0ylmGgbYG6URYww85M0tdN7Qc"><img src="https://private-user-images.githubusercontent.com/134489692/436512152-3267b844-0916-4149-ba40-90de7fe72236.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MDExNTUsIm5iZiI6MTc3ODYwMDg1NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUyLTMyNjdiODQ0LTA5MTYtNDE0OS1iYTQwLTkwZGU3ZmU3MjIzNi5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNTQ3MzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00MWIxZTEyMzdhNmUyNTBiNTk0MzU3NThmNDllZDljY2RhYzQ5MmM5MWU2MTQ4NjhkYmQ4MzhjNTI3NGNlYmEwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.kl3aZc_1uVQ2-zyIft0ylmGgbYG6URYww85M0tdN7Qc" alt="Image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MDExNTUsIm5iZiI6MTc3ODYwMDg1NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNTQ3MzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yY2E1ODA0NzkxZGE4N2RlZmEwNjU3MTQ5Zjc5ZjY0NzJjZWJkM2NhNzJjZDQ4MjZkNjhhZTY3ZDJkMzZmOTFkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.1_F_Vn7XifMakEMpXXZvu3k4ZmhOeKmikyZ4SeEK3Po"><img src="https://private-user-images.githubusercontent.com/134489692/436512153-d8639c8b-efad-4ef4-8b52-302b17555e10.jpg?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg2MDExNTUsIm5iZiI6MTc3ODYwMDg1NSwicGF0aCI6Ii8xMzQ0ODk2OTIvNDM2NTEyMTUzLWQ4NjM5YzhiLWVmYWQtNGVmNC04YjUyLTMwMmIxNzU1NWUxMC5qcGc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTEyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUxMlQxNTQ3MzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yY2E1ODA0NzkxZGE4N2RlZmEwNjU3MTQ5Zjc5ZjY0NzJjZWJkM2NhNzJjZDQ4MjZkNjhhZTY3ZDJkMzZmOTFkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZqcGVnIn0.1_F_Vn7XifMakEMpXXZvu3k4ZmhOeKmikyZ4SeEK3Po" alt="Image" style="max-width: 100%;"></a></p>]]></content>
         <author>
             <name>AimenNadeem</name>
             <email>AimenNadeem@noreply.github.com</email>
@@ -845,55 +995,5 @@ If the publisher accounts don’t match:
             <uri>https://github.com/TheBrenny</uri>
         </author>
         <published>2025-04-22T14:49:28.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA["Accountaccess-securityissues"]]></title>
-        <id>https://github.com/npm/rfcs/issues/816</id>
-        <link href="https://github.com/npm/rfcs/issues/816"/>
-        <updated>2025-11-16T06:18:42.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/208423862?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Cloud. Integration<br>
-Financial issues<br>
-Educational courses<br>
-Passkey  for Google accounts<br>
-Google llc and Gmail no access<br>
-Play store no access says that my device is not registered to any Google account<br>
-Android  Linux [[[pci--xxxx]]] pull all -m "*" and "x" library  not necessarily a PCI violation however stupid and security risk involved with Java IBM and other AI generated llc plan designed for barmateshq project<br>
-Broker accounts in teen accounts  cash llc 1 pull request and violation is needed<br>
-Cash llc 1 square up payroll terrilynn_deeds iD confirmation<br>
-8134323700 pull and restrict security breach<br>
-Exchange account needs to be repaired and certificates reinstalled remove all other IT MISS CHAP and MISSIT abuse of power and unauthorized control illegally preformed</p>]]></content>
-        <author>
-            <name>terri-lynn6023973364</name>
-            <email>terri-lynn6023973364@noreply.github.com</email>
-            <uri>https://github.com/terri-lynn6023973364</uri>
-        </author>
-        <published>2025-04-21T14:14:38.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC]+<title>ac.genes]]></title>
-        <id>https://github.com/npm/rfcs/issues/814</id>
-        <link href="https://github.com/npm/rfcs/issues/814"/>
-        <updated>2025-06-12T18:44:26.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/59098342?v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-
-<h3 dir="auto">Example</h3>
-
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-
-<h4 dir="auto">Desired Behaviour</h4>
-
-<h3 dir="auto">References</h3>
-
-<ul dir="auto">
-<li>n/a</li>
-</ul>]]></content>
-        <author>
-            <name>AKayy2020</name>
-            <email>AKayy2020@noreply.github.com</email>
-            <uri>https://github.com/AKayy2020</uri>
-        </author>
-        <published>2025-03-07T18:58:22.000Z</published>
     </entry>
 </feed>
