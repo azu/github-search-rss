@@ -6,10 +6,21 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41184947?u=dc63bc6f8b1d2895c923fdd8689b2d487d329945&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">typo seems to be in <code class=\"notranslate\">RTCIceCandidatePairStats/requestsSent</code> L19:</p>\n<div class=\"highlight highlight-source-diff notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"- &gt; If a request had to be repeated due to network issues, it will be counted multiple times here.\n+ &gt; If a request had to be repeated due to network issues, it will not be counted multiple times here.\"><pre class=\"notranslate\"><span class=\"pl-md\"><span class=\"pl-md\">-</span> &gt; If a request had to be repeated due to network issues, it will be counted multiple times here.</span>\n<span class=\"pl-mi1\"><span class=\"pl-mi1\">+</span> &gt; If a request had to be repeated due to network issues, it will not be counted multiple times here.</span></pre></div>\n<p dir=\"auto\">yet this property will not count the retx, making it contradicatorial here.</p>\n<p dir=\"auto\">in comparison with <code class=\"notranslate\">RTCIceCandidatePairStats/requestsReceived</code>, it seems to be typo when it was copied from <code class=\"notranslate\">requestsReceived</code> and, this line was not updated like the line before and after it?</p>",
+            "url": "https://github.com/mdn/content/pull/44139",
+            "title": "fix typo in `RTCIceCandidatePairStats/requestsSent`",
+            "date_modified": "2026-05-17T08:33:15.000Z",
+            "date_published": "2026-05-17T08:31:36.000Z",
+            "author": {
+                "name": "PassionPenguin",
+                "url": "https://github.com/PassionPenguin"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9375875?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the navigation preload examples to keep <code class=\"notranslate\">event.preloadResponse</code> alive when a cached response is returned.</p>\n<p dir=\"auto\">The Service Worker guide example now calls <code class=\"notranslate\">event.waitUntil(preloadResponsePromise.catch(() =&gt; undefined))</code> before returning from the cache-hit path. The <code class=\"notranslate\">FetchEvent.preloadResponse</code> reference example now stores <code class=\"notranslate\">event.preloadResponse</code> in a promise so the same cache-hit path can wait for it too.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When navigation preload is enabled and the cache wins, the sample returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class=\"notranslate\">preloadResponse</code> settled, and that <code class=\"notranslate\">waitUntil()</code> or <code class=\"notranslate\">respondWith()</code> should be used to wait for it.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The change keeps the existing cache-first behavior and only extends the event lifetime long enough for the preload promise to settle. The rejected-preload case is ignored because the cached response is already being returned.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43055.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3912754201\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43055\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43055/hovercard\" href=\"https://github.com/mdn/content/issues/43055\">#43055</a></p>\n<h3 dir=\"auto\">Validation</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npm ci</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npx prettier -c files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npx markdownlint-cli2 files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npm run filecheck -- files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH CONTENT_ROOT=files BUILD_OUT_ROOT=build npx rari build --files files/en-us/web/api/service_worker_api/using_service_workers/index.md --files files/en-us/web/api/fetchevent/preloadresponse/index.md --content --no-basic</code></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/44138",
             "title": "Fix navigation preload cache hit examples",
-            "date_modified": "2026-05-17T05:53:26.000Z",
+            "date_modified": "2026-05-17T08:02:04.000Z",
             "date_published": "2026-05-17T05:52:39.000Z",
             "author": {
                 "name": "Sean-Kenneth-Doherty",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "rebloor",
                 "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Added syntax for <em>range syntax</em> for <code class=\"notranslate\">@container style()</code> queries</li>\n<li>Added example for <em>range syntax</em> for <code class=\"notranslate\">@container style()</code> queries</li>\n<li>Added see also link for CSSContainerRule</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Working on <a href=\"https://github.com/mdn/content/issues/43862\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43862/hovercard\">MDN Issue #43862</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/browser-compat-data/pull/29599\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29599/hovercard\">BCD PR</a></li>\n<li><a href=\"https://github.com/mdn/content/pull/44002\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/44002/hovercard\">FF Relase PR</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/44003",
-            "title": "43862 container style queries",
-            "date_modified": "2026-05-15T09:12:08.000Z",
-            "date_published": "2026-05-04T15:04:41.000Z",
-            "author": {
-                "name": "dletorey",
-                "url": "https://github.com/dletorey"
             }
         }
     ]

@@ -2,16 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-17T07:46:47.468Z</updated>
+    <updated>2026-05-17T08:39:38.286Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[fix typo in `RTCIceCandidatePairStats/requestsSent`]]></title>
+        <id>https://github.com/mdn/content/pull/44139</id>
+        <link href="https://github.com/mdn/content/pull/44139"/>
+        <updated>2026-05-17T08:33:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/41184947?u=dc63bc6f8b1d2895c923fdd8689b2d487d329945&v=4" width="64" height="64" alt=""/><br/><p dir="auto">typo seems to be in <code class="notranslate">RTCIceCandidatePairStats/requestsSent</code> L19:</p>
+<div class="highlight highlight-source-diff notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="- &gt; If a request had to be repeated due to network issues, it will be counted multiple times here.
++ &gt; If a request had to be repeated due to network issues, it will not be counted multiple times here."><pre class="notranslate"><span class="pl-md"><span class="pl-md">-</span> &gt; If a request had to be repeated due to network issues, it will be counted multiple times here.</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span> &gt; If a request had to be repeated due to network issues, it will not be counted multiple times here.</span></pre></div>
+<p dir="auto">yet this property will not count the retx, making it contradicatorial here.</p>
+<p dir="auto">in comparison with <code class="notranslate">RTCIceCandidatePairStats/requestsReceived</code>, it seems to be typo when it was copied from <code class="notranslate">requestsReceived</code> and, this line was not updated like the line before and after it?</p>]]></content>
+        <author>
+            <name>PassionPenguin</name>
+            <email>PassionPenguin@noreply.github.com</email>
+            <uri>https://github.com/PassionPenguin</uri>
+        </author>
+        <published>2026-05-17T08:31:36.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Fix navigation preload cache hit examples]]></title>
         <id>https://github.com/mdn/content/pull/44138</id>
         <link href="https://github.com/mdn/content/pull/44138"/>
-        <updated>2026-05-17T05:53:26.000Z</updated>
+        <updated>2026-05-17T08:02:04.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9375875?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Updates the navigation preload examples to keep <code class="notranslate">event.preloadResponse</code> alive when a cached response is returned.</p>
 <p dir="auto">The Service Worker guide example now calls <code class="notranslate">event.waitUntil(preloadResponsePromise.catch(() =&gt; undefined))</code> before returning from the cache-hit path. The <code class="notranslate">FetchEvent.preloadResponse</code> reference example now stores <code class="notranslate">event.preloadResponse</code> in a promise so the same cache-hit path can wait for it too.</p>
@@ -442,32 +460,5 @@ should help readers find the correct reference entry.</p>
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2026-05-04T23:57:20.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[43862 container style queries]]></title>
-        <id>https://github.com/mdn/content/pull/44003</id>
-        <link href="https://github.com/mdn/content/pull/44003"/>
-        <updated>2026-05-15T09:12:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added syntax for <em>range syntax</em> for <code class="notranslate">@container style()</code> queries</li>
-<li>Added example for <em>range syntax</em> for <code class="notranslate">@container style()</code> queries</li>
-<li>Added see also link for CSSContainerRule</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a href="https://github.com/mdn/content/issues/43862" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43862/hovercard">MDN Issue #43862</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/browser-compat-data/pull/29599" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/29599/hovercard">BCD PR</a></li>
-<li><a href="https://github.com/mdn/content/pull/44002" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/44002/hovercard">FF Relase PR</a></li>
-</ul>]]></content>
-        <author>
-            <name>dletorey</name>
-            <email>dletorey@noreply.github.com</email>
-            <uri>https://github.com/dletorey</uri>
-        </author>
-        <published>2026-05-04T15:04:41.000Z</published>
     </entry>
 </feed>
