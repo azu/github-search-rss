@@ -2,11 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-17T12:14:10.443Z</updated>
+    <updated>2026-05-17T13:28:23.486Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[improve HTMLInputElement.selectionEnd description]]></title>
+        <id>https://github.com/mdn/content/pull/44142</id>
+        <link href="https://github.com/mdn/content/pull/44142"/>
+        <updated>2026-05-17T12:47:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/199016418?u=e093fc69aa57c070bc7980987bb0c023c1224b46&v=4" width="64" height="64" alt=""/><br/><p dir="auto">These changes bring the HTMLInputElement.selectionEnd page in line with changes I made yesterday to the selectionStart reference.</p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Fixed grammar issues and tightened sentence structure, clarified the type of exception thrown</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">To bring this reference in line with the selectionStart page I updated yesterday and improve readability and accuracy.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">N/A</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4461923716" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44137" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/44137/hovercard" href="https://github.com/mdn/content/pull/44137">#44137</a></p>]]></content>
+        <author>
+            <name>clarkfannin</name>
+            <email>clarkfannin@noreply.github.com</email>
+            <uri>https://github.com/clarkfannin</uri>
+        </author>
+        <published>2026-05-17T12:45:45.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add format option to AudioData.copyTo()]]></title>
         <id>https://github.com/mdn/content/pull/44141</id>
@@ -57,14 +78,25 @@
         <title type="html"><![CDATA[Fix navigation preload cache hit examples]]></title>
         <id>https://github.com/mdn/content/pull/44138</id>
         <link href="https://github.com/mdn/content/pull/44138"/>
-        <updated>2026-05-17T10:17:24.000Z</updated>
+        <updated>2026-05-17T13:09:11.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9375875?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Updates the navigation preload examples to keep <code class="notranslate">event.preloadResponse</code> alive when a cached response is returned.</p>
-<p dir="auto">The Service Worker guide example now calls <code class="notranslate">event.waitUntil(preloadResponsePromise.catch(() =&gt; undefined))</code> before returning from the cache-hit path. The <code class="notranslate">FetchEvent.preloadResponse</code> reference example now stores <code class="notranslate">event.preloadResponse</code> in a promise so the same cache-hit path can wait for it too.</p>
+<p dir="auto">Updates the navigation preload examples so they keep the preloaded response promise alive when a cache match wins. The examples now capture a normalized <code class="notranslate">preloadResponse</code> promise before checking the cache, pass it through the cache-first helper, and use <code class="notranslate">event.waitUntil()</code> on cache hits so the browser-started preload request can settle cleanly.</p>
 <h3 dir="auto">Motivation</h3>
-<p dir="auto">When navigation preload is enabled and the cache wins, the sample returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class="notranslate">preloadResponse</code> settled, and that <code class="notranslate">waitUntil()</code> or <code class="notranslate">respondWith()</code> should be used to wait for it.</p>
+<p dir="auto">When navigation preload is enabled and the cache wins, the samples returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class="notranslate">preloadResponse</code> settled, and that <code class="notranslate">waitUntil()</code> or <code class="notranslate">respondWith()</code> should be used to wait for it.</p>
+<p dir="auto">Keeping the promise alive makes the examples safer for readers who copy them into real service workers, while <code class="notranslate">Promise.resolve()</code> keeps the samples tolerant if <code class="notranslate">preloadResponse</code> is unavailable or resolves to <code class="notranslate">undefined</code>.</p>
 <h3 dir="auto">Additional details</h3>
-<p dir="auto">The change keeps the existing cache-first behavior and only extends the event lifetime long enough for the preload promise to settle. The rejected-preload case is ignored because the cached response is already being returned.</p>
+<p dir="auto">Reference material:</p>
+<ul dir="auto">
+<li>MDN <code class="notranslate">FetchEvent.preloadResponse</code>: <a href="https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse" rel="nofollow">https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse</a></li>
+<li>web.dev navigation preload guide: <a href="https://web.dev/navigation-preload/" rel="nofollow">https://web.dev/navigation-preload/</a></li>
+</ul>
+<p dir="auto">Validation run locally on <code class="notranslate">bd97d19</code>:</p>
+<ul dir="auto">
+<li><code class="notranslate">git diff --check origin/main...HEAD</code></li>
+<li><code class="notranslate">./node_modules/.bin/prettier --check files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>
+<li><code class="notranslate">./node_modules/.bin/markdownlint-cli2 files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>
+<li>MDN pre-commit checks during amend: URL issues, changed xrefs, Prettier, markdownlint, front matter</li>
+</ul>
 <h3 dir="auto">Related issues and pull requests</h3>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43055.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3912754201" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43055" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43055/hovercard" href="https://github.com/mdn/content/issues/43055">#43055</a></p>]]></content>
         <author>
@@ -417,31 +449,5 @@ should help readers find the correct reference entry.</p>
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2026-05-05T19:05:03.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add plain vs range syntax section to container queries guide]]></title>
-        <id>https://github.com/mdn/content/pull/44014</id>
-        <link href="https://github.com/mdn/content/pull/44014"/>
-        <updated>2026-05-10T23:39:15.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Documents the difference between the <code class="notranslate">:</code> (plain) and <code class="notranslate">=</code> (range) forms of <code class="notranslate">style()</code> in container style queries:</p>
-<ul dir="auto">
-<li>Adds a new section to the container size and style queries guide.</li>
-<li>Adds a summary in the <code class="notranslate">@container</code> reference linking to the guide.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">To clear the difference between <code class="notranslate">style(--n: 3)</code> and <code class="notranslate">style(--n = 3)</code>.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>Spec: <a href="https://drafts.csswg.org/css-conditional-5/#style-container-features" rel="nofollow">CSS Conditional 5 §6.2 Style Container Features</a>.</li>
-<li>Inspired by <a href="https://css-tip.com/if-trick/" rel="nofollow">The Hidden Trick of Style Queries and <code class="notranslate">if()</code></a> by Temani Afif.</li>
-<li>Related Firefox DevTools work: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2032963" rel="nofollow">bug 2032963</a>.</li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-05-05T14:00:39.000Z</published>
     </entry>
 </feed>
