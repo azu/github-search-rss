@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/66489217?u=a2a45ae6a13c042dc2f5770ea5d511b0a3ae7775&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #42530.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3762455959\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42530\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42530/hovercard\" href=\"https://github.com/mdn/content/issues/42530\">#42530</a>.</p>\n<p dir=\"auto\">Adds the missing <code class=\"notranslate\">format</code> option to the <code class=\"notranslate\">AudioData.copyTo()</code> <code class=\"notranslate\">options</code> parameter, per the <a href=\"https://w3c.github.io/webcodecs/#dictdef-audiodatacopytooptions\" rel=\"nofollow\">WebCodecs spec</a> which defines <code class=\"notranslate\">AudioSampleFormat format;</code> as a member of <code class=\"notranslate\">AudioDataCopyToOptions</code>.</p>\n<p dir=\"auto\">Also corrects the <code class=\"notranslate\">frameOffset</code> description: it previously said \"which plane to begin copying from\" (wrong — that's <code class=\"notranslate\">planeIndex</code>), and now correctly describes the offset within a plane.</p>",
+            "url": "https://github.com/mdn/content/pull/44141",
+            "title": "Add format option to AudioData.copyTo()",
+            "date_modified": "2026-05-17T10:18:01.000Z",
+            "date_published": "2026-05-17T10:17:40.000Z",
+            "author": {
+                "name": "abdulmunimjemal",
+                "url": "https://github.com/abdulmunimjemal"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/84696275?u=7d25665929038795a222884c8d2ca40bcac6961a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43519.\">Closes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4117119113\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43519\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43519/hovercard\" href=\"https://github.com/mdn/content/issues/43519\">#43519</a></p>",
+            "url": "https://github.com/mdn/content/pull/44140",
+            "title": "Clarify that native events dispatch asynchronously, not handlers",
+            "date_modified": "2026-05-17T09:59:56.000Z",
+            "date_published": "2026-05-17T09:59:33.000Z",
+            "author": {
+                "name": "trustdemons05",
+                "url": "https://github.com/trustdemons05"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/41184947?u=dc63bc6f8b1d2895c923fdd8689b2d487d329945&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">typo seems to be in <code class=\"notranslate\">RTCIceCandidatePairStats/requestsSent</code> L19:</p>\n<div class=\"highlight highlight-source-diff notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"- &gt; If a request had to be repeated due to network issues, it will be counted multiple times here.\n+ &gt; If a request had to be repeated due to network issues, it will not be counted multiple times here.\"><pre class=\"notranslate\"><span class=\"pl-md\"><span class=\"pl-md\">-</span> &gt; If a request had to be repeated due to network issues, it will be counted multiple times here.</span>\n<span class=\"pl-mi1\"><span class=\"pl-mi1\">+</span> &gt; If a request had to be repeated due to network issues, it will not be counted multiple times here.</span></pre></div>\n<p dir=\"auto\">yet this property will not count the retx, making it contradicatorial here.</p>\n<p dir=\"auto\">in comparison with <code class=\"notranslate\">RTCIceCandidatePairStats/requestsReceived</code>, it seems to be typo when it was copied from <code class=\"notranslate\">requestsReceived</code> and, this line was not updated like the line before and after it?</p>",
             "url": "https://github.com/mdn/content/pull/44139",
             "title": "fix typo in `RTCIceCandidatePairStats/requestsSent`",
@@ -17,25 +39,14 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9375875?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the navigation preload examples to keep <code class=\"notranslate\">event.preloadResponse</code> alive when a cached response is returned.</p>\n<p dir=\"auto\">The Service Worker guide example now calls <code class=\"notranslate\">event.waitUntil(preloadResponsePromise.catch(() =&gt; undefined))</code> before returning from the cache-hit path. The <code class=\"notranslate\">FetchEvent.preloadResponse</code> reference example now stores <code class=\"notranslate\">event.preloadResponse</code> in a promise so the same cache-hit path can wait for it too.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When navigation preload is enabled and the cache wins, the sample returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class=\"notranslate\">preloadResponse</code> settled, and that <code class=\"notranslate\">waitUntil()</code> or <code class=\"notranslate\">respondWith()</code> should be used to wait for it.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The change keeps the existing cache-first behavior and only extends the event lifetime long enough for the preload promise to settle. The rejected-preload case is ignored because the cached response is already being returned.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43055.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3912754201\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43055\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43055/hovercard\" href=\"https://github.com/mdn/content/issues/43055\">#43055</a></p>\n<h3 dir=\"auto\">Validation</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npm ci</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npx prettier -c files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npx markdownlint-cli2 files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npm run filecheck -- files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH CONTENT_ROOT=files BUILD_OUT_ROOT=build npx rari build --files files/en-us/web/api/service_worker_api/using_service_workers/index.md --files files/en-us/web/api/fetchevent/preloadresponse/index.md --content --no-basic</code></li>\n</ul>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9375875?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the navigation preload examples to keep <code class=\"notranslate\">event.preloadResponse</code> alive when a cached response is returned.</p>\n<p dir=\"auto\">The Service Worker guide example now calls <code class=\"notranslate\">event.waitUntil(preloadResponsePromise.catch(() =&gt; undefined))</code> before returning from the cache-hit path. The <code class=\"notranslate\">FetchEvent.preloadResponse</code> reference example now stores <code class=\"notranslate\">event.preloadResponse</code> in a promise so the same cache-hit path can wait for it too.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When navigation preload is enabled and the cache wins, the sample returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class=\"notranslate\">preloadResponse</code> settled, and that <code class=\"notranslate\">waitUntil()</code> or <code class=\"notranslate\">respondWith()</code> should be used to wait for it.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The change keeps the existing cache-first behavior and only extends the event lifetime long enough for the preload promise to settle. The rejected-preload case is ignored because the cached response is already being returned.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43055.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3912754201\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43055\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43055/hovercard\" href=\"https://github.com/mdn/content/issues/43055\">#43055</a></p>",
             "url": "https://github.com/mdn/content/pull/44138",
             "title": "Fix navigation preload cache hit examples",
-            "date_modified": "2026-05-17T08:02:04.000Z",
+            "date_modified": "2026-05-17T10:17:24.000Z",
             "date_published": "2026-05-17T05:52:39.000Z",
             "author": {
                 "name": "Sean-Kenneth-Doherty",
                 "url": "https://github.com/Sean-Kenneth-Doherty"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/199016418?u=e093fc69aa57c070bc7980987bb0c023c1224b46&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Minor edit to the <code class=\"notranslate\">HTMLInputElement.selectionStart</code> page to fix grammar issues and improve clarity</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Improved readability</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Clarified the exact behavior of <code class=\"notranslate\">selectionStart</code>, indicating the type of exception thrown</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
-            "url": "https://github.com/mdn/content/pull/44137",
-            "title": "HTMLInputElement.selectionStart Grammar Fix",
-            "date_modified": "2026-05-17T01:41:03.000Z",
-            "date_published": "2026-05-17T01:39:32.000Z",
-            "author": {
-                "name": "clarkfannin",
-                "url": "https://github.com/clarkfannin"
             }
         },
         {
@@ -212,17 +223,6 @@
             "author": {
                 "name": "pepelsbey",
                 "url": "https://github.com/pepelsbey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The structure of the guide to native manifests made it difficult to reference location information for a specific manifest. This change moves the location information into sections immediately after each manifest description. This enables linking to location details and makes it easier for the reader to find location information for a manifest.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #22534.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1464268570\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22534\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/22534/hovercard\" href=\"https://github.com/mdn/content/issues/22534\">#22534</a></p>",
-            "url": "https://github.com/mdn/content/pull/44008",
-            "title": "Issue-22534 native manifest reference improvement",
-            "date_modified": "2026-05-04T23:59:08.000Z",
-            "date_published": "2026-05-04T23:57:20.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
             }
         }
     ]
