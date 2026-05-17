@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9375875?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the navigation preload examples to keep <code class=\"notranslate\">event.preloadResponse</code> alive when a cached response is returned.</p>\n<p dir=\"auto\">The Service Worker guide example now calls <code class=\"notranslate\">event.waitUntil(preloadResponsePromise.catch(() =&gt; undefined))</code> before returning from the cache-hit path. The <code class=\"notranslate\">FetchEvent.preloadResponse</code> reference example now stores <code class=\"notranslate\">event.preloadResponse</code> in a promise so the same cache-hit path can wait for it too.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When navigation preload is enabled and the cache wins, the sample returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class=\"notranslate\">preloadResponse</code> settled, and that <code class=\"notranslate\">waitUntil()</code> or <code class=\"notranslate\">respondWith()</code> should be used to wait for it.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The change keeps the existing cache-first behavior and only extends the event lifetime long enough for the preload promise to settle. The rejected-preload case is ignored because the cached response is already being returned.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43055.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3912754201\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43055\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43055/hovercard\" href=\"https://github.com/mdn/content/issues/43055\">#43055</a></p>\n<h3 dir=\"auto\">Validation</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npm ci</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npx prettier -c files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npx markdownlint-cli2 files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH npm run filecheck -- files/en-us/web/api/service_worker_api/using_service_workers/index.md files/en-us/web/api/fetchevent/preloadresponse/index.md</code></li>\n<li><code class=\"notranslate\">PATH=/home/sean/.local/share/mise/installs/node/24.15.0/bin:$PATH CONTENT_ROOT=files BUILD_OUT_ROOT=build npx rari build --files files/en-us/web/api/service_worker_api/using_service_workers/index.md --files files/en-us/web/api/fetchevent/preloadresponse/index.md --content --no-basic</code></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/44138",
+            "title": "Fix navigation preload cache hit examples",
+            "date_modified": "2026-05-17T05:53:26.000Z",
+            "date_published": "2026-05-17T05:52:39.000Z",
+            "author": {
+                "name": "Sean-Kenneth-Doherty",
+                "url": "https://github.com/Sean-Kenneth-Doherty"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/199016418?u=e093fc69aa57c070bc7980987bb0c023c1224b46&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Minor edit to the <code class=\"notranslate\">HTMLInputElement.selectionStart</code> page to fix grammar issues and improve clarity</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Improved readability</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Clarified the exact behavior of <code class=\"notranslate\">selectionStart</code>, indicating the type of exception thrown</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
             "url": "https://github.com/mdn/content/pull/44137",
             "title": "HTMLInputElement.selectionStart Grammar Fix",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "dletorey",
                 "url": "https://github.com/dletorey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/137640490?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Re-parsing and mutated XSS (mXSS) security section explaining innerHTML round-trip risk, example unsafe flow, mitigation recommendations along with reference</p>\n<h3 dir=\"auto\">Motivation</h3>\n Make readers to avoid risk and stay updated\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n <span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43386.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4046479684\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43386\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43386/hovercard\" href=\"https://github.com/mdn/content/issues/43386\">#43386</a>\n\n\n",
-            "url": "https://github.com/mdn/content/pull/43990",
-            "title": "Element.setHTML(): add mXSS warning about re-parsing sanitized HTML",
-            "date_modified": "2026-05-04T03:38:38.000Z",
-            "date_published": "2026-05-03T10:58:40.000Z",
-            "author": {
-                "name": "narasimhan-lakshmi",
-                "url": "https://github.com/narasimhan-lakshmi"
             }
         }
     ]
