@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF151 supports  the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/GPUSupportedLimits\" rel=\"nofollow\"><code class=\"notranslate\">GPUSupportedLimits</code></a> properties <code class=\"notranslate\">maxStorageBuffersInFragmentStage</code>, <code class=\"notranslate\">maxStorageBuffersInVertexStage</code>, <code class=\"notranslate\">maxStorageTexturesInFragmentStage</code>,<code class=\"notranslate\">maxStorageTexturesInVertexStage</code></p>\n<p dir=\"auto\">This adds a release note and updates the docs to list the new properties, their default values, and use a more template-like format.</p>\n<p dir=\"auto\">Related work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4357349549\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43966\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43966/hovercard\" href=\"https://github.com/mdn/content/issues/43966\">#43966</a></p>",
+            "url": "https://github.com/mdn/content/pull/44151",
+            "title": "FF151 Relnote: GPUSupportedLimits - new properties + doc",
+            "date_modified": "2026-05-18T04:32:07.000Z",
+            "date_published": "2026-05-18T04:30:30.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Update various content to note that, with the exception of extensions using DevTools pages, browsers based on Chromium 148 support the <code class=\"notranslate\">browser</code> namespace for the WebExtension APIs.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">To provide up-to-date information on Chrome's browser namespace support.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4441904427\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44114\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44114/hovercard\" href=\"https://github.com/mdn/content/issues/44114\">#44114</a></p>",
             "url": "https://github.com/mdn/content/pull/44149",
             "title": "Issue 44114 chrome support for the browser namespace",
@@ -50,21 +61,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/84696275?u=7d25665929038795a222884c8d2ca40bcac6961a&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43519.\">Closes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4117119113\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43519\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43519/hovercard\" href=\"https://github.com/mdn/content/issues/43519\">#43519</a></p>",
-            "url": "https://github.com/mdn/content/pull/44140",
-            "title": "Clarify that native events dispatch asynchronously, not handlers",
-            "date_modified": "2026-05-17T09:59:56.000Z",
-            "date_published": "2026-05-17T09:59:33.000Z",
-            "author": {
-                "name": "trustdemons05",
-                "url": "https://github.com/trustdemons05"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9375875?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the navigation preload examples so they keep the preloaded response promise alive when a cache match wins. The examples now capture a normalized <code class=\"notranslate\">preloadResponse</code> promise before checking the cache, pass it through the cache-first helper, and use <code class=\"notranslate\">event.waitUntil()</code> on cache hits so the browser-started preload request can settle cleanly.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When navigation preload is enabled and the cache wins, the samples returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class=\"notranslate\">preloadResponse</code> settled, and that <code class=\"notranslate\">waitUntil()</code> or <code class=\"notranslate\">respondWith()</code> should be used to wait for it.</p>\n<p dir=\"auto\">Keeping the promise alive makes the examples safer for readers who copy them into real service workers, while <code class=\"notranslate\">Promise.resolve()</code> keeps the samples tolerant if <code class=\"notranslate\">preloadResponse</code> is unavailable or resolves to <code class=\"notranslate\">undefined</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Reference material:</p>\n<ul dir=\"auto\">\n<li>MDN <code class=\"notranslate\">FetchEvent.preloadResponse</code>: <a href=\"https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse\" rel=\"nofollow\">https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse</a></li>\n<li>web.dev navigation preload guide: <a href=\"https://web.dev/navigation-preload/\" rel=\"nofollow\">https://web.dev/navigation-preload/</a></li>\n</ul>\n<p dir=\"auto\">Validation run locally on <code class=\"notranslate\">bd97d19</code>:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check origin/main...HEAD</code></li>\n<li><code class=\"notranslate\">./node_modules/.bin/prettier --check files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>\n<li><code class=\"notranslate\">./node_modules/.bin/markdownlint-cli2 files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>\n<li>MDN pre-commit checks during amend: URL issues, changed xrefs, Prettier, markdownlint, front matter</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43055.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3912754201\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43055\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43055/hovercard\" href=\"https://github.com/mdn/content/issues/43055\">#43055</a></p>",
             "url": "https://github.com/mdn/content/pull/44138",
             "title": "Fix navigation preload cache hit examples",
-            "date_modified": "2026-05-17T13:09:11.000Z",
+            "date_modified": "2026-05-18T03:50:02.000Z",
             "date_published": "2026-05-17T05:52:39.000Z",
             "author": {
                 "name": "Sean-Kenneth-Doherty",
@@ -102,17 +102,6 @@
             "author": {
                 "name": "scarytom",
                 "url": "https://github.com/scarytom"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/102389071?u=fd0b775e7e974be91ee8255925ca7b5bbbaa63f2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n  \n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifies the duplicate <code class=\"notranslate\">max-age</code> headings on the <code class=\"notranslate\">Cache-Control</code> reference page by distinguishing the response and request directives. Also links the caching guide’s <code class=\"notranslate\">max-age</code><br>\nexplanation directly to the <code class=\"notranslate\">Cache-Control</code> response directive section.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Searching for <code class=\"notranslate\">max-age</code> did not surface the most relevant <code class=\"notranslate\">Cache-Control</code> response directive section clearly. Making the heading more specific and adding a direct guide link<br>\nshould help readers find the correct reference entry.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Tested with:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npx --no-install markdownlint-cli2 files/en-us/web/http/reference/headers/cache-control/index.md files/en-us/web/http/guides/caching/index.md</code></li>\n<li><code class=\"notranslate\">npx --no-install prettier -c files/en-us/web/http/reference/headers/cache-control/index.md files/en-us/web/http/guides/caching/index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44095.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4430303080\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44095\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44095/hovercard\" href=\"https://github.com/mdn/content/issues/44095\">#44095</a></p>\n  ",
-            "url": "https://github.com/mdn/content/pull/44117",
-            "title": "fix(http): clarify max-age Cache-Control sections",
-            "date_modified": "2026-05-15T05:05:36.000Z",
-            "date_published": "2026-05-14T07:54:26.000Z",
-            "author": {
-                "name": "Ashish-CodeJourney",
-                "url": "https://github.com/Ashish-CodeJourney"
             }
         },
         {
@@ -223,6 +212,17 @@
             "author": {
                 "name": "pepelsbey",
                 "url": "https://github.com/pepelsbey"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The structure of the guide to native manifests made it difficult to reference location information for a specific manifest. This change moves the location information into sections immediately after each manifest description. This enables linking to location details and makes it easier for the reader to find location information for a manifest.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #22534.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1464268570\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22534\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/22534/hovercard\" href=\"https://github.com/mdn/content/issues/22534\">#22534</a></p>",
+            "url": "https://github.com/mdn/content/pull/44008",
+            "title": "Issue-22534 native manifest reference improvement",
+            "date_modified": "2026-05-04T23:59:08.000Z",
+            "date_published": "2026-05-04T23:57:20.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
             }
         }
     ]
