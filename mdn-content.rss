@@ -2,11 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-22T10:11:20.438Z</updated>
+    <updated>2026-05-22T11:53:37.281Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Use jsxref shortform for null, this, delete, new, instanceof]]></title>
+        <id>https://github.com/mdn/content/pull/44221</id>
+        <link href="https://github.com/mdn/content/pull/44221"/>
+        <updated>2026-05-22T10:39:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Update jsxref references to use the bare-keyword shortform for five JavaScript operator keywords whose canonical pages live under <code class="notranslate">Web/JavaScript/Reference/Operators/</code>:</p>
+<ul dir="auto">
+<li><code class="notranslate">{{jsxref("Operators/null", "null")}}</code> → <code class="notranslate">{{jsxref("null")}}</code></li>
+<li><code class="notranslate">{{jsxref("Operators/this", "this")}}</code> → <code class="notranslate">{{jsxref("this")}}</code></li>
+<li><code class="notranslate">{{jsxref("Operators/delete", "delete")}}</code> → <code class="notranslate">{{jsxref("delete")}}</code></li>
+<li><code class="notranslate">{{jsxref("Operators/new", "new")}}</code> → <code class="notranslate">{{jsxref("new")}}</code></li>
+<li><code class="notranslate">{{jsxref("Operators/instanceof", "instanceof")}}</code> → <code class="notranslate">{{jsxref("instanceof")}}</code></li>
+</ul>
+<p dir="auto">As a workaround to make the shortform resolve on current rari, also adds the five <code class="notranslate">Reference/&lt;keyword&gt;</code> → <code class="notranslate">Reference/Operators/&lt;keyword&gt;</code> redirects. With <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4498306161" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/715" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/715/hovercard" href="https://github.com/mdn/rari/pull/715">mdn/rari#715</a>, the future jsxref macro supports these bare-keyword references out of the box and the redirects will no longer be load-bearing.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Make sources easier to read and write: the duplicated arg (<code class="notranslate">"Operators/foo", "foo"</code>) is awkward boilerplate, and the shortform matches how <code class="notranslate">Global_Objects/*</code> references already work (<code class="notranslate">{{jsxref("Array")}}</code> rather than <code class="notranslate">{{jsxref("Global_Objects/Array", "Array")}}</code>).</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>66 files touched across glossary, Web APIs, and the JavaScript reference itself.</li>
+<li>Longforms with custom display text (e.g. <code class="notranslate">"delete x"</code>, <code class="notranslate">"deleted"</code>, <code class="notranslate">"x instanceof y"</code>) are preserved — only the redundant <code class="notranslate">"X", "X"</code> pattern is collapsed.</li>
+<li>On current rari, each shortform call produces a <code class="notranslate">templ-redirected-link</code> warning because the rendered href (<code class="notranslate">…/Reference/null</code> etc.) bounces through the new redirect entries to <code class="notranslate">…/Reference/Operators/null</code>. Those warnings go away with <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4498306161" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/715" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/715/hovercard" href="https://github.com/mdn/rari/pull/715">mdn/rari#715</a>, which builds a <code class="notranslate">Web/JavaScript/Reference</code> slug index so <code class="notranslate">jsxref</code> resolves bare keywords directly to the canonical <code class="notranslate">Operators/*</code> URL.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4498306161" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/715" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/715/hovercard" href="https://github.com/mdn/rari/pull/715">mdn/rari#715</a></p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-05-22T10:36:47.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[FF152 Relnote: Element.getAnimations() - options.pseudoElement]]></title>
         <id>https://github.com/mdn/content/pull/44220</id>
@@ -41,16 +73,16 @@
         <title type="html"><![CDATA[Technical review: Document element-scoped view transitions]]></title>
         <id>https://github.com/mdn/content/pull/44217</id>
         <link href="https://github.com/mdn/content/pull/44217"/>
-        <updated>2026-05-21T20:36:57.000Z</updated>
+        <updated>2026-05-22T11:28:13.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
 <p dir="auto">Chrome 147 adds support for element-scoped view transitions; see <a href="https://chromestatus.com/feature/5109852273377280" rel="nofollow">https://chromestatus.com/feature/5109852273377280</a>. This PR documents this new feature.</p>
 <p dir="auto">Specifically, it adds:</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A guide covering element-scoped view transitions</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> An <code class="notranslate">Element.startViewTransition()</code> ref page</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> An <code class="notranslate">Element.activeViewTransition</code> ref page</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> A guide covering element-scoped view transitions</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> An <code class="notranslate">Element.startViewTransition()</code> ref page</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> An <code class="notranslate">Element.activeViewTransition</code> ref page</li>
 <li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A <code class="notranslate">ViewTransition.transitionRoot</code> ref page</li>
 <li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> A view-transition-scope ref page</li>
 </ul>
@@ -441,27 +473,5 @@ Changes for Extension Workshop in <a class="issue-link js-issue-link" data-error
             <uri>https://github.com/Sean-Kenneth-Doherty</uri>
         </author>
         <published>2026-05-17T05:52:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clarify font-size-adjust behavior across font faces]]></title>
-        <id>https://github.com/mdn/content/pull/44125</id>
-        <link href="https://github.com/mdn/content/pull/44125"/>
-        <updated>2026-05-20T19:20:42.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7487674?u=be6c5bdff07a347e5a9fe747a9de65a79ab4dd46&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Summary</h3>
-<ul dir="auto">
-<li>add a note that font metrics can differ across faces in the same font family</li>
-<li>clarify that <code class="notranslate">font-size-adjust</code> can therefore adjust different weights, styles, or variants differently</li>
-</ul>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42726.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3800351344" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42726" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42726/hovercard" href="https://github.com/mdn/content/issues/42726">#42726</a></p>
-<h3 dir="auto">Testing</h3>
-<ul dir="auto">
-<li><code class="notranslate">git diff --check</code></li>
-</ul>]]></content>
-        <author>
-            <name>popsiclelmlm</name>
-            <email>popsiclelmlm@noreply.github.com</email>
-            <uri>https://github.com/popsiclelmlm</uri>
-        </author>
-        <published>2026-05-15T02:41:25.000Z</published>
     </entry>
 </feed>
