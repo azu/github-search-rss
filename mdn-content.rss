@@ -2,11 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-22T15:54:56.591Z</updated>
+    <updated>2026-05-22T16:41:29.806Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Clarify inset box-shadow description]]></title>
+        <id>https://github.com/mdn/content/pull/44224</id>
+        <link href="https://github.com/mdn/content/pull/44224"/>
+        <updated>2026-05-22T16:10:36.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/193651334?u=fc09fee7937d75c679485bc7c82a609c9d648144&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
+<p dir="auto">Clarifies the description of inset box-shadow behavior to better reflect the CSS specification and padding-box clipping behavior.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41924.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3619891039" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41924" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41924/hovercard" href="https://github.com/mdn/content/issues/41924">#41924</a></p>]]></content>
+        <author>
+            <name>s4daexe</name>
+            <email>s4daexe@noreply.github.com</email>
+            <uri>https://github.com/s4daexe</uri>
+        </author>
+        <published>2026-05-22T16:10:12.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix: Remove duplicate explanations for 2-value and 3-value syntax expressions]]></title>
         <id>https://github.com/mdn/content/pull/44223</id>
@@ -41,7 +56,7 @@
         <title type="html"><![CDATA[FF152 Relnote: Element.getAnimations() - options.pseudoElement]]></title>
         <id>https://github.com/mdn/content/pull/44220</id>
         <link href="https://github.com/mdn/content/pull/44220"/>
-        <updated>2026-05-22T06:58:18.000Z</updated>
+        <updated>2026-05-22T16:02:12.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF152 adds support for the <code class="notranslate">options.pseudoElement</code> param to be passed to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAnimations#options" rel="nofollow"><code class="notranslate">Element.getAnimations()</code></a> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1935557" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1935557</a></p>
 <p dir="auto">This adds the release note</p>
 <p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4469273324" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44160" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44160/hovercard" href="https://github.com/mdn/content/issues/44160">#44160</a></p>]]></content>
@@ -439,37 +454,5 @@ Changes for Extension Workshop in <a class="issue-link js-issue-link" data-error
             <uri>https://github.com/clarkfannin</uri>
         </author>
         <published>2026-05-17T12:45:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix navigation preload cache hit examples]]></title>
-        <id>https://github.com/mdn/content/pull/44138</id>
-        <link href="https://github.com/mdn/content/pull/44138"/>
-        <updated>2026-05-20T12:53:51.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9375875?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Updates the navigation preload examples so they keep the preloaded response promise alive when a cache match wins. The examples now capture a normalized <code class="notranslate">preloadResponse</code> promise before checking the cache, pass it through the cache-first helper, and use <code class="notranslate">event.waitUntil()</code> on cache hits so the browser-started preload request can settle cleanly.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">When navigation preload is enabled and the cache wins, the samples returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class="notranslate">preloadResponse</code> settled, and that <code class="notranslate">waitUntil()</code> or <code class="notranslate">respondWith()</code> should be used to wait for it.</p>
-<p dir="auto">Keeping the promise alive makes the examples safer for readers who copy them into real service workers, while <code class="notranslate">Promise.resolve()</code> keeps the samples tolerant if <code class="notranslate">preloadResponse</code> is unavailable or resolves to <code class="notranslate">undefined</code>.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Reference material:</p>
-<ul dir="auto">
-<li>MDN <code class="notranslate">FetchEvent.preloadResponse</code>: <a href="https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse" rel="nofollow">https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse</a></li>
-<li>web.dev navigation preload guide: <a href="https://web.dev/navigation-preload/" rel="nofollow">https://web.dev/navigation-preload/</a></li>
-</ul>
-<p dir="auto">Validation run locally on <code class="notranslate">bd97d19</code>:</p>
-<ul dir="auto">
-<li><code class="notranslate">git diff --check origin/main...HEAD</code></li>
-<li><code class="notranslate">./node_modules/.bin/prettier --check files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>
-<li><code class="notranslate">./node_modules/.bin/markdownlint-cli2 files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>
-<li>MDN pre-commit checks during amend: URL issues, changed xrefs, Prettier, markdownlint, front matter</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43055.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3912754201" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43055" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43055/hovercard" href="https://github.com/mdn/content/issues/43055">#43055</a></p>]]></content>
-        <author>
-            <name>Sean-Kenneth-Doherty</name>
-            <email>Sean-Kenneth-Doherty@noreply.github.com</email>
-            <uri>https://github.com/Sean-Kenneth-Doherty</uri>
-        </author>
-        <published>2026-05-17T05:52:39.000Z</published>
     </entry>
 </feed>

@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/193651334?u=fc09fee7937d75c679485bc7c82a609c9d648144&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Clarifies the description of inset box-shadow behavior to better reflect the CSS specification and padding-box clipping behavior.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #41924.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3619891039\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41924\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41924/hovercard\" href=\"https://github.com/mdn/content/issues/41924\">#41924</a></p>",
+            "url": "https://github.com/mdn/content/pull/44224",
+            "title": "Clarify inset box-shadow description",
+            "date_modified": "2026-05-22T16:10:36.000Z",
+            "date_published": "2026-05-22T16:10:12.000Z",
+            "author": {
+                "name": "s4daexe",
+                "url": "https://github.com/s4daexe"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/135276870?u=503af817965f8f7a8d351ca919fb41f6c6c7d4f2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Removed duplicate explanations for 2-value and 3-value syntax in border-width. Kept naming (side vs. edge) consistent with rest of list.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Removed two duplicate items for multi-value syntax expressions.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The list of multi-value syntax expressions had duplicate 2-value and 3-value list items. Removed for clarity and fixing unnecessary repetition.</p>\n\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">N/A</p>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/44223",
             "title": "Fix: Remove duplicate explanations for 2-value and 3-value syntax expressions",
@@ -20,7 +31,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF152 adds support for the <code class=\"notranslate\">options.pseudoElement</code> param to be passed to <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Element/getAnimations#options\" rel=\"nofollow\"><code class=\"notranslate\">Element.getAnimations()</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1935557\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1935557</a></p>\n<p dir=\"auto\">This adds the release note</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4469273324\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44160\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44160/hovercard\" href=\"https://github.com/mdn/content/issues/44160\">#44160</a></p>",
             "url": "https://github.com/mdn/content/pull/44220",
             "title": "FF152 Relnote: Element.getAnimations() - options.pseudoElement",
-            "date_modified": "2026-05-22T06:58:18.000Z",
+            "date_modified": "2026-05-22T16:02:12.000Z",
             "date_published": "2026-05-22T06:56:42.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "clarkfannin",
                 "url": "https://github.com/clarkfannin"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/9375875?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updates the navigation preload examples so they keep the preloaded response promise alive when a cache match wins. The examples now capture a normalized <code class=\"notranslate\">preloadResponse</code> promise before checking the cache, pass it through the cache-first helper, and use <code class=\"notranslate\">event.waitUntil()</code> on cache hits so the browser-started preload request can settle cleanly.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">When navigation preload is enabled and the cache wins, the samples returned before the preload promise settled. In Chrome this can produce the warning that the navigation preload request was cancelled before <code class=\"notranslate\">preloadResponse</code> settled, and that <code class=\"notranslate\">waitUntil()</code> or <code class=\"notranslate\">respondWith()</code> should be used to wait for it.</p>\n<p dir=\"auto\">Keeping the promise alive makes the examples safer for readers who copy them into real service workers, while <code class=\"notranslate\">Promise.resolve()</code> keeps the samples tolerant if <code class=\"notranslate\">preloadResponse</code> is unavailable or resolves to <code class=\"notranslate\">undefined</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Reference material:</p>\n<ul dir=\"auto\">\n<li>MDN <code class=\"notranslate\">FetchEvent.preloadResponse</code>: <a href=\"https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse\" rel=\"nofollow\">https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse</a></li>\n<li>web.dev navigation preload guide: <a href=\"https://web.dev/navigation-preload/\" rel=\"nofollow\">https://web.dev/navigation-preload/</a></li>\n</ul>\n<p dir=\"auto\">Validation run locally on <code class=\"notranslate\">bd97d19</code>:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check origin/main...HEAD</code></li>\n<li><code class=\"notranslate\">./node_modules/.bin/prettier --check files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>\n<li><code class=\"notranslate\">./node_modules/.bin/markdownlint-cli2 files/en-us/web/api/fetchevent/preloadresponse/index.md files/en-us/web/api/service_worker_api/using_service_workers/index.md</code></li>\n<li>MDN pre-commit checks during amend: URL issues, changed xrefs, Prettier, markdownlint, front matter</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43055.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3912754201\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43055\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43055/hovercard\" href=\"https://github.com/mdn/content/issues/43055\">#43055</a></p>",
-            "url": "https://github.com/mdn/content/pull/44138",
-            "title": "Fix navigation preload cache hit examples",
-            "date_modified": "2026-05-20T12:53:51.000Z",
-            "date_published": "2026-05-17T05:52:39.000Z",
-            "author": {
-                "name": "Sean-Kenneth-Doherty",
-                "url": "https://github.com/Sean-Kenneth-Doherty"
             }
         }
     ]
