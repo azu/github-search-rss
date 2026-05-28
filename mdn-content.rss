@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-05-28T01:31:57.398Z</updated>
+    <updated>2026-05-28T03:00:27.893Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Element.getAttribute(): document entity decoding in returned values]]></title>
+        <id>https://github.com/mdn/content/pull/44281</id>
+        <link href="https://github.com/mdn/content/pull/44281"/>
+        <updated>2026-05-28T02:09:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161273586?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Summary</h3>
+<p dir="auto">Adds a "Character entities in attribute values" section to the <code class="notranslate">Element.getAttribute()</code> page explaining that HTML character entities in the source markup (e.g. <code class="notranslate">&amp;lt;</code>) are decoded by the HTML parser, so <code class="notranslate">getAttribute()</code> returns the decoded value. The section also includes a <code class="notranslate">WARNING</code> callout about the XSS risk of feeding the return value into <code class="notranslate">innerHTML</code> and points readers at <code class="notranslate">textContent</code> for untrusted data.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43825.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4279422675" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43825" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43825/hovercard" href="https://github.com/mdn/content/issues/43825">#43825</a>.</p>
+<p dir="auto">The behavior is well-defined by the HTML parser (attribute values go through <a href="https://html.spec.whatwg.org/multipage/parsing.html#character-reference-state" rel="nofollow">character reference state</a> during tokenization, just like text content) but isn't called out anywhere on the <code class="notranslate">getAttribute()</code> page. As the issue reporter notes, this gap can lead developers to assume that escaping at the server side (e.g. PHP <code class="notranslate">htmlentities()</code>) keeps an attribute value "safe" to round-trip through JS and back into the DOM as HTML, which isn't the case.</p>
+<h3 dir="auto">Verification</h3>
+<ul dir="auto">
+<li>Example matches Firefox 147 and Chromium-stable behavior (parsed <code class="notranslate">&amp;lt;b&amp;gt;hi&amp;lt;/b&amp;gt;</code> attribute returns <code class="notranslate">"&lt;b&gt;hi&lt;/b&gt;"</code>).</li>
+<li>Spec reference: WHATWG HTML, <a href="https://html.spec.whatwg.org/multipage/parsing.html#character-reference-state" rel="nofollow">§13.2.5.72 Character reference state</a> — used while tokenizing attribute values when a character-reference start (<code class="notranslate">&amp;</code>) is encountered.</li>
+<li>Cross-link to the existing <a href="/en-US/docs/Web/Security/Attacks/XSS">XSS guide</a> and to <code class="notranslate">Node.textContent</code>.</li>
+</ul>
+<p dir="auto">+13 / -0, one file.</p>]]></content>
+        <author>
+            <name>vamshikrishnaramasamy</name>
+            <email>vamshikrishnaramasamy@noreply.github.com</email>
+            <uri>https://github.com/vamshikrishnaramasamy</uri>
+        </author>
+        <published>2026-05-28T02:08:54.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update HTMLMediaElement abort event description and example (#44222)]]></title>
         <id>https://github.com/mdn/content/pull/44280</id>
@@ -440,21 +464,5 @@ The docs are being done in a separate PR.</p>
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-05-22T17:41:41.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove statements about APIs not supporting `chrome` namespace]]></title>
-        <id>https://github.com/mdn/content/pull/44225</id>
-        <link href="https://github.com/mdn/content/pull/44225"/>
-        <updated>2026-05-22T16:57:47.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Removes the statement from the <code class="notranslate">proxy</code> API that it was unavailable on the <code class="notranslate">chrome</code> namespace.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">See <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4489091617" data-permission-text="Title is private" data-url="https://github.com/mozilla/extension-workshop/issues/2336" data-hovercard-type="pull_request" data-hovercard-url="/mozilla/extension-workshop/pull/2336/hovercard?comment_id=3276462438&amp;comment_type=review_comment" href="https://github.com/mozilla/extension-workshop/pull/2336#discussion_r3276462438">mozilla/extension-workshop#2336 (comment)</a></p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-05-22T16:56:08.000Z</published>
     </entry>
 </feed>
