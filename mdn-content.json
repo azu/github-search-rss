@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1612405?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The examples for how relative URLs are constructed, while technically correct, give a misleading impression that <code class=\"notranslate\">../</code> is needed to get from <code class=\"notranslate\">/dogs</code> to <code class=\"notranslate\">/cats</code>, which is not the case. This replaces those examples with clearer ones.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Replaces</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new URL(&quot;../cats&quot;, &quot;http://www.example.com/dogs&quot;);\"><pre class=\"notranslate\"><code class=\"notranslate\">new URL(\"../cats\", \"http://www.example.com/dogs\");\n</code></pre></div>\n<p dir=\"auto\">with</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new URL(&quot;cats&quot;, &quot;http://www.example.com/animals/dogs&quot;);\"><pre class=\"notranslate\"><code class=\"notranslate\">new URL(\"cats\", \"http://www.example.com/animals/dogs\");\n</code></pre></div>\n<p dir=\"auto\">and adjusts anything else that needs to change as a result.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The previous example might mislead readers into thinking that relative URLs are constructed by always treating the last path element as if it ends with a trailing slash.</p>",
+            "url": "https://github.com/mdn/content/pull/44304",
+            "title": "Improve misleading examples",
+            "date_modified": "2026-05-30T09:05:32.000Z",
+            "date_published": "2026-05-30T09:05:06.000Z",
+            "author": {
+                "name": "jmorahan",
+                "url": "https://github.com/jmorahan"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/161273586?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44186.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4476013037\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44186\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44186/hovercard\" href=\"https://github.com/mdn/content/issues/44186\">#44186</a>.</p>\n<p dir=\"auto\">The Concatenation section on the <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using\" rel=\"nofollow\">Using CSS nesting</a> page mixed the Sass input and Sass output in one <code class=\"notranslate\">example-bad</code> block and never showed what a browser actually does with <code class=\"notranslate\">&amp;__child-element</code> in real CSS nesting. This reworks it to:</p>\n<ul dir=\"auto\">\n<li>Drop the parenthetical from the heading (<code class=\"notranslate\">Concatenation (is not possible)</code> → <code class=\"notranslate\">Concatenation is not possible</code>).</li>\n<li>Show the Sass rule and the class it compiles to as plain, valid Sass (no longer mislabeled <code class=\"notranslate\">example-bad</code>).</li>\n<li>Add a separate <code class=\"notranslate\">example-bad</code> CSS-nesting block making it explicit that the browser ignores the invalid nested rule.</li>\n<li>Tighten the explanation: the <code class=\"notranslate\">__child-element</code> type selector ends up after the nesting selector, which is invalid, so the nested rule is discarded while the surrounding <code class=\"notranslate\">.component</code> rule is unaffected.</li>\n</ul>\n<p dir=\"auto\">I confirmed the behavior in Chrome via the CSSOM: with <code class=\"notranslate\">&amp;__child-element</code>, the nested rule is dropped from the stylesheet entirely and only <code class=\"notranslate\">.component</code> remains; <code class=\"notranslate\">element&amp;</code> parses as a valid compound selector. This matches the existing claim on the page — the change is purely for clarity, not a behavioral correction.</p>",
             "url": "https://github.com/mdn/content/pull/44303",
             "title": "Clarify CSS nesting concatenation section",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "vamshikrishnaramasamy",
                 "url": "https://github.com/vamshikrishnaramasamy"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/193651334?u=fc09fee7937d75c679485bc7c82a609c9d648144&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Updates the <code class=\"notranslate\">@font-face</code> examples to use WOFF2 font files instead of OTF files, following modern web font best practices.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #42936.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3860482584\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42936\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42936/hovercard\" href=\"https://github.com/mdn/content/issues/42936\">#42936</a></p>",
-            "url": "https://github.com/mdn/content/pull/44262",
-            "title": "Use WOFF2 examples in @font-face docs ",
-            "date_modified": "2026-05-27T11:07:31.000Z",
-            "date_published": "2026-05-26T13:52:00.000Z",
-            "author": {
-                "name": "s4daexe",
-                "url": "https://github.com/s4daexe"
             }
         }
     ]
