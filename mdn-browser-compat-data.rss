@@ -2,11 +2,74 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-06-01T15:59:23.851Z</updated>
+    <updated>2026-06-01T18:10:15.246Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Update Firefox support for WebAssembly JS-PI]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29783</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29783"/>
+        <updated>2026-06-01T18:02:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Problem</h2>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4470059571" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44167" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44167/hovercard" href="https://github.com/mdn/content/issues/44167">mdn/content#44167</a> tracks Firefox 152 Nightly support for WebAssembly JavaScript Promise Integration (JS-PI), but BCD still marked Firefox as unsupported.</p>
+<h2 dir="auto">Root cause</h2>
+<p dir="auto"><code class="notranslate">webassembly/jspi.json</code> had no Firefox support entry for the new Nightly implementation.</p>
+<h2 dir="auto">Solution</h2>
+<p dir="auto">Mark Firefox 152 support behind the <code class="notranslate">javascript.options.wasm_js_promise_integration</code> preference. Firefox for Android continues to mirror desktop Firefox for this feature.</p>
+<h2 dir="auto">Tests run</h2>
+<ul dir="auto">
+<li><code class="notranslate">node lint/lint.js webassembly/jspi.json</code></li>
+<li><code class="notranslate">node_modules/.bin/prettier.cmd --check webassembly/jspi.json</code></li>
+<li><code class="notranslate">node -e "JSON.parse(require('fs').readFileSync('webassembly/jspi.json','utf8')); console.log('ok')"</code></li>
+<li><code class="notranslate">git diff --check</code></li>
+</ul>]]></content>
+        <author>
+            <name>KirtiRamchandani</name>
+            <email>KirtiRamchandani@noreply.github.com</email>
+            <uri>https://github.com/KirtiRamchandani</uri>
+        </author>
+        <published>2026-06-01T18:01:21.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Update Firefox support for Crash Reporting API]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29782</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29782"/>
+        <updated>2026-06-01T16:42:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Problem</h2>
+<p dir="auto">Firefox 152 enables the Crash Reporting API in Nightly builds via <code class="notranslate">dom.reporting.crash.enabled</code>, but BCD still listed the CrashReportContext storage APIs as unsupported in Firefox.</p>
+<h2 dir="auto">Root cause</h2>
+<p dir="auto">The Gecko change only flips the Crash Reporting API preference for Nightly builds, so the existing Chromium-only data needed Firefox support entries behind that preference.</p>
+<h2 dir="auto">Solution</h2>
+<p dir="auto">Update Firefox support for:</p>
+<ul dir="auto">
+<li><code class="notranslate">api.CrashReportContext</code></li>
+<li><code class="notranslate">api.CrashReportContext.delete</code></li>
+<li><code class="notranslate">api.CrashReportContext.initialize</code></li>
+<li><code class="notranslate">api.CrashReportContext.set</code></li>
+<li><code class="notranslate">api.Window.crashReport</code></li>
+</ul>
+<p dir="auto">Each entry is marked as added in Firefox 152 behind <code class="notranslate">dom.reporting.crash.enabled</code>.</p>
+<h2 dir="auto">Tests</h2>
+<ul dir="auto">
+<li><code class="notranslate">npx --yes npm@11.12.1 --prefix C:\Users\kirti\Documents\PRs\browser-compat-data run lint -- api/CrashReportContext.json api/Window.json</code></li>
+<li><code class="notranslate">C:\Users\kirti\Documents\PRs\browser-compat-data\node_modules\.bin\prettier.cmd --check C:\Users\kirti\Documents\PRs\browser-compat-data\api\CrashReportContext.json C:\Users\kirti\Documents\PRs\browser-compat-data\api\Window.json</code></li>
+<li><code class="notranslate">node -e "const fs=require('fs'); for (const f of ['C:/Users/kirti/Documents/PRs/browser-compat-data/api/CrashReportContext.json','C:/Users/kirti/Documents/PRs/browser-compat-data/api/Window.json']) JSON.parse(fs.readFileSync(f,'utf8')); console.log('JSON OK')"</code></li>
+<li><code class="notranslate">git diff --check</code></li>
+</ul>
+<h2 dir="auto">References</h2>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4548448348" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44297" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44297/hovercard" href="https://github.com/mdn/content/issues/44297">mdn/content#44297</a></li>
+<li><a href="https://bugzil.la/2036160" rel="nofollow">Firefox bug 2036160</a></li>
+</ul>]]></content>
+        <author>
+            <name>KirtiRamchandani</name>
+            <email>KirtiRamchandani@noreply.github.com</email>
+            <uri>https://github.com/KirtiRamchandani</uri>
+        </author>
+        <published>2026-06-01T16:41:48.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update Firefox data for appearance: base-select]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29780</id>
@@ -40,12 +103,12 @@
         <title type="html"><![CDATA[Bug 2034168 extension.isAllowedFileSchemeAccess reflects file access permission]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29776</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/29776"/>
-        <updated>2026-05-31T23:34:01.000Z</updated>
+        <updated>2026-06-01T18:04:34.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">Update to reflect that <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2034168" rel="nofollow">Bug 2034168</a> including a change so that<br>
 <code class="notranslate">extension.isAllowedFileSchemeAccess()</code> reflects the value of the "Access local files on your computer" option in the extension's permissions settings.</p>
 <h4 dir="auto">Related issues</h4>
-<p dir="auto">Four related content changes see PR TBC.</p>]]></content>
+<p dir="auto">Four related content changes see PR <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4565226252" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44328" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/44328/hovercard" href="https://github.com/mdn/content/pull/44328">mdn/content#44328</a></p>]]></content>
         <author>
             <name>rebloor</name>
             <email>rebloor@noreply.github.com</email>
@@ -317,7 +380,7 @@ I'm after advice, since it looks in the browser spec repo that tc39 specs are al
 My understanding is that there's a missing piece in all browsers where you can't just apply the above properties and expect them to work on their own. They also require a non-auto <code class="notranslate">inset</code> value.</p>
 <h4 dir="auto">Test results and supporting details</h4>
 <p dir="auto">Test case: <a href="https://bug2026174.bmoattachments.org/attachment.cgi?id=9557965" rel="nofollow">https://bug2026174.bmoattachments.org/attachment.cgi?id=9557965</a></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMjk4NjMsIm5iZiI6MTc4MDMyOTU2MywicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDYwMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA2MDFUMTU1OTIzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODc5YjVlZWY4ODAyM2M1ZTBiMzIzYTA0NDBjZWQ1NWY4ZGQ5YTBkYWViZmNjZTg4MjVhYjVlYWE2MjZiODExYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.U88iMELWDchj4Su4uT2_xiuP1nVW9J4GRlCfVQXmVEM"><img width="859" height="685" alt="image" src="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMjk4NjMsIm5iZiI6MTc4MDMyOTU2MywicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDYwMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA2MDFUMTU1OTIzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODc5YjVlZWY4ODAyM2M1ZTBiMzIzYTA0NDBjZWQ1NWY4ZGQ5YTBkYWViZmNjZTg4MjVhYjVlYWE2MjZiODExYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.U88iMELWDchj4Su4uT2_xiuP1nVW9J4GRlCfVQXmVEM" style="max-width: 100%; height: auto; max-height: 685px;; aspect-ratio: 859 / 685; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMzc3MTUsIm5iZiI6MTc4MDMzNzQxNSwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDYwMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA2MDFUMTgxMDE1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9Y2U4OGY5ODQ2ZmVmOGQ0NjdlMmNiZDk1MDA5ZTQzMDc5OTk2MmM4ZThmNmY2ZmFkYmJiOTA3NjBhNDM0YWUwOCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.BM66wo5f2BIZelG-PpVYCCeeLo-YIolOh_oqXmrTxm4"><img width="859" height="685" alt="image" src="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODAzMzc3MTUsIm5iZiI6MTc4MDMzNzQxNSwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDYwMSUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA2MDFUMTgxMDE1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9Y2U4OGY5ODQ2ZmVmOGQ0NjdlMmNiZDk1MDA5ZTQzMDc5OTk2MmM4ZThmNmY2ZmFkYmJiOTA3NjBhNDM0YWUwOCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.BM66wo5f2BIZelG-PpVYCCeeLo-YIolOh_oqXmrTxm4" style="max-width: 100%; height: auto; max-height: 685px;; aspect-ratio: 859 / 685; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <p dir="auto">The red box should be centered in the gray box.</p>
 <p dir="auto">Code:</p>
 <div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;
@@ -348,29 +411,5 @@ My understanding is that there's a missing piece in all browsers where you can't
             <uri>https://github.com/captainbrosset</uri>
         </author>
         <published>2026-03-25T14:14:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 144 :current support]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28882</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28882"/>
-        <updated>2026-04-30T19:48:25.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Chrome 144 supports the <code class="notranslate">::search-text</code> pseudo-element, which allows custom styling to be applied to browser search results; see <a href="https://chromestatus.com/feature/5195073796177920" rel="nofollow">https://chromestatus.com/feature/5195073796177920</a>.</p>
-<p dir="auto">We already have BCD for <code class="notranslate">::search-text</code>, however, you can combine <code class="notranslate">::search-text</code> with the <code class="notranslate">:current</code> pseudo-class to style the currently-highlighted search term on the page. This currently doesn't have any BCD, so I am using this PR to add <code class="notranslate">:current</code> BCD.</p>
-<p dir="auto">I'm assuming it makes sense to put Chrome 144 down for this as well, as previously, there was no context in which <code class="notranslate">:current</code> was supported. However, you might have other opinions on this.</p>
-<p dir="auto">I also thought about putting <code class="notranslate">"partial_implementation": "true"</code> for this, but then again, <code class="notranslate">:current</code> is fully supported in the context it is supported in. It just isn't supported in other contexts.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29543.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4329766971" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29543" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29543/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29543">#29543</a>.</p>]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-01-21T18:28:23.000Z</published>
     </entry>
 </feed>

@@ -6,6 +6,50 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds Firefox 152 Nightly documentation for WebAssembly JavaScript Promise Integration (JS-PI):</p>\n<ul dir=\"auto\">\n<li>a Firefox 152 release-note entry under WebAssembly</li>\n<li>an Experimental web features bullet with the preference name</li>\n<li>an Experimental features page entry with channel availability</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4470059571\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44167\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44167/hovercard\" href=\"https://github.com/mdn/content/issues/44167\">#44167</a>. The paired BCD update is <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4565258299\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29783\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29783/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29783\">mdn/browser-compat-data#29783</a>.</p>\n<h3 dir=\"auto\">Tests run</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npx --yes prettier@3.8.3 --check files/en-us/mozilla/firefox/experimental_features/index.md files/en-us/mozilla/firefox/releases/152/index.md</code></li>\n<li><code class=\"notranslate\">npx --yes --package markdownlint-cli2@0.22.1 --package markdownlint-rule-search-replace markdownlint-cli2 --config .markdownlint-cli2.jsonc files/en-us/mozilla/firefox/experimental_features/index.md files/en-us/mozilla/firefox/releases/152/index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/44329",
+            "title": "Document Firefox 152 WebAssembly JS-PI support",
+            "date_modified": "2026-06-01T18:04:32.000Z",
+            "date_published": "2026-06-01T18:04:07.000Z",
+            "author": {
+                "name": "KirtiRamchandani",
+                "url": "https://github.com/KirtiRamchandani"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Addresses the dev-doc-needed requirements of <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2034168\" rel=\"nofollow\">Bug 2034168</a> Add explicit permission for file:-access and implement extension.isAllowedFileSchemeAccess()</p>\n<p dir=\"auto\">Changes include:</p>\n<ul dir=\"auto\">\n<li>a release note</li>\n<li>update to <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension/isAllowedFileSchemeAccess\" rel=\"nofollow\">extension.isAllowedFileSchemeAccess()</a> to remove the note about being returned <code class=\"notranslate\">false</code> in Firefox (this and new behavior details now in BCD). Other tidy up edits.</li>\n<li>update to <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension\" rel=\"nofollow\">extension</a> to note change in permission triggers for <code class=\"notranslate\">isAllowedFileSchemeAccess</code> and update permission details regarding private windows for <code class=\"notranslate\">isAllowedIncognitoAccess</code>.</li>\n<li>note on <a href=\"https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/devtools/inspectedWindow/eval\" rel=\"nofollow\">devtools.inspectedWindow.eval()</a> that from Firefox 153, calling eval() on a file:// URL requires the user to grant file scheme access,</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relating BCD changes in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4559374599\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29776\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29776/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29776\">mdn/browser-compat-data#29776</a></p>",
+            "url": "https://github.com/mdn/content/pull/44328",
+            "title": "Bug 2034168 explicit permission for file access",
+            "date_modified": "2026-06-01T17:57:37.000Z",
+            "date_published": "2026-06-01T17:55:41.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Problem</h2>\n<p dir=\"auto\">Firefox 152 enables the Crash Reporting API in Nightly builds, but the MDN pages did not yet mention the Firefox preview and the <code class=\"notranslate\">CrashReport</code> page pointed at a non-existent BCD key.</p>\n<h2 dir=\"auto\">Root cause</h2>\n<p dir=\"auto\">The Gecko change enables <code class=\"notranslate\">dom.reporting.crash.enabled</code> for Nightly builds. The <code class=\"notranslate\">CrashReport</code> page should use the existing BCD key that represents delivery of <code class=\"notranslate\">crash</code> reports through the <code class=\"notranslate\">Reporting-Endpoints</code> default endpoint, while the new <code class=\"notranslate\">CrashReportContext</code>/<code class=\"notranslate\">Window.crashReport</code> support is tracked in a companion BCD update.</p>\n<h2 dir=\"auto\">Solution</h2>\n<ul dir=\"auto\">\n<li>Add Firefox 152 release notes for the Crash Reporting API Nightly preview.</li>\n<li>Add an Experimental features entry for <code class=\"notranslate\">dom.reporting.crash.enabled</code>.</li>\n<li>Point the <code class=\"notranslate\">CrashReport</code> page at <code class=\"notranslate\">http.headers.Reporting-Endpoints.default.receives_crash_type</code>.</li>\n</ul>\n<h2 dir=\"auto\">Tests</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npx --yes prettier@3.8.3 --config C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\.prettierrc.json --check C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\web\\api\\crashreport\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\releases\\152\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\experimental_features\\index.md</code></li>\n<li><code class=\"notranslate\">npx --yes --package markdownlint-cli2@0.22.1 --package markdownlint-rule-search-replace@1.2.0 markdownlint-cli2 --config C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\.markdownlint-cli2.jsonc C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\web\\api\\crashreport\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\releases\\152\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\experimental_features\\index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n</ul>\n<h2 dir=\"auto\">Related</h2>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44297.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4548448348\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44297\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44297/hovercard\" href=\"https://github.com/mdn/content/issues/44297\">#44297</a><br>\nCompanion BCD update: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4564778767\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29782\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29782/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29782\">mdn/browser-compat-data#29782</a><br>\nFirefox bug: <a href=\"https://bugzil.la/2036160\" rel=\"nofollow\">https://bugzil.la/2036160</a></p>",
+            "url": "https://github.com/mdn/content/pull/44327",
+            "title": "Document Firefox Crash Reporting API Nightly support",
+            "date_modified": "2026-06-01T16:43:15.000Z",
+            "date_published": "2026-06-01T16:42:44.000Z",
+            "author": {
+                "name": "KirtiRamchandani",
+                "url": "https://github.com/KirtiRamchandani"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/26078826?u=9388a2c2a0f1ca2799a4fd23f3e060c353d6ac37&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Whether the page is in UTF-8 or not makes no difference (as long as it's in an encoding that's capable of representing U+200B in the first place, which in practice is probably gonna be UTF-8).</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Remove confusing reference</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">N/A</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">N/A</p>",
+            "url": "https://github.com/mdn/content/pull/44326",
+            "title": "Remove confusing reference to UTF-8 in `<wbr>`",
+            "date_modified": "2026-06-01T16:09:25.000Z",
+            "date_published": "2026-06-01T16:07:41.000Z",
+            "author": {
+                "name": "lionel-rowe",
+                "url": "https://github.com/lionel-rowe"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Added <code class=\"notranslate\">field-sizing</code> release note to Firefox 152</li>\n<li>Removed <code class=\"notranslate\">field-sizing</code> release note from experimental features</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Working on <a href=\"https://github.com/mdn/content/issues/44165\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44165/hovercard\">MDN issue #44165</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/browser-compat-data/commit/2c92156db923dd19282a2b179d410a7412cdb73e\">BCD Associate commit</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/44325",
             "title": "added field-sizing release note",
@@ -179,50 +223,6 @@
             "author": {
                 "name": "rebloor",
                 "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR documents Wasm bulk memory operations.</p>\n<p dir=\"auto\">Specifically, it documents:</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The <code class=\"notranslate\">data</code> definition</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The <code class=\"notranslate\">elem</code> definition</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The <code class=\"notranslate\">memory</code> definition</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The <code class=\"notranslate\">data.drop</code> instruction</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The <code class=\"notranslate\">elem.drop</code> instruction</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Incomplete task\"> The <code class=\"notranslate\">memory.init</code> instruction</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Incomplete task\"> The <code class=\"notranslate\">memory.copy</code> instruction</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Incomplete task\"> The <code class=\"notranslate\">memory.fill</code> instruction</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Completed task\" checked=\"\"> The <code class=\"notranslate\">table.init</code> instruction</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Incomplete task\"> The <code class=\"notranslate\">table.copy</code> instruction</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/44296",
-            "title": "Document Wasm bulk memory operations",
-            "date_modified": "2026-06-01T15:27:42.000Z",
-            "date_published": "2026-05-29T09:16:24.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF150 added support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint\" rel=\"nofollow\"><code class=\"notranslate\">HighlightRegistry.highlightsFromPoint()</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1917991\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1917991</a></p>\n<p dir=\"auto\">This adds a release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4357403223\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43969\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43969/hovercard\" href=\"https://github.com/mdn/content/issues/43969\">#43969</a></p>",
-            "url": "https://github.com/mdn/content/pull/44294",
-            "title": "FF150 Relnote HighlightRegistry: highlightsFromPoint()",
-            "date_modified": "2026-06-01T01:04:48.000Z",
-            "date_published": "2026-05-29T06:12:56.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">…sponseHeader}Start</p>\n<p dir=\"auto\">FF152 supports <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/finalResponseHeadersStart\" rel=\"nofollow\"><code class=\"notranslate\">PerformanceResourceTiming.finalResponseHeadersStart</code></a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/firstInterimResponseStart\" rel=\"nofollow\"><code class=\"notranslate\">PerformanceResourceTiming.firstInterimResponseStart</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2006340\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2006340</a></p>\n<p dir=\"auto\">This adds a release note, along with a tiny update to cross link a few status codes from those docs.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4470064249\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44168\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44168/hovercard\" href=\"https://github.com/mdn/content/issues/44168\">#44168</a></p>",
-            "url": "https://github.com/mdn/content/pull/44293",
-            "title": "FF152Relnote: PerformanceResourceTiming.{firstInterimResponse|finalRe…",
-            "date_modified": "2026-06-01T01:04:02.000Z",
-            "date_published": "2026-05-29T05:18:50.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF150 added support for the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/VisualViewport/scrollend_event\" rel=\"nofollow\"><code class=\"notranslate\">scrollend</code></a> event in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1801658\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1801658</a></p>\n<p dir=\"auto\">This adds a release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4357399523\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43968\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43968/hovercard\" href=\"https://github.com/mdn/content/issues/43968\">#43968</a></p>",
-            "url": "https://github.com/mdn/content/pull/44292",
-            "title": "FF150 Relnote: VisualViewport scrollend event",
-            "date_modified": "2026-06-01T01:03:04.000Z",
-            "date_published": "2026-05-29T04:35:26.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
             }
         }
     ]
