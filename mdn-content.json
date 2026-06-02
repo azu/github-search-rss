@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44247.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4517144174\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44247\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44247/hovercard\" href=\"https://github.com/mdn/content/issues/44247\">#44247</a>.</p>\n<h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Updates the AVC profiles table on the codecs parameter guide so the constraints byte matches the IANA registrations:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">CAVLC 4:4:4 Intra Profile</code> uses <code class=\"notranslate\">2C</code> / <code class=\"notranslate\">10</code> in the H264 registration table.</li>\n<li><code class=\"notranslate\">Scalable High Intra Profile</code> uses <code class=\"notranslate\">56</code> / <code class=\"notranslate\">10</code> in the H264-SVC registration table.</li>\n</ul>\n<h2 dir=\"auto\">Source references</h2>\n<ul dir=\"auto\">\n<li><a href=\"https://www.iana.org/assignments/media-types/video/H264\" rel=\"nofollow\">https://www.iana.org/assignments/media-types/video/H264</a></li>\n<li><a href=\"https://www.iana.org/assignments/media-types/video/H264-SVC\" rel=\"nofollow\">https://www.iana.org/assignments/media-types/video/H264-SVC</a></li>\n</ul>\n<h2 dir=\"auto\">Tests</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check upstream/main..HEAD</code></li>\n<li><code class=\"notranslate\">corepack npm@11.9.0 exec --yes --package=prettier@3.8.3 -- prettier --check files/en-us/web/media/guides/formats/codecs_parameter/index.md</code></li>\n<li><code class=\"notranslate\">corepack npm@11.9.0 exec --yes --package=markdownlint-cli2@0.22.1 --package=markdownlint-rule-search-replace@1.2.0 -- markdownlint-cli2 --config .markdownlint-cli2.jsonc files/en-us/web/media/guides/formats/codecs_parameter/index.md</code></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/44334",
+            "title": "fix(media): correct AVC profile constraint bytes",
+            "date_modified": "2026-06-02T08:17:28.000Z",
+            "date_published": "2026-06-02T08:07:23.000Z",
+            "author": {
+                "name": "KirtiRamchandani",
+                "url": "https://github.com/KirtiRamchandani"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/190979964?u=c6b532be670d847aefd49e43a0315d6e52639b61&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Replace the invalid <code class=\"notranslate\">document.frames</code> example on the <code class=\"notranslate\">HTMLFormElement.target</code> page with <code class=\"notranslate\">window.frames</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><code class=\"notranslate\">document.frames</code> is not a valid API on modern pages, and a maintainer confirmed in the issue that the example should use <code class=\"notranslate\">frames</code> or <code class=\"notranslate\">window.frames</code> instead. This keeps the example accurate without changing the rest of the page.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Validated the edited markdown with <code class=\"notranslate\">prettier --check</code> and <code class=\"notranslate\">git diff --check</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44330.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4565656777\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44330\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44330/hovercard\" href=\"https://github.com/mdn/content/issues/44330\">#44330</a></p>",
+            "url": "https://github.com/mdn/content/pull/44333",
+            "title": "Fix HTMLFormElement target example",
+            "date_modified": "2026-06-02T07:46:52.000Z",
+            "date_published": "2026-06-02T07:46:28.000Z",
+            "author": {
+                "name": "ded-furby",
+                "url": "https://github.com/ded-furby"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Problem</h2>\n<p dir=\"auto\">The Texel glossary entry describes a mismatch between a \"source texel grid\" and a \"destination pixel grid\" without first explaining the texture-coordinate step that connects a 2D texture image to a 3D surface.</p>\n<h2 dir=\"auto\">Root cause</h2>\n<p dir=\"auto\">The paragraph compresses texture mapping, sampling, and filtering into one sentence, which makes the grid terminology harder to follow.</p>\n<h2 dir=\"auto\">Solution</h2>\n<p dir=\"auto\">Clarify that texture mapping assigns positions in a 2D texture image to points on a polygon, then describe filtering in terms of sampling and the display pixel grid.</p>\n<h2 dir=\"auto\">Tests run</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check</code></li>\n<li><code class=\"notranslate\">corepack npm exec --yes -- prettier@3.8.3 --check files/en-us/glossary/texel/index.md</code></li>\n<li><code class=\"notranslate\">corepack npm exec --yes --package markdownlint-cli2@0.22.1 --package markdownlint-rule-search-replace@1.2.0 -- markdownlint-cli2 files/en-us/glossary/texel/index.md</code></li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44290.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4545548998\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44290\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44290/hovercard\" href=\"https://github.com/mdn/content/issues/44290\">#44290</a></p>",
             "url": "https://github.com/mdn/content/pull/44332",
             "title": "Clarify texture mapping in Texel glossary",
@@ -163,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/44340603?u=5f2c3fba74e811aa8a011ad1126a6deadc56d170&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Rectifies that all attributes are not inherited : first, non-presentation attributes (such as id or class) are not inherited, second, some presentation attributes that are specific to some SVG elements will be ignored on &lt;g&gt;.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I was blocked several times wondering why my g elements refused to work with some attributes and not others.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><a href=\"https://svgwg.org/svg2-draft/styling.html#TermPresentationAttribute\" rel=\"nofollow\">https://svgwg.org/svg2-draft/styling.html#TermPresentationAttribute</a></p>\n<p dir=\"auto\">See also the linked issue.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44288.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4544731045\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44288\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44288/hovercard\" href=\"https://github.com/mdn/content/issues/44288\">#44288</a></p>",
             "url": "https://github.com/mdn/content/pull/44306",
             "title": "Rectify rules for attribute inheritance from <g>",
-            "date_modified": "2026-05-30T19:03:22.000Z",
+            "date_modified": "2026-06-02T08:50:22.000Z",
             "date_published": "2026-05-30T18:56:49.000Z",
             "author": {
                 "name": "Gouvernathor",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds a new guide page on input validation.</p>",
-            "url": "https://github.com/mdn/content/pull/44287",
-            "title": "Add a guide on input validation",
-            "date_modified": "2026-06-01T02:04:58.000Z",
-            "date_published": "2026-05-28T21:47:53.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/92600961?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Clarified that capturing and clearing the timeout handle is not required when using <code class=\"notranslate\">Promise.race</code> to time out a request. Provided an example to illustrate this point.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Expanded the description of \"Using Promise.race() to implement request timeout\" to demonstrate how the timeout does <em>not</em> need to be captured to prevent the throwing of the error: every iterable item passed to <code class=\"notranslate\">Promise.race</code> that loses the race is consumed silently, so the error is thrown but does not become an <code class=\"notranslate\">unhandledRejection</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I refactored a significant chunk of code to use <code class=\"notranslate\">Promise.race</code> and an auto-throwing method, then worried that the timeouts might be generating unhandled rejections; after checking the MDN, I didn't see any reference to this specific case. So I developed a \"solution\" that promptly created the problem I was trying to avoid.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">None.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
-            "url": "https://github.com/mdn/content/pull/44286",
-            "title": "Update Promise.race documentation regarding error handling",
-            "date_modified": "2026-05-28T21:45:43.000Z",
-            "date_published": "2026-05-28T21:45:20.000Z",
-            "author": {
-                "name": "mb-realpage",
-                "url": "https://github.com/mb-realpage"
             }
         }
     ]
