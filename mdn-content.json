@@ -31,7 +31,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Problem</h2>\n<p dir=\"auto\">Firefox 152 enables the Crash Reporting API in Nightly builds, but the MDN pages did not yet mention the Firefox preview and the <code class=\"notranslate\">CrashReport</code> page pointed at a non-existent BCD key.</p>\n<h2 dir=\"auto\">Root cause</h2>\n<p dir=\"auto\">The Gecko change enables <code class=\"notranslate\">dom.reporting.crash.enabled</code> for Nightly builds. The <code class=\"notranslate\">CrashReport</code> page should use the existing BCD key that represents delivery of <code class=\"notranslate\">crash</code> reports through the <code class=\"notranslate\">Reporting-Endpoints</code> default endpoint, while the new <code class=\"notranslate\">CrashReportContext</code>/<code class=\"notranslate\">Window.crashReport</code> support is tracked in a companion BCD update.</p>\n<h2 dir=\"auto\">Solution</h2>\n<ul dir=\"auto\">\n<li>Add Firefox 152 release notes for the Crash Reporting API Nightly preview.</li>\n<li>Add an Experimental features entry for <code class=\"notranslate\">dom.reporting.crash.enabled</code>.</li>\n<li>Point the <code class=\"notranslate\">CrashReport</code> page at <code class=\"notranslate\">http.headers.Reporting-Endpoints.default.receives_crash_type</code>.</li>\n</ul>\n<h2 dir=\"auto\">Tests</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npx --yes prettier@3.8.3 --config C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\.prettierrc.json --check C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\web\\api\\crashreport\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\releases\\152\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\experimental_features\\index.md</code></li>\n<li><code class=\"notranslate\">npx --yes --package markdownlint-cli2@0.22.1 --package markdownlint-rule-search-replace@1.2.0 markdownlint-cli2 --config C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\.markdownlint-cli2.jsonc C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\web\\api\\crashreport\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\releases\\152\\index.md C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\mozilla\\firefox\\experimental_features\\index.md</code></li>\n<li><code class=\"notranslate\">git diff --check</code></li>\n</ul>\n<h2 dir=\"auto\">Related</h2>\n<p dir=\"auto\">Related docs work <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4548448348\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44297\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44297/hovercard\" href=\"https://github.com/mdn/content/issues/44297\">#44297</a><br>\nCompanion BCD update: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4564778767\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29782\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29782/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29782\">mdn/browser-compat-data#29782</a><br>\nFirefox bug: <a href=\"https://bugzil.la/2036160\" rel=\"nofollow\">https://bugzil.la/2036160</a></p>",
             "url": "https://github.com/mdn/content/pull/44327",
             "title": "Document Firefox Crash Reporting API Nightly support",
-            "date_modified": "2026-06-02T00:04:18.000Z",
+            "date_modified": "2026-06-02T05:16:54.000Z",
             "date_published": "2026-06-01T16:42:44.000Z",
             "author": {
                 "name": "KirtiRamchandani",
@@ -127,17 +127,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Correct two AVC profile table entries in the <code class=\"notranslate\">codecs</code> parameter guide:</p>\n<ul dir=\"auto\">\n<li>CAVLC 4:4:4 Intra Profile uses profile number <code class=\"notranslate\">2C</code> and constraints byte <code class=\"notranslate\">10</code>.</li>\n<li>Scalable High Intra Profile uses constraints byte <code class=\"notranslate\">10</code>.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44246.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4517096701\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44246\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44246/hovercard\" href=\"https://github.com/mdn/content/issues/44246\">#44246</a>.<br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44247.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4517144174\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44247\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44247/hovercard\" href=\"https://github.com/mdn/content/issues/44247\">#44247</a>.</p>\n<p dir=\"auto\">The IANA <code class=\"notranslate\">video/H264</code> registration lists <code class=\"notranslate\">C44I</code> as profile <code class=\"notranslate\">2C</code> with <code class=\"notranslate\">profile-iop</code> value <code class=\"notranslate\">00010000</code>, which maps to constraints byte <code class=\"notranslate\">10</code>. The IANA <code class=\"notranslate\">video/H264-SVC</code> registration lists <code class=\"notranslate\">SHI</code> as profile <code class=\"notranslate\">56</code> with <code class=\"notranslate\">profile-iop</code> value <code class=\"notranslate\">0x010000</code>, which also maps to constraints byte <code class=\"notranslate\">10</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">References:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://www.iana.org/assignments/media-types/video/H264\" rel=\"nofollow\">https://www.iana.org/assignments/media-types/video/H264</a></li>\n<li><a href=\"https://www.iana.org/assignments/media-types/video/H264-SVC\" rel=\"nofollow\">https://www.iana.org/assignments/media-types/video/H264-SVC</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44246.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4517096701\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44246\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44246/hovercard\" href=\"https://github.com/mdn/content/issues/44246\">#44246</a><br>\n<span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44247.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4517144174\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44247\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44247/hovercard\" href=\"https://github.com/mdn/content/issues/44247\">#44247</a></p>\n<h3 dir=\"auto\">Tests</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check</code></li>\n<li><code class=\"notranslate\">npm exec --yes --package prettier@3.8.3 -- prettier --check C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\web\\media\\guides\\formats\\codecs_parameter\\index.md</code></li>\n<li><code class=\"notranslate\">npm exec --yes --package markdownlint-cli2@0.22.1 --package markdownlint-rule-search-replace -- markdownlint-cli2 --config C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\.markdownlint-cli2.jsonc --no-globs C:\\Users\\kirti\\Documents\\PRs\\mdn-content\\files\\en-us\\web\\media\\guides\\formats\\codecs_parameter\\index.md</code></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/44315",
-            "title": "Fix AVC profile table values",
-            "date_modified": "2026-06-01T08:55:04.000Z",
-            "date_published": "2026-06-01T07:57:59.000Z",
-            "author": {
-                "name": "KirtiRamchandani",
-                "url": "https://github.com/KirtiRamchandani"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF152 adds support for the <code class=\"notranslate\">SVGTextPathElement.side</code> property and associated static constant properties. This adds docs, including live examples in the <code class=\"notranslate\">SVGTextPathElement</code> and the property page.</p>\n<p dir=\"auto\">Also tweaked the method and spacing property docs to match the same introductory format and more clearly indicate the supported static properties in each case.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4469279461\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44162\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44162/hovercard\" href=\"https://github.com/mdn/content/issues/44162\">#44162</a></p>",
             "url": "https://github.com/mdn/content/pull/44313",
             "title": "FF152 SVGTextPathElement.side",
@@ -168,17 +157,6 @@
             "author": {
                 "name": "Gouvernathor",
                 "url": "https://github.com/Gouvernathor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1612405?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The examples for how relative URLs are constructed, while technically correct, give a misleading impression that <code class=\"notranslate\">../</code> is needed to get from <code class=\"notranslate\">/dogs</code> to <code class=\"notranslate\">/cats</code>, which is not the case. This replaces those examples with clearer ones.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Replaces</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new URL(&quot;../cats&quot;, &quot;http://www.example.com/dogs&quot;);\"><pre class=\"notranslate\"><code class=\"notranslate\">new URL(\"../cats\", \"http://www.example.com/dogs\");\n</code></pre></div>\n<p dir=\"auto\">with</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"new URL(&quot;cats&quot;, &quot;http://www.example.com/animals/dogs&quot;);\"><pre class=\"notranslate\"><code class=\"notranslate\">new URL(\"cats\", \"http://www.example.com/animals/dogs\");\n</code></pre></div>\n<p dir=\"auto\">and adjusts anything else that needs to change as a result.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">The previous example might mislead readers into thinking that relative URLs are constructed by always treating the last path element as if it ends with a trailing slash.</p>",
-            "url": "https://github.com/mdn/content/pull/44304",
-            "title": "Improve misleading examples",
-            "date_modified": "2026-06-01T08:50:24.000Z",
-            "date_published": "2026-05-30T09:05:06.000Z",
-            "author": {
-                "name": "jmorahan",
-                "url": "https://github.com/jmorahan"
             }
         },
         {
@@ -215,14 +193,36 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF150 added support for <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint\" rel=\"nofollow\"><code class=\"notranslate\">HighlightRegistry.highlightsFromPoint()</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1917991\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1917991</a></p>\n<p dir=\"auto\">This adds a release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4357403223\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43969\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43969/hovercard\" href=\"https://github.com/mdn/content/issues/43969\">#43969</a></p>",
-            "url": "https://github.com/mdn/content/pull/44294",
-            "title": "FF150 Relnote HighlightRegistry: highlightsFromPoint()",
-            "date_modified": "2026-06-01T01:04:48.000Z",
-            "date_published": "2026-05-29T06:12:56.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds a new guide page on input validation.</p>",
+            "url": "https://github.com/mdn/content/pull/44287",
+            "title": "Add a guide on input validation",
+            "date_modified": "2026-06-01T02:04:58.000Z",
+            "date_published": "2026-05-28T21:47:53.000Z",
             "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/92600961?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Clarified that capturing and clearing the timeout handle is not required when using <code class=\"notranslate\">Promise.race</code> to time out a request. Provided an example to illustrate this point.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Expanded the description of \"Using Promise.race() to implement request timeout\" to demonstrate how the timeout does <em>not</em> need to be captured to prevent the throwing of the error: every iterable item passed to <code class=\"notranslate\">Promise.race</code> that loses the race is consumed silently, so the error is thrown but does not become an <code class=\"notranslate\">unhandledRejection</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">I refactored a significant chunk of code to use <code class=\"notranslate\">Promise.race</code> and an auto-throwing method, then worried that the timeouts might be generating unhandled rejections; after checking the MDN, I didn't see any reference to this specific case. So I developed a \"solution\" that promptly created the problem I was trying to avoid.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">None.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
+            "url": "https://github.com/mdn/content/pull/44286",
+            "title": "Update Promise.race documentation regarding error handling",
+            "date_modified": "2026-05-28T21:45:43.000Z",
+            "date_published": "2026-05-28T21:45:20.000Z",
+            "author": {
+                "name": "mb-realpage",
+                "url": "https://github.com/mb-realpage"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 148 adds support for name-only container queries; see <a href=\"https://chromestatus.com/feature/5184267522015232\" rel=\"nofollow\">https://chromestatus.com/feature/5184267522015232</a>.</p>\n<p dir=\"auto\">This PR aims to document them, adding a stand-alone section to the appropriate guide, a live example to the <code class=\"notranslate\">container-name</code> reference page, and making a bunch of clarifying updates in other places. This is a fairly simple feature, but container queries are documented on MDN in several places, so the work required quite a bit of rephrasing to represent it appropriately.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/44284",
+            "title": "Editorial review: Document name-only container queries",
+            "date_modified": "2026-06-01T14:31:57.000Z",
+            "date_published": "2026-05-28T10:43:20.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
