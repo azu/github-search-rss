@@ -2,11 +2,82 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-06-04T00:35:09.763Z</updated>
+    <updated>2026-06-04T01:49:48.213Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Note alternatives to Emscripten in C to Wasm guide]]></title>
+        <id>https://github.com/mdn/content/pull/44351</id>
+        <link href="https://github.com/mdn/content/pull/44351"/>
+        <updated>2026-06-04T01:29:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161273586?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #20177.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1357608893" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/20177" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/20177/hovercard" href="https://github.com/mdn/content/issues/20177">#20177</a>.</p>
+<p dir="auto">The guide only mentions Emscripten, which led to the request for a pointer to lighter, more portable alternatives. Per the discussion on the issue (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Josh-Cena/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Josh-Cena">@Josh-Cena</a> and <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/bsmth/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/bsmth">@bsmth</a>), the consensus was to keep the tutorial primarily Emscripten-based but add a note about alternatives in the introduction — so this adds a short note pointing to compiling C directly with Clang/LLVM or the WASI SDK, while noting what Emscripten provides that those don't (libc, file system, and other OS emulation).</p>
+<p dir="auto">The Clang/LLVM reference is the <a href="https://surma.dev/things/c-to-webassembly/" rel="nofollow">surma.dev write-up</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/bsmth/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/bsmth">@bsmth</a> linked in the thread.</p>]]></content>
+        <author>
+            <name>vamshikrishnaramasamy</name>
+            <email>vamshikrishnaramasamy@noreply.github.com</email>
+            <uri>https://github.com/vamshikrishnaramasamy</uri>
+        </author>
+        <published>2026-06-04T01:28:08.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Clarify that deleteDatabase() blocks until open connections close]]></title>
+        <id>https://github.com/mdn/content/pull/44350</id>
+        <link href="https://github.com/mdn/content/pull/44350"/>
+        <updated>2026-06-04T01:25:19.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161273586?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #20368.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1363933918" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/20368" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/20368/hovercard" href="https://github.com/mdn/content/issues/20368">#20368</a>.</p>
+<p dir="auto">The page mentions that open connections receive a <code class="notranslate">versionchange</code> event, but doesn't explain the consequence: the deletion will not complete (and <code class="notranslate">success</code> will not fire) while any connection to the database is still open. This is a common source of confusion — people wait for <code class="notranslate">onsuccess</code> that never comes because a connection is left open.</p>
+<p dir="auto">This expands the existing sentence to spell out that:</p>
+<ul dir="auto">
+<li>the deletion stays pending until every connection closes;</li>
+<li>a <code class="notranslate">blocked</code> event is fired on the request if a connection doesn't close in response to <code class="notranslate">versionchange</code>;</li>
+<li>closing connections (e.g. via <code class="notranslate">IDBDatabase.close()</code>) lets the deletion proceed.</li>
+</ul>
+<p dir="auto">This matches the <a href="https://www.w3.org/TR/IndexedDB/#delete-a-database" rel="nofollow">spec's database-deletion steps</a> and the behavior <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/evanstade/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/evanstade">@evanstade</a> quoted on the issue.</p>]]></content>
+        <author>
+            <name>vamshikrishnaramasamy</name>
+            <email>vamshikrishnaramasamy@noreply.github.com</email>
+            <uri>https://github.com/vamshikrishnaramasamy</uri>
+        </author>
+        <published>2026-06-04T01:23:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Note that Attr.isConnected is always false]]></title>
+        <id>https://github.com/mdn/content/pull/44349</id>
+        <link href="https://github.com/mdn/content/pull/44349"/>
+        <updated>2026-06-04T01:24:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/161273586?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42933.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3860235982" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42933" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42933/hovercard" href="https://github.com/mdn/content/issues/42933">#42933</a>.</p>
+<p dir="auto"><code class="notranslate">isConnected</code> always returns <code class="notranslate">false</code> on an {{domxref("Attr")}} node, even when the attribute's <code class="notranslate">ownerElement</code> is connected to the document. This trips people up, so this adds a note explaining why.</p>
+<p dir="auto">As <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/caugner/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/caugner">@caugner</a> noted on the issue, this is consistent across Chrome, Firefox, and Safari, and is out of scope for BCD — the spec defines <code class="notranslate">isConnected</code> for all nodes, and since an attribute node has no parent, it has no root that is a document, so it is never "connected".</p>
+<p dir="auto">I confirmed the behavior in Chrome:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const el = document.createElement(&quot;div&quot;);
+el.setAttribute(&quot;data-x&quot;, &quot;1&quot;);
+const attr = el.getAttributeNode(&quot;data-x&quot;);
+document.body.appendChild(el);
+
+el.isConnected;                 // true
+attr.ownerElement.isConnected;  // true
+attr.isConnected;               // false
+attr.parentNode;                // null
+attr.getRootNode() === attr;    // true (its root is itself, not the document)"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">el</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">"div"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">el</span><span class="pl-kos">.</span><span class="pl-en">setAttribute</span><span class="pl-kos">(</span><span class="pl-s">"data-x"</span><span class="pl-kos">,</span> <span class="pl-s">"1"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">attr</span> <span class="pl-c1">=</span> <span class="pl-s1">el</span><span class="pl-kos">.</span><span class="pl-en">getAttributeNode</span><span class="pl-kos">(</span><span class="pl-s">"data-x"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-c1">body</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">el</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">el</span><span class="pl-kos">.</span><span class="pl-c1">isConnected</span><span class="pl-kos">;</span>                 <span class="pl-c">// true</span>
+<span class="pl-s1">attr</span><span class="pl-kos">.</span><span class="pl-c1">ownerElement</span><span class="pl-kos">.</span><span class="pl-c1">isConnected</span><span class="pl-kos">;</span>  <span class="pl-c">// true</span>
+<span class="pl-s1">attr</span><span class="pl-kos">.</span><span class="pl-c1">isConnected</span><span class="pl-kos">;</span>               <span class="pl-c">// false</span>
+<span class="pl-s1">attr</span><span class="pl-kos">.</span><span class="pl-c1">parentNode</span><span class="pl-kos">;</span>                <span class="pl-c">// null</span>
+<span class="pl-s1">attr</span><span class="pl-kos">.</span><span class="pl-en">getRootNode</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">===</span> <span class="pl-s1">attr</span><span class="pl-kos">;</span>    <span class="pl-c">// true (its root is itself, not the document)</span></pre></div>]]></content>
+        <author>
+            <name>vamshikrishnaramasamy</name>
+            <email>vamshikrishnaramasamy@noreply.github.com</email>
+            <uri>https://github.com/vamshikrishnaramasamy</uri>
+        </author>
+        <published>2026-06-04T01:22:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add-reference references to the script-on-click example]]></title>
         <id>https://github.com/mdn/content/pull/44348</id>
@@ -515,85 +586,5 @@ the stacking context guide</li>
             <uri>https://github.com/xonaib</uri>
         </author>
         <published>2026-06-01T11:27:07.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs(showNotification): clarify differences between badge, icon, and image options]]></title>
-        <id>https://github.com/mdn/content/pull/44321</id>
-        <link href="https://github.com/mdn/content/pull/44321"/>
-        <updated>2026-06-02T13:14:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/48220328?u=f437ff9fcd85505ca065edac64c0a65e7273eaf9&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42499.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3755378947" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42499" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42499/hovercard" href="https://github.com/mdn/content/issues/42499">#42499</a></p>
-<p dir="auto">The current descriptions for <code class="notranslate">icon</code> and <code class="notranslate">image</code> are nearly identical, giving developers no<br>
-guidance on which to use or where each appears in the UI.</p>
-<p dir="auto">Per the WHATWG Notifications spec (<a href="https://notifications.spec.whatwg.org/#concept-notification" rel="nofollow">https://notifications.spec.whatwg.org/#concept-notification</a>):</p>
-<ul dir="auto">
-<li><code class="notranslate">image</code> is a large content-level picture inside the notification body (highest visual priority)</li>
-<li><code class="notranslate">icon</code> reinforces the notification (sender/app identity), shown alongside title/body</li>
-<li><code class="notranslate">badge</code> represents the web application in constrained surfaces like the Android status bar (lowest visual priority, monochrome)</li>
-</ul>
-<p dir="auto">Changes:</p>
-<ul dir="auto">
-<li>Expanded all three descriptions to reflect spec-defined roles</li>
-<li>Added a Note callout comparing all three options together</li>
-<li>Added platform support context (Android/Windows vs. macOS/iOS) for <code class="notranslate">image</code></li>
-</ul>
-<p dir="auto">I verified the spec definitions against the WHATWG Notifications spec <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="702234902" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/2" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/2/hovercard" href="https://github.com/mdn/content/pull/2">#2</a> and checked the rendered page in the local MDN preview.</p>]]></content>
-        <author>
-            <name>xonaib</name>
-            <email>xonaib@noreply.github.com</email>
-            <uri>https://github.com/xonaib</uri>
-        </author>
-        <published>2026-06-01T10:59:10.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clarify WebTransport datagram writable support]]></title>
-        <id>https://github.com/mdn/content/pull/44317</id>
-        <link href="https://github.com/mdn/content/pull/44317"/>
-        <updated>2026-06-01T09:19:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds explicit deprecated/non-standard markers and compatibility notes beside the WebTransport datagram examples that use <code class="notranslate">WebTransportDatagramDuplexStream.writable</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The <code class="notranslate">WebTransport.datagrams</code> page can show Baseline support for the <code class="notranslate">datagrams</code> property while the outgoing datagram example uses <code class="notranslate">writable</code>, which has separate compatibility data, is deprecated, is non-standard, and is not supported in Safari. The added notes make that distinction visible where readers encounter the example.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The same outgoing datagram example appears on the <code class="notranslate">WebTransportDatagramDuplexStream</code> overview, so this updates both pages consistently.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44273.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4531242704" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44273" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44273/hovercard" href="https://github.com/mdn/content/issues/44273">#44273</a></p>
-<h3 dir="auto">Tests</h3>
-<ul dir="auto">
-<li>Prettier 3.8.3 check on the two touched pages</li>
-<li>MarkdownLint CLI 0.22.1 with MDN config on the two touched pages</li>
-<li><code class="notranslate">git diff --check -- files/en-us/web/api/webtransport/datagrams/index.md files/en-us/web/api/webtransportdatagramduplexstream/index.md</code></li>
-</ul>]]></content>
-        <author>
-            <name>KirtiRamchandani</name>
-            <email>KirtiRamchandani@noreply.github.com</email>
-            <uri>https://github.com/KirtiRamchandani</uri>
-        </author>
-        <published>2026-06-01T09:19:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix scroll snap glossary example wording]]></title>
-        <id>https://github.com/mdn/content/pull/44316</id>
-        <link href="https://github.com/mdn/content/pull/44316"/>
-        <updated>2026-06-01T09:14:32.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/33368817?u=80d39153e27b7d191281ed9b12cfb2b414418080&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Updates the scroll snap glossary wording so it no longer refers to an "above carousel example" when the page only describes a carousel scenario in prose.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The previous sentence could confuse readers because the glossary page does not include an example block above the paragraph. The revised sentence keeps the same explanation while avoiding that misleading reference.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">None.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44295.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4546171704" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44295" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44295/hovercard" href="https://github.com/mdn/content/issues/44295">#44295</a></p>
-<h3 dir="auto">Tests</h3>
-<ul dir="auto">
-<li>Prettier 3.8.3 check on <code class="notranslate">files/en-us/glossary/scroll_snap/index.md</code></li>
-<li>MarkdownLint CLI 0.22.1 with MDN config on <code class="notranslate">files/en-us/glossary/scroll_snap/index.md</code></li>
-<li><code class="notranslate">git diff --check -- files/en-us/glossary/scroll_snap/index.md</code></li>
-</ul>]]></content>
-        <author>
-            <name>KirtiRamchandani</name>
-            <email>KirtiRamchandani@noreply.github.com</email>
-            <uri>https://github.com/KirtiRamchandani</uri>
-        </author>
-        <published>2026-06-01T09:14:08.000Z</published>
     </entry>
 </feed>
