@@ -2,11 +2,67 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-06-07T01:40:42.134Z</updated>
+    <updated>2026-06-07T03:01:19.965Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add lifecycle hooks that can be mapped to user defined scripts (1:M) in package.json]]></title>
+        <id>https://github.com/npm/rfcs/issues/892</id>
+        <link href="https://github.com/npm/rfcs/issues/892"/>
+        <updated>2026-06-07T02:00:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2465960?u=c7cebb9fb969e11ef95e652b005d2e3916ca59f1&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Scripts in <code class="notranslate">package.json</code> oftentimes rely on prior state or context in order to execute as expected. For example, injecting the right <code class="notranslate">.env</code> files to have respective apps not upload things such as test data into production.</p>
+<p dir="auto">Current conventions for most applications handle this in a few ways:</p>
+<ol dir="auto">
+<li>Manually add an inline variable to the command such as <code class="notranslate">NODE_ENV={whatever}</code>, or for node 20+ projects use the <code class="notranslate">--env-file</code> switch. This gets cumbersome when you need to make 3+ copies of many regular scripts (eg. <code class="notranslate">dev|start|build</code>) and the commands themselves have enough other switches to worry about.</li>
+<li>Use external libraries like <code class="notranslate">dotenv</code> resolve this for them. Any addition of dependencies introduces the classic issues of new surface areas for vulnerabilities, as well as relying on the availability of respective maintainers to update them when contracts change, etc etc. Also, I still haven't found an external dependency that addresses this gap directly.</li>
+</ol>
+<h3 dir="auto">Example</h3>
+
+<p dir="auto">Allow for an opt-in, zero-dependency solution that gives developers a cleaner, DRYer <code class="notranslate">package.json</code>. Example snippet:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {
+  &quot;serve&quot;:  &quot;node server.js&quot;,
+  &quot;build&quot;: &quot;node scripts/build-client.js&quot;
+},
+// act as hooks to run before script execution
+&quot;hooks&quot;: {
+  &quot;dev&quot;: &quot;NODE_ENV=development &amp;&amp; NODE_OPTIONS=--env-file=.env.development&quot;,
+  &quot;stg&quot;: &quot;NODE_ENV=staging &amp;&amp; NODE_OPTIONS=--env-file=.env.staging&quot;,
+  // and so on...
+}"><pre class="notranslate"><span class="pl-ent">"scripts"</span>: {
+  <span class="pl-ent">"serve"</span>:  <span class="pl-s"><span class="pl-pds">"</span>node server.js<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>node scripts/build-client.js<span class="pl-pds">"</span></span>
+},
+<span class="pl-ii">// act as hooks to run before script execution</span>
+<span class="pl-ent">"hooks"</span>: {
+  <span class="pl-ent">"dev"</span>: <span class="pl-s"><span class="pl-pds">"</span>NODE_ENV=development &amp;&amp; NODE_OPTIONS=--env-file=.env.development<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"stg"</span>: <span class="pl-s"><span class="pl-pds">"</span>NODE_ENV=staging &amp;&amp; NODE_OPTIONS=--env-file=.env.staging<span class="pl-pds">"</span></span>,
+  <span class="pl-ii">// and so on...</span>
+}</pre></div>
+<p dir="auto">and when running in the terminal, the environment keywords will then be parsed for as hooks, delimited by <code class="notranslate">:</code> for example, and then execute those commands "pre" lifecycle hook style.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run dev:serve
+npm run stg:serve"><pre class="notranslate">npm run dev:serve
+npm run stg:serve</pre></div>
+<p dir="auto">This kind of functionality can be abstracted to other use cases where pre or post lifecycle hooks can be leveraged for any group of scripts that wants to be decorated by them.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">User generated npm scripts cannot define any pre/before or post/after hooks that can be referenced by their key signature.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">User generated npm scripts CAN reference pre/before or post/after hooks that are defined in a new section in <code class="notranslate">package.json</code>, using an agreed upon delimiter such as colon (<code class="notranslate">:</code>). The placement of the hook key, either on the left (pre/before) or on the right (post/after) side of the script executes the hook script that the separated key maps to.</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Originally opened as an issue in <a href="https://github.com/npm/cli/issues/9384" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/9384/hovercard">npm/cli</a></li>
+</ul>]]></content>
+        <author>
+            <name>Plumpernickel</name>
+            <email>Plumpernickel@noreply.github.com</email>
+            <uri>https://github.com/Plumpernickel</uri>
+        </author>
+        <published>2026-06-07T02:00:26.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Support Trusted publishing for Github Actions Self-Hosted Runners]]></title>
         <id>https://github.com/npm/rfcs/issues/888</id>
@@ -919,37 +975,5 @@ SIGTERM  (node receives signal)
             <uri>https://github.com/ii1818nn</uri>
         </author>
         <published>2025-07-30T20:26:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Please don't store registry info in `packge-lock.json`]]></title>
-        <id>https://github.com/npm/rfcs/issues/821</id>
-        <link href="https://github.com/npm/rfcs/issues/821"/>
-        <updated>2025-09-21T06:26:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8336744?u=2801b004fef78f6c481ad5a820c29cc18f711bc1&v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-
-<p dir="auto">It's very bad for different users prefer different registries globally, I accidentally commit unexpected changes several times.</p>
-<h3 dir="auto">Example</h3>
-
-<p dir="auto">FYI, <code class="notranslate">yarn</code> 2+ and <code class="notranslate">pnpm</code> don't store registry info in their lockfile.</p>
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-
-<p dir="auto">Read it from <code class="notranslate">.npmrc</code> instead.</p>
-<h4 dir="auto">Desired Behaviour</h4>
-
-<p dir="auto">As title, <code class="notranslate">registry</code> should not be stored into <code class="notranslate">package-lock.json</code>, it would also make <code class="notranslate">package-lock.json</code> much smaller.</p>
-<h3 dir="auto">References</h3>
-
-<ul dir="auto">
-<li><code class="notranslate">yarn</code>: <a href="https://yarnpkg.com/configuration/yarnrc#npmRegistryServer" rel="nofollow">https://yarnpkg.com/configuration/yarnrc#npmRegistryServer</a></li>
-<li><code class="notranslate">pnpm</code>: <a href="https://pnpm.io/settings#registry--authentication-settings" rel="nofollow">https://pnpm.io/settings#registry--authentication-settings</a></li>
-</ul>]]></content>
-        <author>
-            <name>JounQin</name>
-            <email>JounQin@noreply.github.com</email>
-            <uri>https://github.com/JounQin</uri>
-        </author>
-        <published>2025-05-01T13:26:21.000Z</published>
     </entry>
 </feed>
