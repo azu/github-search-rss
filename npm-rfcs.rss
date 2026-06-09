@@ -2,11 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-06-09T12:04:47.002Z</updated>
+    <updated>2026-06-09T13:48:51.528Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[feature request: packageJson field that only allows global install of package]]></title>
+        <id>https://github.com/npm/rfcs/issues/894</id>
+        <link href="https://github.com/npm/rfcs/issues/894"/>
+        <updated>2026-06-09T13:25:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5721147?u=b6f2776c92b4d4404c45b90c4d735699535a74d1&v=4" width="64" height="64" alt=""/><br/><p dir="auto">In my package's package.json file, I have preinstall that looks like</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {
+    &quot;preinstall&quot;: &quot;node scripts/preinstall.js&quot;
+}"><pre class="notranslate"><span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"preinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>node scripts/preinstall.js<span class="pl-pds">"</span></span>
+}</pre></div>
+<p dir="auto">currently, i have preinstall.js script that looks like</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="if(!process.env.npm_config_global) {
+    console.log('This npm module can only be installed globally')
+    process.exit(1)
+}"><pre class="notranslate"><span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">npm_config_global</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'This npm module can only be installed globally'</span><span class="pl-kos">)</span>
+    <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">exit</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">npm 12 will make install scripts opt-in (see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4448306862" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/868" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/868/hovercard" href="https://github.com/npm/rfcs/pull/868">#868</a>)</p>
+<hr>
+<p dir="auto">is there a possibility of adding a field to package.json file that replicates this behavior?</p>]]></content>
+        <author>
+            <name>alexsch01</name>
+            <email>alexsch01@noreply.github.com</email>
+            <uri>https://github.com/alexsch01</uri>
+        </author>
+        <published>2026-06-09T13:21:50.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] Add lifecycle hooks that can be mapped to user defined scripts (1:M) in package.json]]></title>
         <id>https://github.com/npm/rfcs/issues/892</id>
@@ -940,40 +969,5 @@ SIGTERM  (node receives signal)
             <uri>https://github.com/zkochan</uri>
         </author>
         <published>2025-08-03T12:37:21.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Support multiple registries per scope in .npmrc]]></title>
-        <id>https://github.com/npm/rfcs/issues/828</id>
-        <link href="https://github.com/npm/rfcs/issues/828"/>
-        <updated>2025-07-31T00:42:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/53998249?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">The current <code class="notranslate">.npmrc</code> configuration model allows specifying <strong>only one registry per scope</strong>, which is too limiting for more complex setups.</p>
-<h3 dir="auto">Example</h3>
-<p dir="auto">We use a <strong>self-hosted GitLab instance</strong> as our internal NPM registry provider. GitLab supports publishing packages at different levels:</p>
-<ul dir="auto">
-<li><strong>Project-level registry</strong> — each project has its own NPM registry.</li>
-<li><strong>Group-level registry</strong> — a registry that aggregates all packages from child projects in the group.</li>
-<li><strong>Instance-level (global) registry</strong> — exposes packages using the group name as the scope, and the project name as the package name.</li>
-</ul>
-<p dir="auto">Suppose we have the following structure:</p>
-<ul dir="auto">
-<li><code class="notranslate">project-a</code> published to: <code class="notranslate">https://gitlab.example.com/api/v4/projects/1/packages/npm/</code></li>
-<li><code class="notranslate">libraries/*</code> packages published to: <code class="notranslate">https://gitlab.example.com/api/v4/groups/6/-/packages/npm/</code></li>
-</ul>
-<p dir="auto">This setup introduces limitations for consumers:</p>
-<ul dir="auto">
-<li>We want to use a <strong>single shared scope</strong>, such as <code class="notranslate">@our-org/*</code>, across all packages in our organization.</li>
-<li>Some packages are published to <strong>project-level registries</strong>, while others use <strong>group-level registries</strong>.</li>
-</ul>
-<h3 dir="auto">References</h3>
-<ul dir="auto">
-<li>Related/Reference to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="962939940" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/427" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/427/hovercard" href="https://github.com/npm/rfcs/issues/427">#427</a></li>
-</ul>]]></content>
-        <author>
-            <name>ii1818nn</name>
-            <email>ii1818nn@noreply.github.com</email>
-            <uri>https://github.com/ii1818nn</uri>
-        </author>
-        <published>2025-07-30T20:26:25.000Z</published>
     </entry>
 </feed>
