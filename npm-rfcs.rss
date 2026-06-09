@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-06-09T16:03:59.238Z</updated>
+    <updated>2026-06-09T17:37:02.507Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
@@ -523,6 +523,22 @@ it downgrade to an older version. It will leave the version as it is.</li>
         <published>2026-02-19T14:39:05.000Z</published>
     </entry>
     <entry>
+        <title type="html"><![CDATA[(FR): Implement exclusion mechanism for 'minimumReleaseAge' feature for CVE mitigation]]></title>
+        <id>https://github.com/npm/rfcs/issues/895</id>
+        <link href="https://github.com/npm/rfcs/issues/895"/>
+        <updated>2026-06-09T16:13:54.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/44306?u=bd42fb8b500e050f6d48c48b9d6434227c3ed3c7&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><code class="notranslate">minimumReleaseAge</code> was <a href="https://github.com/npm/cli/issues/8570" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/8570/hovercard">recently implemented</a> which is a great addition to combat supply chain attacks, unfortunately not having an exclusion mechanism makes adoption hard.</p>
+<p dir="auto">In the situation where there's an urgent CVE that needs mitigation by immediately updating an affected package there's no way to allow that particular package to be excluded from the minimum release age.</p>
+<p dir="auto">As prior art, pnpm have already implemented a mechanism <a href="https://pnpm.io/settings#minimumreleaseageexclude" rel="nofollow">https://pnpm.io/settings#minimumreleaseageexclude</a> so might be a good idea to align with that.</p>
+<p dir="auto">As ever, thanks for all the hard work!</p>]]></content>
+        <author>
+            <name>dburrows</name>
+            <email>dburrows@noreply.github.com</email>
+            <uri>https://github.com/dburrows</uri>
+        </author>
+        <published>2026-02-16T12:48:09.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[[RRFC] <title>]]></title>
         <id>https://github.com/npm/rfcs/issues/854</id>
         <link href="https://github.com/npm/rfcs/issues/854"/>
@@ -953,21 +969,5 @@ SIGTERM  (node receives signal)
             <uri>https://github.com/seungwanHam</uri>
         </author>
         <published>2025-08-17T11:59:12.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[discussion] How to handle devEngines.packageManager when one package manager calls another one for some commands]]></title>
-        <id>https://github.com/npm/rfcs/issues/830</id>
-        <link href="https://github.com/npm/rfcs/issues/830"/>
-        <updated>2025-09-17T02:15:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1927579?u=b6d238d794dfb5ad32ec207f08bc72fb62de8258&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Currently the only way to ignore the devEngines check is to use the <code class="notranslate">--force</code> flag: <a href="https://github.com/npm/cli/blob/d006583e20731e8ae55cee94c3b7bd23cbd6f2d0/lib/base-cmd.js#L174">https://github.com/npm/cli/blob/d006583e20731e8ae55cee94c3b7bd23cbd6f2d0/lib/base-cmd.js#L174</a></p>
-<p dir="auto">But that flag makes npm print a warning and also changes other things.</p>
-<p dir="auto">pnpm is passing through some commands to npm CLI (like dist-tag, publish, view, etc). So, we want to be able to run npm from pnpm, even if devEngines is set to pnpm only. Alternatively, we could recommend users to put both npm and pnpm to devEngines but then they might accidentally run "npm install" instead of "pnpm install".</p>
-<p dir="auto">Maybe you could add support for an environment variable that pnpm could set, when running npm CLI.</p>]]></content>
-        <author>
-            <name>zkochan</name>
-            <email>zkochan@noreply.github.com</email>
-            <uri>https://github.com/zkochan</uri>
-        </author>
-        <published>2025-08-03T12:37:21.000Z</published>
     </entry>
 </feed>
