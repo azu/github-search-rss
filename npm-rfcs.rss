@@ -2,11 +2,84 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-06-12T11:13:36.336Z</updated>
+    <updated>2026-06-12T13:00:06.703Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Warn/Prompt/Error for configuration conflicts]]></title>
+        <id>https://github.com/npm/rfcs/issues/896</id>
+        <link href="https://github.com/npm/rfcs/issues/896"/>
+        <updated>2026-06-12T12:30:11.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Recent supply chain attacks have spurred many important improvements to the npm CLI, including configuration options that help prevent being the victim of one. However, the npm configuration is not always "user-controlled", which can lead to unexpected (and potentially compromising) outcomes. In particular, a user may have a secure user-level configuration (<code class="notranslate">~/.npmrc</code>) but run a command in a compromised/malicious project and end up in a bad situation. Alternatively, a user may have a secure user-level configuration but have some third-party script unexpectedly run <code class="notranslate">npm install --ignore-scripts=false &lt;malicious-package&gt;</code><sup><a href="#user-content-fn-1-2f9f7ea2e8ae6952c86e5d9733015ae3" id="user-content-fnref-1-2f9f7ea2e8ae6952c86e5d9733015ae3" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
+<p dir="auto">For this reason I would propose the npm CLI attempts to prevent such a security-conscious user from being the victim of a supply chain attack by alerting them when this situation arises, or at the very least leave a trace when it happens.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">You have a user level configuration</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ cat ~/.npmrc
+ignore-scripts=true
+min-release-age=7"><pre class="notranslate">$ cat <span class="pl-k">~</span>/.npmrc
+ignore-scripts=true
+min-release-age=7</pre></div>
+<p dir="auto">And you have just cloned an (untrusted) repository with a local configuration file</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ cat random-github-project/.npmrc
+ignore-scripts=false
+min-release-age=0"><pre class="notranslate">$ cat random-github-project/.npmrc
+ignore-scripts=false
+min-release-age=0</pre></div>
+<p dir="auto">If you install dependencies, it won't inform you about the configuration conflicts</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm --version
+11.12.1
+
+$ npm install # or npm clean-install
+
+added X packages, and audited Y packages in 420ms
+
+found Z vulnerabilities"><pre class="notranslate">$ npm --version
+11.12.1
+
+$ npm install <span class="pl-c"><span class="pl-c">#</span> or npm clean-install</span>
+
+added X packages, and audited Y packages <span class="pl-k">in</span> 420ms
+
+found Z vulnerabilities</pre></div>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The option value in the "closest" configuration wins and is used.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">If there is a conflict for an option between configurations (files or CLI) the npm CLI should either</p>
+<ol dir="auto">
+<li>Prompt the user for confirmation that the configurations are conflicting, and which option value will be used, or</li>
+<li>Output a warning that there was a conflict, or</li>
+<li>Error and not do anything</li>
+</ol>
+<p dir="auto">Where an example of a configuration mismatch is if one explicitly specifies <code class="notranslate">ignore-scripts=false</code> and another one explicitly specifies <code class="notranslate">ignore-scripts=true</code>.</p>
+<p dir="auto">I would personally advocate for using (1) when a TTY is detected and falling back to (2) otherwise, e.g. in CI.</p>
+<p dir="auto">The behavior itself may be configurable, but in that case should only be respected when provided at the user level (<code class="notranslate">~/.npmrc</code>) or CLI.</p>
+<p dir="auto">In some ideal world it should not be considered a problem when, say, the project-level configuration is more strict than the user-level configuration<sup><a href="#user-content-fn-2-2f9f7ea2e8ae6952c86e5d9733015ae3" id="user-content-fnref-2-2f9f7ea2e8ae6952c86e5d9733015ae3" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>. However, I imagine it can be difficult and contentious to determine when a configuration is "more strict".</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4035107684" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/856" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/856/hovercard" href="https://github.com/npm/rfcs/issues/856">#856</a></li>
+</ul>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
+<ol dir="auto">
+<li id="user-content-fn-1-2f9f7ea2e8ae6952c86e5d9733015ae3">
+<p dir="auto">as described in <a href="https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/">https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/</a> <a href="#user-content-fnref-1-2f9f7ea2e8ae6952c86e5d9733015ae3" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2-2f9f7ea2e8ae6952c86e5d9733015ae3">
+<p dir="auto">For example, <code class="notranslate">ignore-scripts=false</code> in <code class="notranslate">~/.npmrc</code> and <code class="notranslate">ignore-scripts=true</code> in <code class="notranslate">project/.npmrc</code>. <a href="#user-content-fnref-2-2f9f7ea2e8ae6952c86e5d9733015ae3" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2026-06-12T12:30:11.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC]: Add "requireGlobal": true field to package.json for global-only packages]]></title>
         <id>https://github.com/npm/rfcs/issues/894</id>
@@ -839,135 +912,5 @@ source: <a href="https://docs.npmjs.com/trusted-publishers" rel="nofollow">https
             <uri>https://github.com/ericcornelissen</uri>
         </author>
         <published>2025-11-21T11:06:34.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Add --prefer-direct-exec flag for proper signal handling in npm run]]></title>
-        <id>https://github.com/npm/rfcs/issues/829</id>
-        <link href="https://github.com/npm/rfcs/issues/829"/>
-        <updated>2025-08-28T18:23:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/84302867?u=cc75a5fafcf48184bea43a2359314c5ffe47d409&v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto"><code class="notranslate">npm run</code> spawns scripts through a shell (<code class="notranslate">/bin/sh -c</code>), creating an unnecessary intermediate process that interferes with signal propagation. This causes Node.js applications to terminate abruptly without completing their cleanup procedures when receiving SIGTERM/SIGINT signals.</p>
-<p dir="auto">This is a fundamental Unix process management issue that affects:</p>
-<ul dir="auto">
-<li>Docker containers (not just Kubernetes)</li>
-<li>Systemd services</li>
-<li>Process managers (PM2, Forever, etc.)</li>
-<li>CI/CD environments</li>
-<li>Any production deployment using <code class="notranslate">npm run</code></li>
-</ul>
-<p dir="auto">The problem: When a termination signal is sent, the shell may exit immediately without waiting for its child process, causing npm to exit prematurely and killing the Node.js application before graceful shutdown completes.</p>
-<h3 dir="auto">Example</h3>
-<p dir="auto">Consider a basic Node.js server with cleanup logic:</p>
-<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// server.js
-const server = require('http').createServer();
-
-process.on('SIGTERM', () =&gt; {
-  console.log('Graceful shutdown started');
-  server.close(() =&gt; {
-    console.log('Cleanup complete');
-    process.exit(0);
-  });
-});
-
-server.listen(3000);"><pre class="notranslate"><span class="pl-c">// server.js</span>
-<span class="pl-k">const</span> <span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'http'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">createServer</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">on</span><span class="pl-kos">(</span><span class="pl-s">'SIGTERM'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Graceful shutdown started'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">close</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'Cleanup complete'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-    <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">exit</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-
-<span class="pl-s1">server</span><span class="pl-kos">.</span><span class="pl-en">listen</span><span class="pl-kos">(</span><span class="pl-c1">3000</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
-<p dir="auto"><strong>Problem occurs in any of these scenarios</strong>:</p>
-<ol dir="auto">
-<li><strong>Docker container</strong>: <code class="notranslate">docker stop &lt;container&gt;</code></li>
-<li><strong>Systemd service</strong>: <code class="notranslate">systemctl stop myapp</code></li>
-<li><strong>Process manager</strong>: <code class="notranslate">pm2 stop app</code></li>
-<li><strong>Manual termination</strong>: <code class="notranslate">kill &lt;pid&gt;</code></li>
-</ol>
-<p dir="auto">In all cases, if started with <code class="notranslate">npm run start</code>, the graceful shutdown may not complete because the shell intermediary disrupts signal propagation.</p>
-<h3 dir="auto">How</h3>
-<p dir="auto">Add an opt-in flag to control how <code class="notranslate">npm run</code> spawns processes, eliminating the problematic shell intermediary when not needed.</p>
-<h4 dir="auto">Current Behaviour</h4>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Current process tree with npm run
-npm → /bin/sh -c &quot;node server.js&quot; → node server.js
- ↓            ↓
-SIGTERM   (shell may exit without waiting)
- ↓
-(npm exits because child is gone)
-(node process terminated abruptly)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> Current process tree with npm run</span>
-npm → /bin/sh -c <span class="pl-s"><span class="pl-pds">"</span>node server.js<span class="pl-pds">"</span></span> → node server.js
- ↓            ↓
-SIGTERM   (shell may <span class="pl-c1">exit</span> without waiting)
- ↓
-(npm exits because child is gone)
-(node process terminated abruptly)</pre></div>
-<p dir="auto">The shell (<code class="notranslate">/bin/sh</code>) behavior varies:</p>
-<ul dir="auto">
-<li>Some shells (ash, dash) exit immediately on SIGTERM</li>
-<li>This causes npm to detect child exit and terminate</li>
-<li>Node.js process is killed before cleanup completes</li>
-</ul>
-<p dir="auto"><strong>Current workaround requires modifying code</strong>:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;exec node server.js&quot;  // Must add exec manually
-  }
-}"><pre class="notranslate">{
-  <span class="pl-ent">"scripts"</span>: {
-    <span class="pl-ent">"start"</span>: <span class="pl-s"><span class="pl-pds">"</span>exec node server.js<span class="pl-pds">"</span></span>  <span class="pl-ii">// Must add exec manually</span>
-  }
-}</pre></div>
-<p dir="auto">This workaround is:</p>
-<ul dir="auto">
-<li>Not documented clearly</li>
-<li>Not obvious to developers</li>
-<li>Required in every project</li>
-<li>Easy to forget</li>
-</ul>
-<h4 dir="auto">Desired Behaviour</h4>
-<p dir="auto">Provide an <strong>opt-in</strong> mechanism that works without code changes:</p>
-<p dir="auto"><strong>Option 1 - Environment variable</strong> (for deployments):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="NPM_PREFER_DIRECT_EXEC=1 npm run start"><pre class="notranslate">NPM_PREFER_DIRECT_EXEC=1 npm run start</pre></div>
-<p dir="auto"><strong>Option 2 - CLI flag</strong> (for specific runs):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run start --prefer-direct-exec"><pre class="notranslate">npm run start --prefer-direct-exec</pre></div>
-<p dir="auto"><strong>Option 3 - Config file</strong> (for projects):</p>
-<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# .npmrc
-prefer-direct-exec=true"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> .npmrc</span>
-<span class="pl-k">prefer-direct-exec</span>=true</pre></div>
-<p dir="auto"><strong>When enabled</strong>:</p>
-<ul dir="auto">
-<li>Simple commands: Spawn directly without shell</li>
-<li>Complex commands (with pipes, &amp;&amp;, etc.): Auto-prepend <code class="notranslate">exec</code> to replace shell</li>
-<li>Windows: No change (different process model)</li>
-<li>Default: Current behavior (backward compatible)</li>
-</ul>
-<p dir="auto"><strong>Result</strong>:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# With flag enabled
-npm → node server.js  (direct, no shell)
- ↓        ↓
-SIGTERM  (node receives signal)
- ↓        ↓
-(waits) (graceful shutdown completes)"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> With flag enabled</span>
-npm → node server.js  (direct, no shell)
- ↓        ↓
-SIGTERM  (node receives signal)
- ↓        ↓
-(waits) (graceful shutdown completes)</pre></div>
-<h3 dir="auto">References</h3>
-<ul dir="auto">
-<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313195779" data-permission-text="Title is private" data-url="https://github.com/npm/run-script/issues/237" data-hovercard-type="issue" data-hovercard-url="/npm/run-script/issues/237/hovercard" href="https://github.com/npm/run-script/issues/237">npm/run-script#237</a> (implementation tracking)</li>
-<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3313212873" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/8509" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/8509/hovercard" href="https://github.com/npm/cli/issues/8509">npm/cli#8509</a> (original feature request)</li>
-</ul>]]></content>
-        <author>
-            <name>seungwanHam</name>
-            <email>seungwanHam@noreply.github.com</email>
-            <uri>https://github.com/seungwanHam</uri>
-        </author>
-        <published>2025-08-17T11:59:12.000Z</published>
     </entry>
 </feed>
