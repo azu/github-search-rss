@@ -6,6 +6,17 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">…ctionHandler() callback</p>\n\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Chrome 142 adds support for the <code class=\"notranslate\">enterPictureInPictureReason</code> property that is included in the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setActionHandler\" rel=\"nofollow\"><code class=\"notranslate\">MediaSession.setActionHandler()</code></a> callback function's dictionary parameter when the action handler's <code class=\"notranslate\">type</code> is <code class=\"notranslate\">enterpictureinpicture</code>.</p>\n<p dir=\"auto\">This PR tries to add appropriate data points for this new functionality. Note that I've also included a data point for the <code class=\"notranslate\">enterpictureinpicture</code> type, as that was also missing.</p>\n<p dir=\"auto\">See:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://chromestatus.com/feature/6415506970116096\" rel=\"nofollow\">https://chromestatus.com/feature/6415506970116096</a> for <code class=\"notranslate\">enterPictureInPictureReason</code></li>\n<li><a href=\"https://chromestatus.com/feature/6245717716238336\" rel=\"nofollow\">https://chromestatus.com/feature/6245717716238336</a> for <code class=\"notranslate\">enterpictureinpicture</code> action type</li>\n</ul>\n<p dir=\"auto\">I've set Android WebView to <code class=\"notranslate\">false</code> for both of these, as basic support for <code class=\"notranslate\">setActionHandler()</code> is reported as <code class=\"notranslate\">false</code> in most places, but weirdly <code class=\"notranslate\">true</code> for <code class=\"notranslate\">enterPictureInPictureReason</code></p>\n<p dir=\"auto\">I'm not so sure about the data structure I've used here, so you'll have to advise on that. I've tried to do something close to what is already there.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/29868",
+            "title": "Chrome 142 enterPictureInPictureReason parameter in MediaSession.setA…",
+            "date_modified": "2026-06-17T12:55:17.000Z",
+            "date_published": "2026-06-17T12:54:03.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">From Chrome 147, local network requests made by Service Worker <code class=\"notranslate\">WindowClient.navigate()</code>, <code class=\"notranslate\">WebSocket</code>, and <code class=\"notranslate\">WebTransport</code> are subject to control/restriction by the <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Local_network_access\" rel=\"nofollow\">Local Network Access</a> feature.</p>\n<p dir=\"auto\">See:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://chromestatus.com/feature/5172375182245888\" rel=\"nofollow\">https://chromestatus.com/feature/5172375182245888</a></li>\n<li><a href=\"https://chromestatus.com/feature/5197681148428288\" rel=\"nofollow\">https://chromestatus.com/feature/5197681148428288</a></li>\n<li><a href=\"https://chromestatus.com/feature/5126430912544768\" rel=\"nofollow\">https://chromestatus.com/feature/5126430912544768</a></li>\n</ul>\n<p dir=\"auto\">This PR adds a data point to try to communicate this in each case. I've described it as a restriction, because now resulting requests can't just be made freely — they will result in user permission prompts.</p>\n<p dir=\"auto\">Also note that I've marked the service worker one as non-standard, as SW mentions in the spec are incomplete in general, and <code class=\"notranslate\">WindowClient.navigate()</code> isn't mentioned at all.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
             "url": "https://github.com/mdn/browser-compat-data/pull/29864",
             "title": "Chrome 147 new Local Network Access support",
@@ -165,17 +176,6 @@
             "title": "feat(lint): replace code tags in descriptions + notes",
             "date_modified": "2026-05-07T12:50:16.000Z",
             "date_published": "2026-04-17T22:01:35.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Fixes the linter, adding MDN urls for features that include the <code class=\"notranslate\">@@</code> prefix.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<p dir=\"auto\">Ensures that <code class=\"notranslate\">@@iterator</code> etc gets an <code class=\"notranslate\">mdn_url</code> automatically.</p>\n<h4 dir=\"auto\">Related issues</h4>\n<p dir=\"auto\">Triggered via <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4233820489\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29441\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29441/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/29441\">#29441</a>.</p>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/29454",
-            "title": "fix(lint): add MDN urls for features with `@@` prefix",
-            "date_modified": "2026-04-14T14:55:38.000Z",
-            "date_published": "2026-04-10T21:23:44.000Z",
             "author": {
                 "name": "caugner",
                 "url": "https://github.com/caugner"
