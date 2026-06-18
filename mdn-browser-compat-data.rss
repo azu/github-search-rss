@@ -2,11 +2,46 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-06-18T16:14:07.830Z</updated>
+    <updated>2026-06-18T17:59:25.392Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Chrome 150 scroll methods return promises]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29875</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29875"/>
+        <updated>2026-06-18T16:38:46.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">In Chrome 150 onwards, the standard <code class="notranslate">Element</code> and <code class="notranslate">Window</code> scroll methods now return promises. See <a href="https://chromestatus.com/feature/5082138340491264" rel="nofollow">https://chromestatus.com/feature/5082138340491264</a>. This is particularly useful when a scroll operation is not instantaneous (e.g. you've got <code class="notranslate">scroll-behavior: smooth;</code> set on the scrolling container), and you want to programmatically react to the scroll operation finishing, for example, by updating the UI.</p>
+<p dir="auto">Affected methods are:</p>
+<ul dir="auto">
+<li><code class="notranslate">Element.scroll()</code></li>
+<li><code class="notranslate">Element.scrollBy()</code></li>
+<li><code class="notranslate">Element.scrollIntoView()</code></li>
+<li><code class="notranslate">Element.scrollTo()</code></li>
+<li><code class="notranslate">Window.scroll()</code></li>
+<li><code class="notranslate">Window.scrollBy()</code></li>
+<li><code class="notranslate">Window.scrollTo()</code></li>
+</ul>
+<p dir="auto">My tests revealed that only the standard methods return a promise. Non-standard methods (<code class="notranslate">Element.scrollIntoViewIfNeeded()</code>, <code class="notranslate">Window.scrollByLines()</code>, <code class="notranslate">Window.scrollByPages()</code>) do not, at least not yet.</p>
+<p dir="auto">This PR adds a new data point for each method.</p>
+<p dir="auto">One issue is that the spec says the promises fulfill with <code class="notranslate">undefined</code>, whereas Chrome's current behavior is for the promises to fulfill with an object containing a single boolean property, <code class="notranslate">interrupted</code>, which indicates whether the scrolling operation was interrupted or not. I'm going to contact the relevant Chrome engineer to ask what the deal is here.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-06-18T16:37:36.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Safari TP now supports light-dark() on images]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29871</id>
@@ -89,28 +124,6 @@
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-06-17T09:22:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ Bug 1891478 Implement documentId in extension APIs]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/29853</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/29853"/>
-        <updated>2026-06-18T00:05:47.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">This change addresses the dev-doc-needed requirements of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1891478" rel="nofollow">Bug 1891478</a> "Implement documentId in extension APIs"</p>
-<p dir="auto">In addition, it includes details of:</p>
-<ul dir="auto">
-<li>support in Chrome, derived from the Chrome API docs</li>
-<li>support in Safari as identified from the 18.4 release note</li>
-</ul>
-<p dir="auto">No chromium issues were identified for the implementation of features not supported in Chrome.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Related MDN document changes in PR #TBC</p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-06-15T23:10:51.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[added firefox support for Named timeline range keyframe selectors]]></title>
