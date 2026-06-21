@@ -2,11 +2,50 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-06-21T18:27:04.421Z</updated>
+    <updated>2026-06-21T19:29:18.087Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add example showing that uninitialized var doesn't override a same-name function]]></title>
+        <id>https://github.com/mdn/content/pull/44537</id>
+        <link href="https://github.com/mdn/content/pull/44537"/>
+        <updated>2026-06-21T19:01:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/126682999?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Adds a clarifying example to the <code class="notranslate">var</code> redeclarations section showing that a <code class="notranslate">var</code> declaration without an initializer does not overwrite the value of a same-name function declaration.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The page already explains that duplicate <code class="notranslate">var</code> declarations without initializers do not overwrite an existing value, and that a <code class="notranslate">var</code> initializer overrides a same-name function declaration. This example directly shows the related case of a <code class="notranslate">var</code> declaration without an initializer alongside a same-name function declaration, making that behavior clearer for readers.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">None</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">None</p>]]></content>
+        <author>
+            <name>Anusha-Pwr</name>
+            <email>Anusha-Pwr@noreply.github.com</email>
+            <uri>https://github.com/Anusha-Pwr</uri>
+        </author>
+        <published>2026-06-21T18:59:54.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[fix(api): correct ReadableStreamDefaultController.desiredSize value type]]></title>
+        <id>https://github.com/mdn/content/pull/44536</id>
+        <link href="https://github.com/mdn/content/pull/44536"/>
+        <updated>2026-06-21T18:49:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/222919019?u=29368c23e395d0b987501b39412778dc5342e46a&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44486.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4675218913" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44486" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44486/hovercard" href="https://github.com/mdn/content/issues/44486">#44486</a></p>
+<p dir="auto">The Value section claimed <code class="notranslate">desiredSize</code> is "An integer", which is inaccurate on two counts (both raised in the issue):</p>
+<ul dir="auto">
+<li>It can be <strong><code class="notranslate">null</code></strong> — <code class="notranslate">ReadableStreamDefaultController.desiredSize</code> returns <code class="notranslate">null</code> when the stream has errored (and <code class="notranslate">0</code> when it is closed), per <a href="https://streams.spec.whatwg.org/#readable-stream-default-controller-get-desired-size" rel="nofollow">the spec algorithm</a>.</li>
+<li>It is <strong>not necessarily an integer</strong> — the default controller computes <code class="notranslate">desiredSize</code> from the queuing strategy's <code class="notranslate">size()</code> results. A custom queuing strategy can return non-integer sizes, so <code class="notranslate">desiredSize</code> can be non-integer too.</li>
+</ul>
+<p dir="auto">Updated the description to state the type as "A number, or <code class="notranslate">null</code>" and to explain the negative / non-integer / null / closed cases.</p>]]></content>
+        <author>
+            <name>gords2</name>
+            <email>gords2@noreply.github.com</email>
+            <uri>https://github.com/gords2</uri>
+        </author>
+        <published>2026-06-21T18:49:24.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Remove whitespaces in an example]]></title>
         <id>https://github.com/mdn/content/pull/44535</id>
@@ -439,7 +478,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
 <h3 dir="auto">Motivation</h3>
 
 <p dir="auto">Lots of URLs showing:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/10931297/610472344-a8699fa6-abcf-402e-8662-fab6fe8f9f34.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODIwNjY3MjQsIm5iZiI6MTc4MjA2NjQyNCwicGF0aCI6Ii8xMDkzMTI5Ny82MTA0NzIzNDQtYTg2OTlmYTYtYWJjZi00MDJlLTg2NjItZmFiNmZlOGY5ZjM0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA2MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNjIxVDE4MjcwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4NWMzOTcxYWZjNTAzYmY4NGRhNmU4OTA0YWQ4NjViZjFmNjA4NGQ2ZDRmZTBjZjdhMzAxZGU4ODczZmVlYWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.3ee1sK4QLzsKYEb_HC3AYaYxI6s2-2UrEd2nb-Ii1Wc"><img width="394" height="155" alt="image" src="https://private-user-images.githubusercontent.com/10931297/610472344-a8699fa6-abcf-402e-8662-fab6fe8f9f34.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODIwNjY3MjQsIm5iZiI6MTc4MjA2NjQyNCwicGF0aCI6Ii8xMDkzMTI5Ny82MTA0NzIzNDQtYTg2OTlmYTYtYWJjZi00MDJlLTg2NjItZmFiNmZlOGY5ZjM0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA2MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNjIxVDE4MjcwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY4NWMzOTcxYWZjNTAzYmY4NGRhNmU4OTA0YWQ4NjViZjFmNjA4NGQ2ZDRmZTBjZjdhMzAxZGU4ODczZmVlYWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.3ee1sK4QLzsKYEb_HC3AYaYxI6s2-2UrEd2nb-Ii1Wc" style="max-width: 100%; height: auto; max-height: 155px;; aspect-ratio: 394 / 155; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/10931297/610472344-a8699fa6-abcf-402e-8662-fab6fe8f9f34.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODIwNzA0NTcsIm5iZiI6MTc4MjA3MDE1NywicGF0aCI6Ii8xMDkzMTI5Ny82MTA0NzIzNDQtYTg2OTlmYTYtYWJjZi00MDJlLTg2NjItZmFiNmZlOGY5ZjM0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA2MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNjIxVDE5MjkxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWU5YTI4MzMzMjJmY2UzMzJhZTIwOWJhNTdjYjBjYTBhMzY1YzBjNGU1MmI0ZDQ3MTk4MzRkYjNiMTk1MWJhNzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.dxhGxDLn4lhXlsKM_6lG-iWLL3b_1StDW7J3LLQsnDE"><img width="394" height="155" alt="image" src="https://private-user-images.githubusercontent.com/10931297/610472344-a8699fa6-abcf-402e-8662-fab6fe8f9f34.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODIwNzA0NTcsIm5iZiI6MTc4MjA3MDE1NywicGF0aCI6Ii8xMDkzMTI5Ny82MTA0NzIzNDQtYTg2OTlmYTYtYWJjZi00MDJlLTg2NjItZmFiNmZlOGY5ZjM0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA2MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNjIxVDE5MjkxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWU5YTI4MzMzMjJmY2UzMzJhZTIwOWJhNTdjYjBjYTBhMzY1YzBjNGU1MmI0ZDQ3MTk4MzRkYjNiMTk1MWJhNzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.dxhGxDLn4lhXlsKM_6lG-iWLL3b_1StDW7J3LLQsnDE" style="max-width: 100%; height: auto; max-height: 155px;; aspect-ratio: 394 / 155; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <h3 dir="auto">Additional details</h3>
 
 <h3 dir="auto">Related issues and pull requests</h3>
@@ -606,32 +645,6 @@ Caused by <a class="issue-link js-issue-link" data-error-text="Failed to load ti
         <published>2026-06-18T13:21:50.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Update index.md]]></title>
-        <id>https://github.com/mdn/content/pull/44500</id>
-        <link href="https://github.com/mdn/content/pull/44500"/>
-        <updated>2026-06-17T19:06:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/61639215?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fix typo</p>
-
-
-<h3 dir="auto">Description</h3>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>theFireProject</name>
-            <email>theFireProject@noreply.github.com</email>
-            <uri>https://github.com/theFireProject</uri>
-        </author>
-        <published>2026-06-17T19:06:23.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[[Guides] Delete guide for Topics API]]></title>
         <id>https://github.com/mdn/content/pull/44498</id>
         <link href="https://github.com/mdn/content/pull/44498"/>
@@ -690,31 +703,5 @@ Caused by <a class="issue-link js-issue-link" data-error-text="Failed to load ti
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-06-17T15:36:26.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add `display-p3-linear` to predefined color spaces]]></title>
-        <id>https://github.com/mdn/content/pull/44496</id>
-        <link href="https://github.com/mdn/content/pull/44496"/>
-        <updated>2026-06-18T19:01:39.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/77456300?u=05e452372074933d5f56d553a09e3f34183c31eb&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">This PR adds <code class="notranslate">display-p3-linear</code> to the predefined color spaces.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Add missing color space to align MDN docs with the spec</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">spec: <a href="https://www.w3.org/TR/css-color-4/#predefined" rel="nofollow">https://www.w3.org/TR/css-color-4/#predefined</a></p>
-
-
-
-
-]]></content>
-        <author>
-            <name>priyanshurav</name>
-            <email>priyanshurav@noreply.github.com</email>
-            <uri>https://github.com/priyanshurav</uri>
-        </author>
-        <published>2026-06-17T12:43:59.000Z</published>
     </entry>
 </feed>
