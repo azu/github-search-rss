@@ -2,11 +2,85 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-06-23T13:48:25.007Z</updated>
+    <updated>2026-06-23T14:58:22.619Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Allow suppressing workspace allowScripts warnings for intentional standalone workspace packages]]></title>
+        <id>https://github.com/npm/rfcs/issues/906</id>
+        <link href="https://github.com/npm/rfcs/issues/906"/>
+        <updated>2026-06-23T14:04:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3909121?u=9d88109879a272041c81c1fc9ca42937d8a81862&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Feature Request: Allow suppressing workspace <code class="notranslate">allowScripts</code> warnings for intentional standalone workspace packages</h3>
+<h3 dir="auto">Current Behavior</h3>
+<p dir="auto">In an npm workspace, npm warns when a non-root workspace package has a top-level <code class="notranslate">allowScripts</code> field:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm warn allow-scripts allowScripts in workspace project (/path/to/repo/apps/project) is ignored. Move the field to the project root package.json."><pre lang="text" class="notranslate"><code class="notranslate">npm warn allow-scripts allowScripts in workspace project (/path/to/repo/apps/project) is ignored. Move the field to the project root package.json.
+</code></pre></div>
+<p dir="auto">This warning is technically correct for a root workspace install, but it is not always actionable.</p>
+<p dir="auto">In our monorepo, some workspaces are Git submodules and can also be installed, developed, or released as standalone projects. Their <code class="notranslate">package.json</code> files intentionally contain their own <code class="notranslate">allowScripts</code> policy for standalone usage. When those same projects are checked out inside the parent monorepo, npm treats them as workspaces and warns on every root install.</p>
+<p dir="auto">Moving the field to the parent root is not a valid fix because the submodule must remain self-contained.</p>
+<h3 dir="auto">Expected Behavior</h3>
+<p dir="auto">npm should provide a targeted way to suppress this warning when a workspace package intentionally keeps <code class="notranslate">allowScripts</code> for standalone use.</p>
+<p dir="auto">For example, one of:</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="warn-workspace-allow-scripts=false"><pre class="notranslate"><span class="pl-k">warn-workspace-allow-scripts</span>=false</pre></div>
+<p dir="auto">or:</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="allow-scripts-warn-workspaces=false"><pre class="notranslate"><span class="pl-k">allow-scripts-warn-workspaces</span>=false</pre></div>
+<p dir="auto">or another narrowly scoped config name.</p>
+<p dir="auto">This should suppress only the non-root workspace <code class="notranslate">allowScripts</code> warning, without requiring <code class="notranslate">loglevel=error</code> and without hiding unrelated npm warnings.</p>
+<h3 dir="auto">Why This Matters</h3>
+<p dir="auto"><code class="notranslate">loglevel=error</code> is currently the only practical workaround, but it suppresses too much. In CI and local development, teams still want to see peer dependency warnings, deprecations, audit warnings, and other useful npm warnings.</p>
+<p dir="auto">The current warning becomes noisy in monorepos that include standalone packages or Git submodules as workspaces. In that setup, the warning is expected and non-actionable, because the package-local policy is needed outside the parent workspace context.</p>
+<h3 dir="auto">Steps To Reproduce</h3>
+<ol dir="auto">
+<li>Create a root workspace package:</li>
+</ol>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;private&quot;: true,
+  &quot;workspaces&quot;: [&quot;packages/*&quot;]
+}"><pre class="notranslate">{
+  <span class="pl-ent">"private"</span>: <span class="pl-c1">true</span>,
+  <span class="pl-ent">"workspaces"</span>: [<span class="pl-s"><span class="pl-pds">"</span>packages/*<span class="pl-pds">"</span></span>]
+}</pre></div>
+<ol start="2" dir="auto">
+<li>Create <code class="notranslate">packages/example/package.json</code>:</li>
+</ol>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;allowScripts&quot;: {
+    &quot;sharp@0.34.5&quot;: true
+  }
+}"><pre class="notranslate">{
+  <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>example<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>1.0.0<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"allowScripts"</span>: {
+    <span class="pl-ent">"sharp@0.34.5"</span>: <span class="pl-c1">true</span>
+  }
+}</pre></div>
+<ol start="3" dir="auto">
+<li>Run:</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install"><pre class="notranslate">npm install</pre></div>
+<ol start="4" dir="auto">
+<li>Observe:</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm warn allow-scripts allowScripts in workspace example (.../packages/example) is ignored. Move the field to the project root package.json."><pre lang="text" class="notranslate"><code class="notranslate">npm warn allow-scripts allowScripts in workspace example (.../packages/example) is ignored. Move the field to the project root package.json.
+</code></pre></div>
+<h3 dir="auto">Proposed Solution</h3>
+<p dir="auto">Add a narrowly scoped npm config that disables this specific warning.</p>
+<p dir="auto">Default should remain the current behavior, so users still get warned unless they explicitly opt out.</p>
+<h3 dir="auto">References</h3>
+<p dir="auto">This warning appears to have been introduced as part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4451029544" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/9360" data-hovercard-type="pull_request" data-hovercard-url="/npm/cli/pull/9360/hovercard" href="https://github.com/npm/cli/pull/9360">npm/cli#9360</a>, which implemented Phase 1 of the <code class="notranslate">allowScripts</code> install-script policy from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4448306862" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/868" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/868/hovercard" href="https://github.com/npm/rfcs/pull/868">#868</a>.</p>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4451029544" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/9360" data-hovercard-type="pull_request" data-hovercard-url="/npm/cli/pull/9360/hovercard" href="https://github.com/npm/cli/pull/9360">npm/cli#9360</a><br>
+<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4448306862" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/868" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/868/hovercard" href="https://github.com/npm/rfcs/pull/868">#868</a></p>]]></content>
+        <author>
+            <name>cbratschi</name>
+            <email>cbratschi@noreply.github.com</email>
+            <uri>https://github.com/cbratschi</uri>
+        </author>
+        <published>2026-06-23T14:04:58.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[RRFC] allowScripts Review Report]]></title>
         <id>https://github.com/npm/rfcs/issues/897</id>
@@ -914,14 +988,14 @@ and: <a href="https://grith.ai/blog/clinejection-when-your-ai-tool-installs-anot
         <updated>2026-05-13T07:51:05.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
 <h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-38a20b15a5bd7ce312e1951bb7c82cee" id="user-content-fnref-1-38a20b15a5bd7ce312e1951bb7c82cee" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
+<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-ddbbb607d849c59019bf99a12f74f6df" id="user-content-fnref-1-ddbbb607d849c59019bf99a12f74f6df" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
 <ul dir="auto">
 <li>If a package version is explicitly recorded in the lockfile it will be installed regardless of the minimum age requested.</li>
 <li>If a package version is explicitly requested, e.g. <code class="notranslate">npm install package@1.2.3</code> where v1.2.3 was released today, it will be installed regardless of the minimum age requested.</li>
 </ul>
 <h3 dir="auto">Prior Art</h3>
 <h4 dir="auto"><code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code></h4>
-<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-38a20b15a5bd7ce312e1951bb7c82cee" id="user-content-fnref-2-38a20b15a5bd7ce312e1951bb7c82cee" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
+<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-ddbbb607d849c59019bf99a12f74f6df" id="user-content-fnref-2-ddbbb607d849c59019bf99a12f74f6df" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
 <h4 dir="auto">Other Ecosystems</h4>
 <p dir="auto">The Rust/Cargo proposal for its <code class="notranslate">--min-release-age</code> option (linked below) includes a similar concept:</p>
 <blockquote>
@@ -937,7 +1011,7 @@ it downgrade to an older version. It will leave the version as it is.</li>
 <p dir="auto">One drawback of this approach is that using an untrusted lockfile - e.g. from an untrusted repository or Pull Request - may unexpectedly override your expected security preferences. An attacker could leverage the suggested behavior to inject a malicious dependency into the lockfile and make you download it.</p>
 <p dir="auto">I believe that</p>
 <ol dir="auto">
-<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-38a20b15a5bd7ce312e1951bb7c82cee" id="user-content-fnref-3-38a20b15a5bd7ce312e1951bb7c82cee" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
+<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-ddbbb607d849c59019bf99a12f74f6df" id="user-content-fnref-3-ddbbb607d849c59019bf99a12f74f6df" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
 <li>This is a trade-off that is worth considering as making the security feature more approachable in this way can help adoption, which might offset the risk of this thread.</li>
 </ol>
 <h3 dir="auto">Example</h3>
@@ -961,14 +1035,14 @@ it downgrade to an older version. It will leave the version as it is.</li>
 </ul>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
 <ol dir="auto">
-<li id="user-content-fn-1-38a20b15a5bd7ce312e1951bb7c82cee">
-<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-38a20b15a5bd7ce312e1951bb7c82cee" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-ddbbb607d849c59019bf99a12f74f6df">
+<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-ddbbb607d849c59019bf99a12f74f6df" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-38a20b15a5bd7ce312e1951bb7c82cee">
-<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-38a20b15a5bd7ce312e1951bb7c82cee" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-ddbbb607d849c59019bf99a12f74f6df">
+<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-ddbbb607d849c59019bf99a12f74f6df" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-3-38a20b15a5bd7ce312e1951bb7c82cee">
-<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-38a20b15a5bd7ce312e1951bb7c82cee" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-3-ddbbb607d849c59019bf99a12f74f6df">
+<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-ddbbb607d849c59019bf99a12f74f6df" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>]]></content>
@@ -1252,35 +1326,5 @@ source: <a href="https://docs.npmjs.com/trusted-publishers" rel="nofollow">https
             <uri>https://github.com/ShirlZhou1</uri>
         </author>
         <published>2025-11-25T04:32:52.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Support relative dates in `--before`]]></title>
-        <id>https://github.com/npm/rfcs/issues/844</id>
-        <link href="https://github.com/npm/rfcs/issues/844"/>
-        <updated>2026-02-26T11:58:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
-<h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">My personal motivation is that I would like to be able to set the <code class="notranslate">--before</code> in the <code class="notranslate">.npmrc</code> configuration file of my project (with the goal of reducing the chances of pulling down malware under the assumption that third-parties continuously scan the registry for malware). However, I can also see this being a more convenient way to specify the value than having to compute and write out a date value (especially trying to decide in what order to specify the month/date/year).</p>
-<h3 dir="auto">Example</h3>
-<p dir="auto">In an "ideal" world it could look something like:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --before '2 days ago'"><pre class="notranslate">npm install --before <span class="pl-s"><span class="pl-pds">'</span>2 days ago<span class="pl-pds">'</span></span></pre></div>
-<p dir="auto">Perhaps more realistic is to provide a negative amount of days (or another precision):</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install --before '-1'  # yesterday"><pre class="notranslate">npm install --before <span class="pl-s"><span class="pl-pds">'</span>-1<span class="pl-pds">'</span></span>  <span class="pl-c"><span class="pl-c">#</span> yesterday</span></pre></div>
-<h3 dir="auto">How</h3>
-<h4 dir="auto">Current Behaviour</h4>
-<p dir="auto">The <code class="notranslate">--before</code> argument value should be a date.</p>
-<h4 dir="auto">Desired Behaviour</h4>
-<p dir="auto">The <code class="notranslate">--before</code> argument can be a value relative to today's date.</p>
-<h3 dir="auto">References</h3>
-
-<ul dir="auto">
-<li>Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1412868839" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/646" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/646/hovercard" href="https://github.com/npm/rfcs/issues/646">#646</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1164111829" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/549" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/549/hovercard" href="https://github.com/npm/rfcs/issues/549">#549</a></li>
-</ul>]]></content>
-        <author>
-            <name>ericcornelissen</name>
-            <email>ericcornelissen@noreply.github.com</email>
-            <uri>https://github.com/ericcornelissen</uri>
-        </author>
-        <published>2025-11-21T14:00:54.000Z</published>
     </entry>
 </feed>
