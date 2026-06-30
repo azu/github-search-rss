@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Added release for CSS tree counting functions, <code class=\"notranslate\">sibling-count()</code> &amp; <code class=\"notranslate\">sibling-index()</code>, to:\n<ul dir=\"auto\">\n<li>Experimental features</li>\n<li>Firefox 153 (experimental section)</li>\n</ul>\n</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Working on <a href=\"https://github.com/mdn/content/issues/44465\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44465/hovercard\">MDN issue #44465</a></li>\n<li>Working on <a href=\"https://github.com/mdn/content/issues/44469\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44469/hovercard\">MDN issue #44469</a></li>\n</ul>\n<h3 dir=\"auto\">Related pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/browser-compat-data/pull/29909\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/29909/hovercard\">BCD PR</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/44610",
+            "title": "added release notes for tree counting css functions",
+            "date_modified": "2026-06-30T16:30:36.000Z",
+            "date_published": "2026-06-30T16:26:42.000Z",
+            "author": {
+                "name": "dletorey",
+                "url": "https://github.com/dletorey"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome and Edge 148 desktop have added support for <a href=\"https://www.w3.org/TR/appmanifest/#x_localized-members\" rel=\"nofollow\"><code class=\"notranslate\">*_localized</code> members</a>, aka localizable web app manifests. See <a href=\"https://chromestatus.com/feature/5090807862394880\" rel=\"nofollow\">https://chromestatus.com/feature/5090807862394880</a>.</p>\n<p dir=\"auto\">This PR adds reference documentation for <code class=\"notranslate\">*_localized</code> members and the <code class=\"notranslate\">dir</code> and <code class=\"notranslate\">lang</code> members, as well as a how-to guide covering how to localize a web app manifest.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/44609",
+            "title": "Technical review: Document web app manifest localization",
+            "date_modified": "2026-06-30T16:00:43.000Z",
+            "date_published": "2026-06-30T15:58:08.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Refactor the filecheck script:</p>\n<ul dir=\"auto\">\n<li>Remove <code class=\"notranslate\">index.html</code> support, so only the adjacent <code class=\"notranslate\">index.md</code> is considered when checking whether an attachment is referenced.</li>\n<li>Replace <code class=\"notranslate\">fs-extra</code> with <code class=\"notranslate\">node:fs/promises</code> and drop the dependency.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">All documents migrated to <code class=\"notranslate\">index.md</code> long ago, so the <code class=\"notranslate\">index.html</code> fallback is dead code. <code class=\"notranslate\">node:fs/promises</code> covers everything we used <code class=\"notranslate\">fs-extra</code> for, so the extra dependency is no longer needed.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Test fixtures are consolidated into a single <code class=\"notranslate\">md</code> directory, dropping the now-redundant duplicate \"not mentioned\" test.</li>\n<li><code class=\"notranslate\">fse.exists</code> → a small <code class=\"notranslate\">pathExists</code> helper wrapping <code class=\"notranslate\">fs.access</code>; <code class=\"notranslate\">fse.copyFileSync</code> → <code class=\"notranslate\">fs.copyFile</code>; <code class=\"notranslate\">fse.removeSync</code> → <code class=\"notranslate\">fs.rm(..., { recursive: true, force: true })</code>.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
             "url": "https://github.com/mdn/content/pull/44608",
             "title": "refactor(filecheck): drop `index.html` support and `fs-extra`",
@@ -31,7 +53,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The popover spec added support for some new popover hint/auto interaction in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4224993947\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/12345\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/12345/hovercard\" href=\"https://github.com/whatwg/html/pull/12345\">whatwg/html#12345</a> which will be deployed in FF1153, and likely in Chrome 150. In summary:</p>\n<ul dir=\"auto\">\n<li>Showing a hint popover doesn't hide auto popovers.</li>\n<li>Showing a hint popover hides non-parent hint popovers.</li>\n<li>Clicking outside popovers consistently hides them.</li>\n<li>Hiding an auto popover does not hide unrelated hint popovers.</li>\n<li>Showing an auto popover as a child of a hint popover downgrades the auto popover to a hint.</li>\n<li>Showing a popover during the show or hide of another popover is no longer allowed.</li>\n</ul>\n<p dir=\"auto\">To address this I have added a summary of the auto/hint stack stuff in the using guide <code class=\"notranslate\">## Popover open/close interaction rules</code> and also updated the docs in various points to capture this.</p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/jakearchibald/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/jakearchibald\">@jakearchibald</a> I would really appreciate your review of this. I've used a combination of review, testing, and chatting to Claude to work out how this works. Its the last part that concerns me - sometimes Claude makes statements that seem quite reasonable based on what you're seeing in other comments - but that miss a nuance or 10. I'll add a few inline comments too.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4666434076\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44461\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44461/hovercard\" href=\"https://github.com/mdn/content/issues/44461\">#44461</a></p>",
             "url": "https://github.com/mdn/content/pull/44603",
             "title": "FF153 Popover API docs for new hint/auto popover interaction model",
-            "date_modified": "2026-06-30T12:13:56.000Z",
+            "date_modified": "2026-06-30T16:20:59.000Z",
             "date_published": "2026-06-30T07:24:59.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "blunket",
                 "url": "https://github.com/blunket"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 150 adds support for the SVG <code class=\"notranslate\">path-length</code> CSS property: see <a href=\"https://chromestatus.com/feature/4861677550043136\" rel=\"nofollow\">https://chromestatus.com/feature/4861677550043136</a>.</p>\n<p dir=\"auto\">This PR documents the new property.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/44563",
-            "title": "Technical review: Document the path-length CSS property",
-            "date_modified": "2026-06-23T15:20:11.000Z",
-            "date_published": "2026-06-23T15:18:13.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/22486830?u=d1a9366c6794c98dde2ebe8f41a558c2e58bf37e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarify the precision description for JavaScript <code class=\"notranslate\">Number</code>.</p>\n<p dir=\"auto\">This changes \"about 15 to 17 decimal places\" to wording that describes the precision as approximately 15–17 significant decimal digits.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The current wording says \"decimal places\", but the surrounding explanation is about the precision of the mantissa/significand.</p>\n<p dir=\"auto\">This precision is not a fixed number of digits after the decimal point. It is better described as significant decimal digits. For example, larger integer values can lose unit precision even without any fractional digits.</p>\n<p dir=\"auto\">This change helps avoid the impression that <code class=\"notranslate\">Number</code> always preserves 15–17 digits after the decimal point regardless of the magnitude of the value.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">A corresponding Japanese translation update is planned for <code class=\"notranslate\">mdn/translated-content</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4726730305\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/translated-content/issues/36668\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/translated-content/pull/36668/hovercard\" href=\"https://github.com/mdn/translated-content/pull/36668\">mdn/translated-content#36668</a></p>",
-            "url": "https://github.com/mdn/content/pull/44562",
-            "title": "Clarify Number precision as significant digits",
-            "date_modified": "2026-06-23T14:30:02.000Z",
-            "date_published": "2026-06-23T14:29:34.000Z",
-            "author": {
-                "name": "Juke-99",
-                "url": "https://github.com/Juke-99"
             }
         }
     ]
