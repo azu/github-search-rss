@@ -2,11 +2,51 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-02T15:58:23.510Z</updated>
+    <updated>2026-07-02T17:43:28.534Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix "Handling the return value" example]]></title>
+        <id>https://github.com/mdn/content/pull/44627</id>
+        <link href="https://github.com/mdn/content/pull/44627"/>
+        <updated>2026-07-02T17:02:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190649829?v=4" width="64" height="64" alt=""/><br/><ul dir="auto">
+<li>Code description was inaccurate</li>
+<li>Falsely stated that "Esc" doesn't trigger close event</li>
+<li>"Confirm" button having a value that is never used is confusing</li>
+<li>Code didn't check for the initial "" returnValue, which seems like an oversight to me</li>
+</ul>
+
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Fixes inaccuracies and oversights in the example description and code.<br>
+Maybe the code could say <code class="notranslate">&lt;option value&gt;Choose…&lt;/option&gt;</code> instead of <code class="notranslate">&lt;option value=""&gt;Choose…&lt;/option&gt;</code>?<br>
+And maybe instead of <code class="notranslate">favDialog.returnValue === ""</code> the truthiness could be checked instead.<br>
+But probably fine as it is?</p>
+<p dir="auto">Of course it could also check for <code class="notranslate">(favDialog.returnValue === "default" || favDialog.returnValue === "")</code> instead and leave the <code class="notranslate">&lt;option value="default"&gt;Choose…&lt;/option&gt;</code> untouched, but in any way it probably should check for the initial "" value in some way IMO.</p>
+
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Descriptions that don't match the code are confusing.<br>
+Code with additional bits that have no influence on the behavior even though they look like they might is confusing.<br>
+Code that doesn't handle edge cases makes it easy to forget that they exist, leading to potential bugs along the road.<br>
+Clearing those things up will hopefully be beneficial to the average reader.</p>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>internet-account2</name>
+            <email>internet-account2@noreply.github.com</email>
+            <uri>https://github.com/internet-account2</uri>
+        </author>
+        <published>2026-07-02T17:00:23.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Clarify operator precedence description]]></title>
         <id>https://github.com/mdn/content/pull/44625</id>
@@ -576,40 +616,5 @@ reduces redundancy.</p>
             <uri>https://github.com/bershanskiy</uri>
         </author>
         <published>2026-06-27T10:52:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add a note about back button and no-cache]]></title>
-        <id>https://github.com/mdn/content/pull/44575</id>
-        <link href="https://github.com/mdn/content/pull/44575"/>
-        <updated>2026-06-30T10:02:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Add a section to explain <code class="notranslate">no-cache</code> doesn't mean browsers will always revalidate.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Developers are often confused when browsers reuse <code class="notranslate">no-cache</code> pages when they expect them to reload. For example:</p>
-<ul dir="auto">
-<li><a href="https://issues.chromium.org/issues/41192250#comment6" rel="nofollow">https://issues.chromium.org/issues/41192250#comment6</a></li>
-<li><a href="https://www.mixmax.com/engineering/chrome-back-button-cache-no-store" rel="nofollow">https://www.mixmax.com/engineering/chrome-back-button-cache-no-store</a></li>
-<li><a href="https://gertjans.home.xs4all.nl/javascript/cache-control.html" rel="nofollow">https://gertjans.home.xs4all.nl/javascript/cache-control.html</a></li>
-</ul>
-<p dir="auto">This came up again in an internal discussion and we realised this is not documented anywhere.</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto">Chrome and Firefox does this as can be seen from <a href="https://www.tunetheweb.com/experiments/bfcache/no-cache-unload.html" rel="nofollow">this test page</a>.</p>
-<p dir="auto">Safari is difficult to confirm as they agressively use bfcache and everything I've tried to force it not to do that fails. Only <code class="notranslate">no-store</code> stops bfcache from being used by but that is not what I'm trying to test!</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>tunetheweb</name>
-            <email>tunetheweb@noreply.github.com</email>
-            <uri>https://github.com/tunetheweb</uri>
-        </author>
-        <published>2026-06-25T09:38:40.000Z</published>
     </entry>
 </feed>
