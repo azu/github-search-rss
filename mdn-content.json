@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Expand and normalize the <code class=\"notranslate\">paths:</code> triggers across the <code class=\"notranslate\">pr-check_*</code> workflows:</p>\n<ul dir=\"auto\">\n<li>Trigger each workflow when its own workflow file changes.</li>\n<li>Add <code class=\"notranslate\">.nvmrc</code> where missing (cSpell lists, URL issues).</li>\n<li>Add relevant dependency files (<code class=\"notranslate\">package.json</code>/<code class=\"notranslate\">package-lock.json</code> for JavaScript and YAML lint; <code class=\"notranslate\">scripts/sort_and_unique_file_lines.js</code> for cSpell lists).</li>\n<li>Add root-level globs (<code class=\"notranslate\">*.js</code>, <code class=\"notranslate\">*.mjs</code>, <code class=\"notranslate\">*.json</code>, <code class=\"notranslate\">*.jsonc</code>) alongside the existing <code class=\"notranslate\">**/*</code> patterns.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Ensure the relevant checks run when a change affects their behavior — whether through the workflow definition itself, the Node version, project dependencies, or files at the repository root.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n",
+            "url": "https://github.com/mdn/content/pull/44657",
+            "title": "ci(pr-check): expand path filters across pr-check workflows",
+            "date_modified": "2026-07-07T14:56:45.000Z",
+            "date_published": "2026-07-07T13:53:51.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This important term should be included.<br>\nIf you prefer a different way of writing this, please suggest it, but let's include \"declaration block\" on this page.</p>",
             "url": "https://github.com/mdn/content/pull/44655",
             "title": "Clarify CSS declaration block explanation",
@@ -171,10 +182,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Refactor the filecheck script:</p>\n<ul dir=\"auto\">\n<li>Remove <code class=\"notranslate\">index.html</code> support, so only the adjacent <code class=\"notranslate\">index.md</code> is considered when checking whether an attachment is referenced.</li>\n<li>Replace <code class=\"notranslate\">fs-extra</code> with <code class=\"notranslate\">node:fs/promises</code> and drop the dependency.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">All documents migrated to <code class=\"notranslate\">index.md</code> long ago, so the <code class=\"notranslate\">index.html</code> fallback is dead code. <code class=\"notranslate\">node:fs/promises</code> covers everything we used <code class=\"notranslate\">fs-extra</code> for, so the extra dependency is no longer needed.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Test fixtures are consolidated into a single <code class=\"notranslate\">md</code> directory, dropping the now-redundant duplicate \"not mentioned\" test.</li>\n<li><code class=\"notranslate\">fse.exists</code> → the adjacent <code class=\"notranslate\">index.md</code> is read directly, throwing the \"no document file\" error when the read fails; <code class=\"notranslate\">fse.copyFileSync</code> → <code class=\"notranslate\">fs.copyFile</code>; <code class=\"notranslate\">fse.removeSync</code> → <code class=\"notranslate\">fs.rm(..., { recursive: true, force: true })</code>.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Refactor the filecheck script:</p>\n<ul dir=\"auto\">\n<li>Remove <code class=\"notranslate\">index.html</code> support, so only the adjacent <code class=\"notranslate\">index.md</code> is considered when checking whether an attachment is referenced.</li>\n<li>Replace <code class=\"notranslate\">fs-extra</code> with <code class=\"notranslate\">node:fs/promises</code> and drop the dependency.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">All documents migrated to <code class=\"notranslate\">index.md</code> long ago, so the <code class=\"notranslate\">index.html</code> fallback is dead code. <code class=\"notranslate\">node:fs/promises</code> covers everything we used <code class=\"notranslate\">fs-extra</code> for, so the extra dependency is no longer needed.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Test fixtures are consolidated directly under <code class=\"notranslate\">fixtures</code>, dropping the now-redundant duplicate \"not mentioned\" test.</li>\n<li><code class=\"notranslate\">fse.exists</code> → the adjacent <code class=\"notranslate\">index.md</code> is read directly, throwing the \"no document file\" error when the read fails; <code class=\"notranslate\">fse.copyFileSync</code> → <code class=\"notranslate\">fs.copyFile</code>; <code class=\"notranslate\">fse.removeSync</code> → <code class=\"notranslate\">fs.rm(..., { recursive: true, force: true })</code>.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
             "url": "https://github.com/mdn/content/pull/44608",
-            "title": "refactor(filecheck): drop `index.html` support and `fs-extra`",
-            "date_modified": "2026-07-07T12:31:08.000Z",
+            "title": "chore(filecheck): drop `index.html` support and `fs-extra`",
+            "date_modified": "2026-07-07T13:40:04.000Z",
             "date_published": "2026-06-30T15:35:11.000Z",
             "author": {
                 "name": "caugner",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The <code class=\"notranslate\">line-width</code> data type is used in multiple properties. It's time it had a page.<br>\nreduces redundancy.</p>\n<p dir=\"auto\"><a href=\"https://drafts.csswg.org/css-borders-4/#typedef-line-width\" rel=\"nofollow\">https://drafts.csswg.org/css-borders-4/#typedef-line-width</a> defines hairline as a value  I included it in the data-type page, along with an example and a no support message.</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4718339915\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/238\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/238/hovercard\" href=\"https://github.com/openwebdocs/project/issues/238\">openwebdocs/project#238</a></p>",
-            "url": "https://github.com/mdn/content/pull/44597",
-            "title": "New data type page: line-width",
-            "date_modified": "2026-07-03T09:54:19.000Z",
-            "date_published": "2026-06-29T11:12:45.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
             }
         }
     ]

@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-07T13:10:05.835Z</updated>
+    <updated>2026-07-07T16:15:58.631Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[ci(pr-check): expand path filters across pr-check workflows]]></title>
+        <id>https://github.com/mdn/content/pull/44657</id>
+        <link href="https://github.com/mdn/content/pull/44657"/>
+        <updated>2026-07-07T14:56:45.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Expand and normalize the <code class="notranslate">paths:</code> triggers across the <code class="notranslate">pr-check_*</code> workflows:</p>
+<ul dir="auto">
+<li>Trigger each workflow when its own workflow file changes.</li>
+<li>Add <code class="notranslate">.nvmrc</code> where missing (cSpell lists, URL issues).</li>
+<li>Add relevant dependency files (<code class="notranslate">package.json</code>/<code class="notranslate">package-lock.json</code> for JavaScript and YAML lint; <code class="notranslate">scripts/sort_and_unique_file_lines.js</code> for cSpell lists).</li>
+<li>Add root-level globs (<code class="notranslate">*.js</code>, <code class="notranslate">*.mjs</code>, <code class="notranslate">*.json</code>, <code class="notranslate">*.jsonc</code>) alongside the existing <code class="notranslate">**/*</code> patterns.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Ensure the relevant checks run when a change affects their behavior — whether through the workflow definition itself, the Node version, project dependencies, or files at the repository root.</p>
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-07-07T13:53:51.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Clarify CSS declaration block explanation]]></title>
         <id>https://github.com/mdn/content/pull/44655</id>
@@ -393,10 +419,10 @@ Clearing those things up will hopefully be beneficial to the average reader.</p>
         <published>2026-06-30T15:58:08.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[refactor(filecheck): drop `index.html` support and `fs-extra`]]></title>
+        <title type="html"><![CDATA[chore(filecheck): drop `index.html` support and `fs-extra`]]></title>
         <id>https://github.com/mdn/content/pull/44608</id>
         <link href="https://github.com/mdn/content/pull/44608"/>
-        <updated>2026-07-07T12:31:08.000Z</updated>
+        <updated>2026-07-07T13:40:04.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Refactor the filecheck script:</p>
 <ul dir="auto">
@@ -407,7 +433,7 @@ Clearing those things up will hopefully be beneficial to the average reader.</p>
 <p dir="auto">All documents migrated to <code class="notranslate">index.md</code> long ago, so the <code class="notranslate">index.html</code> fallback is dead code. <code class="notranslate">node:fs/promises</code> covers everything we used <code class="notranslate">fs-extra</code> for, so the extra dependency is no longer needed.</p>
 <h3 dir="auto">Additional details</h3>
 <ul dir="auto">
-<li>Test fixtures are consolidated into a single <code class="notranslate">md</code> directory, dropping the now-redundant duplicate "not mentioned" test.</li>
+<li>Test fixtures are consolidated directly under <code class="notranslate">fixtures</code>, dropping the now-redundant duplicate "not mentioned" test.</li>
 <li><code class="notranslate">fse.exists</code> → the adjacent <code class="notranslate">index.md</code> is read directly, throwing the "no document file" error when the read fails; <code class="notranslate">fse.copyFileSync</code> → <code class="notranslate">fs.copyFile</code>; <code class="notranslate">fse.removeSync</code> → <code class="notranslate">fs.rm(..., { recursive: true, force: true })</code>.</li>
 </ul>
 <h3 dir="auto">Related issues and pull requests</h3>
@@ -494,21 +520,5 @@ the gap decoration properties will be added soon.</p>]]></content>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-06-29T13:11:58.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[New data type page: line-width]]></title>
-        <id>https://github.com/mdn/content/pull/44597</id>
-        <link href="https://github.com/mdn/content/pull/44597"/>
-        <updated>2026-07-03T09:54:19.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">The <code class="notranslate">line-width</code> data type is used in multiple properties. It's time it had a page.<br>
-reduces redundancy.</p>
-<p dir="auto"><a href="https://drafts.csswg.org/css-borders-4/#typedef-line-width" rel="nofollow">https://drafts.csswg.org/css-borders-4/#typedef-line-width</a> defines hairline as a value  I included it in the data-type page, along with an example and a no support message.</p>
-<p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4718339915" data-permission-text="Title is private" data-url="https://github.com/openwebdocs/project/issues/238" data-hovercard-type="issue" data-hovercard-url="/openwebdocs/project/issues/238/hovercard" href="https://github.com/openwebdocs/project/issues/238">openwebdocs/project#238</a></p>]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2026-06-29T11:12:45.000Z</published>
     </entry>
 </feed>
