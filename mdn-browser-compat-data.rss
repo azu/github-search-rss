@@ -2,11 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-07-08T19:03:35.277Z</updated>
+    <updated>2026-07-08T20:54:16.846Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Verify and update Firefox feature flag data]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30012</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30012"/>
+        <updated>2026-07-08T20:05:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Verify every Firefox <code class="notranslate">flags</code> entry listed in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4837976974" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30010" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30010/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30010">#30010</a> against current Gecko source and update the affected features. Each pref was checked with <a href="https://github.com/padenot/searchfox-cli"><code class="notranslate">searchfox-cli</code></a> against <code class="notranslate">mozilla-central</code> and per-channel branches, with shipped versions confirmed via Bugzilla target milestones.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Prefs verified against <code class="notranslate">github.com/mozilla-firefox/firefox</code> (<code class="notranslate">gecko-dev</code> is archived) and searchfox <code class="notranslate">mozilla-central</code> (Nightly 154), <code class="notranslate">mozilla-release</code> (152), and <code class="notranslate">mozilla-esr*</code>. <code class="notranslate">npm run lint api css http</code> passes.</p>
+<h5 dir="auto">Enabled by default in release → drop flag, record shipped version</h5>
+<ul dir="auto">
+<li><code class="notranslate">http.headers.Service-Worker-Navigation-Preload</code> → <strong>99</strong> — <code class="notranslate">dom.serviceWorkers.navigationPreload.enabled</code> (bug 1754786)</li>
+<li><code class="notranslate">api.Document.startViewTransition.updateCallback_parameter</code> → <strong>144</strong> — <code class="notranslate">dom.viewTransitions.enabled</code> (bug 1985809), matching the parent method</li>
+<li><code class="notranslate">api.Notification.requireInteraction</code> → <strong>117</strong>, partial — <code class="notranslate">dom.webnotifications.requireinteraction.enabled</code>: Windows 117 (bug <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/browser-compat-data/commit/17944754e8cd4a8bc2c1119e43b21795ee706603/hovercard" href="https://github.com/mdn/browser-compat-data/commit/17944754e8cd4a8bc2c1119e43b21795ee706603"><tt>1794475</tt></a>), Linux 137 (bug 1947738), macOS Nightly-only. Also drops the now-unnecessary <code class="notranslate">Flag data</code> linter exception.</li>
+</ul>
+<h5 dir="auto">Enabled by default only in Nightly → <code class="notranslate">preview</code></h5>
+<ul dir="auto">
+<li><code class="notranslate">api.Navigator.share</code> / <code class="notranslate">.canShare</code> (+ text-data parameters) — <code class="notranslate">dom.webshare.enabled</code> (<code class="notranslate">@IS_EARLY_BETA_OR_EARLIER@</code>)</li>
+<li><code class="notranslate">css.types.attr.*</code> (16 features) — <code class="notranslate">layout.css.attr.enabled</code> (<code class="notranslate">@IS_NIGHTLY_BUILD@</code>)</li>
+<li><code class="notranslate">css.at-rules.keyframes.named_range_keyframes</code>, <code class="notranslate">css.types.timeline-range-name.scroll</code> — <code class="notranslate">layout.css.scroll-driven-animations.enabled</code></li>
+<li><code class="notranslate">css.types.text-edge.*</code> (5 features) — <code class="notranslate">layout.css.text-box.enabled</code></li>
+<li><code class="notranslate">http.headers.Set-Cookie.SameSite.schemeful</code> — <code class="notranslate">network.cookie.sameSite.schemeful</code></li>
+</ul>
+<h5 dir="auto">Pref removed → drop defunct flag or remove feature</h5>
+<ul dir="auto">
+<li><code class="notranslate">api.Permissions.revoke</code> → <strong>47–51</strong> — shipped 47–50, flag-only from 51; <code class="notranslate">dom.permissions.revoke.enable</code> no longer exists</li>
+<li><code class="notranslate">css.selectors.-moz-submit-invalid</code> → <strong>4–88</strong> — shipped 4–87, flag-only from 88; <code class="notranslate">layout.css.moz-submit-invalid.enabled</code> no longer exists</li>
+<li><code class="notranslate">css.selectors.heading</code> → <code class="notranslate">false</code> — <code class="notranslate">layout.css.heading-selector.enabled</code> never existed (still supported in Safari 27)</li>
+<li>Features removed (never implemented in any browser without a flag): <code class="notranslate">css.selectors.headingfunction</code>, <code class="notranslate">api.Screen.mozBrightness</code>, <code class="notranslate">api.Screen.mozEnabled</code>, and <code class="notranslate">css.properties.content.none_applies_to_elements</code> (<code class="notranslate">content: none</code> now no-ops on non-pseudo elements, bug <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/browser-compat-data/commit/17252086d6348736fde5876c1f7f1650d5e0aa5b/hovercard" href="https://github.com/mdn/browser-compat-data/commit/17252086d6348736fde5876c1f7f1650d5e0aa5b"><tt>1725208</tt></a> unresolved)</li>
+</ul>
+<h5 dir="auto">Additional notes</h5>
+<p dir="auto">Deliberately left unchanged — the flag is still required in shipped Firefox:</p>
+<ul dir="auto">
+<li><code class="notranslate">api.Window.dump</code> — <code class="notranslate">browser.dom.window.dump.enabled</code> is <code class="notranslate">@IS_NOT_MOZILLA_OFFICIAL@</code>, i.e. off in every official build including Nightly. <code class="notranslate">dump()</code> is always exposed but is a runtime no-op unless enabled.</li>
+<li><code class="notranslate">http.headers.Access-Control-Allow-Headers.authorization_not_covered_by_wildcard</code> — the feature requires setting the pref to <code class="notranslate">false</code>, but it defaults to <code class="notranslate">true</code>.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4837976974" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30010" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30010/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30010">#30010</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-07-08T20:02:32.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Note Safari IME key event ordering bug affecting isComposing]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30009</id>
@@ -205,7 +250,7 @@
         <title type="html"><![CDATA[feat(lint): replace code tags in descriptions + notes]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/29508</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/29508"/>
-        <updated>2026-07-08T17:23:01.000Z</updated>
+        <updated>2026-07-08T20:09:28.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 <p dir="auto">Extends the linter to replace raw <code class="notranslate">&lt;code&gt;</code> tags in descriptions and notes with backticks.</p>
@@ -252,7 +297,7 @@
 My understanding is that there's a missing piece in all browsers where you can't just apply the above properties and expect them to work on their own. They also require a non-auto <code class="notranslate">inset</code> value.</p>
 <h4 dir="auto">Test results and supporting details</h4>
 <p dir="auto">Test case: <a href="https://bug2026174.bmoattachments.org/attachment.cgi?id=9557965" rel="nofollow">https://bug2026174.bmoattachments.org/attachment.cgi?id=9557965</a></p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM1Mzc3MTUsIm5iZiI6MTc4MzUzNzQxNSwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MDhUMTkwMzM1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTU0Y2M2N2IzYWJlZjAwZmQ4NGVjNzM0OTk2NmUxMzI4ZDBmNzQ0YjQ4YTQyZDBjNDM1YmYzM2VlY2IwZDc4MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.8NNfm_e4SNRf0_LEHBPluDDx7dTKnlERbSmXcYRYd30"><img width="859" height="685" alt="image" src="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM1Mzc3MTUsIm5iZiI6MTc4MzUzNzQxNSwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MDhUMTkwMzM1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTU0Y2M2N2IzYWJlZjAwZmQ4NGVjNzM0OTk2NmUxMzI4ZDBmNzQ0YjQ4YTQyZDBjNDM1YmYzM2VlY2IwZDc4MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.8NNfm_e4SNRf0_LEHBPluDDx7dTKnlERbSmXcYRYd30" style="max-width: 100%; height: auto; max-height: 685px;; aspect-ratio: 859 / 685; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM1NDQzNTYsIm5iZiI6MTc4MzU0NDA1NiwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MDhUMjA1NDE2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9Y2U0NDdjN2E2MWNiMmRhMDE0Mzc0M2NlZmY2M2NiY2EyZjcyYzA2MWJlZmYwMmJmMTdiNDc0MjRhZmM2ZTY3ZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.OPQbj3zkLFtqXiSrP6_EIgcd2wJB_83PpknJYS_GZtA"><img width="859" height="685" alt="image" src="https://private-user-images.githubusercontent.com/1152698/569104114-395644e2-af61-4110-8ccb-279aa443b933.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM1NDQzNTYsIm5iZiI6MTc4MzU0NDA1NiwicGF0aCI6Ii8xMTUyNjk4LzU2OTEwNDExNC0zOTU2NDRlMi1hZjYxLTQxMTAtOGNjYi0yNzlhYTQ0M2I5MzMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcwOCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MDhUMjA1NDE2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9Y2U0NDdjN2E2MWNiMmRhMDE0Mzc0M2NlZmY2M2NiY2EyZjcyYzA2MWJlZmYwMmJmMTdiNDc0MjRhZmM2ZTY3ZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.OPQbj3zkLFtqXiSrP6_EIgcd2wJB_83PpknJYS_GZtA" style="max-width: 100%; height: auto; max-height: 685px;; aspect-ratio: 859 / 685; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <p dir="auto">The red box should be centered in the gray box.</p>
 <p dir="auto">Code:</p>
 <div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;!DOCTYPE html&gt;
@@ -283,26 +328,5 @@ My understanding is that there's a missing piece in all browsers where you can't
             <uri>https://github.com/captainbrosset</uri>
         </author>
         <published>2026-03-25T14:14:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Unmark Firefox as partial for `::highlight` CSS selector]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/28375</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/28375"/>
-        <updated>2026-01-09T14:46:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Unmarks Firefox as partial for <code class="notranslate">::highlight</code> CSS Selector, and splits up the existing notes, adding bug links.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">I challenge the following <a href="https://github.com/mdn/browser-compat-data/tree/main/docs/data-guidelines#partial_implementation-general-usage-guidelines">requirement for partial implementation</a>:</p>
-<blockquote>
-<p dir="auto">The browser's support has a demonstrable negative impact on web developers.</p>
-</blockquote>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Related: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3586286163" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28374" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28374/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28374">#28374</a></p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2025-11-04T12:12:56.000Z</published>
     </entry>
 </feed>
