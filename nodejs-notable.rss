@@ -2,11 +2,30 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-07-12T11:02:56.540Z</updated>
+    <updated>2026-07-12T12:52:43.199Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[test_runner: add `context.log()` and `test:log` event]]></title>
+        <id>https://github.com/nodejs/node/pull/64389</id>
+        <link href="https://github.com/nodejs/node/pull/64389"/>
+        <updated>2026-07-12T11:45:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8221854?u=726fa18704c0cbbf4fe85069f60bdefe16bae655&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add a log(message[, data]) method to <code class="notranslate">TestContext</code> and <code class="notranslate">SuiteContext</code> that emits a new <code class="notranslate">test:log </code>event.</p>
+<p dir="auto">Unlike <code class="notranslate">test:diagnostic</code>, which is buffered so it is emitted in the order tests are defined, <code class="notranslate">test:log</code> is emitted <strong>immediately</strong>, in the order tests execute, including under process isolation where it bypasses the per-file declaration order buffer.</p>
+<h3 dir="auto">Motivation for adding this</h3>
+<p dir="auto">This gives reporters that render the test tree unbuffered a <strong>live</strong>, attributed logging channel that captured stdout cannot provide under concurrency (see for example <a href="https://www.npmjs.com/package/@reporters/live" rel="nofollow">https://www.npmjs.com/package/@reporters/live</a> and <a href="https://www.npmjs.com/package/@reporters/web" rel="nofollow">https://www.npmjs.com/package/@reporters/web</a>).</p>
+<p dir="auto">The event carries the message, an optional opaque structured payload that the runner passes through untouched, and the emitting test's name, testId, parentId, nesting, and location.</p>
+<p dir="auto">Built-in reporters render it the same way they render <code class="notranslate">test:diagnostic</code>.</p>
+]]></content>
+        <author>
+            <name>MoLow</name>
+            <email>MoLow@noreply.github.com</email>
+            <uri>https://github.com/MoLow</uri>
+        </author>
+        <published>2026-07-09T09:58:25.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[crypto: update root-certificates to 3.123.1]]></title>
         <id>https://github.com/nodejs/node/pull/63527</id>
@@ -950,7 +969,7 @@ non-enumerable to avoid breaking {...globalThis}.</p>
 <li>We could leave it as is and just say the that the <code class="notranslate">top</code> output isn't sensible, but since it's probably the most widely used tool for this sort of thing I think it's best to improve how we look there.</li>
 </ol>
 <p dir="auto">I've included a screenshot showing what each option looks like in the <code class="notranslate">top</code> output shown below. Process 930775 is the current main code, 583671 is with this PR, 467427 and 587572 are the other ones from option 1 above.</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM4NTQ0NzYsIm5iZiI6MTc4Mzg1NDE3NiwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcxMiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MTJUMTEwMjU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTZmYWY5NTQ3ODUwMjlkNzBkYmZlYWU3MDMxNDE0ZDM5YTJmOGVlMzM5ZDE2MzQ4YzAzZTg5NDhkNjkzOWYyMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.3ZtqfCXdY-Mljp1bkCWdZ5A9sh_1i85ksBZ981iDx14"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM4NTQ0NzYsIm5iZiI6MTc4Mzg1NDE3NiwicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcxMiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MTJUMTEwMjU2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTZmYWY5NTQ3ODUwMjlkNzBkYmZlYWU3MDMxNDE0ZDM5YTJmOGVlMzM5ZDE2MzQ4YzAzZTg5NDhkNjkzOWYyMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.3ZtqfCXdY-Mljp1bkCWdZ5A9sh_1i85ksBZ981iDx14" style="max-width: 100%; height: auto; max-height: 748px;; aspect-ratio: 1918 / 748; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM4NjEwNjMsIm5iZiI6MTc4Mzg2MDc2MywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcxMiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MTJUMTI1MjQzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTdjZDA5M2NiMTk4MDU5YjU1ODQ1NzUxM2UzOGZlODYwNjMwY2U2ZmYxMmUwNmQyYjkzMTAwZmMyMDg4OTc0NSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.gMrIjYyX_rRbDeGm0NwrNVdrj_fdb0Op1twTYQ0uemM"><img width="1918" height="748" alt="image" src="https://private-user-images.githubusercontent.com/6487691/532783823-361e683b-b3ae-4dbd-89c6-67a99184ab95.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODM4NjEwNjMsIm5iZiI6MTc4Mzg2MDc2MywicGF0aCI6Ii82NDg3NjkxLzUzMjc4MzgyMy0zNjFlNjgzYi1iM2FlLTRkYmQtODljNi02N2E5OTE4NGFiOTUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDcxMiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA3MTJUMTI1MjQzWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTdjZDA5M2NiMTk4MDU5YjU1ODQ1NzUxM2UzOGZlODYwNjMwY2U2ZmYxMmUwNmQyYjkzMTAwZmMyMDg4OTc0NSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.gMrIjYyX_rRbDeGm0NwrNVdrj_fdb0Op1twTYQ0uemM" style="max-width: 100%; height: auto; max-height: 748px;; aspect-ratio: 1918 / 748; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 ]]></content>
         <author>
             <name>sxa</name>
@@ -958,23 +977,5 @@ non-enumerable to avoid breaking {...globalThis}.</p>
             <uri>https://github.com/sxa</uri>
         </author>
         <published>2026-01-07T11:01:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[sqlite: enable defensive mode by default]]></title>
-        <id>https://github.com/nodejs/node/pull/61266</id>
-        <link href="https://github.com/nodejs/node/pull/61266"/>
-        <updated>2026-02-23T21:04:22.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/649392?u=36e3526d06e87171b44ce61eccf7bed6f23568f8&v=4" width="64" height="64" alt=""/><br/>
-<p dir="auto">This PR enables SQLite defensive mode by default.</p>
-<blockquote>
-<p dir="auto">When the defensive flag is enabled, language features that allow ordinary SQL to deliberately corrupt the database file are disabled.</p>
-</blockquote>
-<p dir="auto">More information in the <a href="https://sqlite.org/c3ref/c_dbconfig_defensive.html" rel="nofollow">SQLite documentation</a> and the <a href="https://github.com/nodejs/node/pull/60217#issuecomment-3393716246" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/60217/hovercard">discussion</a> in the PR that introduced this flag.</p>]]></content>
-        <author>
-            <name>louwers</name>
-            <email>louwers@noreply.github.com</email>
-            <uri>https://github.com/louwers</uri>
-        </author>
-        <published>2026-01-03T21:23:30.000Z</published>
     </entry>
 </feed>
