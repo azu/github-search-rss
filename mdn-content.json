@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF153 includes support for the <code class=\"notranslate\">import source</code> syntax in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2043242\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2043242</a>. However as per <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2043242#c15\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2043242#c15</a> the support isn't all that useful because the source objects themselves that are needed to use the syntax are implemented separately.</p>\n<p dir=\"auto\">I have tried to capture that in this release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4666614840\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44475\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44475/hovercard\" href=\"https://github.com/mdn/content/issues/44475\">#44475</a></p>",
+            "url": "https://github.com/mdn/content/pull/44699",
+            "title": "FF153 Relnote: JS Source phase imports",
+            "date_modified": "2026-07-13T05:56:56.000Z",
+            "date_published": "2026-07-13T05:55:21.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44673.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4845990577\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44673\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44673/hovercard\" href=\"https://github.com/mdn/content/issues/44673\">#44673</a></p>\n<p dir=\"auto\">The <code class=\"notranslate\">&lt;base&gt;</code> element is now explicitly marked as unsafe in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4845278871\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/12664\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/12664/hovercard\" href=\"https://github.com/whatwg/html/pull/12664\">whatwg/html#12664</a> (rather than \"uncategorized\"). This updates the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTML_Sanitizer_API/Default_sanitizer_configuration\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/HTML_Sanitizer_API/Default_sanitizer_configuration</a> list to add it to the list of explicitly unsafe elements.</p>\n<p dir=\"auto\">I also noted that some elements are removed by default because they are deprecated, not necessarily attack vectors. This is the case for elements like <code class=\"notranslate\">&lt;acronym&gt;</code>.</p>\n<p dir=\"auto\">The actual default configuration has not changed, since base was already omitted as a potential attack.</p>\n<p dir=\"auto\">I also updated <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/removeUnsafe\" rel=\"nofollow\"><code class=\"notranslate\">Sanitizer/removeUnsafe()</code></a> with the needed change, but we shouldn't merge this until the BCD goes in</p>\n<ul class=\"contains-task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" id=\"\" disabled=\"\" class=\"task-list-item-checkbox\" aria-label=\"Incomplete task\"> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4869659376\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/30033\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/30033/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/30033\">mdn/browser-compat-data#30033</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/44697",
             "title": "base element unsafe in default sanitizer configuration",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/64529428?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifies that <code class=\"notranslate\">&lt;aside&gt;</code> maps to <code class=\"notranslate\">complementary</code> only conditionally when nested in sectioning content.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">This matches the HTML-AAM mapping for <code class=\"notranslate\">&lt;aside&gt;</code> and addresses reader confusion in the <code class=\"notranslate\">&lt;aside&gt;</code> and <code class=\"notranslate\">complementary</code> role pages.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>HTML-AAM maps <code class=\"notranslate\">&lt;aside&gt;</code> scoped to <code class=\"notranslate\">body</code> or <code class=\"notranslate\">main</code> to <code class=\"notranslate\">complementary</code>.</li>\n<li>HTML-AAM maps <code class=\"notranslate\">&lt;aside&gt;</code> scoped to sectioning content to <code class=\"notranslate\">complementary</code> only when it has an accessible name; otherwise it maps to <code class=\"notranslate\">generic</code>.</li>\n</ul>\n<p dir=\"auto\">Validation:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check</code></li>\n<li>source guard for the new conditional role wording</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #40664.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3300870556\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40664\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/40664/hovercard\" href=\"https://github.com/mdn/content/issues/40664\">#40664</a></p>",
-            "url": "https://github.com/mdn/content/pull/44629",
-            "title": "docs: clarify aside complementary role mapping",
-            "date_modified": "2026-07-08T15:42:12.000Z",
-            "date_published": "2026-07-02T20:17:07.000Z",
-            "author": {
-                "name": "ishaanlabs-gg",
-                "url": "https://github.com/ishaanlabs-gg"
             }
         }
     ]
