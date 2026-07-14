@@ -2,11 +2,89 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mozilla-standards-positions.rss</id>
     <title>mozilla/standards-positions Issues</title>
-    <updated>2026-07-14T17:00:35.579Z</updated>
+    <updated>2026-07-14T18:58:57.068Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mozilla-standards-positions.rss"/>
     <subtitle>mozilla/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[remoteClientDataJSON WebAuthn extension]]></title>
+        <id>https://github.com/mozilla/standards-positions/issues/1432</id>
+        <link href="https://github.com/mozilla/standards-positions/issues/1432"/>
+        <updated>2026-07-14T17:32:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1750895?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
+<p dir="auto">remoteClientDataJSON WebAuthn extension</p>
+<h3 dir="auto">Specification or proposal URL (if available)</h3>
+<p dir="auto"><a href="https://w3c.github.io/webauthn/#sctn-remote-client-data-json-extension" rel="nofollow">https://w3c.github.io/webauthn/#sctn-remote-client-data-json-extension</a></p>
+<h3 dir="auto">Explainer URL (if available)</h3>
+<p dir="auto"><a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/WebAuthnRemoteClientDataJSON/explainer.md">https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/WebAuthnRemoteClientDataJSON/explainer.md</a></p>
+<h3 dir="auto">Proposal author(s)</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/akshayku/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/akshayku">@akshayku</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/bobomb/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/bobomb">@bobomb</a></p>
+<h3 dir="auto">web-feature id</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">MDN URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Caniuse.com URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Bugzilla URL</h3>
+<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2054802" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2054802</a></p>
+<h3 dir="auto">Mozillians who can provide input</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">WebKit standards-position</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4885533256" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/695" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/695/hovercard" href="https://github.com/WebKit/standards-positions/issues/695">WebKit/standards-positions#695</a></p>
+<h3 dir="auto">Other information</h3>
+<p dir="auto"><code class="notranslate">remoteClientDataJSON</code> is a new WebAuthn <strong>client extension</strong> (merged into the<br>
+WebAuthn editor's draft via <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3781542413" data-permission-text="Title is private" data-url="https://github.com/w3c/webauthn/issues/2375" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webauthn/pull/2375/hovercard" href="https://github.com/w3c/webauthn/pull/2375">w3c/webauthn#2375</a>) that lets an <strong>authorized</strong><br>
+remote-desktop web client supply a complete, verbatim <code class="notranslate">clientDataJSON</code> string to<br>
+the local WebAuthn client, instead of having the browser reconstruct it from<br>
+component fields. The provided bytes are used as-is when computing<br>
+<code class="notranslate">clientDataHash = SHA-256(clientDataJSON)</code> and are returned verbatim in<br>
+<code class="notranslate">response.clientDataJSON</code>.</p>
+<p dir="auto">It is a narrowly scoped, default-deny, per-origin-authorized capability for<br>
+remote desktop (RDP) forwarding. It supersedes the input-override behavior of the<br>
+existing <code class="notranslate">remoteDesktopClientOverride</code> extension.</p>
+<h2 dir="auto">The problem</h2>
+<p dir="auto">Remote Desktop web clients forward WebAuthn ceremonies from a remote session to<br>
+an authenticator that is only reachable on the user's <strong>local</strong> machine:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[Relying Party e.g. accounts.example.com]
+    |  WebAuthn (in the remote session)
+    v
+[RDP host / remote session]
+    |  RDP WebAuthn virtual channel
+    v
+[RDP web client on the local machine e.g. myrdc.example]
+    |  navigator.credentials.{create,get}
+    v
+[Local browser + local authenticator]"><pre class="notranslate"><code class="notranslate">[Relying Party e.g. accounts.example.com]
+    |  WebAuthn (in the remote session)
+    v
+[RDP host / remote session]
+    |  RDP WebAuthn virtual channel
+    v
+[RDP web client on the local machine e.g. myrdc.example]
+    |  navigator.credentials.{create,get}
+    v
+[Local browser + local authenticator]
+</code></pre></div>
+<p dir="auto">The interoperability break: platform WebAuthn APIs used by RDP hosts (e.g. the<br>
+Windows WebAuthn API) <strong>consume a complete <code class="notranslate">clientDataJSON</code> blob</strong> provided by the<br>
+caller, whereas the browser <strong>builds <code class="notranslate">clientDataJSON</code> itself</strong> from separate<br>
+fields. When the RDP host hands an already-serialized <code class="notranslate">clientDataJSON</code> to the web<br>
+client, the web client cannot reproduce it byte-for-byte through today's API. Any<br>
+difference — whitespace, key ordering, future fields, encoding choices — changes<br>
+the hash, so the relying party's signature verification over <code class="notranslate">clientDataHash</code><br>
+fails.</p>
+<p dir="auto">The existing <code class="notranslate">remoteDesktopClientOverride</code> extension only lets the caller override<br>
+the <code class="notranslate">origin</code> (and <code class="notranslate">sameOriginWithAncestor</code>); the browser still assembles the final<br>
+JSON, so it does not solve byte-exact passthrough and turns <code class="notranslate">clientDataJSON</code><br>
+assembly into an ongoing cross-spec synchronization problem.</p>]]></content>
+        <author>
+            <name>bobomb</name>
+            <email>bobomb@noreply.github.com</email>
+            <uri>https://github.com/bobomb</uri>
+        </author>
+        <published>2026-07-14T17:31:25.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The HTTP QUERY Method (RFC 10008)]]></title>
         <id>https://github.com/mozilla/standards-positions/issues/1430</id>
@@ -659,37 +737,5 @@
             <uri>https://github.com/kyerebo</uri>
         </author>
         <published>2026-05-13T21:37:22.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Attribution]]></title>
-        <id>https://github.com/mozilla/standards-positions/issues/1408</id>
-        <link href="https://github.com/mozilla/standards-positions/issues/1408"/>
-        <updated>2026-06-14T16:50:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/67641?u=adea16237836e526afa569daa66747dacb79c56d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification title</h3>
-<p dir="auto">Attribution</p>
-<h3 dir="auto">Specification or proposal URL (if available)</h3>
-<p dir="auto"><a href="https://w3c.github.io/attribution/" rel="nofollow">https://w3c.github.io/attribution/</a></p>
-<h3 dir="auto">Explainer URL (if available)</h3>
-<p dir="auto"><a href="https://w3c.github.io/attribution/" rel="nofollow">https://w3c.github.io/attribution/</a></p>
-<h3 dir="auto">Proposal author(s)</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/martinthomson/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/martinthomson">@martinthomson</a>, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/bmcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/bmcase">@bmcase</a>, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/apasel422/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/apasel422">@apasel422</a>, et al</p>
-<h3 dir="auto">MDN URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Caniuse.com URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozillians who can provide input</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/andyleiserson/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/andyleiserson">@andyleiserson</a></p>
-<h3 dir="auto">WebKit standards-position</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4436304811" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/666" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/666/hovercard" href="https://github.com/WebKit/standards-positions/issues/666">WebKit/standards-positions#666</a></p>
-<h3 dir="auto">Other information</h3>
-<p dir="auto">TAG review: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4436221986" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1229" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1229/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1229">w3ctag/design-reviews#1229</a></p>]]></content>
-        <author>
-            <name>martinthomson</name>
-            <email>martinthomson@noreply.github.com</email>
-            <uri>https://github.com/martinthomson</uri>
-        </author>
-        <published>2026-05-13T08:37:19.000Z</published>
     </entry>
 </feed>
