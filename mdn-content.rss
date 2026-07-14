@@ -2,42 +2,86 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-14T15:14:39.321Z</updated>
+    <updated>2026-07-14T17:00:40.186Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[fix(html): correct colspan upper limit]]></title>
-        <id>https://github.com/mdn/content/pull/44716</id>
-        <link href="https://github.com/mdn/content/pull/44716"/>
-        <updated>2026-07-14T14:08:09.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Correct the documented <code class="notranslate">colspan</code> upper-limit behavior on the <code class="notranslate">&lt;td&gt;</code> and <code class="notranslate">&lt;th&gt;</code> reference pages. Values greater than <code class="notranslate">1000</code> are clipped to <code class="notranslate">1000</code>, rather than treated as invalid and reset to <code class="notranslate">1</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The existing descriptions conflict with the table-cell processing algorithm in the HTML Standard. Updating both cell-element pages keeps the shared <code class="notranslate">colspan</code> behavior accurate and consistent for readers.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li><a href="https://html.spec.whatwg.org/multipage/tables.html#processing-model-2" rel="nofollow">HTML Standard table-cell processing algorithm</a></li>
-<li>Repository pre-commit checks passed: URL issues, changed xrefs, front matter, MarkdownLint, and Prettier.</li>
-<li>Targeted CSpell passed with no issues; <code class="notranslate">npm test</code> passed all 5 tests.</li>
-<li>A local Rari page build could not complete because this sparse checkout omits the global CSS reference index; GitHub CI runs against the full checkout.</li>
-</ul>
-<p dir="auto">Disclosure: This change was prepared with OpenAI Codex assistance. I reviewed the contribution guidelines, specification source, final diff, and validation results.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44715.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4883071447" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44715" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44715/hovercard" href="https://github.com/mdn/content/issues/44715">#44715</a></p>]]></content>
+        <title type="html"><![CDATA[Clarify where the <style> element can be used]]></title>
+        <id>https://github.com/mdn/content/pull/44718</id>
+        <link href="https://github.com/mdn/content/pull/44718"/>
+        <updated>2026-07-14T16:13:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/229193143?u=925b41266d876925b08ce78352f0d5d24c4a6c71&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">This updates the <code class="notranslate">&lt;style&gt;</code> element documentation to clarify that the <code class="notranslate">&lt;style&gt;</code> element is not limited to the <code class="notranslate">&lt;head&gt;</code> element.</p>
+<p dir="auto">The page now explains that <code class="notranslate">&lt;style&gt;</code> can be used wherever metadata content is permitted, such as inside a <code class="notranslate">&lt;template&gt;</code> element, in accordance with the HTML specification.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41900.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3611920061" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41900" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41900/hovercard" href="https://github.com/mdn/content/issues/41900">#41900</a></p>
+
+<h3 dir="auto">Example</h3>
+<h3 dir="auto">Using <code class="notranslate">&lt;style&gt;</code> inside <code class="notranslate">&lt;template&gt;</code></h3>
+<p dir="auto">The <code class="notranslate">&lt;style&gt;</code> element can also be placed inside a {{HTMLElement("template")}} element because it accepts metadata content.</p>
+<div class="highlight highlight-text-html-basic notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&lt;template id=&quot;card-template&quot;&gt;
+  &lt;style&gt;
+    p {
+      color: rebeccapurple;
+    }
+  &lt;/style&gt;
+
+  &lt;p&gt;Styled template content&lt;/p&gt;
+&lt;/template&gt;"><pre class="notranslate"><span class="pl-kos">&lt;</span><span class="pl-ent">template</span> <span class="pl-c1">id</span>="<span class="pl-s">card-template</span>"<span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>
+    <span class="pl-ent">p</span> {
+      <span class="pl-c1">color</span><span class="pl-kos">:</span> rebeccapurple;
+    }
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">style</span><span class="pl-kos">&gt;</span>
+
+  <span class="pl-kos">&lt;</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>Styled template content<span class="pl-kos">&lt;/</span><span class="pl-ent">p</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">template</span><span class="pl-kos">&gt;</span></pre></div>
+
+
+
+]]></content>
         <author>
-            <name>coyaSONG</name>
-            <email>coyaSONG@noreply.github.com</email>
-            <uri>https://github.com/coyaSONG</uri>
+            <name>Akshita-tech17</name>
+            <email>Akshita-tech17@noreply.github.com</email>
+            <uri>https://github.com/Akshita-tech17</uri>
         </author>
-        <published>2026-07-14T14:06:28.000Z</published>
+        <published>2026-07-14T16:12:51.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix simple code example oversight]]></title>
+        <id>https://github.com/mdn/content/pull/44717</id>
+        <link href="https://github.com/mdn/content/pull/44717"/>
+        <updated>2026-07-14T15:35:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190649829?v=4" width="64" height="64" alt=""/><br/><p dir="auto">If the element is positioned with its right edge touching the left side of its anchor, then the margin of the positioned element needs to be on the right side to space them apart</p>
+
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">The code example puts the margin on the wrong side.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>internet-account2</name>
+            <email>internet-account2@noreply.github.com</email>
+            <uri>https://github.com/internet-account2</uri>
+        </author>
+        <published>2026-07-14T15:33:35.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[fix(a11y): clarify read-write range roles]]></title>
         <id>https://github.com/mdn/content/pull/44712</id>
         <link href="https://github.com/mdn/content/pull/44712"/>
-        <updated>2026-07-14T07:55:26.000Z</updated>
+        <updated>2026-07-14T16:10:37.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Correct the ARIA range comparison on the <code class="notranslate">spinbutton</code> role page to identify both <code class="notranslate">slider</code> and <code class="notranslate">spinbutton</code> as read-write ranges.</p>
 <h3 dir="auto">Motivation</h3>
@@ -512,31 +556,5 @@ add links to page in MiTM glossary</p>]]></content>
             <uri>https://github.com/pepelsbey</uri>
         </author>
         <published>2026-07-08T10:41:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ci(pr-check): expand path filters across pr-check workflows]]></title>
-        <id>https://github.com/mdn/content/pull/44657</id>
-        <link href="https://github.com/mdn/content/pull/44657"/>
-        <updated>2026-07-10T15:54:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Expand and normalize the <code class="notranslate">paths:</code> triggers across the <code class="notranslate">pr-check_*</code> workflows:</p>
-<ul dir="auto">
-<li>Trigger each workflow when its own workflow file changes.</li>
-<li>Add <code class="notranslate">.nvmrc</code> where missing (cSpell lists, URL issues).</li>
-<li>Add relevant dependency files (<code class="notranslate">package.json</code>/<code class="notranslate">package-lock.json</code> for JavaScript and YAML lint; <code class="notranslate">scripts/sort_and_unique_file_lines.js</code> for cSpell lists).</li>
-<li>Add root-level globs (<code class="notranslate">*.js</code>, <code class="notranslate">*.mjs</code>, <code class="notranslate">*.json</code>, <code class="notranslate">*.jsonc</code>) alongside the existing <code class="notranslate">**/*</code> patterns.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Ensure the relevant checks run when a change affects their behavior — whether through the workflow definition itself, the Node version, project dependencies, or files at the repository root.</p>
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-07-07T13:53:51.000Z</published>
     </entry>
 </feed>
