@@ -6,10 +6,21 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF153 adds support for a less restrictive HTML parser for <code class=\"notranslate\">&lt;select&gt;</code> elements in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2019977\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2019977</a>.</p>\n<p dir=\"auto\">This allows nested elements to be parsed into DOM rather than only the allowed elements. Its a precursor to <em>customised select elements</em>. This adds the release note and an explanation of the change in <code class=\"notranslate\">&lt;iframe&gt;</code>, without promising future delivery of that feature.</p>\n<p dir=\"auto\">As I see it, makes little real difference to FF. Inspection shows the nested DOM is preserved, but we can't set the <code class=\"notranslate\">appearance</code> so we can't style it.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4666445829\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44462\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44462/hovercard\" href=\"https://github.com/mdn/content/issues/44462\">#44462</a></p>\n<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/SebastianZ/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/SebastianZ\">@SebastianZ</a> You might have some interest in this.</p>",
+            "url": "https://github.com/mdn/content/pull/44713",
+            "title": "FF153 Relnote: select element HTML parser",
+            "date_modified": "2026-07-14T07:22:15.000Z",
+            "date_published": "2026-07-14T07:14:13.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Correct the ARIA range comparison on the <code class=\"notranslate\">spinbutton</code> role page to identify both <code class=\"notranslate\">slider</code> and <code class=\"notranslate\">spinbutton</code> as read-write ranges.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The page already describes <code class=\"notranslate\">slider</code> as read-write, but the following paragraph incorrectly says that <code class=\"notranslate\">spinbutton</code> is the only read-write range. Clarifying the distinction helps readers understand which range roles accept user input.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://www.w3.org/TR/wai-aria-1.2/#slider\" rel=\"nofollow\">WAI-ARIA 1.2: <code class=\"notranslate\">slider</code></a></li>\n<li><a href=\"https://www.w3.org/TR/wai-aria-1.2/#spinbutton\" rel=\"nofollow\">WAI-ARIA 1.2: <code class=\"notranslate\">spinbutton</code></a></li>\n<li><a href=\"https://www.w3.org/WAI/ARIA/apg/patterns/slider/\" rel=\"nofollow\">ARIA Authoring Practices Guide: Slider Pattern</a></li>\n<li><a href=\"https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/\" rel=\"nofollow\">ARIA Authoring Practices Guide: Spinbutton Pattern</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #32981.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2229215795\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32981\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32981/hovercard\" href=\"https://github.com/mdn/content/issues/32981\">#32981</a></p>",
             "url": "https://github.com/mdn/content/pull/44712",
             "title": "fix(a11y): clarify read-write range roles",
-            "date_modified": "2026-07-14T06:55:44.000Z",
+            "date_modified": "2026-07-14T07:55:26.000Z",
             "date_published": "2026-07-14T06:55:21.000Z",
             "author": {
                 "name": "coyaSONG",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "pepelsbey",
                 "url": "https://github.com/pepelsbey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Expand and normalize the <code class=\"notranslate\">paths:</code> triggers across the <code class=\"notranslate\">pr-check_*</code> workflows:</p>\n<ul dir=\"auto\">\n<li>Trigger each workflow when its own workflow file changes.</li>\n<li>Add <code class=\"notranslate\">.nvmrc</code> where missing (cSpell lists, URL issues).</li>\n<li>Add relevant dependency files (<code class=\"notranslate\">package.json</code>/<code class=\"notranslate\">package-lock.json</code> for JavaScript and YAML lint; <code class=\"notranslate\">scripts/sort_and_unique_file_lines.js</code> for cSpell lists).</li>\n<li>Add root-level globs (<code class=\"notranslate\">*.js</code>, <code class=\"notranslate\">*.mjs</code>, <code class=\"notranslate\">*.json</code>, <code class=\"notranslate\">*.jsonc</code>) alongside the existing <code class=\"notranslate\">**/*</code> patterns.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Ensure the relevant checks run when a change affects their behavior — whether through the workflow definition itself, the Node version, project dependencies, or files at the repository root.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n",
-            "url": "https://github.com/mdn/content/pull/44657",
-            "title": "ci(pr-check): expand path filters across pr-check workflows",
-            "date_modified": "2026-07-10T15:54:46.000Z",
-            "date_published": "2026-07-07T13:53:51.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
             }
         }
     ]
