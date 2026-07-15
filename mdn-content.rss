@@ -2,11 +2,97 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-15T17:02:54.074Z</updated>
+    <updated>2026-07-15T18:52:29.370Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix MediaSession action handler example]]></title>
+        <id>https://github.com/mdn/content/pull/44728</id>
+        <link href="https://github.com/mdn/content/pull/44728"/>
+        <updated>2026-07-15T18:25:48.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Clarifies the <code class="notranslate">MediaSession</code> play and pause action-handler example by selecting the page's <code class="notranslate">&lt;audio&gt;</code> element and removing calls to undefined demo-only status helpers. It also omits the unused <code class="notranslate">catch</code> binding in the same example.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The current sample references <code class="notranslate">audioEl</code>, <code class="notranslate">updateStatus</code>, <code class="notranslate">allMeta</code>, and <code class="notranslate">index</code> without defining them, which makes the example difficult to understand or reuse. The updated example is focused on the documented media-session behavior and defines every value it uses.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Validation completed:</p>
+<ul dir="auto">
+<li>Prettier, Markdownlint, and CSpell on the changed page</li>
+<li>Repository test suite (5/5)</li>
+<li>JavaScript syntax and play/pause handler behavior checks</li>
+<li>Rari single-page build with no reported issues</li>
+<li>Repository pre-commit URL, cross-reference, front-matter, Prettier, and Markdownlint checks</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41250.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3442018707" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41250" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41250/hovercard" href="https://github.com/mdn/content/issues/41250">#41250</a></p>]]></content>
+        <author>
+            <name>coyaSONG</name>
+            <email>coyaSONG@noreply.github.com</email>
+            <uri>https://github.com/coyaSONG</uri>
+        </author>
+        <published>2026-07-15T18:24:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix misleading createAttributeNS() namespace guidance and examples]]></title>
+        <id>https://github.com/mdn/content/pull/44727</id>
+        <link href="https://github.com/mdn/content/pull/44727"/>
+        <updated>2026-07-15T17:35:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/259028460?u=76c93f0df0fbeb4706736acca78f07a43e398a63&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44619.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4788718304" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44619" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44619/hovercard" href="https://github.com/mdn/content/issues/44619">#44619</a>.</p>
+<p dir="auto">This PR updates the <code class="notranslate">Document.createAttributeNS()</code> documentation to correctly describe how <code class="notranslate">namespaceURI</code> should be used when creating attributes.</p>
+<p dir="auto">The previous documentation used <code class="notranslate">createAttributeNS("http://www.w3.org/2000/svg", "viewBox")</code> as an example, which is misleading for HTML documents because unprefixed attributes (including SVG presentation attributes such as <code class="notranslate">viewBox</code>) are in the null namespace.</p>
+<h2 dir="auto">What changed</h2>
+<h3 dir="auto">Updated <code class="notranslate">namespaceURI</code> documentation</h3>
+<ul dir="auto">
+<li>Clarified that unprefixed attributes in HTML documents belong to the <strong>null namespace</strong> and should use an empty string (<code class="notranslate">""</code>) for <code class="notranslate">namespaceURI</code>.</li>
+<li>Replaced the previous HTML/SVG/MathML namespace list with namespace URIs that are actually used for attributes:
+<ul dir="auto">
+<li>XML</li>
+<li>XMLNS</li>
+<li>XLink</li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">Improved examples</h3>
+<ul dir="auto">
+<li>Replaced the misleading <code class="notranslate">viewBox</code> example.</li>
+<li>Added a namespaced attribute example using <code class="notranslate">xml:lang</code>.</li>
+<li>Added a correct example demonstrating how to create an unprefixed <code class="notranslate">viewBox</code> attribute using the null namespace.</li>
+<li>Added a note recommending <code class="notranslate">Element.setAttribute()</code> for common unprefixed attribute use cases.</li>
+</ul>
+<h2 dir="auto">Why</h2>
+<p dir="auto">The previous documentation suggested creating <code class="notranslate">viewBox</code> using the SVG namespace:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="document.createAttributeNS(
+  &quot;http://www.w3.org/2000/svg&quot;,
+  &quot;viewBox&quot;,
+);"><pre class="notranslate"><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createAttributeNS</span><span class="pl-kos">(</span>
+  <span class="pl-s">"http://www.w3.org/2000/svg"</span><span class="pl-kos">,</span>
+  <span class="pl-s">"viewBox"</span><span class="pl-kos">,</span>
+<span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">Although this creates a namespaced attribute, HTML documents treat unprefixed attributes as belonging to the null namespace. Using the SVG namespace can therefore produce unexpected behavior and does not match how parser-created attributes behave.</p>
+<p dir="auto">The updated documentation reflects the DOM and HTML specifications and demonstrates the correct usage for both namespaced and unprefixed attributes.</p>
+<h2 dir="auto">Verification</h2>
+<ul dir="auto">
+<li>✅ Verified the page renders correctly using the local MDN preview.</li>
+<li>✅ Verified the updated examples render correctly.</li>
+<li>✅ Verified there are no broken-link warnings.</li>
+<li>✅ Verified <code class="notranslate">npm start</code> completes successfully.</li>
+</ul>
+<h2 dir="auto">Screenshots</h2>
+<h3 dir="auto">Updated <code class="notranslate">namespaceURI</code> guidance</h3>
+<p dir="auto">Shows the updated explanation of null-namespace attributes and the revised namespace URI guidance.</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/259028460/622233214-c86e9099-d728-44b4-b95c-c866f3b7c723.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQxNDE4NDksIm5iZiI6MTc4NDE0MTU0OSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIyMjMzMjE0LWM4NmU5MDk5LWQ3MjgtNDRiNC1iOTVjLWM4NjZmM2I3YzcyMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcxNVQxODUyMjlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01NzdjZTJiNmI4ZDcwZjVhYTAyNzg5ODg5NTIwMGY0YTg3ZDE5MDlmZjM1NmRhNGRiMTNmNmNkZTg5M2QyMTJmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.dDNbh3j7PDuXEuhX_QT5j8x3fzHCWmcpHL19y28Dxvg"><img width="1920" height="1080" alt="Screenshot from 2026-07-15 22-55-29" src="https://private-user-images.githubusercontent.com/259028460/622233214-c86e9099-d728-44b4-b95c-c866f3b7c723.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQxNDE4NDksIm5iZiI6MTc4NDE0MTU0OSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIyMjMzMjE0LWM4NmU5MDk5LWQ3MjgtNDRiNC1iOTVjLWM4NjZmM2I3YzcyMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcxNVQxODUyMjlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01NzdjZTJiNmI4ZDcwZjVhYTAyNzg5ODg5NTIwMGY0YTg3ZDE5MDlmZjM1NmRhNGRiMTNmNmNkZTg5M2QyMTJmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.dDNbh3j7PDuXEuhX_QT5j8x3fzHCWmcpHL19y28Dxvg" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 1920 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<h3 dir="auto">Updated examples</h3>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/259028460/622233899-5da2514d-52ab-4981-990b-2d99162d7ca4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQxNDE4NDksIm5iZiI6MTc4NDE0MTU0OSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIyMjMzODk5LTVkYTI1MTRkLTUyYWItNDk4MS05OTBiLTJkOTkxNjJkN2NhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcxNVQxODUyMjlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hNTUwOGE1ZTkzYzk1MjQzMzlhOWRkZDhlYTUxMTg0M2YyMDFlZThmMjZlYzk0MGIwMTVhNDgxOWQ4ZTA0NDc2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.4meWqhTKrBUKm31kmosPb_eRnRuvnXGKIEhbj8AfUdo"><img width="1920" height="1080" alt="Screenshot from 2026-07-15 22-54-27" src="https://private-user-images.githubusercontent.com/259028460/622233899-5da2514d-52ab-4981-990b-2d99162d7ca4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQxNDE4NDksIm5iZiI6MTc4NDE0MTU0OSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIyMjMzODk5LTVkYTI1MTRkLTUyYWItNDk4MS05OTBiLTJkOTkxNjJkN2NhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcxNVQxODUyMjlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hNTUwOGE1ZTkzYzk1MjQzMzlhOWRkZDhlYTUxMTg0M2YyMDFlZThmMjZlYzk0MGIwMTVhNDgxOWQ4ZTA0NDc2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.4meWqhTKrBUKm31kmosPb_eRnRuvnXGKIEhbj8AfUdo" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 1920 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>]]></content>
+        <author>
+            <name>dsk-dev-ai</name>
+            <email>dsk-dev-ai@noreply.github.com</email>
+            <uri>https://github.com/dsk-dev-ai</uri>
+        </author>
+        <published>2026-07-15T17:32:56.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add WebDriver classic virtual sensor and pressure source commands]]></title>
         <id>https://github.com/mdn/content/pull/44726</id>
@@ -237,34 +323,6 @@ This page is already linked to from those two pages and from <a href="https://de
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2026-07-13T14:58:53.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ci(deps): bump actions/labeler from 6.1.0 to 6.2.0]]></title>
-        <id>https://github.com/mdn/content/pull/44702</id>
-        <link href="https://github.com/mdn/content/pull/44702"/>
-        <updated>2026-07-13T14:03:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/8fd03a141d9e0133fa1144d63ecbd0762c6ba1c6d52aa6b07e2a21bef2c7cf09/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d616374696f6e732f6c6162656c6572267061636b6167652d6d616e616765723d6769746875625f616374696f6e732670726576696f75732d76657273696f6e3d362e312e30266e65772d76657273696f6e3d362e322e30" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=actions/labeler&amp;package-manager=github_actions&amp;previous-version=6.1.0&amp;new-version=6.2.0" style="max-width: 100%;"></a></p>
-<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
-<hr>
-<details>
-<summary>Dependabot commands and options</summary>
-<br>
-<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
-<ul dir="auto">
-<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
-<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
-<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
-<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
-<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
-<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>
-</ul>
-</details>]]></content>
-        <author>
-            <name>dependabot</name>
-            <email>dependabot@noreply.github.com</email>
-            <uri>https://github.com/apps/dependabot</uri>
-        </author>
-        <published>2026-07-13T14:02:36.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[fix(svg): render red stroke in <use> example]]></title>
@@ -540,21 +598,5 @@ add links to page in MiTM glossary</p>]]></content>
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2026-07-08T16:59:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[PerformanceNavigationTiming.notRestoredReasons: untangle/expand reasons for null]]></title>
-        <id>https://github.com/mdn/content/pull/44669</id>
-        <link href="https://github.com/mdn/content/pull/44669"/>
-        <updated>2026-07-09T08:15:15.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/13903?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Explain less-obvious reasons for this property to be <code class="notranslate">null</code> one at a time.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The existing text seemed a bit confused, since back/forward navigations after restart are real enough. Given this, I assumed the explanation already present was actually written for the first circumstance only.</p>]]></content>
-        <author>
-            <name>SamB</name>
-            <email>SamB@noreply.github.com</email>
-            <uri>https://github.com/SamB</uri>
-        </author>
-        <published>2026-07-08T16:20:06.000Z</published>
     </entry>
 </feed>
