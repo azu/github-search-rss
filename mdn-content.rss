@@ -2,11 +2,114 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-20T01:51:44.594Z</updated>
+    <updated>2026-07-20T05:28:01.886Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix broken internal links (WebXR, SVGElement, WebAssembly, XSLT)]]></title>
+        <id>https://github.com/mdn/content/pull/44830</id>
+        <link href="https://github.com/mdn/content/pull/44830"/>
+        <updated>2026-07-20T05:27:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fixes internal links pointing to nonexistent pages, found by checking every <code class="notranslate">/en-US/docs/</code> link against both the file tree and <code class="notranslate">_redirects.txt</code>:</p>
+<ul dir="auto">
+<li><strong>WebAssembly</strong>: <code class="notranslate">Tag</code> docs linked <code class="notranslate">exnref</code> via <code class="notranslate">Reference/Types/exnref</code>; the page lives at <code class="notranslate">Reference/Value_types/exnref</code> (matching the links already used in the exception handling and tag definition docs).</li>
+<li><strong>XSLT</strong>: <code class="notranslate">&lt;xsl:stylesheet&gt;</code> docs linked <code class="notranslate">&lt;xsl:for-each-group&gt;</code>, an XSLT 2.0 element MDN does not document; converted to plain code text.</li>
+<li><strong>SVGElement</strong>: the events list included <code class="notranslate">abort</code>, <code class="notranslate">resize</code>, <code class="notranslate">scroll</code>, and <code class="notranslate">unload</code>, whose pages do not exist (these events were dropped from SVG2); removed those entries, keeping <code class="notranslate">error</code> and <code class="notranslate">load</code> which have pages.</li>
+<li><strong>WebXR</strong>: four pages linked the deleted "Using gamepads in WebXR applications" article; retargeted to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Inputs#advanced_controllers_using_the_gamepad_object" rel="nofollow">Advanced controllers using the gamepad object</a> section of the Inputs guide, where this content now lives.</li>
+</ul>
+<p dir="auto">Not touched: links to plausibly-planned pages (<code class="notranslate">MediaTrackConstraints.resizeMode</code>, MathML global attributes, CycleTracker tutorial parts, <code class="notranslate">import/source</code>) and the ~60 broken links in the WebDriver reference, which look like they need a maintainer decision (happy to file a separate issue about those).</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-07-20T05:26:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Use American English: "labelled" → "labeled", "artefact" → "artifact"]]></title>
+        <id>https://github.com/mdn/content/pull/44829</id>
+        <link href="https://github.com/mdn/content/pull/44829"/>
+        <updated>2026-07-20T05:17:43.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Per the <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide#spelling" rel="nofollow">writing style guide</a>, MDN uses American English spelling.</p>
+<ul dir="auto">
+<li>"labelled" → "labeled" in 8 pages (prose and image alt text in Learn web development and the Certificate Transparency guide)</li>
+<li>"artefact" → "artifact" in the <code class="notranslate">Intl.NumberFormat.prototype.format()</code> docs</li>
+</ul>
+<p dir="auto">Deliberately excluded: verbatim Firefox error messages ("functions cannot be labelled"), <code class="notranslate">aria-labelledby</code> contexts, the <code class="notranslate">favourite-colour</code> example extension, and the style guide's own incorrect-spelling examples.</p>
+<p dir="auto">Spelling-only change; no content changes.</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-07-20T05:17:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix grammar: "a HTML" → "an HTML" (13 pages)]]></title>
+        <id>https://github.com/mdn/content/pull/44828</id>
+        <link href="https://github.com/mdn/content/pull/44828"/>
+        <updated>2026-07-20T05:17:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fixes indefinite article usage before vowel-sound initialisms: "a HTML" → "an HTML" in 12 pages and "a XML" → "an XML" in the XSLT common errors guide.</p>
+<p dir="auto">Affected pages include glossary entries (boolean/HTML, markup, XHTML), <code class="notranslate">Element.innerHTML</code>, the <code class="notranslate">FormData</code> constructor, <code class="notranslate">HTMLIFrameElement.srcdoc</code>, <code class="notranslate">HTMLMetaElement</code>, the PAC file guide, CSP <code class="notranslate">script-src</code>, both MathML guides, and the Rust-to-Wasm tutorial.</p>
+<p dir="auto">Grammar-only change; no content changes.</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-07-20T05:17:09.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FF153 CSS basic shape closest-/farthest-corner]]></title>
+        <id>https://github.com/mdn/content/pull/44827</id>
+        <link href="https://github.com/mdn/content/pull/44827"/>
+        <updated>2026-07-20T05:13:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF153 adds support for the <code class="notranslate">farthest-corner</code> and <code class="notranslate">closest-corner</code> radius values for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/basic-shape/ellipse" rel="nofollow"><code class="notranslate">ellipse()</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/basic-shape/circle" rel="nofollow"><code class="notranslate">circle()</code></a> in Nightly in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2037673" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2037673</a></p>
+<p dir="auto">This updates the docs to include the feature. It adds the two new keywords, and an example that allows you to see the effect of selecting the keywords and also moving the center of the circle within its reference box.</p>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4666421187" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44459" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44459/hovercard" href="https://github.com/mdn/content/issues/44459">#44459</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-07-20T05:08:51.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix typo: "withing" → "within" in 3 pages]]></title>
+        <id>https://github.com/mdn/content/pull/44826</id>
+        <link href="https://github.com/mdn/content/pull/44826"/>
+        <updated>2026-07-20T05:13:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fixes the misspelling "withing" → "within" in three pages:</p>
+<ul dir="auto">
+<li><code class="notranslate">Performance.measure()</code> (track-entry grouping description)</li>
+<li>CSS replaced element properties guide (<code class="notranslate">object-fit</code> description)</li>
+<li>SVG attribute reference (event handler attributes note)</li>
+</ul>
+<p dir="auto">Spelling-only change; no content changes.</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-07-20T05:01:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix typo: "dependant" → "dependent" across 8 pages]]></title>
+        <id>https://github.com/mdn/content/pull/44825</id>
+        <link href="https://github.com/mdn/content/pull/44825"/>
+        <updated>2026-07-20T05:14:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">MDN uses American English spelling. "Dependant" is the British noun form; as an adjective it should be "dependent".</p>
+<p dir="auto">Fixed in 8 pages (mostly the built-in AI API docs): <code class="notranslate">LanguageDetector</code>/<code class="notranslate">Summarizer</code>/<code class="notranslate">Translator</code> <code class="notranslate">create()</code>, <code class="notranslate">inputQuota</code>, and <code class="notranslate">measureInputUsage()</code> pages, plus <code class="notranslate">CanvasRenderingContext2D.lang</code>.</p>
+<p dir="auto">Spelling-only change; no content changes.</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-07-20T05:01:39.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Remove the `offline-enabled` manifest key docs]]></title>
         <id>https://github.com/mdn/content/pull/44823</id>
@@ -51,7 +154,7 @@ Relating BCD changes in PR  <a class="issue-link js-issue-link" data-error-text=
         <title type="html"><![CDATA[Add note about offline_enabled being unsupported in Manifest V3]]></title>
         <id>https://github.com/mdn/content/pull/44820</id>
         <link href="https://github.com/mdn/content/pull/44820"/>
-        <updated>2026-07-19T18:40:26.000Z</updated>
+        <updated>2026-07-20T04:00:06.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/237978098?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44817.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4919667433" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44817" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44817/hovercard" href="https://github.com/mdn/content/issues/44817">#44817</a>. Adds a note clarifying that offline_enabled is a Manifest V2-only key and has no effect in Manifest V3 (supported in Chrome 88+).</p>
 
 
@@ -287,9 +390,9 @@ Relating BCD changes in PR  <a class="issue-link js-issue-link" data-error-text=
 </ul>
 <h2 dir="auto">Screenshots</h2>
 <h3 dir="auto">Updated syntax</h3>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/259028460/623140120-7d1618b6-eb9a-436a-93bb-132234ffc8ee.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MTI2MDQsIm5iZiI6MTc4NDUxMjMwNCwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTQwMTIwLTdkMTYxOGI2LWViOWEtNDM2YS05M2JiLTEzMjIzNGZmYzhlZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwMTUxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05NWM1OGMxYWI2ODg3OWFmNDVhMjQxMTk2ODlhZDBiNjhiOTU2NDU5ODRiNjI4ZmZiNTU2YjgyNmE1ODVlNjc4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.gztg2L6QdY-HKfPappTiXDc9ACRXPhEdfglR-CoS66M"><img width="1920" height="1080" alt="Screenshot from 2026-07-17 14-53-56" src="https://private-user-images.githubusercontent.com/259028460/623140120-7d1618b6-eb9a-436a-93bb-132234ffc8ee.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MTI2MDQsIm5iZiI6MTc4NDUxMjMwNCwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTQwMTIwLTdkMTYxOGI2LWViOWEtNDM2YS05M2JiLTEzMjIzNGZmYzhlZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwMTUxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05NWM1OGMxYWI2ODg3OWFmNDVhMjQxMTk2ODlhZDBiNjhiOTU2NDU5ODRiNjI4ZmZiNTU2YjgyNmE1ODVlNjc4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.gztg2L6QdY-HKfPappTiXDc9ACRXPhEdfglR-CoS66M" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 1920 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/259028460/623140120-7d1618b6-eb9a-436a-93bb-132234ffc8ee.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MjU1ODEsIm5iZiI6MTc4NDUyNTI4MSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTQwMTIwLTdkMTYxOGI2LWViOWEtNDM2YS05M2JiLTEzMjIzNGZmYzhlZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwNTI4MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zMjhiYmVmMzBhOTM1Y2JhNjE5NjVlZDBmYWIwODAxM2UyYTIzMWYzNDFhNTk1ZDc0MWM1NDY3MzIzYWJmMDhjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.6qc9Iz_xSHCSjAGy46KLWk0OyXGbIsDqvA8PfuYGtJo"><img width="1920" height="1080" alt="Screenshot from 2026-07-17 14-53-56" src="https://private-user-images.githubusercontent.com/259028460/623140120-7d1618b6-eb9a-436a-93bb-132234ffc8ee.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MjU1ODEsIm5iZiI6MTc4NDUyNTI4MSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTQwMTIwLTdkMTYxOGI2LWViOWEtNDM2YS05M2JiLTEzMjIzNGZmYzhlZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwNTI4MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zMjhiYmVmMzBhOTM1Y2JhNjE5NjVlZDBmYWIwODAxM2UyYTIzMWYzNDFhNTk1ZDc0MWM1NDY3MzIzYWJmMDhjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.6qc9Iz_xSHCSjAGy46KLWk0OyXGbIsDqvA8PfuYGtJo" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 1920 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <h3 dir="auto">Updated <code class="notranslate">&lt;random-key&gt;</code> parameter documentation</h3>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/259028460/623138662-004ef81b-0d99-4785-92f2-9448a81f61a4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MTI2MDQsIm5iZiI6MTc4NDUxMjMwNCwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTM4NjYyLTAwNGVmODFiLTBkOTktNDc4NS05MmYyLTk0NDhhODFmNjFhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwMTUxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03NDJlNjdkOTQ2ZDhkNzlkYWExMGE3OWY3NTNlZTE2NWI5M2ZmYWViMWRmN2ViODQzMzYwZThiOGEyZDljYzAzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.UIh-HgHbRiaxvQdqyNjVTYUblOO5R9o_MQcpnCXqjuo"><img width="1920" height="1080" alt="Screenshot from 2026-07-15 22-54-27" src="https://private-user-images.githubusercontent.com/259028460/623138662-004ef81b-0d99-4785-92f2-9448a81f61a4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MTI2MDQsIm5iZiI6MTc4NDUxMjMwNCwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTM4NjYyLTAwNGVmODFiLTBkOTktNDc4NS05MmYyLTk0NDhhODFmNjFhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwMTUxNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03NDJlNjdkOTQ2ZDhkNzlkYWExMGE3OWY3NTNlZTE2NWI5M2ZmYWViMWRmN2ViODQzMzYwZThiOGEyZDljYzAzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.UIh-HgHbRiaxvQdqyNjVTYUblOO5R9o_MQcpnCXqjuo" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 1920 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>]]></content>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/259028460/623138662-004ef81b-0d99-4785-92f2-9448a81f61a4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MjU1ODEsIm5iZiI6MTc4NDUyNTI4MSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTM4NjYyLTAwNGVmODFiLTBkOTktNDc4NS05MmYyLTk0NDhhODFmNjFhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwNTI4MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNWZlZWU0MGRiMmUzYjRiYWQ5NTJjY2ZkYzk5MDVkNTJlNDUzOTQ3YmFjMWE5ZGVmMTY4NzcwZjZiNjk4NzEyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.Btqj25SyfbfIcruztswSL6LuulcnyO5M-Ll9BJQQqYc"><img width="1920" height="1080" alt="Screenshot from 2026-07-15 22-54-27" src="https://private-user-images.githubusercontent.com/259028460/623138662-004ef81b-0d99-4785-92f2-9448a81f61a4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MjU1ODEsIm5iZiI6MTc4NDUyNTI4MSwicGF0aCI6Ii8yNTkwMjg0NjAvNjIzMTM4NjYyLTAwNGVmODFiLTBkOTktNDc4NS05MmYyLTk0NDhhODFmNjFhNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNzIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDcyMFQwNTI4MDFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNWZlZWU0MGRiMmUzYjRiYWQ5NTJjY2ZkYzk5MDVkNTJlNDUzOTQ3YmFjMWE5ZGVmMTY4NzcwZjZiNjk4NzEyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.Btqj25SyfbfIcruztswSL6LuulcnyO5M-Ll9BJQQqYc" style="max-width: 100%; height: auto; max-height: 1080px;; aspect-ratio: 1920 / 1080; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>]]></content>
         <author>
             <name>dsk-dev-ai</name>
             <email>dsk-dev-ai@noreply.github.com</email>
@@ -347,7 +450,7 @@ Relating BCD changes in PR  <a class="issue-link js-issue-link" data-error-text=
 <p dir="auto">Replace the deprecated <code class="notranslate">fred-server|ssr</code> command with <code class="notranslate">fred server|ssr</code>.</p>
 <h3 dir="auto">Motivation</h3>
 <p dir="auto">The <code class="notranslate">fred-server|ssr</code> command is deprecated: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4826749830" data-permission-text="Title is private" data-url="https://github.com/mdn/fred/issues/1697" data-hovercard-type="pull_request" data-hovercard-url="/mdn/fred/pull/1697/hovercard" href="https://github.com/mdn/fred/pull/1697">mdn/fred#1697</a>:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/15844309/623040536-5db2d557-6ab0-4afa-b270-d71065e8bec1.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MTI2MDQsIm5iZiI6MTc4NDUxMjMwNCwicGF0aCI6Ii8xNTg0NDMwOS82MjMwNDA1MzYtNWRiMmQ1NTctNmFiMC00YWZhLWIyNzAtZDcxMDY1ZThiZWMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzIwVDAxNTE0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYxMThiMjQwNjcwZWYyYTUxMzIwYzI2NmE1NWM0NWZkNjE1ZDc3YzdkMjMxYjM3ZTljMmQ4ZTllYTdiY2MwMzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.WrzqKbMOFoFIgJ5dvPHlS7zw_D0k4k2V9QDrKfT6TuE"><img width="1011" height="213" alt="image" src="https://private-user-images.githubusercontent.com/15844309/623040536-5db2d557-6ab0-4afa-b270-d71065e8bec1.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MTI2MDQsIm5iZiI6MTc4NDUxMjMwNCwicGF0aCI6Ii8xNTg0NDMwOS82MjMwNDA1MzYtNWRiMmQ1NTctNmFiMC00YWZhLWIyNzAtZDcxMDY1ZThiZWMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzIwVDAxNTE0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYxMThiMjQwNjcwZWYyYTUxMzIwYzI2NmE1NWM0NWZkNjE1ZDc3YzdkMjMxYjM3ZTljMmQ4ZTllYTdiY2MwMzMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.WrzqKbMOFoFIgJ5dvPHlS7zw_D0k4k2V9QDrKfT6TuE" style="max-width: 100%; height: auto; max-height: 213px;; aspect-ratio: 1011 / 213; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>]]></content>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/15844309/623040536-5db2d557-6ab0-4afa-b270-d71065e8bec1.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MjU1ODEsIm5iZiI6MTc4NDUyNTI4MSwicGF0aCI6Ii8xNTg0NDMwOS82MjMwNDA1MzYtNWRiMmQ1NTctNmFiMC00YWZhLWIyNzAtZDcxMDY1ZThiZWMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzIwVDA1MjgwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQzYjQyZDJjMzZkOWIyZTFlYjJhZGM1YmU2YWRhMjM1NmQ0ZWI5OGE3ZjVmY2Y1ZGRkNGJiNDM2OTU5YjBjZGUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.1vm30pFEN2pgu1GA8YDbpI2Bk9uzOISphiG10G_zejI"><img width="1011" height="213" alt="image" src="https://private-user-images.githubusercontent.com/15844309/623040536-5db2d557-6ab0-4afa-b270-d71065e8bec1.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODQ1MjU1ODEsIm5iZiI6MTc4NDUyNTI4MSwicGF0aCI6Ii8xNTg0NDMwOS82MjMwNDA1MzYtNWRiMmQ1NTctNmFiMC00YWZhLWIyNzAtZDcxMDY1ZThiZWMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA3MjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNzIwVDA1MjgwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQzYjQyZDJjMzZkOWIyZTFlYjJhZGM1YmU2YWRhMjM1NmQ0ZWI5OGE3ZjVmY2Y1ZGRkNGJiNDM2OTU5YjBjZGUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.1vm30pFEN2pgu1GA8YDbpI2Bk9uzOISphiG10G_zejI" style="max-width: 100%; height: auto; max-height: 213px;; aspect-ratio: 1011 / 213; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>]]></content>
         <author>
             <name>yin1999</name>
             <email>yin1999@noreply.github.com</email>
@@ -391,139 +494,5 @@ That previous PR included the task of "Update pages to correct module (gap has b
             <uri>https://github.com/hanu-14</uri>
         </author>
         <published>2026-07-16T15:24:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add glossary page for interface]]></title>
-        <id>https://github.com/mdn/content/pull/44746</id>
-        <link href="https://github.com/mdn/content/pull/44746"/>
-        <updated>2026-07-16T15:24:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/91409429?u=4e1f7b62160e72ba743c04565340fd30f04e290a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds a new glossary page for <code class="notranslate">interface</code>, similar to the existing <code class="notranslate">class</code> glossary page. The <code class="notranslate">interface</code> term is referenced from the <code class="notranslate">mixin</code> glossary page via <code class="notranslate">{{Glossary("interface")}}</code> but had no corresponding page.</p>
-<h3 dir="auto">Changes</h3>
-<ul dir="auto">
-<li><code class="notranslate">files/en-us/glossary/interface/index.md</code> - New glossary definition for interface, covering both OOP and Web API contexts</li>
-</ul>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44091.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4429026049" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44091" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44091/hovercard" href="https://github.com/mdn/content/issues/44091">#44091</a></p>]]></content>
-        <author>
-            <name>hanu-14</name>
-            <email>hanu-14@noreply.github.com</email>
-            <uri>https://github.com/hanu-14</uri>
-        </author>
-        <published>2026-07-16T15:09:09.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix jsxref("function") to jsxref("Function") in timer and Promise docs]]></title>
-        <id>https://github.com/mdn/content/pull/44744</id>
-        <link href="https://github.com/mdn/content/pull/44744"/>
-        <updated>2026-07-16T15:05:55.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/91409429?u=4e1f7b62160e72ba743c04565340fd30f04e290a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Replace lowercase {{jsxref("function")}} with {{jsxref("Function")}} (the global Function object) in 7 callback-parameter descriptions across the Window/WorkerGlobalScope timer methods and the Promise() constructor.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">An upcoming version of the Rari build system resolves jsxref names against an index of Web/JavaScript/Reference/* pages. Lowercase unction is ambiguous between the unction operator and the unction statement, so it no longer resolves to a single page and produces a broken link.</p>
-<h3 dir="auto">Changes</h3>
-<ul dir="auto">
-<li>Window.setInterval()</li>
-<li>Window.setTimeout()</li>
-<li>Window.queueMicrotask()</li>
-<li>WorkerGlobalScope.setInterval()</li>
-<li>WorkerGlobalScope.setTimeout()</li>
-<li>WorkerGlobalScope.queueMicrotask()</li>
-<li>Promise() constructor</li>
-</ul>]]></content>
-        <author>
-            <name>hanu-14</name>
-            <email>hanu-14@noreply.github.com</email>
-            <uri>https://github.com/hanu-14</uri>
-        </author>
-        <published>2026-07-16T15:03:58.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add note about Firefox anti-fingerprinting to getImageData() page]]></title>
-        <id>https://github.com/mdn/content/pull/44736</id>
-        <link href="https://github.com/mdn/content/pull/44736"/>
-        <updated>2026-07-16T06:59:12.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/91409429?u=4e1f7b62160e72ba743c04565340fd30f04e290a&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39084.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2989485754" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39084" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39084/hovercard" href="https://github.com/mdn/content/issues/39084">#39084</a></p>
-<p dir="auto">Adds a note in the Exceptions section that warns users about browsers potentially applying anti-fingerprinting measures (e.g., Firefox's fingerprinting protection which adds random noise to background canvas reads).</p>]]></content>
-        <author>
-            <name>hanu-14</name>
-            <email>hanu-14@noreply.github.com</email>
-            <uri>https://github.com/hanu-14</uri>
-        </author>
-        <published>2026-07-16T06:58:51.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix broken links, HTTP→HTTPS upgrades, and article/typo corrections]]></title>
-        <id>https://github.com/mdn/content/pull/44733</id>
-        <link href="https://github.com/mdn/content/pull/44733"/>
-        <updated>2026-07-16T07:12:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/247830118?u=872ee428ca3783a28d7703b00cb771225c7b496d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR fixes various content quality issues that were identified throughout MDN Web Docs: broken links, insecure links, incorrect article use, and a typo in the headings. The changes are only editorial, and do not affect the functionality as rendered.</p>
-<p dir="auto">What has changed and why (explain your reasoning)<br>
-HTTP to HTTPS link redirection (6 files) There were still some external links that had not switched from plain http:// to https.External links not switched from http:// to https (6 files) Some external links were still pointing to the old http protocol. This is not only insecure, but also in conflict with MDN's guidelines about using secure connections. Updated:</p>
-<p dir="auto">The video codecs are listed in the guide under itu.int/rec/T-REC-H.265<br>
-mango.blender.org - both cross-browser video player and video player styling guides<br>
-The autoplay guide contains references to URLs of posters at example.com.<br>
-The following example shows XML href references in the OpenSearch guide.Below is an example of XML href references for the OpenSearch guide.<br>
-"a HTTP" → "an HTTP" (11 files) The indefinite article before an initialism that starts with a vowel sound should be "an", not "a". An HTTP request (not a HTTP request) starts with an "HTTP" sound which is "aitch-tee-tee-pee", not "a". Addressed in the following documents: HTTP overview, Headers overview, and Firefox release notes.</p>
-<p dir="auto">"a SVG" → "an SVG" (5 files) Same rule applies to SVG ("ess-vee-gee"). It was fixed in the pages of CSS selectors references, Web API attr and node reference pages and the stop-opacity property page.</p>
-<p dir="auto">"a HTML" was changed to "an HTML" in the HTML boolean attribute glossary entry, the markup glossary page and the XHTML glossary page.</p>
-<p dir="auto">Getting an uniform location → Getting a uniform location (1 file) To start the word "uniform" with the "yoo" sounds, it needs the "a". Improved the WebGLUniformLocation reference page's section heading.</p>]]></content>
-        <author>
-            <name>axeroofficialtournament-del</name>
-            <email>axeroofficialtournament-del@noreply.github.com</email>
-            <uri>https://github.com/axeroofficialtournament-del</uri>
-        </author>
-        <published>2026-07-16T03:53:55.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[fix: link `{{jsxref("Function")}}` in callback parameter descriptions]]></title>
-        <id>https://github.com/mdn/content/pull/44732</id>
-        <link href="https://github.com/mdn/content/pull/44732"/>
-        <updated>2026-07-15T22:54:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Replace the ambiguous lowercase <code class="notranslate">{{jsxref("function")}}</code> with <code class="notranslate">{{jsxref("Function")}}</code> (the global <code class="notranslate">Function</code> object) in 7 callback-parameter descriptions across the <code class="notranslate">Window</code>/<code class="notranslate">WorkerGlobalScope</code> timer methods and the <code class="notranslate">Promise()</code> constructor.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">An upcoming version of the Rari build system (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4498306161" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/715" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/715/hovercard" href="https://github.com/mdn/rari/pull/715">mdn/rari#715</a>) resolves <code class="notranslate">jsxref</code> names against an index of <code class="notranslate">Web/JavaScript/Reference/*</code> pages. Lowercase <code class="notranslate">function</code> is ambiguous between the <code class="notranslate">function</code> operator and the <code class="notranslate">function</code> statement, so it no longer resolves to a single page and produces a broken link. The current build tolerates it via redirect-following, so this is not yet a visible issue — this change is a preemptive cleanup so the pages keep resolving once that build change lands. Each of these descriptions refers to a generic JavaScript function (a callback), so the global <code class="notranslate">Function</code> object is the appropriate unambiguous target.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Affected pages:</p>
-<ul dir="auto">
-<li><code class="notranslate">Window.setInterval()</code>, <code class="notranslate">Window.setTimeout()</code>, <code class="notranslate">Window.queueMicrotask()</code></li>
-<li><code class="notranslate">WorkerGlobalScope.setInterval()</code>, <code class="notranslate">WorkerGlobalScope.setTimeout()</code>, <code class="notranslate">WorkerGlobalScope.queueMicrotask()</code></li>
-<li><code class="notranslate">Promise()</code> constructor</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4498306161" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/715" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/715/hovercard" href="https://github.com/mdn/rari/pull/715">mdn/rari#715</a>.</p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-07-15T22:52:24.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix MediaSession action handler example]]></title>
-        <id>https://github.com/mdn/content/pull/44728</id>
-        <link href="https://github.com/mdn/content/pull/44728"/>
-        <updated>2026-07-15T18:25:48.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Clarifies the <code class="notranslate">MediaSession</code> play and pause action-handler example by selecting the page's <code class="notranslate">&lt;audio&gt;</code> element and removing calls to undefined demo-only status helpers. It also omits the unused <code class="notranslate">catch</code> binding in the same example.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The current sample references <code class="notranslate">audioEl</code>, <code class="notranslate">updateStatus</code>, <code class="notranslate">allMeta</code>, and <code class="notranslate">index</code> without defining them, which makes the example difficult to understand or reuse. The updated example is focused on the documented media-session behavior and defines every value it uses.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Validation completed:</p>
-<ul dir="auto">
-<li>Prettier, Markdownlint, and CSpell on the changed page</li>
-<li>Repository test suite (5/5)</li>
-<li>JavaScript syntax and play/pause handler behavior checks</li>
-<li>Rari single-page build with no reported issues</li>
-<li>Repository pre-commit URL, cross-reference, front-matter, Prettier, and Markdownlint checks</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41250.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3442018707" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41250" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41250/hovercard" href="https://github.com/mdn/content/issues/41250">#41250</a></p>]]></content>
-        <author>
-            <name>coyaSONG</name>
-            <email>coyaSONG@noreply.github.com</email>
-            <uri>https://github.com/coyaSONG</uri>
-        </author>
-        <published>2026-07-15T18:24:06.000Z</published>
     </entry>
 </feed>
