@@ -2,11 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-07-24T23:53:18.637Z</updated>
+    <updated>2026-07-25T01:28:50.432Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Explicit ecosystem claim on package.json for cross-ecosystem disambiguation]]></title>
+        <id>https://github.com/npm/rfcs/issues/913</id>
+        <link href="https://github.com/npm/rfcs/issues/913"/>
+        <updated>2026-07-25T01:28:29.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1058978?u=a70f8d2a15580085de0a062e1c4d2552d85824c2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Cross-ecosystem note: historically Dub (D's package manager) also used <code class="notranslate">package.json</code> as a recipe filename. Overlapping keys make ownership ambiguous. Dub is moving toward refusing obvious npm files (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4273351009" data-permission-text="Title is private" data-url="https://github.com/dlang/dub/issues/3118" data-hovercard-type="issue" data-hovercard-url="/dlang/dub/issues/3118/hovercard" href="https://github.com/dlang/dub/issues/3118">dlang/dub#3118</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4973331672" data-permission-text="Title is private" data-url="https://github.com/dlang/dub/issues/3136" data-hovercard-type="pull_request" data-hovercard-url="/dlang/dub/pull/3136/hovercard" href="https://github.com/dlang/dub/pull/3136">dlang/dub#3136</a>) and preferring <code class="notranslate">dub.json</code>.</p>
+<p dir="auto">A durable fix is an <strong>explicit ecosystem claim</strong> on <code class="notranslate">package.json</code> (e.g. <code class="notranslate">"packageFormat": "npm"</code> / <code class="notranslate">"packageFormat": "dub"</code>), agreed across ecosystems—not only JS-internal heuristics.</p>
+<p dir="auto">Primary write-up filed with the OpenJS Package Metadata Interoperability group (better fit for field-level <code class="notranslate">package.json</code> meaning). Linking here so the npm CLI RFC track is aware if a CLI-side recommendation is desired later.</p>
+<p dir="auto">OpenJS issue: (will update with URL after open)</p>
+<p dir="auto">Dub issue: (will update with URL after open)</p>
+<p dir="auto">Not asking npm to abandon <code class="notranslate">package.json</code> ownership—only to consider documenting a positive claim so other tools can skip or accept the file unambiguously.</p>]]></content>
+        <author>
+            <name>AMDphreak</name>
+            <email>AMDphreak@noreply.github.com</email>
+            <uri>https://github.com/AMDphreak</uri>
+        </author>
+        <published>2026-07-25T01:28:29.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[{   "stagedVersions": {     "whatever": "other",     "metadata": "we wanna",     "put": "here",     "versions": {       "1.2.3": { "manifest": "data..." },       "1.2.4": { "another": "staged manifest..." }     }   } }The registry will support a data structure like this:]]></title>
         <id>https://github.com/npm/rfcs/issues/910</id>
@@ -1158,132 +1176,5 @@ it downgrade to an older version. It will leave the version as it is.</li>
             <uri>https://github.com/ramirezchachin1-lgtm</uri>
         </author>
         <published>2026-02-16T12:35:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[RRFC] Add an icon url field]]></title>
-        <id>https://github.com/npm/rfcs/issues/852</id>
-        <link href="https://github.com/npm/rfcs/issues/852"/>
-        <updated>2025-12-30T21:02:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4944618?u=b8530c7a6c135272363d85d657b0b3ee95c8fec2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add a <code class="notranslate">icon</code> url field to the <code class="notranslate">package.json</code> spec, which would be returned in the search results.</p>
-<blockquote>
-<p dir="auto"><strong>Edit:</strong> This link would be available in the search API results.</p>
-</blockquote>
-<p dir="auto">So, using the example result from a search below, a field would be returned in the <code class="notranslate">package</code> object:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="{
-  &quot;objects&quot;: [
-    {
-      &quot;downloads&quot;: {
-        &quot;monthly&quot;: 17877,
-        &quot;weekly&quot;: 3863
-      },
-      &quot;dependents&quot;: &quot;177&quot;,
-      &quot;updated&quot;: &quot;2025-12-22T14:06:11.084Z&quot;,
-      &quot;searchScore&quot;: 294.53653,
-      &quot;package&quot;: {
-        &quot;name&quot;: &quot;homebridge-lib&quot;,
-        &quot;keywords&quot;: [
-          &quot;homekit&quot;,
-          &quot;homebridge&quot;
-        ],
-        &quot;version&quot;: &quot;7.2.0&quot;,
-        &quot;description&quot;: &quot;Library for homebridge plugins&quot;,
-        &quot;sanitized_name&quot;: &quot;homebridge-lib&quot;,
-        &quot;icon&quot;: &quot;https://github.com/ebaauw/homebridge-lib/path/to/icon_file.png&quot;,
-        &quot;publisher&quot;: {
-          &quot;email&quot;: &quot;erik.baauw@xs4all.nl&quot;,
-          &quot;username&quot;: &quot;ebaauw&quot;
-        },
-        &quot;maintainers&quot;: [
-          {
-            &quot;email&quot;: &quot;erik.baauw@xs4all.nl&quot;,
-            &quot;username&quot;: &quot;ebaauw&quot;
-          }
-        ],
-        &quot;license&quot;: &quot;Apache-2.0&quot;,
-        &quot;date&quot;: &quot;2025-12-08T13:57:14.187Z&quot;,
-        &quot;links&quot;: {
-          &quot;homepage&quot;: &quot;https://github.com/ebaauw/homebridge-lib#readme&quot;,
-          &quot;repository&quot;: &quot;git+https://github.com/ebaauw/homebridge-lib.git&quot;,
-          &quot;bugs&quot;: &quot;https://github.com/ebaauw/homebridge-lib/issues&quot;,
-          &quot;npm&quot;: &quot;https://www.npmjs.com/package/homebridge-lib&quot;
-        }
-      },
-      &quot;score&quot;: {
-        &quot;final&quot;: 294.53653,
-        &quot;detail&quot;: {
-          &quot;popularity&quot;: 1,
-          &quot;quality&quot;: 1,
-          &quot;maintenance&quot;: 1
-        }
-      },
-      &quot;flags&quot;: {
-        &quot;insecure&quot;: 0
-      }
-    }
-  ],
-  &quot;total&quot;: 1,
-  &quot;time&quot;: &quot;2025-12-25T20:42:48.227Z&quot;
-}"><pre class="notranslate"><code class="notranslate">{
-  "objects": [
-    {
-      "downloads": {
-        "monthly": 17877,
-        "weekly": 3863
-      },
-      "dependents": "177",
-      "updated": "2025-12-22T14:06:11.084Z",
-      "searchScore": 294.53653,
-      "package": {
-        "name": "homebridge-lib",
-        "keywords": [
-          "homekit",
-          "homebridge"
-        ],
-        "version": "7.2.0",
-        "description": "Library for homebridge plugins",
-        "sanitized_name": "homebridge-lib",
-        "icon": "https://github.com/ebaauw/homebridge-lib/path/to/icon_file.png",
-        "publisher": {
-          "email": "erik.baauw@xs4all.nl",
-          "username": "ebaauw"
-        },
-        "maintainers": [
-          {
-            "email": "erik.baauw@xs4all.nl",
-            "username": "ebaauw"
-          }
-        ],
-        "license": "Apache-2.0",
-        "date": "2025-12-08T13:57:14.187Z",
-        "links": {
-          "homepage": "https://github.com/ebaauw/homebridge-lib#readme",
-          "repository": "git+https://github.com/ebaauw/homebridge-lib.git",
-          "bugs": "https://github.com/ebaauw/homebridge-lib/issues",
-          "npm": "https://www.npmjs.com/package/homebridge-lib"
-        }
-      },
-      "score": {
-        "final": 294.53653,
-        "detail": {
-          "popularity": 1,
-          "quality": 1,
-          "maintenance": 1
-        }
-      },
-      "flags": {
-        "insecure": 0
-      }
-    }
-  ],
-  "total": 1,
-  "time": "2025-12-25T20:42:48.227Z"
-}
-</code></pre></div>]]></content>
-        <author>
-            <name>justjam2013</name>
-            <email>justjam2013@noreply.github.com</email>
-            <uri>https://github.com/justjam2013</uri>
-        </author>
-        <published>2025-12-29T22:33:31.000Z</published>
     </entry>
 </feed>
