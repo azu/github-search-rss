@@ -2,11 +2,128 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-26T12:54:16.808Z</updated>
+    <updated>2026-07-26T14:22:24.852Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix broken internal links to relocated pages]]></title>
+        <id>https://github.com/mdn/content/pull/44921</id>
+        <link href="https://github.com/mdn/content/pull/44921"/>
+        <updated>2026-07-26T14:07:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Fixes 16 internal links across 9 pages that point at slugs which don't exist and have no redirect, so they currently 404 for readers.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Broken target</th>
+<th>Corrected to</th>
+<th>Occurrences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">Web/WebDriver/Reference/Commands/NewSession</code></td>
+<td><code class="notranslate">Web/WebDriver/Reference/Classic/Commands/NewSession</code></td>
+<td>12</td>
+</tr>
+<tr>
+<td><code class="notranslate">Web/WebDriver/Reference/Errors/ScriptTimeoutError</code></td>
+<td><code class="notranslate">Web/WebDriver/Reference/Errors/ScriptTimeout</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td><code class="notranslate">WebAssembly/Reference/Types/exnref</code></td>
+<td><code class="notranslate">WebAssembly/Reference/Value_types/exnref</code></td>
+<td>1</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">All three targets currently return 404 on the live site, and each corrected target returns 200:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="404  /en-US/docs/Web/WebDriver/Reference/Commands/NewSession
+200  /en-US/docs/Web/WebDriver/Reference/Classic/Commands/NewSession
+404  /en-US/docs/Web/WebDriver/Reference/Errors/ScriptTimeoutError
+200  /en-US/docs/Web/WebDriver/Reference/Errors/ScriptTimeout
+404  /en-US/docs/WebAssembly/Reference/Types/exnref
+200  /en-US/docs/WebAssembly/Reference/Value_types/exnref"><pre class="notranslate"><code class="notranslate">404  /en-US/docs/Web/WebDriver/Reference/Commands/NewSession
+200  /en-US/docs/Web/WebDriver/Reference/Classic/Commands/NewSession
+404  /en-US/docs/Web/WebDriver/Reference/Errors/ScriptTimeoutError
+200  /en-US/docs/Web/WebDriver/Reference/Errors/ScriptTimeout
+404  /en-US/docs/WebAssembly/Reference/Types/exnref
+200  /en-US/docs/WebAssembly/Reference/Value_types/exnref
+</code></pre></div>
+<p dir="auto">Supporting evidence for each:</p>
+<ul dir="auto">
+<li><strong><code class="notranslate">NewSession</code></strong> — the WebDriver classic commands live under <code class="notranslate">Reference/Classic/Commands/</code>. <code class="notranslate">classic/timeouts/index.md</code> already links to <code class="notranslate">Reference/Classic/Commands/SetTimeouts</code> and <code class="notranslate">.../GetTimeouts</code> correctly on lines adjacent to the broken <code class="notranslate">Reference/Commands/NewSession</code> links, so the file is internally inconsistent.</li>
+<li><strong><code class="notranslate">ScriptTimeoutError</code></strong> — the link text is "script timeout error" and the page documenting it is titled "<code class="notranslate">script timeout</code> error code" with slug <code class="notranslate">Web/WebDriver/Reference/Errors/ScriptTimeout</code>.</li>
+<li><strong><code class="notranslate">exnref</code></strong> — there is no <code class="notranslate">WebAssembly/Reference/Types/</code> subtree at all; the value types live under <code class="notranslate">WebAssembly/Reference/Value_types/</code>.</li>
+</ul>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Scope was kept deliberately narrow: <strong>only links whose correct target provably exists</strong> were changed. Links pointing at pages that simply haven't been written yet were left untouched — for example <code class="notranslate">Web/WebDriver/Reference/Commands/ExecuteScript</code>, <code class="notranslate">.../FindElement</code>, and <code class="notranslate">Web/WebDriver/Reference/WebElement</code> have no counterpart anywhere in the repo, so repairing those means writing the pages or removing the links, which is a content decision rather than a link fix.</p>
+<p dir="auto">One related cluster I deliberately left alone, in case a maintainer wants to weigh in: <code class="notranslate">Web/MathML/Reference/Global_attributes/index.md</code> links to <code class="notranslate">Web/MathML/Reference/Global_attributes/{autofocus,class,id,nonce,style,tabindex}</code>, none of which exist, while the corresponding <code class="notranslate">Web/HTML/Reference/Global_attributes/</code> pages do. Repointing them at the HTML pages would fix the 404s, but creating MathML-specific pages may be the preferred outcome — happy to follow up either way.</p>
+<p dir="auto">No prose, code samples, or link text was changed; only the URLs.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>husamemadH</name>
+            <email>husamemadH@noreply.github.com</email>
+            <uri>https://github.com/husamemadH</uri>
+        </author>
+        <published>2026-07-26T14:06:39.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Use American English: "whilst" → "while", "fulfil" → "fulfill"]]></title>
+        <id>https://github.com/mdn/content/pull/44920</id>
+        <link href="https://github.com/mdn/content/pull/44920"/>
+        <updated>2026-07-26T13:52:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Replaces the remaining British spelling variants in <code class="notranslate">files/en-us</code> with their American-English equivalents: <code class="notranslate">whilst</code> → <code class="notranslate">while</code> (10 occurrences) and <code class="notranslate">fulfil</code> → <code class="notranslate">fulfill</code> (1 occurrence).</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide#spelling" rel="nofollow">writing style guide</a> requires American-English spelling and states "Do not use variant spelling." These occurrences are inconsistent with the rest of the content:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Word</th>
+<th>Files using it</th>
+<th>Files using the American form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">whilst</code></td>
+<td>10</td>
+<td>1541 (<code class="notranslate">while</code>)</td>
+</tr>
+<tr>
+<td><code class="notranslate">fulfil</code></td>
+<td>1</td>
+<td>45 (<code class="notranslate">fulfill</code>)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto"><code class="notranslate">cSpell</code> doesn't flag either word because both are valid dictionary entries — they're British variants rather than misspellings — so these slipped through while <code class="notranslate">npm run lint:typos</code> stayed green.</p>
+<p dir="auto">The single <code class="notranslate">fulfil</code> is in <code class="notranslate">MDN/Writing_guidelines/What_we_write</code>, so this also makes the writing guidelines consistent with the spelling rule they document.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Only prose was changed; no code samples, identifiers, or links were touched. Every replacement reads naturally in context ("occurred in the driver while processing", "While this is a useful feature", etc.).</p>
+<p dir="auto">Deliberate British spellings were intentionally left alone:</p>
+<ul dir="auto">
+<li>the style guide's own "Incorrect: localise, behaviour, colour" examples</li>
+<li><code class="notranslate">jbond007@mi6.defence.gov.uk</code> in the <code class="notranslate">&lt;input type="email"&gt;</code> examples</li>
+<li>the regular expressions guide, which uses <code class="notranslate">"He asked his neighbour a favour."</code> specifically to demonstrate matching British spellings</li>
+<li>references to the <a href="https://github.com/mdn/webextensions-examples/tree/main/favourite-colour"><code class="notranslate">favourite-colour</code></a> example, which is an actual repository name</li>
+</ul>
+<p dir="auto">Since <code class="notranslate">while</code> is shorter than <code class="notranslate">whilst</code>, no lines reflow under Prettier's <code class="notranslate">proseWrap: "preserve"</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>husamemadH</name>
+            <email>husamemadH@noreply.github.com</email>
+            <uri>https://github.com/husamemadH</uri>
+        </author>
+        <published>2026-07-26T13:52:03.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[chore(deps): bump shell-quote and concurrently]]></title>
         <id>https://github.com/mdn/content/pull/44918</id>
@@ -555,45 +672,5 @@ You can disable automated security fix PRs for this repo from the <a href="https
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-07-22T16:08:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Tech review: Add reference pages for non-trapping float-to-int conversion instruct…]]></title>
-        <id>https://github.com/mdn/content/pull/44889</id>
-        <link href="https://github.com/mdn/content/pull/44889"/>
-        <updated>2026-07-22T14:19:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">…ions</p>
-
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">This PR adds reference pages for all Wasm instructions added as part of the <a href="https://github.com/WebAssembly/spec/blob/main/proposals/nontrapping-float-to-int-conversion/Overview.md#non-trapping-float-to-int-conversions">Non-trapping Float-to-int Conversions</a> proposal.</p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-07-22T14:17:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Reference for stage 3 iterator-join]]></title>
-        <id>https://github.com/mdn/content/pull/44886</id>
-        <link href="https://github.com/mdn/content/pull/44886"/>
-        <updated>2026-07-24T05:29:39.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4928335986" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44845" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44845/hovercard" href="https://github.com/mdn/content/issues/44845">#44845</a></p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-07-22T12:22:15.000Z</published>
     </entry>
 </feed>
