@@ -2,11 +2,76 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-07-26T23:50:40.652Z</updated>
+    <updated>2026-07-27T01:49:51.719Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix JavaScript examples that throw a SyntaxError]]></title>
+        <id>https://github.com/mdn/content/pull/44924</id>
+        <link href="https://github.com/mdn/content/pull/44924"/>
+        <updated>2026-07-27T00:07:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Fixes three JavaScript examples that fail to parse, so they throw a <code class="notranslate">SyntaxError</code> and cannot run as written.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Page</th>
+<th>Problem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">RTCTransportStats</code></td>
+<td><code class="notranslate">break</code> inside a <code class="notranslate">forEach()</code> callback</td>
+</tr>
+<tr>
+<td><code class="notranslate">RTCPeerConnectionStats</code></td>
+<td><code class="notranslate">break</code> inside a <code class="notranslate">forEach()</code> callback, plus an undeclared <code class="notranslate">result</code> and an unchecked dereference</td>
+</tr>
+<tr>
+<td><code class="notranslate">CanvasRenderingContext2D.getImageData</code></td>
+<td><code class="notranslate">const imageData</code> declared twice in the same scope</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto"><strong>The two WebRTC examples.</strong> Both iterate the stats report with <code class="notranslate">forEach()</code> and then use <code class="notranslate">break</code> to stop early:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="stats.forEach((report) =&gt; {
+  if (report.type === &quot;transport&quot;) {
+    transportStats = report;
+    break; // SyntaxError: Illegal break statement
+  }
+});"><pre class="notranslate"><span class="pl-s1">stats</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">report</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">report</span><span class="pl-kos">.</span><span class="pl-c1">type</span> <span class="pl-c1">===</span> <span class="pl-s">"transport"</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">transportStats</span> <span class="pl-c1">=</span> <span class="pl-s1">report</span><span class="pl-kos">;</span>
+    <span class="pl-k">break</span><span class="pl-kos">;</span> <span class="pl-c">// SyntaxError: Illegal break statement</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto"><code class="notranslate">break</code> is not valid inside a callback, so neither example parses. {{domxref("RTCStatsReport")}} is a read-only <code class="notranslate">Map</code>-like object exposing <code class="notranslate">entries()</code>, <code class="notranslate">forEach()</code>, <code class="notranslate">keys()</code>, <code class="notranslate">values()</code> and <code class="notranslate">[Symbol.iterator]</code>, but no <code class="notranslate">some()</code> or <code class="notranslate">find()</code>, so an array search method isn't available here. Iterating with <code class="notranslate">for...of</code> over <code class="notranslate">stats.values()</code> keeps the intended early exit and makes <code class="notranslate">break</code> valid.</p>
+<p dir="auto"><code class="notranslate">RTCPeerConnectionStats</code> has two further problems in the same block: <code class="notranslate">result</code> is assigned without a declaration, creating an implicit global that throws in strict mode and in modules; and <code class="notranslate">peerConnectionStats</code> is dereferenced without checking that a matching report was found, which throws a <code class="notranslate">TypeError</code> when the connection has no <code class="notranslate">peer-connection</code> entry. Both are addressed.</p>
+<p dir="auto">The transport example is also renamed from <code class="notranslate">numberOpenConnections</code> to <code class="notranslate">getTransportStats</code>, since it returns transport statistics rather than a count of open connections — the name looks like a copy/paste from the <code class="notranslate">RTCPeerConnectionStats</code> page. The surrounding prose already describes it as returning "the transport statistics, or <code class="notranslate">null</code>", so no prose changes were needed.</p>
+<p dir="auto"><strong>The canvas example.</strong> It declares <code class="notranslate">const imageData</code> twice in the same scope, which is a redeclaration error:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const imageData = context.getImageData(0, 0, 1, 1);
+console.log(imageData.pixelFormat); // &quot;rgba-unorm8&quot;
+
+const imageData = context.getImageData(0, 0, 1, 1, {
+  pixelFormat: &quot;rgba-float16&quot;,
+});"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">imageData</span> <span class="pl-c1">=</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-en">getImageData</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">imageData</span><span class="pl-kos">.</span><span class="pl-c1">pixelFormat</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// "rgba-unorm8"</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">imageData</span> <span class="pl-c1">=</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-en">getImageData</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">pixelFormat</span>: <span class="pl-s">"rgba-float16"</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">The two declarations are renamed to <code class="notranslate">defaultImageData</code> and <code class="notranslate">float16ImageData</code>, which also makes it clearer that each one demonstrates a different pixel format.</p>]]></content>
+        <author>
+            <name>husamemadH</name>
+            <email>husamemadH@noreply.github.com</email>
+            <uri>https://github.com/husamemadH</uri>
+        </author>
+        <published>2026-07-27T00:05:28.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix dead external links in MathML fonts guide and VisualViewport]]></title>
         <id>https://github.com/mdn/content/pull/44923</id>
@@ -387,7 +452,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <title type="html"><![CDATA[FF154 Relnote/ExprFeat: Iterator.chunks()/.windows()]]></title>
         <id>https://github.com/mdn/content/pull/44903</id>
         <link href="https://github.com/mdn/content/pull/44903"/>
-        <updated>2026-07-24T07:14:16.000Z</updated>
+        <updated>2026-07-27T00:35:13.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF154 ships the iterator chunking proposal. This adds a release note.</p>
 <p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4928338769" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44846" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44846/hovercard" href="https://github.com/mdn/content/issues/44846">#44846</a></p>]]></content>
         <author>
@@ -401,7 +466,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <title type="html"><![CDATA[FF154 Relnote/ExprFeat: Iterator.join()]]></title>
         <id>https://github.com/mdn/content/pull/44901</id>
         <link href="https://github.com/mdn/content/pull/44901"/>
-        <updated>2026-07-24T05:48:50.000Z</updated>
+        <updated>2026-07-27T00:33:32.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF154 supports the <code class="notranslate">Iterator.prototype.join()</code> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2047995" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2047995</a></p>
 <p dir="auto">This adds release note.</p>
 <p dir="auto">Related docs can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4928335986" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44845" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44845/hovercard" href="https://github.com/mdn/content/issues/44845">#44845</a></p>]]></content>
@@ -416,7 +481,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <title type="html"><![CDATA[FF154 Relnote/ExprFeat: Iterator.includes()]]></title>
         <id>https://github.com/mdn/content/pull/44900</id>
         <link href="https://github.com/mdn/content/pull/44900"/>
-        <updated>2026-07-24T04:57:30.000Z</updated>
+        <updated>2026-07-27T00:37:49.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF154 supports the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/includes" rel="nofollow"><code class="notranslate">Iterator.prototype.includes()</code></a> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2034104" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2034104</a></p>
 <p dir="auto">This adds release note and removes the entry from the experimental features page.</p>
 <p dir="auto">Related docs can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4928243430" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44838" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44838/hovercard" href="https://github.com/mdn/content/issues/44838">#44838</a></p>]]></content>
@@ -431,7 +496,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <title type="html"><![CDATA[FF154 Relnote: rtcp property get/set in RTCRtp{Receiver|Sender}.getarameters() + send.setParameters()]]></title>
         <id>https://github.com/mdn/content/pull/44899</id>
         <link href="https://github.com/mdn/content/pull/44899"/>
-        <updated>2026-07-24T08:11:30.000Z</updated>
+        <updated>2026-07-27T00:28:21.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF154 adds support for get/set the <code class="notranslate">rtcp</code> property in the object returned from <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getParameters" rel="nofollow"><code class="notranslate">RTCRtpReceiver.getParameters()</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getParameters" rel="nofollow"><code class="notranslate">RTCRtpSender.getParameters()</code></a> and set using <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters" rel="nofollow"><code class="notranslate">RTCRtpSender.setParameters()</code></a> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1584318" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1584318</a></p>
 <p dir="auto">This adds a release note.</p>
 <p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4928211090" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44834" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44834/hovercard" href="https://github.com/mdn/content/issues/44834">#44834</a></p>]]></content>
@@ -606,7 +671,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <title type="html"><![CDATA[Technical review: Add reference pages for the the Wasm sign-extension operation instruc…]]></title>
         <id>https://github.com/mdn/content/pull/44891</id>
         <link href="https://github.com/mdn/content/pull/44891"/>
-        <updated>2026-07-22T16:10:06.000Z</updated>
+        <updated>2026-07-27T01:22:03.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">…tions</p>
 
 
@@ -633,32 +698,5 @@ You can disable automated security fix PRs for this repo from the <a href="https
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-07-22T16:08:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Tech review: Add reference pages for non-trapping float-to-int conversion instruct…]]></title>
-        <id>https://github.com/mdn/content/pull/44889</id>
-        <link href="https://github.com/mdn/content/pull/44889"/>
-        <updated>2026-07-22T14:19:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">…ions</p>
-
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">This PR adds reference pages for all Wasm instructions added as part of the <a href="https://github.com/WebAssembly/spec/blob/main/proposals/nontrapping-float-to-int-conversion/Overview.md#non-trapping-float-to-int-conversions">Non-trapping Float-to-int Conversions</a> proposal.</p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-07-22T14:17:18.000Z</published>
     </entry>
 </feed>
