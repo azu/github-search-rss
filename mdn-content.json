@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23098540?u=352f7ede59ea23d66b468f4571fd1d060f56453f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Clarifies the \"Use pagehide as a fallback\" section of the <code class=\"notranslate\">Navigator.sendBeacon</code> page (see issue <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4994310654\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44942\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44942/hovercard\" href=\"https://github.com/mdn/content/issues/44942\">#44942</a>, which followed up on <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4985873324\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44927\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44927/hovercard\" href=\"https://github.com/mdn/content/issues/44927\">#44927</a>).</p>\n<p dir=\"auto\">The current text frames <code class=\"notranslate\">pagehide</code> as needed \"to support browsers which don't implement <code class=\"notranslate\">visibilitychange</code>\". Since all modern browsers implement <code class=\"notranslate\">visibilitychange</code>, a reader reasonably wonders whether the fallback is obsolete.</p>\n<p dir=\"auto\">This PR adds a note explaining the still-valid reason: <code class=\"notranslate\">visibilitychange</code> fires on <em>every</em> transition to <code class=\"notranslate\">hidden</code> (so it can run multiple times), whereas <code class=\"notranslate\">pagehide</code> fires once at unload — making it a reliable place for a final, fire-and-forget beacon in addition to <code class=\"notranslate\">visibilitychange</code>.</p>\n<h2 dir=\"auto\">Motivation</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">visibilitychange</code> → fires every time the page becomes hidden (tab switch, minimize, etc.) → handler can run repeatedly.</li>\n<li><code class=\"notranslate\">pagehide</code> → fires a single time as the document is unloaded → ideal for the final beacon.</li>\n</ul>\n<p dir=\"auto\">So the fallback is about reliability/idempotency, not missing <code class=\"notranslate\">visibilitychange</code> support.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44942.\">fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4994310654\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44942\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44942/hovercard\" href=\"https://github.com/mdn/content/issues/44942\">#44942</a></p>",
+            "url": "https://github.com/mdn/content/pull/44943",
+            "title": "Clarify why pagehide is still recommended as a fallback in Navigator.sendBeacon",
+            "date_modified": "2026-07-28T02:57:31.000Z",
+            "date_published": "2026-07-28T02:44:46.000Z",
+            "author": {
+                "name": "wjs-tech",
+                "url": "https://github.com/wjs-tech"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/24516654?u=770b9622d0640c7afca868cdeea74f2b8fb93af4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Explain that when the pattern is a regex with the g flag, replace() sets the regex's lastIndex to 0 before matching and leaves it at 0 after the call, so there is no need to manually reset lastIndex after using the same regex with methods like test(). Also note that non-global regexes do not get their lastIndex reset.</p>\n<p dir=\"auto\">Per ECMA-262:</p>\n<ul dir=\"auto\">\n<li><a href=\"https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replace\" rel=\"nofollow\">https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.replace</a></li>\n<li><a href=\"https://tc39.es/ecma262/#sec-regexp.prototype-@@replace\" rel=\"nofollow\">https://tc39.es/ecma262/#sec-regexp.prototype-@@replace</a></li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/44941",
+            "title": "Document that String.prototype.replace() resets lastIndex for global regexes",
+            "date_modified": "2026-07-28T02:00:43.000Z",
+            "date_published": "2026-07-28T01:58:53.000Z",
+            "author": {
+                "name": "btea",
+                "url": "https://github.com/btea"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">CSS properties include a \"Values\" section.<br>\nSometimes there is an intro to the values. sometimes there isn't.<br>\nThis is the third PR in an attempt to make things consistent. This PR addresses some of the properties that had no intro sentence in the values section that and didn't need a whole bunch of other work done</p>\n<p dir=\"auto\">continuation of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4927465812\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44833\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/44833/hovercard\" href=\"https://github.com/mdn/content/pull/44833\">#44833</a></p>",
             "url": "https://github.com/mdn/content/pull/44937",
             "title": "Intro to css values",
@@ -75,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds pages for the following commands of the <a href=\"https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/browsingContext\" rel=\"nofollow\"><code class=\"notranslate\">browsingContext</code> module</a>:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">browsingContext.captureScreenshot</code></li>\n<li><code class=\"notranslate\">browsingContext.handleUserPrompt</code></li>\n<li><code class=\"notranslate\">browsingContext.print</code></li>\n<li><code class=\"notranslate\">browsingContext.setViewport</code></li>\n</ul>\n<p dir=\"auto\">Also contains a small fix in the \"Syntax\" block of the <a href=\"https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/browsingContext/traverseHistory#syntax\" rel=\"nofollow\">browsingcontext.traversehistory</a> command.</p>\n<h3 dir=\"auto\">Spec links</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-browsingContext-captureScreenshot\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-browsingContext-captureScreenshot</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-browsingContext-handleUserPrompt\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-browsingContext-handleUserPrompt</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-browsingContext-print\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-browsingContext-print</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-browsingContext-setViewport\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-browsingContext-setViewport</a></li>\n</ul>\n<h3 dir=\"auto\">Related issue</h3>\n<p dir=\"auto\">Doc issue: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1530711349\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/339\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/339/hovercard\" href=\"https://github.com/mdn/mdn/issues/339\">mdn/mdn#339</a></p>",
             "url": "https://github.com/mdn/content/pull/44931",
             "title": "[Technical review] BiDi - New pages for browsingContext module commands: captureScreenshot, handleUserPrompt, print, setViewport",
-            "date_modified": "2026-07-27T16:52:56.000Z",
+            "date_modified": "2026-07-28T01:51:39.000Z",
             "date_published": "2026-07-27T12:12:21.000Z",
             "author": {
                 "name": "dipikabh",
@@ -163,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109454414?u=8f40c1c1b5f0a5af5171c0cc286f21fed7097a0c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Explains that a Gaussian blur can extend outside its input bounds and that the parent <code class=\"notranslate\">&lt;filter&gt;</code> region controls where the result is rendered. Includes a concrete expanded-region example for larger blur values.</p>\n<h2 dir=\"auto\">Validation</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check</code></li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #24169.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1571128899\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/24169\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/24169/hovercard\" href=\"https://github.com/mdn/content/issues/24169\">#24169</a></p>",
             "url": "https://github.com/mdn/content/pull/44912",
             "title": "docs: explain feGaussianBlur filter-region clipping",
-            "date_modified": "2026-07-26T22:07:45.000Z",
+            "date_modified": "2026-07-28T04:37:51.000Z",
             "date_published": "2026-07-24T21:03:19.000Z",
             "author": {
                 "name": "eeminionn",
@@ -198,28 +220,6 @@
             "title": "FF154 Relnote/ExprFeat: Iterator.chunks()/.windows()",
             "date_modified": "2026-07-27T00:35:13.000Z",
             "date_published": "2026-07-24T07:12:27.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF154 supports the <code class=\"notranslate\">Iterator.prototype.join()</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2047995\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2047995</a></p>\n<p dir=\"auto\">This adds release note.</p>\n<p dir=\"auto\">Related docs can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4928335986\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44845\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44845/hovercard\" href=\"https://github.com/mdn/content/issues/44845\">#44845</a></p>",
-            "url": "https://github.com/mdn/content/pull/44901",
-            "title": "FF154 Relnote/ExprFeat: Iterator.join()",
-            "date_modified": "2026-07-27T00:33:32.000Z",
-            "date_published": "2026-07-24T05:47:17.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF154 supports the <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/includes\" rel=\"nofollow\"><code class=\"notranslate\">Iterator.prototype.includes()</code></a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2034104\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2034104</a></p>\n<p dir=\"auto\">This adds release note and removes the entry from the experimental features page.</p>\n<p dir=\"auto\">Related docs can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4928243430\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44838\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44838/hovercard\" href=\"https://github.com/mdn/content/issues/44838\">#44838</a></p>",
-            "url": "https://github.com/mdn/content/pull/44900",
-            "title": "FF154 Relnote/ExprFeat: Iterator.includes()",
-            "date_modified": "2026-07-27T00:37:49.000Z",
-            "date_published": "2026-07-24T04:55:48.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
