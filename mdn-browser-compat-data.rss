@@ -2,11 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-08-03T08:58:45.595Z</updated>
+    <updated>2026-08-03T12:19:25.776Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Updates for Chrome 152 beta]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30158</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30158"/>
+        <updated>2026-08-03T11:03:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The <a href="https://collector.openwebdocs.org/" rel="nofollow">https://collector.openwebdocs.org/</a> project (v10.20.5) found new features shipping in Chromium 152 beta which was released on Friday. Currently, the collector covers about 90% of BCD, so the following list might not be exhaustive. Also, if a feature is in Canary/behind flags, it is not considered here.</p>
+<p dir="auto">With this PR, BCD will consider the following 21 features as shipping in Chromium 152 (<strong>bold</strong> features are new keys in BCD).</p>
+<ul dir="auto">
+<li>api.DeviceMotionEvent.requestPermission_static</li>
+<li>api.DeviceOrientationEvent.requestPermission_static</li>
+<li>api.HTMLElement.autocorrect</li>
+<li>api.HTMLTemplateElement.shadowRootSlotAssignment</li>
+<li><strong>api.Navigator.cpuPerformance</strong></li>
+<li>api.PermissionsPolicy</li>
+<li>api.PermissionsPolicy.allowedFeatures</li>
+<li>api.PermissionsPolicy.allowsFeature</li>
+<li>api.PermissionsPolicy.features</li>
+<li>api.PermissionsPolicy.getAllowlistForFeature</li>
+<li>css.properties.window-drag</li>
+<li>css.properties.window-drag.move</li>
+<li>css.properties.window-drag.none</li>
+<li>css.selectors.buffering</li>
+<li>css.selectors.muted</li>
+<li>css.selectors.paused</li>
+<li>css.selectors.playing</li>
+<li>css.selectors.seeking</li>
+<li>css.selectors.stalled</li>
+<li>css.selectors.volume-locked</li>
+<li>html.global_attributes.autocorrect</li>
+</ul>
+<p dir="auto">See also <a href="https://developer.chrome.com/blog/chrome-152-beta" rel="nofollow">https://developer.chrome.com/blog/chrome-152-beta</a> and <a href="https://chromestatus.com/roadmap" rel="nofollow">https://chromestatus.com/roadmap</a></p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2026-08-03T11:02:34.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix safari support for ruby-position inter-character (Fixes #44762)]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30155</id>
@@ -84,36 +122,6 @@
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2026-07-29T07:56:31.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix Safari support for ExtendableCookieChangeEvent partitioned property]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30139</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30139"/>
-        <updated>2026-07-31T14:04:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/185269030?u=1fc22565ccf4566b6f734fabaa87e03d9a31cfe4&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Update the Browser Compatibility Data for the <code class="notranslate">partitioned</code> property of <code class="notranslate">ExtendableCookieChangeEvent</code>.</p>
-<p dir="auto">The previous Safari entry incorrectly indicated support behind the "Cookie Store API CookieStoreManager" preference starting in Safari 18.4. Based on the linked WebKit implementation history, Safari has not implemented the <code class="notranslate">partitioned</code> property, so both <code class="notranslate">changed.partitioned_property</code> and <code class="notranslate">deleted.partitioned_property</code> have been updated to:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;version_added&quot;: false"><pre class="notranslate"><span class="pl-ent">"version_added"</span>: <span class="pl-c1">false</span></pre></div>
-<h4 dir="auto">Test results and supporting details</h4>
-<ul dir="auto">
-<li>Verified the WebKit implementation history referenced in the issue and confirmed that <code class="notranslate">CookieListItem</code> only exposes <code class="notranslate">name</code> and <code class="notranslate">value</code>; the <code class="notranslate">partitioned</code> property has never been implemented.</li>
-<li>Ran the project's checks manually:
-<ul dir="auto">
-<li>✅ <code class="notranslate">npx --package=typescript tsc --noEmit</code></li>
-<li>✅ <code class="notranslate">npx prettier --check .</code></li>
-<li>✅ <code class="notranslate">npx eslint --cache</code> (completed successfully with existing repository warnings only; no errors)</li>
-</ul>
-</li>
-<li>The local pre-push Lefthook hook hangs on my Windows environment despite the individual checks completing successfully, so the branch was pushed using <code class="notranslate">--no-verify</code> after manually verifying all required checks.</li>
-</ul>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29952.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4777277572" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29952" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29952/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29952">#29952</a></p>]]></content>
-        <author>
-            <name>BHUVANSH855</name>
-            <email>BHUVANSH855@noreply.github.com</email>
-            <uri>https://github.com/BHUVANSH855</uri>
-        </author>
-        <published>2026-07-28T12:20:38.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[FF153 source phase imports of wasm]]></title>
