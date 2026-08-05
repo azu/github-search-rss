@@ -2,11 +2,103 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-05T10:22:59.051Z</updated>
+    <updated>2026-08-05T12:45:34.154Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[fix(learn): correct `git status` output in Django setup tutorial]]></title>
+        <id>https://github.com/mdn/content/pull/45026</id>
+        <link href="https://github.com/mdn/content/pull/45026"/>
+        <updated>2026-08-05T11:53:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/102389071?u=fd0b775e7e974be91ee8255925ca7b5bbbaa63f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Corrects the sample <code class="notranslate">git status</code> output in the "Modify and sync changes" step of the Django development environment tutorial: it showed the wrong branch, a tracking line for a remote branch that does not exist yet, and an unstage hint that git no longer prints.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Readers following the steps in order get output that contradicts what they just did. Step 2 runs <code class="notranslate">git checkout -b update_gitignore</code>, but the listing in step 5 says <code class="notranslate">On branch main</code>, so anyone new to git is left wondering whether the checkout worked or whether they were supposed to switch back.</p>
+<p dir="auto">The tracking line is also impossible at that point in the tutorial. The branch is not pushed until step 7, so it has no upstream when <code class="notranslate">git status</code> runs in step 5, and git prints no "Your branch is up-to-date with ..." line at all.</p>
+<p dir="auto">Finally, the hint <code class="notranslate">(use "git reset HEAD &lt;file&gt;..." to unstage)</code> is pre-2.23 output. Git has printed <code class="notranslate">(use "git restore --staged &lt;file&gt;..." to unstage)</code> since August 2019, so readers comparing their terminal against the page see a mismatch there too.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Before:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="```bash
+&gt; git status
+On branch main
+Your branch is up-to-date with 'origin/update_gitignore'.
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+        modified:   .gitignore
+```"><pre class="notranslate"><code class="notranslate">```bash
+&gt; git status
+On branch main
+Your branch is up-to-date with 'origin/update_gitignore'.
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+        modified:   .gitignore
+```
+</code></pre></div>
+<p dir="auto">After:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="```bash
+git status
+```
+
+```plain
+On branch update_gitignore
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+
+        modified:   .gitignore
+```"><pre class="notranslate"><code class="notranslate">```bash
+git status
+```
+
+```plain
+On branch update_gitignore
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+
+        modified:   .gitignore
+```
+</code></pre></div>
+<p dir="auto">The command and its output are now in separate <code class="notranslate">bash</code> and <code class="notranslate">plain</code> blocks, which matches the equivalent step in the Express deployment tutorial (<code class="notranslate">learn_web_development/extensions/server-side/express_nodejs/deployment</code>) and removes the <code class="notranslate">&gt;</code> prompt character that readers could otherwise copy.</p>
+<p dir="auto">The branch-and-pull-request workflow of the surrounding steps is left as it is: steps 7 and 8 deliberately teach pushing the branch and merging it through a pull request on GitHub, consistent with the rest of the Django series, so only the pasted output needed correcting.</p>
+<p dir="auto">Note that the same outdated <code class="notranslate">git reset HEAD</code> hint appears once more, in the Express deployment tutorial. That listing is otherwise correct (it really is on <code class="notranslate">main</code>, tracking <code class="notranslate">origin/main</code>), so it is outside the scope of this issue and left for a separate change.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45003.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5057536680" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45003" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45003/hovercard" href="https://github.com/mdn/content/issues/45003">#45003</a></p>]]></content>
+        <author>
+            <name>Ashish-CodeJourney</name>
+            <email>Ashish-CodeJourney@noreply.github.com</email>
+            <uri>https://github.com/Ashish-CodeJourney</uri>
+        </author>
+        <published>2026-08-05T11:51:55.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Technical review: Document WGSL linear_indexing extension]]></title>
+        <id>https://github.com/mdn/content/pull/45025</id>
+        <link href="https://github.com/mdn/content/pull/45025"/>
+        <updated>2026-08-05T10:37:01.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Chrome 148 adds support for the <a href="https://gpuweb.github.io/gpuweb/wgsl/#language_extension-linear_indexing" rel="nofollow"><code class="notranslate">linear_indexing</code></a> WGSL extension. See <a href="https://chromestatus.com/feature/5071243424432128" rel="nofollow">https://chromestatus.com/feature/5071243424432128</a>.</p>
+<p dir="auto">This PR documents the new extension in the <code class="notranslate">WGSLLanguageFeatures</code> doc.</p>
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-08-05T10:35:17.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix ZonedDateTime DST ambiguity explanation]]></title>
         <id>https://github.com/mdn/content/pull/45023</id>
@@ -334,36 +426,10 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <published>2026-08-04T10:18:43.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[added FF release notes for line-clamp property]]></title>
-        <id>https://github.com/mdn/content/pull/45008</id>
-        <link href="https://github.com/mdn/content/pull/45008"/>
-        <updated>2026-08-04T21:33:19.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added Firefox Experimental release note for <code class="notranslate">line-clamp</code></li>
-<li>Added Firefox 154 release note for <code class="notranslate">line-clamp</code> to experimental section</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a href="https://github.com/mdn/content/issues/44839" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44839/hovercard">MDN Issue #44839</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/content/pull/45007" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45007/hovercard">Content PR</a></li>
-<li><a href="https://github.com/mdn/browser-compat-data/pull/30166" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30166/hovercard">BCD PR</a></li>
-</ul>]]></content>
-        <author>
-            <name>dletorey</name>
-            <email>dletorey@noreply.github.com</email>
-            <uri>https://github.com/dletorey</uri>
-        </author>
-        <published>2026-08-04T09:50:31.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[updated the line-clamp property to include new values]]></title>
         <id>https://github.com/mdn/content/pull/45007</id>
         <link href="https://github.com/mdn/content/pull/45007"/>
-        <updated>2026-08-04T09:54:14.000Z</updated>
+        <updated>2026-08-05T11:12:08.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>On the <code class="notranslate">line-clamp</code> CSS property:
@@ -498,30 +564,5 @@ add links to page in MiTM glossary</p>
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2026-08-03T11:35:06.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSSOM fixes to web API templates]]></title>
-        <id>https://github.com/mdn/content/pull/44993</id>
-        <link href="https://github.com/mdn/content/pull/44993"/>
-        <updated>2026-08-04T02:35:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF154 adds preview support for the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API" rel="nofollow">CSS Typed OM API</a>. As part of that noticed a bunch of inconsistencies in the CSSOM "parent interface".</p>
-<p dir="auto">Changes made here:</p>
-<ul dir="auto">
-<li>Adds "interface of the [CSSOM API] ..." style boilerplate for the different interfaces, where missing</li>
-<li>For the CSSOM page, this had a huge list of interfaces that contained interfaces mixed from different related APIs, and also a big list of Typed OM interfaces.
-<ul dir="auto">
-<li>I've tried to move towards the normal structure - adding "RElated APIs" sections and removing interfaces in their APIs from the big list.</li>
-<li>This is a little non-standard because we don't normally cross link interfaces in this way, but CSSOM is messy.</li>
-</ul>
-</li>
-</ul>
-<p dir="auto">This is not exhaustive - its just better.</p>
-<p dir="auto">Related docs can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4928372179" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44849" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44849/hovercard" href="https://github.com/mdn/content/issues/44849">#44849</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-08-03T06:27:46.000Z</published>
     </entry>
 </feed>
