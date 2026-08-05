@@ -2,11 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-05T19:11:14.938Z</updated>
+    <updated>2026-08-05T20:54:58.549Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[GPUCommandEncoder.copyTextureToTexture(): fix validation rules to match the spec]]></title>
+        <id>https://github.com/mdn/content/pull/45032</id>
+        <link href="https://github.com/mdn/content/pull/45032"/>
+        <updated>2026-08-05T20:12:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/50279639?u=107fa45646a840366fb46bcd8ceb9c49fbbe4a10&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44044.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4402096907" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44044" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44044/hovercard" href="https://github.com/mdn/content/issues/44044">#44044</a>.</p>
+<p dir="auto">The Validation section of <code class="notranslate">copyTextureToTexture()</code> listed several rules that belong to the <a href="https://gpuweb.github.io/gpuweb/#abstract-opdef-validating-texture-buffer-copy" rel="nofollow">validating texture buffer copy</a> algorithm, which is used by the texture↔buffer copies (<code class="notranslate">copyTextureToBuffer()</code>, <code class="notranslate">copyBufferToTexture()</code>, <code class="notranslate">writeTexture()</code>) but <strong>not</strong> by <code class="notranslate">copyTextureToTexture()</code>. That method instead uses <a href="https://gpuweb.github.io/gpuweb/#abstract-opdef-validating-gputexelcopytextureinfo" rel="nofollow">validating GPUTexelCopyTextureInfo</a> plus its own <a href="https://gpuweb.github.io/gpuweb/#dom-gpucommandencoder-copytexturetotexture" rel="nofollow">rules</a>. This resulted in three incorrect entries, two of which stated the opposite of the spec.</p>
+<h3 dir="auto">Changes</h3>
+<p dir="auto"><strong>1. <code class="notranslate">aspect</code> (the issue as reported).</strong> The page said:</p>
+<blockquote>
+<p dir="auto"><code class="notranslate">aspect</code> refers to a single aspect of the <code class="notranslate">GPUTexture.format</code>.<br>
+That aspect is a valid image copy source/destination according to depth-or-stencil formats.</p>
+</blockquote>
+<p dir="auto">The spec requires the opposite for this method:</p>
+<blockquote>
+<p dir="auto">If <code class="notranslate">srcTexture.format</code> is a depth-stencil format: <code class="notranslate">source.aspect</code> and <code class="notranslate">destination.aspect</code> must both refer to <strong>all aspects</strong> of <code class="notranslate">srcTexture.format</code> and <code class="notranslate">dstTexture.format</code>, respectively.</p>
+</blockquote>
+<p dir="auto">The "single aspect" requirement is from <code class="notranslate">validating texture buffer copy</code>, and it does not apply here.</p>
+<p dir="auto"><strong>2. <code class="notranslate">COPY_DST</code> referred to the wrong resource.</strong> Under the <em>For the <code class="notranslate">destination</code></em> heading, the page said "The <strong><code class="notranslate">source</code></strong>'s <code class="notranslate">GPUTexture.usage</code> includes the <code class="notranslate">GPUTextureUsage.COPY_DST</code> flag." The spec says <code class="notranslate">dstTexture.usage contains COPY_DST</code>. The equivalent line on <a href="https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer" rel="nofollow"><code class="notranslate">copyTextureToBuffer()</code></a> already refers to the destination correctly.</p>
+<p dir="auto"><strong>3. <code class="notranslate">sampleCount</code> is not required to be 1.</strong> The page said "The <code class="notranslate">texture</code>'s <code class="notranslate">GPUTexture.sampleCount</code> is 1", which is also from <code class="notranslate">validating texture buffer copy</code>. <code class="notranslate">copyTextureToTexture()</code> only requires that the two sample counts be <em>equal</em>, so copying multisampled textures is allowed. The removed line also contradicted the two entries directly above it: one requiring the sample counts to be equal (pointless if both had to be 1), and one describing the behavior when <code class="notranslate">sampleCount</code> is more than 1.</p>
+<p dir="auto">I also added the disjoint-subresources rule, which the spec lists for this method and the page was missing — it is what makes a copy from a texture to itself invalid when the regions overlap.</p>
+<p dir="auto">Rules verified against the <a href="https://gpuweb.github.io/gpuweb/#dom-gpucommandencoder-copytexturetotexture" rel="nofollow">WebGPU spec</a>. The original report notes this is covered by the WebGPU CTS and was first surfaced in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4395635375" data-permission-text="Title is private" data-url="https://github.com/gfx-rs/wgpu/issues/9521" data-hovercard-type="issue" data-hovercard-url="/gfx-rs/wgpu/issues/9521/hovercard" href="https://github.com/gfx-rs/wgpu/issues/9521">gfx-rs/wgpu#9521</a>.</p>]]></content>
+        <author>
+            <name>xdroberto</name>
+            <email>xdroberto@noreply.github.com</email>
+            <uri>https://github.com/xdroberto</uri>
+        </author>
+        <published>2026-08-05T19:57:44.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Technical review: Document new Chrome bfcache websocket behavior - doesnt block pages]]></title>
+        <id>https://github.com/mdn/content/pull/45031</id>
+        <link href="https://github.com/mdn/content/pull/45031"/>
+        <updated>2026-08-05T19:37:43.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">From version 149, Chrome no longer allows active WebSocket connections to block pages from entering the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Monitoring_bfcache_blocking_reasons" rel="nofollow">bfcache</a>. The WebSocket connections are disconnected upon the page entering the cache, and can be reconnected when the page is navigated to again.</p>
+<p dir="auto">See <a href="https://chromestatus.com/feature/5068439115923456" rel="nofollow">https://chromestatus.com/feature/5068439115923456</a>.</p>
+<p dir="auto">This PR documents the new behavior.</p>
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-08-05T19:35:39.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Technical review: Document text-overflow ellipsis behaving as clip behavior]]></title>
         <id>https://github.com/mdn/content/pull/45030</id>
@@ -91,32 +148,6 @@
             <uri>https://github.com/dletorey</uri>
         </author>
         <published>2026-08-05T13:27:41.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[added release note for percentage values of `text-decoration-inset`]]></title>
-        <id>https://github.com/mdn/content/pull/45027</id>
-        <link href="https://github.com/mdn/content/pull/45027"/>
-        <updated>2026-08-05T13:29:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added Firefox experimental feature release note for <code class="notranslate">text-decoration-inset</code> for percentage values</li>
-<li>Added Firefox 154 release note for <code class="notranslate">text-decoration-inset</code> for percentage values</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a href="https://github.com/mdn/content/issues/44840" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44840/hovercard">MDN issue #44840</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/content/pull/45028" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45028/hovercard">Content PR</a></li>
-<li><a href="https://github.com/mdn/data/pull/1087" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1087/hovercard">Data PR</a></li>
-</ul>]]></content>
-        <author>
-            <name>dletorey</name>
-            <email>dletorey@noreply.github.com</email>
-            <uri>https://github.com/dletorey</uri>
-        </author>
-        <published>2026-08-05T13:27:22.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[fix(learn): correct `git status` output in Django setup tutorial]]></title>
@@ -567,29 +598,5 @@ You can disable automated security fix PRs for this repo from the <a href="https
             <uri>https://github.com/dletorey</uri>
         </author>
         <published>2026-08-04T09:49:23.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs: correct HTMLTableElement.insertRow() introduction]]></title>
-        <id>https://github.com/mdn/content/pull/45005</id>
-        <link href="https://github.com/mdn/content/pull/45005"/>
-        <updated>2026-08-05T04:40:53.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/181685465?u=67d73d6415d767bbf493704a6bb900e905a33806&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">🚀 Summary</h2>
-<p dir="auto">This pull request improves the accuracy of the <code class="notranslate">HTMLTableElement.insertRow()</code> documentation by aligning it with the HTML specification.</p>
-<h3 dir="auto">✨ Changes</h3>
-<ul dir="auto">
-<li>Corrected the misleading statement that rows are always inserted into the last <code class="notranslate">&lt;tbody&gt;</code>.</li>
-<li>Clarified that the insertion target depends on the insertion position.</li>
-<li>Explained that when appending (<code class="notranslate">insertRow()</code> or <code class="notranslate">insertRow(-1)</code>), the row is inserted into the parent section of the table's last row.</li>
-<li>Kept the update minimal and focused to preserve the existing documentation structure.</li>
-</ul>
-<h3 dir="auto">🎯 Impact</h3>
-<p dir="auto">This change provides developers with more accurate guidance, reduces potential confusion when working with tables containing multiple <code class="notranslate">&lt;tbody&gt;</code> elements, and ensures the documentation reflects the behavior defined by the HTML specification.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44987.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5037471282" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44987" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44987/hovercard" href="https://github.com/mdn/content/issues/44987">#44987</a>.</p>]]></content>
-        <author>
-            <name>Sarjeeth-46</name>
-            <email>Sarjeeth-46@noreply.github.com</email>
-            <uri>https://github.com/Sarjeeth-46</uri>
-        </author>
-        <published>2026-08-04T07:19:01.000Z</published>
     </entry>
 </feed>
