@@ -2,11 +2,89 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-05T01:26:01.095Z</updated>
+    <updated>2026-08-05T04:53:13.475Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix ZonedDateTime DST ambiguity explanation]]></title>
+        <id>https://github.com/mdn/content/pull/45023</id>
+        <link href="https://github.com/mdn/content/pull/45023"/>
+        <updated>2026-08-05T02:56:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/25899506?u=9673fbe1646a13729c626a44d56c669bd2d7482e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Removes the incorrect claim that <code class="notranslate">ZonedDateTime.prototype.add()</code> and <code class="notranslate">subtract()</code> preserve a valid original offset via <code class="notranslate">offset: "prefer"</code>. The fall-back examples now document that both operations resolve the repeated local time with <code class="notranslate">disambiguation: "compatible"</code> and therefore choose the earlier <code class="notranslate">-04:00</code> instant.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The previous subtraction example documented <code class="notranslate">-05:00</code>, but the Temporal algorithm and current implementations return <code class="notranslate">-04:00</code>. Correcting this prevents readers from relying on offset-preservation behavior that <code class="notranslate">AddZonedDateTime</code> does not perform.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>TC39 <code class="notranslate">AddZonedDateTime</code>: <a href="https://tc39.es/proposal-temporal/#sec-temporal-addzoneddatetime" rel="nofollow">https://tc39.es/proposal-temporal/#sec-temporal-addzoneddatetime</a> (step 6 calls <code class="notranslate">GetEpochNanosecondsFor</code> with <code class="notranslate">compatible</code>)</li>
+<li>Runtime reproduction with Node.js 24 <code class="notranslate">--harmony-temporal</code> produced <code class="notranslate">2024-11-03T01:00:00-04:00[America/New_York]</code> for both examples.</li>
+<li><code class="notranslate">npx prettier@3.9.6 --check &lt;file&gt;</code>: passed</li>
+<li><code class="notranslate">npm exec --package=markdownlint-cli2@0.23.2 --package=markdownlint-rule-search-replace@1.2.0 -- markdownlint-cli2 &lt;file&gt;</code>: 0 issues</li>
+<li><code class="notranslate">npx cspell@10.0.1 ... &lt;file&gt;</code>: 0 issues</li>
+<li><code class="notranslate">git diff --check</code>: passed</li>
+</ul>
+<p dir="auto">AI assistance was used for repository research, drafting the initial edit, and running validation. I reviewed the final wording and verified its technical claims against the specification and runtime output.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44618.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4788696090" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44618" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44618/hovercard" href="https://github.com/mdn/content/issues/44618">#44618</a></p>]]></content>
+        <author>
+            <name>jaideeppyne</name>
+            <email>jaideeppyne@noreply.github.com</email>
+            <uri>https://github.com/jaideeppyne</uri>
+        </author>
+        <published>2026-08-05T02:56:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Technical review] BiDi - New pages for browsingContext events: captureScreenshot, handleUserPrompt, print, setViewport]]></title>
+        <id>https://github.com/mdn/content/pull/45022</id>
+        <link href="https://github.com/mdn/content/pull/45022"/>
+        <updated>2026-08-05T02:39:21.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR adds pages for the following events of the <a href="https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/browsingContext" rel="nofollow"><code class="notranslate">browsingContext</code></a> module:</p>
+<ul dir="auto">
+<li><code class="notranslate">browsingContext.downloadEnd</code></li>
+<li><code class="notranslate">browsingContext.downloadWillBegin</code></li>
+<li><code class="notranslate">browsingContext.userPromptClosed</code></li>
+<li><code class="notranslate">browsingContext.userPromptOpened</code></li>
+</ul>
+<h3 dir="auto">Spec links</h3>
+<ul dir="auto">
+<li><a href="https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadEnd" rel="nofollow">https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadEnd</a></li>
+<li><a href="https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadWillBegin" rel="nofollow">https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadWillBegin</a></li>
+<li><a href="https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptClosed" rel="nofollow">https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptClosed</a></li>
+<li><a href="https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptOpened" rel="nofollow">https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptOpened</a></li>
+</ul>
+<h3 dir="auto">Related issue</h3>
+<p dir="auto">Doc issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5013788640" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/851" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/851/hovercard" href="https://github.com/mdn/mdn/issues/851">mdn/mdn#851</a></p>]]></content>
+        <author>
+            <name>dipikabh</name>
+            <email>dipikabh@noreply.github.com</email>
+            <uri>https://github.com/dipikabh</uri>
+        </author>
+        <published>2026-08-05T02:37:32.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Issue 36971 match patterns clarifications]]></title>
+        <id>https://github.com/mdn/content/pull/45021</id>
+        <link href="https://github.com/mdn/content/pull/45021"/>
+        <updated>2026-08-05T02:09:54.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This change adds:</p>
+<ul dir="auto">
+<li>a list of the manifest keys and APIs where match patterns are used to the match patterns article.</li>
+<li>references and links to match patterns to those manifest keys and API's where they were missing</li>
+</ul>
+<p dir="auto">The list was confirmed by checking the WebExtensions schemas and native bindings for reference to <code class="notranslate">MatchPattern</code>, <code class="notranslate">MatchPatternRestricted</code>, and <code class="notranslate">MatchPatternSet</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36971.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2692748303" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36971" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36971/hovercard" href="https://github.com/mdn/content/issues/36971">#36971</a></p>]]></content>
+        <author>
+            <name>rebloor</name>
+            <email>rebloor@noreply.github.com</email>
+            <uri>https://github.com/rebloor</uri>
+        </author>
+        <published>2026-08-05T02:08:22.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[fix: auto-cleanup by bot]]></title>
         <id>https://github.com/mdn/content/pull/45019</id>
@@ -317,7 +395,7 @@ You can disable automated security fix PRs for this repo from the <a href="https
         <title type="html"><![CDATA[docs: correct HTMLTableElement.insertRow() introduction]]></title>
         <id>https://github.com/mdn/content/pull/45005</id>
         <link href="https://github.com/mdn/content/pull/45005"/>
-        <updated>2026-08-04T19:41:22.000Z</updated>
+        <updated>2026-08-05T04:40:53.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/181685465?u=67d73d6415d767bbf493704a6bb900e905a33806&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">🚀 Summary</h2>
 <p dir="auto">This pull request improves the accuracy of the <code class="notranslate">HTMLTableElement.insertRow()</code> documentation by aligning it with the HTML specification.</p>
 <h3 dir="auto">✨ Changes</h3>
@@ -445,66 +523,5 @@ add links to page in MiTM glossary</p>
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-08-03T06:27:46.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[<kbd>: fix multiple details in the first paragraph]]></title>
-        <id>https://github.com/mdn/content/pull/44989</id>
-        <link href="https://github.com/mdn/content/pull/44989"/>
-        <updated>2026-08-03T10:40:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/392868?v=4" width="64" height="64" alt=""/><br/><p dir="auto">I didn’t dig into the history, but I think it fell out of sync with HTML spec changes, and even the rest of the page.</p>
-<ul dir="auto">
-<li>
-<p dir="auto">The user input is not necessarily <em>textual</em>. See the “Representing onscreen input options” subsection, where it’s activation of a command based on an on-screen label.</p>
-</li>
-<li>
-<p dir="auto">monospace <em>is</em> part of the expected user-agent stylesheet for kbd, so I adopted the wording from the &lt;code&gt; page about monospaceness.</p>
-</li>
-</ul>]]></content>
-        <author>
-            <name>chris-morgan</name>
-            <email>chris-morgan@noreply.github.com</email>
-            <uri>https://github.com/chris-morgan</uri>
-        </author>
-        <published>2026-08-02T15:28:53.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Privacy regulations]]></title>
-        <id>https://github.com/mdn/content/pull/44986</id>
-        <link href="https://github.com/mdn/content/pull/44986"/>
-        <updated>2026-07-31T17:55:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">continuation of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4942910853" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44876" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/44876/hovercard" href="https://github.com/mdn/content/pull/44876">#44876</a>.</p>]]></content>
-        <author>
-            <name>wbamberg</name>
-            <email>wbamberg@noreply.github.com</email>
-            <uri>https://github.com/wbamberg</uri>
-        </author>
-        <published>2026-07-31T17:24:34.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Referrer-Policy: document effect on the Origin header]]></title>
-        <id>https://github.com/mdn/content/pull/44982</id>
-        <link href="https://github.com/mdn/content/pull/44982"/>
-        <updated>2026-08-04T02:10:25.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/154081173?u=e8ee0d3e32178dbc84916a78b482859cf8e36678&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds an "Effect on the <code class="notranslate">Origin</code> header" section to the <code class="notranslate">Referrer-Policy</code> reference page, documenting that the referrer policy also decides whether the <code class="notranslate">Origin</code> header is sent as the request's origin or as <code class="notranslate">null</code>, and cross-links {{HTTPHeader("Origin")}}.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36543.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2619145031" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36543" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36543/hovercard" href="https://github.com/mdn/content/issues/36543">#36543</a>. The <code class="notranslate">Origin</code> page already notes that its value may be <code class="notranslate">null</code> with "Referrer-Policy set to <code class="notranslate">no-referrer</code> for non-<code class="notranslate">cors</code> request modes", but the <code class="notranslate">Referrer-Policy</code> page did not mention the <code class="notranslate">Origin</code> header at all, so the side effect was invisible when choosing a policy value. The issue also asked whether values other than <code class="notranslate">no-referrer</code> are affected — per the spec, three more are.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Content verified against the Fetch Standard's <a href="https://fetch.spec.whatwg.org/#append-a-request-origin-header" rel="nofollow">append a request <code class="notranslate">Origin</code> header</a> algorithm. For a request whose response tainting is not "cors" and whose mode is not "websocket"/"webtransport", if the method is neither <code class="notranslate">GET</code> nor <code class="notranslate">HEAD</code> and the mode is not "cors", the spec switches on the referrer policy:</p>
-<ul dir="auto">
-<li><code class="notranslate">no-referrer</code> → <code class="notranslate">serializedOrigin</code> is set to <code class="notranslate">null</code>;</li>
-<li><code class="notranslate">no-referrer-when-downgrade</code> / <code class="notranslate">strict-origin</code> / <code class="notranslate">strict-origin-when-cross-origin</code> → <code class="notranslate">null</code> when the origin is a tuple origin with scheme <code class="notranslate">https</code> and the current URL's scheme is not <code class="notranslate">https</code>;</li>
-<li><code class="notranslate">same-origin</code> → <code class="notranslate">null</code> when the origin is not same origin with the current URL's origin;</li>
-<li>otherwise → unchanged.</li>
-</ul>
-<p dir="auto">The spec's own note is reflected in the closing sentence: "A request's referrer policy is taken into account for all fetches where the fetcher did not explicitly opt into sharing their origin with the server, e.g., via using the CORS protocol."</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36543.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2619145031" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36543" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36543/hovercard" href="https://github.com/mdn/content/issues/36543">#36543</a></p>]]></content>
-        <author>
-            <name>davidpavlovschi</name>
-            <email>davidpavlovschi@noreply.github.com</email>
-            <uri>https://github.com/davidpavlovschi</uri>
-        </author>
-        <published>2026-07-31T10:04:54.000Z</published>
     </entry>
 </feed>

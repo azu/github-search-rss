@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/25899506?u=9673fbe1646a13729c626a44d56c669bd2d7482e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Removes the incorrect claim that <code class=\"notranslate\">ZonedDateTime.prototype.add()</code> and <code class=\"notranslate\">subtract()</code> preserve a valid original offset via <code class=\"notranslate\">offset: \"prefer\"</code>. The fall-back examples now document that both operations resolve the repeated local time with <code class=\"notranslate\">disambiguation: \"compatible\"</code> and therefore choose the earlier <code class=\"notranslate\">-04:00</code> instant.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The previous subtraction example documented <code class=\"notranslate\">-05:00</code>, but the Temporal algorithm and current implementations return <code class=\"notranslate\">-04:00</code>. Correcting this prevents readers from relying on offset-preservation behavior that <code class=\"notranslate\">AddZonedDateTime</code> does not perform.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>TC39 <code class=\"notranslate\">AddZonedDateTime</code>: <a href=\"https://tc39.es/proposal-temporal/#sec-temporal-addzoneddatetime\" rel=\"nofollow\">https://tc39.es/proposal-temporal/#sec-temporal-addzoneddatetime</a> (step 6 calls <code class=\"notranslate\">GetEpochNanosecondsFor</code> with <code class=\"notranslate\">compatible</code>)</li>\n<li>Runtime reproduction with Node.js 24 <code class=\"notranslate\">--harmony-temporal</code> produced <code class=\"notranslate\">2024-11-03T01:00:00-04:00[America/New_York]</code> for both examples.</li>\n<li><code class=\"notranslate\">npx prettier@3.9.6 --check &lt;file&gt;</code>: passed</li>\n<li><code class=\"notranslate\">npm exec --package=markdownlint-cli2@0.23.2 --package=markdownlint-rule-search-replace@1.2.0 -- markdownlint-cli2 &lt;file&gt;</code>: 0 issues</li>\n<li><code class=\"notranslate\">npx cspell@10.0.1 ... &lt;file&gt;</code>: 0 issues</li>\n<li><code class=\"notranslate\">git diff --check</code>: passed</li>\n</ul>\n<p dir=\"auto\">AI assistance was used for repository research, drafting the initial edit, and running validation. I reviewed the final wording and verified its technical claims against the specification and runtime output.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44618.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4788696090\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44618\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44618/hovercard\" href=\"https://github.com/mdn/content/issues/44618\">#44618</a></p>",
+            "url": "https://github.com/mdn/content/pull/45023",
+            "title": "Fix ZonedDateTime DST ambiguity explanation",
+            "date_modified": "2026-08-05T02:56:30.000Z",
+            "date_published": "2026-08-05T02:56:00.000Z",
+            "author": {
+                "name": "jaideeppyne",
+                "url": "https://github.com/jaideeppyne"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds pages for the following events of the <a href=\"https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/browsingContext\" rel=\"nofollow\"><code class=\"notranslate\">browsingContext</code></a> module:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">browsingContext.downloadEnd</code></li>\n<li><code class=\"notranslate\">browsingContext.downloadWillBegin</code></li>\n<li><code class=\"notranslate\">browsingContext.userPromptClosed</code></li>\n<li><code class=\"notranslate\">browsingContext.userPromptOpened</code></li>\n</ul>\n<h3 dir=\"auto\">Spec links</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadEnd\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadEnd</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadWillBegin\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#event-browsingContext-downloadWillBegin</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptClosed\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptClosed</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptOpened\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#event-browsingContext-userPromptOpened</a></li>\n</ul>\n<h3 dir=\"auto\">Related issue</h3>\n<p dir=\"auto\">Doc issue: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5013788640\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/851\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/851/hovercard\" href=\"https://github.com/mdn/mdn/issues/851\">mdn/mdn#851</a></p>",
+            "url": "https://github.com/mdn/content/pull/45022",
+            "title": "[Technical review] BiDi - New pages for browsingContext events: captureScreenshot, handleUserPrompt, print, setViewport",
+            "date_modified": "2026-08-05T02:39:21.000Z",
+            "date_published": "2026-08-05T02:37:32.000Z",
+            "author": {
+                "name": "dipikabh",
+                "url": "https://github.com/dipikabh"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This change adds:</p>\n<ul dir=\"auto\">\n<li>a list of the manifest keys and APIs where match patterns are used to the match patterns article.</li>\n<li>references and links to match patterns to those manifest keys and API's where they were missing</li>\n</ul>\n<p dir=\"auto\">The list was confirmed by checking the WebExtensions schemas and native bindings for reference to <code class=\"notranslate\">MatchPattern</code>, <code class=\"notranslate\">MatchPatternRestricted</code>, and <code class=\"notranslate\">MatchPatternSet</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36971.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2692748303\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36971\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36971/hovercard\" href=\"https://github.com/mdn/content/issues/36971\">#36971</a></p>",
+            "url": "https://github.com/mdn/content/pull/45021",
+            "title": "Issue 36971 match patterns clarifications",
+            "date_modified": "2026-08-05T02:09:54.000Z",
+            "date_published": "2026-08-05T02:08:22.000Z",
+            "author": {
+                "name": "rebloor",
+                "url": "https://github.com/rebloor"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/108879845?u=eeb9306682180ab80521c80fd8f46609fe3c6770&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR was generated by <a href=\"https://github.com/mdn/content/actions/runs/30963012237\">this run</a> of the <a href=\"https://github.com/mdn/content/blob/main/.github/workflows/auto-cleanup-bot.yml\"><code class=\"notranslate\">auto-cleanup-bot</code></a> workflow.</p>\n<p dir=\"auto\">All issues were auto-fixed.</p>",
             "url": "https://github.com/mdn/content/pull/45019",
             "title": "fix: auto-cleanup by bot",
@@ -130,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/181685465?u=67d73d6415d767bbf493704a6bb900e905a33806&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">🚀 Summary</h2>\n<p dir=\"auto\">This pull request improves the accuracy of the <code class=\"notranslate\">HTMLTableElement.insertRow()</code> documentation by aligning it with the HTML specification.</p>\n<h3 dir=\"auto\">✨ Changes</h3>\n<ul dir=\"auto\">\n<li>Corrected the misleading statement that rows are always inserted into the last <code class=\"notranslate\">&lt;tbody&gt;</code>.</li>\n<li>Clarified that the insertion target depends on the insertion position.</li>\n<li>Explained that when appending (<code class=\"notranslate\">insertRow()</code> or <code class=\"notranslate\">insertRow(-1)</code>), the row is inserted into the parent section of the table's last row.</li>\n<li>Kept the update minimal and focused to preserve the existing documentation structure.</li>\n</ul>\n<h3 dir=\"auto\">🎯 Impact</h3>\n<p dir=\"auto\">This change provides developers with more accurate guidance, reduces potential confusion when working with tables containing multiple <code class=\"notranslate\">&lt;tbody&gt;</code> elements, and ensures the documentation reflects the behavior defined by the HTML specification.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44987.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5037471282\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44987\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44987/hovercard\" href=\"https://github.com/mdn/content/issues/44987\">#44987</a>.</p>",
             "url": "https://github.com/mdn/content/pull/45005",
             "title": "docs: correct HTMLTableElement.insertRow() introduction",
-            "date_modified": "2026-08-04T19:41:22.000Z",
+            "date_modified": "2026-08-05T04:40:53.000Z",
             "date_published": "2026-08-04T07:19:01.000Z",
             "author": {
                 "name": "Sarjeeth-46",
@@ -190,39 +223,6 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/392868?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I didn’t dig into the history, but I think it fell out of sync with HTML spec changes, and even the rest of the page.</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">The user input is not necessarily <em>textual</em>. See the “Representing onscreen input options” subsection, where it’s activation of a command based on an on-screen label.</p>\n</li>\n<li>\n<p dir=\"auto\">monospace <em>is</em> part of the expected user-agent stylesheet for kbd, so I adopted the wording from the &lt;code&gt; page about monospaceness.</p>\n</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/44989",
-            "title": "<kbd>: fix multiple details in the first paragraph",
-            "date_modified": "2026-08-03T10:40:14.000Z",
-            "date_published": "2026-08-02T15:28:53.000Z",
-            "author": {
-                "name": "chris-morgan",
-                "url": "https://github.com/chris-morgan"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">continuation of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4942910853\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44876\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/44876/hovercard\" href=\"https://github.com/mdn/content/pull/44876\">#44876</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/44986",
-            "title": "Privacy regulations",
-            "date_modified": "2026-07-31T17:55:18.000Z",
-            "date_published": "2026-07-31T17:24:34.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/154081173?u=e8ee0d3e32178dbc84916a78b482859cf8e36678&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds an \"Effect on the <code class=\"notranslate\">Origin</code> header\" section to the <code class=\"notranslate\">Referrer-Policy</code> reference page, documenting that the referrer policy also decides whether the <code class=\"notranslate\">Origin</code> header is sent as the request's origin or as <code class=\"notranslate\">null</code>, and cross-links {{HTTPHeader(\"Origin\")}}.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36543.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2619145031\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36543\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36543/hovercard\" href=\"https://github.com/mdn/content/issues/36543\">#36543</a>. The <code class=\"notranslate\">Origin</code> page already notes that its value may be <code class=\"notranslate\">null</code> with \"Referrer-Policy set to <code class=\"notranslate\">no-referrer</code> for non-<code class=\"notranslate\">cors</code> request modes\", but the <code class=\"notranslate\">Referrer-Policy</code> page did not mention the <code class=\"notranslate\">Origin</code> header at all, so the side effect was invisible when choosing a policy value. The issue also asked whether values other than <code class=\"notranslate\">no-referrer</code> are affected — per the spec, three more are.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Content verified against the Fetch Standard's <a href=\"https://fetch.spec.whatwg.org/#append-a-request-origin-header\" rel=\"nofollow\">append a request <code class=\"notranslate\">Origin</code> header</a> algorithm. For a request whose response tainting is not \"cors\" and whose mode is not \"websocket\"/\"webtransport\", if the method is neither <code class=\"notranslate\">GET</code> nor <code class=\"notranslate\">HEAD</code> and the mode is not \"cors\", the spec switches on the referrer policy:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">no-referrer</code> → <code class=\"notranslate\">serializedOrigin</code> is set to <code class=\"notranslate\">null</code>;</li>\n<li><code class=\"notranslate\">no-referrer-when-downgrade</code> / <code class=\"notranslate\">strict-origin</code> / <code class=\"notranslate\">strict-origin-when-cross-origin</code> → <code class=\"notranslate\">null</code> when the origin is a tuple origin with scheme <code class=\"notranslate\">https</code> and the current URL's scheme is not <code class=\"notranslate\">https</code>;</li>\n<li><code class=\"notranslate\">same-origin</code> → <code class=\"notranslate\">null</code> when the origin is not same origin with the current URL's origin;</li>\n<li>otherwise → unchanged.</li>\n</ul>\n<p dir=\"auto\">The spec's own note is reflected in the closing sentence: \"A request's referrer policy is taken into account for all fetches where the fetcher did not explicitly opt into sharing their origin with the server, e.g., via using the CORS protocol.\"</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36543.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2619145031\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36543\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36543/hovercard\" href=\"https://github.com/mdn/content/issues/36543\">#36543</a></p>",
-            "url": "https://github.com/mdn/content/pull/44982",
-            "title": "Referrer-Policy: document effect on the Origin header",
-            "date_modified": "2026-08-04T02:10:25.000Z",
-            "date_published": "2026-07-31T10:04:54.000Z",
-            "author": {
-                "name": "davidpavlovschi",
-                "url": "https://github.com/davidpavlovschi"
             }
         }
     ]
