@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-08-06T07:31:00.983Z</updated>
+    <updated>2026-08-06T10:24:54.114Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Chrome 149 active WebSockets no longer stop pages entering bfcache]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30179</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30179"/>
-        <updated>2026-08-05T18:09:08.000Z</updated>
+        <updated>2026-08-06T09:56:57.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 <p dir="auto">From version 149, Chrome no longer allows active WebSocket connections to block pages from entering the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Monitoring_bfcache_blocking_reasons" rel="nofollow">bfcache</a>. The WebSocket connections are disconnected upon the page entering the cache, and can be reconnected when the page is navigated to again.</p>
@@ -121,83 +121,6 @@ api.WebTransportSendStream.sendGroup</p>
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2026-08-05T11:29:56.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[api.FontFaceSet: mark Firefox iterator methods as partial]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30171</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30171"/>
-        <updated>2026-08-05T19:23:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/39842445?u=ba97e6c99a42ffe94e039b39f09c51bda448e4c7&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Marks <code class="notranslate">api.FontFaceSet.values</code>, <code class="notranslate">.keys</code>, and <code class="notranslate">.entries</code> as <code class="notranslate">partial_implementation</code> in Firefox. The methods exist and return an object with a working <code class="notranslate">next()</code>, but that object does not implement <code class="notranslate">Symbol.iterator</code>, so spread syntax and <code class="notranslate">for...of</code> throw. The Firefox <code class="notranslate">version_added</code> value is unchanged; this has been the behavior since the feature shipped.</p>
-<p dir="auto"><code class="notranslate">api.FontFaceSet.@@iterator</code> and <code class="notranslate">.forEach</code> were tested and work correctly, so they are left unchanged.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Tested on <a href="https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/values" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/values</a> (13 loaded font faces at time of testing; <code class="notranslate">document.fonts.size === 13</code> in both browsers), Firefox 153.0.1 vs Chrome 151:</p>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>check</th>
-<th>Firefox 153.0.1</th>
-<th>Chrome 151</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code class="notranslate">values()</code> constructor</td>
-<td><code class="notranslate">Object</code></td>
-<td><code class="notranslate">Iterator</code></td>
-</tr>
-<tr>
-<td><code class="notranslate">values()[Symbol.iterator]</code></td>
-<td><code class="notranslate">undefined</code></td>
-<td><code class="notranslate">function</code></td>
-</tr>
-<tr>
-<td><code class="notranslate">values().next()</code></td>
-<td><code class="notranslate">{done: false, value: FontFace}</code></td>
-<td><code class="notranslate">{done: false, value: FontFace}</code></td>
-</tr>
-<tr>
-<td><code class="notranslate">[...values()]</code></td>
-<td>throws <code class="notranslate">values() is not iterable</code></td>
-<td>13</td>
-</tr>
-<tr>
-<td><code class="notranslate">[...keys()]</code></td>
-<td>throws <code class="notranslate">keys() is not iterable</code></td>
-<td>13</td>
-</tr>
-<tr>
-<td><code class="notranslate">[...entries()]</code></td>
-<td>throws <code class="notranslate">entries() is not iterable</code></td>
-<td>13</td>
-</tr>
-<tr>
-<td><code class="notranslate">for...of</code> over the set</td>
-<td>13</td>
-<td>13</td>
-</tr>
-<tr>
-<td><code class="notranslate">Array.from(set)</code></td>
-<td>13</td>
-<td>13</td>
-</tr>
-<tr>
-<td><code class="notranslate">forEach()</code></td>
-<td>13</td>
-<td>13</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<p dir="auto">Tracked upstream in <a href="https://bugzil.la/1311198" rel="nofollow">bug 1311198</a> (open, <code class="notranslate">webcompat:platform-bug</code>), with <a href="https://bugzil.la/1729089" rel="nofollow">1729089</a>, <a href="https://bugzil.la/1729997" rel="nofollow">1729997</a>, and <a href="https://bugzil.la/1780657" rel="nofollow">1780657</a> filed as duplicates. It has caused observable site breakage — see <a href="https://bugzil.la/1831949" rel="nofollow">bug 1831949</a>.</p>
-<p dir="auto">Thanks to <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/jjspace/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/jjspace">@jjspace</a> for the report and the bug links.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28106.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3488325273" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28106" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28106/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28106">#28106</a></p>]]></content>
-        <author>
-            <name>nina-mir</name>
-            <email>nina-mir@noreply.github.com</email>
-            <uri>https://github.com/nina-mir</uri>
-        </author>
-        <published>2026-08-05T05:38:59.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add WebView on iOS support with a note specifying the limitations]]></title>
@@ -499,5 +422,25 @@ The relevant links are <a href="https://github.com/tc39/proposal-source-phase-im
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2026-05-24T17:53:56.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Node.js 15.3.0…26.0.0]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/29619</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/29619"/>
+        <updated>2026-05-07T10:52:56.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Exploring Node.js data collection using unjs/runtime-compat + openwebdocs/mdn-bcd-collector.</p>
+<h4 dir="auto">Related issues</h4>
+
+]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-05-06T15:09:24.000Z</published>
     </entry>
 </feed>
