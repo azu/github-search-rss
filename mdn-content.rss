@@ -2,11 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-06T23:47:11.637Z</updated>
+    <updated>2026-08-07T02:02:02.824Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Synchronize with BCD v8.0.10]]></title>
+        <id>https://github.com/mdn/content/pull/45039</id>
+        <link href="https://github.com/mdn/content/pull/45039"/>
+        <updated>2026-08-07T01:30:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><a href="https://github.com/mdn/browser-compat-data/releases/tag/v8.0.10">BCD release v8.0.10</a></p>
+<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/pepelsbey/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/pepelsbey">@pepelsbey</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a></p>]]></content>
+        <author>
+            <name>OnkarRuikar</name>
+            <email>OnkarRuikar@noreply.github.com</email>
+            <uri>https://github.com/OnkarRuikar</uri>
+        </author>
+        <published>2026-08-07T01:28:19.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docs(css): clarify border-image-slice example source image]]></title>
         <id>https://github.com/mdn/content/pull/45037</id>
@@ -213,71 +227,6 @@ That aspect is a valid image copy source/destination according to depth-or-stenc
         <published>2026-08-05T13:27:41.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[fix(learn): correct `git status` output in Django setup tutorial]]></title>
-        <id>https://github.com/mdn/content/pull/45026</id>
-        <link href="https://github.com/mdn/content/pull/45026"/>
-        <updated>2026-08-05T11:53:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/102389071?u=fd0b775e7e974be91ee8255925ca7b5bbbaa63f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Corrects the sample <code class="notranslate">git status</code> output in the "Modify and sync changes" step of the Django development environment tutorial: it showed the wrong branch, a tracking line for a remote branch that does not exist yet, and an unstage hint that git no longer prints.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Readers following the steps in order get output that contradicts what they just did. Step 2 runs <code class="notranslate">git checkout -b update_gitignore</code>, but the listing in step 5 says <code class="notranslate">On branch main</code>, so anyone new to git is left wondering whether the checkout worked or whether they were supposed to switch back.</p>
-<p dir="auto">The tracking line is also impossible at that point in the tutorial. The branch is not pushed until step 7, so it has no upstream when <code class="notranslate">git status</code> runs in step 5, and git prints no "Your branch is up-to-date with ..." line at all.</p>
-<p dir="auto">Finally, the hint <code class="notranslate">(use "git reset HEAD &lt;file&gt;..." to unstage)</code> is pre-2.23 output. Git has printed <code class="notranslate">(use "git restore --staged &lt;file&gt;..." to unstage)</code> since August 2019, so readers comparing their terminal against the page see a mismatch there too.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Before:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="```bash
-&gt; git status
-On branch main
-Your branch is up-to-date with 'origin/update_gitignore'.
-Changes to be committed:
-  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
-
-        modified:   .gitignore
-```"><pre class="notranslate"><code class="notranslate">```bash
-&gt; git status
-On branch main
-Your branch is up-to-date with 'origin/update_gitignore'.
-Changes to be committed:
-  (use "git reset HEAD &lt;file&gt;..." to unstage)
-
-        modified:   .gitignore
-```
-</code></pre></div>
-<p dir="auto">After:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="```bash
-git status
-```
-
-```plain
-On branch update_gitignore
-Changes to be committed:
-  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
-
-        modified:   .gitignore
-```"><pre class="notranslate"><code class="notranslate">```bash
-git status
-```
-
-```plain
-On branch update_gitignore
-Changes to be committed:
-  (use "git restore --staged &lt;file&gt;..." to unstage)
-
-        modified:   .gitignore
-```
-</code></pre></div>
-<p dir="auto">The command and its output are now in separate <code class="notranslate">bash</code> and <code class="notranslate">plain</code> blocks, which matches the equivalent step in the Express deployment tutorial (<code class="notranslate">learn_web_development/extensions/server-side/express_nodejs/deployment</code>) and removes the <code class="notranslate">&gt;</code> prompt character that readers could otherwise copy.</p>
-<p dir="auto">The branch-and-pull-request workflow of the surrounding steps is left as it is: steps 7 and 8 deliberately teach pushing the branch and merging it through a pull request on GitHub, consistent with the rest of the Django series, so only the pasted output needed correcting.</p>
-<p dir="auto">Note that the same outdated <code class="notranslate">git reset HEAD</code> hint appears once more, in the Express deployment tutorial. That listing is otherwise correct (it really is on <code class="notranslate">main</code>, tracking <code class="notranslate">origin/main</code>), so it is outside the scope of this issue and left for a separate change.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45003.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5057536680" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45003" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45003/hovercard" href="https://github.com/mdn/content/issues/45003">#45003</a></p>]]></content>
-        <author>
-            <name>Ashish-CodeJourney</name>
-            <email>Ashish-CodeJourney@noreply.github.com</email>
-            <uri>https://github.com/Ashish-CodeJourney</uri>
-        </author>
-        <published>2026-08-05T11:51:55.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Editorial review: Document WGSL linear_indexing extension]]></title>
         <id>https://github.com/mdn/content/pull/45025</id>
         <link href="https://github.com/mdn/content/pull/45025"/>
@@ -463,33 +412,6 @@ Changes to be committed:
         <published>2026-08-04T17:03:18.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Update styling web fonts to use Transfonter]]></title>
-        <id>https://github.com/mdn/content/pull/45013</id>
-        <link href="https://github.com/mdn/content/pull/45013"/>
-        <updated>2026-08-04T13:53:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">As per the referenced issue, the font handling process as written on <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms" rel="nofollow">https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms</a> isn't working. I've changed the steps to use Transfonter and make a few other improvements.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45012.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5060230580" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45012" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45012/hovercard" href="https://github.com/mdn/content/issues/45012">#45012</a></p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-08-04T13:51:12.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Technical review: Document the polygon() basic shape round keyword]]></title>
         <id>https://github.com/mdn/content/pull/45011</id>
         <link href="https://github.com/mdn/content/pull/45011"/>
@@ -555,5 +477,37 @@ Changes to be committed:
             <uri>https://github.com/Ashish-CodeJourney</uri>
         </author>
         <published>2026-08-04T11:27:08.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[updated the line-clamp property to include new values]]></title>
+        <id>https://github.com/mdn/content/pull/45007</id>
+        <link href="https://github.com/mdn/content/pull/45007"/>
+        <updated>2026-08-05T11:12:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>On the <code class="notranslate">line-clamp</code> CSS property:
+<ul dir="auto">
+<li>Updated description</li>
+<li>Updated the syntax</li>
+<li>Updated values</li>
+<li>Added new example</li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a href="https://github.com/mdn/content/issues/44839" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44839/hovercard">MDN Issue #44839</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="">BCD PR</a></li>
+<li><a href="https://github.com/mdn/content/pull/45008" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45008/hovercard">Firefox Release PR</a></li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-08-04T09:49:23.000Z</published>
     </entry>
 </feed>

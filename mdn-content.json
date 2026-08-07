@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://github.com/mdn/browser-compat-data/releases/tag/v8.0.10\">BCD release v8.0.10</a></p>\n<p dir=\"auto\">/cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/pepelsbey/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/pepelsbey\">@pepelsbey</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a></p>",
+            "url": "https://github.com/mdn/content/pull/45039",
+            "title": "Synchronize with BCD v8.0.10",
+            "date_modified": "2026-08-07T01:30:14.000Z",
+            "date_published": "2026-08-07T01:28:19.000Z",
+            "author": {
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/185269030?u=1fc22565ccf4566b6f734fabaa87e03d9a31cfe4&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarified the source image reference in the <code class=\"notranslate\">border-image-slice</code> example by improving the image path and updating the alt text.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The <code class=\"notranslate\">border-image-slice</code> example mentions the source image used for the border, but the image reference and description could be clearer. This change makes it easier to understand the relationship between the source image and the resulting border rendering.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Updated the image reference to use the shared-assets path.</li>\n<li>Improved the image alt text for better accessibility.</li>\n<li>Updated the explanation to clarify that the 30px measurement refers to the source image.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43121.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3937847653\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43121\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43121/hovercard\" href=\"https://github.com/mdn/content/issues/43121\">#43121</a></p>",
             "url": "https://github.com/mdn/content/pull/45037",
             "title": "docs(css): clarify border-image-slice example source image",
@@ -91,17 +102,6 @@
             "author": {
                 "name": "dletorey",
                 "url": "https://github.com/dletorey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/102389071?u=fd0b775e7e974be91ee8255925ca7b5bbbaa63f2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Corrects the sample <code class=\"notranslate\">git status</code> output in the \"Modify and sync changes\" step of the Django development environment tutorial: it showed the wrong branch, a tracking line for a remote branch that does not exist yet, and an unstage hint that git no longer prints.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Readers following the steps in order get output that contradicts what they just did. Step 2 runs <code class=\"notranslate\">git checkout -b update_gitignore</code>, but the listing in step 5 says <code class=\"notranslate\">On branch main</code>, so anyone new to git is left wondering whether the checkout worked or whether they were supposed to switch back.</p>\n<p dir=\"auto\">The tracking line is also impossible at that point in the tutorial. The branch is not pushed until step 7, so it has no upstream when <code class=\"notranslate\">git status</code> runs in step 5, and git prints no \"Your branch is up-to-date with ...\" line at all.</p>\n<p dir=\"auto\">Finally, the hint <code class=\"notranslate\">(use \"git reset HEAD &lt;file&gt;...\" to unstage)</code> is pre-2.23 output. Git has printed <code class=\"notranslate\">(use \"git restore --staged &lt;file&gt;...\" to unstage)</code> since August 2019, so readers comparing their terminal against the page see a mismatch there too.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Before:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"```bash\n&gt; git status\nOn branch main\nYour branch is up-to-date with 'origin/update_gitignore'.\nChanges to be committed:\n  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)\n\n        modified:   .gitignore\n```\"><pre class=\"notranslate\"><code class=\"notranslate\">```bash\n&gt; git status\nOn branch main\nYour branch is up-to-date with 'origin/update_gitignore'.\nChanges to be committed:\n  (use \"git reset HEAD &lt;file&gt;...\" to unstage)\n\n        modified:   .gitignore\n```\n</code></pre></div>\n<p dir=\"auto\">After:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"```bash\ngit status\n```\n\n```plain\nOn branch update_gitignore\nChanges to be committed:\n  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)\n\n        modified:   .gitignore\n```\"><pre class=\"notranslate\"><code class=\"notranslate\">```bash\ngit status\n```\n\n```plain\nOn branch update_gitignore\nChanges to be committed:\n  (use \"git restore --staged &lt;file&gt;...\" to unstage)\n\n        modified:   .gitignore\n```\n</code></pre></div>\n<p dir=\"auto\">The command and its output are now in separate <code class=\"notranslate\">bash</code> and <code class=\"notranslate\">plain</code> blocks, which matches the equivalent step in the Express deployment tutorial (<code class=\"notranslate\">learn_web_development/extensions/server-side/express_nodejs/deployment</code>) and removes the <code class=\"notranslate\">&gt;</code> prompt character that readers could otherwise copy.</p>\n<p dir=\"auto\">The branch-and-pull-request workflow of the surrounding steps is left as it is: steps 7 and 8 deliberately teach pushing the branch and merging it through a pull request on GitHub, consistent with the rest of the Django series, so only the pasted output needed correcting.</p>\n<p dir=\"auto\">Note that the same outdated <code class=\"notranslate\">git reset HEAD</code> hint appears once more, in the Express deployment tutorial. That listing is otherwise correct (it really is on <code class=\"notranslate\">main</code>, tracking <code class=\"notranslate\">origin/main</code>), so it is outside the scope of this issue and left for a separate change.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45003.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5057536680\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45003\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45003/hovercard\" href=\"https://github.com/mdn/content/issues/45003\">#45003</a></p>",
-            "url": "https://github.com/mdn/content/pull/45026",
-            "title": "fix(learn): correct `git status` output in Django setup tutorial",
-            "date_modified": "2026-08-05T11:53:35.000Z",
-            "date_published": "2026-08-05T11:51:55.000Z",
-            "author": {
-                "name": "Ashish-CodeJourney",
-                "url": "https://github.com/Ashish-CodeJourney"
             }
         },
         {
@@ -193,17 +193,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As per the referenced issue, the font handling process as written on <a href=\"https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Styling_web_forms</a> isn't working. I've changed the steps to use Transfonter and make a few other improvements.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45012.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5060230580\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45012\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45012/hovercard\" href=\"https://github.com/mdn/content/issues/45012\">#45012</a></p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/45013",
-            "title": "Update styling web fonts to use Transfonter",
-            "date_modified": "2026-08-04T13:53:06.000Z",
-            "date_published": "2026-08-04T13:51:12.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Chrome 150 adds support for the <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/basic-shape/polygon\" rel=\"nofollow\"><code class=\"notranslate\">polygon()</code></a> basic shape <a href=\"https://drafts.csswg.org/css-shapes-1/#funcdef-basic-shape-polygon:~:text=An%20optional%20%3Clength%3E%20after%20a%20round%20keyword%20defines%20rounding%20for%20each%20vertex%20of%20the%20polygon\" rel=\"nofollow\"><code class=\"notranslate\">round</code> keyword</a>; see <a href=\"https://chromestatus.com/feature/6636392944893952\" rel=\"nofollow\">https://chromestatus.com/feature/6636392944893952</a>.</p>\n<p dir=\"auto\">This PR documents the new keyword. Specifically, it:</p>\n<ul dir=\"auto\">\n<li>Updates the <code class=\"notranslate\">polygon()</code> summary found on the <code class=\"notranslate\">&lt;basic-shape&gt;</code> reference page to improve it generally, and add details of <code class=\"notranslate\">round</code>.</li>\n<li>Updates the <code class=\"notranslate\">polygon()</code> reference page to add details of <code class=\"notranslate\">round</code> including multiple live examples, and generally improve the page structure.</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/45011",
             "title": "Technical review: Document the polygon() basic shape round keyword",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "Ashish-CodeJourney",
                 "url": "https://github.com/Ashish-CodeJourney"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>On the <code class=\"notranslate\">line-clamp</code> CSS property:\n<ul dir=\"auto\">\n<li>Updated description</li>\n<li>Updated the syntax</li>\n<li>Updated values</li>\n<li>Added new example</li>\n</ul>\n</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Working on <a href=\"https://github.com/mdn/content/issues/44839\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44839/hovercard\">MDN Issue #44839</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"\">BCD PR</a></li>\n<li><a href=\"https://github.com/mdn/content/pull/45008\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45008/hovercard\">Firefox Release PR</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/45007",
+            "title": "updated the line-clamp property to include new values",
+            "date_modified": "2026-08-05T11:12:08.000Z",
+            "date_published": "2026-08-04T09:49:23.000Z",
+            "author": {
+                "name": "dletorey",
+                "url": "https://github.com/dletorey"
             }
         }
     ]
