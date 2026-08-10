@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109454414?u=8f40c1c1b5f0a5af5171c0cc286f21fed7097a0c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5097020641\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45056\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45056/hovercard\" href=\"https://github.com/mdn/content/issues/45056\">#45056</a>: KeyboardEvent: ctrlKey false on key up of the control key</p>\n<h2 dir=\"auto\">Changed files</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">files/en-us/web/api/element/keyup_event/index.md</code></li>\n</ul>\n<h2 dir=\"auto\">Validation</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check</code>: passed</li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45056.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5097020641\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45056\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45056/hovercard\" href=\"https://github.com/mdn/content/issues/45056\">#45056</a></p>",
+            "url": "https://github.com/mdn/content/pull/45063",
+            "title": "docs: KeyboardEvent: ctrlKey false on key up of the control key",
+            "date_modified": "2026-08-10T02:41:07.000Z",
+            "date_published": "2026-08-10T02:39:16.000Z",
+            "author": {
+                "name": "eeminionn",
+                "url": "https://github.com/eeminionn"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/297678?u=1a96252b00f42440aea79ab73a2c25f6f8964553&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Clarified behavior of assign() method regarding fallback content and slot assignments.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">There was no indication of what calling <code class=\"notranslate\">assign()</code> with zero args does, so I added it.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a href=\"https://html.spec.whatwg.org/multipage/scripting.html#dom-slot-assign\" rel=\"nofollow\">The spec</a> doesn't seem to mention it either.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">I tested this in Safari:</p>\n<p dir=\"auto\"><a href=\"https://codepen.io/editor/trusktr/pen/019fe93d-5654-74d2-ad78-473bf9e632fa\" rel=\"nofollow\">https://codepen.io/editor/trusktr/pen/019fe93d-5654-74d2-ad78-473bf9e632fa</a></p>\n<p dir=\"auto\">Notice the <code class=\"notranslate\">setTimeout</code> removes the only slotted node from the slot after 1 second, but the slot's fallback content is not shown. This is a state that is unreachable via declarative slot assignment.</p>\n<p dir=\"auto\">Uncomment the <code class=\"notranslate\">slot.assign()</code> call to see that fallback content is shown <em>only</em> when <code class=\"notranslate\">assign()</code> is called with no args (not when all assigned nodes are removed).</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/45062",
+            "title": "Update HTMLSlotElement.assign() documentation",
+            "date_modified": "2026-08-10T01:58:28.000Z",
+            "date_published": "2026-08-10T01:55:28.000Z",
+            "author": {
+                "name": "trusktr",
+                "url": "https://github.com/trusktr"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/96150?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">In Chrome, Firefox, and Safari, setting <code class=\"notranslate\">font-family</code> to the single keyword <code class=\"notranslate\">monospace</code> causes the browser to use the user's monospace font size preference, which is often smaller than the size used for proportional fonts.</p>\n<p dir=\"auto\">This is an interoperable, unspecified browser quirk that had no documentation on MDN.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Readers should know about this quirk, and know about the workaround of setting <code class=\"notranslate\">font-family: monospace, monospace</code> to workaround the quirk.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<ul dir=\"auto\">\n<li>Years-old open proposal to add this to the specification: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"442535098\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/csswg-drafts/issues/3906\" data-hovercard-type=\"issue\" data-hovercard-url=\"/w3c/csswg-drafts/issues/3906/hovercard\" href=\"https://github.com/w3c/csswg-drafts/issues/3906\">w3c/csswg-drafts#3906</a></li>\n<li>2006 WebKit blog post about this quirk: <a href=\"https://webkit.org/blog/67/strange-medium/\" rel=\"nofollow\">https://webkit.org/blog/67/strange-medium/</a></li>\n<li><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=328621\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=328621</a> \"strange default <code class=\"notranslate\">monospace</code> font size -- differs from the proprtional fonts\"</li>\n<li>Blog post by Firefox developer documenting the complexity of <code class=\"notranslate\">font-size</code>: <a href=\"https://manishearth.github.io/blog/2017/08/10/font-size-an-unexpectedly-complex-css-property/\" rel=\"nofollow\">https://manishearth.github.io/blog/2017/08/10/font-size-an-unexpectedly-complex-css-property/</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45060",
             "title": "Document `font-family: monospace` font size quirk",
@@ -130,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">From version 149, Chrome no longer allows active WebSocket connections to block pages from entering the <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Monitoring_bfcache_blocking_reasons\" rel=\"nofollow\">bfcache</a>. The WebSocket connections are disconnected upon the page entering the cache, and can be reconnected when the page is navigated to again.</p>\n<p dir=\"auto\">See <a href=\"https://chromestatus.com/feature/5068439115923456\" rel=\"nofollow\">https://chromestatus.com/feature/5068439115923456</a>.</p>\n<p dir=\"auto\">This PR documents the new behavior.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/45031",
             "title": "Technical review: Document new Chrome bfcache websocket behavior - doesnt block pages",
-            "date_modified": "2026-08-05T19:37:43.000Z",
+            "date_modified": "2026-08-10T02:39:32.000Z",
             "date_published": "2026-08-05T19:35:39.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "dipikabh",
                 "url": "https://github.com/dipikabh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/7352080?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This change adds:</p>\n<ul dir=\"auto\">\n<li>a list of the manifest keys and APIs where match patterns are used to the match patterns article.</li>\n<li>references and links to match patterns to those manifest keys and API's where they were missing</li>\n</ul>\n<p dir=\"auto\">The list was confirmed by checking the WebExtensions schemas and native bindings for reference to <code class=\"notranslate\">MatchPattern</code>, <code class=\"notranslate\">MatchPatternRestricted</code>, and <code class=\"notranslate\">MatchPatternSet</code>.</p>\n<p dir=\"auto\">It also adds cross-browser details for:</p>\n<ul dir=\"auto\">\n<li>wild card handling</li>\n<li>scheme support</li>\n<li><code class=\"notranslate\">&lt;all_urls&gt;</code>schema matches</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36971.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2692748303\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36971\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36971/hovercard\" href=\"https://github.com/mdn/content/issues/36971\">#36971</a>  and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3562355681\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/41722\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/41722/hovercard\" href=\"https://github.com/mdn/content/issues/41722\">#41722</a></p>",
-            "url": "https://github.com/mdn/content/pull/45021",
-            "title": "Issue 36971 match patterns clarifications",
-            "date_modified": "2026-08-06T19:48:11.000Z",
-            "date_published": "2026-08-05T02:08:22.000Z",
-            "author": {
-                "name": "rebloor",
-                "url": "https://github.com/rebloor"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/17036061?u=becea1794942100f6fe2be3a310afc188b7bde2e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds CSS Grid Lanes related properties and values to the CSS reference pages for <code class=\"notranslate\">display</code> and <code class=\"notranslate\">flow-tolerance</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">CSS Grid Lanes support was shipped in Safari 26.4.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">See the following references:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">display: grid-lanes</code> support: <a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_4-release-notes#:~:text=Added%20support%20for%20CSS%20display:%20grid%2Dlanes.%20(164858227)\" rel=\"nofollow\">Safari 26.4 Release Notes</a></li>\n<li><code class=\"notranslate\">flow-tolerance</code> support: <a href=\"https://developer.apple.com/documentation/safari-release-notes/safari-26_4-release-notes#:~:text=Added%20support%20for%20flow%2Dtolerance%20in%20CSS%20Grid%20Lanes.%20(164043151)\" rel=\"nofollow\">Safari 26.4 Release Notes</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/45016",
-            "title": "Add CSS Grid Lanes reference pages",
-            "date_modified": "2026-08-07T13:57:58.000Z",
-            "date_published": "2026-08-04T18:00:12.000Z",
-            "author": {
-                "name": "jdatapple",
-                "url": "https://github.com/jdatapple"
             }
         }
     ]
