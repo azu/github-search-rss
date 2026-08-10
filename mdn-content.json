@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The values sections on property pages are a DL of data types, preceded by an explanation of the value's syntax.<br>\nupdated the writing guidelines to reflect this.</p>\n<p dir=\"auto\">Removed optional explanation text and clarified the 'Values' section description.</p>",
+            "url": "https://github.com/mdn/content/pull/45077",
+            "title": "Values section for CSS property pages",
+            "date_modified": "2026-08-10T21:48:07.000Z",
+            "date_published": "2026-08-10T21:32:00.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6571445?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">… digests</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> (points 3-6) and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a> (points 5-9): every worked example on both pages either copied values from RFC 9530 without stating the input bytes, used placeholder digests (sha-512=:ABC...=:, [message body]), or was built on the incorrect premise that Content-Encoding causes Content-Digest and Repr-Digest to diverge. Content-Encoding identifies a different representation, so a whole representation sent in one message always produces matching Content-Digest and Repr-Digest values regardless of encoding; real divergence comes from partial responses (Range requests).</p>\n<p dir=\"auto\">Replaced with an MDN-original example body, {\"hello\": \"mdn\"}, with every digest value computed and independently cross-verified (Python hashlib and sha256sum/sha512sum, plus a gzip -dc round-trip for the GZIP example). Migrated the fixed Content-Digest examples onto Repr-Digest.</p>\n<p dir=\"auto\">Removed the Want-*-Digest mentions as those are not commonly used in practce and seem like a distraction. They can be handled on the specific relevant pages.</p>\n<p dir=\"auto\">Removed the 406 examples, since they are behavior RFC 9530 doesn't define.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The two pages had examples that were confusing, inaccurate or wrong. This change corrects them and makes them consistent on both pages (since they are both inter-related)</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a></p>\n",
             "url": "https://github.com/mdn/content/pull/45076",
             "title": "Rewrite Content-Digest and Repr-Digest examples with real, verifiable…",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "BHUVANSH855",
                 "url": "https://github.com/BHUVANSH855"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105445818?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Firefox's <code class=\"notranslate\">estimate()</code> reports <code class=\"notranslate\">usage</code> and <code class=\"notranslate\">quota</code> scoped to the origin's group (all origins sharing an eTLD+1, i.e. a \"site\"), not the single origin. In addition, an origin granted persistent storage via <code class=\"notranslate\">persist()</code> is exempt from the per-group limit, so Firefox reports that origin's own usage against the global temporary-storage limit instead of the group's values.</p>\n<p dir=\"auto\">Neither behavior is currently documented on this page, which describes the values as origin-scoped.</p>\n<p dir=\"auto\">Source: Gecko's <code class=\"notranslate\">QuotaManager::GetUsageAndLimitForEstimate</code> in <code class=\"notranslate\">dom/quota/ActorsParent.cpp</code>. Related to the origin-vs-group tracking work in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1305665\" rel=\"nofollow\">bug 1305665</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/45036",
-            "title": "StorageManager.estimate(): document Firefox group-scoped usage/quota",
-            "date_modified": "2026-08-06T16:04:44.000Z",
-            "date_published": "2026-08-06T15:50:03.000Z",
-            "author": {
-                "name": "hsingh-moz",
-                "url": "https://github.com/hsingh-moz"
             }
         }
     ]
