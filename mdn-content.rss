@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-10T20:29:29.055Z</updated>
+    <updated>2026-08-10T21:30:21.444Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Rewrite Content-Digest and Repr-Digest examples with real, verifiable…]]></title>
+        <id>https://github.com/mdn/content/pull/45076</id>
+        <link href="https://github.com/mdn/content/pull/45076"/>
+        <updated>2026-08-10T21:06:27.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/6571445?v=4" width="64" height="64" alt=""/><br/><p dir="auto">… digests</p>
+
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Addresses <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5099885606" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45058" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45058/hovercard" href="https://github.com/mdn/content/issues/45058">#45058</a> (points 3-6) and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5099969799" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45059" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45059/hovercard" href="https://github.com/mdn/content/issues/45059">#45059</a> (points 5-9): every worked example on both pages either copied values from RFC 9530 without stating the input bytes, used placeholder digests (sha-512=:ABC...=:, [message body]), or was built on the incorrect premise that Content-Encoding causes Content-Digest and Repr-Digest to diverge. Content-Encoding identifies a different representation, so a whole representation sent in one message always produces matching Content-Digest and Repr-Digest values regardless of encoding; real divergence comes from partial responses (Range requests).</p>
+<p dir="auto">Replaced with an MDN-original example body, {"hello": "mdn"}, with every digest value computed and independently cross-verified (Python hashlib and sha256sum/sha512sum, plus a gzip -dc round-trip for the GZIP example). Migrated the fixed Content-Digest examples onto Repr-Digest.</p>
+<p dir="auto">Removed the Want-*-Digest mentions as those are not commonly used in practce and seem like a distraction. They can be handled on the specific relevant pages.</p>
+<p dir="auto">Removed the 406 examples, since they are behavior RFC 9530 doesn't define.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The two pages had examples that were confusing, inaccurate or wrong. This change corrects them and makes them consistent on both pages (since they are both inter-related)</p>
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5099885606" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45058" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45058/hovercard" href="https://github.com/mdn/content/issues/45058">#45058</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5099969799" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45059" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45059/hovercard" href="https://github.com/mdn/content/issues/45059">#45059</a></p>
+]]></content>
+        <author>
+            <name>LPardue</name>
+            <email>LPardue@noreply.github.com</email>
+            <uri>https://github.com/LPardue</uri>
+        </author>
+        <published>2026-08-10T21:03:41.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Move insecure-algorithm and legacy Digest text to notes]]></title>
         <id>https://github.com/mdn/content/pull/45075</id>
@@ -536,29 +563,5 @@ no description section as none was needed</p>
             <uri>https://github.com/hsingh-moz</uri>
         </author>
         <published>2026-08-06T15:50:03.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[on macOS, middle-click is not used for pasting]]></title>
-        <id>https://github.com/mdn/content/pull/45035</id>
-        <link href="https://github.com/mdn/content/pull/45035"/>
-        <updated>2026-08-06T09:50:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/16009897?u=175800d6f14371cdc919c42b26f9640872064761&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The docs currently say:</p>
-<blockquote>
-<p dir="auto">On Windows this [<em>middle click</em>] is usually autoscroll, and on macOS and Linux this [<em>middle click</em>] is usually clipboard paste.</p>
-</blockquote>
-<p dir="auto">To the best of my knowledge, middle click has never been used for pasting on macOS.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">it's factually wrong</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">­-</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">­-</p>]]></content>
-        <author>
-            <name>k-yle</name>
-            <email>k-yle@noreply.github.com</email>
-            <uri>https://github.com/k-yle</uri>
-        </author>
-        <published>2026-08-06T09:49:01.000Z</published>
     </entry>
 </feed>
