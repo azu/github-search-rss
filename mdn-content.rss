@@ -2,11 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-12T05:22:00.958Z</updated>
+    <updated>2026-08-12T07:04:55.082Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[docs(web-audio): explain how to add audio effects]]></title>
+        <id>https://github.com/mdn/content/pull/45099</id>
+        <link href="https://github.com/mdn/content/pull/45099"/>
+        <updated>2026-08-12T07:04:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/185269030?u=1fc22565ccf4566b6f734fabaa87e03d9a31cfe4&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Improve the Web Audio API guide by adding guidance on creating and composing audio effects, including a concrete <code class="notranslate">BiquadFilterNode</code> example and a reference to the Voice-change-O-matic implementation.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The existing guide explains basic audio graphs and modification nodes, but does not clearly explain how readers can create new audio effects by combining audio nodes. This change provides a practical pattern for adding effects and explains how the Voice-change-O-matic example uses single-node and multi-node effect graphs.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The new section covers:</p>
+<ul dir="auto">
+<li>Connecting an effect node between an audio source and destination.</li>
+<li>Combining multiple audio nodes to create more complex effects.</li>
+<li>Creating a <code class="notranslate">BiquadFilterNode</code> and adding it to an audio graph.</li>
+<li>How Voice-change-O-matic uses <code class="notranslate">WaveShaperNode</code>, <code class="notranslate">BiquadFilterNode</code>, <code class="notranslate">ConvolverNode</code>, <code class="notranslate">DelayNode</code>, and <code class="notranslate">GainNode</code> to implement different effects.</li>
+<li>How to add and switch between effect graphs in an application.</li>
+</ul>
+<p dir="auto">Validation completed successfully:</p>
+<ul dir="auto">
+<li><code class="notranslate">markdownlint-cli2</code> — passed</li>
+<li><code class="notranslate">prettier --check</code> — passed</li>
+<li><code class="notranslate">git diff --check</code> — passed</li>
+<li>Pre-commit checks — passed</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42798.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3822639519" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42798" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42798/hovercard" href="https://github.com/mdn/content/issues/42798">#42798</a></p>]]></content>
+        <author>
+            <name>BHUVANSH855</name>
+            <email>BHUVANSH855@noreply.github.com</email>
+            <uri>https://github.com/BHUVANSH855</uri>
+        </author>
+        <published>2026-08-12T07:03:59.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docs: No Browser Implements screenX, screenY according to the spec]]></title>
         <id>https://github.com/mdn/content/pull/45097</id>
@@ -586,45 +620,5 @@ updated the writing guidelines to reflect this.</p>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-08-10T14:25:06.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[WebExtensions] Update node about menus.create() contexts option]]></title>
-        <id>https://github.com/mdn/content/pull/45067</id>
-        <link href="https://github.com/mdn/content/pull/45067"/>
-        <updated>2026-08-11T09:17:01.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Add a note describing Firefox and Chrome behavior if call to <code class="notranslate">menus.create()</code> omits <code class="notranslate">contexts</code> option.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Describe Firefox and Chrome inconsistency.</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto">Tested via the following:</p>
-<ul dir="auto">
-<li>Create extension creating three options:
-<ul dir="auto">
-<li><code class="notranslate">id</code> set to <code class="notranslate">"parent"</code> and <code class="notranslate">contexts</code> set to <code class="notranslate">['editable']</code></li>
-<li><code class="notranslate">id</code> set to <code class="notranslate">"child-no-contexts"</code> and <code class="notranslate">parentId</code> set to <code class="notranslate">'parent'</code> and <code class="notranslate">contexts</code> omitted</li>
-<li><code class="notranslate">id</code> set to <code class="notranslate">"child-with-contexts"</code> and <code class="notranslate">parentId</code> set to <code class="notranslate">'parent'</code> and <code class="notranslate">contexts</code> set to <code class="notranslate">['editable']</code></li>
-</ul>
-</li>
-<li>Open a page with <code class="notranslate">&lt;editable&gt;</code> element</li>
-<li>Right-chick the <code class="notranslate">&lt;editable&gt;</code> element and observe context menu</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">WECG/WEWG discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2892130000" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/774" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/774/hovercard" href="https://github.com/w3c/webextensions/issues/774">w3c/webextensions#774</a></p>
-
-
-
-]]></content>
-        <author>
-            <name>bershanskiy</name>
-            <email>bershanskiy@noreply.github.com</email>
-            <uri>https://github.com/bershanskiy</uri>
-        </author>
-        <published>2026-08-10T12:29:41.000Z</published>
     </entry>
 </feed>
