@@ -2,11 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2026-08-12T21:33:01.027Z</updated>
+    <updated>2026-08-12T22:28:26.113Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Automatic Picture-in-Picture]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/707</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/707"/>
+        <updated>2026-08-12T22:07:27.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190993520?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/marcoscaceres/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/marcoscaceres">@marcoscaceres</a></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">User Agent Initiated (Automatic) Picture-in-Picture</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a href="https://pr-preview.s3.amazonaws.com/bpkeen/picture-in-picture/pull/241.html#automatic-picture-in-picture-request" rel="nofollow">https://pr-preview.s3.amazonaws.com/bpkeen/picture-in-picture/pull/241.html#automatic-picture-in-picture-request</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a href="https://github.com/w3c/picture-in-picture">https://github.com/w3c/picture-in-picture</a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><a href="https://developer.chrome.com/blog/automatic-picture-in-picture-initiated-by-the-browser" rel="nofollow">https://developer.chrome.com/blog/automatic-picture-in-picture-initiated-by-the-browser</a></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4912372020" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1434" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1434/hovercard" href="https://github.com/mozilla/standards-positions/issues/1434">mozilla/standards-positions#1434</a></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">This proposal extends the Picture-in-Picture API to allow the user agent to automatically open a Picture-in-Picture (PiP) window when the original content becomes occluded, such as when a user switches to another tab.</p>
+<p dir="auto">The proposed spec changes were originally created to define a <a href="https://pr-preview.s3.amazonaws.com/bpkeen/picture-in-picture/pull/241.html#permissions-integration" rel="nofollow">permission policy for this feature</a>, but have now expanded to also formalize what is an "<a href="https://pr-preview.s3.amazonaws.com/bpkeen/picture-in-picture/pull/241.html#automatic-picture-in-picture-request" rel="nofollow">automatic PiP request</a>".</p>
+<p dir="auto">Specifically, when content occlusion occurs, there are two paths:</p>
+<ol dir="auto">
+<li><strong>Media Session (Building on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1701048476" data-permission-text="Title is private" data-url="https://github.com/w3c/mediasession/issues/294" data-hovercard-type="issue" data-hovercard-url="/w3c/mediasession/issues/294/hovercard" href="https://github.com/w3c/mediasession/issues/294">w3c/mediasession#294</a>):</strong> If the site has registered a <a href="https://www.w3.org/TR/mediasession/#callbackdef-mediasessionactionhandler" rel="nofollow">MediaSessionActionHandler</a> for the <a href="https://www.w3.org/TR/mediasession/#dom-mediasessionaction-enterpictureinpicture" rel="nofollow">enterpictureinpicture</a> action, <em>the user agent may</em> trigger the action with the <a href="https://www.w3.org/TR/mediasession/#dom-mediasessionenterpictureinpicturereason-contentoccluded" rel="nofollow">contentoccluded</a> reason. This allows the site to customize the PiP experience.</li>
+<li><strong>User agent:</strong> If no handler is registered, <em>the user agent may</em> run the request PiP steps on a desired video element.</li>
+</ol>
+<p dir="auto">Note that above we use "<em>the user agent may</em>", this is to emphasize that the user agent can evaluate additional requirements (e.g. media is playing) to ensure a positive user experience.</p>
+<p dir="auto">The motivation is to provide a seamless multitasking experience when users navigate away from active media or video conferencing apps. For reference, see these articles:</p>
+<ul dir="auto">
+<li><strong>Automatic picture-in-picture for video conferencing web apps:</strong> <a href="https://developer.chrome.com/blog/automatic-picture-in-picture" rel="nofollow">https://developer.chrome.com/blog/automatic-picture-in-picture</a></li>
+<li><strong>Enter picture-in-picture automatically when playing media:</strong> <a href="https://developer.chrome.com/blog/automatic-picture-in-picture-media-playback" rel="nofollow">https://developer.chrome.com/blog/automatic-picture-in-picture-media-playback</a></li>
+<li><strong>Enter video Picture-in-Picture automatically on more sites:</strong> <a href="https://developer.chrome.com/blog/automatic-picture-in-picture-initiated-by-the-browser" rel="nofollow">https://developer.chrome.com/blog/automatic-picture-in-picture-initiated-by-the-browser</a></li>
+</ul>]]></content>
+        <author>
+            <name>bpkeen</name>
+            <email>bpkeen@noreply.github.com</email>
+            <uri>https://github.com/bpkeen</uri>
+        </author>
+        <published>2026-08-12T22:07:27.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Chrome]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/706</id>
@@ -730,39 +777,5 @@ The spec also introduce a new idl api as MathMLAnchorElement.</p>]]></content>
             <uri>https://github.com/shaseley</uri>
         </author>
         <published>2026-06-11T00:35:44.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[aria-actions attribute]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/686</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/686"/>
-        <updated>2026-07-07T14:51:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/44789917?u=ddc1d5403b6b56cdff4b7345647ed2fae505d838&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/cookiecrook/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/cookiecrook">@cookiecrook</a></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">aria-actions addition to the ARIA spec</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1376558644" data-permission-text="Title is private" data-url="https://github.com/w3c/aria/issues/1805" data-hovercard-type="pull_request" data-hovercard-url="/w3c/aria/pull/1805/hovercard" href="https://github.com/w3c/aria/pull/1805">w3c/aria#1805</a></p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><a href="https://github.com/w3c/aria">https://github.com/w3c/aria</a></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><a href="https://bugs.webkit.org/show_bug.cgi?id=306476" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=306476</a></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">A new aria attribute that references a list of elements that should be exposed as secondary actions.</p>]]></content>
-        <author>
-            <name>janewman</name>
-            <email>janewman@noreply.github.com</email>
-            <uri>https://github.com/janewman</uri>
-        </author>
-        <published>2026-06-10T20:47:38.000Z</published>
     </entry>
 </feed>
