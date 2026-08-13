@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/62324847?u=305f6e3037692f1c5d10cb4b96403e28a427f737&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45082.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5118367030\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45082\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45082/hovercard\" href=\"https://github.com/mdn/content/issues/45082\">#45082</a>.</p>\n<p dir=\"auto\">The <a href=\"https://w3c.github.io/selection-api/#scheduling-selectionchange-event\" rel=\"nofollow\">Selection API spec</a> schedules the <code class=\"notranslate\">selectionchange</code> event by queuing a task on the <em>user interaction task source</em> — unlike many other UI events, it does not fire synchronously when the selection changes.</p>\n<p dir=\"auto\">This PR adds a note to the <code class=\"notranslate\">HTMLInputElement: selectionchange</code> page explaining that the event is queued, and that code reacting to a selection change immediately after making one should read the selection properties directly.</p>\n<h2 dir=\"auto\">Verification</h2>\n<p dir=\"auto\">Per the spec's scheduling steps: \"Queue a task on the user interaction task source to fire a selectionchange event on target\", using the <code class=\"notranslate\">has scheduled selectionchange event</code> flag to avoid duplicates.</p>",
+            "url": "https://github.com/mdn/content/pull/45111",
+            "title": "Note that selectionchange fires asynchronously",
+            "date_modified": "2026-08-13T03:13:16.000Z",
+            "date_published": "2026-08-13T03:12:55.000Z",
+            "author": {
+                "name": "fufu1209",
+                "url": "https://github.com/fufu1209"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/62324847?u=305f6e3037692f1c5d10cb4b96403e28a427f737&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44894.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4954064952\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44894\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44894/hovercard\" href=\"https://github.com/mdn/content/issues/44894\">#44894</a> (content part).</p>\n<p dir=\"auto\">The <code class=\"notranslate\">color-mix()</code> page's syntax examples already show calls both with and without a hue interpolation method, but it was not explicitly demonstrated that omitting the method is valid and what it defaults to. This PR adds, in the <strong>Color interpolation method</strong> section, a note and a short example showing that omitting the hue interpolation method when mixing in a polar color space defaults to <code class=\"notranslate\">shorter hue</code>, and that <code class=\"notranslate\">color-mix(in lch, red, blue)</code> and <code class=\"notranslate\">color-mix(in lch shorter hue, red, blue)</code> are equivalent.</p>\n<p dir=\"auto\">The browser-compat-data part of the issue is tracked separately in <a href=\"https://github.com/mdn/browser-compat-data/issues/28693\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/28693/hovercard\">mdn/browser-compat-data#28693</a>.</p>\n<h2 dir=\"auto\">Verification</h2>\n<p dir=\"auto\">Verified against the CSS Color 5 spec (<a href=\"https://github.com/w3c/csswg-drafts\">csswg-drafts</a> <code class=\"notranslate\">css-color-5/Overview.bs</code>): <code class=\"notranslate\">&lt;color-interpolation-method&gt;</code> is <code class=\"notranslate\">in [ &lt;rectangular-color-space&gt; | &lt;polar-color-space&gt; &lt;hue-interpolation-method&gt;? ]</code>, and the hue interpolation method is not the default (''shorter'') only when explicitly written — i.e. the default is <code class=\"notranslate\">shorter</code>.</p>",
+            "url": "https://github.com/mdn/content/pull/45110",
+            "title": "Document hue interpolation method default in color-mix()",
+            "date_modified": "2026-08-13T03:12:11.000Z",
+            "date_published": "2026-08-13T03:11:50.000Z",
+            "author": {
+                "name": "fufu1209",
+                "url": "https://github.com/fufu1209"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/62324847?u=305f6e3037692f1c5d10cb4b96403e28a427f737&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45065.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5107146267\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45065\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45065/hovercard\" href=\"https://github.com/mdn/content/issues/45065\">#45065</a>.</p>\n<p dir=\"auto\">When a custom element class implements an <code class=\"notranslate\">attributeChangedCallback()</code>, the browser reads the static <code class=\"notranslate\">observedAttributes</code> property from the constructor at definition time (per the <a href=\"https://html.spec.whatwg.org/multipage/custom-elements.html#concept-element-definition\" rel=\"nofollow\">HTML spec</a>, the <em>create an element definition</em> algorithm performs <code class=\"notranslate\">Get(constructor, \"observedAttributes\")</code> when the attribute changed callback is present).</p>\n<p dir=\"auto\">This PR documents that behavior in the <strong>Description</strong> section of the <code class=\"notranslate\">CustomElementRegistry.define()</code> page: <code class=\"notranslate\">observedAttributes</code> must be a static property/getter, is read at definition time (not at element creation), and if it returns <code class=\"notranslate\">undefined</code> no attributes are observed.</p>\n<h2 dir=\"auto\">Verification</h2>\n<p dir=\"auto\">Verified against the WHATWG HTML spec source:</p>\n<ul dir=\"auto\">\n<li>If <code class=\"notranslate\">lifecycleCallbacks[\"attributeChangedCallback\"]</code> is not null, then <code class=\"notranslate\">observedAttributesIterable</code> is the result of <code class=\"notranslate\">Get(constructor, \"observedAttributes\")</code>.</li>\n<li>If the result is not <code class=\"notranslate\">undefined</code>, it is converted to a sequence of strings; otherwise <code class=\"notranslate\">observedAttributes</code> remains an empty sequence.</li>\n</ul>\n<p dir=\"auto\">This behavior is also what Lit relies on (see <a href=\"https://github.com/lit/lit/blob/c42ee1e96b8fd61f7256f61d715daef572e76e52/packages/reactive-element/src/reactive-element.ts#L659\">reactive-element.ts</a>).</p>",
+            "url": "https://github.com/mdn/content/pull/45109",
+            "title": "Document that define() reads static observedAttributes",
+            "date_modified": "2026-08-13T03:11:17.000Z",
+            "date_published": "2026-08-13T03:10:56.000Z",
+            "author": {
+                "name": "fufu1209",
+                "url": "https://github.com/fufu1209"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Just spotted syntax error introduced in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5093056209\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45053\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45053/hovercard\" href=\"https://github.com/mdn/content/pull/45053\">#45053</a> that I worked on with <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/chrisdavidmills/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/chrisdavidmills\">@chrisdavidmills</a></p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5093056209\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45053\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45053/hovercard\" href=\"https://github.com/mdn/content/pull/45053\">#45053</a></p>\n",
             "url": "https://github.com/mdn/content/pull/45106",
             "title": "Fix Contentful Paint SVG link",
@@ -64,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/109454414?u=8f40c1c1b5f0a5af5171c0cc286f21fed7097a0c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\">Addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5091109058\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45048\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45048/hovercard\" href=\"https://github.com/mdn/content/issues/45048\">#45048</a>: No Browser Implements screenX, screenY according to the spec</p>\n<h2 dir=\"auto\">Changed files</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">files/en-us/web/api/window/screenx/index.md</code></li>\n</ul>\n<h2 dir=\"auto\">Validation</h2>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">git diff --check</code>: passed</li>\n</ul>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45048.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5091109058\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45048\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45048/hovercard\" href=\"https://github.com/mdn/content/issues/45048\">#45048</a></p>",
             "url": "https://github.com/mdn/content/pull/45097",
             "title": "docs: No Browser Implements screenX, screenY according to the spec",
-            "date_modified": "2026-08-12T02:57:32.000Z",
+            "date_modified": "2026-08-13T01:13:38.000Z",
             "date_published": "2026-08-12T02:49:13.000Z",
             "author": {
                 "name": "eeminionn",
@@ -190,39 +223,6 @@
             "author": {
                 "name": "BHUVANSH855",
                 "url": "https://github.com/BHUVANSH855"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The values sections on property pages are a DL of data types, preceded by an explanation of the value's syntax.<br>\nupdated the writing guidelines to reflect this.</p>\n<p dir=\"auto\">Removed optional explanation text and clarified the 'Values' section description.</p>",
-            "url": "https://github.com/mdn/content/pull/45077",
-            "title": "Values section for CSS property pages",
-            "date_modified": "2026-08-10T21:48:07.000Z",
-            "date_published": "2026-08-10T21:32:00.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6571445?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">… digests</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> (points 3-6) and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a> (points 5-9): every worked example on both pages either copied values from RFC 9530 without stating the input bytes, used placeholder digests (sha-512=:ABC...=:, [message body]), or was built on the incorrect premise that Content-Encoding causes Content-Digest and Repr-Digest to diverge. Content-Encoding identifies a different representation, so a whole representation sent in one message always produces matching Content-Digest and Repr-Digest values regardless of encoding; real divergence comes from partial responses (Range requests).</p>\n<p dir=\"auto\">Replaced with an MDN-original example body, {\"hello\": \"mdn\"}, with every digest value computed and independently cross-verified (Python hashlib and sha256sum/sha512sum, plus a gzip -dc round-trip for the GZIP example). Migrated the fixed Content-Digest examples onto Repr-Digest.</p>\n<p dir=\"auto\">Removed the Want-*-Digest mentions as those are not commonly used in practce and seem like a distraction. They can be handled on the specific relevant pages.</p>\n<p dir=\"auto\">Removed the 406 examples, since they are behavior RFC 9530 doesn't define.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The two pages had examples that were confusing, inaccurate or wrong. This change corrects them and makes them consistent on both pages (since they are both inter-related)</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a></p>\n",
-            "url": "https://github.com/mdn/content/pull/45076",
-            "title": "Rewrite Content-Digest and Repr-Digest examples with real, verifiable…",
-            "date_modified": "2026-08-11T02:06:17.000Z",
-            "date_published": "2026-08-10T21:03:41.000Z",
-            "author": {
-                "name": "LPardue",
-                "url": "https://github.com/LPardue"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6571445?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><ul dir=\"auto\">\n<li>Note Content-Digest/Repr-Digest are structured field Dictionaries</li>\n<li>Fix digest-value encoding claim on Content-Digest/Repr-Digest pages</li>\n</ul>\n\n\n<h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Tweak the syntax to more clearly mention structured fields</li>\n<li>Update the  of the directives section to make it clear how the value is calculated and serialized</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a></p>\n",
-            "url": "https://github.com/mdn/content/pull/45074",
-            "title": "Slight tweaks to digest field syntax and directives sections",
-            "date_modified": "2026-08-11T07:41:03.000Z",
-            "date_published": "2026-08-10T19:31:40.000Z",
-            "author": {
-                "name": "LPardue",
-                "url": "https://github.com/LPardue"
             }
         }
     ]
