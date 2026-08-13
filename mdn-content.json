@@ -61,17 +61,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Chrome 150 supports Processing Instructions in HTML documents.</p>\n<p dir=\"auto\">Prior to this they were treated as comments by all browsers <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction\" rel=\"nofollow\">as noted in the current docs</a></p>\n<blockquote>\n<p dir=\"auto\">Warning: ProcessingInstruction nodes are only supported in XML documents, not in HTML documents. In these, a process instruction will be considered as a comment and be represented as a <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/Comment\" rel=\"nofollow\">Comment</a> object in the tree.</p>\n</blockquote>\n<p dir=\"auto\">This warning is now no longer accurate.</p>\n<p dir=\"auto\">Chrome also added some extra methods (<code class=\"notranslate\">getAttribute</code>, <code class=\"notranslate\">getAttributeNames</code>...etc) similar to the equivalents on <code class=\"notranslate\">Element</code> so this PR adds those docs (based on the Element versions).</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">Incorrect and missing docs</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><a href=\"https://chromestatus.com/feature/6534495085920256\" rel=\"nofollow\">https://chromestatus.com/feature/6534495085920256</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/45104",
-            "title": "Add HTML Processing Instruction docs",
-            "date_modified": "2026-08-13T15:45:47.000Z",
-            "date_published": "2026-08-12T16:58:09.000Z",
-            "author": {
-                "name": "tunetheweb",
-                "url": "https://github.com/tunetheweb"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/748944?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This includes ‘RFC 3229: Delta encoding in HTTP’ in the specs reference</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The reference page for HTTP status 226 IM Used refers to it, but without a definition it's listed on that page as ‘Unknown specification’: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/226\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/226</a></p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/226\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/226</a></li>\n<li><a href=\"https://www.rfc-editor.org/info/rfc3229/\" rel=\"nofollow\">https://www.rfc-editor.org/info/rfc3229/</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45102",
             "title": "include ‘RFC 3229: Delta encoding in HTTP’ in specs reference",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/6571445?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">… digests</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Addresses <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> (points 3-6) and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a> (points 5-9): every worked example on both pages either copied values from RFC 9530 without stating the input bytes, used placeholder digests (sha-512=:ABC...=:, [message body]), or was built on the incorrect premise that Content-Encoding causes Content-Digest and Repr-Digest to diverge. Content-Encoding identifies a different representation, so a whole representation sent in one message always produces matching Content-Digest and Repr-Digest values regardless of encoding; real divergence comes from partial responses (Range requests).</p>\n<p dir=\"auto\">Replaced with an MDN-original example body, {\"hello\": \"mdn\"}, with every digest value computed and independently cross-verified (Python hashlib and sha256sum/sha512sum, plus a gzip -dc round-trip for the GZIP example). Migrated the fixed Content-Digest examples onto Repr-Digest.</p>\n<p dir=\"auto\">Removed the Want-*-Digest mentions as those are not commonly used in practce and seem like a distraction. They can be handled on the specific relevant pages.</p>\n<p dir=\"auto\">Removed the 406 examples, since they are behavior RFC 9530 doesn't define.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The two pages had examples that were confusing, inaccurate or wrong. This change corrects them and makes them consistent on both pages (since they are both inter-related)</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099885606\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45058\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45058/hovercard\" href=\"https://github.com/mdn/content/issues/45058\">#45058</a> and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5099969799\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45059\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45059/hovercard\" href=\"https://github.com/mdn/content/issues/45059\">#45059</a></p>\n",
+            "url": "https://github.com/mdn/content/pull/45076",
+            "title": "Rewrite Content-Digest and Repr-Digest examples with real, verifiable…",
+            "date_modified": "2026-08-11T02:06:17.000Z",
+            "date_published": "2026-08-10T21:03:41.000Z",
+            "author": {
+                "name": "LPardue",
+                "url": "https://github.com/LPardue"
             }
         }
     ]
