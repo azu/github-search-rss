@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-13T10:50:43.074Z</updated>
+    <updated>2026-08-13T11:37:33.941Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[docs: document baseVal value when viewBox attribute is unset]]></title>
+        <id>https://github.com/mdn/content/pull/45121</id>
+        <link href="https://github.com/mdn/content/pull/45121"/>
+        <updated>2026-08-13T11:12:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/62324847?u=305f6e3037692f1c5d10cb4b96403e28a427f737&v=4" width="64" height="64" alt=""/><br/><p dir="auto">{"title":"docs: document baseVal value when viewBox attribute is unset","head":"fufu1209:fix-svganimatedrect-baseval-unset","base":"main","body":"### Description\n\nAddresses <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="996056582" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/8907" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/8907/hovercard" href="https://github.com/mdn/content/issues/8907">#8907</a>. The <code class="notranslate">SVGAnimatedRect.baseVal</code> page did not mention what happens when the <code class="notranslate">viewBox</code> attribute is <strong>not set</strong> on the element, which is a real cross-browser difference:\n\n- Per the <a href="https://svgwg.org/svg2-draft/types.html#SVGObjectInitialization" rel="nofollow">SVG2 spec</a> ("Reflecting an empty initial value"), the value must be a zero-initialized rectangle (<code class="notranslate">x</code>, <code class="notranslate">y</code>, <code class="notranslate">width</code>, <code class="notranslate">height</code> all <code class="notranslate">0</code>).\n- Chrome returns such a <code class="notranslate">DOMRect</code> (verified locally with <code class="notranslate">document.createElementNS(...).viewBox.baseVal</code> -&gt; <code class="notranslate">{x: 0, y: 0, width: 0, height: 0}</code>).\n- Firefox returns <code class="notranslate">null</code> instead — <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=888307" rel="nofollow">bug 888307</a> has been "won't fix" since 2013, so the divergence is long-standing and undocumented.\n\nChanges:\n- Added the unset-attribute behavior (with the spec link and the Firefox bug reference) to the <strong>Value</strong> section.\n- Added a short example demonstrating the difference.\n\n### Motivation\n\nDevelopers debugging SVG code that reads <code class="notranslate">viewBox.baseVal</code> hit this divergence with no documentation explaining it.\n\n### Related issues and pull requests\n\nFixes <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="996056582" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/8907" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/8907/hovercard" href="https://github.com/mdn/content/issues/8907">#8907</a>\n"}</p>]]></content>
+        <author>
+            <name>fufu1209</name>
+            <email>fufu1209@noreply.github.com</email>
+            <uri>https://github.com/fufu1209</uri>
+        </author>
+        <published>2026-08-13T11:11:55.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update Marionette documentation links to their new location]]></title>
         <id>https://github.com/mdn/content/pull/45119</id>
@@ -85,25 +98,6 @@
         <published>2026-08-13T07:43:39.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Describe contain: paint clipping to overflow clip edge]]></title>
-        <id>https://github.com/mdn/content/pull/45113</id>
-        <link href="https://github.com/mdn/content/pull/45113"/>
-        <updated>2026-08-13T09:44:56.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/62324847?u=305f6e3037692f1c5d10cb4b96403e28a427f737&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45101.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5128939431" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45101" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45101/hovercard" href="https://github.com/mdn/content/issues/45101">#45101</a>.</p>
-<p dir="auto">Per CSS Containment Level 2 (<a href="https://www.w3.org/TR/css-contain-2/#containment-paint" rel="nofollow">css-contain-2 §containment-paint</a>), the contents of a paint-contained element are clipped to its <strong>overflow clip edge</strong> (taking corner clipping into account), not its border-box. The overflow clip edge defaults to the padding-box edge and can be extended via <code class="notranslate">overflow-clip-margin</code> (<a href="https://drafts.csswg.org/css-overflow-3/#overflow-clip-margin" rel="nofollow">css-overflow-3</a>).</p>
-<p dir="auto">Verified against the spec sources:</p>
-<ul dir="auto">
-<li><code class="notranslate">css-contain-2/Overview.bs</code>: "must be clipped to the overflow clip edge of the paint containment box"</li>
-<li><code class="notranslate">css-overflow-3/Overview.bs</code>: overflow-clip-margin "If omitted, defaults to padding-box"</li>
-</ul>]]></content>
-        <author>
-            <name>fufu1209</name>
-            <email>fufu1209@noreply.github.com</email>
-            <uri>https://github.com/fufu1209</uri>
-        </author>
-        <published>2026-08-13T07:41:01.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Archive JS framework content]]></title>
         <id>https://github.com/mdn/content/pull/45105</id>
         <link href="https://github.com/mdn/content/pull/45105"/>
@@ -141,7 +135,7 @@
         <title type="html"><![CDATA[Add HTML Processing Instruction docs]]></title>
         <id>https://github.com/mdn/content/pull/45104</id>
         <link href="https://github.com/mdn/content/pull/45104"/>
-        <updated>2026-08-13T09:44:53.000Z</updated>
+        <updated>2026-08-13T11:03:01.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
