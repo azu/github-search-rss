@@ -72,17 +72,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API\" rel=\"nofollow\">CSS Typed OM API</a> fixes, in particular</p>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/content/commit/9b3dccd79bd5d8b87c3645644e3bb6f863271500\">CSSNumericArray fixes</a></li>\n<li><a href=\"https://github.com/mdn/content/commit/3a17b9d155e85d675031b6708e229656d8f86b8c\">CSSUnparsedValue fixes</a></li>\n</ul>\n<p dir=\"auto\">These are both based on iterators. There were missing methods and lack of clarity on what they are useful for.  Also cross-consistency.</p>\n<p dir=\"auto\">Note that if this is not reviewed over weekend I will add the similar shaped</p>\n<ul dir=\"auto\">\n<li>CSSTransformValue — iterable (array-like)</li>\n<li>StylePropertyMapReadOnly (and by inheritance StylePropertyMap) — iterable&lt;USVString, sequence&gt; (map-like, [key, value] pairs)</li>\n</ul>\n<p dir=\"auto\">Don't let that stop you!</p>\n<p dir=\"auto\">Related docs can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4928372179\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44849\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44849/hovercard\" href=\"https://github.com/mdn/content/issues/44849\">#44849</a></p>",
-            "url": "https://github.com/mdn/content/pull/45137",
-            "title": "FF154 CSSNumericArray and CSSUnparsedValue fixes",
-            "date_modified": "2026-08-14T07:32:36.000Z",
-            "date_published": "2026-08-14T07:30:43.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/62324847?u=305f6e3037692f1c5d10cb4b96403e28a427f737&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44477.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4667059019\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44477\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44477/hovercard\" href=\"https://github.com/mdn/content/issues/44477\">#44477</a>.</p>\n<p dir=\"auto\">The History API pages claimed that <code class=\"notranslate\">pushState()</code>, <code class=\"notranslate\">replaceState()</code>, <code class=\"notranslate\">back()</code>, <code class=\"notranslate\">go()</code>, and <code class=\"notranslate\">forward()</code> throw a <code class=\"notranslate\">SecurityError</code> when called too frequently. Per <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4531528389\" data-permission-text=\"Title is private\" data-url=\"https://github.com/whatwg/html/issues/12492\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/whatwg/html/pull/12492/hovercard\" href=\"https://github.com/whatwg/html/pull/12492\">whatwg/html#12492</a> (merged 2026-06-16), the spec changed: the navigable's \"allowed to perform a navigation or history update\" algorithm now returns <code class=\"notranslate\">blocked</code> when the API is invoked too frequently, and the method silently returns instead of throwing.</p>\n<p dir=\"auto\">I checked the current HTML spec before making this change: the shared history push/replace state steps and the delta traverse steps both consult the navigable's allowed-to-perform check and return on <code class=\"notranslate\">blocked</code>. The remaining <code class=\"notranslate\">SecurityError</code> cases (document not fully active, invalid/cross-origin URL) are unchanged.</p>\n<p dir=\"auto\">Changes (5 pages):</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">History/pushState</code> and <code class=\"notranslate\">History/replaceState</code>: removed \"or if the method is called too frequently\" from the <code class=\"notranslate\">SecurityError</code> description; added a note that rate-limited calls are silently ignored, with the rate limit being implementation-defined.</li>\n<li><code class=\"notranslate\">History/back</code>, <code class=\"notranslate\">History/go</code>, <code class=\"notranslate\">History/forward</code>: removed the sentence about throwing/warning/ignoring on throttling; added the same note.</li>\n</ul>\n<p dir=\"auto\">The pages described behavior that no longer matches the spec or current Chromium behavior, which misled developers who relied on catching a <code class=\"notranslate\">SecurityError</code> to detect rate limiting.</p>",
             "url": "https://github.com/mdn/content/pull/45132",
             "title": "docs: history APIs silently no-op on rate limiting per spec",
@@ -97,7 +86,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/96412244?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Changes the sidebar group macro on the <code class=\"notranslate\">Window</code> page from <code class=\"notranslate\">{{APIRef(\"DOM\")}}</code> to <code class=\"notranslate\">{{APIRef(\"HTML DOM\")}}</code>, so the sidebar shows \"HTML DOM API\" instead of the misleading \"Document Object Model (DOM)\".</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://html.spec.whatwg.org/multipage/nav-history-apis.html#window\" rel=\"nofollow\">HTML Standard: the <code class=\"notranslate\">Window</code> object</a></li>\n<li><a href=\"https://dom.spec.whatwg.org/#interface-window\" rel=\"nofollow\">DOM Standard interfaces list</a> (does not include <code class=\"notranslate\">Window</code>)</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45123.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5146323062\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45123\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45123/hovercard\" href=\"https://github.com/mdn/content/issues/45123\">#45123</a></p>",
             "url": "https://github.com/mdn/content/pull/45129",
             "title": "Fix incorrect sidebar group on Window pages",
-            "date_modified": "2026-08-14T06:15:54.000Z",
+            "date_modified": "2026-08-14T23:30:02.000Z",
             "date_published": "2026-08-14T02:49:49.000Z",
             "author": {
                 "name": "maitreyi03",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "kevin-powell",
                 "url": "https://github.com/kevin-powell"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Added 154 release note for <code class=\"notranslate\">text-box</code> properties</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Working on <a href=\"https://github.com/mdn/content/issues/44848\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44848/hovercard\">MDN Issue #44848</a></li>\n</ul>\n<h3 dir=\"auto\">Related  pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/browser-compat-data/pull/30116\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/30116/hovercard\">BCD PR</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/45086",
+            "title": "added release note for text-box properties",
+            "date_modified": "2026-08-11T20:45:08.000Z",
+            "date_published": "2026-08-11T11:29:45.000Z",
+            "author": {
+                "name": "dletorey",
+                "url": "https://github.com/dletorey"
             }
         }
     ]
