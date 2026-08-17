@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
+    <title>npm/rfcs Issues</title>
+    <updated>2026-08-17T18:20:28.648Z</updated>
+    <generator>github-search-rss</generator>
+    <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
+    <subtitle>npm/rfcs Issues on GitHub</subtitle>
+    <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] <title>]]></title>
+        <id>https://github.com/npm/rfcs/issues/915</id>
+        <link href="https://github.com/npm/rfcs/issues/915"/>
+        <updated>2026-08-16T20:04:47.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/244545712?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>philippinhgi93-coder</name>
+            <email>philippinhgi93-coder@noreply.github.com</email>
+            <uri>https://github.com/philippinhgi93-coder</uri>
+        </author>
+        <published>2026-08-16T20:04:47.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Explicit ecosystem claim on package.json for cross-ecosystem disambiguation]]></title>
+        <id>https://github.com/npm/rfcs/issues/913</id>
+        <link href="https://github.com/npm/rfcs/issues/913"/>
+        <updated>2026-07-25T01:29:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1058978?u=a70f8d2a15580085de0a062e1c4d2552d85824c2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Cross-ecosystem note: historically Dub (D's package manager) also used <code class="notranslate">package.json</code> as a recipe filename. Overlapping keys make ownership ambiguous. Dub is moving toward refusing obvious npm files (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4273351009" data-permission-text="Title is private" data-url="https://github.com/dlang/dub/issues/3118" data-hovercard-type="issue" data-hovercard-url="/dlang/dub/issues/3118/hovercard" href="https://github.com/dlang/dub/issues/3118">dlang/dub#3118</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4973331672" data-permission-text="Title is private" data-url="https://github.com/dlang/dub/issues/3136" data-hovercard-type="pull_request" data-hovercard-url="/dlang/dub/pull/3136/hovercard" href="https://github.com/dlang/dub/pull/3136">dlang/dub#3136</a>) and preferring <code class="notranslate">dub.json</code>.</p>
+<p dir="auto">A durable fix is an <strong>explicit ecosystem claim</strong> on <code class="notranslate">package.json</code> (e.g. <code class="notranslate">"packageFormat": "npm"</code> / <code class="notranslate">"packageFormat": "dub"</code>), agreed across ecosystems—not only JS-internal heuristics.</p>
+<p dir="auto">Primary write-up filed with the OpenJS Package Metadata Interoperability group (better fit for field-level <code class="notranslate">package.json</code> meaning). Linking here so the npm CLI RFC track is aware if a CLI-side recommendation is desired later.</p>
+<p dir="auto">OpenJS issue: (will update with URL after open)</p>
+<p dir="auto">Dub issue: (will update with URL after open)</p>
+<p dir="auto">Not asking npm to abandon <code class="notranslate">package.json</code> ownership—only to consider documenting a positive claim so other tools can skip or accept the file unambiguously.</p>]]></content>
+        <author>
+            <name>AMDphreak</name>
+            <email>AMDphreak@noreply.github.com</email>
+            <uri>https://github.com/AMDphreak</uri>
+        </author>
+        <published>2026-07-25T01:28:29.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[{   "stagedVersions": {     "whatever": "other",     "metadata": "we wanna",     "put": "here",     "versions": {       "1.2.3": { "manifest": "data..." },       "1.2.4": { "another": "staged manifest..." }     }   } }The registry will support a data structure like this:]]></title>
+        <id>https://github.com/npm/rfcs/issues/910</id>
+        <link href="https://github.com/npm/rfcs/issues/910"/>
+        <updated>2026-07-01T10:30:32.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/244887850?v=4" width="64" height="64" alt=""/><br/><p dir="auto">The registry will support a data structure like this:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;stagedVersions&quot;: {
+    &quot;whatever&quot;: &quot;other&quot;,
+    &quot;metadata&quot;: &quot;we wanna&quot;,
+    &quot;put&quot;: &quot;here&quot;,
+    &quot;versions&quot;: {
+      &quot;1.2.3&quot;: { &quot;manifest&quot;: &quot;data...&quot; },
+      &quot;1.2.4&quot;: { &quot;another&quot;: &quot;staged manifest...&quot; }
+    }
+  }
+}"><pre class="notranslate">{
+  <span class="pl-ent">"stagedVersions"</span>: {
+    <span class="pl-ent">"whatever"</span>: <span class="pl-s"><span class="pl-pds">"</span>other<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"metadata"</span>: <span class="pl-s"><span class="pl-pds">"</span>we wanna<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"put"</span>: <span class="pl-s"><span class="pl-pds">"</span>here<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"versions"</span>: {
+      <span class="pl-ent">"1.2.3"</span>: { <span class="pl-ent">"manifest"</span>: <span class="pl-s"><span class="pl-pds">"</span>data...<span class="pl-pds">"</span></span> },
+      <span class="pl-ent">"1.2.4"</span>: { <span class="pl-ent">"another"</span>: <span class="pl-s"><span class="pl-pds">"</span>staged manifest...<span class="pl-pds">"</span></span> }
+    }
+  }
+}</pre></div>
+<p dir="auto">Discussion still to be had about what the <code class="notranslate">dist</code> field ought to look like in staged version manifests.</p>
+<p dir="auto"><em>Originally posted by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/isaacs/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/isaacs">@isaacs</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="553729996" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/92" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/92/hovercard?comment_id=586133495&amp;comment_type=issue_comment" href="https://github.com/npm/rfcs/pull/92#issuecomment-586133495">#92 (comment)</a></em></p>]]></content>
+        <author>
+            <name>hoangnhan7991-boop36</name>
+            <email>hoangnhan7991-boop36@noreply.github.com</email>
+            <uri>https://github.com/hoangnhan7991-boop36</uri>
+        </author>
+        <published>2026-07-01T10:30:32.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Allow suppressing workspace allowScripts warnings for intentional standalone workspace packages]]></title>
+        <id>https://github.com/npm/rfcs/issues/906</id>
+        <link href="https://github.com/npm/rfcs/issues/906"/>
+        <updated>2026-06-23T14:04:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3909121?u=14c9b57dbf4c6c75779b35f976acc8ceeac221b5&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Feature Request: Allow suppressing workspace <code class="notranslate">allowScripts</code> warnings for intentional standalone workspace packages</h3>
+<h3 dir="auto">Current Behavior</h3>
+<p dir="auto">In an npm workspace, npm warns when a non-root workspace package has a top-level <code class="notranslate">allowScripts</code> field:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm warn allow-scripts allowScripts in workspace project (/path/to/repo/apps/project) is ignored. Move the field to the project root package.json."><pre lang="text" class="notranslate"><code class="notranslate">npm warn allow-scripts allowScripts in workspace project (/path/to/repo/apps/project) is ignored. Move the field to the project root package.json.
+</code></pre></div>
+<p dir="auto">This warning is technically correct for a root workspace install, but it is not always actionable.</p>
+<p dir="auto">In our monorepo, some workspaces are Git submodules and can also be installed, developed, or released as standalone projects. Their <code class="notranslate">package.json</code> files intentionally contain their own <code class="notranslate">allowScripts</code> policy for standalone usage. When those same projects are checked out inside the parent monorepo, npm treats them as workspaces and warns on every root install.</p>
+<p dir="auto">Moving the field to the parent root is not a valid fix because the submodule must remain self-contained.</p>
+<h3 dir="auto">Expected Behavior</h3>
+<p dir="auto">npm should provide a targeted way to suppress this warning when a workspace package intentionally keeps <code class="notranslate">allowScripts</code> for standalone use.</p>
+<p dir="auto">For example, one of:</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="warn-workspace-allow-scripts=false"><pre class="notranslate"><span class="pl-k">warn-workspace-allow-scripts</span>=false</pre></div>
+<p dir="auto">or:</p>
+<div class="highlight highlight-source-ini notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="allow-scripts-warn-workspaces=false"><pre class="notranslate"><span class="pl-k">allow-scripts-warn-workspaces</span>=false</pre></div>
+<p dir="auto">or another narrowly scoped config name.</p>
+<p dir="auto">This should suppress only the non-root workspace <code class="notranslate">allowScripts</code> warning, without requiring <code class="notranslate">loglevel=error</code> and without hiding unrelated npm warnings.</p>
+<h3 dir="auto">Why This Matters</h3>
+<p dir="auto"><code class="notranslate">loglevel=error</code> is currently the only practical workaround, but it suppresses too much. In CI and local development, teams still want to see peer dependency warnings, deprecations, audit warnings, and other useful npm warnings.</p>
+<p dir="auto">The current warning becomes noisy in monorepos that include standalone packages or Git submodules as workspaces. In that setup, the warning is expected and non-actionable, because the package-local policy is needed outside the parent workspace context.</p>
+<h3 dir="auto">Steps To Reproduce</h3>
+<ol dir="auto">
+<li>Create a root workspace package:</li>
+</ol>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;private&quot;: true,
+  &quot;workspaces&quot;: [&quot;packages/*&quot;]
+}"><pre class="notranslate">{
+  <span class="pl-ent">"private"</span>: <span class="pl-c1">true</span>,
+  <span class="pl-ent">"workspaces"</span>: [<span class="pl-s"><span class="pl-pds">"</span>packages/*<span class="pl-pds">"</span></span>]
+}</pre></div>
+<ol start="2" dir="auto">
+<li>Create <code class="notranslate">packages/example/package.json</code>:</li>
+</ol>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;name&quot;: &quot;example&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;allowScripts&quot;: {
+    &quot;sharp@0.34.5&quot;: true
+  }
+}"><pre class="notranslate">{
+  <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>example<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>1.0.0<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"allowScripts"</span>: {
+    <span class="pl-ent">"sharp@0.34.5"</span>: <span class="pl-c1">true</span>
+  }
+}</pre></div>
+<ol start="3" dir="auto">
+<li>Run:</li>
+</ol>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install"><pre class="notranslate">npm install</pre></div>
+<ol start="4" dir="auto">
+<li>Observe:</li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="npm warn allow-scripts allowScripts in workspace example (.../packages/example) is ignored. Move the field to the project root package.json."><pre lang="text" class="notranslate"><code class="notranslate">npm warn allow-scripts allowScripts in workspace example (.../packages/example) is ignored. Move the field to the project root package.json.
+</code></pre></div>
+<h3 dir="auto">Proposed Solution</h3>
+<p dir="auto">Add a narrowly scoped npm config that disables this specific warning.</p>
+<p dir="auto">Default should remain the current behavior, so users still get warned unless they explicitly opt out.</p>
+<h3 dir="auto">References</h3>
+<p dir="auto">This warning appears to have been introduced as part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4451029544" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/9360" data-hovercard-type="pull_request" data-hovercard-url="/npm/cli/pull/9360/hovercard" href="https://github.com/npm/cli/pull/9360">npm/cli#9360</a>, which implemented Phase 1 of the <code class="notranslate">allowScripts</code> install-script policy from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4448306862" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/868" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/868/hovercard" href="https://github.com/npm/rfcs/pull/868">#868</a>.</p>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4451029544" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/9360" data-hovercard-type="pull_request" data-hovercard-url="/npm/cli/pull/9360/hovercard" href="https://github.com/npm/cli/pull/9360">npm/cli#9360</a><br>
+<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4448306862" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/868" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/868/hovercard" href="https://github.com/npm/rfcs/pull/868">#868</a></p>]]></content>
+        <author>
+            <name>cbratschi</name>
+            <email>cbratschi@noreply.github.com</email>
+            <uri>https://github.com/cbratschi</uri>
+        </author>
+        <published>2026-06-23T14:04:58.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] allowScripts Review Report]]></title>
+        <id>https://github.com/npm/rfcs/issues/897</id>
+        <link href="https://github.com/npm/rfcs/issues/897"/>
+        <updated>2026-08-14T17:06:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3629489?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">npm v12’s <code class="notranslate">allowScripts</code> model is a strong supply-chain security improvement because it prevents dependency lifecycle scripts from running automatically without approval.</p>
+<p dir="auto">However, the approval step becomes the new trust boundary.</p>
+<p dir="auto">Approving an entry in <code class="notranslate">allowScripts</code> is not ordinary package metadata. It grants install-time code execution permission to a package artifact. That code may run on developer machines and CI/CD runners, where it could potentially access source code, npm tokens, GitHub tokens, CI variables, cloud/OIDC identities, build artifacts, or publishing permissions.</p>
+<p dir="auto">This matters because of active Shai-Hulud / Mini Shai-Hulud-style supply-chain attacks. These are worm-like npm compromise patterns where malicious package versions or compromised maintainer accounts use install-time execution paths to steal credentials, publish additional compromised packages, and spread through trusted package/update workflows.</p>
+<p dir="auto"><code class="notranslate">npm approve-scripts --allow-scripts-pending</code> helps identify packages that need script approval, but the current review experience still leaves the developer with the harder question:</p>
+<blockquote>
+<p dir="auto">What exactly am I approving?</p>
+</blockquote>
+<p dir="auto">For example, if a pending lifecycle script is:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;postinstall&quot;: &quot;node install.js&quot;
+}"><pre class="notranslate">{
+  <span class="pl-ent">"postinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>node install.js<span class="pl-pds">"</span></span>
+}</pre></div>
+<p dir="auto">the reviewer can see the lifecycle command, but not what <code class="notranslate">install.js</code> does, what files it imports, whether it shells out, whether it makes network calls, whether it reads credentials from <code class="notranslate">process.env</code>, or whether it writes outside the package directory.</p>
+<p dir="auto">That creates an approval-fatigue risk. Developers may see repeated pending approvals, especially from transitive dependencies, and eventually approve packages reflexively just to get installs or CI builds moving.</p>
+<p dir="auto">A review-report mode would make approval more deliberate, auditable, and useful for humans, CI systems, dependency bots, and AI-assisted security review.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">A command like this:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm approve-scripts --allow-scripts-pending --format=review-markdown &gt; npm-script-review.md"><pre class="notranslate">npm approve-scripts --allow-scripts-pending --format=review-markdown <span class="pl-k">&gt;</span> npm-script-review.md</pre></div>
+<p dir="auto">or:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm approve-scripts --allow-scripts-pending --format=review-json &gt; npm-script-review.json"><pre class="notranslate">npm approve-scripts --allow-scripts-pending --format=review-json <span class="pl-k">&gt;</span> npm-script-review.json</pre></div>
+<p dir="auto">could generate review evidence for each pending package.</p>
+<p dir="auto">Example markdown-style output:</p>
+<div class="highlight highlight-text-md notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# npm Lifecycle Script Approval Review
+
+## Package: x@1.3.4
+
+Location: ./node_modules/x/  
+Dependency type: transitive  
+Introduced by:
+- app -&gt; direct-package-a@4.5.6 -&gt; x@1.3.4
+
+Approval status:
+- pending
+- not covered by allowScripts
+
+Lifecycle scripts:
+
+```json
+{
+  &quot;install&quot;: &quot;node install.js&quot;,
+  &quot;postinstall&quot;: &quot;node setup.js&quot;
+}
+```
+
+Referenced files:
+
+### ./install.js
+
+Reason included:
+- referenced by lifecycle script: `install`
+
+Detected signals:
+- imports `./lib/download.js`
+- reads `process.env`
+- uses `child_process`
+- performs network request
+
+### ./setup.js
+
+Reason included:
+- referenced by lifecycle script: `postinstall`
+
+Detected signals:
+- writes files under package directory
+
+### ./lib/download.js
+
+Reason included:
+- required by `install.js`
+
+Detected signals:
+- performs HTTPS request
+- references external URL
+- no obvious integrity check detected
+
+Risk summary:
+- network access detected
+- child process usage detected
+- environment variable access detected
+
+Suggested review focus:
+- confirm what remote artifact is downloaded
+- confirm whether downloaded artifact is pinned or verified
+- confirm whether environment variable access could expose credentials
+- confirm whether child process execution is constrained"><pre class="notranslate"><span class="pl-mh"># <span class="pl-en">npm Lifecycle Script Approval Review</span></span>
+
+<span class="pl-mh">## <span class="pl-en">Package: x@1.3.4</span></span>
+
+Location: ./node_modules/x/  
+Dependency type: transitive  
+Introduced by:
+<span class="pl-v">-</span> app -&gt; direct-package-a@4.5.6 -&gt; x@1.3.4
+
+Approval status:
+<span class="pl-v">-</span> pending
+<span class="pl-v">-</span> not covered by allowScripts
+
+Lifecycle scripts:
+
+<span class="pl-s">```</span><span class="pl-en">json</span>
+{
+  <span class="pl-ent">"install"</span>: <span class="pl-s"><span class="pl-pds">"</span>node install.js<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"postinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>node setup.js<span class="pl-pds">"</span></span>
+}
+<span class="pl-s">```</span>
+
+Referenced files:
+
+<span class="pl-mh">### <span class="pl-en">./install.js</span></span>
+
+Reason included:
+<span class="pl-v">-</span> referenced by lifecycle script: <span class="pl-s">`</span><span class="pl-c1">install</span><span class="pl-s">`</span>
+
+Detected signals:
+<span class="pl-v">-</span> imports <span class="pl-s">`</span><span class="pl-c1">./lib/download.js</span><span class="pl-s">`</span>
+<span class="pl-v">-</span> reads <span class="pl-s">`</span><span class="pl-c1">process.env</span><span class="pl-s">`</span>
+<span class="pl-v">-</span> uses <span class="pl-s">`</span><span class="pl-c1">child_process</span><span class="pl-s">`</span>
+<span class="pl-v">-</span> performs network request
+
+<span class="pl-mh">### <span class="pl-en">./setup.js</span></span>
+
+Reason included:
+<span class="pl-v">-</span> referenced by lifecycle script: <span class="pl-s">`</span><span class="pl-c1">postinstall</span><span class="pl-s">`</span>
+
+Detected signals:
+<span class="pl-v">-</span> writes files under package directory
+
+<span class="pl-mh">### <span class="pl-en">./lib/download.js</span></span>
+
+Reason included:
+<span class="pl-v">-</span> required by <span class="pl-s">`</span><span class="pl-c1">install.js</span><span class="pl-s">`</span>
+
+Detected signals:
+<span class="pl-v">-</span> performs HTTPS request
+<span class="pl-v">-</span> references external URL
+<span class="pl-v">-</span> no obvious integrity check detected
+
+Risk summary:
+<span class="pl-v">-</span> network access detected
+<span class="pl-v">-</span> child process usage detected
+<span class="pl-v">-</span> environment variable access detected
+
+Suggested review focus:
+<span class="pl-v">-</span> confirm what remote artifact is downloaded
+<span class="pl-v">-</span> confirm whether downloaded artifact is pinned or verified
+<span class="pl-v">-</span> confirm whether environment variable access could expose credentials
+<span class="pl-v">-</span> confirm whether child process execution is constrained</pre></div>
+<p dir="auto">Example JSON-style output:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;packages&quot;: [
+    {
+      &quot;name&quot;: &quot;x&quot;,
+      &quot;version&quot;: &quot;1.3.4&quot;,
+      &quot;location&quot;: &quot;./node_modules/x&quot;,
+      &quot;approvalStatus&quot;: &quot;pending&quot;,
+      &quot;dependencyType&quot;: &quot;transitive&quot;,
+      &quot;introducedBy&quot;: [
+        [&quot;app&quot;, &quot;direct-package-a@4.5.6&quot;, &quot;x@1.3.4&quot;]
+      ],
+      &quot;lifecycleScripts&quot;: {
+        &quot;install&quot;: &quot;node install.js&quot;,
+        &quot;postinstall&quot;: &quot;node setup.js&quot;
+      },
+      &quot;referencedFiles&quot;: [
+        {
+          &quot;path&quot;: &quot;./install.js&quot;,
+          &quot;reason&quot;: &quot;referenced by install script&quot;,
+          &quot;sha256&quot;: &quot;example-hash&quot;,
+          &quot;signals&quot;: [
+            &quot;requires-local-file&quot;,
+            &quot;uses-child-process&quot;,
+            &quot;reads-process-env&quot;,
+            &quot;network-access&quot;
+          ],
+          &quot;references&quot;: [
+            &quot;./lib/download.js&quot;
+          ]
+        },
+        {
+          &quot;path&quot;: &quot;./setup.js&quot;,
+          &quot;reason&quot;: &quot;referenced by postinstall script&quot;,
+          &quot;sha256&quot;: &quot;example-hash&quot;,
+          &quot;signals&quot;: [
+            &quot;writes-file&quot;
+          ],
+          &quot;references&quot;: []
+        },
+        {
+          &quot;path&quot;: &quot;./lib/download.js&quot;,
+          &quot;reason&quot;: &quot;required by ./install.js&quot;,
+          &quot;sha256&quot;: &quot;example-hash&quot;,
+          &quot;signals&quot;: [
+            &quot;network-access&quot;,
+            &quot;external-url&quot;
+          ],
+          &quot;references&quot;: []
+        }
+      ],
+      &quot;changeClassification&quot;: {
+        &quot;status&quot;: &quot;script-changed-since-last-approved-version&quot;,
+        &quot;previousApprovedVersion&quot;: &quot;1.3.3&quot;
+      }
+    }
+  ]
+}"><pre class="notranslate">{
+  <span class="pl-ent">"packages"</span>: [
+    {
+      <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>x<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>1.3.4<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"location"</span>: <span class="pl-s"><span class="pl-pds">"</span>./node_modules/x<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"approvalStatus"</span>: <span class="pl-s"><span class="pl-pds">"</span>pending<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"dependencyType"</span>: <span class="pl-s"><span class="pl-pds">"</span>transitive<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"introducedBy"</span>: [
+        [<span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>direct-package-a@4.5.6<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>x@1.3.4<span class="pl-pds">"</span></span>]
+      ],
+      <span class="pl-ent">"lifecycleScripts"</span>: {
+        <span class="pl-ent">"install"</span>: <span class="pl-s"><span class="pl-pds">"</span>node install.js<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"postinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>node setup.js<span class="pl-pds">"</span></span>
+      },
+      <span class="pl-ent">"referencedFiles"</span>: [
+        {
+          <span class="pl-ent">"path"</span>: <span class="pl-s"><span class="pl-pds">"</span>./install.js<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"reason"</span>: <span class="pl-s"><span class="pl-pds">"</span>referenced by install script<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"sha256"</span>: <span class="pl-s"><span class="pl-pds">"</span>example-hash<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"signals"</span>: [
+            <span class="pl-s"><span class="pl-pds">"</span>requires-local-file<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>uses-child-process<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>reads-process-env<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>network-access<span class="pl-pds">"</span></span>
+          ],
+          <span class="pl-ent">"references"</span>: [
+            <span class="pl-s"><span class="pl-pds">"</span>./lib/download.js<span class="pl-pds">"</span></span>
+          ]
+        },
+        {
+          <span class="pl-ent">"path"</span>: <span class="pl-s"><span class="pl-pds">"</span>./setup.js<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"reason"</span>: <span class="pl-s"><span class="pl-pds">"</span>referenced by postinstall script<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"sha256"</span>: <span class="pl-s"><span class="pl-pds">"</span>example-hash<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"signals"</span>: [
+            <span class="pl-s"><span class="pl-pds">"</span>writes-file<span class="pl-pds">"</span></span>
+          ],
+          <span class="pl-ent">"references"</span>: []
+        },
+        {
+          <span class="pl-ent">"path"</span>: <span class="pl-s"><span class="pl-pds">"</span>./lib/download.js<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"reason"</span>: <span class="pl-s"><span class="pl-pds">"</span>required by ./install.js<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"sha256"</span>: <span class="pl-s"><span class="pl-pds">"</span>example-hash<span class="pl-pds">"</span></span>,
+          <span class="pl-ent">"signals"</span>: [
+            <span class="pl-s"><span class="pl-pds">"</span>network-access<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>external-url<span class="pl-pds">"</span></span>
+          ],
+          <span class="pl-ent">"references"</span>: []
+        }
+      ],
+      <span class="pl-ent">"changeClassification"</span>: {
+        <span class="pl-ent">"status"</span>: <span class="pl-s"><span class="pl-pds">"</span>script-changed-since-last-approved-version<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"previousApprovedVersion"</span>: <span class="pl-s"><span class="pl-pds">"</span>1.3.3<span class="pl-pds">"</span></span>
+      }
+    }
+  ]
+}</pre></div>
+<p dir="auto">This would let CI, Dependabot, or other dependency automation say:</p>
+<blockquote>
+<p dir="auto">This package has pending install-time lifecycle code. Here is the review report.</p>
+</blockquote>
+<p dir="auto">Importantly, the tool would not approve anything automatically.</p>
+<p dir="auto">A human could review the report and then submit a separate commit updating <code class="notranslate">allowScripts</code> or <code class="notranslate">denyScripts</code>, if appropriate.</p>
+<p dir="auto">This also supports AI-assisted review safely. For example, a developer or CI job could generate the JSON report and ask an AI/security-review agent:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Review npm-script-review.json for install-time security concerns.
+
+For each pending package:
+- summarize what lifecycle code would run
+- identify referenced files that should be reviewed
+- flag use of child_process, shell execution, eval, dynamic import, obfuscation, network calls, remote downloads, process.env access, credential/token references, writes outside the package directory, or modification of npm/git/ssh/shell config
+- identify whether the script is new, changed, or unchanged from the previously approved version
+- call out transitive dependency paths and which direct dependency introduced the package
+- recommend approve, deny, or needs-human-review, with reasoning
+- do not modify allowScripts or denyScripts
+- do not run the lifecycle scripts"><pre lang="text" class="notranslate"><code class="notranslate">Review npm-script-review.json for install-time security concerns.
+
+For each pending package:
+- summarize what lifecycle code would run
+- identify referenced files that should be reviewed
+- flag use of child_process, shell execution, eval, dynamic import, obfuscation, network calls, remote downloads, process.env access, credential/token references, writes outside the package directory, or modification of npm/git/ssh/shell config
+- identify whether the script is new, changed, or unchanged from the previously approved version
+- call out transitive dependency paths and which direct dependency introduced the package
+- recommend approve, deny, or needs-human-review, with reasoning
+- do not modify allowScripts or denyScripts
+- do not run the lifecycle scripts
+</code></pre></div>
+<p dir="auto">The key distinction is that AI can help review the bounded report, but it should not be the actor that grants approval.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm approve-scripts --allow-scripts-pending</code> identifies packages whose lifecycle scripts are not yet covered by <code class="notranslate">allowScripts</code>.</p>
+<p dir="auto">From the discussion around the npm v12 changes, the pending output can show the lifecycle script value from <code class="notranslate">package.json</code>.</p>
+<p dir="auto">That is useful, but it does not fully support review.</p>
+<p dir="auto">For example:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+  &quot;postinstall&quot;: &quot;node install.js&quot;
+}"><pre class="notranslate">{
+  <span class="pl-ent">"postinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>node install.js<span class="pl-pds">"</span></span>
+}</pre></div>
+<p dir="auto">The reviewer still has to manually inspect <code class="notranslate">install.js</code>, trace local <code class="notranslate">require()</code> / <code class="notranslate">import</code> calls, find any referenced shell scripts or binaries, and look for risky behavior.</p>
+<p dir="auto">This is especially difficult when the package is a transitive dependency that the project team does not directly know or maintain.</p>
+<p dir="auto">The current flow also does not appear to distinguish clearly between different risk levels, such as:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[new lifecycle script]
+[lifecycle script changed since last approved version]
+[lifecycle script unchanged since last approved version]
+[new referenced file]
+[referenced file changed since last approved version]"><pre lang="text" class="notranslate"><code class="notranslate">[new lifecycle script]
+[lifecycle script changed since last approved version]
+[lifecycle script unchanged since last approved version]
+[new referenced file]
+[referenced file changed since last approved version]
+</code></pre></div>
+<p dir="auto">A routine version bump where the lifecycle script is unchanged is very different from a package that newly adds <code class="notranslate">postinstall</code>. Those should not look identical in the pending approval workflow.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Add a first-class review-report mode for pending lifecycle script approvals.</p>
+<p dir="auto">Possible command shapes:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm approve-scripts --allow-scripts-pending --format=review-markdown
+npm approve-scripts --allow-scripts-pending --format=review-json"><pre class="notranslate">npm approve-scripts --allow-scripts-pending --format=review-markdown
+npm approve-scripts --allow-scripts-pending --format=review-json</pre></div>
+<p dir="auto">or:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm approve-scripts --allow-scripts-pending --review-report npm-script-review.md
+npm approve-scripts --allow-scripts-pending --review-report-json npm-script-review.json"><pre class="notranslate">npm approve-scripts --allow-scripts-pending --review-report npm-script-review.md
+npm approve-scripts --allow-scripts-pending --review-report-json npm-script-review.json</pre></div>
+<p dir="auto">The exact option names are not the important part. The important part is having stable human-readable and machine-readable output that does not require scraping console text.</p>
+<p dir="auto">The report should be best-effort and should not claim to prove safety.</p>
+<p dir="auto">Useful report fields could include:</p>
+<ul dir="auto">
+<li>package name and version</li>
+<li>package location under <code class="notranslate">node_modules</code></li>
+<li>direct or transitive dependency status</li>
+<li>dependency path / introduced-by chain</li>
+<li>approval status</li>
+<li>lifecycle script names and exact command values</li>
+<li>local files directly referenced by lifecycle commands</li>
+<li>obvious local files those scripts reference, where statically detectable</li>
+<li>file hashes for reviewed files</li>
+<li>risk signals found in referenced files</li>
+<li>change classification compared to a previously approved version, where possible</li>
+</ul>
+<p dir="auto">Useful risk signals could include:</p>
+<ul dir="auto">
+<li>lifecycle script invokes a local JS file</li>
+<li>lifecycle script invokes a shell script</li>
+<li>lifecycle script invokes a package binary</li>
+<li>local file imports/requires another local file</li>
+<li>use of <code class="notranslate">child_process</code></li>
+<li>use of <code class="notranslate">eval</code>, <code class="notranslate">Function</code>, dynamic import, or obfuscation patterns</li>
+<li>network calls such as <code class="notranslate">fetch</code>, <code class="notranslate">http</code>, <code class="notranslate">https</code>, <code class="notranslate">curl</code>, or <code class="notranslate">wget</code></li>
+<li>access to <code class="notranslate">process.env</code></li>
+<li>references to token/credential-like environment variables</li>
+<li>writes outside the package directory</li>
+<li>modification of <code class="notranslate">.npmrc</code>, <code class="notranslate">.gitconfig</code>, <code class="notranslate">.ssh</code>, shell profiles, or CI-related files</li>
+<li>remote code download</li>
+<li>base64 decode plus execute patterns</li>
+<li>implicit native build reason, such as <code class="notranslate">binding.gyp</code> / <code class="notranslate">node-gyp</code></li>
+</ul>
+<p dir="auto">Non-goals:</p>
+<ul dir="auto">
+<li>Do not execute lifecycle scripts.</li>
+<li>Do not approve scripts automatically.</li>
+<li>Do not claim a package is safe.</li>
+<li>Do not replace human review.</li>
+<li>Do not attempt perfect JavaScript static analysis.</li>
+</ul>
+<p dir="auto">A best-effort local-reference walk and risk-signal report would still be a meaningful improvement.</p>
+<p dir="auto">The desired workflow would be:</p>
+<ol dir="auto">
+<li>Dependency bot updates <code class="notranslate">package.json</code> / lockfile.</li>
+<li>CI runs strict lifecycle script enforcement.</li>
+<li>CI detects pending lifecycle scripts.</li>
+<li>CI generates a review report as an artifact or PR comment.</li>
+<li>A human reviews the report.</li>
+<li>A human submits a separate approval or denial commit, if appropriate.</li>
+</ol>
+<p dir="auto">This turns the approval question from:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Do I approve this package name?"><pre lang="text" class="notranslate"><code class="notranslate">Do I approve this package name?
+</code></pre></div>
+<p dir="auto">into:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Do I approve this package/version to run this install-time execution path?"><pre lang="text" class="notranslate"><code class="notranslate">Do I approve this package/version to run this install-time execution path?
+</code></pre></div>
+<p dir="auto">That is a better security decision.</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>GitHub Community discussion: Upcoming breaking changes for npm v12<br>
+<a href="https://github.com/orgs/community/discussions/198547">https://github.com/orgs/community/discussions/198547</a></li>
+<li>npm approve-scripts documentation<br>
+<a href="https://docs.npmjs.com/cli/v11/commands/npm-approve-scripts/" rel="nofollow">https://docs.npmjs.com/cli/v11/commands/npm-approve-scripts/</a></li>
+<li>GitHub changelog: Upcoming breaking changes for npm v12<br>
+<a href="https://github.blog/changelog/2026-06-09-upcoming-breaking-changes-for-npm-v12/" rel="nofollow">https://github.blog/changelog/2026-06-09-upcoming-breaking-changes-for-npm-v12/</a></li>
+<li>Microsoft Security Blog: Mini Shai-Hulud compromised npm packages and CI/CD credential theft<br>
+<a href="https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/" rel="nofollow">https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/</a></li>
+</ul>]]></content>
+        <author>
+            <name>vbjay</name>
+            <email>vbjay@noreply.github.com</email>
+            <uri>https://github.com/vbjay</uri>
+        </author>
+        <published>2026-06-13T16:21:51.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Warn/Prompt/Error for configuration conflicts]]></title>
+        <id>https://github.com/npm/rfcs/issues/896</id>
+        <link href="https://github.com/npm/rfcs/issues/896"/>
+        <updated>2026-06-16T10:06:06.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Recent supply chain attacks have spurred many important improvements to the npm CLI, including configuration options that help prevent being the victim of one. However, the npm configuration is not always "user-controlled", which can lead to unexpected (and potentially compromising) outcomes. In particular, a user may have a secure user-level configuration (<code class="notranslate">~/.npmrc</code>) but run a command in a compromised/malicious project and end up in a bad situation. Alternatively, a user may have a secure user-level configuration but have some third-party script unexpectedly run <code class="notranslate">npm install --ignore-scripts=false &lt;malicious-package&gt;</code><sup><a href="#user-content-fn-1-5621221d80258a4b8db1a360aaaf28ab" id="user-content-fnref-1-5621221d80258a4b8db1a360aaaf28ab" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
+<p dir="auto">For this reason I would propose the npm CLI attempts to prevent such a security-conscious user from being the victim of a supply chain attack by alerting them when this situation arises, or at the very least leave a trace when it happens.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">You have a user level configuration</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ cat ~/.npmrc
+ignore-scripts=true
+min-release-age=7"><pre class="notranslate">$ cat <span class="pl-k">~</span>/.npmrc
+ignore-scripts=true
+min-release-age=7</pre></div>
+<p dir="auto">And you have just cloned an (untrusted) repository with a local configuration file</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ cat random-github-project/.npmrc
+ignore-scripts=false
+min-release-age=0"><pre class="notranslate">$ cat random-github-project/.npmrc
+ignore-scripts=false
+min-release-age=0</pre></div>
+<p dir="auto">If you install dependencies, it won't inform you about the configuration conflicts</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="$ npm --version
+11.12.1
+
+$ npm install # or npm clean-install
+
+added X packages, and audited Y packages in 420ms
+
+found Z vulnerabilities"><pre class="notranslate">$ npm --version
+11.12.1
+
+$ npm install <span class="pl-c"><span class="pl-c">#</span> or npm clean-install</span>
+
+added X packages, and audited Y packages <span class="pl-k">in</span> 420ms
+
+found Z vulnerabilities</pre></div>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The option value in the "closest" configuration wins and is used.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">If there is a conflict for an option between configurations (files or CLI) the npm CLI should either</p>
+<ol dir="auto">
+<li>Prompt the user for confirmation that the configurations are conflicting, and which option value will be used, or</li>
+<li>Output a warning that there was a conflict, or</li>
+<li>Error and not do anything</li>
+</ol>
+<p dir="auto">Where an example of a configuration mismatch is if one explicitly specifies <code class="notranslate">ignore-scripts=false</code> and another one explicitly specifies <code class="notranslate">ignore-scripts=true</code>.</p>
+<p dir="auto">I would personally advocate for using (1) when a TTY is detected and falling back to (2) otherwise, e.g. in CI.</p>
+<p dir="auto">The behavior itself may be configurable, but in that case should only be respected when provided at the user level (<code class="notranslate">~/.npmrc</code>) or CLI.</p>
+<p dir="auto">In some ideal world it should not be considered a problem when, say, the project-level configuration is more strict than the user-level configuration<sup><a href="#user-content-fn-2-5621221d80258a4b8db1a360aaaf28ab" id="user-content-fnref-2-5621221d80258a4b8db1a360aaaf28ab" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>. However, I imagine it can be difficult and contentious to determine when a configuration is "more strict".</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4035107684" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/856" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/856/hovercard" href="https://github.com/npm/rfcs/issues/856">#856</a></li>
+</ul>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
+<ol dir="auto">
+<li id="user-content-fn-1-5621221d80258a4b8db1a360aaaf28ab">
+<p dir="auto">as described in <a href="https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/">https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/</a> <a href="#user-content-fnref-1-5621221d80258a4b8db1a360aaaf28ab" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2-5621221d80258a4b8db1a360aaaf28ab">
+<p dir="auto">For example, <code class="notranslate">ignore-scripts=false</code> in <code class="notranslate">~/.npmrc</code> and <code class="notranslate">ignore-scripts=true</code> in <code class="notranslate">project/.npmrc</code>. <a href="#user-content-fnref-2-5621221d80258a4b8db1a360aaaf28ab" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2026-06-12T12:30:11.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC]: Add "requireGlobal": true field to package.json for global-only packages]]></title>
+        <id>https://github.com/npm/rfcs/issues/894</id>
+        <link href="https://github.com/npm/rfcs/issues/894"/>
+        <updated>2026-06-10T12:29:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5721147?u=b6f2776c92b4d4404c45b90c4d735699535a74d1&v=4" width="64" height="64" alt=""/><br/><p dir="auto">In my package's package.json file, I have preinstall that looks like</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {
+    &quot;preinstall&quot;: &quot;node scripts/preinstall.js&quot;
+}"><pre class="notranslate"><span class="pl-ent">"scripts"</span>: {
+    <span class="pl-ent">"preinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>node scripts/preinstall.js<span class="pl-pds">"</span></span>
+}</pre></div>
+<p dir="auto">currently, i have preinstall.js script that looks like</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="if(!process.env.npm_config_global) {
+    console.log('This npm module can only be installed globally')
+    process.exit(1)
+}"><pre class="notranslate"><span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-c1">env</span><span class="pl-kos">.</span><span class="pl-c1">npm_config_global</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s">'This npm module can only be installed globally'</span><span class="pl-kos">)</span>
+    <span class="pl-s1">process</span><span class="pl-kos">.</span><span class="pl-en">exit</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<p dir="auto">npm 12 will make install scripts opt-in (see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4448306862" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/868" data-hovercard-type="pull_request" data-hovercard-url="/npm/rfcs/pull/868/hovercard" href="https://github.com/npm/rfcs/pull/868">#868</a>)</p>
+<hr>
+<p dir="auto">is there a possibility of adding a field to package.json file that replicates this behavior?</p>]]></content>
+        <author>
+            <name>alexsch01</name>
+            <email>alexsch01@noreply.github.com</email>
+            <uri>https://github.com/alexsch01</uri>
+        </author>
+        <published>2026-06-09T13:21:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add lifecycle hooks that can be mapped to user defined scripts (1:M) in package.json]]></title>
+        <id>https://github.com/npm/rfcs/issues/892</id>
+        <link href="https://github.com/npm/rfcs/issues/892"/>
+        <updated>2026-06-07T02:00:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2465960?u=c7cebb9fb969e11ef95e652b005d2e3916ca59f1&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Scripts in <code class="notranslate">package.json</code> oftentimes rely on prior state or context in order to execute as expected. For example, injecting the right <code class="notranslate">.env</code> files to have respective apps not upload things such as test data into production.</p>
+<p dir="auto">Current conventions for most applications handle this in a few ways:</p>
+<ol dir="auto">
+<li>Manually add an inline variable to the command such as <code class="notranslate">NODE_ENV={whatever}</code>, or for node 20+ projects use the <code class="notranslate">--env-file</code> switch. This gets cumbersome when you need to make 3+ copies of many regular scripts (eg. <code class="notranslate">dev|start|build</code>) and the commands themselves have enough other switches to worry about.</li>
+<li>Use external libraries like <code class="notranslate">dotenv</code> resolve this for them. Any addition of dependencies introduces the classic issues of new surface areas for vulnerabilities, as well as relying on the availability of respective maintainers to update them when contracts change, etc etc. Also, I still haven't found an external dependency that addresses this gap directly.</li>
+</ol>
+<h3 dir="auto">Example</h3>
+
+<p dir="auto">Allow for an opt-in, zero-dependency solution that gives developers a cleaner, DRYer <code class="notranslate">package.json</code>. Example snippet:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="&quot;scripts&quot;: {
+  &quot;serve&quot;:  &quot;node server.js&quot;,
+  &quot;build&quot;: &quot;node scripts/build-client.js&quot;
+},
+// act as hooks to run before script execution
+&quot;hooks&quot;: {
+  &quot;dev&quot;: &quot;NODE_ENV=development &amp;&amp; NODE_OPTIONS=--env-file=.env.development&quot;,
+  &quot;stg&quot;: &quot;NODE_ENV=staging &amp;&amp; NODE_OPTIONS=--env-file=.env.staging&quot;,
+  // and so on...
+}"><pre class="notranslate"><span class="pl-ent">"scripts"</span>: {
+  <span class="pl-ent">"serve"</span>:  <span class="pl-s"><span class="pl-pds">"</span>node server.js<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"build"</span>: <span class="pl-s"><span class="pl-pds">"</span>node scripts/build-client.js<span class="pl-pds">"</span></span>
+},
+<span class="pl-ii">// act as hooks to run before script execution</span>
+<span class="pl-ent">"hooks"</span>: {
+  <span class="pl-ent">"dev"</span>: <span class="pl-s"><span class="pl-pds">"</span>NODE_ENV=development &amp;&amp; NODE_OPTIONS=--env-file=.env.development<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"stg"</span>: <span class="pl-s"><span class="pl-pds">"</span>NODE_ENV=staging &amp;&amp; NODE_OPTIONS=--env-file=.env.staging<span class="pl-pds">"</span></span>,
+  <span class="pl-ii">// and so on...</span>
+}</pre></div>
+<p dir="auto">and when running in the terminal, the environment keywords will then be parsed for as hooks, delimited by <code class="notranslate">:</code> for example, and then execute those commands "pre" lifecycle hook style.</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm run dev:serve
+npm run stg:serve"><pre class="notranslate">npm run dev:serve
+npm run stg:serve</pre></div>
+<p dir="auto">This kind of functionality can be abstracted to other use cases where pre or post lifecycle hooks can be leveraged for any group of scripts that wants to be decorated by them.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">User generated npm scripts cannot define any pre/before or post/after hooks that can be referenced by their key signature.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">User generated npm scripts CAN reference pre/before or post/after hooks that are defined in a new section in <code class="notranslate">package.json</code>, using an agreed upon delimiter such as colon (<code class="notranslate">:</code>). The placement of the hook key, either on the left (pre/before) or on the right (post/after) side of the script executes the hook script that the separated key maps to.</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>Originally opened as an issue in <a href="https://github.com/npm/cli/issues/9384" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/9384/hovercard">npm/cli</a></li>
+</ul>]]></content>
+        <author>
+            <name>Plumpernickel</name>
+            <email>Plumpernickel@noreply.github.com</email>
+            <uri>https://github.com/Plumpernickel</uri>
+        </author>
+        <published>2026-06-07T02:00:26.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Support Trusted publishing for Github Actions Self-Hosted Runners]]></title>
+        <id>https://github.com/npm/rfcs/issues/888</id>
+        <link href="https://github.com/npm/rfcs/issues/888"/>
+        <updated>2026-06-01T23:34:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52216?u=a4620ecc5d23c13492a5aa56cd7a3ab327a10ebe&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Self hosted runners are an essential security and performance stance for any reasonable organization.</p>
+<p dir="auto">Ignoring this use-case in the trusted publisher is a huge gap.  It forces people to downgrade their security to use trusted publishing, or to do other kinds of hacks, or perhaps even deprecating npmjs as a publishing platform.</p>
+<p dir="auto">I was double surprised to learn that this isn't tracked or covered by any issue, bug.  The docs say something about "future versions", but don't contain any insight to what that exactly means.</p>]]></content>
+        <author>
+            <name>ryanobjc</name>
+            <email>ryanobjc@noreply.github.com</email>
+            <uri>https://github.com/ryanobjc</uri>
+        </author>
+        <published>2026-06-01T23:34:52.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] npm catalog]]></title>
+        <id>https://github.com/npm/rfcs/issues/872</id>
+        <link href="https://github.com/npm/rfcs/issues/872"/>
+        <updated>2026-05-27T08:15:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/33056264?u=45daf491dd5c9291872459e9e1243057629b3e82&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation</h2>
+<p dir="auto">Keeping related dependencies on the same version can be a source of friction in JavaScript projects.</p>
+<p dir="auto">In monorepos, the same dependency is usually used across many workspace packages, and bumping a shared dep means editing every <code class="notranslate">package.json</code> that uses it — noisy PRs and frequent merge conflicts. Today people reach for third-party tools like syncpack to manage this.</p>
+<p dir="auto">The same problem shows up in plenty of single-package projects too. A Docusaurus site pins <code class="notranslate">@docusaurus/core</code>, <code class="notranslate">@docusaurus/preset-classic</code>, and several <code class="notranslate">@docusaurus/theme-*</code> / <code class="notranslate">@docusaurus/plugin-*</code> packages that all need to move together. The same is true of <code class="notranslate">@typescript-eslint/*</code>, <code class="notranslate">@nestjs/*</code>, <code class="notranslate">@aws-sdk/*</code>, <code class="notranslate">@storybook/*</code>, and many others. Bumping one and missing another is an easy way to break a build.</p>
+<p dir="auto">pnpm shipped a feature called <a href="https://pnpm.io/catalogs" rel="nofollow">Catalogs</a> for the workspace version of this problem and it's seen strong adoption. I'd like to open a discussion on bringing the same idea to npm.</p>
+<h2 dir="auto">The idea</h2>
+<p dir="auto">Define a dependency version once in a central location, then use/reference it from <code class="notranslate">package.json</code> with a <code class="notranslate">catalog:</code> specifier instead of an explicit range. On publish, the specifier gets rewritten to the resolved version so published packages stay portable.</p>
+<h2 dir="auto">Benefits</h2>
+<ul dir="auto">
+<li><strong>One place to bump versions</strong> — upgrading a shared or related dep is a one-line change.</li>
+<li><strong>Fewer merge conflicts</strong> — <code class="notranslate">package.json</code> files stop being edited on every dependency bump.</li>
+<li><strong>Built-in consistency</strong> — packages can't silently drift onto mismatched versions, no external tool required.</li>
+<li><strong>Ecosystem alignment</strong> — pnpm already ships this; a shared concept benefits tooling and users moving between managers.</li>
+</ul>
+<h2 dir="auto">Worth discussing</h2>
+<p dir="auto">pnpm's implementation is workspace-only. Given that the version-syncing problem also affects single-package projects (the Docusaurus / scoped-package-family case above), it's worth discussing whether an npm version should be workspace-only or apply more broadly?</p>
+<h2 dir="auto">Prior art</h2>
+<ul dir="auto">
+<li>pnpm RFC: <a href="https://github.com/pnpm/rfcs/pull/1" data-hovercard-type="pull_request" data-hovercard-url="/pnpm/rfcs/pull/1/hovercard">pnpm/rfcs#1</a> / <a href="https://github.com/pnpm/rfcs/blob/main/text/0001-catalogs.md">accepted text</a></li>
+<li>pnpm docs: <a href="https://pnpm.io/catalogs" rel="nofollow">https://pnpm.io/catalogs</a></li>
+<li>Gradle version catalogs (original inspiration)</li>
+</ul>]]></content>
+        <author>
+            <name>matthew2564</name>
+            <email>matthew2564@noreply.github.com</email>
+            <uri>https://github.com/matthew2564</uri>
+        </author>
+        <published>2026-05-27T08:15:05.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Is it possible to have package.json in a different directory from node_modules?]]></title>
+        <id>https://github.com/npm/rfcs/issues/871</id>
+        <link href="https://github.com/npm/rfcs/issues/871"/>
+        <updated>2026-05-19T14:38:06.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/33631407?u=198c11fe482893e371c74dde4aea216a3da1cd84&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Simply put, I want this:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="RootFolder
+    /node_modules
+    /ProjectFolder
+        package.json"><pre class="notranslate"><code class="notranslate">RootFolder
+    /node_modules
+    /ProjectFolder
+        package.json
+</code></pre></div>
+<p dir="auto">This would allow installing and running NPM packages on the VM side, while files that need to be edited and version controlled (such as package.json) can live on the host OS.</p>]]></content>
+        <author>
+            <name>3e33</name>
+            <email>3e33@noreply.github.com</email>
+            <uri>https://github.com/3e33</uri>
+        </author>
+        <published>2026-05-19T04:04:39.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Allow packages to assert no install scripts.]]></title>
+        <id>https://github.com/npm/rfcs/issues/867</id>
+        <link href="https://github.com/npm/rfcs/issues/867"/>
+        <updated>2026-06-03T20:48:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/60481?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<p dir="auto">With supply chain attacks becoming more common, it's important to find ways to protect users and authors from compromise. Many of these attacks use install scripts to deploy their payload. By allowing packages to assert that their package doesn't, and will never, have an install script it will limit exposure and allow security researchers to focus their efforts on packages that need this functionality.</p>
+<h3 dir="auto">Example</h3>
+
+<p dir="auto">A package can assert that they will not use these scripts by setting them to the string <code class="notranslate">"false"</code>.</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+    &quot;scripts&quot;: {
+        &quot;prepare&quot;: &quot;false&quot;,
+        &quot;preinstall&quot;: &quot;false&quot;,
+        &quot;install&quot;: &quot;false&quot;,
+        &quot;postinstall&quot;: &quot;false&quot;
+    }
+}"><pre class="notranslate">{
+    <span class="pl-ent">"scripts"</span>: {
+        <span class="pl-ent">"prepare"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"preinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"install"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"postinstall"</span>: <span class="pl-s"><span class="pl-pds">"</span>false<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+<p dir="auto">On most systems <code class="notranslate">false</code> is a command that always fails making it unlikely that anyone is using it or expects it to be useful. This lends a certain amount of backwards compatibility, but where this is important is that older systems will gain some security benefits from the property already being asserted as <code class="notranslate">"false"</code> on upload.</p>
+<p dir="auto">Consider this situation:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="{
+    &quot;scripts&quot;: {
+        &quot;install&quot;: &quot;cp secrets attacker/secrets&quot;
+    },
+    &quot;allowScripts&quot;: {
+        &quot;install&quot;: false
+    }
+}"><pre class="notranslate">{
+    <span class="pl-ent">"scripts"</span>: {
+        <span class="pl-ent">"install"</span>: <span class="pl-s"><span class="pl-pds">"</span>cp secrets attacker/secrets<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"allowScripts"</span>: {
+        <span class="pl-ent">"install"</span>: <span class="pl-c1">false</span>
+    }
+}</pre></div>
+<p dir="auto">An older system that doesn't understand the <code class="notranslate">allowScripts</code> property will see and execute the install script even though it was not allowed.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<p dir="auto">Currently, its ambiguous if a package intends to use a script in the future. So the user is left with the option of disallowing all scripts through the <code class="notranslate">--ignore-scripts</code> flag or allowing the script, the default.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+
+<p dir="auto">Setting the script property to an explicit <code class="notranslate">"false"</code> allows consumers of the package to abort the installation and the package authors to abort the upload process if the value of the script property changes unexpectedly. This will also allow the feature to be rolled out in a backwards compatible way for both package authors and consumers.</p>
+<p dir="auto">Changing the property to be more restricted, as in, from a script to <code class="notranslate">"false"</code>, is always allowed.</p>
+<p dir="auto">Publishing a package that changes a script from <code class="notranslate">"false"</code> to anything else requires confirmation on npmjs.com. When confirming, they can add a reason for the change that will be presented to the user.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ npm publish important-package
+
+The package &quot;important-package&quot; has added an &quot;install&quot; script:
+
+cp secrets attacker/secrets
+
+This could be an indication that the package has been
+compromised. To proceed, you must log in to npmjs.com
+and allow &quot;install&quot; scripts before publishing this version."><pre class="notranslate"><code class="notranslate">$ npm publish important-package
+
+The package "important-package" has added an "install" script:
+
+cp secrets attacker/secrets
+
+This could be an indication that the package has been
+compromised. To proceed, you must log in to npmjs.com
+and allow "install" scripts before publishing this version.
+</code></pre></div>
+<p dir="auto">Installing a package, or a dependency of a package, that changes a script from <code class="notranslate">"false"</code> to anything else requires explicit user permission. A message is presented to the user for each instance, including dependencies, where a package's scripts have been changed from<code class="notranslate">"false"</code>. The user can review this report and then use the <code class="notranslate">--approve-scripts</code> flag to continue if there are no issues.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ npm install important-package
+
+The package &quot;important-package&quot; has added an &quot;install&quot; script:
+
+cp secrets attacker/secrets
+
+Reason:
+&gt; Nothing to see here just a normal install script that does
+&gt; normal install script things.
+
+This could be an indication that the package has been
+compromised. If this was unexpected, contact the package
+author or npm support, otherwise re-run the command with
+the `--approve-scripts` flag to allow this script."><pre class="notranslate"><code class="notranslate">$ npm install important-package
+
+The package "important-package" has added an "install" script:
+
+cp secrets attacker/secrets
+
+Reason:
+&gt; Nothing to see here just a normal install script that does
+&gt; normal install script things.
+
+This could be an indication that the package has been
+compromised. If this was unexpected, contact the package
+author or npm support, otherwise re-run the command with
+the `--approve-scripts` flag to allow this script.
+</code></pre></div>
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li><a href="https://snyk.io/blog/tanstack-npm-packages-compromised/" rel="nofollow">https://snyk.io/blog/tanstack-npm-packages-compromised/</a></li>
+</ul>]]></content>
+        <author>
+            <name>AaronAsAChimp</name>
+            <email>AaronAsAChimp@noreply.github.com</email>
+            <uri>https://github.com/AaronAsAChimp</uri>
+        </author>
+        <published>2026-05-12T15:31:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Support running outdated command against a package-lock without installing]]></title>
+        <id>https://github.com/npm/rfcs/issues/866</id>
+        <link href="https://github.com/npm/rfcs/issues/866"/>
+        <updated>2026-05-21T16:32:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36852337?u=bac05fe973eaaa95fa842375de48dcde2af24fbc&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Currently to run the outdated check the packages have to be installed first, this can be a comparatively slow process depending on the complexity of dependencies involved. To facilitate quicker checks particularly in a CI environment it would be useful to be able to execute the command and receive the same quality of output without having to run the install first.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">git clone some-node-repo<br>
+npm outdated</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">outdated does run but it gives a completely different result rendering it unusable</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Package                             Current  Wanted  Latest  Location  Depended by
+babel-plugin-syntax-dynamic-import  MISSING  6.18.0  6.18.0  -         api-data-test"><pre class="notranslate"><code class="notranslate">Package                             Current  Wanted  Latest  Location  Depended by
+babel-plugin-syntax-dynamic-import  MISSING  6.18.0  6.18.0  -         api-data-test
+</code></pre></div>
+<h4 dir="auto">Desired Behaviour</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Package            Current  Wanted  Latest  Location                        Depended by
+@babel/cli          7.17.6  7.28.6  7.28.6  node_modules/@babel/cli         api-data-test
+@babel/core         7.17.8  7.29.0  7.29.0  node_modules/@babel/core        api-data-test
+@babel/preset-env  7.16.11  7.29.5  7.29.5  node_modules/@babel/preset-env  api-data-test"><pre class="notranslate"><code class="notranslate">Package            Current  Wanted  Latest  Location                        Depended by
+@babel/cli          7.17.6  7.28.6  7.28.6  node_modules/@babel/cli         api-data-test
+@babel/core         7.17.8  7.29.0  7.29.0  node_modules/@babel/core        api-data-test
+@babel/preset-env  7.16.11  7.29.5  7.29.5  node_modules/@babel/preset-env  api-data-test
+</code></pre></div>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>ZLJasonG</name>
+            <email>ZLJasonG@noreply.github.com</email>
+            <uri>https://github.com/ZLJasonG</uri>
+        </author>
+        <published>2026-05-12T14:57:45.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Built-in `npm patch`?]]></title>
+        <id>https://github.com/npm/rfcs/issues/865</id>
+        <link href="https://github.com/npm/rfcs/issues/865"/>
+        <updated>2026-07-29T17:13:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75621402?u=0f8061d961db99136b4956520325a7cddb0b82af&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">Sometimes it's necessary to patch a package. Maybe it's exposing internals that need to be hooked into, maybe it's getting a PR before it gets merged.</p>
+<p dir="auto">At the moment, one has to use a package like <code class="notranslate">patch-package</code> to do this. <code class="notranslate">patch-package</code> is unfortunately unmaintained though and has issues with <code class="notranslate">install-strategy=linked</code> and workspaces. This has made me very disgruntled.</p>
+<p dir="auto">Other package managers in the ecosystem (<code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code>) have a built-in <code class="notranslate">patch</code> sub-command, so why not npm?</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">Look at the myriad cases of <code class="notranslate">patch-package</code>. For example, there is a patch to add <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3826277038" data-permission-text="Title is private" data-url="https://github.com/microsoft/TypeScript/issues/63008" data-hovercard-type="pull_request" data-hovercard-url="/microsoft/TypeScript/pull/63008/hovercard" href="https://github.com/microsoft/TypeScript/pull/63008">microsoft/TypeScript#63008</a>.</p>
+<h3 dir="auto">How</h3>
+<p dir="auto">I'm thinking the CLI could look like this:</p>
+<ul dir="auto">
+<li><code class="notranslate">npm patch apply [patches...]</code> will apply patches. If no arguments are passed, all configured patches will be applied, otherwise only the specified patches will be applied</li>
+<li><code class="notranslate">npm patch add &lt;name&gt;</code> will create a patch for a package using changes in the working node_modules (similar to <code class="notranslate">patch-package xxx</code>)</li>
+</ul>
+<p dir="auto">Also, A feature I think would be really nice to have is patching in dependants, for example:</p>
+<ul dir="auto">
+<li><code class="notranslate">@ducks/quack</code> patches <code class="notranslate">typescript</code> to add a feature PR</li>
+<li><code class="notranslate">@ducks/mallard</code> depends on <code class="notranslate">@ducks/quack</code>, <code class="notranslate">npm i @ducks/quack</code> results in the patch being applied</li>
+</ul>
+<p dir="auto">This could be accomplished through the use of a <code class="notranslate">patches</code> field in <code class="notranslate">package.json</code>, or something similar.</p>
+<h3 dir="auto">References</h3>
+<p dir="auto"><a href="https://github.com/ds300/patch-package">https://github.com/ds300/patch-package</a> (unmaintained)</p>]]></content>
+        <author>
+            <name>james-pre</name>
+            <email>james-pre@noreply.github.com</email>
+            <uri>https://github.com/james-pre</uri>
+        </author>
+        <published>2026-05-11T18:34:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Proposal: set min-release-age default to 7 days.]]></title>
+        <id>https://github.com/npm/rfcs/issues/864</id>
+        <link href="https://github.com/npm/rfcs/issues/864"/>
+        <updated>2026-07-31T01:06:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1714458?u=06833049fabdd212f882d22c64bd08699242c035&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Hello, NPM community; I would like to propose that the default of "min-release-age" be set to seven days.</p>
+<p dir="auto">Per <a href="https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns" rel="nofollow">https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns</a>   the great majority of compromised/malicious NPM packages are detected and remediated within hours or a small number of days. There are a number of examples of this, most recently the cline2.3 injection attack - see: <a href="https://github.com/cline/cline/security/advisories/GHSA-9ppg-jx86-fqw7">GHSA-9ppg-jx86-fqw7</a><br>
+and: <a href="https://grith.ai/blog/clinejection-when-your-ai-tool-installs-another" rel="nofollow">https://grith.ai/blog/clinejection-when-your-ai-tool-installs-another</a> ) - but it is a recurring issue in the NPM ecosystem.</p>
+<p dir="auto">I believe that defaulting min-release-age to one week -  which the data suggests would be an effective safety margin - would mitigate a great deal of ecosystem risk at negligible cost.</p>
+<p dir="auto">Anyone wanting to accept that risk would be able to set min-release-age to whatever they want, obviously, and in extremis - say, to pull a fix for a long-deployed but only recently discovered bug - could be dialled to zero, but I believe safe defaults are always good decision.</p>
+<p dir="auto">Thanks for hearing me out.</p>]]></content>
+        <author>
+            <name>mhoye</name>
+            <email>mhoye@noreply.github.com</email>
+            <uri>https://github.com/mhoye</uri>
+        </author>
+        <published>2026-05-08T19:31:58.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Extend npm audit to detect supply chain compromise signals beyond CVEs]]></title>
+        <id>https://github.com/npm/rfcs/issues/860</id>
+        <link href="https://github.com/npm/rfcs/issues/860"/>
+        <updated>2026-08-04T21:56:46.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3455008?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">The axios compromise on March 31st exposed a gap that <code class="notranslate">npm audit</code> can't close on its own. A threat actor hijacked the primary maintainer's npm account and published two backdoored versions within 40 minutes — each with a previously undeclared dependency running a RAT via post-install. There was no CVE at the time of publish. The advisory database had nothing to flag.</p>
+<p dir="auto">This isn't isolated. In 2025 alone, 45,777 CVEs were reported averaging 130 per day, and multiple npm supply chain attacks hit packages with billions of weekly downloads. A growing share of these attacks arrive before a CVE exists — through account takeovers, dependency injection, and post-install abuse.</p>
+<h3 dir="auto">Example</h3>
+<p dir="auto">A developer runs <code class="notranslate">npm install</code> after a routine <code class="notranslate">package.json</code> update. One dependency received a patch version bump overnight. The bump introduced a new post-install script and was published by an account that had never touched the package before. <code class="notranslate">npm audit</code> returns clean. The machine is compromised within seconds of install completing.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm audit</code> queries the advisory database for known CVEs against the resolved dependency tree. It returns clean if no CVEs exist, regardless of other signals.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto"><code class="notranslate">npm audit</code> (or a new <code class="notranslate">npm audit --provenance</code> / <code class="notranslate">npm audit --supply-chain</code> flag) additionally checks:</p>
+<ul dir="auto">
+<li>Whether the publish account for each installed version has previously published that package</li>
+<li>Whether new post-install or install scripts were introduced in the installed version vs. the prior one</li>
+<li>Whether new transitive dependencies were introduced that weren't present in the prior version</li>
+<li>Whether the installed version has a valid SLSA provenance attestation, especially for packages that previously carried one</li>
+</ul>
+<p dir="auto">These checks don't require a new database — npm already has publish history and provenance metadata. Surfacing them at audit time gives developers a signal before a CVE is ever filed.</p>
+<h3 dir="auto">References</h3>
+<ul dir="auto">
+<li><a href="https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/" rel="nofollow">Microsoft Security Blog — Mitigating the Axios npm supply chain compromise</a></li>
+<li><a href="https://thehackernews.com/2026/03/axios-supply-chain-attack-pushes-cross.html" rel="nofollow">The Hacker News — Axios Supply Chain Attack Pushes Cross-Platform RAT</a></li>
+<li><a href="https://www.paloaltonetworks.com/blog/cloud-security/npm-supply-chain-attack/" rel="nofollow">Palo Alto Networks — Widespread npm Supply Chain Attack Puts Billions of Weekly Downloads at Risk</a></li>
+<li>Related: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1955039737" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/739" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/739/hovercard" href="https://github.com/npm/rfcs/issues/739">#739</a></li>
+</ul>]]></content>
+        <author>
+            <name>ranjithrajv</name>
+            <email>ranjithrajv@noreply.github.com</email>
+            <uri>https://github.com/ranjithrajv</uri>
+        </author>
+        <published>2026-04-02T08:02:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Add feature to suppress minor version changes from update-notifier]]></title>
+        <id>https://github.com/npm/rfcs/issues/859</id>
+        <link href="https://github.com/npm/rfcs/issues/859"/>
+        <updated>2026-04-01T19:09:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/6580094?v=4" width="64" height="64" alt=""/><br/>
+<p dir="auto">There should be a way to suppress minor version update notices. Currently, there is only a on/off solution; but this does not allow for those of us who want major and security updates to receive notices.</p>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">I want to receive notices about major and security updates to NPM. I don't however need to update for each minor update.</p>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">The current configuration flag is a boolean that determines if an update is checked at all.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Update to the configuration flag from a simple boolean to allow silencing other types of update notices.</p>
+<h3 dir="auto">References</h3>
+<p dir="auto"><a href="https://askubuntu.com/questions/1354076/how-can-i-get-rid-of-new-minor-version-of-npm-available-on-using-npm" rel="nofollow">https://askubuntu.com/questions/1354076/how-can-i-get-rid-of-new-minor-version-of-npm-available-on-using-npm</a><br>
+<a href="https://docs.npmjs.com/cli/v8/using-npm/config#update-notifier" rel="nofollow">https://docs.npmjs.com/cli/v8/using-npm/config#update-notifier</a></p>]]></content>
+        <author>
+            <name>FelixVicis</name>
+            <email>FelixVicis@noreply.github.com</email>
+            <uri>https://github.com/FelixVicis</uri>
+        </author>
+        <published>2026-04-01T19:09:59.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] Ability to override `--min-release-age` on CLI or in the lockfile]]></title>
+        <id>https://github.com/npm/rfcs/issues/856</id>
+        <link href="https://github.com/npm/rfcs/issues/856"/>
+        <updated>2026-05-13T07:51:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+<p dir="auto">I want to use the <code class="notranslate">--min-release-age</code> or <code class="notranslate">--before</code> option and I want to do so consistently so I set it in my <code class="notranslate">.npmrc</code> (former) or alias the <code class="notranslate">npm</code> command (latter). I also sometimes want a more recently published package - e.g., because of a vulnerability or because I request a new feature that was finally released. These two things are at odds with each other, and unfortunately <code class="notranslate">--min-release-age</code> and <code class="notranslate">--before</code> are all-or-nothing. Therefore, I would like to propose two "exceptions" for these options<sup><a href="#user-content-fn-1-98bb4c9a921883e0739ddcabb5b72058" id="user-content-fnref-1-98bb4c9a921883e0739ddcabb5b72058" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>:</p>
+<ul dir="auto">
+<li>If a package version is explicitly recorded in the lockfile it will be installed regardless of the minimum age requested.</li>
+<li>If a package version is explicitly requested, e.g. <code class="notranslate">npm install package@1.2.3</code> where v1.2.3 was released today, it will be installed regardless of the minimum age requested.</li>
+</ul>
+<h3 dir="auto">Prior Art</h3>
+<h4 dir="auto"><code class="notranslate">pnpm</code> and <code class="notranslate">yarn</code></h4>
+<p dir="auto">Both of these have the ability to explicitly list exceptions (through <code class="notranslate">minimumReleaseAgeExclude</code> and <code class="notranslate">npmPreapprovedPackages</code> resp.) which bypass the minimum release age check. This is an alternative strategy to the one described here. The disadvantage is that it's a separate list that needs to be maintained, most notably the exceptions should (in most cases) be removed after they're no longer necessary, especially in the described scenario<sup><a href="#user-content-fn-2-98bb4c9a921883e0739ddcabb5b72058" id="user-content-fnref-2-98bb4c9a921883e0739ddcabb5b72058" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>.</p>
+<h4 dir="auto">Other Ecosystems</h4>
+<p dir="auto">The Rust/Cargo proposal for its <code class="notranslate">--min-release-age</code> option (linked below) includes a similar concept:</p>
+<blockquote>
+<ul dir="auto">
+<li>Unless <code class="notranslate">--precise</code> is used to specify a specific version, any crates updated from the registry will only consider versions published<br>
+before the time specified by the appropriate <code class="notranslate">min-publish-age</code> option. If <code class="notranslate">--precise</code> is used, that version will be used, even if it<br>
+newer than the policy would otherwise allow (although in the future, there may be an option to deny that).</li>
+<li>If the version of a crate in the lockfile is already newer than <code class="notranslate">min-publish-age</code>, then <code class="notranslate">cargo update</code> will not update that crate, nor will<br>
+it downgrade to an older version. It will leave the version as it is.</li>
+</ul>
+</blockquote>
+<h4 dir="auto">Limitations</h4>
+<p dir="auto">One drawback of this approach is that using an untrusted lockfile - e.g. from an untrusted repository or Pull Request - may unexpectedly override your expected security preferences. An attacker could leverage the suggested behavior to inject a malicious dependency into the lockfile and make you download it.</p>
+<p dir="auto">I believe that</p>
+<ol dir="auto">
+<li>This attack is already possible by configuring/overriding the <code class="notranslate">--min-release-age</code> through a project level <code class="notranslate">.npmrc</code> <sup><a href="#user-content-fn-3-98bb4c9a921883e0739ddcabb5b72058" id="user-content-fnref-3-98bb4c9a921883e0739ddcabb5b72058" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>.</li>
+<li>This is a trade-off that is worth considering as making the security feature more approachable in this way can help adoption, which might offset the risk of this thread.</li>
+</ol>
+<h3 dir="auto">Example</h3>
+<ul dir="auto">
+<li>There is a vulnerability in a package and the fix was published today and I want to start using it now, so I run <code class="notranslate">npm install vulnerable-but-now-fixed@4.2.0</code>.</li>
+<li>I contributed a bug fix or feature upstream and now want to use it myself as soon as possible, so I run <code class="notranslate">npm install excited-to-use@3.1.4</code>.</li>
+<li>I, or someone on my team, has done one of the above and now I try to (re)install dependencies with <code class="notranslate">npm clean-install</code> where I don't want to get an error because of these newer dependencies.</li>
+</ul>
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+<p dir="auto">If you want to use any new package you need to disable <code class="notranslate">--min-release-age</code>/<code class="notranslate">--before</code> entirely, affecting all packages.</p>
+<h4 dir="auto">Desired Behaviour</h4>
+<p dir="auto">Using <code class="notranslate">--min-release-age</code>/<code class="notranslate">--before</code> is the default with explicitly recorded exceptions (through CLI arguments or the lockfile) to the rule.</p>
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3651803902" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/844" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/844/hovercard" href="https://github.com/npm/rfcs/issues/844">#844</a></li>
+<li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3907792934" data-permission-text="Title is private" data-url="https://github.com/npm/cli/issues/8965" data-hovercard-type="pull_request" data-hovercard-url="/npm/cli/pull/8965/hovercard" href="https://github.com/npm/cli/pull/8965">npm/cli#8965</a></li>
+<li>Similar to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3976754086" data-permission-text="Title is private" data-url="https://github.com/rust-lang/rfcs/issues/3923" data-hovercard-type="pull_request" data-hovercard-url="/rust-lang/rfcs/pull/3923/hovercard" href="https://github.com/rust-lang/rfcs/pull/3923">rust-lang/rfcs#3923</a></li>
+<li>See also <a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html" rel="nofollow">Package Managers Need to Cool Down</a></li>
+</ul>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
+<ol dir="auto">
+<li id="user-content-fn-1-98bb4c9a921883e0739ddcabb5b72058">
+<p dir="auto">or possibly only one of them, as I feel this idea might make less sense for the intended use case of the <code class="notranslate">--before</code> option. <a href="#user-content-fnref-1-98bb4c9a921883e0739ddcabb5b72058" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2-98bb4c9a921883e0739ddcabb5b72058">
+<p dir="auto">exceptions make more sense for especially trusted packages such as internal/company packages or highly trusted packages such as, idk, <code class="notranslate">express</code>(?) <a href="#user-content-fnref-2-98bb4c9a921883e0739ddcabb5b72058" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-3-98bb4c9a921883e0739ddcabb5b72058">
+<p dir="auto">further motivating the consideration for limiting this behavior to <code class="notranslate">--min-release-age</code> and not using it for <code class="notranslate">--before</code>. <a href="#user-content-fnref-3-98bb4c9a921883e0739ddcabb5b72058" data-footnote-backref="" aria-label="Back to reference 3" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>]]></content>
+        <author>
+            <name>ericcornelissen</name>
+            <email>ericcornelissen@noreply.github.com</email>
+            <uri>https://github.com/ericcornelissen</uri>
+        </author>
+        <published>2026-03-06T16:37:43.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[RRFC] <title>]]></title>
+        <id>https://github.com/npm/rfcs/issues/855</id>
+        <link href="https://github.com/npm/rfcs/issues/855"/>
+        <updated>2026-05-08T20:28:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/262082854?u=10b20aa3f946388c9e5b7f317ff71e37ff73b42f&v=4" width="64" height="64" alt=""/><br/>
+<h2 dir="auto">Motivation ("The Why")</h2>
+
+<h3 dir="auto">Example</h3>
+
+<h3 dir="auto">How</h3>
+<h4 dir="auto">Current Behaviour</h4>
+
+<h4 dir="auto">Desired Behaviour</h4>
+
+<h3 dir="auto">References</h3>
+
+<ul dir="auto">
+<li>n/a</li>
+</ul>]]></content>
+        <author>
+            <name>granjacours08-sys</name>
+            <email>granjacours08-sys@noreply.github.com</email>
+            <uri>https://github.com/granjacours08-sys</uri>
+        </author>
+        <published>2026-02-19T14:39:05.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[(FR): Implement exclusion mechanism for 'minimumReleaseAge' feature for CVE mitigation]]></title>
+        <id>https://github.com/npm/rfcs/issues/895</id>
+        <link href="https://github.com/npm/rfcs/issues/895"/>
+        <updated>2026-06-10T21:26:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/44306?u=bd42fb8b500e050f6d48c48b9d6434227c3ed3c7&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><code class="notranslate">minimumReleaseAge</code> was <a href="https://github.com/npm/cli/issues/8570" data-hovercard-type="issue" data-hovercard-url="/npm/cli/issues/8570/hovercard">recently implemented</a> which is a great addition to combat supply chain attacks, unfortunately not having an exclusion mechanism makes adoption hard.</p>
+<p dir="auto">In the situation where there's an urgent CVE that needs mitigation by immediately updating an affected package there's no way to allow that particular package to be excluded from the minimum release age.</p>
+<p dir="auto">As prior art, pnpm have already implemented a mechanism <a href="https://pnpm.io/settings#minimumreleaseageexclude" rel="nofollow">https://pnpm.io/settings#minimumreleaseageexclude</a> so might be a good idea to align with that.</p>
+<p dir="auto">As ever, thanks for all the hard work!</p>]]></content>
+        <author>
+            <name>dburrows</name>
+            <email>dburrows@noreply.github.com</email>
+            <uri>https://github.com/dburrows</uri>
+        </author>
+        <published>2026-02-16T12:48:09.000Z</published>
+    </entry>
+</feed>
