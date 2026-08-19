@@ -2,11 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-18T23:11:07.462Z</updated>
+    <updated>2026-08-19T00:34:09.156Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix max string length math]]></title>
+        <id>https://github.com/mdn/content/pull/45231</id>
+        <link href="https://github.com/mdn/content/pull/45231"/>
+        <updated>2026-08-18T23:44:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/78649?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The parenthetical values describing maximum string lengths on different browser are incorrect.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Fixing incorrect information.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">I only know about max string lengths in Firefox, but the calculations for what is written here were clearly incorrect.</p>
+<p dir="auto">It said "the maximum length is 2^29 - 24 (~1GiB)". 2^29 is not 1GiB, it's half that. Same for all the rest of the parentheticals; they're all twice the actual values.</p>
+<p dir="auto">(I did confirm V8's max string length on 64-bit Chromium. <code class="notranslate">"x".repeat(2**29-23)</code> fails with "RangeError: Invalid string length". <code class="notranslate">"x".repeat(2**29-24)</code> succeeds though it takes a little while for the console to think about it.)</p>]]></content>
+        <author>
+            <name>hotsphink</name>
+            <email>hotsphink@noreply.github.com</email>
+            <uri>https://github.com/hotsphink</uri>
+        </author>
+        <published>2026-08-18T23:33:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Document the periodic-background-sync permission for PeriodicSyncManager.register()]]></title>
         <id>https://github.com/mdn/content/pull/45230</id>
@@ -393,18 +413,5 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2026-08-17T21:32:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Reference for stage 3 await-dictionary]]></title>
-        <id>https://github.com/mdn/content/pull/45203</id>
-        <link href="https://github.com/mdn/content/pull/45203"/>
-        <updated>2026-08-17T22:26:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170081223" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45186" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45186/hovercard" href="https://github.com/mdn/content/issues/45186">#45186</a></p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-08-17T21:30:02.000Z</published>
     </entry>
 </feed>
