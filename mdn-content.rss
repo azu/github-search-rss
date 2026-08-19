@@ -2,11 +2,151 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-19T14:21:16.437Z</updated>
+    <updated>2026-08-19T15:19:33.286Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[docs(css): scrollbar-color overrides ::-webkit-scrollbar via its computed value, and it inherits]]></title>
+        <id>https://github.com/mdn/content/pull/45246</id>
+        <link href="https://github.com/mdn/content/pull/45246"/>
+        <updated>2026-08-19T15:07:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/19518661?u=60818a27a5d585d5f0b738995f05ae2f6dfacbec&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Two related additions about <code class="notranslate">scrollbar-color</code> taking precedence over the<br>
+<code class="notranslate">::-webkit-scrollbar-*</code> pseudo-elements.</p>
+<p dir="auto">The <code class="notranslate">::-webkit-scrollbar</code> page already carries a note about this. The<br>
+<code class="notranslate">scrollbar-color</code> page never mentions the pseudo-elements at all, so the warning<br>
+is only on the page you would read if you already suspected the interaction. In<br>
+practice you meet this from the other direction: you set <code class="notranslate">scrollbar-color</code>, your<br>
+<code class="notranslate">::-webkit-scrollbar-*</code> rules stop applying, and you go and read<br>
+<code class="notranslate">scrollbar-color</code>.</p>
+<p dir="auto">Neither page mentions that <code class="notranslate">scrollbar-color</code> is <strong>inherited</strong>, which is what makes<br>
+this hard to diagnose. An element loses its <code class="notranslate">::-webkit-scrollbar-*</code> styling when<br>
+an <strong>ancestor</strong> sets <code class="notranslate">scrollbar-color</code>, though the element itself never sets it,<br>
+and nothing in the CSS points at the cause. On macOS the fallback is an overlay<br>
+scrollbar of zero width, so the scrollbar is not merely unstyled, it is invisible<br>
+and occupies no space. That reads as "my CSS did not load" rather than as a<br>
+conflict between two ways of styling scrollbars.</p>
+<p dir="auto">The spec is explicit that the trigger is the computed value<br>
+(<a href="https://drafts.csswg.org/css-scrollbars/#scrollbar-color" rel="nofollow">CSS Scrollbars Styling Level 1 §2</a>):</p>
+<blockquote>
+<p dir="auto">On any element or pseudo-element where the computed value of <code class="notranslate">scrollbar-color</code><br>
+is anything other than the initial <code class="notranslate">auto</code> value, user agents must ignore any<br>
+alternative non-standard means for authors to influence the rendering of<br>
+scrollbars, such as the <code class="notranslate">::webkit-scrollbar</code> family of pseudo-elements.</p>
+</blockquote>
+<p dir="auto">with <code class="notranslate">Inherited: yes</code> in its property definition table.</p>
+<h3 dir="auto">Changes</h3>
+<p dir="auto"><strong><code class="notranslate">scrollbar-color</code></strong> gains a note, since the page had nothing: the pseudo-elements<br>
+are ignored when the computed value is not <code class="notranslate">auto</code>, this reaches elements that<br>
+inherit the value, <code class="notranslate">scrollbar-color: auto</code> restores the pseudo-element styling, and<br>
+a link to the existing fallback section.</p>
+<p dir="auto"><strong><code class="notranslate">::-webkit-scrollbar</code></strong> keeps its note with two adjustments. "have any value other<br>
+than <code class="notranslate">auto</code> set" becomes "their <em>computed</em> value is anything other than <code class="notranslate">auto</code>",<br>
+because "set" reads as "declared on this element" and the inherited case is the one<br>
+that surprises people. The note also now says which of the two properties inherits:<br>
+<code class="notranslate">scrollbar-color</code> is <code class="notranslate">Inherited: yes</code> and <code class="notranslate">scrollbar-width</code> is <code class="notranslate">Inherited: no</code>, so<br>
+grouping them under one sentence about inheritance would be wrong.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Found while debugging a site where <code class="notranslate">html { scrollbar-color: ... }</code> silently disabled<br>
+every custom scrollbar underneath it. Measured in Chromium 148, changing only that<br>
+one property: a scrolling container went from a 0px scrollbar to 16px, and a demo<br>
+box from 0px to 17px. It went unnoticed for two days because the symptom is an<br>
+absence, and the page whose purpose was demonstrating the custom scrollbar was<br>
+itself affected.</p>
+<h3 dir="auto">Related</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2134603283" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/32277" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/32277/hovercard" href="https://github.com/mdn/content/issues/32277">#32277</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2136361472" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/32296" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/32296/hovercard" href="https://github.com/mdn/content/pull/32296">#32296</a> added the note on the <code class="notranslate">::-webkit-scrollbar</code> side.</li>
+</ul>]]></content>
+        <author>
+            <name>oddharsh</name>
+            <email>oddharsh@noreply.github.com</email>
+            <uri>https://github.com/oddharsh</uri>
+        </author>
+        <published>2026-08-19T15:07:11.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add SVG*List interface changes to Firefox 155 release notes]]></title>
+        <id>https://github.com/mdn/content/pull/45245</id>
+        <link href="https://github.com/mdn/content/pull/45245"/>
+        <updated>2026-08-19T15:05:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Adds <code class="notranslate">SVG*List</code> interface changes</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170082837" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45189" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45189/hovercard" href="https://github.com/mdn/content/issues/45189">#45189</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-08-19T15:02:37.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add getBBox() and its options to Firefox 155 release notes]]></title>
+        <id>https://github.com/mdn/content/pull/45244</id>
+        <link href="https://github.com/mdn/content/pull/45244"/>
+        <updated>2026-08-19T15:05:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Add <code class="notranslate">getBBox()</code> and its options</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170085235" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45193" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45193/hovercard" href="https://github.com/mdn/content/issues/45193">#45193</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-08-19T14:52:51.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add SVGAElement interface to Firefox 155 release notes]]></title>
+        <id>https://github.com/mdn/content/pull/45243</id>
+        <link href="https://github.com/mdn/content/pull/45243"/>
+        <updated>2026-08-19T14:38:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Adds <code class="notranslate">SVGAElement</code> and all its properties to release notes.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170081751" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45187" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45187/hovercard" href="https://github.com/mdn/content/issues/45187">#45187</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-08-19T14:37:25.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Link to SVG <a> element from SVGAElement pages]]></title>
+        <id>https://github.com/mdn/content/pull/45242</id>
+        <link href="https://github.com/mdn/content/pull/45242"/>
+        <updated>2026-08-19T14:30:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<div class="highlight highlight-source-diff notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="- - SVG [`&lt;a&gt;`](/en-US/docs/Web/HTML/Reference/Elements/a) element
++ - SVG {{SVGElement(&quot;a&quot;)}} element"><pre class="notranslate"><span class="pl-md"><span class="pl-md">-</span> - SVG [`&lt;a&gt;`](/en-US/docs/Web/HTML/Reference/Elements/a) element</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span> - SVG {{SVGElement("a")}} element</span></pre></div>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Part of the fill the gaps project</p>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5019644895" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/852" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/852/hovercard" href="https://github.com/mdn/mdn/issues/852">mdn/mdn#852</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-08-19T14:29:00.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docs: fix dead learn content paths in REVIEWING]]></title>
         <id>https://github.com/mdn/content/pull/45240</id>
@@ -343,115 +483,5 @@ From <a class="issue-link js-issue-link" data-error-text="Failed to load title" 
             <uri>https://github.com/BHUVANSH855</uri>
         </author>
         <published>2026-08-18T09:41:36.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[fix: (Element.getAttributeNode) return value can be null]]></title>
-        <id>https://github.com/mdn/content/pull/45217</id>
-        <link href="https://github.com/mdn/content/pull/45217"/>
-        <updated>2026-08-18T09:21:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/90179203?u=172e506483f370706d8b15cae57439fff5a1f5f2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The return value of <code class="notranslate">Element.getAttributeNode</code> can be null, if the given attribute name does not exist.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Provide direct and accurate information.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">None</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">None</p>]]></content>
-        <author>
-            <name>alberic89</name>
-            <email>alberic89@noreply.github.com</email>
-            <uri>https://github.com/alberic89</uri>
-        </author>
-        <published>2026-08-18T09:04:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF155 ExprFeat Audio Session API updates]]></title>
-        <id>https://github.com/mdn/content/pull/45212</id>
-        <link href="https://github.com/mdn/content/pull/45212"/>
-        <updated>2026-08-18T06:45:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF155 Adds support for the Audio Session API](<a href="https://developer.mozilla.org/en-US/docs/Web/API/Audio_Session_API" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/Audio_Session_API</a>) in Nightly in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2055710" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2055710</a></p>
-<p dir="auto">This updates the experimental features and relnote to note the changes.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170080092" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45184" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45184/hovercard" href="https://github.com/mdn/content/issues/45184">#45184</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-08-18T06:43:27.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove unnecessary markdown escaping in Element/ariaBrailleLabel example]]></title>
-        <id>https://github.com/mdn/content/pull/45210</id>
-        <link href="https://github.com/mdn/content/pull/45210"/>
-        <updated>2026-08-18T05:32:33.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/53334669?v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Remove unnecessary markdown escaping in Element/ariaBrailleLabel example.</p>
-<p dir="auto"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleLabel#getting_and_setting_ariabraillelabel" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleLabel#getting_and_setting_ariabraillelabel</a></p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>zhoushengdao</name>
-            <email>zhoushengdao@noreply.github.com</email>
-            <uri>https://github.com/zhoushengdao</uri>
-        </author>
-        <published>2026-08-18T04:58:47.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add state partitioning notes to Web Storage API documentation]]></title>
-        <id>https://github.com/mdn/content/pull/45209</id>
-        <link href="https://github.com/mdn/content/pull/45209"/>
-        <updated>2026-08-18T03:13:58.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/258725120?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Description</h2>
-<p dir="auto">This updates the Web Storage API documentation to mention <a href="https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/State_Partitioning" rel="nofollow">state partitioning</a>, which modern browsers use to partition storage by top-level site when accessed from third-party contexts.</p>
-<h3 dir="auto">Files changed</h3>
-<ol dir="auto">
-<li>
-<p dir="auto"><strong>localStorage</strong> (): Added a paragraph in the Description section explaining that localStorage is subject to state partitioning when accessed from third-party contexts.</p>
-</li>
-<li>
-<p dir="auto"><strong>sessionStorage</strong> (): Corrected the opening paragraph which previously stated that localStorage is partitioned by origin only. Added a note about state partitioning affecting both localStorage and sessionStorage.</p>
-</li>
-<li>
-<p dir="auto"><strong>Web Storage API overview</strong> (): Corrected the bullet point that claimed localStorage is partitioned by origin only. Added information about state partitioning.</p>
-</li>
-</ol>
-<p dir="auto">These changes address the issue that the documentation incorrectly states localStorage is partitioned by origin only, which is no longer accurate due to state partitioning mechanisms in modern browsers.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43255.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3994738752" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43255" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43255/hovercard" href="https://github.com/mdn/content/issues/43255">#43255</a></p>]]></content>
-        <author>
-            <name>morning-verlu</name>
-            <email>morning-verlu@noreply.github.com</email>
-            <uri>https://github.com/morning-verlu</uri>
-        </author>
-        <published>2026-08-18T03:13:31.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add accessibility note for screen reader support to ElementInternals.labels]]></title>
-        <id>https://github.com/mdn/content/pull/45208</id>
-        <link href="https://github.com/mdn/content/pull/45208"/>
-        <updated>2026-08-18T03:03:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/258725120?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Description</h2>
-<p dir="auto">This adds an Accessibility section to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/labels" rel="nofollow">ElementInternals.labels</a> page, documenting that screen reader support for labels associated via  varies by browser.</p>
-<p dir="auto">Key points covered:</p>
-<ul dir="auto">
-<li>In most browsers, the label is announced when the custom element receives focus</li>
-<li>Safari does not reliably narrate labels associated via  for form-associated custom elements (referencing <a href="https://bugs.webkit.org/show_bug.cgi?id=259124" rel="nofollow">WebKit bug 259124</a>)</li>
-<li>Developers should consider supplementing with ARIA attributes (, ) for robust cross-browser support</li>
-</ul>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44395.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4621852846" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44395" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44395/hovercard" href="https://github.com/mdn/content/issues/44395">#44395</a></p>]]></content>
-        <author>
-            <name>morning-verlu</name>
-            <email>morning-verlu@noreply.github.com</email>
-            <uri>https://github.com/morning-verlu</uri>
-        </author>
-        <published>2026-08-18T03:02:51.000Z</published>
     </entry>
 </feed>
