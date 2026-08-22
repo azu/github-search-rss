@@ -2,11 +2,101 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-08-22T03:31:52.586Z</updated>
+    <updated>2026-08-22T04:20:42.921Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[WG Revision: Web Speech API: SpeechRecognitionResult Timestamps]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1267</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1267"/>
+        <updated>2026-08-22T03:37:09.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/11778990?u=831ce543a01230432e3b8255eb95c2bd212882de&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard" href="https://github.com/WebAudio/web-speech-api/pull/192">WebAudio/web-speech-api#192</a></p>
+<h3 dir="auto">Explainer</h3>
+<p dir="auto"><a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md</a></p>
+<h3 dir="auto">Links</h3>
+<ul dir="auto">
+<li>The WG's request for this TAG review: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4878339704" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/191" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-speech-api/issues/191/hovercard" href="https://github.com/WebAudio/web-speech-api/issues/191">WebAudio/web-speech-api#191</a></li>
+<li>TAG review of the previous version of this specification, if any:
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3061858348" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1093" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1093/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1093">#1093</a> (MediaStreamTrack input)</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3385263730" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1146" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1146/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1146">#1146</a> (On-device speech recognition options)</li>
+</ul>
+</li>
+<li>A description of what has changed since our previous review: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard" href="https://github.com/WebAudio/web-speech-api/pull/192">WebAudio/web-speech-api#192</a></li>
+</ul>
+<p dir="auto">Feature 1:</p>
+<ul dir="auto">
+<li>Previous early design review, if any: N/A</li>
+<li>An introduction to the feature, aimed at unfamiliar audiences: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md</a></li>
+<li>A description of the problems that end-users were facing before this proposal: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#problem">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#problem</a></li>
+<li>Alternatives considered: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#alternatives-considered">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#alternatives-considered</a></li>
+<li>Examples of how to use the proposal to solve the end-users' problems: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#proposed-behavior--example-usage">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#proposed-behavior--example-usage</a></li>
+<li>What do the end-users experience with this proposal: End users experience synchronized, real-time captions and translated subtitles during live video conferencing and media playback. Web applications can detect when on-device ASR models lag behind real-time on resource-constrained devices and automatically transition to cloud backends without user disruption.</li>
+<li>User research you did to validate the problem and/or design, if any: Live conferencing latency studies and interactive validation demo: <a href="https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html" rel="nofollow">https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html</a></li>
+<li>Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/speech-api">https://github.com/web-platform-tests/wpt/tree/master/speech-api</a> (specifically <code class="notranslate">idlharness.https.window.js</code> and <code class="notranslate">SpeechRecognition-onresult-manual.https.html</code>)</li>
+</ul>
+<h3 dir="auto">The specification</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
+</ul>
+<h3 dir="auto">Where and by whom is the work is being done?</h3>
+<ul dir="auto">
+<li>GitHub repo: <a href="https://github.com/WebAudio/web-speech-api">https://github.com/WebAudio/web-speech-api</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Alan Ding (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alan33d/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alan33d">@alan33d</a>), Google, Spec Editor / Implementer</li>
+<li>Evan Liu (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/evanbliu/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/evanbliu">@evanbliu</a>), Google, Spec Editor</li>
+<li>Paul Adenot (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/padenot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/padenot">@padenot</a>), Mozilla, WebAudio WG Member / Spec Editor</li>
+<li>Hongchan Choi (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/hoch/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/hoch">@hoch</a>), Google, WebAudio WG Member / Spec Editor</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Google / Chromium</li>
+<li>This work is being funded by: Google</li>
+<li>Primary standards group developing this feature: Audio Working Group (WebAudio WG) / Audio Community Group (AudioCG)</li>
+<li>Incubation and standards groups that have discussed the design:
+<ul dir="auto">
+<li>Audio Working Group: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4878339704" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/191" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-speech-api/issues/191/hovercard" href="https://github.com/WebAudio/web-speech-api/issues/191">WebAudio/web-speech-api#191</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard" href="https://github.com/WebAudio/web-speech-api/pull/192">WebAudio/web-speech-api#192</a></li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">Feedback so far</h3>
+<ul dir="auto">
+<li>Active horizontal reviews: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#security-and-privacy-considerations">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#security-and-privacy-considerations</a></li>
+<li>Multi-stakeholder feedback:
+<ul dir="auto">
+<li>Chromium comments: Positive / In active development (<a href="https://chromestatus.com/feature/5811907077472256" rel="nofollow">https://chromestatus.com/feature/5811907077472256</a>)</li>
+<li>Mozilla comments: Active discussion in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4878339704" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/191" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-speech-api/issues/191/hovercard" href="https://github.com/WebAudio/web-speech-api/issues/191">WebAudio/web-speech-api#191</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard?comment_id=3774155900&amp;comment_type=review_comment" href="https://github.com/WebAudio/web-speech-api/pull/192#discussion_r3774155900">WebAudio/web-speech-api#192 (comment)</a> by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/padenot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/padenot">@padenot</a> (provided guidance on using <code class="notranslate">double</code> in seconds and non-nullable attributes to match Web Audio conventions).</li>
+<li>WebKit comments: Standards position to be filed at <a href="https://github.com/WebKit/standards-positions/">https://github.com/WebKit/standards-positions/</a></li>
+</ul>
+</li>
+<li>Major unresolved issues with or opposition to this specification: None. Consensus reached on using non-nullable <code class="notranslate">double</code> representing seconds relative to audio stream start.</li>
+<li>Status/issue trackers for implementations:
+<ul dir="auto">
+<li>Chrome Status: <a href="https://chromestatus.com/feature/5811907077472256" rel="nofollow">https://chromestatus.com/feature/5811907077472256</a></li>
+<li>Chromium Issue Tracker: <a href="https://issues.chromium.org/issues/528037568" rel="nofollow">https://issues.chromium.org/issues/528037568</a></li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">You should also know that...</h3>
+<p dir="auto"><strong>W3C Audio WG/CG Meeting Discussion:</strong> This feature was presented and discussed during the <strong>W3C Audio WG/CG Teleconference on August 13, 2026</strong> (see <a href="https://docs.google.com/document/d/1pH4qzMoMTUDYtxW2LDIWKlHfiDeWwctM6s_I78WJzdE/edit?tab=t.ssvip9178d1u" rel="nofollow">Meeting Minutes</a>). The group aligned on developer needs for audio timeline association and on-device ASR latency tracking (e.g. enabling optional failover to a cloud ASR provider, to prevent stale or delayed captions in live video conferencing).</p>
+<ul dir="auto">
+<li>Mozilla's feedback in PRs were also discussed and addressed during the meeting.</li>
+<li>An interactive demonstration showcasing real-time latency calculation, subtitle synchronization, and the inadequacy of existing coarse DOM event timestamps was also presented at the WG meeting. The demo is available at: <a href="https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html" rel="nofollow">https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html</a></li>
+</ul>
+
+<hr>
+<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1267" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1267</a></p>]]></content>
+        <author>
+            <name>alan33d</name>
+            <email>alan33d@noreply.github.com</email>
+            <uri>https://github.com/alan33d</uri>
+        </author>
+        <published>2026-08-22T03:37:06.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Other Spec Review: Scroll snap for single-axis scroll container]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1266</id>
@@ -1431,80 +1521,5 @@ the security tradeoffs are worth it.</p>
             <uri>https://github.com/llannasatoll</uri>
         </author>
         <published>2026-06-22T00:44:38.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Other Spec Review: CRA web browser standard]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1239</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1239"/>
-        <updated>2026-07-30T23:21:29.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189835?u=093b8b80d9c4101c8e3ad03d361d1fdc50216e30&v=4" width="64" height="64" alt=""/><br/><p dir="auto">We have a new full draft. Please review. It would be best if comments were delivered within 2-4 weeks via a labs issue, as Simone delivered previously. Apologies for this request being not well formatted.</p>
-<h3 dir="auto">Specification</h3>
-<p dir="auto"><a href="https://labs.etsi.org/rep/stan4cra/en-304-617/-/blob/main_publish/EN-304-617.md?ref_type=heads" rel="nofollow">https://labs.etsi.org/rep/stan4cra/en-304-617/-/blob/main_publish/EN-304-617.md?ref_type=heads</a></p>
-<h3 dir="auto">Explainer</h3>
-<p dir="auto">https://</p>
-<h3 dir="auto">Links</h3>
-<ul dir="auto">
-<li>Previous early design review, if any: <a href="https://github.com/w3ctag/design-reviews/issues/####">https://github.com/w3ctag/design-reviews/issues/####</a></li>
-<li>An introduction to the feature, aimed at unfamiliar audiences: https://  </li>
-<li>A description of the problems that end-users were facing before this proposal: https://  </li>
-<li>Alternatives considered: https://  </li>
-<li>Examples of how to use the proposal to solve the end-users' problems: https://  </li>
-<li>What do the end-users experience with this proposal: https://  </li>
-<li>User research you did to validate the problem and/or design, if any: https://</li>
-<li>Web Platform Tests:  </li>
-</ul>
-<h3 dir="auto">The specification</h3>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
-</ul>
-<h3 dir="auto">Where and by whom is the work is being done?</h3>
-<ul dir="auto">
-<li>GitHub repo: <a href="https://labs.etsi.org/rep/stan4cra/en-304-617/-/blob/main_publish/EN-304-617.md?ref_type=heads" rel="nofollow">https://labs.etsi.org/rep/stan4cra/en-304-617/-/blob/main_publish/EN-304-617.md?ref_type=heads</a></li>
-<li>Primary contacts: Daniel Thompson (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Denjell/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Denjell">@Denjell</a>)
-<ul dir="auto">
-<li>$name (@-mention), $organization/s, $role in developing specification</li>
-<li>
-
-</li>
-</ul>
-</li>
-<li>Organization/project driving the specification:</li>
-<li>This work is being funded by:</li>
-<li>Primary standards group developing this feature:</li>
-<li>Group intended to standardize this work: </li>
-<li>Incubation and standards groups that have discussed the design:
-<ul dir="auto">
-<li>{{ABC CG}} </li>
-<li>{{DEF WG}}</li>
-</ul>
-</li>
-</ul>
-<p dir="auto">Please make comments in</p>
-<p dir="auto"><a href="https://labs.etsi.org/rep/stan4cra/en-304-617/-/work_items" rel="nofollow">https://labs.etsi.org/rep/stan4cra/en-304-617/-/work_items</a></p>
-<h3 dir="auto">Feedback so far</h3>
-<ul dir="auto">
-<li>Multi-stakeholder feedback:
-<ul dir="auto">
-<li>Chromium comments:</li>
-<li>Mozilla comments: <a href="https://github.com/mozilla/standards-positions/issues/NNN">https://github.com/mozilla/standards-positions/issues/NNN</a> </li>
-<li>WebKit comments: <a href="https://github.com/WebKit/standards-positions/issues/NNN">https://github.com/WebKit/standards-positions/issues/NNN</a> </li>
-<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
-</ul>
-</li>
-<li>Major unresolved issues with or opposition to this specification:</li>
-<li>Status/issue trackers for implementations: </li>
-</ul>
-<h3 dir="auto">You should also know that...</h3>
-<p dir="auto"><em>No response</em></p>
-
-<hr>
-<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1239" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1239</a></p>]]></content>
-        <author>
-            <name>littledan</name>
-            <email>littledan@noreply.github.com</email>
-            <uri>https://github.com/littledan</uri>
-        </author>
-        <published>2026-06-16T12:23:05.000Z</published>
     </entry>
 </feed>
