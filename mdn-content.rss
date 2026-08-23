@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-23T14:12:15.290Z</updated>
+    <updated>2026-08-23T15:10:48.329Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[fix(javascript): call findLast in the TypedArray.findLast example]]></title>
+        <id>https://github.com/mdn/content/pull/45291</id>
+        <link href="https://github.com/mdn/content/pull/45291"/>
+        <updated>2026-08-23T14:19:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The interactive example on <code class="notranslate">TypedArray.prototype.findLast</code> calls <code class="notranslate">find()</code> rather than <code class="notranslate">findLast()</code>:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const int8 = new Int8Array([10, 0, -10, 20, -30, 40, 50]);
+console.log(int8.find(isNegative));
+// Expected output: -30"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">int8</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Int8Array</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> <span class="pl-c1">-</span><span class="pl-c1">10</span><span class="pl-kos">,</span> <span class="pl-c1">20</span><span class="pl-kos">,</span> <span class="pl-c1">-</span><span class="pl-c1">30</span><span class="pl-kos">,</span> <span class="pl-c1">40</span><span class="pl-kos">,</span> <span class="pl-c1">50</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">int8</span><span class="pl-kos">.</span><span class="pl-en">find</span><span class="pl-kos">(</span><span class="pl-s1">isNegative</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// Expected output: -30</span></pre></div>
+<p dir="auto"><code class="notranslate">find()</code> returns the <em>first</em> negative element, <code class="notranslate">-10</code>. The documented output <code class="notranslate">-30</code> is the <em>last</em> one, which is what <code class="notranslate">findLast()</code> returns. So the example both contradicts its own stated output and demonstrates the wrong method on the page that documents <code class="notranslate">findLast</code>.</p>
+<p dir="auto">Verified in Node:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="find     : -10
+findLast : -30"><pre class="notranslate"><code class="notranslate">find     : -10
+findLast : -30
+</code></pre></div>
+<p dir="auto">Changing the call to <code class="notranslate">findLast()</code> makes the example produce the documented <code class="notranslate">-30</code>.</p>
+<p dir="auto">I checked the sibling pages and they are all correct: <code class="notranslate">typedarray/findLastIndex</code>, <code class="notranslate">typedarray/findIndex</code>, <code class="notranslate">typedarray/find</code>, <code class="notranslate">array/findLast</code> and <code class="notranslate">array/findLastIndex</code> each call their own method. This is the only page with the mismatch.</p>
+<p dir="auto">Found by executing every <code class="notranslate">js interactive-example</code> block under <code class="notranslate">files/en-us/web/javascript</code> that carries an <code class="notranslate">// Expected output:</code> comment and comparing the actual scalar output against the documented one: 467 blocks ran, and this was the single value mismatch.</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-08-23T14:17:46.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix argument order in dragging elements example]]></title>
         <id>https://github.com/mdn/content/pull/45290</id>
@@ -442,25 +469,5 @@ itself affected.</p>
             <uri>https://github.com/oddharsh</uri>
         </author>
         <published>2026-08-19T15:07:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add getBBox() and its options to Firefox 155 release notes]]></title>
-        <id>https://github.com/mdn/content/pull/45244</id>
-        <link href="https://github.com/mdn/content/pull/45244"/>
-        <updated>2026-08-20T10:09:01.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Add <code class="notranslate">getBBox()</code> and its options</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170085235" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45193" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45193/hovercard" href="https://github.com/mdn/content/issues/45193">#45193</a></li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-08-19T14:52:51.000Z</published>
     </entry>
 </feed>

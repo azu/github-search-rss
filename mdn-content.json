@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The interactive example on <code class=\"notranslate\">TypedArray.prototype.findLast</code> calls <code class=\"notranslate\">find()</code> rather than <code class=\"notranslate\">findLast()</code>:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const int8 = new Int8Array([10, 0, -10, 20, -30, 40, 50]);\nconsole.log(int8.find(isNegative));\n// Expected output: -30\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">int8</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">Int8Array</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-c1\">10</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">0</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">-</span><span class=\"pl-c1\">10</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">20</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">-</span><span class=\"pl-c1\">30</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">40</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">50</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">int8</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">find</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">isNegative</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span>\n<span class=\"pl-c\">// Expected output: -30</span></pre></div>\n<p dir=\"auto\"><code class=\"notranslate\">find()</code> returns the <em>first</em> negative element, <code class=\"notranslate\">-10</code>. The documented output <code class=\"notranslate\">-30</code> is the <em>last</em> one, which is what <code class=\"notranslate\">findLast()</code> returns. So the example both contradicts its own stated output and demonstrates the wrong method on the page that documents <code class=\"notranslate\">findLast</code>.</p>\n<p dir=\"auto\">Verified in Node:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"find     : -10\nfindLast : -30\"><pre class=\"notranslate\"><code class=\"notranslate\">find     : -10\nfindLast : -30\n</code></pre></div>\n<p dir=\"auto\">Changing the call to <code class=\"notranslate\">findLast()</code> makes the example produce the documented <code class=\"notranslate\">-30</code>.</p>\n<p dir=\"auto\">I checked the sibling pages and they are all correct: <code class=\"notranslate\">typedarray/findLastIndex</code>, <code class=\"notranslate\">typedarray/findIndex</code>, <code class=\"notranslate\">typedarray/find</code>, <code class=\"notranslate\">array/findLast</code> and <code class=\"notranslate\">array/findLastIndex</code> each call their own method. This is the only page with the mismatch.</p>\n<p dir=\"auto\">Found by executing every <code class=\"notranslate\">js interactive-example</code> block under <code class=\"notranslate\">files/en-us/web/javascript</code> that carries an <code class=\"notranslate\">// Expected output:</code> comment and comparing the actual scalar output against the documented one: 467 blocks ran, and this was the single value mismatch.</p>",
+            "url": "https://github.com/mdn/content/pull/45291",
+            "title": "fix(javascript): call findLast in the TypedArray.findLast example",
+            "date_modified": "2026-08-23T14:19:30.000Z",
+            "date_published": "2026-08-23T14:17:46.000Z",
+            "author": {
+                "name": "rajanpanth",
+                "url": "https://github.com/rajanpanth"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/282375157?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixed the argument order in the DataTransferItemList.add() calls in the \"Dragging elements\" example.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The example passes the MIME type and data in the wrong order. add() expects data, type, so the current example does not work as intended.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">DataTransferItemList.add() API reference: <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/add\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/add</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/45290",
             "title": "Fix argument order in dragging elements example",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "oddharsh",
                 "url": "https://github.com/oddharsh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Add <code class=\"notranslate\">getBBox()</code> and its options</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5170085235\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45193\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45193/hovercard\" href=\"https://github.com/mdn/content/issues/45193\">#45193</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/45244",
-            "title": "Add getBBox() and its options to Firefox 155 release notes",
-            "date_modified": "2026-08-20T10:09:01.000Z",
-            "date_published": "2026-08-19T14:52:51.000Z",
-            "author": {
-                "name": "pepelsbey",
-                "url": "https://github.com/pepelsbey"
             }
         }
     ]
