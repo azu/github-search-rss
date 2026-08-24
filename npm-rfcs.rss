@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/npm-rfcs.rss</id>
     <title>npm/rfcs Issues</title>
-    <updated>2026-08-24T14:29:59.886Z</updated>
+    <updated>2026-08-24T15:27:15.868Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/npm-rfcs.rss"/>
     <subtitle>npm/rfcs Issues on GitHub</subtitle>
@@ -580,7 +580,7 @@ npm approve-scripts --allow-scripts-pending --review-report-json npm-script-revi
         <updated>2026-06-16T10:06:06.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3742559?v=4" width="64" height="64" alt=""/><br/>
 <h2 dir="auto">Motivation ("The Why")</h2>
-<p dir="auto">Recent supply chain attacks have spurred many important improvements to the npm CLI, including configuration options that help prevent being the victim of one. However, the npm configuration is not always "user-controlled", which can lead to unexpected (and potentially compromising) outcomes. In particular, a user may have a secure user-level configuration (<code class="notranslate">~/.npmrc</code>) but run a command in a compromised/malicious project and end up in a bad situation. Alternatively, a user may have a secure user-level configuration but have some third-party script unexpectedly run <code class="notranslate">npm install --ignore-scripts=false &lt;malicious-package&gt;</code><sup><a href="#user-content-fn-1-ccb34cce060d349a4ab278c40551c78c" id="user-content-fnref-1-ccb34cce060d349a4ab278c40551c78c" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
+<p dir="auto">Recent supply chain attacks have spurred many important improvements to the npm CLI, including configuration options that help prevent being the victim of one. However, the npm configuration is not always "user-controlled", which can lead to unexpected (and potentially compromising) outcomes. In particular, a user may have a secure user-level configuration (<code class="notranslate">~/.npmrc</code>) but run a command in a compromised/malicious project and end up in a bad situation. Alternatively, a user may have a secure user-level configuration but have some third-party script unexpectedly run <code class="notranslate">npm install --ignore-scripts=false &lt;malicious-package&gt;</code><sup><a href="#user-content-fn-1-1cb439ee877403d75d7086273c3e9d5e" id="user-content-fnref-1-1cb439ee877403d75d7086273c3e9d5e" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>.</p>
 <p dir="auto">For this reason I would propose the npm CLI attempts to prevent such a security-conscious user from being the victim of a supply chain attack by alerting them when this situation arises, or at the very least leave a trace when it happens.</p>
 <h3 dir="auto">Example</h3>
 <p dir="auto">You have a user level configuration</p>
@@ -624,18 +624,18 @@ found Z vulnerabilities</pre></div>
 <p dir="auto">Where an example of a configuration mismatch is if one explicitly specifies <code class="notranslate">ignore-scripts=false</code> and another one explicitly specifies <code class="notranslate">ignore-scripts=true</code>.</p>
 <p dir="auto">I would personally advocate for using (1) when a TTY is detected and falling back to (2) otherwise, e.g. in CI.</p>
 <p dir="auto">The behavior itself may be configurable, but in that case should only be respected when provided at the user level (<code class="notranslate">~/.npmrc</code>) or CLI.</p>
-<p dir="auto">In some ideal world it should not be considered a problem when, say, the project-level configuration is more strict than the user-level configuration<sup><a href="#user-content-fn-2-ccb34cce060d349a4ab278c40551c78c" id="user-content-fnref-2-ccb34cce060d349a4ab278c40551c78c" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>. However, I imagine it can be difficult and contentious to determine when a configuration is "more strict".</p>
+<p dir="auto">In some ideal world it should not be considered a problem when, say, the project-level configuration is more strict than the user-level configuration<sup><a href="#user-content-fn-2-1cb439ee877403d75d7086273c3e9d5e" id="user-content-fnref-2-1cb439ee877403d75d7086273c3e9d5e" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>. However, I imagine it can be difficult and contentious to determine when a configuration is "more strict".</p>
 <h3 dir="auto">References</h3>
 <ul dir="auto">
 <li>Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4035107684" data-permission-text="Title is private" data-url="https://github.com/npm/rfcs/issues/856" data-hovercard-type="issue" data-hovercard-url="/npm/rfcs/issues/856/hovercard" href="https://github.com/npm/rfcs/issues/856">#856</a></li>
 </ul>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only" dir="auto">Footnotes</h2>
 <ol dir="auto">
-<li id="user-content-fn-1-ccb34cce060d349a4ab278c40551c78c">
-<p dir="auto">as described in <a href="https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/">https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/</a> <a href="#user-content-fnref-1-ccb34cce060d349a4ab278c40551c78c" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-1cb439ee877403d75d7086273c3e9d5e">
+<p dir="auto">as described in <a href="https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/">https://lists.archlinux.org/archives/list/aur-general@lists.archlinux.org/thread/L2JXQNYBGWOQQQXDEPEAICBHKFEFANUC/</a> <a href="#user-content-fnref-1-1cb439ee877403d75d7086273c3e9d5e" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
-<li id="user-content-fn-2-ccb34cce060d349a4ab278c40551c78c">
-<p dir="auto">For example, <code class="notranslate">ignore-scripts=false</code> in <code class="notranslate">~/.npmrc</code> and <code class="notranslate">ignore-scripts=true</code> in <code class="notranslate">project/.npmrc</code>. <a href="#user-content-fnref-2-ccb34cce060d349a4ab278c40551c78c" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-2-1cb439ee877403d75d7086273c3e9d5e">
+<p dir="auto">For example, <code class="notranslate">ignore-scripts=false</code> in <code class="notranslate">~/.npmrc</code> and <code class="notranslate">ignore-scripts=true</code> in <code class="notranslate">project/.npmrc</code>. <a href="#user-content-fnref-2-1cb439ee877403d75d7086273c3e9d5e" data-footnote-backref="" aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>]]></content>
