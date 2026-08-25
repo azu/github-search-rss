@@ -6,10 +6,21 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Firefox 155 adds support for the Wasm <a href=\"https://github.com/WebAssembly/compact-import-section/blob/main/proposals/compact-import-section/Overview.md\">compact import section proposal</a>; see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2062344\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2062344</a>.</p>\n<p dir=\"auto\">This PR adds documentation for <code class=\"notranslate\">import</code> in general and this specific proposal, and a Fx155 rel note for it.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45194.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5170085780\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45194\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45194/hovercard\" href=\"https://github.com/mdn/content/issues/45194\">#45194</a></p>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/45310",
+            "title": "Technical review: Document Wasm compact import sections proposal",
+            "date_modified": "2026-08-25T12:48:36.000Z",
+            "date_published": "2026-08-25T12:46:24.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1268347?u=b75828d9b51fa4ccd0431378c8a8ec00ed29c042&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">TheOrca screen reader project's website has been retired. I updated the link to the current one, based on the link on the notice on the original page.</p>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">I made this change to help people find the project.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/45308",
             "title": "Update Orca link to current URL (old one is retired)",
-            "date_modified": "2026-08-25T11:54:24.000Z",
+            "date_modified": "2026-08-25T13:13:50.000Z",
             "date_published": "2026-08-25T10:57:51.000Z",
             "author": {
                 "name": "Ulimn",
@@ -141,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/93594?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I've collated release notes based on Bugzilla &amp; WPT pass changes. When it comes to WebDriver &amp; WebRTC, I'm not sure which of these changes are worth going in the release notes, so that needs review.</p>\n<p dir=\"auto\">I'm also not sure how 'complete' we are with experiments. For example, I don't think custom <code class=\"notranslate\">&lt;select&gt;</code> is complete enough for testing, so maybe it shouldn't be included?</p>",
             "url": "https://github.com/mdn/content/pull/45270",
             "title": "Draft for Firefox 155 release notes",
-            "date_modified": "2026-08-25T08:23:21.000Z",
+            "date_modified": "2026-08-25T12:30:49.000Z",
             "date_published": "2026-08-21T08:50:40.000Z",
             "author": {
                 "name": "jakearchibald",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "hjanuschka",
                 "url": "https://github.com/hjanuschka"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/19518661?u=60818a27a5d585d5f0b738995f05ae2f6dfacbec&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Two related additions about <code class=\"notranslate\">scrollbar-color</code> taking precedence over the<br>\n<code class=\"notranslate\">::-webkit-scrollbar-*</code> pseudo-elements.</p>\n<p dir=\"auto\">The <code class=\"notranslate\">::-webkit-scrollbar</code> page already carries a note about this. The<br>\n<code class=\"notranslate\">scrollbar-color</code> page never mentions the pseudo-elements at all, so the warning<br>\nis only on the page you would read if you already suspected the interaction. In<br>\npractice you meet this from the other direction: you set <code class=\"notranslate\">scrollbar-color</code>, your<br>\n<code class=\"notranslate\">::-webkit-scrollbar-*</code> rules stop applying, and you go and read<br>\n<code class=\"notranslate\">scrollbar-color</code>.</p>\n<p dir=\"auto\">Neither page mentions that <code class=\"notranslate\">scrollbar-color</code> is <strong>inherited</strong>, which is what makes<br>\nthis hard to diagnose. An element loses its <code class=\"notranslate\">::-webkit-scrollbar-*</code> styling when<br>\nan <strong>ancestor</strong> sets <code class=\"notranslate\">scrollbar-color</code>, though the element itself never sets it,<br>\nand nothing in the CSS points at the cause. On macOS the fallback is an overlay<br>\nscrollbar of zero width, so the scrollbar is not merely unstyled, it is invisible<br>\nand occupies no space. That reads as \"my CSS did not load\" rather than as a<br>\nconflict between two ways of styling scrollbars.</p>\n<p dir=\"auto\">The spec is explicit that the trigger is the computed value<br>\n(<a href=\"https://drafts.csswg.org/css-scrollbars/#scrollbar-color\" rel=\"nofollow\">CSS Scrollbars Styling Level 1 §2</a>):</p>\n<blockquote>\n<p dir=\"auto\">On any element or pseudo-element where the computed value of <code class=\"notranslate\">scrollbar-color</code><br>\nis anything other than the initial <code class=\"notranslate\">auto</code> value, user agents must ignore any<br>\nalternative non-standard means for authors to influence the rendering of<br>\nscrollbars, such as the <code class=\"notranslate\">::webkit-scrollbar</code> family of pseudo-elements.</p>\n</blockquote>\n<p dir=\"auto\">with <code class=\"notranslate\">Inherited: yes</code> in its property definition table.</p>\n<h3 dir=\"auto\">Changes</h3>\n<p dir=\"auto\"><strong><code class=\"notranslate\">scrollbar-color</code></strong> gains a note, since the page had nothing: the pseudo-elements<br>\nare ignored when the computed value is not <code class=\"notranslate\">auto</code>, this reaches elements that<br>\ninherit the value, <code class=\"notranslate\">scrollbar-color: auto</code> restores the pseudo-element styling, and<br>\na link to the existing fallback section.</p>\n<p dir=\"auto\"><strong><code class=\"notranslate\">::-webkit-scrollbar</code></strong> keeps its note with two adjustments. \"have any value other<br>\nthan <code class=\"notranslate\">auto</code> set\" becomes \"their <em>computed</em> value is anything other than <code class=\"notranslate\">auto</code>\",<br>\nbecause \"set\" reads as \"declared on this element\" and the inherited case is the one<br>\nthat surprises people. The note also now says which of the two properties inherits:<br>\n<code class=\"notranslate\">scrollbar-color</code> is <code class=\"notranslate\">Inherited: yes</code> and <code class=\"notranslate\">scrollbar-width</code> is <code class=\"notranslate\">Inherited: no</code>, so<br>\ngrouping them under one sentence about inheritance would be wrong.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Found while debugging a site where <code class=\"notranslate\">html { scrollbar-color: ... }</code> silently disabled<br>\nevery custom scrollbar underneath it. Measured in Chromium 148, changing only that<br>\none property: a scrolling container went from a 0px scrollbar to 16px, and a demo<br>\nbox from 0px to 17px. It went unnoticed for two days because the symptom is an<br>\nabsence, and the page whose purpose was demonstrating the custom scrollbar was<br>\nitself affected.</p>\n<h3 dir=\"auto\">Related</h3>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2134603283\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32277\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/32277/hovercard\" href=\"https://github.com/mdn/content/issues/32277\">#32277</a> and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2136361472\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/32296\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/32296/hovercard\" href=\"https://github.com/mdn/content/pull/32296\">#32296</a> added the note on the <code class=\"notranslate\">::-webkit-scrollbar</code> side.</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/45246",
-            "title": "docs(css): scrollbar-color overrides ::-webkit-scrollbar via its computed value, and it inherits",
-            "date_modified": "2026-08-24T14:11:32.000Z",
-            "date_published": "2026-08-19T15:07:11.000Z",
-            "author": {
-                "name": "oddharsh",
-                "url": "https://github.com/oddharsh"
             }
         }
     ]
