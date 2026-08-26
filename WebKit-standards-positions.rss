@@ -2,11 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2026-08-26T16:08:00.170Z</updated>
+    <updated>2026-08-26T18:47:45.932Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[JS Self-Profiling API (including the Markers extension)]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/717</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/717"/>
+        <updated>2026-08-26T18:06:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69160047?u=63fa5b8cf3b085d4e743b5fcf9080ebe70824e9b&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/marcoscaceres/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/marcoscaceres">@marcoscaceres</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">JS Self-Profiling API (including the Markers extension)</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a href="https://wicg.github.io/js-self-profiling/" rel="nofollow">https://wicg.github.io/js-self-profiling/</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a href="https://github.com/WICG/js-self-profiling">https://github.com/WICG/js-self-profiling</a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5012649087" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1251" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1251/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1251">w3ctag/design-reviews#1251</a></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="787203683" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/477" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/477/hovercard" href="https://github.com/mozilla/standards-positions/issues/477">mozilla/standards-positions#477</a></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">The JS Self-Profiling API lets a web app profile its own JavaScript execution using a sampling profiler. A document opts in via the Document-Policy: js-profiling header, then constructs a Profiler with a sampling interval and sample-buffer limit; calling stop() returns a ProfilerTrace (a deduplicated set of frames, stacks, and timestamped samples) that the app can upload for analysis of real-user performance. The base API is implemented in Blink and shipped in Chromium; it is not currently implemented in Gecko or WebKit. It has a Mozilla standards-position request (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="787203683" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/477" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/477/hovercard" href="https://github.com/mozilla/standards-positions/issues/477">mozilla/standards-positions#477</a>) and a TAG review (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2363879312" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/366" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/366/hovercard" href="https://github.com/WebKit/standards-positions/issues/366">#366</a>).</p>
+<p dir="auto">We are now extending the API with <strong>markers</strong>: an optional <code class="notranslate">marker</code> field on <code class="notranslate">ProfilerSample</code> indicating the user-agent activity running when each sample was taken. This is an incremental addition — no new entry point and no change to how profiling is started or gated. Exposure is gated on cross-origin isolation:</p>
+<ul dir="auto">
+<li>In a <strong>cross-origin isolated</strong> document (COOP+COEP), the full marker set is exposed: <code class="notranslate">script</code>, <code class="notranslate">gc</code>, <code class="notranslate">style</code>, <code class="notranslate">layout</code>, <code class="notranslate">paint</code>.</li>
+<li>In a <strong>non-isolated</strong> document, only <code class="notranslate">style</code> and <code class="notranslate">layout</code> are exposed; <code class="notranslate">script</code>, <code class="notranslate">gc</code>, and <code class="notranslate">paint</code> are omitted.</li>
+</ul>
+<p dir="auto">This keeps the markers that could reveal cross-process / cross-origin timing (notably <code class="notranslate">gc</code>, and script/paint activity) behind cross-origin isolation, while still exposing the rendering markers that a document can already infer about itself. It is currently being validated via a Chromium Origin Trial (Chrome M153–M161). Spec change: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4933395153" data-permission-text="Title is private" data-url="https://github.com/WICG/js-self-profiling/issues/89" data-hovercard-type="pull_request" data-hovercard-url="/WICG/js-self-profiling/pull/89/hovercard" href="https://github.com/WICG/js-self-profiling/pull/89">WICG/js-self-profiling#89</a>.</p>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/marcoscaceres/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/marcoscaceres">@marcoscaceres</a> suggested filing a WebKit position (<a href="https://github.com/w3ctag/design-reviews/issues/1251#issuecomment-5323129519" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1251/hovercard">TAG thread</a>). We'd welcome WebKit's position and any questions on both the base API and the markers extension. Happy to provide additional detail on the exposure/gating design.</p>]]></content>
+        <author>
+            <name>monica-ch</name>
+            <email>monica-ch@noreply.github.com</email>
+            <uri>https://github.com/monica-ch</uri>
+        </author>
+        <published>2026-08-26T16:26:48.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[css-scroll-snap-1] Use scroll-snap-type: pair to snap to a single element]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/716</id>
@@ -711,39 +752,5 @@ for its main cross-site-disclosure mitigation:<br>
             <uri>https://github.com/DavMila</uri>
         </author>
         <published>2026-07-21T15:16:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Tata Cara untuk hapus data akun Rupiah cepat]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/697</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/697"/>
-        <updated>2026-07-23T01:20:29.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/306061806?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto">Untuk menghapus akun Rupiah cepat, Anda perlu menghubungi 0819-5708-2841 atau 0815-6359-8763 layanan pelanggan resmi melalui WhatsApp, karena di aplikasi tidak menyediakan tombol Hapus akun langsung di dalam aplikasi untuk alasan keamanan data keuangan. Hubungi tim bantuan di nomor Saat menghubungi petugas, Anda biasanya akan diminta untuk menyiapkan data diri.</p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">Panduan untuk hapus data akun pinjam yuk, - Medono - KendalKab</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto">Cara Hapus data Akun (Pinjam yuk) Kamu bisa menghubungi pelanggan layanan di wa (08954-2944-5311) via chat lalu siapkan data yang diminta seperti ktp dan lainnya ikuti yang telah diintruksikan layanan pelanggan untuk menghapus data anda.</p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto">Panduan untuk hapus data akun pinjam yuk, - Medono - KendalKab</p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto">Cara Hapus data Akun (Pinjam yuk) Kamu bisa menghubungi pelanggan layanan di wa (08954-2944-5311) via chat lalu siapkan data yang diminta seperti ktp dan lainnya ikuti yang telah diintruksikan layanan pelanggan untuk menghapus data anda.</p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto">Cara Hapus data Akun (Pinjam yuk) Kamu bisa menghubungi pelanggan layanan di wa (08954-2944-5311) via chat lalu siapkan data yang diminta seperti ktp dan lainnya ikuti yang telah diintruksikan layanan pelanggan untuk menghapus data anda.</p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto">Panduan untuk hapus data akun pinjam yuk, - Medono - KendalKab</p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto">Cara Hapus data Akun (Pinjam yuk) Kamu bisa menghubungi pelanggan layanan di wa (08954-2944-5311) via chat lalu siapkan data yang diminta seperti ktp dan lainnya ikuti yang telah diintruksikan layanan pelanggan untuk menghapus data anda.</p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto">Panduan untuk hapus data akun pinjam yuk, - Medono - KendalKab</p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Cara Hapus data Akun (Pinjam yuk) Kamu bisa menghubungi pelanggan layanan di wa (08954-2944-5311) via chat lalu siapkan data yang diminta seperti ktp dan lainnya ikuti yang telah diintruksikan layanan pelanggan untuk menghapus data anda.</p>]]></content>
-        <author>
-            <name>rtas25276-oss</name>
-            <email>rtas25276-oss@noreply.github.com</email>
-            <uri>https://github.com/rtas25276-oss</uri>
-        </author>
-        <published>2026-07-21T04:38:48.000Z</published>
     </entry>
 </feed>
