@@ -2,16 +2,62 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-26T07:35:55.436Z</updated>
+    <updated>2026-08-26T08:28:46.965Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Improve the CSS Grid Lanes description]]></title>
+        <id>https://github.com/mdn/content/pull/45319</id>
+        <link href="https://github.com/mdn/content/pull/45319"/>
+        <updated>2026-08-26T08:19:37.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1152698?u=5ce323090a48b425ec70128365c96809699959f7&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Update the way that CSS Grid Lanes layout is described in the intro at <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Grid_lanes" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Grid_lanes</a></p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">I see 4 problems with the existing description. In particular, with this paragraph:</p>
+<blockquote>
+<p dir="auto">Grid lanes layout is a layout method where one axis uses a typical strict grid layout, most often columns, and the other uses a stacking algorithm. On the stacking axis, rather than sticking to a strict grid with gaps being left after shorter items, the items in the following row rise up to fill the gaps.</p>
+</blockquote>
+<ul dir="auto">
+<li>
+<p dir="auto">The word "Masonry" is not mentioned once.</p>
+<p dir="auto">While that term does not appear in syntax, it is still, by far, the most common way which developers refer to this layout technique. In fact, even the spec says "Grid lanes layout, sometimes also called “masonry layout”". I think it's wrong to omit it completely. Preserving this term is extremely helpful for findability, and for developers to quickly understand what the guide is about.</p>
+</li>
+<li>
+<p dir="auto">The word "row", in "the items in the following row", is very problematic.</p>
+<p dir="auto">In a column direction grid lanes layout, there are no rows. The user agent does not construct rows. Developers can't style rows. Referring to a bunch of items as being part of a "row" is incorrect and sends the wrong idea to developers learning to use this new layout.</p>
+<p dir="auto">For illustration, here are 2 grid lanes layouts. The one on the left has items that are sized similarly, with no big differences in height. Items 5 through 8 are therefore arranged in what almost looks like a row, with item 5 in column 1, item 6 in column 2, etc. However, the example on the right shows that this semblance of a "row" doesn't really exist. Items in this second layout are of very different heights, and items 5 through 8 do not get vertically aligned, and are also out of order. Item 5 in column3, item 6 in column 1, item 7 in column 2, item 8 in column 4.</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/641389123-e1fd1976-c87b-4d6c-9474-d9381bc7b403.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc3MzMyMjYsIm5iZiI6MTc4NzczMjkyNiwicGF0aCI6Ii8xMTUyNjk4LzY0MTM4OTEyMy1lMWZkMTk3Ni1jODdiLTRkNmMtOTQ3NC1kOTM4MWJjN2I0MDMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDgyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA4MjZUMDgyODQ2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzY3NTMyMTE0NDllMDUzNWVmMGFkYjM1MWM0YzAzNGYzY2JiZjQ2MDdiYmJhNzdiZDIwZTZiZDE3NjA5MTk0OSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.RwfGbFG80_TZf0u5DlmCkYJSJ2bc87eKlpoT8cjlRLM"><img width="1042" height="470" alt="image" src="https://private-user-images.githubusercontent.com/1152698/641389123-e1fd1976-c87b-4d6c-9474-d9381bc7b403.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc3MzMyMjYsIm5iZiI6MTc4NzczMjkyNiwicGF0aCI6Ii8xMTUyNjk4LzY0MTM4OTEyMy1lMWZkMTk3Ni1jODdiLTRkNmMtOTQ3NC1kOTM4MWJjN2I0MDMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDgyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA4MjZUMDgyODQ2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzY3NTMyMTE0NDllMDUzNWVmMGFkYjM1MWM0YzAzNGYzY2JiZjQ2MDdiYmJhNzdiZDIwZTZiZDE3NjA5MTk0OSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGcG5nIn0.RwfGbFG80_TZf0u5DlmCkYJSJ2bc87eKlpoT8cjlRLM" style="max-width: 100%; height: auto; max-height: 470px;; aspect-ratio: 1042 / 470; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+</li>
+<li>
+<p dir="auto">The phrase "rise up" in "the items in the following row rise up to fill the gaps" is also very problematic.</p>
+<p dir="auto">In a column direction grid lanes layout, items don't rise up. Saying that they do makes it sound like the user agent first creates a strict grid with both columns and rows, and then rises up items within their columns to avoid gaps. Here is an animation illustrating this incorrect rising up of items:</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/641395763-165a12d3-4986-4f46-af7a-7230bb573edf.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc3MzMyMjYsIm5iZiI6MTc4NzczMjkyNiwicGF0aCI6Ii8xMTUyNjk4LzY0MTM5NTc2My0xNjVhMTJkMy00OTg2LTRmNDYtYWY3YS03MjMwYmI1NzNlZGYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDgyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA4MjZUMDgyODQ2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MzljY2Y0M2I1OGViZTkyNTMxMjAwOWJiODZkZjFjMGZmMDYyMGUyODQzOTMyNGUzMzM3MDdkNDRmYzQ4MTc4NSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGZ2lmIn0.jSws6kY7tpRGhq7-wiP8h1jsHQeaWtjhkPq952HHZRI"><img width="856" height="483" alt="grid-grid-lanes" src="https://private-user-images.githubusercontent.com/1152698/641395763-165a12d3-4986-4f46-af7a-7230bb573edf.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc3MzMyMjYsIm5iZiI6MTc4NzczMjkyNiwicGF0aCI6Ii8xMTUyNjk4LzY0MTM5NTc2My0xNjVhMTJkMy00OTg2LTRmNDYtYWY3YS03MjMwYmI1NzNlZGYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDgyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA4MjZUMDgyODQ2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MzljY2Y0M2I1OGViZTkyNTMxMjAwOWJiODZkZjFjMGZmMDYyMGUyODQzOTMyNGUzMzM3MDdkNDRmYzQ4MTc4NSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGZ2lmIn0.jSws6kY7tpRGhq7-wiP8h1jsHQeaWtjhkPq952HHZRI" data-animated-image="" style="max-width: 100%; height: auto; max-height: 483px;; aspect-ratio: 856 / 483; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<p dir="auto">That's not how grid lanes work at all. Instead, the stacking algorithm looks at items one by one, and finds the shortest lane to put the next item in, possibly ending up a criss-cross pattern where items don't follow a logical reading order. Here is an animation showing the difference between the incorrect rise up and what grid lanes actually does. It shows that items don't end up in the same order because the final order depends on the length of each lane:</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/1152698/641395837-6b350393-9d52-46a8-82d9-68bb982673c6.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc3MzMyMjYsIm5iZiI6MTc4NzczMjkyNiwicGF0aCI6Ii8xMTUyNjk4LzY0MTM5NTgzNy02YjM1MDM5My05ZDUyLTQ2YTgtODJkOS02OGJiOTgyNjczYzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDgyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA4MjZUMDgyODQ2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NWMzYzNkOWQxNWU1YjUwY2YzM2QyYWY5MjVjMWJmMGVmZjJjOTQwZTZkYzgzMTMxN2MyMGU0YWU1OGNmNTU0ZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGZ2lmIn0.K_k1WM7FbINz3m6Mqs-83eUnRfoYL8KPast43r2rYeg"><img width="856" height="483" alt="grid-grid-lanes-2" src="https://private-user-images.githubusercontent.com/1152698/641395837-6b350393-9d52-46a8-82d9-68bb982673c6.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc3MzMyMjYsIm5iZiI6MTc4NzczMjkyNiwicGF0aCI6Ii8xMTUyNjk4LzY0MTM5NTgzNy02YjM1MDM5My05ZDUyLTQ2YTgtODJkOS02OGJiOTgyNjczYzYuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDgyNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjA4MjZUMDgyODQ2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NWMzYzNkOWQxNWU1YjUwY2YzM2QyYWY5MjVjMWJmMGVmZjJjOTQwZTZkYzgzMTMxN2MyMGU0YWU1OGNmNTU0ZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmcmVzcG9uc2UtY29udGVudC10eXBlPWltYWdlJTJGZ2lmIn0.K_k1WM7FbINz3m6Mqs-83eUnRfoYL8KPast43r2rYeg" data-animated-image="" style="max-width: 100%; height: auto; max-height: 483px;; aspect-ratio: 856 / 483; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+</li>
+<li>
+<p dir="auto">The description assumes that most grid lanes layouts are in the column direction.</p>
+<p dir="auto">While that may be true, I don't think we should say the "most often columns" part. Grid lanes layouts can be in a row or column orientation, just as easily.</p>
+</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">This is a follow-up to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5091197924" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45049" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45049/hovercard" href="https://github.com/mdn/content/pull/45049">#45049</a>.</p>]]></content>
+        <author>
+            <name>captainbrosset</name>
+            <email>captainbrosset@noreply.github.com</email>
+            <uri>https://github.com/captainbrosset</uri>
+        </author>
+        <published>2026-08-26T08:14:34.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Add `<template for>` content]]></title>
         <id>https://github.com/mdn/content/pull/45315</id>
         <link href="https://github.com/mdn/content/pull/45315"/>
-        <updated>2026-08-26T07:21:37.000Z</updated>
+        <updated>2026-08-26T08:27:48.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -207,7 +253,7 @@
         <title type="html"><![CDATA[FF155 Relnote: WebTransport.draining]]></title>
         <id>https://github.com/mdn/content/pull/45305</id>
         <link href="https://github.com/mdn/content/pull/45305"/>
-        <updated>2026-08-25T02:50:55.000Z</updated>
+        <updated>2026-08-26T07:46:39.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF155 adds support for <code class="notranslate">WebTransport.draining</code> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2007160" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2007160</a></p>
 <p dir="auto">This adds the release note.</p>
 <p dir="auto">Related docs can be tracked in  <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5179620342" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45213" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45213/hovercard" href="https://github.com/mdn/content/issues/45213">#45213</a></p>]]></content>
@@ -401,7 +447,7 @@ No compatibility data found for api.SVGAElement.referrerpolicy. (Report this iss
         <title type="html"><![CDATA[Draft for Firefox 155 release notes]]></title>
         <id>https://github.com/mdn/content/pull/45270</id>
         <link href="https://github.com/mdn/content/pull/45270"/>
-        <updated>2026-08-26T02:39:21.000Z</updated>
+        <updated>2026-08-26T08:13:24.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/93594?v=4" width="64" height="64" alt=""/><br/><p dir="auto">I've collated release notes based on Bugzilla &amp; WPT pass changes. When it comes to WebDriver &amp; WebRTC, I'm not sure which of these changes are worth going in the release notes, so that needs review.</p>
 <p dir="auto">I'm also not sure how 'complete' we are with experiments. For example, I don't think custom <code class="notranslate">&lt;select&gt;</code> is complete enough for testing, so maybe it shouldn't be included?</p>]]></content>
         <author>
@@ -496,30 +542,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/Radhikarathi04</uri>
         </author>
         <published>2026-08-20T16:26:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document JPEG XL image format]]></title>
-        <id>https://github.com/mdn/content/pull/45252</id>
-        <link href="https://github.com/mdn/content/pull/45252"/>
-        <updated>2026-08-25T08:13:55.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2891702?v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
-<ul dir="auto">
-<li>add JPEG XL to the image format overview</li>
-<li>document its capabilities, MIME type, compatibility, and licensing</li>
-<li>show how to provide an AVIF or JPEG fallback with <code class="notranslate">&lt;picture&gt;</code></li>
-</ul>
-<p dir="auto">ChromeStatus: <a href="https://chromestatus.com/feature/5114042131808256" rel="nofollow">https://chromestatus.com/feature/5114042131808256</a></p>
-<h2 dir="auto">Testing</h2>
-<ul dir="auto">
-<li><code class="notranslate">markdownlint-cli2 files/en-us/web/media/guides/formats/image_types/index.md</code></li>
-<li><code class="notranslate">prettier -c files/en-us/web/media/guides/formats/image_types/index.md</code></li>
-<li><code class="notranslate">npm run filecheck -- files/en-us/web/media/guides/formats/image_types/index.md</code></li>
-</ul>]]></content>
-        <author>
-            <name>hjanuschka</name>
-            <email>hjanuschka@noreply.github.com</email>
-            <uri>https://github.com/hjanuschka</uri>
-        </author>
-        <published>2026-08-19T20:54:28.000Z</published>
     </entry>
 </feed>
