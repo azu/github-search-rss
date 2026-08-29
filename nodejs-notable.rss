@@ -2,11 +2,73 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-08-28T19:43:59.016Z</updated>
+    <updated>2026-08-29T02:33:15.576Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[crypto: add a generic MAC API]]></title>
+        <id>https://github.com/nodejs/node/pull/65553</id>
+        <link href="https://github.com/nodejs/node/pull/65553"/>
+        <updated>2026-08-28T23:13:36.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241506?u=13324b3ac27dc54cdde3ac635d567d0d96b88876&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Add getMacs() and createMac() to node:crypto as a layer on top of OpenSSL EVP_MAC. Support incremental and streaming operations with provider parameter validation and configurable output sizes.</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="import { createMac, getMacs, randomBytes } from 'node:crypto';
+
+console.log(getMacs());
+// [
+//   'blake2bmac', 'blake2smac',
+//   'cmac',       'gmac',
+//   'hmac',       'kmac-128',
+//   'kmac-256',   'kmac128',
+//   'kmac256',    'poly1305',
+//   'siphash'
+// ]
+
+const key = randomBytes(16);
+const mac = createMac('CMAC', key, {
+  cipher: 'AES-128-CBC',
+});
+
+mac.update('some data to authenticate');
+console.log(mac.final('hex'));
+// 326190b586621ebd6bcb2955c456794d"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">createMac</span><span class="pl-kos">,</span> <span class="pl-s1">getMacs</span><span class="pl-kos">,</span> <span class="pl-s1">randomBytes</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'node:crypto'</span><span class="pl-kos">;</span>
+
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-en">getMacs</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// [</span>
+<span class="pl-c">//   'blake2bmac', 'blake2smac',</span>
+<span class="pl-c">//   'cmac',       'gmac',</span>
+<span class="pl-c">//   'hmac',       'kmac-128',</span>
+<span class="pl-c">//   'kmac-256',   'kmac128',</span>
+<span class="pl-c">//   'kmac256',    'poly1305',</span>
+<span class="pl-c">//   'siphash'</span>
+<span class="pl-c">// ]</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">key</span> <span class="pl-c1">=</span> <span class="pl-en">randomBytes</span><span class="pl-kos">(</span><span class="pl-c1">16</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">mac</span> <span class="pl-c1">=</span> <span class="pl-en">createMac</span><span class="pl-kos">(</span><span class="pl-s">'CMAC'</span><span class="pl-kos">,</span> <span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">cipher</span>: <span class="pl-s">'AES-128-CBC'</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+<span class="pl-s1">mac</span><span class="pl-kos">.</span><span class="pl-en">update</span><span class="pl-kos">(</span><span class="pl-s">'some data to authenticate'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">mac</span><span class="pl-kos">.</span><span class="pl-en">final</span><span class="pl-kos">(</span><span class="pl-s">'hex'</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// 326190b586621ebd6bcb2955c456794d</span></pre></div>
+<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="585895929" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/32433" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/32433/hovercard" href="https://github.com/nodejs/node/issues/32433">#32433</a><br>
+Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1059917931" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/40921" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/40921/hovercard" href="https://github.com/nodejs/node/issues/40921">#40921</a><br>
+Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1739345184" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/48314" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/48314/hovercard" href="https://github.com/nodejs/node/issues/48314">#48314</a><br>
+Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="586586822" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/32448" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/32448/hovercard" href="https://github.com/nodejs/node/pull/32448">#32448</a><br>
+Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="587346090" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/32477" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/32477/hovercard" href="https://github.com/nodejs/node/pull/32477">#32477</a></p>
+<p dir="auto">Possible followups:</p>
+<ul dir="auto">
+<li><code class="notranslate">mac.copy([options])</code> to get a new Mac instance with a copied state, not for GMAC and Poly1305</li>
+<li><code class="notranslate">crypto.mac(algorithm, key, data[, options])</code> one-shot akin to <code class="notranslate">crypto.hash()</code></li>
+</ul>]]></content>
+        <author>
+            <name>panva</name>
+            <email>panva@noreply.github.com</email>
+            <uri>https://github.com/panva</uri>
+        </author>
+        <published>2026-08-25T23:57:25.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[crypto: update root-certificates to 3.126]]></title>
         <id>https://github.com/nodejs/node/pull/65495</id>
@@ -120,7 +182,7 @@ Assisted-by: Opencode/Opus</p>]]></content>
         <link href="https://github.com/nodejs/node/pull/64591"/>
         <updated>2026-08-03T15:58:12.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Adds basic syntax highlighting similar to our <code class="notranslate">util.inspect</code>. Highlighting is done using <code class="notranslate">util.inspect.styles</code>, so the coloring is in-tune with inspect, see below:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc5NDY1MzgsIm5iZiI6MTc4Nzk0NjIzOCwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA4MjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwODI4VDE5NDM1OFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEyNTlkMTU3NTkxZjZmYjFjMjIxZGM4M2Y2NzlkMThiMTE0NmI4Y2IzM2QwZWNhZTIzZGM0YmEwYmIwYzQzMDcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.n4ATe8pRlOZe5AcmijMhjhfOKHj_zKSsdfAGLKtX-_Y"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc5NDY1MzgsIm5iZiI6MTc4Nzk0NjIzOCwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA4MjglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwODI4VDE5NDM1OFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEyNTlkMTU3NTkxZjZmYjFjMjIxZGM4M2Y2NzlkMThiMTE0NmI4Y2IzM2QwZWNhZTIzZGM0YmEwYmIwYzQzMDcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.n4ATe8pRlOZe5AcmijMhjhfOKHj_zKSsdfAGLKtX-_Y" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc5NzEwOTUsIm5iZiI6MTc4Nzk3MDc5NSwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA4MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwODI5VDAyMzMxNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc5ZGJmYzhlZWZjMTcwMDFhNjYwZjA1ODY2M2RiZGU4ZTdhNTEzNDE1Y2RhMzM3M2JiYzMwYzJjNjAzZDZhM2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.TOQWa1f2s3Hc9PJFA3-Tr9uBNdsT0T75Z9I1U85klqI"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODc5NzEwOTUsIm5iZiI6MTc4Nzk3MDc5NSwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA4MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwODI5VDAyMzMxNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc5ZGJmYzhlZWZjMTcwMDFhNjYwZjA1ODY2M2RiZGU4ZTdhNTEzNDE1Y2RhMzM3M2JiYzMwYzJjNjAzZDZhM2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.TOQWa1f2s3Hc9PJFA3-Tr9uBNdsT0T75Z9I1U85klqI" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <p dir="auto"><strong>Notable Change</strong>: The REPL now performs syntax highlighting when <code class="notranslate">useColors: true</code></p>]]></content>
         <author>
             <name>avivkeller</name>
@@ -741,19 +803,5 @@ assert.strictEqual(import.meta.main, true);
             <uri>https://github.com/richardlau</uri>
         </author>
         <published>2026-02-13T18:36:01.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[module: remove --experimental-transform-types]]></title>
-        <id>https://github.com/nodejs/node/pull/61803</id>
-        <link href="https://github.com/nodejs/node/pull/61803"/>
-        <updated>2026-02-27T16:33:45.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36735501?u=8e93f809522831771aab98cbb2a67c5e67e673d5&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR removes the <code class="notranslate">--experimental-transform-types</code> flag and all related code, tests, and documentation.</p>
-<p dir="auto">Refs: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3861565448" data-permission-text="Title is private" data-url="https://github.com/nodejs/typescript/issues/51" data-hovercard-type="issue" data-hovercard-url="/nodejs/typescript/issues/51/hovercard" href="https://github.com/nodejs/typescript/issues/51">nodejs/typescript#51</a></p>]]></content>
-        <author>
-            <name>marco-ippolito</name>
-            <email>marco-ippolito@noreply.github.com</email>
-            <uri>https://github.com/marco-ippolito</uri>
-        </author>
-        <published>2026-02-13T16:37:18.000Z</published>
     </entry>
 </feed>
