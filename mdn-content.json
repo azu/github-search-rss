@@ -6,17 +6,6 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/75421539?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/45403",
-            "title": "Fix typo in isNaN page: coverts -> converts",
-            "date_modified": "2026-08-30T22:41:37.000Z",
-            "date_published": "2026-08-30T22:39:39.000Z",
-            "author": {
-                "name": "DevEmmanuel01",
-                "url": "https://github.com/DevEmmanuel01"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/259028460?u=76c93f0df0fbeb4706736acca78f07a43e398a63&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">Summary</h2>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44091.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4429026049\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44091\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44091/hovercard\" href=\"https://github.com/mdn/content/issues/44091\">#44091</a>.</p>\n<p dir=\"auto\">This PR adds the missing Glossary definition for <strong>Interface</strong>, which was linked (but unresolved) from the existing <a href=\"https://github.com/mdn/content/blob/main/files/en-us/glossary/mixin/index.md\"><code class=\"notranslate\">Mixin</code></a> and <a href=\"https://github.com/mdn/content/blob/main/files/en-us/glossary/webidl/index.md\"><code class=\"notranslate\">WebIDL</code></a> glossary pages. It follows the structure of the existing <a href=\"https://github.com/mdn/content/blob/main/files/en-us/glossary/class/index.md\"><code class=\"notranslate\">Class</code></a> glossary page.</p>\n<h2 dir=\"auto\">What changed</h2>\n<ul dir=\"auto\">\n<li>Added <code class=\"notranslate\">files/en-us/glossary/interface/index.md</code> (new page)\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">title: Interface</code>, <code class=\"notranslate\">slug: Glossary/Interface</code>, <code class=\"notranslate\">page-type: glossary-definition</code>, <code class=\"notranslate\">sidebar: glossarysidebar</code></li>\n<li>Defines \"interface\" in WebIDL/web standards terms, notes inheritance from other interfaces and inclusion of mixin members, and how interfaces are exposed to JavaScript in browsers.</li>\n<li>See also: <code class=\"notranslate\">WebIDL</code> and <code class=\"notranslate\">Mixin</code> glossary pages, the \"Information contained in a WebIDL file\" guide, and the WebIDL spec.</li>\n</ul>\n</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45399",
             "title": "docs(glossary): add Interface glossary page",
@@ -58,17 +47,6 @@
             "author": {
                 "name": "SCW5370",
                 "url": "https://github.com/SCW5370"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Corrects the SVG paths tutorial's claim that the \"Move To\" command takes two parameters, and adds a short paragraph explaining what additional coordinate pairs do.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45289.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5222867772\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45289\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45289/hovercard\" href=\"https://github.com/mdn/content/issues/45289\">#45289</a>.</p>\n<p dir=\"auto\">The \"Line commands\" section said <code class=\"notranslate\">M</code> \"takes two parameters, a coordinate (<code class=\"notranslate\">x</code>) and coordinate (<code class=\"notranslate\">y</code>) to move to\". Per the SVG path grammar, <code class=\"notranslate\">M</code> and <code class=\"notranslate\">m</code> take a coordinate pair <em>sequence</em>: only the first pair moves the current point, and every pair after it is drawn as an implicit <code class=\"notranslate\">lineto</code>. So <code class=\"notranslate\">M 10 10 90 10 90 90</code> draws a polyline rather than performing three moves, and a path can trace a whole polygon without an explicit <code class=\"notranslate\">L</code> at all. Since the page presents the two-parameter form as the definition, a reader has no way to predict what a path like that does.</p>\n<p dir=\"auto\">Changed the count to \"at least two parameters\" and added one paragraph after the syntax block giving the equivalence, <code class=\"notranslate\">M 10 10 90 10 90 90</code> is the same as <code class=\"notranslate\">M 10 10 L 90 10 L 90 90</code>, plus a note that pairs after a relative <code class=\"notranslate\">m</code> are relative lines.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The issue also raises several points about <code class=\"notranslate\">Z</code>/<code class=\"notranslate\">z</code>, implicit closing lines, and stroke rendering differences between an explicit final <code class=\"notranslate\">lineto</code> and a close. Those are correct but they are a separate, larger topic, and this page is an introductory tutorial that covers <code class=\"notranslate\">Z</code> further down in its own section. I have kept this change to the factual error about <code class=\"notranslate\">moveto</code> parameters so it stays reviewable. Happy to open a follow-up for the <code class=\"notranslate\">Z</code> behavior if you would like it documented here.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45289.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5222867772\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45289\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45289/hovercard\" href=\"https://github.com/mdn/content/issues/45289\">#45289</a></p>",
-            "url": "https://github.com/mdn/content/pull/45391",
-            "title": "fix(svg): note that moveto accepts more than one coordinate pair",
-            "date_modified": "2026-08-30T02:13:30.000Z",
-            "date_published": "2026-08-30T02:12:01.000Z",
-            "author": {
-                "name": "rajanpanth",
-                "url": "https://github.com/rajanpanth"
             }
         },
         {
@@ -119,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The PR is a result of the following conversation on Discord:</p>\n<blockquote>\n<p dir=\"auto\">Onkar : Should we delete the Web/HTTP/Reference/Status/102 page?<br>\nIt was deprecated in 2018 and is <a href=\"https://github.com/mdn/browser-compat-data/blob/main/http/status.json\">not being tracked in BCD</a>. Also, no browser recognises it.</p>\n<p dir=\"auto\">Ruth: Yes I think so - we can still list it here <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status</a> with no link and prose to say it was deprecated (like 305/306)</p>\n</blockquote>\n<h3 dir=\"auto\">More Info</h3>\n<p dir=\"auto\">I ran the following command for the deletion:</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"npm run content delete Web/HTTP/Reference/Status/102 en-US -- --redirect Web/HTTP/Reference/Status#102_processing\"><pre class=\"notranslate\">npm run content delete Web/HTTP/Reference/Status/102 en-US -- --redirect Web/HTTP/Reference/Status#102_processing</pre></div>",
             "url": "https://github.com/mdn/content/pull/45377",
             "title": "Remove HTTP status 102 page",
-            "date_modified": "2026-08-28T15:30:41.000Z",
+            "date_modified": "2026-08-31T00:07:18.000Z",
             "date_published": "2026-08-28T15:22:47.000Z",
             "author": {
                 "name": "OnkarRuikar",
@@ -160,21 +138,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixes a wrong method name and two grammar errors on \"Using the imscJS polyfill\".</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">In the \"Accessing the DOM\" section, the method is written <code class=\"notranslate\">renderHtml()</code> twice. The method is <code class=\"notranslate\">renderHTML()</code>: that is the spelling used everywhere else on the page, including the three code samples and the live sample that actually runs it. JavaScript is case-sensitive, so a reader copying the name out of the prose gets a <code class=\"notranslate\">TypeError</code>.</p>\n<p dir=\"auto\">The same sentence is also missing an article, \"as a parameter to <code class=\"notranslate\">renderHTML()</code> method\".</p>\n<p dir=\"auto\">In \"Building an IMSC player\", the opening sentence reads \"Lets look at a more expanded example and show you how can render subtitles\" — a missing apostrophe in \"Let's\", and a missing subject in \"how you can render\".</p>",
-            "url": "https://github.com/mdn/content/pull/45370",
-            "title": "Fix renderHTML method name and two grammar errors in imscJS guide",
-            "date_modified": "2026-08-28T11:20:41.000Z",
-            "date_published": "2026-08-28T11:19:09.000Z",
-            "author": {
-                "name": "husamemadH",
-                "url": "https://github.com/husamemadH"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF155 adds support for a <code class=\"notranslate\">WebTransport</code> client to specify a list of preferred application-specific protocols in the constructor, and for the server to return its preferred option in <code class=\"notranslate\">WebTransport.protocol</code>.</p>\n<p dir=\"auto\">This updates the release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5234310944\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45302\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45302/hovercard\" href=\"https://github.com/mdn/content/issues/45302\">#45302</a></p>",
             "url": "https://github.com/mdn/content/pull/45366",
             "title": "FF155 Relnote: WebTransport application-specific protocols",
-            "date_modified": "2026-08-28T06:36:21.000Z",
+            "date_modified": "2026-08-30T23:27:22.000Z",
             "date_published": "2026-08-28T06:32:06.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -223,6 +190,39 @@
             "author": {
                 "name": "Josh-Cena",
                 "url": "https://github.com/Josh-Cena"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/93594?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">These will need some human care to check &amp; unslop them, but they're a decent starting point.</p>\n<p dir=\"auto\">I erred on including too much, rather than missing stuff, so it's likely that some of these items should be deleted.</p>",
+            "url": "https://github.com/mdn/content/pull/45357",
+            "title": "Firefox 156 generated release notes",
+            "date_modified": "2026-08-27T14:40:31.000Z",
+            "date_published": "2026-08-27T14:38:26.000Z",
+            "author": {
+                "name": "jakearchibald",
+                "url": "https://github.com/jakearchibald"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Follow up on</p>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/orgs/mdn/discussions/911\">https://github.com/orgs/mdn/discussions/911</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5203572534\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45259\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45259/hovercard\" href=\"https://github.com/mdn/content/pull/45259\">#45259</a></li>\n</ul>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The PR updates writing guidelines to instruct contributors to not use the <code class=\"notranslate\">{{Deprecated_Header}}</code> macro anymore. Because, now the deprecated status banner is being inferred from front-matter <code class=\"notranslate\">status</code> property or data from web-features repository.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Contributors need to know.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/orgs/mdn/discussions/911\">https://github.com/orgs/mdn/discussions/911</a></li>\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5203572534\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45259\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45259/hovercard\" href=\"https://github.com/mdn/content/pull/45259\">#45259</a></li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/45345",
+            "title": "chore: Update writing guidlines and remove Deprecated_Header macro mentions",
+            "date_modified": "2026-08-30T01:23:59.000Z",
+            "date_published": "2026-08-27T08:29:10.000Z",
+            "author": {
+                "name": "OnkarRuikar",
+                "url": "https://github.com/OnkarRuikar"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/61856979?u=2ae56839a2779c62b750f6f2e1e049edb283def2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Replaces the format-by-format list on the img element page with concise guidance about choosing formats based on compression, browser support, and image requirements. It also explains fallbacks and the progressive-rendering benefit of JPEG XL for large images.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The previous list called several competing formats a good choice without clearly explaining how to decide between them. This revision directs readers to WebP or AVIF for raster compression, SVG for scalable graphics, and picture-based fallbacks where browser support requires them.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Markdownlint: passed</li>\n<li>Prettier check: passed</li>\n<li>Updated the affected internal heading link</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45286.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5221179468\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45286\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45286/hovercard\" href=\"https://github.com/mdn/content/issues/45286\">#45286</a></p>",
+            "url": "https://github.com/mdn/content/pull/45339",
+            "title": "Clarify image format selection guidance",
+            "date_modified": "2026-08-27T06:26:07.000Z",
+            "date_published": "2026-08-27T06:25:42.000Z",
+            "author": {
+                "name": "33modeling",
+                "url": "https://github.com/33modeling"
             }
         }
     ]
