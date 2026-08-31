@@ -2,27 +2,53 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-08-31T15:37:08.543Z</updated>
+    <updated>2026-08-31T21:11:07.728Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[fix(css): correct flex-shink typo in flex-shrink docs]]></title>
-        <id>https://github.com/mdn/content/pull/45414</id>
-        <link href="https://github.com/mdn/content/pull/45414"/>
-        <updated>2026-08-31T12:19:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/160158213?u=24cc7b7b6e2b8a5b15ed178d43a856ebb7a126ac&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45404.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5295081123" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45404" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45404/hovercard" href="https://github.com/mdn/content/issues/45404">#45404</a></p>
-<p dir="auto">Corrects flex-shink: 2 to flex-shrink: 2 in the flex-shrink<br>
-distribution example. The weekly spelling check flagged shink as<br>
-unknown; it is a typo for shrink in the prose, not a word to add<br>
-to the dictionaries.</p>]]></content>
+        <title type="html"><![CDATA[Hyphenate compound modifiers built-in and left-hand side]]></title>
+        <id>https://github.com/mdn/content/pull/45418</id>
+        <link href="https://github.com/mdn/content/pull/45418"/>
+        <updated>2026-08-31T19:48:39.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Hyphenates "built-in", "left-hand side" and "right-hand side", "so-called" and "compile-time" in the 26 places where they modify a following noun.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Used before a noun these are compound modifiers and take a hyphen. The repository already writes "built-in" about 528 times, so the unhyphenated ones are outliers.</p>
+<p dir="auto">Thirteen are the same sentence on the ARIA attribute pages — "as these have built in semantics and do not require ARIA attributes" — on <code class="notranslate">aria-checked</code>, <code class="notranslate">aria-multiline</code>, and the <code class="notranslate">Element.aria*</code> reflection properties. The rest are "built in objects and APIs", "all of the built in form validation", "including built in elements", "a customized built in element example", "Built in compression means…", "Built in HTML elements can have different states", "the built in Hunspell spell checker", and "tend to have built in mitigations".</p>
+<p dir="auto">Also "the left hand side expression" and "on the left hand side" on the invalid assignment error page, whose own slug is already <code class="notranslate">invalid_assignment_left-hand_side</code>; "The right hand side shows the received chunks"; "the so called CSS History Leak"; and "TypeScript adds compile time type checking".</p>
+<p dir="auto">Verb uses are left alone, for example "the application that we built in this tutorial" and "the main platforms even have screen readers built in to enable visually impaired users".</p>
+<p dir="auto">Text inside code is untouched, so Safari's <code class="notranslate">TypeError: Right hand side of instanceof is not an object</code> keeps its exact wording.</p>]]></content>
         <author>
-            <name>MeGaurav4</name>
-            <email>MeGaurav4@noreply.github.com</email>
-            <uri>https://github.com/MeGaurav4</uri>
+            <name>husamemadH</name>
+            <email>husamemadH@noreply.github.com</email>
+            <uri>https://github.com/husamemadH</uri>
         </author>
-        <published>2026-08-31T12:17:48.000Z</published>
+        <published>2026-08-31T19:46:52.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docs: note element upgrade step in CustomElementRegistry.define()]]></title>
+        <id>https://github.com/mdn/content/pull/45417</id>
+        <link href="https://github.com/mdn/content/pull/45417"/>
+        <updated>2026-08-31T19:29:48.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/191840740?v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">This PR adds an explanation in the <code class="notranslate">CustomElementRegistry.define()</code> documentation stating that existing elements in the document are automatically upgraded upon definition. It also adds a cross-reference link to <code class="notranslate">CustomElementRegistry.upgrade()</code> under the "See also" section.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">When <code class="notranslate">customElements.define()</code> is invoked, any matching elements that were previously parsed or inserted into the DOM are automatically upgraded by the browser (running their constructor and applicable lifecycle callbacks like <code class="notranslate">connectedCallback()</code> and <code class="notranslate">attributeChangedCallback()</code>). Documenting this clarifies the lifecycle behavior for readers.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>WHATWG HTML Standard step for <code class="notranslate">define()</code>: <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#dom-customelementregistry-define" rel="nofollow">https://html.spec.whatwg.org/multipage/custom-elements.html#dom-customelementregistry-define</a> (step 18)</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45241.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5192961243" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45241" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45241/hovercard" href="https://github.com/mdn/content/issues/45241">#45241</a></p>]]></content>
+        <author>
+            <name>r4-rahul123</name>
+            <email>r4-rahul123@noreply.github.com</email>
+            <uri>https://github.com/r4-rahul123</uri>
+        </author>
+        <published>2026-08-31T19:18:01.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[FF155 WebTransport.exportKeyingMaterial()]]></title>
@@ -76,73 +102,6 @@ This adds some docs.</p>
             <uri>https://github.com/husamemadH</uri>
         </author>
         <published>2026-08-31T05:43:43.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Use fall back as the verb and fallback as the noun]]></title>
-        <id>https://github.com/mdn/content/pull/45407</id>
-        <link href="https://github.com/mdn/content/pull/45407"/>
-        <updated>2026-08-31T05:45:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Uses "fall back" where the text needs a verb and "fallback" where it needs a noun, in eight places.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">"Fallback" is a noun and a modifier; the verb is "fall back".</p>
-<p dir="auto">Six places use the one-word form as a verb: "clients can either cancel, provideCredentials …, or fallback to <code class="notranslate">default</code>", "could then be used to fallback to attaching the shadow root", "allows the element to fallback to <code class="notranslate">contain-intrinsic-size: none</code>", "or fallback to a different value" (on both the BigInt division-by-zero and negative-exponent error pages), and "browsers will fallback to using the page that links to the manifest".</p>
-<p dir="auto">Two use the two-word form as a noun: "the rest of the counter representations will be based on the <code class="notranslate">decimal</code> style, which is the fall back", and "you can add a fall back color should a transparent PNG/GIF/WebP not load". The second sentence already says "providing a fallback color" a few clauses earlier.</p>
-<p dir="auto">Only prose is changed. The one-word spelling inside JavaScript code comments is left alone, as are noun and modifier uses such as "fallback declarations", "fallback images" and "fallback recipes".</p>]]></content>
-        <author>
-            <name>husamemadH</name>
-            <email>husamemadH@noreply.github.com</email>
-            <uri>https://github.com/husamemadH</uri>
-        </author>
-        <published>2026-08-31T05:43:40.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[fix(datatransfer): note that setData() only works during dragstart]]></title>
-        <id>https://github.com/mdn/content/pull/45405</id>
-        <link href="https://github.com/mdn/content/pull/45405"/>
-        <updated>2026-08-31T07:23:37.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds a note to <code class="notranslate">DataTransfer.setData()</code> stating that it only works inside a <code class="notranslate">dragstart</code> handler, matching the note the sibling <code class="notranslate">clearData()</code> page already has.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41284.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3451976769" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41284" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41284/hovercard" href="https://github.com/mdn/content/issues/41284">#41284</a>.</p>
-<p dir="auto">The drag data store is only writable while <code class="notranslate">dragstart</code> is being handled. Calling <code class="notranslate">setData()</code> from <code class="notranslate">dragover</code>, <code class="notranslate">drop</code>, or any other drag event silently does nothing, which is a confusing failure because there is no error to go on. <code class="notranslate">DataTransfer.clearData()</code> already documents exactly this constraint, so the two sibling pages disagreed about a restriction that applies to both.</p>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Josh-Cena/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Josh-Cena">@Josh-Cena</a> confirmed on the issue ("Yes, <code class="notranslate">setData</code> can only be called in <code class="notranslate">dragstart</code>") and asked for the note to link to the drag data store guide, which has since landed via <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3367961021" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40943" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/40943/hovercard" href="https://github.com/mdn/content/pull/40943">#40943</a>. This uses the wording already established on <code class="notranslate">clearData()</code> so the two pages read consistently, plus the link to <a href="/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Drag_data_store#modifying_the_drag_data_store">Modifying the drag data store</a> as suggested.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Verified the linked heading exists: <code class="notranslate">## Modifying the drag data store</code> in <code class="notranslate">files/en-us/web/api/html_drag_and_drop_api/drag_data_store/index.md</code>, giving the <code class="notranslate">#modifying_the_drag_data_store</code> anchor.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41284.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3451976769" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41284" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41284/hovercard" href="https://github.com/mdn/content/issues/41284">#41284</a><br>
-Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3367961021" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40943" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/40943/hovercard" href="https://github.com/mdn/content/pull/40943">#40943</a></p>]]></content>
-        <author>
-            <name>rajanpanth</name>
-            <email>rajanpanth@noreply.github.com</email>
-            <uri>https://github.com/rajanpanth</uri>
-        </author>
-        <published>2026-08-31T05:00:27.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs(glossary): add Interface glossary page]]></title>
-        <id>https://github.com/mdn/content/pull/45399</id>
-        <link href="https://github.com/mdn/content/pull/45399"/>
-        <updated>2026-08-30T19:50:27.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/259028460?u=76c93f0df0fbeb4706736acca78f07a43e398a63&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44091.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4429026049" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44091" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44091/hovercard" href="https://github.com/mdn/content/issues/44091">#44091</a>.</p>
-<p dir="auto">This PR adds the missing Glossary definition for <strong>Interface</strong>, which was linked (but unresolved) from the existing <a href="https://github.com/mdn/content/blob/main/files/en-us/glossary/mixin/index.md"><code class="notranslate">Mixin</code></a> and <a href="https://github.com/mdn/content/blob/main/files/en-us/glossary/webidl/index.md"><code class="notranslate">WebIDL</code></a> glossary pages. It follows the structure of the existing <a href="https://github.com/mdn/content/blob/main/files/en-us/glossary/class/index.md"><code class="notranslate">Class</code></a> glossary page.</p>
-<h2 dir="auto">What changed</h2>
-<ul dir="auto">
-<li>Added <code class="notranslate">files/en-us/glossary/interface/index.md</code> (new page)
-<ul dir="auto">
-<li><code class="notranslate">title: Interface</code>, <code class="notranslate">slug: Glossary/Interface</code>, <code class="notranslate">page-type: glossary-definition</code>, <code class="notranslate">sidebar: glossarysidebar</code></li>
-<li>Defines "interface" in WebIDL/web standards terms, notes inheritance from other interfaces and inclusion of mixin members, and how interfaces are exposed to JavaScript in browsers.</li>
-<li>See also: <code class="notranslate">WebIDL</code> and <code class="notranslate">Mixin</code> glossary pages, the "Information contained in a WebIDL file" guide, and the WebIDL spec.</li>
-</ul>
-</li>
-</ul>]]></content>
-        <author>
-            <name>dsk-dev-ai</name>
-            <email>dsk-dev-ai@noreply.github.com</email>
-            <uri>https://github.com/dsk-dev-ai</uri>
-        </author>
-        <published>2026-08-30T11:18:33.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[fix(javascript): correct three reference examples that disagree with runtime]]></title>
@@ -540,5 +499,55 @@ It was deprecated in 2018 and is <a href="https://github.com/mdn/browser-compat-
             <uri>https://github.com/jakearchibald</uri>
         </author>
         <published>2026-08-27T14:38:26.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[chore: Update writing guidlines and remove Deprecated_Header macro mentions]]></title>
+        <id>https://github.com/mdn/content/pull/45345</id>
+        <link href="https://github.com/mdn/content/pull/45345"/>
+        <updated>2026-08-30T01:23:59.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Follow up on</p>
+<ul dir="auto">
+<li><a href="https://github.com/orgs/mdn/discussions/911">https://github.com/orgs/mdn/discussions/911</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5203572534" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45259" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45259/hovercard" href="https://github.com/mdn/content/pull/45259">#45259</a></li>
+</ul>
+<h3 dir="auto">Description</h3>
+<p dir="auto">The PR updates writing guidelines to instruct contributors to not use the <code class="notranslate">{{Deprecated_Header}}</code> macro anymore. Because, now the deprecated status banner is being inferred from front-matter <code class="notranslate">status</code> property or data from web-features repository.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Contributors need to know.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://github.com/orgs/mdn/discussions/911">https://github.com/orgs/mdn/discussions/911</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5203572534" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45259" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45259/hovercard" href="https://github.com/mdn/content/pull/45259">#45259</a></li>
+</ul>]]></content>
+        <author>
+            <name>OnkarRuikar</name>
+            <email>OnkarRuikar@noreply.github.com</email>
+            <uri>https://github.com/OnkarRuikar</uri>
+        </author>
+        <published>2026-08-27T08:29:10.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Clarify image format selection guidance]]></title>
+        <id>https://github.com/mdn/content/pull/45339</id>
+        <link href="https://github.com/mdn/content/pull/45339"/>
+        <updated>2026-08-27T06:26:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/61856979?u=2ae56839a2779c62b750f6f2e1e049edb283def2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Replaces the format-by-format list on the img element page with concise guidance about choosing formats based on compression, browser support, and image requirements. It also explains fallbacks and the progressive-rendering benefit of JPEG XL for large images.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The previous list called several competing formats a good choice without clearly explaining how to decide between them. This revision directs readers to WebP or AVIF for raster compression, SVG for scalable graphics, and picture-based fallbacks where browser support requires them.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Markdownlint: passed</li>
+<li>Prettier check: passed</li>
+<li>Updated the affected internal heading link</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45286.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5221179468" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45286" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45286/hovercard" href="https://github.com/mdn/content/issues/45286">#45286</a></p>]]></content>
+        <author>
+            <name>33modeling</name>
+            <email>33modeling@noreply.github.com</email>
+            <uri>https://github.com/33modeling</uri>
+        </author>
+        <published>2026-08-27T06:25:42.000Z</published>
     </entry>
 </feed>
