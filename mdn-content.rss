@@ -2,11 +2,227 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-01T10:41:14.209Z</updated>
+    <updated>2026-09-01T15:16:46.753Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[45181 view timeline ff release]]></title>
+        <id>https://github.com/mdn/content/pull/45436</id>
+        <link href="https://github.com/mdn/content/pull/45436"/>
+        <updated>2026-09-01T14:48:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Added <code class="notranslate">view-timeline-inset</code> as part of <code class="notranslate">view-timeline</code> shorthand property to Experimental Features</li>
+<li>Added <code class="notranslate">view-timeline-inset</code> as part of <code class="notranslate">view-timeline</code> shorthand property to FF 155 Experimental Features</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a href="https://github.com/mdn/content/issues/45181" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45181/hovercard">MDN Issue #45181</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li>N/A</li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-09-01T14:46:32.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[build(deps-dev): bump cspell from 10.1.1 to 10.2.0]]></title>
+        <id>https://github.com/mdn/content/pull/45435</id>
+        <link href="https://github.com/mdn/content/pull/45435"/>
+        <updated>2026-09-01T14:01:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell">cspell</a> from 10.1.1 to 10.2.0.</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/releases">cspell's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.2.0</h2>
+<h2 dir="auto">Features</h2>
+
+<h3 dir="auto">feat: Support languages without word breaks (Part 2) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9133">#9133</a>)</h3>
+<p dir="auto">This pull request introduces support for locale-sensitive word segmentation, enabling better spell checking for languages such as Japanese, Chinese, Thai, Lao, Khmer, and Myanmar. The main changes add a new configuration option, <code class="notranslate">useIntlWordSegmentation</code>, to the schema and internal types, implement the corresponding text transformation logic, and update the document validation pipeline to use this feature. Additional test fixtures and tests are included to ensure correct behavior.</p>
+<p dir="auto"><strong>Support for locale-sensitive word segmentation:</strong></p>
+<ul dir="auto">
+<li>Added a new boolean configuration option, <code class="notranslate">useIntlWordSegmentation</code>, to the JSON schema (<code class="notranslate">cspell.schema.json</code>) and internal TypeScript types (<code class="notranslate">BaseSetting</code>), allowing users to enable locale-aware text segmentation for supported languages. [1] [2] [3] [4]</li>
+<li>Implemented the <code class="notranslate">IntlSegmentTextTransformer</code> and a factory function, <code class="notranslate">createIntlSegmentTextTransformer</code>, to perform locale-sensitive segmentation using the specified language.</li>
+<li>Introduced a new utility, <code class="notranslate">chainTransformers</code>, and an <code class="notranslate">IdentityTextTransformer</code> to allow chaining multiple text transformers in the validation pipeline.</li>
+<li>Updated the document validation logic (<code class="notranslate">docValidator.ts</code> and related files) to use the new transformer when <code class="notranslate">useIntlWordSegmentation</code> is enabled, ensuring correct segmentation for complex scripts. [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]</li>
+</ul>
+<p dir="auto"><strong>Testing and fixtures:</strong></p>
+<ul dir="auto">
+<li>Added new test fixtures and a test document containing Thai text, as well as a corresponding dictionary file and configuration to verify correct segmentation and spell checking. [1] [2] [3]</li>
+<li>Extended the document validator tests to cover the new segmentation feature.</li>
+</ul>
+<p dir="auto">These changes collectively improve support for non-space-delimited languages and provide a more robust spell-checking experience for a wider range of languages.</p>
+<hr>
+
+
+<h3 dir="auto">feat: Support languages without word breaks (Part 1) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9131">#9131</a>)</h3>
+<p dir="auto">This pull request introduces a new <code class="notranslate">IntlSegmentTextTransformer</code> for locale-aware text segmentation, refactors text transformation infrastructure for better composability, and improves locale normalization to BCP 47 standards. It also adds comprehensive tests for these new features and refactors existing transformers for consistency.</p>
+<h3 dir="auto">Locale normalization improvements</h3>
+<ul dir="auto">
+<li>Improved the <code class="notranslate">normalizeLocaleIntl</code> function in <code class="notranslate">LanguageSettings.ts</code> to support BCP 47 language tag normalization, including script and region subtags, and added tests for these cases. [1] [2]</li>
+</ul>
+<h3 dir="auto">New locale-aware text transformer</h3>
+<ul dir="auto">
+<li>Added the <code class="notranslate">IntlSegmentTextTransformer</code> class for locale-aware word segmentation using <code class="notranslate">Intl.Segmenter</code>, along with tests covering multiple locales (including Thai). [1] [2]</li>
+</ul>
+<h3 dir="auto">Transformer infrastructure and API improvements</h3>
+<ul dir="auto">
+<li>Introduced a generic <code class="notranslate">TextTransformer</code> interface and the <code class="notranslate">Edit</code> type in <code class="notranslate">Transformer.ts</code> to standardize text transformation operations.</li>
+<li>Added utility functions <code class="notranslate">applyEditsToMappedText</code> and <code class="notranslate">applyEditsToText</code> in <code class="notranslate">TextMapEdit.ts</code> for applying edits and maintaining source maps, used by all transformers.</li>
+</ul>
+<h3 dir="auto">Refactoring and consistency</h3>
+<ul dir="auto">
+<li>Refactored <code class="notranslate">SubstitutionTransformer</code> to implement the new <code class="notranslate">TextTransformer</code> interface and use the new edit application utilities, simplifying and unifying its implementation. [1] [2] [3]</li>
+</ul>
+<p dir="auto">These changes collectively improve the flexibility, correctness, and internationalization support of the text transformation pipeline.</p>
+<hr>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/CHANGELOG.md">cspell's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.2.0 (2026-08-31)</h2>
+<h3 dir="auto">Features</h3>
+
+<h3 dir="auto">feat: Support languages without word breaks (Part 2) (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9133">#9133</a>)</h3>
+<p dir="auto">This pull request introduces support for locale-sensitive word segmentation, enabling better spell checking for languages such as Japanese, Chinese, Thai, Lao, Khmer, and Myanmar. The main changes add a new configuration option, <code class="notranslate">useIntlWordSegmentation</code>, to the schema and internal types, implement the corresponding text transformation logic, and update the document validation pipeline to use this feature. Additional test fixtures and tests are included to ensure correct behavior.</p>
+<p dir="auto"><strong>Support for locale-sensitive word segmentation:</strong></p>
+<ul dir="auto">
+<li>Added a new boolean configuration option, <code class="notranslate">useIntlWordSegmentation</code>, to the JSON schema (<code class="notranslate">cspell.schema.json</code>) and internal TypeScript types (<code class="notranslate">BaseSetting</code>), allowing users to enable locale-aware text segmentation for supported languages. [1] [2] [3] [4]</li>
+<li>Implemented the <code class="notranslate">IntlSegmentTextTransformer</code> and a factory function, <code class="notranslate">createIntlSegmentTextTransformer</code>, to perform locale-sensitive segmentation using the specified language.</li>
+<li>Introduced a new utility, <code class="notranslate">chainTransformers</code>, and an <code class="notranslate">IdentityTextTransformer</code> to allow chaining multiple text transformers in the validation pipeline.</li>
+<li>Updated the document validation logic (<code class="notranslate">docValidator.ts</code> and related files) to use the new transformer when <code class="notranslate">useIntlWordSegmentation</code> is enabled, ensuring correct segmentation for complex scripts. [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]</li>
+</ul>
+<p dir="auto"><strong>Testing and fixtures:</strong></p>
+<ul dir="auto">
+<li>Added new test fixtures and a test document containing Thai text, as well as a corresponding dictionary file and configuration to verify correct segmentation and spell checking. [1] [2] [3]</li>
+<li>Extended the document validator tests to cover the new segmentation feature.</li>
+</ul>
+<p dir="auto">These changes collectively improve support for non-space-delimited languages and provide a more robust spell-checking experience for a wider range of languages.</p>
+<hr>
+
+
+<h3 dir="auto">feat: Support languages without word breaks (Part 1) (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9131">#9131</a>)</h3>
+<p dir="auto">This pull request introduces a new <code class="notranslate">IntlSegmentTextTransformer</code> for locale-aware text segmentation, refactors text transformation infrastructure for better composability, and improves locale normalization to BCP 47 standards. It also adds comprehensive tests for these new features and refactors existing transformers for consistency.</p>
+<h3 dir="auto">Locale normalization improvements</h3>
+<ul dir="auto">
+<li>Improved the <code class="notranslate">normalizeLocaleIntl</code> function in <code class="notranslate">LanguageSettings.ts</code> to support BCP 47 language tag normalization, including script and region subtags, and added tests for these cases. [1] [2]</li>
+</ul>
+<h3 dir="auto">New locale-aware text transformer</h3>
+<ul dir="auto">
+<li>Added the <code class="notranslate">IntlSegmentTextTransformer</code> class for locale-aware word segmentation using <code class="notranslate">Intl.Segmenter</code>, along with tests covering multiple locales (including Thai). [1] [2]</li>
+</ul>
+<h3 dir="auto">Transformer infrastructure and API improvements</h3>
+<ul dir="auto">
+<li>Introduced a generic <code class="notranslate">TextTransformer</code> interface and the <code class="notranslate">Edit</code> type in <code class="notranslate">Transformer.ts</code> to standardize text transformation operations.</li>
+<li>Added utility functions <code class="notranslate">applyEditsToMappedText</code> and <code class="notranslate">applyEditsToText</code> in <code class="notranslate">TextMapEdit.ts</code> for applying edits and maintaining source maps, used by all transformers.</li>
+</ul>
+<h3 dir="auto">Refactoring and consistency</h3>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/2d310afc22fa500b1be07e3c2e2d3897ec00daad"><code class="notranslate">2d310af</code></a> v10.2.0</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/90f3b74abf3e572d0c0a39ae7176c0c71f9802df"><code class="notranslate">90f3b74</code></a> chore: Prepare Release v10.2.0 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9125">#9125</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/308c7ea1e38518476e0ef060bfb561ca43e24892"><code class="notranslate">308c7ea</code></a> v10.2.0-alpha.7</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/b03d9ce5927031d5a2c69f3ee417db3fc3d22f09"><code class="notranslate">b03d9ce</code></a> chore: Prepare Release v10.2.0-alpha.7 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9123">#9123</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/b3ec56e9999e7aaf4a7d29b172a2178724421f1c"><code class="notranslate">b3ec56e</code></a> chore: Prepare Release v10.2.0-alpha.6 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9116">#9116</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/e4f1c80288d9d3857acdad42d8f6bd16663970f7"><code class="notranslate">e4f1c80</code></a> v10.2.0-alpha.5</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/444c3b310f96174cb2859f5283c9e6818110c194"><code class="notranslate">444c3b3</code></a> chore: Prepare Release v10.2.0-alpha.5 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9114">#9114</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/12112f55327c250213324d802ce17217f337e750"><code class="notranslate">12112f5</code></a> v10.2.0-alpha.4</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/79dee1b9621bf960f7fdd6a75f002f2012722c61"><code class="notranslate">79dee1b</code></a> chore: Prepare Release v10.2.0-alpha.4 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9109">#9109</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/8cef1dfe60295f32e0d64c599a732d03e5fe7d0d"><code class="notranslate">8cef1df</code></a> v10.2.0-alpha.3</li>
+<li>Additional commits viewable in <a href="https://github.com/streetsidesoftware/cspell/commits/v10.2.0/packages/cspell">compare view</a></li>
+</ul>
+</details>
+<details>
+<summary>Maintainer changes</summary>
+<p dir="auto">This version was pushed to npm by <a href="https://www.npmjs.com/~GitHub%20Actions" rel="nofollow">GitHub Actions</a>, a new releaser for cspell since your current version.</p>
+</details>
+<br>
+<p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/38961f2f360ccbee208cff725b86b4a0f2ff62ff4e900d42abfc983aadb4bb60/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d637370656c6c267061636b6167652d6d616e616765723d6e706d5f616e645f7961726e2670726576696f75732d76657273696f6e3d31302e312e31266e65772d76657273696f6e3d31302e322e30" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=cspell&amp;package-manager=npm_and_yarn&amp;previous-version=10.1.1&amp;new-version=10.2.0" style="max-width: 100%;"></a></p>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>
+</ul>
+</details>]]></content>
+        <author>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
+        </author>
+        <published>2026-09-01T14:01:25.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[fix(javascript): correct two regex examples that throw SyntaxError]]></title>
+        <id>https://github.com/mdn/content/pull/45426</id>
+        <link href="https://github.com/mdn/content/pull/45426"/>
+        <updated>2026-09-01T11:57:34.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/189964965?u=5e030a50f854f5d4d5c0c9e3e0d2599fe830e4f2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Summary</h3>
+<p dir="auto">Two lines sit in <code class="notranslate">example-good</code> blocks on the JavaScript error reference pages but are not valid regexes. Both throw <code class="notranslate">SyntaxError</code> if pasted into a console, which is the opposite of what the block demonstrates.</p>
+<h3 dir="auto"><code class="notranslate">Regex_character_class_escape_in_class_range</code></h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/[[A-z]--_]]/v;   // SyntaxError: Invalid regular expression"><pre class="notranslate"><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-kos">[</span><span class="pl-c1">[</span><span class="pl-c1">A</span><span class="pl-c1">-</span><span class="pl-c1">z</span><span class="pl-kos">]</span><span class="pl-s">-</span><span class="pl-s">-</span><span class="pl-s">_</span><span class="pl-kos">]</span><span class="pl-kos">]</span><span class="pl-c1">/</span>v</span><span class="pl-kos">;</span>   <span class="pl-c">// SyntaxError: Invalid regular expression</span></pre></div>
+<p dir="auto">There is a stray <code class="notranslate">]</code> at the end. The neighbouring <code class="notranslate">example-bad</code> block already shows the failing form, so the good one is meant to parse. Removing the extra bracket gives <code class="notranslate">/[[A-z]--_]/v</code>, which compiles and still demonstrates <code class="notranslate">--</code> as set subtraction.</p>
+<h3 dir="auto"><code class="notranslate">Regex_invalid_group</code></h3>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="/[\p{Thai}&amp;&amp;\p{Digit}]/v;   // SyntaxError: Invalid property name"><pre class="notranslate"><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-kos">[</span><span class="pl-cce">\p<span class="pl-kos">{</span>Thai<span class="pl-kos">}</span></span><span class="pl-c1">&amp;</span><span class="pl-c1">&amp;</span><span class="pl-cce">\p<span class="pl-kos">{</span>Digit<span class="pl-kos">}</span></span><span class="pl-kos">]</span><span class="pl-c1">/</span>v</span><span class="pl-kos">;</span>   <span class="pl-c">// SyntaxError: Invalid property name</span></pre></div>
+<p dir="auto">Neither <code class="notranslate">Thai</code> nor <code class="notranslate">Digit</code> is a valid Unicode property name in JavaScript. <code class="notranslate">Thai</code> is a script, so it needs <code class="notranslate">Script=Thai</code>, and the general category for digits is <code class="notranslate">Nd</code>. <code class="notranslate">/[\p{Script=Thai}&amp;&amp;\p{Nd}]/v</code> compiles and keeps the point of the example, that <code class="notranslate">&amp;&amp;</code> is the set intersection syntax in <code class="notranslate">v</code> mode.</p>
+<h3 dir="auto">How I checked</h3>
+<p dir="auto">I evaluated the regexes as they appear on the <strong>rendered</strong> pages rather than in the source, because Yari collapses escapes inside code blocks. Both throw on the live pages today and compile after this change, and no other <code class="notranslate">example-good</code> regex on either page is affected.</p>
+<p dir="auto">Worth noting for review: the similar-looking double-escaped braces on <code class="notranslate">Regex_raw_bracket</code> and <code class="notranslate">Regex_invalid_char_in_class</code> are <strong>not</strong> a bug. Those render correctly, and the <code class="notranslate">&lt;!-- Note: the {} need to be double-escaped, once for Yari --&gt;</code> comments there are accurate. I checked those separately and left them alone.</p>]]></content>
+        <author>
+            <name>rajanpanth</name>
+            <email>rajanpanth@noreply.github.com</email>
+            <uri>https://github.com/rajanpanth</uri>
+        </author>
+        <published>2026-09-01T11:55:46.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[New pages: 4 *-rule-inset-cap-* property pages]]></title>
+        <id>https://github.com/mdn/content/pull/45425</id>
+        <link href="https://github.com/mdn/content/pull/45425"/>
+        <updated>2026-09-01T12:30:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR includes the creation of four new reference pages:</p>
+<ul dir="auto">
+<li><code class="notranslate">column-rule-inset-cap-start</code></li>
+<li><code class="notranslate">row-rule-inset-cap-end</code></li>
+<li><code class="notranslate">row-rule-inset-cap-start</code></li>
+<li><code class="notranslate">rule-inset-cap</code></li>
+</ul>
+<p dir="auto">Spec: <a href="https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-inset-cap-end" rel="nofollow">https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-inset-cap-end</a><br>
+The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="nofollow">CSS gaps module page</a> is already live.</p>
+<p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4718339915" data-permission-text="Title is private" data-url="https://github.com/openwebdocs/project/issues/238" data-hovercard-type="issue" data-hovercard-url="/openwebdocs/project/issues/238/hovercard" href="https://github.com/openwebdocs/project/issues/238">openwebdocs/project#238</a></p>
+<p dir="auto">note: <a href="https://github.com/mdn/content/pull/45204" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45204/hovercard"><code class="notranslate">column-rule-inset-cap-end</code></a> is in review.</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2026-09-01T11:33:38.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[FF154 No-Vary-Search updates]]></title>
         <id>https://github.com/mdn/content/pull/45423</id>
@@ -22,26 +238,6 @@
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-09-01T08:21:10.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Functions guide: replace flawed zoo analogy for scope]]></title>
-        <id>https://github.com/mdn/content/pull/45421</id>
-        <link href="https://github.com/mdn/content/pull/45421"/>
-        <updated>2026-09-01T10:41:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Replaces the zoo/zookeeper analogy in the "Function scope and conflicts" section with an apartment-building analogy: private apartments represent function scope, and shared common areas (pool, gym, rec room) represent the global scope. Also removes the now-unused zoo illustration.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The zoo analogy was backwards/misleading — it framed the "zoo keeper" (global scope) as reaching into every enclosure (function scope), when the actual point is the reverse: things declared in global scope are accessible to narrower scopes, not the other way around.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The apartment-building analogy was proposed by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a> in the issue thread and confirmed as clearer by the reporter <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mao-sz/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mao-sz">@mao-sz</a>. No other content on the page was changed.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45401.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5293327882" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45401" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45401/hovercard" href="https://github.com/mdn/content/issues/45401">#45401</a></p>]]></content>
-        <author>
-            <name>BaconMan1168</name>
-            <email>BaconMan1168@noreply.github.com</email>
-            <uri>https://github.com/BaconMan1168</uri>
-        </author>
-        <published>2026-09-01T04:22:57.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hyphenate compound modifiers built-in and left-hand side]]></title>
@@ -480,7 +676,7 @@ It was deprecated in 2018 and is <a href="https://github.com/mdn/browser-compat-
         <title type="html"><![CDATA[Document signal retention behavior of AbortSignal.any()]]></title>
         <id>https://github.com/mdn/content/pull/45353</id>
         <link href="https://github.com/mdn/content/pull/45353"/>
-        <updated>2026-08-27T12:52:56.000Z</updated>
+        <updated>2026-09-01T11:33:41.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds a <strong>Description</strong> section to the <code class="notranslate">AbortSignal.any()</code> reference page documenting that the returned signal stays linked to (and retained by) the input signals until one of them aborts or all become unreachable, with a minimal example of the problematic pattern (repeatedly combining a long-lived signal with short-lived ones) and how to avoid it (abort the short-lived controller when its operation completes).</p>
 <h3 dir="auto">Motivation</h3>
@@ -491,71 +687,5 @@ It was deprecated in 2018 and is <a href="https://github.com/mdn/browser-compat-
             <uri>https://github.com/1t1sCooL</uri>
         </author>
         <published>2026-08-27T12:52:33.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix alt text of union() Venn diagram (said "symmetric difference")]]></title>
-        <id>https://github.com/mdn/content/pull/45352</id>
-        <link href="https://github.com/mdn/content/pull/45352"/>
-        <updated>2026-08-27T12:44:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Fixes the alt text of the Venn diagram on the <code class="notranslate">Set.prototype.union()</code> page: it currently says "The <strong>symmetric difference</strong> of A and B is the region contained by either or both circles", which describes the wrong operation (copied from the <code class="notranslate">symmetricDifference()</code> page). The diagram on this page illustrates the union, and "the region contained by either or both circles" is exactly the union, so only the operation name needs correcting.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Accurate alt text matters for screen-reader users; noticed while translating this page.</p>]]></content>
-        <author>
-            <name>1t1sCooL</name>
-            <email>1t1sCooL@noreply.github.com</email>
-            <uri>https://github.com/1t1sCooL</uri>
-        </author>
-        <published>2026-08-27T12:44:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[chore: Update writing guidlines and remove Deprecated_Header macro mentions]]></title>
-        <id>https://github.com/mdn/content/pull/45345</id>
-        <link href="https://github.com/mdn/content/pull/45345"/>
-        <updated>2026-08-30T01:23:59.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Follow up on</p>
-<ul dir="auto">
-<li><a href="https://github.com/orgs/mdn/discussions/911">https://github.com/orgs/mdn/discussions/911</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5203572534" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45259" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45259/hovercard" href="https://github.com/mdn/content/pull/45259">#45259</a></li>
-</ul>
-<h3 dir="auto">Description</h3>
-<p dir="auto">The PR updates writing guidelines to instruct contributors to not use the <code class="notranslate">{{Deprecated_Header}}</code> macro anymore. Because, now the deprecated status banner is being inferred from front-matter <code class="notranslate">status</code> property or data from web-features repository.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Contributors need to know.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://github.com/orgs/mdn/discussions/911">https://github.com/orgs/mdn/discussions/911</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5203572534" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45259" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45259/hovercard" href="https://github.com/mdn/content/pull/45259">#45259</a></li>
-</ul>]]></content>
-        <author>
-            <name>OnkarRuikar</name>
-            <email>OnkarRuikar@noreply.github.com</email>
-            <uri>https://github.com/OnkarRuikar</uri>
-        </author>
-        <published>2026-08-27T08:29:10.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clarify image format selection guidance]]></title>
-        <id>https://github.com/mdn/content/pull/45339</id>
-        <link href="https://github.com/mdn/content/pull/45339"/>
-        <updated>2026-08-27T06:26:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/61856979?u=2ae56839a2779c62b750f6f2e1e049edb283def2&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Replaces the format-by-format list on the img element page with concise guidance about choosing formats based on compression, browser support, and image requirements. It also explains fallbacks and the progressive-rendering benefit of JPEG XL for large images.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The previous list called several competing formats a good choice without clearly explaining how to decide between them. This revision directs readers to WebP or AVIF for raster compression, SVG for scalable graphics, and picture-based fallbacks where browser support requires them.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>Markdownlint: passed</li>
-<li>Prettier check: passed</li>
-<li>Updated the affected internal heading link</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45286.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5221179468" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45286" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45286/hovercard" href="https://github.com/mdn/content/issues/45286">#45286</a></p>]]></content>
-        <author>
-            <name>33modeling</name>
-            <email>33modeling@noreply.github.com</email>
-            <uri>https://github.com/33modeling</uri>
-        </author>
-        <published>2026-08-27T06:25:42.000Z</published>
     </entry>
 </feed>
