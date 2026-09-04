@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-09-03T23:38:28.055Z</updated>
+    <updated>2026-09-04T01:48:35.017Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
@@ -355,7 +355,7 @@ In this issue for discussion,  or in the charter-drafts repository for specific 
         <title type="html"><![CDATA[WG Revision: Web Speech API: SpeechRecognitionResult Timestamps]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1267</id>
         <link href="https://github.com/w3ctag/design-reviews/issues/1267"/>
-        <updated>2026-08-24T22:28:03.000Z</updated>
+        <updated>2026-09-04T00:16:08.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/11778990?u=831ce543a01230432e3b8255eb95c2bd212882de&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
 <p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard" href="https://github.com/WebAudio/web-speech-api/pull/192">WebAudio/web-speech-api#192</a></p>
 <h3 dir="auto">Explainer</h3>
@@ -378,8 +378,13 @@ In this issue for discussion,  or in the charter-drafts repository for specific 
 <li>A description of the problems that end-users were facing before this proposal: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#problem">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#problem</a></li>
 <li>Alternatives considered: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#alternatives-considered">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#alternatives-considered</a></li>
 <li>Examples of how to use the proposal to solve the end-users' problems: <a href="https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#proposed-behavior--example-usage">https://github.com/WebAudio/web-speech-api/blob/main/explainers/speech-recognition-result-timestamps.md#proposed-behavior--example-usage</a></li>
-<li>What do the end-users experience with this proposal: End users experience synchronized, real-time captions and translated subtitles during live video conferencing and media playback. Web applications can detect when on-device ASR models lag behind real-time on resource-constrained devices and automatically transition to cloud backends without user disruption.</li>
-<li>User research you did to validate the problem and/or design, if any: Live conferencing latency studies and interactive validation demo: <a href="https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html" rel="nofollow">https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html</a></li>
+<li>What do the end-users experience with this proposal: End users experience synchronized, frame-accurate captions and translated subtitles during media playback and live conferencing, interactive "click-to-seek" transcript navigation, and seamless alignment between speech transcripts and recorded media tracks.</li>
+<li>User research you did to validate the problem and/or design, if any: Live conferencing / media synchronization studies and interactive validation demos:
+<ul dir="auto">
+<li>Live Meeting Caption Sync &amp; Recording Demo: <a href="https://alan33d.github.io/web-speech-demos/live_meeting_recording_demo.html" rel="nofollow">https://alan33d.github.io/web-speech-demos/live_meeting_recording_demo.html</a></li>
+<li>WebRTC Caption Playout Delay Test: <a href="https://alan33d.github.io/web-speech-demos/webrtc_caption_sync_test.html" rel="nofollow">https://alan33d.github.io/web-speech-demos/webrtc_caption_sync_test.html</a></li>
+</ul>
+</li>
 <li>Web Platform Tests: <a href="https://github.com/web-platform-tests/wpt/tree/master/speech-api">https://github.com/web-platform-tests/wpt/tree/master/speech-api</a> (specifically <code class="notranslate">idlharness.https.window.js</code> and <code class="notranslate">SpeechRecognition-onresult-manual.https.html</code>)</li>
 </ul>
 <h3 dir="auto">The specification</h3>
@@ -413,11 +418,11 @@ In this issue for discussion,  or in the charter-drafts repository for specific 
 <li>Multi-stakeholder feedback:
 <ul dir="auto">
 <li>Chromium comments: Positive / In active development (<a href="https://chromestatus.com/feature/5811907077472256" rel="nofollow">https://chromestatus.com/feature/5811907077472256</a>)</li>
-<li>Mozilla comments: Active discussion in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4878339704" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/191" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-speech-api/issues/191/hovercard" href="https://github.com/WebAudio/web-speech-api/issues/191">WebAudio/web-speech-api#191</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard?comment_id=3774155900&amp;comment_type=review_comment" href="https://github.com/WebAudio/web-speech-api/pull/192#discussion_r3774155900">WebAudio/web-speech-api#192 (comment)</a> by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/padenot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/padenot">@padenot</a> (provided guidance on using <code class="notranslate">double</code> in seconds and non-nullable attributes to match Web Audio conventions).</li>
+<li>Mozilla comments: Active discussion in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4878339704" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/191" data-hovercard-type="issue" data-hovercard-url="/WebAudio/web-speech-api/issues/191/hovercard" href="https://github.com/WebAudio/web-speech-api/issues/191">WebAudio/web-speech-api#191</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4879781647" data-permission-text="Title is private" data-url="https://github.com/WebAudio/web-speech-api/issues/192" data-hovercard-type="pull_request" data-hovercard-url="/WebAudio/web-speech-api/pull/192/hovercard?comment_id=3774155900&amp;comment_type=review_comment" href="https://github.com/WebAudio/web-speech-api/pull/192#discussion_r3774155900">WebAudio/web-speech-api#192 (comment)</a> by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/padenot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/padenot">@padenot</a> (provided guidance on using <code class="notranslate">double</code> in seconds, non-nullable attributes, and naming <code class="notranslate">speechStartTime</code>/<code class="notranslate">speechEndTime</code> to mirror <code class="notranslate">speechstart</code>/<code class="notranslate">speechend</code>).</li>
 <li>WebKit comments: Standards position to be filed at <a href="https://github.com/WebKit/standards-positions/">https://github.com/WebKit/standards-positions/</a></li>
 </ul>
 </li>
-<li>Major unresolved issues with or opposition to this specification: None. Consensus reached on using non-nullable <code class="notranslate">double</code> representing seconds relative to audio stream start.</li>
+<li>Major unresolved issues with or opposition to this specification: None. Consensus reached on using non-nullable <code class="notranslate">double</code> representing seconds relative to audio stream start, named <code class="notranslate">speechStartTime</code> and <code class="notranslate">speechEndTime</code>.</li>
 <li>Status/issue trackers for implementations:
 <ul dir="auto">
 <li>Chrome Status: <a href="https://chromestatus.com/feature/5811907077472256" rel="nofollow">https://chromestatus.com/feature/5811907077472256</a></li>
@@ -426,10 +431,15 @@ In this issue for discussion,  or in the charter-drafts repository for specific 
 </li>
 </ul>
 <h3 dir="auto">You should also know that...</h3>
-<p dir="auto"><strong>W3C Audio WG/CG Meeting Discussion:</strong> This feature was presented and discussed during the <strong>W3C Audio WG/CG Teleconference on August 13, 2026</strong> (see <a href="https://docs.google.com/document/d/1pH4qzMoMTUDYtxW2LDIWKlHfiDeWwctM6s_I78WJzdE/edit?tab=t.ssvip9178d1u" rel="nofollow">Meeting Minutes</a>). The group aligned on developer needs for audio timeline association and on-device ASR latency tracking (e.g. enabling optional failover to a cloud ASR provider, to prevent stale or delayed captions in live video conferencing).</p>
+<p dir="auto"><strong>W3C Audio WG/CG Meeting Discussion:</strong> This feature was presented and discussed during the <strong>W3C Audio WG/CG Teleconference on August 13, 2026</strong> (see <a href="https://docs.google.com/document/d/1pH4qzMoMTUDYtxW2LDIWKlHfiDeWwctM6s_I78WJzdE/edit?tab=t.ssvip9178d1u" rel="nofollow">Meeting Minutes</a>). The group aligned on developer needs for media timeline association (e.g. generating <code class="notranslate">VTTCue</code> captions, click-to-seek transcripts, and synchronizing captions with recorded video).</p>
 <ul dir="auto">
-<li>Mozilla's feedback in PRs were also discussed and addressed during the meeting.</li>
-<li>An interactive demonstration showcasing real-time latency calculation, subtitle synchronization, and the inadequacy of existing coarse DOM event timestamps was also presented at the WG meeting. The demo is available at: <a href="https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html" rel="nofollow">https://michaelwasserman.github.io/web-speech-demos/speech_latency_h.html</a></li>
+<li>Mozilla's feedback in PRs was also discussed and addressed during the meeting.</li>
+<li>Interactive demonstrations showcasing subtitle synchronization, recording timeline alignment, and the inadequacy of existing coarse DOM event timestamps were presented at the WG meeting and are available for testing:
+<ul dir="auto">
+<li><a href="https://alan33d.github.io/web-speech-demos/live_meeting_recording_demo.html" rel="nofollow">https://alan33d.github.io/web-speech-demos/live_meeting_recording_demo.html</a></li>
+<li><a href="https://alan33d.github.io/web-speech-demos/webrtc_caption_sync_test.html" rel="nofollow">https://alan33d.github.io/web-speech-demos/webrtc_caption_sync_test.html</a></li>
+</ul>
+</li>
 </ul>
 
 <hr>
