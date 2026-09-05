@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/198354403?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds a note to the Geometry interfaces overview explaining that these interfaces (DOMMatrix, DOMPoint, DOMRect, DOMQuad) prioritize DOM-rendering integration and native-binding convenience over raw computational throughput.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The issue reported that <code class=\"notranslate\">DOMMatrix.transformPoint()</code> can be 40-160x slower than equivalent hand-written JS math across engines. As discussed on the issue, this isn't a browser bug to fix but an inherent tradeoff of the API's design, so a documentation note is the right response. The note is scoped to that inherent-complexity framing per maintainer feedback, rather than citing implementation-specific benchmark numbers or browser bug trackers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">See discussion on the linked issue for the maintainer's framing of what the note should (and shouldn't) say.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45490.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5342145690\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45490\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45490/hovercard\" href=\"https://github.com/mdn/content/issues/45490\">#45490</a></p>",
+            "url": "https://github.com/mdn/content/pull/45520",
+            "title": "Geometry interfaces: note they are not a linear algebra library",
+            "date_modified": "2026-09-05T01:48:30.000Z",
+            "date_published": "2026-09-05T01:48:05.000Z",
+            "author": {
+                "name": "BaconMan1168",
+                "url": "https://github.com/BaconMan1168"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/198354403?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds a note to the <code class=\"notranslate\">font-style</code> property page stating that the spec-defined <code class=\"notranslate\">left</code> and <code class=\"notranslate\">right</code> values are not supported in any browser.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><code class=\"notranslate\">left</code> and <code class=\"notranslate\">right</code> appear in the formal syntax but aren't explained anywhere on the page, and no browser implements them (confirmed against <code class=\"notranslate\">mdn/browser-compat-data</code>, which has no compat entries for these values). This leaves readers unable to tell whether the values are usable. The note mirrors the existing \"not supported in any browsers\" pattern used on other property pages (e.g. <code class=\"notranslate\">caption-side</code>, <code class=\"notranslate\">text-combine-upright</code>) and leaves the formal syntax untouched, since the values are legitimately defined in CSS Fonts Module Level 4.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>CSS Fonts Module Level 4, §2.4 defines <code class=\"notranslate\">left</code>/<code class=\"notranslate\">right</code> as slant-direction matches for italic/oblique faces.</li>\n<li>No BCD entries exist for these values under <code class=\"notranslate\">css/properties/font-style.json</code>.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45460.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5322272174\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45460\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45460/hovercard\" href=\"https://github.com/mdn/content/issues/45460\">#45460</a></p>",
+            "url": "https://github.com/mdn/content/pull/45519",
+            "title": "font-style: note that left/right values are unimplemented",
+            "date_modified": "2026-09-05T01:48:18.000Z",
+            "date_published": "2026-09-05T01:47:55.000Z",
+            "author": {
+                "name": "BaconMan1168",
+                "url": "https://github.com/BaconMan1168"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45467.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5329248931\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45467\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45467/hovercard\" href=\"https://github.com/mdn/content/issues/45467\">#45467</a>.</p>\n<p dir=\"auto\">I have drawn pretty heavily on <a href=\"https://w3c.github.io/webappsec-secure-contexts/#intro\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#intro</a> which gives a nice easy overview of the situation for different environments.</p>\n<p dir=\"auto\">I had some questions though.</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">As I read it, documents are SC if they have a \"potentially trustworthy URL\" (<a href=\"https://html.spec.whatwg.org/multipage/webappapis.html#secure-context\" rel=\"nofollow\">https://html.spec.whatwg.org/multipage/webappapis.html#secure-context</a>). But the intro says that iframed documents are SC if they have a \"potentially trustworthy origin\" (<a href=\"https://w3c.github.io/webappsec-secure-contexts/#examples-framed\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#examples-framed</a>). Why is there a difference? I think it would make the explanations simpler if we could fold the \"potentially trustworthy origin\" section into \"potentially trustworthy URL\" but we can't really do that if things want to refer to \"potentially trustworthy origin\" specifically.</p>\n</li>\n<li>\n<p dir=\"auto\">I quite like the diagrams in the intro but elected not to copy them partly because I think it will be hard to make them accessible. So I just used a couple of tables.</p>\n</li>\n<li>\n<p dir=\"auto\">There is some horrible stuff about how to derive an origin from a URL (<a href=\"https://url.spec.whatwg.org/#concept-url-origin\" rel=\"nofollow\">https://url.spec.whatwg.org/#concept-url-origin</a>) that I have glossed over.</p>\n</li>\n<li>\n<p dir=\"auto\">I think the rationale in \"Why should some features be restricted?\" is still a bit weak. There an interesting bit in the threat model for the spec (<a href=\"https://w3c.github.io/webappsec-secure-contexts/#threat-models\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#threat-models</a>) that says \"Granting permissions to unauthenticated origins is, in the presence of a network attacker, equivalent to granting the permissions to any origin\" - that is, because a network attacker can take over an unauthenticated connection, then they could get access to any powerful APIs that have been granted to that connection. If you like I could try to unpack this.</p>\n</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/45518",
+            "title": "Update secure contexts guide",
+            "date_modified": "2026-09-05T00:04:28.000Z",
+            "date_published": "2026-09-04T23:47:29.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5349393758\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45504\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45504/hovercard\" href=\"https://github.com/mdn/content/issues/45504\">#45504</a></p>",
             "url": "https://github.com/mdn/content/pull/45517",
             "title": "Promise.try() uses PromiseResolve in non-error case",
@@ -190,39 +223,6 @@
             "author": {
                 "name": "natiD1",
                 "url": "https://github.com/natiD1"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43892.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4307169381\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43892\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43892/hovercard\" href=\"https://github.com/mdn/content/issues/43892\">#43892</a>.</p>\n<p dir=\"auto\">Reduce code verbosity in two code examples, and migrate inline PNG to inline SVG in the other two.</p>\n<p dir=\"auto\">The code has been rebuilt from ground up. The best way to review it is to simply check the behavior.</p>",
-            "url": "https://github.com/mdn/content/pull/45451",
-            "title": "Shorten long live samples to avoid URI size limits",
-            "date_modified": "2026-09-02T06:57:01.000Z",
-            "date_published": "2026-09-02T06:52:43.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #35932.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2533567164\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/35932\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/35932/hovercard\" href=\"https://github.com/mdn/content/issues/35932\">#35932</a></p>",
-            "url": "https://github.com/mdn/content/pull/45449",
-            "title": "Mention that tracks / data channels need to be added before createOffer",
-            "date_modified": "2026-09-02T05:53:33.000Z",
-            "date_published": "2026-09-02T05:51:52.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR includes the creation of four new reference pages:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">column-rule-inset-cap-start</code></li>\n<li><code class=\"notranslate\">row-rule-inset-cap-end</code></li>\n<li><code class=\"notranslate\">row-rule-inset-cap-start</code></li>\n<li><code class=\"notranslate\">rule-inset-cap</code></li>\n</ul>\n<p dir=\"auto\">Spec: <a href=\"https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-inset-cap-end\" rel=\"nofollow\">https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-inset-cap-end</a><br>\nThe <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps\" rel=\"nofollow\">CSS gaps module page</a> is already live.</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4718339915\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/238\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/238/hovercard\" href=\"https://github.com/openwebdocs/project/issues/238\">openwebdocs/project#238</a></p>\n<p dir=\"auto\">note: <a href=\"https://github.com/mdn/content/pull/45204\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45204/hovercard\"><code class=\"notranslate\">column-rule-inset-cap-end</code></a> is in review.</p>",
-            "url": "https://github.com/mdn/content/pull/45425",
-            "title": "New pages: 4 *-rule-inset-cap-* property pages",
-            "date_modified": "2026-09-01T12:30:44.000Z",
-            "date_published": "2026-09-01T11:33:38.000Z",
-            "author": {
-                "name": "estelle",
-                "url": "https://github.com/estelle"
             }
         }
     ]
