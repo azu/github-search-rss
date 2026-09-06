@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-05T22:26:47.798Z</updated>
+    <updated>2026-09-06T00:20:49.768Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -86,28 +86,6 @@
             <uri>https://github.com/mfuji09</uri>
         </author>
         <published>2026-09-05T14:42:28.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix typos]]></title>
-        <id>https://github.com/mdn/content/pull/45523</id>
-        <link href="https://github.com/mdn/content/pull/45523"/>
-        <updated>2026-09-05T22:26:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Fixes four subject-verb agreement typos.</p>
-<ul dir="auto">
-<li><code class="notranslate">Cascade/Specificity</code>: "the number of selector components in each column are compared" → "is compared". The subject is "the number", not "components".</li>
-<li><code class="notranslate">Pseudo-classes and pseudo-elements</code>: "that would fail if the number of words you had wrapped were longer or shorter" → "was longer or shorter".</li>
-<li><code class="notranslate">CanvasRenderingContext2D.getImageData()</code>: "Thrown if either <code class="notranslate">sw</code> or <code class="notranslate">sh</code> are zero." → "is zero."</li>
-<li><code class="notranslate">Atomics.or()</code>: "The bitwise OR operation yields 1, if either <code class="notranslate">a</code> or <code class="notranslate">b</code> are 1." → "is 1."</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">In the first two, "the number of …" is a singular subject and takes a singular verb; the plural noun in between is part of the prepositional phrase. In the last two, <code class="notranslate">either … or</code> presents the alternatives one at a time, so the verb agrees with the nearer singular subject.</p>]]></content>
-        <author>
-            <name>husamemadH</name>
-            <email>husamemadH@noreply.github.com</email>
-            <uri>https://github.com/husamemadH</uri>
-        </author>
-        <published>2026-09-05T09:17:55.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[docs(fedcm): clarify active-mode IdP login]]></title>
@@ -450,5 +428,35 @@ the increment should be on the element not the pseudo</p>]]></content>
             <uri>https://github.com/eeminionn</uri>
         </author>
         <published>2026-09-03T05:53:47.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Note that `webkitdirectory` is being standardized]]></title>
+        <id>https://github.com/mdn/content/pull/45474</id>
+        <link href="https://github.com/mdn/content/pull/45474"/>
+        <updated>2026-09-03T11:25:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Add a note to the <code class="notranslate">&lt;input type="file"&gt;</code> reference page's "Non-standard attributes" section explaining that <code class="notranslate">webkitdirectory</code> is in the process of being standardized.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The issue reported that the page doesn't mention <code class="notranslate">webkitdirectory</code> is being standardized. I confirmed the current spec status before editing:</p>
+<ul dir="auto">
+<li>The <a href="https://wicg.github.io/entries-api/#dom-htmlinputelement-webkitdirectory" rel="nofollow">WICG File and Directory Entries API</a> spec, which defines <code class="notranslate">webkitdirectory</code>, explicitly states it "is not a W3C Standard nor is it on the W3C Standards Track" — it's a WICG Community Group draft, not a full standard.</li>
+<li><code class="notranslate">browser-compat-data</code>'s entry for <code class="notranslate">html/elements/input.json</code>'s <code class="notranslate">webkitdirectory</code> still has <code class="notranslate">"standard_track": false</code>.</li>
+<li>The WHATWG HTML Standard does not define <code class="notranslate">webkitdirectory</code>.</li>
+</ul>
+<p dir="auto">Since it isn't yet part of a full WHATWG/W3C standard, I kept it in the "Non-standard attributes" section (rather than moving it out) and added a note pointing to the WICG spec that is standardizing it, so readers get the "it's on track to become standard" context the issue asked for without an inaccurate "this is now standard" claim.</p>
+<p dir="auto">I also checked the sibling <code class="notranslate">HTMLInputElement.webkitdirectory</code> property page — it doesn't make any explicit standard/non-standard text claim (its Specifications/Compat sections are auto-generated from BCD), so it's already consistent and didn't need a change.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li><a href="https://wicg.github.io/entries-api/#dom-htmlinputelement-webkitdirectory" rel="nofollow">WICG entries-api spec</a></li>
+<li><a href="https://github.com/mdn/browser-compat-data/blob/main/html/elements/input.json"><code class="notranslate">webkitdirectory</code> BCD entry</a> (<code class="notranslate">standard_track: false</code>)</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45466.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5328731144" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45466" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45466/hovercard" href="https://github.com/mdn/content/issues/45466">#45466</a></p>]]></content>
+        <author>
+            <name>BaconMan1168</name>
+            <email>BaconMan1168@noreply.github.com</email>
+            <uri>https://github.com/BaconMan1168</uri>
+        </author>
+        <published>2026-09-03T01:40:06.000Z</published>
     </entry>
 </feed>
