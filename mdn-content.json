@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/290622216?u=22c98b64369b17f727f57e2f57a9aaad62eb6179&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifies that <code class=\"notranslate\">const</code> requires an initializer at declaration time, unlike <code class=\"notranslate\">var</code> and <code class=\"notranslate\">let</code>, where initialization is optional.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The \"Declaring variables\" section lists <code class=\"notranslate\">var</code>, <code class=\"notranslate\">let</code>, and <code class=\"notranslate\">const</code> with parallel one-line summaries. <code class=\"notranslate\">var</code> and <code class=\"notranslate\">let</code> both explicitly state that initializing them is optional, but the <code class=\"notranslate\">const</code> entry omitted the fact that its initializer is <em>mandatory</em> — attempting to declare <code class=\"notranslate\">const</code> without one (<code class=\"notranslate\">const x;</code>) throws a <code class=\"notranslate\">SyntaxError</code> at parse time. This is an asymmetry readers could easily miss given the otherwise-parallel phrasing of the three entries, so this PR brings <code class=\"notranslate\">const</code>'s description in line with the precision already given to <code class=\"notranslate\">var</code>/<code class=\"notranslate\">let</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Per the ECMAScript specification (§14.3.1.1, Early Errors for <code class=\"notranslate\">LexicalDeclaration</code>): a <code class=\"notranslate\">LexicalBinding</code> with no <code class=\"notranslate\">Initializer</code> is a Syntax Error whenever the declaration <code class=\"notranslate\">IsConstantDeclaration</code> — i.e., specifically for <code class=\"notranslate\">const</code>, not <code class=\"notranslate\">let</code>.<br>\n<a href=\"https://tc39.es/ecma262/#sec-let-and-const-declarations-static-semantics-early-errors\" rel=\"nofollow\">https://tc39.es/ecma262/#sec-let-and-const-declarations-static-semantics-early-errors</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
+            "url": "https://github.com/mdn/content/pull/45538",
+            "title": "Clarify that const requires an initializer",
+            "date_modified": "2026-09-06T15:55:02.000Z",
+            "date_published": "2026-09-06T15:54:20.000Z",
+            "author": {
+                "name": "jebenna",
+                "url": "https://github.com/jebenna"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/143435759?u=ab80c38cf3f1d11c555b1a29280a76ca4aa057c0&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarify the existing Attribute inheritance section in the Using shadow DOM guide. Explain parent-based inheritance across a shadow boundary and distinguish a slot's inheritance from that of its assigned light-DOM content.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The current sentence implies that every slot inherits language and directionality directly from the shadow host, overlooking intervening shadow-tree ancestors. The replacement adds a short nested-slot example and retains qualifications and reference links for directionality exceptions, following the <a href=\"https://github.com/mdn/content/issues/45249#issuecomment-5555033430\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45249/hovercard\">invitation to propose a focused update</a>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The wording follows the HTML Standard's <a href=\"https://html.spec.whatwg.org/multipage/dom.html#the-lang-and-xml:lang-attributes\" rel=\"nofollow\">language rules</a> and <a href=\"https://html.spec.whatwg.org/multipage/dom.html#parent-directionality\" rel=\"nofollow\">parent directionality algorithm</a>, together with the DOM Standard's <a href=\"https://dom.spec.whatwg.org/#assign-slottables\" rel=\"nofollow\">slot assignment rules</a>.</p>\n<p dir=\"auto\">Validation:</p>\n<ul dir=\"auto\">\n<li>Changed-file Markdown, Prettier, front-matter, spelling and cross-reference checks passed.</li>\n<li><code class=\"notranslate\">npm test</code>: 12 passed, 0 failed.</li>\n<li>Changed-page Rari build and Fred SSR passed with no reported page issues.</li>\n<li>Local rendered page checked at 1440px and 390px: both paragraphs and links rendered correctly, without horizontal overflow.</li>\n<li>A Chromium experiment checked <code class=\"notranslate\">:lang()</code>, <code class=\"notranslate\">:dir()</code>, DOM parents and explicit attributes separately for nested slots, fallback content, assigned spans, explicit overrides, and directionality exceptions (<code class=\"notranslate\">bdi</code> and telephone inputs).</li>\n</ul>\n<p dir=\"auto\">This is a one-file prose correction: no runtime, dependency or anchor changes. No cross-browser or assistive-technology testing is claimed.</p>\n<p dir=\"auto\">AI assistance: Codex assisted with research, wording, validation and a separate exact-commit review.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5194209041\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45249\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45249/hovercard\" href=\"https://github.com/mdn/content/issues/45249\">#45249</a></p>",
+            "url": "https://github.com/mdn/content/pull/45537",
+            "title": "docs: clarify language and direction inheritance in shadow DOM",
+            "date_modified": "2026-09-06T14:45:12.000Z",
+            "date_published": "2026-09-06T14:09:03.000Z",
+            "author": {
+                "name": "Kin230k",
+                "url": "https://github.com/Kin230k"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">If the property is part of a shorthand, include alternative ways of declaring the value in the <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/CSS_property_page_template#description\" rel=\"nofollow\">Description</a>.</p>\n<p dir=\"auto\">Make <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/CSS_property_page_template#values\" rel=\"nofollow\">values</a> intro consistent.</p>",
             "url": "https://github.com/mdn/content/pull/45536",
             "title": "Consistency: put shorthand inclusion in description",
@@ -86,7 +108,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43803.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4271721430\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43803\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43803/hovercard\" href=\"https://github.com/mdn/content/issues/43803\">#43803</a>.</p>\n<p dir=\"auto\">The <code class=\"notranslate\">DataTransferItem.type</code> page didn't explain what <code class=\"notranslate\">type</code> contains when the item is a file. As the issue notes, for file items the value is the file's MIME type, which browsers generally infer from the file extension (not by inspecting the contents), and it can be an empty string when the extension is unknown.</p>\n<p dir=\"auto\">This adds a short paragraph making that behavior explicit and warning readers not to rely on <code class=\"notranslate\">type</code> alone to validate a file's actual format. It links to the existing \"common MIME types\" list already referenced in <em>See also</em>.</p>\n<p dir=\"auto\">No code examples changed.</p>",
             "url": "https://github.com/mdn/content/pull/45528",
             "title": "Clarify that DataTransferItem.type for files is the MIME type inferred from the extension",
-            "date_modified": "2026-09-05T20:06:35.000Z",
+            "date_modified": "2026-09-06T14:44:40.000Z",
             "date_published": "2026-09-05T20:04:49.000Z",
             "author": {
                 "name": "1t1sCooL",
@@ -130,7 +152,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/198354403?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds a note to the Geometry interfaces overview explaining that these interfaces (DOMMatrix, DOMPoint, DOMRect, DOMQuad) prioritize DOM-rendering integration and native-binding convenience over raw computational throughput.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The issue reported that <code class=\"notranslate\">DOMMatrix.transformPoint()</code> can be 40-160x slower than equivalent hand-written JS math across engines. As discussed on the issue, this isn't a browser bug to fix but an inherent tradeoff of the API's design, so a documentation note is the right response. The note is scoped to that inherent-complexity framing per maintainer feedback, rather than citing implementation-specific benchmark numbers or browser bug trackers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">See discussion on the linked issue for the maintainer's framing of what the note should (and shouldn't) say.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45490.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5342145690\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45490\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45490/hovercard\" href=\"https://github.com/mdn/content/issues/45490\">#45490</a></p>",
             "url": "https://github.com/mdn/content/pull/45520",
             "title": "Geometry interfaces: note they are not a linear algebra library",
-            "date_modified": "2026-09-05T01:49:48.000Z",
+            "date_modified": "2026-09-06T14:42:47.000Z",
             "date_published": "2026-09-05T01:48:05.000Z",
             "author": {
                 "name": "BaconMan1168",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">wip</p>",
-            "url": "https://github.com/mdn/content/pull/45493",
-            "title": "Add a guide on tracking",
-            "date_modified": "2026-09-04T04:31:23.000Z",
-            "date_published": "2026-09-04T04:29:18.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/143106292?u=b3c5814362982b570863d2bb4e99cc0cc32ec862&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n\n<p dir=\"auto\">Added missing SVG attribute reference pages to fix the broken <code class=\"notranslate\">svgattr</code> links:</p>\n<ul dir=\"auto\">\n<li>Pages added: <code class=\"notranslate\">offset</code>, <code class=\"notranslate\">async</code>, <code class=\"notranslate\">hreflang</code>, <code class=\"notranslate\">ping</code>, <code class=\"notranslate\">referrerPolicy</code>, <code class=\"notranslate\">rel</code>, <code class=\"notranslate\">xlink:actuate</code>, <code class=\"notranslate\">xlink:role</code>.</li>\n<li>Replaced former SVG  <code class=\"notranslate\">title</code> link with a  plain text.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n\n<p dir=\"auto\">To ensure that all SVG attributes referenced by <code class=\"notranslate\">SVGAttr</code> are documented and provide the browser compatibility data and usage details for SVG developers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<p dir=\"auto\"><code class=\"notranslate\">xlink:role</code> may require a corresponding BCD update.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44199.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4485600714\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44199\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44199/hovercard\" href=\"https://github.com/mdn/content/issues/44199\">#44199</a></p>\n",
-            "url": "https://github.com/mdn/content/pull/45487",
-            "title": "Add missing SVG attribute reference pages.",
-            "date_modified": "2026-09-03T18:13:05.000Z",
-            "date_published": "2026-09-03T17:21:43.000Z",
-            "author": {
-                "name": "younisdev",
-                "url": "https://github.com/younisdev"
             }
         }
     ]
