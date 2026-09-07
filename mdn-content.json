@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/198354403?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The <code class=\"notranslate\">PerformanceEntry.startTime</code> bullet on the <code class=\"notranslate\">PerformanceResourceTiming</code> page stated that the value is equivalent to <code class=\"notranslate\">PerformanceResourceTiming.fetchStart</code>. It now explains that the two are equal only when there are no HTTP redirects.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The claim contradicted the timestamp diagram directly below it, which places <code class=\"notranslate\">startTime</code> before the redirect phase and <code class=\"notranslate\">fetchStart</code> after it. Readers had no way to tell which one was right.</p>\n<p dir=\"auto\">Per the Resource Timing spec, a resource entry's <code class=\"notranslate\">startTime</code> comes from the fetch timing info's start time, while <code class=\"notranslate\">fetchStart</code> returns the post-redirect start time, so the values diverge as soon as a redirect is involved. The new text reuses the redirect caveat already documented on the <code class=\"notranslate\">fetchStart</code> subpage.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Spec: <a href=\"https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-fetchstart\" rel=\"nofollow\">https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-fetchstart</a> (\"The <code class=\"notranslate\">fetchStart</code> getter steps are to convert fetch timestamp for this's timing info's post-redirect start time\")</li>\n<li>Existing wording reused from <code class=\"notranslate\">files/en-us/web/api/performanceresourcetiming/fetchstart/index.md</code></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43903.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4309857048\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43903\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43903/hovercard\" href=\"https://github.com/mdn/content/issues/43903\">#43903</a></p>",
+            "url": "https://github.com/mdn/content/pull/45544",
+            "title": "fix(PerformanceResourceTiming): clarify startTime is not always fetchStart",
+            "date_modified": "2026-09-07T04:03:08.000Z",
+            "date_published": "2026-09-07T04:01:33.000Z",
+            "author": {
+                "name": "BaconMan1168",
+                "url": "https://github.com/BaconMan1168"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/290622216?u=22c98b64369b17f727f57e2f57a9aaad62eb6179&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Clarifies that <code class=\"notranslate\">const</code> requires an initializer at declaration time, unlike <code class=\"notranslate\">var</code> and <code class=\"notranslate\">let</code>, where initialization is optional.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The \"Declaring variables\" section lists <code class=\"notranslate\">var</code>, <code class=\"notranslate\">let</code>, and <code class=\"notranslate\">const</code> with parallel one-line summaries. <code class=\"notranslate\">var</code> and <code class=\"notranslate\">let</code> both explicitly state that initializing them is optional, but the <code class=\"notranslate\">const</code> entry omitted the fact that its initializer is <em>mandatory</em> — attempting to declare <code class=\"notranslate\">const</code> without one (<code class=\"notranslate\">const x;</code>) throws a <code class=\"notranslate\">SyntaxError</code> at parse time. This is an asymmetry readers could easily miss given the otherwise-parallel phrasing of the three entries, so this PR brings <code class=\"notranslate\">const</code>'s description in line with the precision already given to <code class=\"notranslate\">var</code>/<code class=\"notranslate\">let</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Per the ECMAScript specification (§14.3.1.1, Early Errors for <code class=\"notranslate\">LexicalDeclaration</code>): a <code class=\"notranslate\">LexicalBinding</code> with no <code class=\"notranslate\">Initializer</code> is a Syntax Error whenever the declaration <code class=\"notranslate\">IsConstantDeclaration</code> — i.e., specifically for <code class=\"notranslate\">const</code>, not <code class=\"notranslate\">let</code>.<br>\n<a href=\"https://tc39.es/ecma262/#sec-let-and-const-declarations-static-semantics-early-errors\" rel=\"nofollow\">https://tc39.es/ecma262/#sec-let-and-const-declarations-static-semantics-early-errors</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
             "url": "https://github.com/mdn/content/pull/45538",
             "title": "Clarify that const requires an initializer",
@@ -83,17 +94,6 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36444.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2605965609\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36444\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36444/hovercard\" href=\"https://github.com/mdn/content/issues/36444\">#36444</a>.</p>\n<p dir=\"auto\">The <em>Browser support</em> section stated that \"On Android, Firefox, Chrome, Edge, Opera, and Samsung Internet Browser all support installing PWAs.\" That overstates Firefox's behavior: only the Chromium-based browsers install a PWA as a WebAPK (it lands in the app drawer / app switcher and behaves like a platform-specific app). Firefox for Android only adds a home-screen <strong>shortcut</strong> that opens the site in the browser — no separate installed app.</p>\n<p dir=\"auto\">This updates the bullet to distinguish the two behaviors.</p>",
-            "url": "https://github.com/mdn/content/pull/45530",
-            "title": "Clarify Android PWA install support (Firefox adds a shortcut, not a WebAPK)",
-            "date_modified": "2026-09-05T20:29:46.000Z",
-            "date_published": "2026-09-05T20:28:03.000Z",
-            "author": {
-                "name": "1t1sCooL",
-                "url": "https://github.com/1t1sCooL"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #40115.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3184408771\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/40115\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/40115/hovercard\" href=\"https://github.com/mdn/content/issues/40115\">#40115</a>.</p>\n<p dir=\"auto\">The <em>Common media types</em> section said only that \"browsers are particularly careful when manipulating these files,\" without explaining what that care is or what an author can do about it — which is exactly what the issue asks for.</p>\n<p dir=\"auto\">This expands the <code class=\"notranslate\">application/octet-stream</code> bullet to explain:</p>\n<ul dir=\"auto\">\n<li><strong>why</strong> the care exists — the content isn't a recognized type, so the browser won't render/execute it inline and treats it as an opaque download;</li>\n<li><strong>the precautions</strong> — <code class=\"notranslate\">Content-Disposition: attachment</code> to force a download, and <code class=\"notranslate\">X-Content-Type-Options: nosniff</code> to stop MIME sniffing into a more specific, potentially executable type.</li>\n</ul>\n<p dir=\"auto\">Both linked headers point to existing MDN pages.</p>",
             "url": "https://github.com/mdn/content/pull/45529",
             "title": "Explain the dangers and precautions for application/octet-stream",
@@ -141,22 +141,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds concise context for how WebRTC uses SDP during session negotiation and links the relevant session-description APIs where they are introduced.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The glossary entry currently says that WebRTC uses SDP but does not explain where it is used or why the linked APIs are relevant. This completes the residual scope identified after <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4789682461\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44621\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/44621/hovercard\" href=\"https://github.com/mdn/content/pull/44621\">#44621</a> without turning the glossary page into a protocol reference.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The existing definition, sample message, RTP/RTSP relationship, RFC 8866 reference, and WebRTC protocol link remain intact. The target-scoped Rari build, filecheck, Markdownlint, and Prettier checks are required on the exact proposed diff.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #36500.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2613352565\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36500\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/36500/hovercard\" href=\"https://github.com/mdn/content/issues/36500\">#36500</a><br>\nRelates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4789682461\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44621\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/44621/hovercard\" href=\"https://github.com/mdn/content/pull/44621\">#44621</a></p>",
             "url": "https://github.com/mdn/content/pull/45521",
             "title": "Document SDP's role in WebRTC negotiation",
-            "date_modified": "2026-09-05T07:43:37.000Z",
+            "date_modified": "2026-09-07T00:30:33.000Z",
             "date_published": "2026-09-05T07:34:46.000Z",
             "author": {
                 "name": "coyaSONG",
                 "url": "https://github.com/coyaSONG"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/198354403?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds a note to the Geometry interfaces overview explaining that these interfaces (DOMMatrix, DOMPoint, DOMRect, DOMQuad) prioritize DOM-rendering integration and native-binding convenience over raw computational throughput.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The issue reported that <code class=\"notranslate\">DOMMatrix.transformPoint()</code> can be 40-160x slower than equivalent hand-written JS math across engines. As discussed on the issue, this isn't a browser bug to fix but an inherent tradeoff of the API's design, so a documentation note is the right response. The note is scoped to that inherent-complexity framing per maintainer feedback, rather than citing implementation-specific benchmark numbers or browser bug trackers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">See discussion on the linked issue for the maintainer's framing of what the note should (and shouldn't) say.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45490.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5342145690\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45490\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45490/hovercard\" href=\"https://github.com/mdn/content/issues/45490\">#45490</a></p>",
-            "url": "https://github.com/mdn/content/pull/45520",
-            "title": "Geometry interfaces: note they are not a linear algebra library",
-            "date_modified": "2026-09-06T14:42:47.000Z",
-            "date_published": "2026-09-05T01:48:05.000Z",
-            "author": {
-                "name": "BaconMan1168",
-                "url": "https://github.com/BaconMan1168"
             }
         },
         {
@@ -174,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45467.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5329248931\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45467\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45467/hovercard\" href=\"https://github.com/mdn/content/issues/45467\">#45467</a>.</p>\n<p dir=\"auto\">I have drawn pretty heavily on <a href=\"https://w3c.github.io/webappsec-secure-contexts/#intro\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#intro</a> which gives a nice easy overview of the situation for different environments.</p>\n<p dir=\"auto\">I had some questions though.</p>\n<ul dir=\"auto\">\n<li>\n<p dir=\"auto\">As I read it, documents are SC if they have a \"potentially trustworthy URL\" (<a href=\"https://html.spec.whatwg.org/multipage/webappapis.html#secure-context\" rel=\"nofollow\">https://html.spec.whatwg.org/multipage/webappapis.html#secure-context</a>). But the intro says that iframed documents are SC if they have a \"potentially trustworthy origin\" (<a href=\"https://w3c.github.io/webappsec-secure-contexts/#examples-framed\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#examples-framed</a>). Why is there a difference? I think it would make the explanations simpler if we could fold the \"potentially trustworthy origin\" section into \"potentially trustworthy URL\" but we can't really do that if things want to refer to \"potentially trustworthy origin\" specifically.</p>\n</li>\n<li>\n<p dir=\"auto\">I quite like the diagrams in the intro but elected not to copy them partly because I think it will be hard to make them accessible. So I just used a couple of tables.</p>\n</li>\n<li>\n<p dir=\"auto\">There is some horrible stuff about how to derive an origin from a URL (<a href=\"https://url.spec.whatwg.org/#concept-url-origin\" rel=\"nofollow\">https://url.spec.whatwg.org/#concept-url-origin</a>) that I have glossed over.</p>\n</li>\n<li>\n<p dir=\"auto\">I think the rationale in \"Why should some features be restricted?\" is still a bit weak. There an interesting bit in the threat model for the spec (<a href=\"https://w3c.github.io/webappsec-secure-contexts/#threat-models\" rel=\"nofollow\">https://w3c.github.io/webappsec-secure-contexts/#threat-models</a>) that says \"Granting permissions to unauthenticated origins is, in the presence of a network attacker, equivalent to granting the permissions to any origin\" - that is, because a network attacker can take over an unauthenticated connection, then they could get access to any powerful APIs that have been granted to that connection. If you like I could try to unpack this.</p>\n</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45518",
             "title": "Update secure contexts guide",
-            "date_modified": "2026-09-05T00:04:28.000Z",
+            "date_modified": "2026-09-07T02:57:46.000Z",
             "date_published": "2026-09-04T23:47:29.000Z",
             "author": {
                 "name": "wbamberg",
@@ -185,7 +174,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5349393758\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45504\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45504/hovercard\" href=\"https://github.com/mdn/content/issues/45504\">#45504</a></p>",
             "url": "https://github.com/mdn/content/pull/45517",
             "title": "Promise.try() uses PromiseResolve in non-error case",
-            "date_modified": "2026-09-05T22:22:47.000Z",
+            "date_modified": "2026-09-07T00:51:30.000Z",
             "date_published": "2026-09-04T22:49:44.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">wip</p>",
+            "url": "https://github.com/mdn/content/pull/45493",
+            "title": "Add a guide on tracking",
+            "date_modified": "2026-09-04T04:31:23.000Z",
+            "date_published": "2026-09-04T04:29:18.000Z",
+            "author": {
+                "name": "wbamberg",
+                "url": "https://github.com/wbamberg"
             }
         }
     ]

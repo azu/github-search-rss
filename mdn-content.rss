@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-07T00:27:07.180Z</updated>
+    <updated>2026-09-07T05:24:18.513Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[fix(PerformanceResourceTiming): clarify startTime is not always fetchStart]]></title>
+        <id>https://github.com/mdn/content/pull/45544</id>
+        <link href="https://github.com/mdn/content/pull/45544"/>
+        <updated>2026-09-07T04:03:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The <code class="notranslate">PerformanceEntry.startTime</code> bullet on the <code class="notranslate">PerformanceResourceTiming</code> page stated that the value is equivalent to <code class="notranslate">PerformanceResourceTiming.fetchStart</code>. It now explains that the two are equal only when there are no HTTP redirects.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The claim contradicted the timestamp diagram directly below it, which places <code class="notranslate">startTime</code> before the redirect phase and <code class="notranslate">fetchStart</code> after it. Readers had no way to tell which one was right.</p>
+<p dir="auto">Per the Resource Timing spec, a resource entry's <code class="notranslate">startTime</code> comes from the fetch timing info's start time, while <code class="notranslate">fetchStart</code> returns the post-redirect start time, so the values diverge as soon as a redirect is involved. The new text reuses the redirect caveat already documented on the <code class="notranslate">fetchStart</code> subpage.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Spec: <a href="https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-fetchstart" rel="nofollow">https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-fetchstart</a> ("The <code class="notranslate">fetchStart</code> getter steps are to convert fetch timestamp for this's timing info's post-redirect start time")</li>
+<li>Existing wording reused from <code class="notranslate">files/en-us/web/api/performanceresourcetiming/fetchstart/index.md</code></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43903.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4309857048" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43903" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43903/hovercard" href="https://github.com/mdn/content/issues/43903">#43903</a></p>]]></content>
+        <author>
+            <name>BaconMan1168</name>
+            <email>BaconMan1168@noreply.github.com</email>
+            <uri>https://github.com/BaconMan1168</uri>
+        </author>
+        <published>2026-09-07T04:01:33.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Clarify that const requires an initializer]]></title>
         <id>https://github.com/mdn/content/pull/45538</id>
@@ -172,21 +196,6 @@
         <published>2026-09-06T07:52:51.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Clarify Android PWA install support (Firefox adds a shortcut, not a WebAPK)]]></title>
-        <id>https://github.com/mdn/content/pull/45530</id>
-        <link href="https://github.com/mdn/content/pull/45530"/>
-        <updated>2026-09-05T20:29:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36444.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2605965609" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36444" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36444/hovercard" href="https://github.com/mdn/content/issues/36444">#36444</a>.</p>
-<p dir="auto">The <em>Browser support</em> section stated that "On Android, Firefox, Chrome, Edge, Opera, and Samsung Internet Browser all support installing PWAs." That overstates Firefox's behavior: only the Chromium-based browsers install a PWA as a WebAPK (it lands in the app drawer / app switcher and behaves like a platform-specific app). Firefox for Android only adds a home-screen <strong>shortcut</strong> that opens the site in the browser — no separate installed app.</p>
-<p dir="auto">This updates the bullet to distinguish the two behaviors.</p>]]></content>
-        <author>
-            <name>1t1sCooL</name>
-            <email>1t1sCooL@noreply.github.com</email>
-            <uri>https://github.com/1t1sCooL</uri>
-        </author>
-        <published>2026-09-05T20:28:03.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Explain the dangers and precautions for application/octet-stream]]></title>
         <id>https://github.com/mdn/content/pull/45529</id>
         <link href="https://github.com/mdn/content/pull/45529"/>
@@ -279,7 +288,7 @@
         <title type="html"><![CDATA[Document SDP's role in WebRTC negotiation]]></title>
         <id>https://github.com/mdn/content/pull/45521</id>
         <link href="https://github.com/mdn/content/pull/45521"/>
-        <updated>2026-09-05T07:43:37.000Z</updated>
+        <updated>2026-09-07T00:30:33.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/66289470?u=2bfe5891702d3970df853e6b130215082026fd1e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds concise context for how WebRTC uses SDP during session negotiation and links the relevant session-description APIs where they are introduced.</p>
 <h3 dir="auto">Motivation</h3>
@@ -295,26 +304,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/coyaSONG</uri>
         </author>
         <published>2026-09-05T07:34:46.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Geometry interfaces: note they are not a linear algebra library]]></title>
-        <id>https://github.com/mdn/content/pull/45520</id>
-        <link href="https://github.com/mdn/content/pull/45520"/>
-        <updated>2026-09-06T14:42:47.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds a note to the Geometry interfaces overview explaining that these interfaces (DOMMatrix, DOMPoint, DOMRect, DOMQuad) prioritize DOM-rendering integration and native-binding convenience over raw computational throughput.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The issue reported that <code class="notranslate">DOMMatrix.transformPoint()</code> can be 40-160x slower than equivalent hand-written JS math across engines. As discussed on the issue, this isn't a browser bug to fix but an inherent tradeoff of the API's design, so a documentation note is the right response. The note is scoped to that inherent-complexity framing per maintainer feedback, rather than citing implementation-specific benchmark numbers or browser bug trackers.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">See discussion on the linked issue for the maintainer's framing of what the note should (and shouldn't) say.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45490.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5342145690" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45490" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45490/hovercard" href="https://github.com/mdn/content/issues/45490">#45490</a></p>]]></content>
-        <author>
-            <name>BaconMan1168</name>
-            <email>BaconMan1168@noreply.github.com</email>
-            <uri>https://github.com/BaconMan1168</uri>
-        </author>
-        <published>2026-09-05T01:48:05.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[font-style: note that left/right values are unimplemented]]></title>
@@ -343,7 +332,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Update secure contexts guide]]></title>
         <id>https://github.com/mdn/content/pull/45518</id>
         <link href="https://github.com/mdn/content/pull/45518"/>
-        <updated>2026-09-05T00:04:28.000Z</updated>
+        <updated>2026-09-07T02:57:46.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45467.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5329248931" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45467" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45467/hovercard" href="https://github.com/mdn/content/issues/45467">#45467</a>.</p>
 <p dir="auto">I have drawn pretty heavily on <a href="https://w3c.github.io/webappsec-secure-contexts/#intro" rel="nofollow">https://w3c.github.io/webappsec-secure-contexts/#intro</a> which gives a nice easy overview of the situation for different environments.</p>
 <p dir="auto">I had some questions though.</p>
@@ -372,7 +361,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Promise.try() uses PromiseResolve in non-error case]]></title>
         <id>https://github.com/mdn/content/pull/45517</id>
         <link href="https://github.com/mdn/content/pull/45517"/>
-        <updated>2026-09-05T22:22:47.000Z</updated>
+        <updated>2026-09-07T00:51:30.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5349393758" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45504" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45504/hovercard" href="https://github.com/mdn/content/issues/45504">#45504</a></p>]]></content>
         <author>
             <name>Josh-Cena</name>
@@ -465,5 +454,18 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-09-04T06:56:33.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add a guide on tracking]]></title>
+        <id>https://github.com/mdn/content/pull/45493</id>
+        <link href="https://github.com/mdn/content/pull/45493"/>
+        <updated>2026-09-04T04:31:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">wip</p>]]></content>
+        <author>
+            <name>wbamberg</name>
+            <email>wbamberg@noreply.github.com</email>
+            <uri>https://github.com/wbamberg</uri>
+        </author>
+        <published>2026-09-04T04:29:18.000Z</published>
     </entry>
 </feed>
