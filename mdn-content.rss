@@ -2,11 +2,89 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-08T19:05:52.737Z</updated>
+    <updated>2026-09-08T22:07:30.635Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Document getBBox() options and update examples]]></title>
+        <id>https://github.com/mdn/content/pull/45581</id>
+        <link href="https://github.com/mdn/content/pull/45581"/>
+        <updated>2026-09-08T21:10:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Documents the <code class="notranslate">options</code> parameter and its members</li>
+<li>Adds a live sample outlining the bounding box for each set of options</li>
+<li>Fixes the <code class="notranslate">getBoundingClientRect()</code> example</li>
+<li>Corrects the return value to <code class="notranslate">DOMRect</code></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170085235" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45193" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45193/hovercard" href="https://github.com/mdn/content/issues/45193">#45193</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-09-08T21:08:21.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ci(pr-review-companion): run independent steps in parallel]]></title>
+        <id>https://github.com/mdn/content/pull/45580</id>
+        <link href="https://github.com/mdn/content/pull/45580"/>
+        <updated>2026-09-08T21:05:20.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Update the PR review companion workflow to run independent, network-bound steps in parallel using the GitHub Actions <code class="notranslate">parallel</code> step group:</p>
+<ul dir="auto">
+<li>the artifact download and the <code class="notranslate">mdn/content</code> checkout,</li>
+<li>the status update, GCP authentication, and Node setup.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Speed up CI by overlapping independent download, checkout, and setup steps instead of running them serially.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Uses the parallel step keywords introduced in GitHub Actions on 2026-06-25: <a href="https://github.blog/changelog/2026-06-25-actions-steps-can-now-be-run-in-parallel/" rel="nofollow">https://github.blog/changelog/2026-06-25-actions-steps-can-now-be-run-in-parallel/</a></p>
+<p dir="auto"><code class="notranslate">parallel</code> is shorthand for <code class="notranslate">background: true</code> on each step followed by an implicit wait: <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsparallel">https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsparallel</a></p>
+<p dir="auto">Measured over the last 25 runs of the <code class="notranslate">review</code> job, this saves about 4s of a ~48s job (8%), consistently 7-9% per run. Group 1 collapses <code class="notranslate">Download artifact</code> (1-3s) into <code class="notranslate">Checkout (mdn/content)</code> (4-11s); group 2 collapses <code class="notranslate">Mark status as pending</code> (1-4s) and <code class="notranslate">Authenticate with GCP</code> (0-1s) into <code class="notranslate">Setup (mdn/content)</code> (4-5s).</p>
+<p dir="auto">One behavior change: <code class="notranslate">Checkout (mdn/content)</code> is no longer gated on <code class="notranslate">HAS_ARTIFACT</code>, because it now precedes the <code class="notranslate">Check for artifacts</code> step. It runs concurrently with the artifact download, so there is no wall-clock cost.</p>
+<p dir="auto">The other workflows in this repository were checked and left unchanged. <code class="notranslate">interfacedata-updater.yml</code> would save ~8s but only runs weekly, and <code class="notranslate">pr-reviewdog.yml</code> saves a median of 0s (its artifact download is under a second, and <code class="notranslate">Setup reviewdog</code> executed in only 2 of 25 sampled runs). The rest, including <code class="notranslate">test.yml</code>, <code class="notranslate">markdown-lint.yml</code>, the <code class="notranslate">pr-check_*.yml</code> set, <code class="notranslate">spelling-check-bot.yml</code>, and <code class="notranslate">auto-cleanup-bot.yml</code>, are strict <code class="notranslate">checkout</code> -&gt; <code class="notranslate">setup-node</code> chains: <code class="notranslate">node-version-file: .nvmrc</code> and <code class="notranslate">cache: npm</code> both need the checkout to have finished, so there is nothing independent to overlap.</p>
+<p dir="auto">Note that this workflow triggers on <code class="notranslate">workflow_run</code> only, so it does not run on this PR.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5376977534" data-permission-text="Title is private" data-url="https://github.com/mdn/fred/issues/1862" data-hovercard-type="issue" data-hovercard-url="/mdn/fred/issues/1862/hovercard" href="https://github.com/mdn/fred/issues/1862">mdn/fred#1862</a>.</p>
+<p dir="auto">Follows <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4784571571" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/775" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/775/hovercard" href="https://github.com/mdn/rari/pull/775">mdn/rari#775</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-09-08T20:17:38.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document bracket notation for SVG*List interfaces]]></title>
+        <id>https://github.com/mdn/content/pull/45579</id>
+        <link href="https://github.com/mdn/content/pull/45579"/>
+        <updated>2026-09-08T19:36:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Documents bracket notation on <code class="notranslate">SVG*List</code></li>
+<li>Adds a note to their <code class="notranslate">replaceItem()</code> pages</li>
+<li>Adds a live example to <code class="notranslate">SVGTransformList</code></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170082837" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45189" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45189/hovercard" href="https://github.com/mdn/content/issues/45189">#45189</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5194081277" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45245" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45245/hovercard" href="https://github.com/mdn/content/pull/45245">#45245</a></li>
+</ul>
+<h3 dir="auto">Note</h3>
+<p dir="auto">BCD isn’t updated: there’s no subfeature for indexed setters.</p>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-09-08T19:34:50.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Speculation Rules: Remove prefetch’s Cache-Control conflict]]></title>
         <id>https://github.com/mdn/content/pull/45577</id>
@@ -444,74 +522,5 @@ As a result, some errors that would previously have been OperationErrors are now
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2026-09-06T12:58:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Refine element existence check in WeakRef example]]></title>
-        <id>https://github.com/mdn/content/pull/45534</id>
-        <link href="https://github.com/mdn/content/pull/45534"/>
-        <updated>2026-09-08T18:10:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10849366?v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Update condition to check if element is connected and clarify comment about element existence.</p>
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>def00111</name>
-            <email>def00111@noreply.github.com</email>
-            <uri>https://github.com/def00111</uri>
-        </author>
-        <published>2026-09-06T11:37:10.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Do not pair both with as well as]]></title>
-        <id>https://github.com/mdn/content/pull/45533</id>
-        <link href="https://github.com/mdn/content/pull/45533"/>
-        <updated>2026-09-06T08:39:59.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/176228199?u=79263a5800d6a0c47f8ce53365fc113d033acaad&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Replaces <code class="notranslate">as well as</code> with <code class="notranslate">and</code> in the 15 places where it follows <code class="notranslate">both</code>, so each correlative has its proper partner.</p>
-<p dir="auto">Examples:</p>
-<ul dir="auto">
-<li><code class="notranslate">HTMLSlotElement.assignedNodes()</code>: "a sequence of both the nodes assigned to this slot, as well as the nodes assigned to any other slots" → "both the nodes assigned to this slot and the nodes assigned to any other slots"</li>
-<li><code class="notranslate">RTCPeerConnection</code>: "this can happen both when first opening a connection as well as when it is necessary to adapt" → "both when first opening a connection and when it is necessary to adapt"</li>
-<li><code class="notranslate">Media autoplay guide</code>: "includes both the use of HTML attributes to autoplay media as well as the use of JavaScript code" → "both the use of HTML attributes to autoplay media and the use of JavaScript code"</li>
-</ul>
-<p dir="auto">Lines where <code class="notranslate">both</code> already has its own <code class="notranslate">and</code> are left alone, because the trailing <code class="notranslate">as well as</code> there introduces a genuine third item — for example <code class="notranslate">XRSystem.requestSession()</code>'s "both CPU- and GPU-optimized usage, as well as …", and <code class="notranslate">&lt;img&gt;</code>'s "both leading and trailing space, as well as …". So are the places where <code class="notranslate">both</code> is a plain pronoun or determiner, such as "if <code class="notranslate">frame-ancestors</code> and <code class="notranslate">X-Frame-Options</code> are both set".</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><code class="notranslate">both</code> pairs with <code class="notranslate">and</code>. Following it with <code class="notranslate">as well as</code> states the pairing twice, and the reader has to backtrack to see which items are being joined.</p>]]></content>
-        <author>
-            <name>husamemadH</name>
-            <email>husamemadH@noreply.github.com</email>
-            <uri>https://github.com/husamemadH</uri>
-        </author>
-        <published>2026-09-06T08:38:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Explain the dangers and precautions for application/octet-stream]]></title>
-        <id>https://github.com/mdn/content/pull/45529</id>
-        <link href="https://github.com/mdn/content/pull/45529"/>
-        <updated>2026-09-08T18:37:39.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/137305666?u=dee20347eb1beec9ce6ac739cc344017d5d11188&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #40115.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3184408771" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/40115" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/40115/hovercard" href="https://github.com/mdn/content/issues/40115">#40115</a>.</p>
-<p dir="auto">The <em>Common media types</em> section said only that "browsers are particularly careful when manipulating these files," without explaining what that care is or what an author can do about it — which is exactly what the issue asks for.</p>
-<p dir="auto">This expands the <code class="notranslate">application/octet-stream</code> bullet to explain:</p>
-<ul dir="auto">
-<li><strong>why</strong> the care exists — the content isn't a recognized type, so the browser won't render/execute it inline and treats it as an opaque download;</li>
-<li><strong>the precautions</strong> — <code class="notranslate">Content-Disposition: attachment</code> to force a download, and <code class="notranslate">X-Content-Type-Options: nosniff</code> to stop MIME sniffing into a more specific, potentially executable type.</li>
-</ul>
-<p dir="auto">Both linked headers point to existing MDN pages.</p>]]></content>
-        <author>
-            <name>1t1sCooL</name>
-            <email>1t1sCooL@noreply.github.com</email>
-            <uri>https://github.com/1t1sCooL</uri>
-        </author>
-        <published>2026-09-05T20:25:26.000Z</published>
     </entry>
 </feed>
