@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-09T00:48:43.500Z</updated>
+    <updated>2026-09-09T05:29:44.008Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[docs(WebAPI): call out duplicate keys on FormData iteration methods]]></title>
+        <id>https://github.com/mdn/content/pull/45584</id>
+        <link href="https://github.com/mdn/content/pull/45584"/>
+        <updated>2026-09-09T04:56:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/160158213?u=24cc7b7b6e2b8a5b15ed178d43a856ebb7a126ac&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The issue: a form can hold several elements sharing one name, so FormData iteration can yield the same key many times. Readers coming from Map reasonably assume unique keys, and code like new Map(fd) silently drops values. None of the three iteration pages said keys may repeat.</p>
+<p dir="auto">What I changed, per page:</p>
+<ul dir="auto">
+<li>keys(): a Note that keys are not necessarily unique, pointing at getAll() for every value of a key and get() for the first value only.</li>
+<li>entries(): the same callout, worded for key/value pairs.</li>
+<li>values(): the same callout, worded for values sharing one key.</li>
+</ul>
+<p dir="auto">I used the two-argument domxref form the get() page already uses, and kept each note to one paragraph right after the intro so the pages read the same as before. Only these three method pages change; examples, front matter, and everything else are untouched. I left the top-level FormData() constructor page alone to keep this small, but I can follow up there if reviewers want it.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45582.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5392016617" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45582" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45582/hovercard" href="https://github.com/mdn/content/issues/45582">#45582</a></p>
+<h2 dir="auto">Verification</h2>
+<ul dir="auto">
+<li>Read all three pages and checked the note wording against the issue's duplicate-name example</li>
+<li>Checked the get()/getAll() targets exist and the domxref form matches existing usage on the get() page</li>
+<li>No trailing whitespace; no front-matter changes</li>
+</ul>]]></content>
+        <author>
+            <name>MeGaurav4</name>
+            <email>MeGaurav4@noreply.github.com</email>
+            <uri>https://github.com/MeGaurav4</uri>
+        </author>
+        <published>2026-09-09T04:46:12.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Issue 45524 Expanded toolbar button details in your second extension tutorial]]></title>
         <id>https://github.com/mdn/content/pull/45583</id>
@@ -504,29 +531,5 @@ As a result, some errors that would previously have been OperationErrors are now
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-09-07T06:51:27.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[fix(PerformanceResourceTiming): clarify startTime is not always fetchStart]]></title>
-        <id>https://github.com/mdn/content/pull/45544</id>
-        <link href="https://github.com/mdn/content/pull/45544"/>
-        <updated>2026-09-07T04:03:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The <code class="notranslate">PerformanceEntry.startTime</code> bullet on the <code class="notranslate">PerformanceResourceTiming</code> page stated that the value is equivalent to <code class="notranslate">PerformanceResourceTiming.fetchStart</code>. It now explains that the two are equal only when there are no HTTP redirects.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The claim contradicted the timestamp diagram directly below it, which places <code class="notranslate">startTime</code> before the redirect phase and <code class="notranslate">fetchStart</code> after it. Readers had no way to tell which one was right.</p>
-<p dir="auto">Per the Resource Timing spec, a resource entry's <code class="notranslate">startTime</code> comes from the fetch timing info's start time, while <code class="notranslate">fetchStart</code> returns the post-redirect start time, so the values diverge as soon as a redirect is involved. The new text reuses the redirect caveat already documented on the <code class="notranslate">fetchStart</code> subpage.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>Spec: <a href="https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-fetchstart" rel="nofollow">https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-fetchstart</a> ("The <code class="notranslate">fetchStart</code> getter steps are to convert fetch timestamp for this's timing info's post-redirect start time")</li>
-<li>Existing wording reused from <code class="notranslate">files/en-us/web/api/performanceresourcetiming/fetchstart/index.md</code></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43903.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4309857048" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43903" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43903/hovercard" href="https://github.com/mdn/content/issues/43903">#43903</a></p>]]></content>
-        <author>
-            <name>BaconMan1168</name>
-            <email>BaconMan1168@noreply.github.com</email>
-            <uri>https://github.com/BaconMan1168</uri>
-        </author>
-        <published>2026-09-07T04:01:33.000Z</published>
     </entry>
 </feed>
