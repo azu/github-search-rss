@@ -2,11 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-09-12T21:47:21.570Z</updated>
+    <updated>2026-09-12T23:31:46.440Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[perf_hooks: implement qrde analysis support in Histogram]]></title>
+        <id>https://github.com/nodejs/node/pull/65806</id>
+        <link href="https://github.com/nodejs/node/pull/65806"/>
+        <updated>2026-09-12T23:10:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/439929?u=88483145a53c3d594ab68146c1a8bdecc3bcd1d3&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Continue expanding the built-in statistical analysis capabilities of <code class="notranslate">perf_hooks</code> <code class="notranslate">Histogram</code>.</p>
+<p dir="auto">Implements quantile-respectful density estimate (qrde) calculation on Histogram. Helps with tail-focused latency analysis without retaining raw samples. Think of it as a way of generating and exporting a compact analysis of the collected metrics without having to export the entire bucket. Very useful for generating plots of latency data.</p>
+<p dir="auto">Baking this directly into Node.js, based on a 1 million sample, 1k bin workload, this impl is roughly 150-325x faster than performing the equivalent in Rscript.</p>
+<p dir="auto">It's an async API because, while calculation should typically be quite fast for reasonably sized sample sets, the cost can compound as the number of buckets in the Histogram increases.</p>
+<p dir="auto">Example application that uses it: <a href="https://gist.github.com/jasnell/a5283d73b4ef6bb6e4e549bf15dc8f70">https://gist.github.com/jasnell/a5283d73b4ef6bb6e4e549bf15dc8f70</a></p>]]></content>
+        <author>
+            <name>jasnell</name>
+            <email>jasnell@noreply.github.com</email>
+            <uri>https://github.com/jasnell</uri>
+        </author>
+        <published>2026-09-05T06:57:54.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[bench: add experimental `node:bench` module]]></title>
         <id>https://github.com/nodejs/node/pull/65606</id>
@@ -247,7 +264,7 @@ Assisted-by: Opencode/Opus</p>]]></content>
         <link href="https://github.com/nodejs/node/pull/64591"/>
         <updated>2026-09-02T16:42:16.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Adds basic syntax highlighting similar to our <code class="notranslate">util.inspect</code>. Highlighting is done using <code class="notranslate">util.inspect.styles</code>, so the coloring is in-tune with inspect, see below:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkyNDk5NDEsIm5iZiI6MTc4OTI0OTY0MSwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA5MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwOTEyVDIxNDcyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA2ODc1ZmQzNmFjNmFhOTZhYTVlNGRkYWMyMDQ4ODc0OGZmNTZjMzA0NGUwZjczOTQ2ZTk1M2Q3MGM3MDQ4M2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.8fmCNzGwA03zXtA1vQRst5qi5C66FX517s7Ynqgqvlk"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkyNDk5NDEsIm5iZiI6MTc4OTI0OTY0MSwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA5MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwOTEyVDIxNDcyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA2ODc1ZmQzNmFjNmFhOTZhYTVlNGRkYWMyMDQ4ODc0OGZmNTZjMzA0NGUwZjczOTQ2ZTk1M2Q3MGM3MDQ4M2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.8fmCNzGwA03zXtA1vQRst5qi5C66FX517s7Ynqgqvlk" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkyNTYyMDYsIm5iZiI6MTc4OTI1NTkwNiwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA5MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwOTEyVDIzMzE0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJiZTEzMDk0MDhhZTQxMGJhZTMzNjc2MDQ1MDc2NzNkNjJlMGEwZDA4ZTNiMDJlMWMxNDc0NjI1Y2NjYWI2MGImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.Vk-ePut1ewCxNK0AoiitD9Zh6VBFsqgqqVL58g7OG_o"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODkyNTYyMDYsIm5iZiI6MTc4OTI1NTkwNiwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA5MTIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwOTEyVDIzMzE0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWJiZTEzMDk0MDhhZTQxMGJhZTMzNjc2MDQ1MDc2NzNkNjJlMGEwZDA4ZTNiMDJlMWMxNDc0NjI1Y2NjYWI2MGImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.Vk-ePut1ewCxNK0AoiitD9Zh6VBFsqgqqVL58g7OG_o" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <p dir="auto"><strong>Notable Change</strong>: The REPL now performs syntax highlighting when <code class="notranslate">useColors: true</code></p>]]></content>
         <author>
             <name>avivkeller</name>
@@ -766,19 +783,5 @@ CompileFunctionForCJSLoader, in the case of SourceTextModule, it's in Module::Ne
             <uri>https://github.com/joyeecheung</uri>
         </author>
         <published>2026-03-08T21:44:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[lib,src,test,doc: add node:ffi module]]></title>
-        <id>https://github.com/nodejs/node/pull/62072</id>
-        <link href="https://github.com/nodejs/node/pull/62072"/>
-        <updated>2026-05-20T21:30:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2512748?u=201508ed0dec9b997a58d9d3dd7aad1ca928bc79&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is not ready for review yet. Just opening to see if this is something the project is still interested in.</p>
-]]></content>
-        <author>
-            <name>cjihrig</name>
-            <email>cjihrig@noreply.github.com</email>
-            <uri>https://github.com/cjihrig</uri>
-        </author>
-        <published>2026-03-02T14:43:52.000Z</published>
     </entry>
 </feed>
