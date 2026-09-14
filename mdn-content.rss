@@ -2,26 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-14T08:13:15.300Z</updated>
+    <updated>2026-09-14T15:21:48.758Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[ViewTimeline() index param only takes absolute value and percentages]]></title>
-        <id>https://github.com/mdn/content/pull/45692</id>
-        <link href="https://github.com/mdn/content/pull/45692"/>
-        <updated>2026-09-14T08:12:04.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF155 adds support for <code class="notranslate">CSSNumeric</code> and <code class="notranslate">CSSKeywordValue</code> (ish) in  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline/ViewTimeline#inset" rel="nofollow"><code class="notranslate">ViewTimeline()</code> constructor <code class="notranslate">inset</code> property</a> <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2041548" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2041548</a></p>
-<p dir="auto">It also restricts the values of <code class="notranslate">CSSNumeric</code> to absolute or percentage values, not relative values. As I read it, that is a "proxy" for "don't allow values that require an element context" agreed in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4345512440" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/13852" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13852/hovercard?comment_id=5400251381&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/13852#issuecomment-5400251381">w3c/csswg-drafts#13852 (comment)</a></p>
-<p dir="auto">Even though that isn't in the spec yet and it isn't in published implementations it is coming. So have added to the docs along with the associated exception.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5170077793" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45180" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45180/hovercard" href="https://github.com/mdn/content/issues/45180">#45180</a></p>]]></content>
+        <title type="html"><![CDATA[Fix AudioBuffer constructor calls in Web Audio basic concepts]]></title>
+        <id>https://github.com/mdn/content/pull/45701</id>
+        <link href="https://github.com/mdn/content/pull/45701"/>
+        <updated>2026-09-14T11:15:53.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/61348227?u=3e563555152fe9d9af1c7fee45c56e1e6dab81dc&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The two <code class="notranslate">AudioBuffer</code> examples on "Basic concepts behind Web Audio API" called the constructor with an <code class="notranslate">AudioContext</code> as the first argument:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const buffer = new AudioBuffer(context, { numberOfChannels: 2, length: 22050, sampleRate: 44100 });"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">buffer</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">AudioBuffer</span><span class="pl-kos">(</span><span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">numberOfChannels</span>: <span class="pl-c1">2</span><span class="pl-kos">,</span> <span class="pl-c1">length</span>: <span class="pl-c1">22050</span><span class="pl-kos">,</span> <span class="pl-c1">sampleRate</span>: <span class="pl-c1">44100</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p dir="auto">That signature comes from an early draft of the spec. The current constructor takes only an options dictionary: <code class="notranslate">new AudioBuffer(options)</code>. This PR removes the <code class="notranslate">context</code> argument from both examples.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Anyone who copies the examples hits a problem right away:</p>
+<ul dir="auto">
+<li>In TypeScript, the DOM types report <code class="notranslate">Expected 1 arguments, but got 2.</code></li>
+<li>In a browser, the <code class="notranslate">AudioContext</code> gets read as the options dictionary. It has no <code class="notranslate">length</code> member, so the constructor throws a <code class="notranslate">TypeError</code>.</li>
+</ul>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Spec: <a href="https://webaudio.github.io/web-audio-api/#dom-audiobuffer-audiobuffer" rel="nofollow">https://webaudio.github.io/web-audio-api/#dom-audiobuffer-audiobuffer</a></li>
+<li>MDN reference page, which already shows the correct signature: <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/AudioBuffer" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/AudioBuffer</a></li>
+</ul>
+<p dir="auto">The <code class="notranslate">const context = new AudioContext();</code> lines are still there because the prose after each example talks about playing the buffer back on an <code class="notranslate">AudioContext</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Follow-up to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2621428215" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36562" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/36562/hovercard" href="https://github.com/mdn/content/pull/36562">#36562</a>, which removed deprecated <code class="notranslate">AudioBuffer</code> options elsewhere but didn't change this page.</p>]]></content>
         <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
+            <name>alexzinnde</name>
+            <email>alexzinnde@noreply.github.com</email>
+            <uri>https://github.com/alexzinnde</uri>
         </author>
-        <published>2026-09-14T08:11:37.000Z</published>
+        <published>2026-09-14T11:15:32.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add missing Sec-Fetch-Dest: text value]]></title>
@@ -38,60 +52,10 @@
         <published>2026-09-14T07:04:40.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[FF156 ExprFeat: Scoped custom element registries update]]></title>
-        <id>https://github.com/mdn/content/pull/45690</id>
-        <link href="https://github.com/mdn/content/pull/45690"/>
-        <updated>2026-09-14T06:14:37.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF156 added support for scoped custom element registries in Nightly in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2064333" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2064333</a>.</p>
-<p dir="auto">This updates the experimental features page.</p>
-<p dir="auto">I also added cross links between reference and the guide on scoped custom element registries.</p>
-<p dir="auto">Related docs work: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5312310960" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45434" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45434/hovercard" href="https://github.com/mdn/content/issues/45434">#45434</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-09-14T06:13:08.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix implied second keyword for single-keyword position-area values]]></title>
-        <id>https://github.com/mdn/content/pull/45689</id>
-        <link href="https://github.com/mdn/content/pull/45689"/>
-        <updated>2026-09-14T06:02:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/236759479?u=6a2b51441b1015f9a4beae865bfcb3f1a2ea9899&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Corrects which second keyword is implied when <code class="notranslate">position-area</code> is given a single <code class="notranslate">span-*</code> (or <code class="notranslate">span-all</code>) keyword. The <code class="notranslate">&lt;position-area&gt;</code> value page said every single span keyword implies <code class="notranslate">center</code>, and both pages said <code class="notranslate">span-all</code> is equivalent to <code class="notranslate">center center</code>. Now:</p>
-<ul dir="auto">
-<li><code class="notranslate">span-left</code> / <code class="notranslate">span-right</code> / <code class="notranslate">span-top</code> / <code class="notranslate">span-bottom</code>, the logical <code class="notranslate">span-block-*</code> / <code class="notranslate">span-inline-*</code> keywords and the <code class="notranslate">span-x-*</code> / <code class="notranslate">span-y-*</code> coordinate keywords → the other value is <code class="notranslate">span-all</code> (e.g. <code class="notranslate">span-left</code> = <code class="notranslate">span-left span-all</code>).</li>
-<li><code class="notranslate">center</code>, <code class="notranslate">span-all</code>, and the ambiguous <code class="notranslate">span-start</code> / <code class="notranslate">span-end</code> / <code class="notranslate">span-self-start</code> / <code class="notranslate">span-self-end</code> → the keyword is repeated (e.g. <code class="notranslate">span-all</code> = <code class="notranslate">span-all span-all</code>, <code class="notranslate">span-start</code> = <code class="notranslate">span-start span-start</code>).</li>
-</ul>
-<p dir="auto">The last hunk's example also used <code class="notranslate">span-start</code>, which is not a coordinate keyword; it now uses <code class="notranslate">span-x-start</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><a href="https://drafts.csswg.org/css-anchor-position-1/#resolving-spans" rel="nofollow">CSS Anchor Positioning §3.1.2</a>: "If only a single keyword is given, it behaves as if the second keyword is <code class="notranslate">span-all</code> if the given keyword is unambiguous about its axis; otherwise, it behaves as if the given keyword was repeated."</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Checked in Chromium (headless Edge 153): a 600×600 containing block with a 100×100 anchor in the middle, comparing each of the 20 single <code class="notranslate">span-*</code> keywords against the spec equivalent and against the equivalent the page currently states. Every one matched the spec form and differed from the current text, for example:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="span-all           0,0,600x600   span-all span-all: same    | center center: 250,250,100x100
-span-left          0,0,350x600   span-left span-all: same   | center span-left: 0,250,350x100
-span-start         0,0,350x350   span-start span-start: same | span-start center: 250,0,100x350
-span-x-start       0,0,350x600   span-x-start span-all: same | span-x-start center: 0,250,350x100"><pre class="notranslate"><code class="notranslate">span-all           0,0,600x600   span-all span-all: same    | center center: 250,250,100x100
-span-left          0,0,350x600   span-left span-all: same   | center span-left: 0,250,350x100
-span-start         0,0,350x350   span-start span-start: same | span-start center: 250,0,100x350
-span-x-start       0,0,350x600   span-x-start span-all: same | span-x-start center: 0,250,350x100
-</code></pre></div>
-<p dir="auto">Not tested in Firefox or Safari. Lint: markdownlint-cli2 (repo config) 0 issues, prettier clean, cspell 0 issues.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4875915094" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44706" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44706/hovercard" href="https://github.com/mdn/content/issues/44706">#44706</a> (the follow-up comment about <code class="notranslate">span-all</code> vs <code class="notranslate">center center</code>). The main report there, <code class="notranslate">center span-all</code> having no effect in Firefox, is a valid value that Chromium renders as the center row across all columns, so it looks like a Firefox bug rather than a docs error and is not changed here.</p>]]></content>
-        <author>
-            <name>RizgarOzan</name>
-            <email>RizgarOzan@noreply.github.com</email>
-            <uri>https://github.com/RizgarOzan</uri>
-        </author>
-        <published>2026-09-14T05:19:11.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Reset-only sub-properties]]></title>
         <id>https://github.com/mdn/content/pull/45683</id>
         <link href="https://github.com/mdn/content/pull/45683"/>
-        <updated>2026-09-13T18:52:58.000Z</updated>
+        <updated>2026-09-14T12:35:52.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Several shorthand properties, like animation accept a limited number of properties while being reset-only for other properties. We should include a section after ### Constituent properties that lists the reset-only properties that are reset by the shorthand.</p>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45591.">fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5399648089" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45591" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45591/hovercard" href="https://github.com/mdn/content/issues/45591">#45591</a></p>]]></content>
         <author>
@@ -105,7 +69,7 @@ span-x-start       0,0,350x600   span-x-start span-all: same | span-x-start cent
         <title type="html"><![CDATA[Explanation improved on the results of `isFinite()` and `isNaN()`]]></title>
         <id>https://github.com/mdn/content/pull/45682</id>
         <link href="https://github.com/mdn/content/pull/45682"/>
-        <updated>2026-09-13T20:31:11.000Z</updated>
+        <updated>2026-09-14T09:19:53.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9283914?u=62f5b1c0263516347b9ffc982dbb86b48b1f4ff3&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>Comments added to <code class="notranslate">isFinite()</code> examples to level up with comments in <code class="notranslate">isNaN()</code>.</li>
@@ -127,7 +91,7 @@ span-x-start       0,0,350x600   span-x-start span-all: same | span-x-start cent
         <title type="html"><![CDATA[Document Chrome's deprecation of the unload event and its alternatives]]></title>
         <id>https://github.com/mdn/content/pull/45681</id>
         <link href="https://github.com/mdn/content/pull/45681"/>
-        <updated>2026-09-13T19:27:31.000Z</updated>
+        <updated>2026-09-14T15:18:31.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/18045464?u=54fa64de86eaa92044c02e3f0707962fa2300ab7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Updates the "Usage notes" on the <code class="notranslate">Window: unload event</code> page to explain Chrome's gradual change to stop running <code class="notranslate">unload</code> listeners, document the <code class="notranslate">unload</code> Permissions-Policy directive (<code class="notranslate">unload=*</code> / <code class="notranslate">unload=()</code>), and show how to migrate from <code class="notranslate">unload</code> to <code class="notranslate">visibilitychange</code>.</p>
 <h3 dir="auto">Motivation</h3>
@@ -149,40 +113,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/raviayadav</uri>
         </author>
         <published>2026-09-13T16:13:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add PerformanceResourceTiming.contentEncoding page]]></title>
-        <id>https://github.com/mdn/content/pull/45675</id>
-        <link href="https://github.com/mdn/content/pull/45675"/>
-        <updated>2026-09-13T11:18:38.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Just noticed this wis one of the few pages missing the PerformanceResourceTiming (the others are the <code class="notranslate">worker*</code> ones which are <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/Nd2x0tbTrLc/m/6puxrtEHBQAJ" rel="nofollow">still under naming discussion</a></p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Missing docs</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto">Shipped in Chrome 143:</p>
-<ul dir="auto">
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming#browser_compatibility" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming#browser_compatibility</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3574348351" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28337" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28337/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28337">mdn/browser-compat-data#28337</a></li>
-<li></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-<p dir="auto">Already added to BCD in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3574348351" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28337" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28337/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28337">mdn/browser-compat-data#28337</a></p>
-]]></content>
-        <author>
-            <name>tunetheweb</name>
-            <email>tunetheweb@noreply.github.com</email>
-            <uri>https://github.com/tunetheweb</uri>
-        </author>
-        <published>2026-09-13T11:13:12.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Simplify setTabValue and removeTabValue examples]]></title>
@@ -263,7 +193,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Document mutable headers on Response.json()]]></title>
         <id>https://github.com/mdn/content/pull/45665</id>
         <link href="https://github.com/mdn/content/pull/45665"/>
-        <updated>2026-09-13T01:22:01.000Z</updated>
+        <updated>2026-09-14T12:34:58.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/229418842?u=7d062faa679963052685abcfb94895e5a17314c9&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Document that the headers on a response created by <code class="notranslate">Response.json()</code> are mutable, contrast them with the immutable headers on a fetched response, and demonstrate changing a header.</p>
 <h3 dir="auto">Motivation</h3>
@@ -352,7 +282,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[FF156 ClipBoard Async API - clarify types]]></title>
         <id>https://github.com/mdn/content/pull/45620</id>
         <link href="https://github.com/mdn/content/pull/45620"/>
-        <updated>2026-09-14T01:40:23.000Z</updated>
+        <updated>2026-09-14T12:03:29.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF156 adds support for the async Clipboard API to use web custom formats.</p>
 <p dir="auto">The  API allows you to create a <code class="notranslate">ClipboardItem</code> that contains several representations of a copied object, such as version in HTML and Text, and push it to the system clipboard. Something else can read the clipboard and get back tha object - then choose the best format it understands.</p>
 <p dir="auto">The update allows you to (behind a pref) use other types than PNG, HTML, txt.</p>
@@ -392,5 +322,58 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-09-10T23:09:44.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[More explicitly recommend iframe for PDFs]]></title>
+        <id>https://github.com/mdn/content/pull/45614</id>
+        <link href="https://github.com/mdn/content/pull/45614"/>
+        <updated>2026-09-12T03:57:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44512.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4699405024" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44512" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44512/hovercard" href="https://github.com/mdn/content/issues/44512">#44512</a>. I did some research and came to the conclusion that there's no real reason to use <code class="notranslate">&lt;object&gt;</code> or <code class="notranslate">&lt;embed&gt;</code> at all for any purpose.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-10T22:54:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Out-of-gamut origin colors are not special in relative colors]]></title>
+        <id>https://github.com/mdn/content/pull/45609</id>
+        <link href="https://github.com/mdn/content/pull/45609"/>
+        <updated>2026-09-10T19:13:12.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #32704.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2189521620" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/32704" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/32704/hovercard" href="https://github.com/mdn/content/issues/32704">#32704</a></p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-10T19:11:40.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Technical review: Document scroll-axis-lock property]]></title>
+        <id>https://github.com/mdn/content/pull/45606</id>
+        <link href="https://github.com/mdn/content/pull/45606"/>
+        <updated>2026-09-10T16:43:06.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Chrome 153 adds support for the <a href="https://drafts.csswg.org/css-overflow-5/#scroll-axis-lock" rel="nofollow"><code class="notranslate">scroll-axis-lock</code></a> CSS property; see <a href="https://chromestatus.com/feature/5908461532610560" rel="nofollow">https://chromestatus.com/feature/5908461532610560</a>.</p>
+<p dir="auto">This PR adds a ref page for the new property.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-09-10T16:41:27.000Z</published>
     </entry>
 </feed>
