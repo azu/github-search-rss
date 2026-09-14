@@ -2,11 +2,107 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-09-14T02:09:28.921Z</updated>
+    <updated>2026-09-14T08:13:14.387Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Chrome 144 supports Temporal constructors]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30513</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30513"/>
+        <updated>2026-09-14T07:23:43.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/236759479?u=6a2b51441b1015f9a4beae865bfcb3f1a2ea9899&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Chrome 144 shipped <code class="notranslate">Temporal</code>, and BCD already records 144 for every <code class="notranslate">Temporal</code> class, but six constructor subfeatures (<code class="notranslate">Instant()</code>, <code class="notranslate">PlainDate()</code>, <code class="notranslate">PlainDateTime()</code>, <code class="notranslate">PlainMonthDay()</code>, <code class="notranslate">PlainYearMonth()</code>, <code class="notranslate">ZonedDateTime()</code>) were left at <code class="notranslate">version_added: false</code>. This sets them to <code class="notranslate">144</code> (like <code class="notranslate">Duration()</code> and <code class="notranslate">PlainTime()</code>) and sets <code class="notranslate">experimental</code> to <code class="notranslate">false</code> to match their parent classes (two engines: Chrome 144, Firefox 139).</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">The constructors are the class objects themselves, so they can't be unsupported while the class is supported. The <code class="notranslate">false</code> values come from the collector: <code class="notranslate">bcd.testConstructor()</code> calls <code class="notranslate">new X()</code> with no arguments, these six constructors have required parameters, and the errors they throw aren't in the harness's "needs more arguments" list, so the result was <code class="notranslate">null</code> and never updated BCD. The two constructors with only optional parameters (<code class="notranslate">Duration</code>, <code class="notranslate">PlainTime</code>) passed and already say 144.</p>
+<ul dir="auto">
+<li>mdn-bcd-results, Chrome 144 (<code class="notranslate">10.20.10-chrome-144.0.0.0-windows-10-6e24cc4bf8.json</code>): <code class="notranslate">javascript.builtins.Temporal.PlainDate.PlainDate</code> → <code class="notranslate">null</code>, "threw RangeError: Temporal error: Expected finite integer." (same for PlainDateTime / PlainMonthDay / PlainYearMonth); <code class="notranslate">Instant.Instant</code> and <code class="notranslate">ZonedDateTime.ZonedDateTime</code> → <code class="notranslate">null</code>, "threw TypeError: Cannot convert undefined to a BigInt"; the classes themselves are <code class="notranslate">true</code>.</li>
+<li>mdn-bcd-results, Chrome 143: <code class="notranslate">javascript.builtins.Temporal</code> → <code class="notranslate">false</code>, so 144 is the right version.</li>
+<li>ChromeStatus: <a href="https://chromestatus.com/feature/5668291307634688" rel="nofollow">https://chromestatus.com/feature/5668291307634688</a> (shipped in 144, desktop and Android).</li>
+<li>Tested in Chrome 152 and Edge 153 (headless); all six constructors work with valid arguments:</li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="new Temporal.Instant(0n)                       → 1970-01-01T00:00:00Z
+new Temporal.PlainDate(2021, 7, 1)             → 2021-07-01
+new Temporal.PlainDateTime(2021, 7, 1, 12, 30) → 2021-07-01T12:30:00
+new Temporal.PlainMonthDay(7, 1)               → 07-01
+new Temporal.PlainYearMonth(2021, 7)           → 2021-07
+new Temporal.ZonedDateTime(0n, &quot;UTC&quot;)          → 1970-01-01T00:00:00+00:00[UTC]
+new Temporal.PlainDate()                       → throws RangeError"><pre class="notranslate"><code class="notranslate">new Temporal.Instant(0n)                       → 1970-01-01T00:00:00Z
+new Temporal.PlainDate(2021, 7, 1)             → 2021-07-01
+new Temporal.PlainDateTime(2021, 7, 1, 12, 30) → 2021-07-01T12:30:00
+new Temporal.PlainMonthDay(7, 1)               → 07-01
+new Temporal.PlainYearMonth(2021, 7)           → 2021-07
+new Temporal.ZonedDateTime(0n, "UTC")          → 1970-01-01T00:00:00+00:00[UTC]
+new Temporal.PlainDate()                       → throws RangeError
+</code></pre></div>
+<p dir="auto">Safari isn't changed here: the <code class="notranslate">PlainDate</code> / <code class="notranslate">PlainDateTime</code> / <code class="notranslate">PlainMonthDay</code> / <code class="notranslate">PlainYearMonth</code> constructors probably have the same collector artifact for Safari TP, but I can't test Safari Technology Preview.</p>
+<p dir="auto"><code class="notranslate">npm run lint</code>, <code class="notranslate">npm run format</code> and the unit tests pass locally.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5443701755" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30506" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30506/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30506">#30506</a> (Chrome part; Safari not addressed)</p>]]></content>
+        <author>
+            <name>RizgarOzan</name>
+            <email>RizgarOzan@noreply.github.com</email>
+            <uri>https://github.com/RizgarOzan</uri>
+        </author>
+        <published>2026-09-14T07:23:03.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Node.js 24 supports SuppressedError]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30511</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30511"/>
+        <updated>2026-09-14T05:17:58.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/236759479?u=6a2b51441b1015f9a4beae865bfcb3f1a2ea9899&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Sets <code class="notranslate">nodejs.version_added</code> to <code class="notranslate">"24.0.0"</code> for <code class="notranslate">javascript.builtins.SuppressedError</code> and its three subfeatures (constructor, <code class="notranslate">error</code>, <code class="notranslate">suppressed</code>), which were all <code class="notranslate">false</code>.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>Node.js 24.0.0 <a href="https://nodejs.org/en/blog/release/v24.0.0" rel="nofollow">release notes</a>: ships V8 13.6 and lists explicit resource management as a notable change ("src: enable explicit resource management", <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3037901177" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/58154" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/58154/hovercard" href="https://github.com/nodejs/node/pull/58154">nodejs/node#58154</a>).</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/nodejs/node/commit/8a258eb7b1/hovercard" href="https://github.com/nodejs/node/commit/8a258eb7b1">nodejs/node@<tt>8a258eb7b1</tt></a> ("test: handle explicit resource management globals", <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3027177281" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/58070" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/58070/hovercard" href="https://github.com/nodejs/node/pull/58070">nodejs/node#58070</a>) adds <code class="notranslate">SuppressedError</code>, <code class="notranslate">DisposableStack</code> and <code class="notranslate">AsyncDisposableStack</code> to Node's known globals in <code class="notranslate">test/common/globals.js</code>. That file has no <code class="notranslate">SuppressedError</code> at tag <code class="notranslate">v23.11.1</code> and has it at <code class="notranslate">v24.0.0</code>, so 24.0.0 is the first release.</li>
+<li>Consistent with existing BCD data: <code class="notranslate">DisposableStack</code>, <code class="notranslate">AsyncDisposableStack</code>, <code class="notranslate">statements.using</code> and <code class="notranslate">statements.await_using</code> already have <code class="notranslate">nodejs: "24.0.0"</code>.</li>
+<li>Local check on Node 24.14.1: <code class="notranslate">new SuppressedError(1, 2, "m")</code> has <code class="notranslate">.error === 1</code>, <code class="notranslate">.suppressed === 2</code>, <code class="notranslate">.message === "m"</code> and is <code class="notranslate">instanceof Error</code>.</li>
+<li><code class="notranslate">npm run lint -- javascript/builtins/SuppressedError.json</code> → "All data passed linting!"; prettier check clean.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30376.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5304156495" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30376" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30376/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30376">#30376</a></p>]]></content>
+        <author>
+            <name>RizgarOzan</name>
+            <email>RizgarOzan@noreply.github.com</email>
+            <uri>https://github.com/RizgarOzan</uri>
+        </author>
+        <published>2026-09-14T05:17:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[css.selectors.attribute] Case‑sensitive modifier is planned for Safari 27]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30508</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30508"/>
+        <updated>2026-09-14T03:51:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/3889017?u=674e2a40077a838ed33ad48f1435b331e01f9e26&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<p dir="auto">The <strong>WebKit</strong> bug to implement this has been resolved with the merge of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4444327519" data-permission-text="Title is private" data-url="https://github.com/WebKit/WebKit/issues/64914" data-hovercard-type="pull_request" data-hovercard-url="/WebKit/WebKit/pull/64914/hovercard" href="https://github.com/WebKit/WebKit/pull/64914">WebKit/WebKit#64914</a>, and it’s scheduled for release in <strong>Safari 27</strong>.</p>
+<p dir="auto">Note that case‑sensitive attribute selectors are untested by <a href="https://collector.openwebdocs.org/" rel="nofollow">https://collector.openwebdocs.org/</a>, so <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5426002711" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30488" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30488/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30488">#30488</a> doesn’t include this.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<ul dir="auto">
+<li><a href="https://webkit.org/b/272573" rel="nofollow">https://webkit.org/b/272573</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4444327519" data-permission-text="Title is private" data-url="https://github.com/WebKit/WebKit/issues/64914" data-hovercard-type="pull_request" data-hovercard-url="/WebKit/WebKit/pull/64914/hovercard" href="https://github.com/WebKit/WebKit/pull/64914">WebKit/WebKit#64914</a></li>
+<li><a href="https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes#CSS" rel="nofollow">https://developer.apple.com/documentation/safari-release-notes/safari-27-release-notes#CSS</a></li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2721044101" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/25331" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/25331/hovercard" href="https://github.com/mdn/browser-compat-data/pull/25331">#25331</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5426002711" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30488" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30488/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30488">#30488</a></li>
+</ul>
+]]></content>
+        <author>
+            <name>ExE-Boss</name>
+            <email>ExE-Boss@noreply.github.com</email>
+            <uri>https://github.com/ExE-Boss</uri>
+        </author>
+        <published>2026-09-14T03:27:54.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Clipboard.write() - only supports writing one ClipboardItem on Chrome/FF]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30507</id>
@@ -78,7 +174,7 @@ Promise { &lt;state&gt;: "fulfilled", &lt;value&gt;: "NotAllowedError: Clipboard
         <title type="html"><![CDATA[Remove obsolete CSS features and enable obsolescence lint for CSS]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30478</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30478"/>
-        <updated>2026-09-11T11:38:42.000Z</updated>
+        <updated>2026-09-14T07:32:50.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">Right now, our <a href="https://github.com/mdn/browser-compat-data/tree/main/docs/data-guidelines#removal-of-irrelevant-features">irrelevance guideline</a> is not applied to the <code class="notranslate">css/</code> folder because the lint has been disabled (from the start when we first implemented this rule, there were just too many data points to clean up at the time). We're now down to 25 entries there and I think it is time to finally enable this lint for CSS, too.</p>
 <p dir="auto">If you enable the lint on main you get the following messages:</p>
@@ -372,63 +468,5 @@ Or document the 6 non-browser-specific ones and any (like <code class="notransla
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2026-09-04T12:07:33.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Make CSS is animatable data consistent]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30417</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30417"/>
-        <updated>2026-09-11T15:08:59.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">As per <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5278135363" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30358" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30358/hovercard?comment_id=3903940057&amp;comment_type=review_comment" href="https://github.com/mdn/browser-compat-data/pull/30358#discussion_r3903940057">#30358 (comment)</a>, This PR aims to make CSS data more consistent in cases where a feature (property or type) started its life off not animatable, but was made animatable later on.</p>
-<p dir="auto">In such cases, I am using the following keys:</p>
-<ul dir="auto">
-<li><code class="notranslate">is_animatable</code> when the data point describes when the feature was made <code class="notranslate">@keyframe</code> animatable, or <code class="notranslate">@keyframe</code> animatable and transitionable.</li>
-<li><code class="notranslate">is_transitionable</code> when the data point describes when the feature was made transitionable.</li>
-</ul>
-<p dir="auto">And the following <code class="notranslate">description</code> structure:</p>
-<ul dir="auto">
-<li>"<code class="notranslate">@keyframe</code> animatable" when the data point describes when the feature was made <code class="notranslate">@keyframe</code> animatable.</li>
-<li>"Transitionable" when the data point describes when the feature was made transitionable.</li>
-<li>"<code class="notranslate">@keyframe</code> animatable and transitionable" when the data point describes when the feature was made <code class="notranslate">@keyframe</code> animatable and transitionable.</li>
-</ul>
-<p dir="auto">The <code class="notranslate">description</code> also has an optional suffix: "when x", where x is a particular condition under which the feature is animatable and/or transitionable. For example — "<code class="notranslate">@keyframe</code> animatable and transitionable when setting inset properties"</p>
-<p dir="auto">Notes:</p>
-<ul dir="auto">
-<li><code class="notranslate">text-combine-upright</code> started off animatable in Fx, but that was a mistake, and it was corrected per spec later on. I don't think this is worth adding a separate data point for, so I've just left that one as a note.</li>
-<li>I've not added a guideline for this yet, as I'm not sure where to do that. I am hoping the above will for the basis of that.</li>
-</ul>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-09-03T13:25:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix inconsistent standard_track for HTML webkitdirectory attribute]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30413</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30413"/>
-        <updated>2026-09-10T00:37:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto"><code class="notranslate">html.elements.input.webkitdirectory</code> had <code class="notranslate">standard_track: false</code> and no <code class="notranslate">spec_url</code>, while <code class="notranslate">api.HTMLInputElement.webkitdirectory</code> has <code class="notranslate">standard_track: true</code> with a <code class="notranslate">spec_url</code> pointing to the same <a href="https://wicg.github.io/entries-api/#dom-htmlinputelement-webkitdirectory" rel="nofollow">File and Directory Entries API</a> definition (the spec defines the content attribute and IDL attribute at the same anchor). This aligns the HTML attribute entry with the IDL attribute entry.</p>
-<p dir="auto">This surfaced from <a href="https://github.com/mdn/content/pull/45474" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45474/hovercard">mdn/content#45474</a>, where a reviewer noted the content docs and the live <code class="notranslate">HTMLInputElement.webkitdirectory</code> page were giving conflicting standard/non-standard signals for the same attribute.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto"><code class="notranslate">node lint/lint.js</code> and <code class="notranslate">prettier --check</code> both pass on <code class="notranslate">html/elements/input.json</code>.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">N/A</p>]]></content>
-        <author>
-            <name>BaconMan1168</name>
-            <email>BaconMan1168@noreply.github.com</email>
-            <uri>https://github.com/BaconMan1168</uri>
-        </author>
-        <published>2026-09-03T11:22:07.000Z</published>
     </entry>
 </feed>
