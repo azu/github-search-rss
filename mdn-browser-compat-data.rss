@@ -2,11 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-09-13T23:44:37.586Z</updated>
+    <updated>2026-09-14T02:09:28.921Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Clipboard.write() - only supports writing one ClipboardItem on Chrome/FF]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30507</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30507"/>
+        <updated>2026-09-14T01:24:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Chrome and FF only support writing one ClipboardItem - tested using <code class="notranslate">(async (i = (t) =&gt; new ClipboardItem({ "text/plain": t })) =&gt; navigator.clipboard.write([i("a"), i("b")]).then(() =&gt; "resolved", (e) =&gt; </code>${e.name}: ${e.message}<code class="notranslate">))()</code>.<br>
+Safari allows writing as many as you like.</p>
+<p dir="auto">The spec says that you may write more than one item if the OS supports it but that if not only the first item may be writen.</p>
+<p dir="auto">But what happens on Chrome/FF is a NotAllowedError exception - the spec says that additional items should be ignored.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="(async (i = (t) =&gt; new ClipboardItem({ &quot;text/plain&quot;: t })) =&gt; navigator.clipboard.write([i(&quot;a&quot;), i(&quot;b&quot;)]).then(() =&gt; &quot;resolved&quot;, (e) =&gt; `${e.name}: ${e.message}`))()
+
+Promise { &lt;state&gt;: &quot;fulfilled&quot;, &lt;value&gt;: &quot;NotAllowedError: Clipboard write is only supported with one ClipboardItem at the moment&quot; }"><pre class="notranslate"><code class="notranslate">(async (i = (t) =&gt; new ClipboardItem({ "text/plain": t })) =&gt; navigator.clipboard.write([i("a"), i("b")]).then(() =&gt; "resolved", (e) =&gt; `${e.name}: ${e.message}`))()
+
+Promise { &lt;state&gt;: "fulfilled", &lt;value&gt;: "NotAllowedError: Clipboard write is only supported with one ClipboardItem at the moment" }
+</code></pre></div>
+<p dir="auto">I added this as a note, but wondering if it should be a subfeature or this is OK? (or something else)</p>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5312307167" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45430" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45430/hovercard" href="https://github.com/mdn/content/issues/45430">mdn/content#45430</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-09-14T01:16:52.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[css.properties.resize: add support data for replaced elements]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30501</id>
@@ -406,22 +430,5 @@ Or document the 6 non-browser-specific ones and any (like <code class="notransla
             <uri>https://github.com/BaconMan1168</uri>
         </author>
         <published>2026-09-03T11:22:07.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Specify event handler for focusout/in]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30409</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30409"/>
-        <updated>2026-09-03T10:54:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/93594?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is a bit of a weird one. These are currently marked 'partial' in Chrome &amp; Firefox because they don't support the <code class="notranslate">onfocusout</code> event handler property. However, those properties are nonstandard - <a href="https://html.spec.whatwg.org/multipage/webappapis.html#globaleventhandlers" rel="nofollow">they're not defined in the HTML spec</a>.</p>
-<p dir="auto">These events <a href="https://w3c.github.io/uievents/#interface-inputevent" rel="nofollow">are somewhat spec'd in UI Events</a>, but the handler properties are not.</p>
-<p dir="auto">Although <a href="https://github.com/jakearchibald/browser-compat-data/blob/fb9e4f0b5e66064a41b58b0d1dbd4b8737b37620/docs/data-guidelines/api.md#L124">the data guidelines explicitly recommend using partial in these cases</a>, it seems incorrect to apply this rule in cases where the handler property is nonstandard.</p>
-<p dir="auto">Marking other browsers as 'partial' because one browser implements a nonstandard extension to the feature seems… bad.</p>
-<p dir="auto">There was an attempt to add these to the spec, but it stalled in 2024 <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2215871180" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10235" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10235/hovercard" href="https://github.com/whatwg/html/pull/10235">whatwg/html#10235</a>.</p>]]></content>
-        <author>
-            <name>jakearchibald</name>
-            <email>jakearchibald@noreply.github.com</email>
-            <uri>https://github.com/jakearchibald</uri>
-        </author>
-        <published>2026-09-03T09:11:58.000Z</published>
     </entry>
 </feed>
