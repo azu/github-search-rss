@@ -2,11 +2,92 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-09-14T15:21:47.684Z</updated>
+    <updated>2026-09-14T20:00:16.989Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Permissions-Policy: unload]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30522</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30522"/>
+        <updated>2026-09-14T17:47:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/18045464?u=54fa64de86eaa92044c02e3f0707962fa2300ab7&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Adds <code class="notranslate">http.headers.Permissions-Policy.unload</code>, the directive that controls whether a document can run <code class="notranslate">unload</code> event handlers. The MDN page for it landed in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5441209122" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45681" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45681/hovercard" href="https://github.com/mdn/content/pull/45681">mdn/content#45681</a>, and chrisdavidmills asked for the BCD entry <a href="https://github.com/mdn/content/pull/45681" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45681/hovercard">in his approval</a>.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><strong>Chrome 118.</strong> chromestatus (<a href="https://chromestatus.com/feature/5760325231050752" rel="nofollow">5760325231050752</a>) lists 115, but in 115–117 the feature was only enabled for part of stable users through a field trial:</p>
+<ul dir="auto">
+<li><a href="https://github.com/chromium/chromium/commit/2dc337fca5"><code class="notranslate">2dc337f</code></a>: origin trial and experimental flag (Chrome 107).</li>
+<li><a href="https://github.com/chromium/chromium/commit/1b7f03029a"><code class="notranslate">1b7f030</code></a>: field trial config added.</li>
+<li><a href="https://github.com/chromium/chromium/commit/86659902320c9a6ff1083688c928109df3d84f25"><code class="notranslate">8665990</code></a> "Set PermissionsPolicyUnload to enabled for stable" ("This has been at 50/50 in stable for a while"). Chromium Dash shows this first shipped in stable in 118.0.5993.48.</li>
+</ul>
+<p dir="auto">Like in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2335835327" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/23267" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/23267/hovercard" href="https://github.com/mdn/browser-compat-data/pull/23267">#23267</a>, I used the version where it became enabled by default. The origin trial and flag aren't recorded.</p>
+<p dir="auto"><strong>Firefox and Safari: not supported.</strong> Firefox doesn't support the <code class="notranslate">Permissions-Policy</code> header. WebKit's <a href="https://github.com/WebKit/WebKit/blob/main/Source/WebCore/html/PermissionsPolicy.cpp"><code class="notranslate">PermissionsPolicy.cpp</code></a> has no <code class="notranslate">unload</code> token.</p>
+<p dir="auto"><strong>Status.</strong> No <code class="notranslate">spec_url</code>, and <code class="notranslate">standard_track: false</code>, because the spec change (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1232354134" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/7915" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/7915/hovercard" href="https://github.com/whatwg/html/pull/7915">whatwg/html#7915</a>) was never merged. <code class="notranslate">experimental: true</code> matches the MDN page and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5166922806" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30247" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30247/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30247">#30247</a> (<code class="notranslate">clipboard-read</code>/<code class="notranslate">clipboard-write</code>). Happy to change it to <code class="notranslate">false</code> if the two-year guideline should apply here.</p>
+<p dir="auto"><strong>No <code class="notranslate">mdn_url</code> yet.</strong> The page merged after the latest <code class="notranslate">@ddbeck/mdn-content-inventory</code> release, so the linter removes the URL for now. It should be added by the next inventory update.</p>
+<p dir="auto">Tested in Chromium 151: <code class="notranslate">document.featurePolicy.features()</code> includes <code class="notranslate">unload</code>, and a page served with <code class="notranslate">Permissions-Policy: unload=()</code> returns <code class="notranslate">false</code> for <code class="notranslate">document.featurePolicy.allowsFeature('unload')</code>. <code class="notranslate">npm test</code> passes.</p>
+<p dir="auto">AI disclosure: I used an AI assistant (Claude) to help research and draft this change. I reviewed the data and verified it against the sources above.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2619411766" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/24843" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/24843/hovercard" href="https://github.com/mdn/browser-compat-data/issues/24843">#24843</a><br>
+Follow-up to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5441209122" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45681" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45681/hovercard" href="https://github.com/mdn/content/pull/45681">mdn/content#45681</a></p>]]></content>
+        <author>
+            <name>raviayadav</name>
+            <email>raviayadav@noreply.github.com</email>
+            <uri>https://github.com/raviayadav</uri>
+        </author>
+        <published>2026-09-14T17:46:20.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[`javascript.builtins.String.trimStart` and `trimEnd`: break out `trim{Left,Right}`]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30520</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30520"/>
+        <updated>2026-09-14T16:49:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Create separate keys for the <code class="notranslate">trimLeft()</code> and <code class="notranslate">trimRight()</code> string methods, since they're specified and have a different status.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Where there wasn't existing data (e.g., Safari) for the aliases, I tried to test it. I was able to test Safari. I had difficulty testing old versions of Bun, Deno, and Node; for those, I assumed the earliest versions in BCD.</p>
+
+
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5351140405" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4324" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/4324/hovercard" href="https://github.com/web-platform-dx/web-features/issues/4324">web-platform-dx/web-features#4324</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-09-14T16:48:46.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[`api.HTMLGeolocationElement.initialPermissionStatus`: mark as deprecated]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30519</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30519"/>
+        <updated>2026-09-14T15:42:00.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Mark <code class="notranslate">initialPermissionStatus</code> as discouraged, pending removal from the only implementer, Chromium.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><a href="https://chromestatus.com/feature/5113729407647744" rel="nofollow">This Chrome status entry</a> says they're planning to deprecate and remove the API. Since they're the only implementer, this satisfies our "notice from all implementing browsers" deprecation criterion.</p>
+
+
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li>Instigated by <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5335642286" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4305" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/4305/hovercard" href="https://github.com/web-platform-dx/web-features/issues/4305">web-platform-dx/web-features#4305</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-09-14T15:35:12.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fx157 support for WebGPU TRANSIENT_ATTACHMENT]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30517</id>
@@ -34,7 +115,7 @@
         <title type="html"><![CDATA[Add missing BCD keys for import.defer()/import.source(), fix decls spec_url]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30514</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30514"/>
-        <updated>2026-09-14T11:06:26.000Z</updated>
+        <updated>2026-09-14T16:57:33.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">In <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4806222473" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44638" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/44638/hovercard" href="https://github.com/mdn/content/pull/44638">mdn/content#44638</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5328000191" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45464" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45464/hovercard" href="https://github.com/mdn/content/pull/45464">mdn/content#45464</a>, we noticed that previous BCD PRs failed to add the keys for the operator forms. This copies over the data from the statements.</p>
 <p dir="auto">Also, unfortunately, the inconsistency was introduced: one was named <code class="notranslate">statements.import.defer</code>, but the other <code class="notranslate">statements.import.import_source</code>. I reckon the ship has sailed, so I've kept that inconsistency for the operator forms. However, I did fix the inconsistency for the description, so it's just <code class="notranslate">import source</code>.</p>
 <p dir="auto">Also, I noticed that both PRs gave the wrong spec URLs for the statements: they were both linking to the operator forms. So I've fixed them too.</p>]]></content>
@@ -191,16 +272,16 @@ Promise { &lt;state&gt;: "fulfilled", &lt;value&gt;: "NotAllowedError: Clipboard
         <title type="html"><![CDATA[Updates for Safari TP 252]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30488</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30488"/>
-        <updated>2026-09-11T15:22:22.000Z</updated>
+        <updated>2026-09-14T15:56:26.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">The <a href="https://collector.openwebdocs.org/" rel="nofollow">https://collector.openwebdocs.org/</a> project (v10.20.10) found new features shipping in Safari Technical Preview 252 on macOS 27 which was released today. Currently, the collector covers about 90% of BCD, so the following list might not be exhaustive.</p>
-<p dir="auto">🚧 No release notes yet.</p>
 <ul dir="auto">
 <li>api.CSSMediaRule.matches</li>
 <li>api.CSSSupportsRule.matches</li>
 <li>api.Request.duplex</li>
 <li>css.properties.user-select</li>
-</ul>]]></content>
+</ul>
+<p dir="auto">Release notes: <a href="https://webkit.org/blog/18304/release-notes-for-safari-technology-preview-252/" rel="nofollow">https://webkit.org/blog/18304/release-notes-for-safari-technology-preview-252/</a></p>]]></content>
         <author>
             <name>Elchi3</name>
             <email>Elchi3@noreply.github.com</email>
@@ -427,84 +508,5 @@ Or document the 6 non-browser-specific ones and any (like <code class="notransla
             <uri>https://github.com/rebloor</uri>
         </author>
         <published>2026-09-07T19:07:58.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add values for CSS background-blend-mode property]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30438</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30438"/>
-        <updated>2026-09-04T17:16:34.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add values for the CSS background-blend-mode property. These seem to have been forgotten in Vinyl's project to add values to all CSS properties.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Assumed is that all values were supported from the start. Couldn't find hints that suggest otherwise.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3501181541" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28138" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/28138/hovercard" href="https://github.com/mdn/browser-compat-data/pull/28138">#28138</a></p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2026-09-04T17:15:30.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add missing CSS flexbox property values]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30437</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30437"/>
-        <updated>2026-09-10T13:07:59.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Towards <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5334941590" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30410" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30410/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30410">#30410</a></p>
-<p dir="auto">According to the Collector, support goes a long way back. I assume these values have been introduced with the initial Flexbox implementation which would make sense given BCD originally didn't have initial CSS values as sub features. They were mass-added by Vinyl in 2025.</p>
-<p dir="auto">Also, these Flexbox sub-features probably weren't added back then because the structure is not simple: There is nesting going on here where values sit below <code class="notranslate">flex_context</code> and <code class="notranslate">grid_context</code>. You can also see  this in the compat table on MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-content#browser_compatibility" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/align-content#browser_compatibility</a></p>
-<p dir="auto">I think we want the following structure, but it would be good to confirm it before I proceed with other CSS properties. Is it correct to put all these values under flex_context?</p>
-<ul dir="auto">
-<li>css.properties.align-content:
-<ul dir="auto">
-<li>block_context</li>
-<li>flex_context
-<ul dir="auto">
-<li><code class="notranslate">baseline</code></li>
-<li><code class="notranslate">center</code></li>
-<li><code class="notranslate">end</code> (new from split)</li>
-<li><code class="notranslate">first baseline</code></li>
-<li><code class="notranslate">flex-end</code> (new)</li>
-<li><code class="notranslate">flex-start</code> (new)</li>
-<li><code class="notranslate">last baseline</code></li>
-<li><code class="notranslate">safe</code> (new from split)</li>
-<li><code class="notranslate">space-around</code> (new)</li>
-<li><code class="notranslate">space-between</code> (new)</li>
-<li><code class="notranslate">space-evenly</code></li>
-<li><code class="notranslate">start</code> (new from split)</li>
-<li><code class="notranslate">stretch</code></li>
-<li><code class="notranslate">unsafe</code> (new from split)</li>
-</ul>
-</li>
-<li>grid_context</li>
-<li>multicol_context</li>
-<li><code class="notranslate">normal</code></li>
-</ul>
-</li>
-</ul>
-<p dir="auto">Alternatively, I guess, we could flatten this all out, leading to a few moves plus adding the missing values. That would mean less work for me on the Collector side, as I still have to teach the Collector that these values can be found in subtrees (flex_context in this case, grid_context in other cases).</p>
-<p dir="auto">What do we think?</p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2026-09-04T15:08:41.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[More updates for Safari TP 251]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30435</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30435"/>
-        <updated>2026-09-04T12:08:33.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Followup to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5266315879" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30347" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30347/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30347">#30347</a> (either forgotten in the previous run, or the values weren't available in the Collector/webref back then).</p>
-<p dir="auto">See <a href="https://webkit.org/blog/18194/release-notes-for-safari-technology-preview-251/#:~:text=Added%20support%20for%20white%2Dspace%2Dtrim%20in%20the%20white%2Dspace%20shorthand.%20(318486@main)%20(182739052)" rel="nofollow">https://webkit.org/blog/18194/release-notes-for-safari-technology-preview-251/#:~:text=Added%20support%20for%20white%2Dspace%2Dtrim%20in%20the%20white%2Dspace%20shorthand.%20(318486@main)%20(182739052)</a></p>
-<p dir="auto"><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/WebKit/WebKit/commit/dd490d605c8f089877ac86a95aa348387e514892/hovercard" href="https://github.com/WebKit/WebKit/commit/dd490d605c8f089877ac86a95aa348387e514892">WebKit/WebKit@<tt>dd490d6</tt></a></p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2026-09-04T12:07:33.000Z</published>
     </entry>
 </feed>
