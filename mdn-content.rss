@@ -2,31 +2,143 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-15T12:19:57.243Z</updated>
+    <updated>2026-09-15T17:23:03.469Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Update_index.md]]></title>
-        <id>https://github.com/mdn/content/pull/45716</id>
-        <link href="https://github.com/mdn/content/pull/45716"/>
-        <updated>2026-09-15T10:05:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/219009286?v=4" width="64" height="64" alt=""/><br/>
+        <title type="html"><![CDATA[build(deps-dev): bump cspell from 10.3.1 to 10.3.2]]></title>
+        <id>https://github.com/mdn/content/pull/45720</id>
+        <link href="https://github.com/mdn/content/pull/45720"/>
+        <updated>2026-09-15T14:05:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell">cspell</a> from 10.3.1 to 10.3.2.</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/releases">cspell's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.3.2</h2>
+<h2 dir="auto">Fixes</h2>
 
-<h3 dir="auto">Description</h3>
-<p dir="auto">Fixed a code example that used <code class="notranslate">await</code> outside of an <code class="notranslate">async</code> function, which would cause a syntax error in a plain script context. Wrapped the <code class="notranslate">fetch</code> calls in an <code class="notranslate">async function main()</code> and invoked it.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The original example used <code class="notranslate">await fetch(request)</code> directly at the top level, which only works in module scripts or environments that support top-level await. Since this snippet is a plain inline script example, it would throw a <code class="notranslate">SyntaxError: await is only valid in async functions</code>. Wrapping the logic in an <code class="notranslate">async function</code> makes the example runnable as-is for readers copying the code into a regular script.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">No new APIs or behavior introduced — this is purely a fix to make the existing <code class="notranslate">Request</code>/<code class="notranslate">fetch</code> example (demonstrating that a request body can only be consumed once) executable in a standard script context.</p>
-]]></content>
+<h3 dir="auto">fix: Add Experimental Validation setting. (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9250">#9250</a>)</h3>
+<p dir="auto">This pull request introduces new experimental support for fine-grained validation control and refactors plugin support in the CSpell types package. The main changes add the ability to specify which segments of parsed text should be spell-checked using tag-based validation, and reorganize plugin configuration for future extensibility. The changes also update type definitions and exports to support these new features.</p>
+<p dir="auto"><strong>Validation Tag Support:</strong></p>
+<ul dir="auto">
+<li>Introduced the <code class="notranslate">CSpellSettingsValidation</code> interface, allowing configuration of which tagged segments of text are spell-checked via the new <code class="notranslate">validate</code> property. This uses the new <code class="notranslate">ValidationTags</code> and <code class="notranslate">TagPattern</code> types to enable hierarchical and wildcard matching of tags. [1] [2]</li>
+<li>Updated exports to include <code class="notranslate">TagPattern</code> and <code class="notranslate">ValidationTags</code> for external usage.</li>
+</ul>
+<p dir="auto"><strong>Plugin Configuration Refactor:</strong></p>
+<ul dir="auto">
+<li>Added the <code class="notranslate">CSpellSettingsPlugins</code> interface to encapsulate plugin-related settings, including an experimental <code class="notranslate">plugins</code> array. [1] [2]</li>
+<li>Refactored <code class="notranslate">ExperimentalFileSettings</code> to extend both <code class="notranslate">CSpellSettingsPlugins</code> and <code class="notranslate">CSpellSettingsValidation</code>, consolidating experimental settings. [1] [2]</li>
+</ul>
+<p dir="auto"><strong>API and Type Definition Updates:</strong></p>
+<ul dir="auto">
+<li>Changed the <code class="notranslate">defineConfig</code> function and its type definition to accept <code class="notranslate">AdvancedCSpellSettings</code> instead of <code class="notranslate">CSpellSettings</code>, reflecting the expanded configuration options. [1] [2]</li>
+<li>Updated imports and type usage throughout the codebase to align with the new structure for plugins and validation settings.</li>
+</ul>
+<p dir="auto">These changes lay the groundwork for more flexible and precise spell-checking configuration and future plugin extensibility.</p>
+<hr>
+
+
+<h3 dir="auto">fix: Plugin (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9244">#9244</a>)</h3>
+<p dir="auto">This pull request introduces support for a new <code class="notranslate">DocumentParser</code> interface alongside the existing <code class="notranslate">Parser</code> interface, modernizing the way documents are parsed throughout the codebase. It updates type definitions, internal APIs, and logic to handle both parser types, and refactors related code for improved clarity and flexibility.</p>
+<p dir="auto">Key changes include:</p>
+<p dir="auto"><strong>API and Type Definition Updates:</strong></p>
+<ul dir="auto">
+<li>Added <code class="notranslate">DocumentParser</code>, <code class="notranslate">TextDocument</code>, and related types to <code class="notranslate">@cspell/cspell-types</code>, and updated the <code class="notranslate">ParseResult</code> interface to remove <code class="notranslate">content</code> and <code class="notranslate">filename</code> fields, making it compatible with both parser interfaces.</li>
+<li>Deprecated the old <code class="notranslate">Plugin</code> interface in favor of the new <code class="notranslate">CSpellPlugin</code> interface, which now supports both <code class="notranslate">Parser</code> and <code class="notranslate">DocumentParser</code> instances.</li>
+</ul>
+<p dir="auto"><strong>Core Library Refactoring:</strong></p>
+<ul dir="auto">
+<li>Updated parser handling in <code class="notranslate">CSpellSettingsServer.ts</code> to support both <code class="notranslate">Parser</code> and <code class="notranslate">DocumentParser</code>, including changes to caches, type signatures, and plugin mapping functions.</li>
+<li>Refactored <code class="notranslate">DocumentValidator</code> in <code class="notranslate">docValidator.ts</code> to use a new <code class="notranslate">parseDocumentWithParser</code> helper, which abstracts over the two parser interfaces.</li>
+</ul>
+<p dir="auto"><strong>Parser Implementation and Test Updates:</strong></p>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/CHANGELOG.md">cspell's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.3.2 (2026-09-15)</h2>
+<h3 dir="auto">Fixes</h3>
+
+<h3 dir="auto">fix: Add Experimental Validation setting. (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9250">#9250</a>)</h3>
+<p dir="auto">This pull request introduces new experimental support for fine-grained validation control and refactors plugin support in the CSpell types package. The main changes add the ability to specify which segments of parsed text should be spell-checked using tag-based validation, and reorganize plugin configuration for future extensibility. The changes also update type definitions and exports to support these new features.</p>
+<p dir="auto"><strong>Validation Tag Support:</strong></p>
+<ul dir="auto">
+<li>Introduced the <code class="notranslate">CSpellSettingsValidation</code> interface, allowing configuration of which tagged segments of text are spell-checked via the new <code class="notranslate">validate</code> property. This uses the new <code class="notranslate">ValidationTags</code> and <code class="notranslate">TagPattern</code> types to enable hierarchical and wildcard matching of tags. [1] [2]</li>
+<li>Updated exports to include <code class="notranslate">TagPattern</code> and <code class="notranslate">ValidationTags</code> for external usage.</li>
+</ul>
+<p dir="auto"><strong>Plugin Configuration Refactor:</strong></p>
+<ul dir="auto">
+<li>Added the <code class="notranslate">CSpellSettingsPlugins</code> interface to encapsulate plugin-related settings, including an experimental <code class="notranslate">plugins</code> array. [1] [2]</li>
+<li>Refactored <code class="notranslate">ExperimentalFileSettings</code> to extend both <code class="notranslate">CSpellSettingsPlugins</code> and <code class="notranslate">CSpellSettingsValidation</code>, consolidating experimental settings. [1] [2]</li>
+</ul>
+<p dir="auto"><strong>API and Type Definition Updates:</strong></p>
+<ul dir="auto">
+<li>Changed the <code class="notranslate">defineConfig</code> function and its type definition to accept <code class="notranslate">AdvancedCSpellSettings</code> instead of <code class="notranslate">CSpellSettings</code>, reflecting the expanded configuration options. [1] [2]</li>
+<li>Updated imports and type usage throughout the codebase to align with the new structure for plugins and validation settings.</li>
+</ul>
+<p dir="auto">These changes lay the groundwork for more flexible and precise spell-checking configuration and future plugin extensibility.</p>
+<hr>
+
+
+<h3 dir="auto">fix: Plugin (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9244">#9244</a>)</h3>
+<p dir="auto">This pull request introduces support for a new <code class="notranslate">DocumentParser</code> interface alongside the existing <code class="notranslate">Parser</code> interface, modernizing the way documents are parsed throughout the codebase. It updates type definitions, internal APIs, and logic to handle both parser types, and refactors related code for improved clarity and flexibility.</p>
+<p dir="auto">Key changes include:</p>
+<p dir="auto"><strong>API and Type Definition Updates:</strong></p>
+<ul dir="auto">
+<li>Added <code class="notranslate">DocumentParser</code>, <code class="notranslate">TextDocument</code>, and related types to <code class="notranslate">@cspell/cspell-types</code>, and updated the <code class="notranslate">ParseResult</code> interface to remove <code class="notranslate">content</code> and <code class="notranslate">filename</code> fields, making it compatible with both parser interfaces.</li>
+<li>Deprecated the old <code class="notranslate">Plugin</code> interface in favor of the new <code class="notranslate">CSpellPlugin</code> interface, which now supports both <code class="notranslate">Parser</code> and <code class="notranslate">DocumentParser</code> instances.</li>
+</ul>
+<p dir="auto"><strong>Core Library Refactoring:</strong></p>
+<ul dir="auto">
+<li>Updated parser handling in <code class="notranslate">CSpellSettingsServer.ts</code> to support both <code class="notranslate">Parser</code> and <code class="notranslate">DocumentParser</code>, including changes to caches, type signatures, and plugin mapping functions.</li>
+<li>Refactored <code class="notranslate">DocumentValidator</code> in <code class="notranslate">docValidator.ts</code> to use a new <code class="notranslate">parseDocumentWithParser</code> helper, which abstracts over the two parser interfaces.</li>
+</ul>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/d43b5ffd5fbb295fcfd06358cdfc7560b3a84a7f"><code class="notranslate">d43b5ff</code></a> v10.3.2</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/22811e3e2baced4c44669113c135a9baa555e06b"><code class="notranslate">22811e3</code></a> chore: Prepare Release v10.3.2 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9240">#9240</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/c21ce54a5b26214d5b43f69867fc45a3bda403e7"><code class="notranslate">c21ce54</code></a> fix: remove unused dependency <code class="notranslate">fast-json-stable-stringify</code> (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9243">#9243</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/c7193065b82df0646e24ab6f6d370c12148f0efc"><code class="notranslate">c719306</code></a> v10.3.2-alpha.0</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/067ae9c0c5b379ca236091df58a423c79563de27"><code class="notranslate">067ae9c</code></a> chore: Prepare Release v10.3.2-alpha.0 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9235">#9235</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/16a37d812731c54a650c0e517f2935b6137a1ce9"><code class="notranslate">16a37d8</code></a> docs: Updated CSpell README and fixed some warning. (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9236">#9236</a>)</li>
+<li>See full diff in <a href="https://github.com/streetsidesoftware/cspell/commits/v10.3.2/packages/cspell">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/9ba0c78861bb2289b8c6a4805ccc574f5645ff0cdcdee94aeac6ea8f8557f508/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d637370656c6c267061636b6167652d6d616e616765723d6e706d5f616e645f7961726e2670726576696f75732d76657273696f6e3d31302e332e31266e65772d76657273696f6e3d31302e332e32" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=cspell&amp;package-manager=npm_and_yarn&amp;previous-version=10.3.1&amp;new-version=10.3.2" style="max-width: 100%;"></a></p>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>
+</ul>
+</details>]]></content>
         <author>
-            <name>raghuveer5465</name>
-            <email>raghuveer5465@noreply.github.com</email>
-            <uri>https://github.com/raghuveer5465</uri>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
         </author>
-        <published>2026-09-15T09:00:32.000Z</published>
+        <published>2026-09-15T14:05:05.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[FF158 ExprFeat: JS Export * default proposal]]></title>
