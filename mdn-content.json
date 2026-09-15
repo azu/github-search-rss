@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/219009286?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixed a code example that used <code class=\"notranslate\">await</code> outside of an <code class=\"notranslate\">async</code> function, which would cause a syntax error in a plain script context. Wrapped the <code class=\"notranslate\">fetch</code> calls in an <code class=\"notranslate\">async function main()</code> and invoked it.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The original example used <code class=\"notranslate\">await fetch(request)</code> directly at the top level, which only works in module scripts or environments that support top-level await. Since this snippet is a plain inline script example, it would throw a <code class=\"notranslate\">SyntaxError: await is only valid in async functions</code>. Wrapping the logic in an <code class=\"notranslate\">async function</code> makes the example runnable as-is for readers copying the code into a regular script.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">No new APIs or behavior introduced — this is purely a fix to make the existing <code class=\"notranslate\">Request</code>/<code class=\"notranslate\">fetch</code> example (demonstrating that a request body can only be consumed once) executable in a standard script context.</p>\n",
+            "url": "https://github.com/mdn/content/pull/45716",
+            "title": "Update_index.md",
+            "date_modified": "2026-09-15T10:05:00.000Z",
+            "date_published": "2026-09-15T09:00:32.000Z",
+            "author": {
+                "name": "raghuveer5465",
+                "url": "https://github.com/raghuveer5465"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF157 adds support for the <a href=\"https://tc39.es/proposal-export-star-default/\" rel=\"nofollow\">Export * default proposal</a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2065611\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2065611</a></p>\n<p dir=\"auto\">This add an experimental features update.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5448400967\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45699\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45699/hovercard\" href=\"https://github.com/mdn/content/issues/45699\">#45699</a></p>",
             "url": "https://github.com/mdn/content/pull/45714",
             "title": "FF158 ExprFeat: JS Export * default proposal",
@@ -61,36 +72,14 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<ul dir=\"auto\">\n<li>Added Firefox Experimental Release Notes</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Release day is tomorrow</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/mdn/content/pull/45357\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45357/hovercard\">Related Content PR</a></li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/45707",
-            "title": "added the experimental release notes",
-            "date_modified": "2026-09-14T22:07:45.000Z",
-            "date_published": "2026-09-14T15:27:57.000Z",
-            "author": {
-                "name": "dletorey",
-                "url": "https://github.com/dletorey"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/61348227?u=3e563555152fe9d9af1c7fee45c56e1e6dab81dc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The two <code class=\"notranslate\">AudioBuffer</code> examples on \"Basic concepts behind Web Audio API\" called the constructor with an <code class=\"notranslate\">AudioContext</code> as the first argument:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"const buffer = new AudioBuffer(context, { numberOfChannels: 2, length: 22050, sampleRate: 44100 });\"><pre lang=\"js\" class=\"notranslate\"><code class=\"notranslate\">const buffer = new AudioBuffer(context, { numberOfChannels: 2, length: 22050, sampleRate: 44100 });\n</code></pre></div>\n<p dir=\"auto\">That signature comes from an early draft of the spec. The current constructor takes only an options dictionary: <code class=\"notranslate\">new AudioBuffer(options)</code>. This PR removes the <code class=\"notranslate\">context</code> argument from both examples.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Anyone who copies the examples hits a problem right away:</p>\n<ul dir=\"auto\">\n<li>In TypeScript, the DOM types report <code class=\"notranslate\">Expected 1 arguments, but got 2.</code></li>\n<li>In a browser, the <code class=\"notranslate\">AudioContext</code> gets read as the options dictionary. It has no <code class=\"notranslate\">length</code> member, so the constructor throws a <code class=\"notranslate\">TypeError</code>.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Spec: <a href=\"https://webaudio.github.io/web-audio-api/#dom-audiobuffer-audiobuffer\" rel=\"nofollow\">https://webaudio.github.io/web-audio-api/#dom-audiobuffer-audiobuffer</a></li>\n<li>MDN reference page, which already shows the correct signature: <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/AudioBuffer\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/AudioBuffer</a></li>\n</ul>\n<p dir=\"auto\">The <code class=\"notranslate\">const context = new AudioContext();</code> lines are still there because the prose after each example talks about playing the buffer back on an <code class=\"notranslate\">AudioContext</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2621428215\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36562\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/36562/hovercard\" href=\"https://github.com/mdn/content/pull/36562\">#36562</a>, which removed deprecated <code class=\"notranslate\">AudioBuffer</code> options elsewhere but didn't change this page.</p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/61348227?u=3e563555152fe9d9af1c7fee45c56e1e6dab81dc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The two <code class=\"notranslate\">AudioBuffer</code> examples on \"Basic concepts behind Web Audio API\" called the constructor with an <code class=\"notranslate\">AudioContext</code> as the first argument:</p>\n<div class=\"highlight highlight-source-js notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"const buffer = new AudioBuffer(context, { numberOfChannels: 2, length: 22050, sampleRate: 44100 });\"><pre class=\"notranslate\"><span class=\"pl-k\">const</span> <span class=\"pl-s1\">buffer</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">new</span> <span class=\"pl-v\">AudioBuffer</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">context</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span> <span class=\"pl-c1\">numberOfChannels</span>: <span class=\"pl-c1\">2</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">length</span>: <span class=\"pl-c1\">22050</span><span class=\"pl-kos\">,</span> <span class=\"pl-c1\">sampleRate</span>: <span class=\"pl-c1\">44100</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">;</span></pre></div>\n<p dir=\"auto\">That signature comes from an early draft of the spec. The current constructor takes only an options dictionary: <code class=\"notranslate\">new AudioBuffer(options)</code>. This PR removes the <code class=\"notranslate\">context</code> argument from both examples.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Anyone who copies the examples hits a problem right away:</p>\n<ul dir=\"auto\">\n<li>In TypeScript, the DOM types report <code class=\"notranslate\">Expected 1 arguments, but got 2.</code></li>\n<li>In a browser, the <code class=\"notranslate\">AudioContext</code> gets read as the options dictionary. It has no <code class=\"notranslate\">length</code> member, so the constructor throws a <code class=\"notranslate\">TypeError</code>.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Spec: <a href=\"https://webaudio.github.io/web-audio-api/#dom-audiobuffer-audiobuffer\" rel=\"nofollow\">https://webaudio.github.io/web-audio-api/#dom-audiobuffer-audiobuffer</a></li>\n<li>MDN reference page, which already shows the correct signature: <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/AudioBuffer\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/AudioBuffer</a></li>\n</ul>\n<p dir=\"auto\">The <code class=\"notranslate\">const context = new AudioContext();</code> lines are still there because the prose after each example talks about playing the buffer back on an <code class=\"notranslate\">AudioContext</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2621428215\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/36562\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/36562/hovercard\" href=\"https://github.com/mdn/content/pull/36562\">#36562</a>, which removed deprecated <code class=\"notranslate\">AudioBuffer</code> options elsewhere but didn't change this page.</p>",
             "url": "https://github.com/mdn/content/pull/45701",
             "title": "Fix AudioBuffer constructor calls in Web Audio basic concepts",
-            "date_modified": "2026-09-15T06:22:05.000Z",
+            "date_modified": "2026-09-15T06:58:46.000Z",
             "date_published": "2026-09-14T11:15:32.000Z",
             "author": {
                 "name": "alexzinnde",
                 "url": "https://github.com/alexzinnde"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Noticed that it's missing while working on module docs.</p>\n<p dir=\"auto\">See <a href=\"https://fetch.spec.whatwg.org/#destination-type\" rel=\"nofollow\">https://fetch.spec.whatwg.org/#destination-type</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/45691",
-            "title": "Add missing Sec-Fetch-Dest: text value",
-            "date_modified": "2026-09-14T07:06:20.000Z",
-            "date_published": "2026-09-14T07:04:40.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
             }
         },
         {
@@ -174,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Our modules guide is currently one of the longest pages on MDN, and it's growing because modules keep getting more features. It's time to split it up so we can have breathing room, and also because not everything is relevant to every use case (I for example don't write native web modules so I don't need to know import maps).</p>\n<p dir=\"auto\">Depends on:</p>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5328000191\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45464\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45464/hovercard\" href=\"https://github.com/mdn/content/pull/45464\">#45464</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45664",
             "title": "Split JS modules guide, document new features",
-            "date_modified": "2026-09-14T23:35:14.000Z",
+            "date_modified": "2026-09-15T08:50:28.000Z",
             "date_published": "2026-09-12T19:44:46.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -215,14 +204,25 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF156 adds support for the async Clipboard API to use web custom formats.</p>\n<p dir=\"auto\">The  API allows you to create a <code class=\"notranslate\">ClipboardItem</code> that contains several representations of a copied object, such as version in HTML and Text, and push it to the system clipboard. Something else can read the clipboard and get back tha object - then choose the best format it understands.</p>\n<p dir=\"auto\">The update allows you to (behind a pref) use other types than PNG, HTML, txt.</p>\n<p dir=\"auto\">What this update does is make the model above clear, because it wasn't - it referred too much to \"arbitrary types\" can didn't capture \"different representations\".</p>\n<p dir=\"auto\">This is the first part of the job. After this I'll do the custom web formats bit.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5312307167\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45430\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45430/hovercard\" href=\"https://github.com/mdn/content/issues/45430\">#45430</a></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF156 adds support for the async Clipboard API to use web custom formats.</p>\n<p dir=\"auto\">The  API allows you to create a <code class=\"notranslate\">ClipboardItem</code> that contains several representations of a copied object, such as version in HTML and Text, and push it to the system clipboard. Something else can read the clipboard and get back tha object - then choose the best format it understands.</p>\n<p dir=\"auto\">The update allows you to (behind a pref) use other types than PNG, HTML, txt.</p>\n<p dir=\"auto\">What this update does is</p>\n<ul dir=\"auto\">\n<li>make the model above clear, because it wasn't - it referred too much to \"arbitrary types\" can didn't capture \"different representations\".</li>\n<li>Add information about how to use various types and methods</li>\n<li>Extend the API overview to cover the main use cases. One good example.</li>\n</ul>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5312307167\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45430\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45430/hovercard\" href=\"https://github.com/mdn/content/issues/45430\">#45430</a></p>",
             "url": "https://github.com/mdn/content/pull/45620",
-            "title": "FF156 ClipBoard Async API - clarify types",
-            "date_modified": "2026-09-15T01:22:09.000Z",
+            "title": "FF156 ClipBoard Async API - custom types ",
+            "date_modified": "2026-09-15T08:38:30.000Z",
             "date_published": "2026-09-11T07:07:56.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43131.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3941254411\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43131\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43131/hovercard\" href=\"https://github.com/mdn/content/issues/43131\">#43131</a>. Note that Firefox seems to behave differently but not sure if it merits a note.</p>",
+            "url": "https://github.com/mdn/content/pull/45617",
+            "title": "Document border image sizing with SVG",
+            "date_modified": "2026-09-11T00:13:17.000Z",
+            "date_published": "2026-09-11T00:11:47.000Z",
+            "author": {
+                "name": "Josh-Cena",
+                "url": "https://github.com/Josh-Cena"
             }
         }
     ]
