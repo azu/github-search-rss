@@ -6,6 +6,39 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/236759479?u=6a2b51441b1015f9a4beae865bfcb3f1a2ea9899&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h2 dir=\"auto\">What</h2>\n<p dir=\"auto\">Drop \"read-only\" from the <code class=\"notranslate\">label</code> property description on 8 WebGPU pages:<br>\n<code class=\"notranslate\">GPUCommandBuffer</code>, <code class=\"notranslate\">GPUCommandEncoder</code>, <code class=\"notranslate\">GPUComputePassEncoder</code>, <code class=\"notranslate\">GPUDevice</code>, <code class=\"notranslate\">GPUQueue</code>,<br>\n<code class=\"notranslate\">GPURenderBundle</code>, <code class=\"notranslate\">GPURenderBundleEncoder</code>, <code class=\"notranslate\">GPURenderPassEncoder</code>.</p>\n<h2 dir=\"auto\">Why</h2>\n<p dir=\"auto\"><code class=\"notranslate\">label</code> is a writable attribute, so \"read-only property\" is wrong:</p>\n<ul dir=\"auto\">\n<li><strong>Spec.</strong> <a href=\"https://www.w3.org/TR/webgpu/#webgpu-objects\" rel=\"nofollow\">WebGPU § 3.1.2 WebGPU Objects</a> defines<br>\n<code class=\"notranslate\">interface mixin GPUObjectBase { attribute USVString label; };</code> — no <code class=\"notranslate\">readonly</code>. All 8<br>\ninterfaces include <code class=\"notranslate\">GPUObjectBase</code>. Gecko's <code class=\"notranslate\">dom/webidl/WebGPU.webidl</code> declares the same.</li>\n<li><strong>The pages contradict themselves.</strong> Every one of them goes on to say \"You can get and set it<br>\ndirectly on the <code class=\"notranslate\">…</code> object\" and then sets it in the example — e.g. <code class=\"notranslate\">GPUQueue/label</code> says<br>\nread-only on line 11 and runs <code class=\"notranslate\">device.queue.label = \"my_queue\";</code> on line 25.</li>\n<li><strong>Inconsistent within the same doc set.</strong> The other 12 WebGPU <code class=\"notranslate\">label</code> pages (<code class=\"notranslate\">GPUBuffer</code>,<br>\n<code class=\"notranslate\">GPUTexture</code>, <code class=\"notranslate\">GPUSampler</code>, …) already say \"The <strong><code class=\"notranslate\">label</code></strong> property of the …\". Only these 8,<br>\nwhich came from the command-encoding batch, carry the wrong wording.</li>\n</ul>\n<h2 dir=\"auto\">How</h2>\n<p dir=\"auto\">One line per page: <code class=\"notranslate\">The **</code>label<code class=\"notranslate\">** read-only property of the</code> → <code class=\"notranslate\">The **</code>label<code class=\"notranslate\">** property of the</code>.<br>\nNo other wording is touched, so each page now matches its already-correct siblings.</p>\n<h2 dir=\"auto\">How I tested</h2>\n<p dir=\"auto\">Property-descriptor probe in headless Edge 141 (Chromium) on Windows 11,<br>\n<code class=\"notranslate\">msedge --headless=new --enable-unsafe-webgpu --dump-dom</code>, reading<br>\n<code class=\"notranslate\">Object.getOwnPropertyDescriptor(&lt;iface&gt;.prototype, \"label\")</code>:</p>\n<div class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"GPUCommandBuffer: get=true set=true    GPUCommandEncoder: get=true set=true\nGPUComputePassEncoder: get=true set=true  GPUDevice: get=true set=true\nGPUQueue: get=true set=true            GPURenderBundle: get=true set=true\nGPURenderBundleEncoder: get=true set=true GPURenderPassEncoder: get=true set=true\"><pre class=\"notranslate\"><code class=\"notranslate\">GPUCommandBuffer: get=true set=true    GPUCommandEncoder: get=true set=true\nGPUComputePassEncoder: get=true set=true  GPUDevice: get=true set=true\nGPUQueue: get=true set=true            GPURenderBundle: get=true set=true\nGPURenderBundleEncoder: get=true set=true GPURenderPassEncoder: get=true set=true\n</code></pre></div>\n<p dir=\"auto\">A setter exists on all 8 — and on <code class=\"notranslate\">GPUBuffer</code>/<code class=\"notranslate\">GPUTexture</code>, whose pages already omit \"read-only\",<br>\nso the documentation difference had no basis in behaviour. (Only the IDL surface was probed: this<br>\nmachine's headless Chromium returns <code class=\"notranslate\">null</code> from <code class=\"notranslate\">requestAdapter()</code>, so no live device round-trip.)</p>",
+            "url": "https://github.com/mdn/content/pull/45728",
+            "title": "WebGPU: label is not a read-only property (8 pages)",
+            "date_modified": "2026-09-16T05:37:54.000Z",
+            "date_published": "2026-09-16T05:36:12.000Z",
+            "author": {
+                "name": "RizgarOzan",
+                "url": "https://github.com/RizgarOzan"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">DO NOT REVIEW YET. WILL PUSH THIS AFTERNOON</p>\n<p dir=\"auto\">we had keyword, keywords, keyword value, and keyword values. this makes them all uniform.</p>",
+            "url": "https://github.com/mdn/content/pull/45727",
+            "title": "DRAFT: uniform syntax: /* Keyword values */",
+            "date_modified": "2026-09-16T05:08:15.000Z",
+            "date_published": "2026-09-16T05:05:25.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/69888?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This PR includes the creation of four new reference pages:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">column-rule-inset-cap-start</code></li>\n<li><code class=\"notranslate\">column-rule-inset-cap</code></li>\n<li><code class=\"notranslate\">row-rule-inset-cap-end</code></li>\n<li><code class=\"notranslate\">row-rule-inset-cap-start</code></li>\n<li><code class=\"notranslate\">row-rule-inset-cap</code></li>\n<li><code class=\"notranslate\">rule-inset-cap</code></li>\n</ul>\n<p dir=\"auto\">Spec: <a href=\"https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-inset-cap-end\" rel=\"nofollow\">https://drafts.csswg.org/css-gaps-1/#propdef-column-rule-inset-cap-end</a><br>\nThe <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps\" rel=\"nofollow\">CSS gaps module page</a> is live.</p>\n<p dir=\"auto\">I will be creating a guide to explain junction and cap, and will link from these pages to that guide, along with the other 2 guides that are waiting for review, with the guide PR</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4718339915\" data-permission-text=\"Title is private\" data-url=\"https://github.com/openwebdocs/project/issues/238\" data-hovercard-type=\"issue\" data-hovercard-url=\"/openwebdocs/project/issues/238/hovercard\" href=\"https://github.com/openwebdocs/project/issues/238\">openwebdocs/project#238</a></p>\n<p dir=\"auto\">Note: <code class=\"notranslate\">column-rule-inset-cap-end</code> is already live</p>",
+            "url": "https://github.com/mdn/content/pull/45726",
+            "title": "New pages: CSS `*-rule-inset-cap-*` properties",
+            "date_modified": "2026-09-16T04:59:16.000Z",
+            "date_published": "2026-09-16T04:36:31.000Z",
+            "author": {
+                "name": "estelle",
+                "url": "https://github.com/estelle"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF157 adds support for the <a href=\"https://tc39.es/proposal-export-star-default/\" rel=\"nofollow\">Export * default proposal</a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2065611\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2065611</a></p>\n<p dir=\"auto\">This add an experimental features update.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5448400967\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45699\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45699/hovercard\" href=\"https://github.com/mdn/content/issues/45699\">#45699</a></p>",
             "url": "https://github.com/mdn/content/pull/45714",
             "title": "FF158 ExprFeat: JS Export * default proposal",
@@ -94,21 +127,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/151644488?u=4e82e64bf8ace72c74adf3e31bdd76784cda771e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #34727.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"2397440172\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/34727\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/34727/hovercard\" href=\"https://github.com/mdn/content/issues/34727\">#34727</a>.</p>\n<p dir=\"auto\">Add dangling markup injection to the web security attacks overview, including its mechanism and the relevant encoding and sanitization mitigation.</p>\n<p dir=\"auto\">Source: <a href=\"https://portswigger.net/web-security/cross-site-scripting/dangling-markup\" rel=\"nofollow\">https://portswigger.net/web-security/cross-site-scripting/dangling-markup</a></p>",
-            "url": "https://github.com/mdn/content/pull/45670",
-            "title": "Document dangling markup injection",
-            "date_modified": "2026-09-13T21:27:55.000Z",
-            "date_published": "2026-09-13T04:00:17.000Z",
-            "author": {
-                "name": "Gaalbu",
-                "url": "https://github.com/Gaalbu"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/229418842?u=7d062faa679963052685abcfb94895e5a17314c9&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add a concise glossary definition for passkeys, covering their public-key model, website scope, authenticators, and common storage options.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Passkeys are a common web authentication term, and a glossary entry gives MDN pages a consistent target for short definitions while linking readers to the full passkeys guide.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The definition is consistent with MDN's existing passkeys guide and the Web Authentication specification.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #734.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3506671630\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/734\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/734/hovercard\" href=\"https://github.com/mdn/mdn/issues/734\">mdn/mdn#734</a>.</p>",
             "url": "https://github.com/mdn/content/pull/45667",
             "title": "Add a passkey glossary entry",
-            "date_modified": "2026-09-14T01:47:30.000Z",
+            "date_modified": "2026-09-16T04:51:50.000Z",
             "date_published": "2026-09-13T01:21:38.000Z",
             "author": {
                 "name": "deerred643-star",
@@ -141,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Our modules guide is currently one of the longest pages on MDN, and it's growing because modules keep getting more features. It's time to split it up so we can have breathing room, and also because not everything is relevant to every use case (I for example don't write native web modules so I don't need to know import maps).</p>\n<p dir=\"auto\">Depends on:</p>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5328000191\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45464\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/45464/hovercard\" href=\"https://github.com/mdn/content/pull/45464\">#45464</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45664",
             "title": "Split JS modules guide, document new features",
-            "date_modified": "2026-09-16T01:28:38.000Z",
+            "date_modified": "2026-09-16T06:42:21.000Z",
             "date_published": "2026-09-12T19:44:46.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -198,28 +220,6 @@
             "title": "Document border image sizing with SVG",
             "date_modified": "2026-09-11T00:13:17.000Z",
             "date_published": "2026-09-11T00:11:47.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #22588.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1466998757\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/22588\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/22588/hovercard\" href=\"https://github.com/mdn/content/issues/22588\">#22588</a>.</p>\n<p dir=\"auto\">According to BCD, FF 149+ supports <code class=\"notranslate\">console.timeStamp()</code> to the profiler, so this content isn't \"wrong\" per se, but certainly not future-proof. Replaced with handwavy claims that it's implementation dependent, because there's BCD anyway.</p>",
-            "url": "https://github.com/mdn/content/pull/45615",
-            "title": "Remove browser-specific claims about console.timeStamp()",
-            "date_modified": "2026-09-10T23:11:23.000Z",
-            "date_published": "2026-09-10T23:09:44.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #44512.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4699405024\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/44512\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/44512/hovercard\" href=\"https://github.com/mdn/content/issues/44512\">#44512</a>. I did some research and came to the conclusion that there's no real reason to use <code class=\"notranslate\">&lt;object&gt;</code> or <code class=\"notranslate\">&lt;embed&gt;</code> at all for any purpose.</p>",
-            "url": "https://github.com/mdn/content/pull/45614",
-            "title": "More explicitly recommend iframe for PDFs",
-            "date_modified": "2026-09-12T03:57:41.000Z",
-            "date_published": "2026-09-10T22:54:35.000Z",
             "author": {
                 "name": "Josh-Cena",
                 "url": "https://github.com/Josh-Cena"
