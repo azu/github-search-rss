@@ -6,14 +6,36 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><a href=\"https://github.com/mdn/browser-compat-data/releases/tag/v8.1.2\">BCD release v8.1.2</a></p>\n<p dir=\"auto\">/cc <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/pepelsbey/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/pepelsbey\">@pepelsbey</a> <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/wbamberg/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/wbamberg\">@wbamberg</a></p>",
-            "url": "https://github.com/mdn/content/pull/45766",
-            "title": "Synchronize with BCD v8.1.2",
-            "date_modified": "2026-09-18T00:04:31.000Z",
-            "date_published": "2026-09-18T00:02:38.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/75755802?u=232cfdb37381645af6e176bf8b8b2a4d1d3a3495&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\"><code class=\"notranslate\">outline</code> and <code class=\"notranslate\">outline-color</code> both carry an Accessibility section. <code class=\"notranslate\">outline-offset</code> does not, even though it is the property in that family that decides whether a focus indicator can be seen at all.</p>\n<p dir=\"auto\">Adds one section covering the two things the offset changes about a focus indicator:</p>\n<ul dir=\"auto\">\n<li><strong>Which background the contrast ratio is measured against.</strong> The page already notes that the space the offset creates is transparent, so the outline is drawn over whatever is behind the element rather than over the element. That means the 3:1 required by <a href=\"https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast\" rel=\"nofollow\">SC 1.4.11</a> is measured against that background, and a negative offset moves the outline inside the border edge, over the element's own background, where the answer can differ.</li>\n<li><strong>Whether the indicator survives clipping.</strong> A positive offset can move the outline outside an ancestor that clips overflow, or outside a scroll container, cutting part of it off. That is the practical case behind <a href=\"https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum\" rel=\"nofollow\">SC 2.4.11 Focus Not Obscured (Minimum)</a>, and <a href=\"https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance\" rel=\"nofollow\">SC 2.4.13 Focus Appearance</a> sets a minimum area for the indicator.</li>\n</ul>\n<p dir=\"auto\">Placed after Description and before Formal definition, matching where <code class=\"notranslate\">outline-color</code> puts its own Accessibility section.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The existing Description explains the mechanism (the gap is transparent) without saying what follows from it for a focus style, which is the main reason authors set this property. Both consequences are commonly missed, and the clipping one is invisible until someone tabs through a scrolling region.</p>",
+            "url": "https://github.com/mdn/content/pull/45770",
+            "title": "docs(css): add an Accessibility section to outline-offset",
+            "date_modified": "2026-09-18T06:06:11.000Z",
+            "date_published": "2026-09-18T06:05:41.000Z",
             "author": {
-                "name": "OnkarRuikar",
-                "url": "https://github.com/OnkarRuikar"
+                "name": "jsabutis",
+                "url": "https://github.com/jsabutis"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/75755802?u=232cfdb37381645af6e176bf8b8b2a4d1d3a3495&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">The Accessibility section of <code class=\"notranslate\">outline-color</code> states the requirements for <strong>text</strong> contrast on a property that colors an outline. An outline is a user interface component, not text, so Success Criterion 1.4.3 Contrast (Minimum) does not apply to it. The applicable criterion is <a href=\"https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast\" rel=\"nofollow\">1.4.11 Non-text Contrast</a>, which requires 3:1.</p>\n<p dir=\"auto\">The current wording is also actively misleading in two ways:</p>\n<ul dir=\"auto\">\n<li>It tells the reader an outline needs 4.5:1, which overstates the requirement.</li>\n<li>It offers the large-text exemption (\"3:1 for larger text such as headings\", \"18.66px and bold or larger\"), which has no meaning for an outline and could be read as licence to use 3:1 only in some cases. For non-text contrast, 3:1 is the requirement in all cases.</li>\n</ul>\n<p dir=\"auto\">MDN already documents this correctly on the two pages a reader is most likely to arrive from: <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus#accessibility\" rel=\"nofollow\"><code class=\"notranslate\">:focus</code></a> and <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible#accessibility\" rel=\"nofollow\"><code class=\"notranslate\">:focus-visible</code></a> both cite SC 1.4.11 and 3:1. This change removes the contradiction.</p>\n<p dir=\"auto\">The replacement paragraph also notes that a focus outline may border both the page background and the element's own background, so both count as adjacent colors. That follows from the \"adjacent colors\" wording in 1.4.11 and is the case authors most often get wrong.</p>\n<p dir=\"auto\">The stale reference to the WCAG 2.0 Understanding document for SC 1.4.3 is replaced with the WCAG 2.2 Understanding document for SC 1.4.11.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">An author following this page today can ship a focus indicator built to the wrong criterion, and will get a different answer from this page than from the <code class=\"notranslate\">:focus</code> page.</p>\n<p dir=\"auto\">Single file, single section, no change to the first paragraph or to the two remaining links.</p>",
+            "url": "https://github.com/mdn/content/pull/45769",
+            "title": "fix(css): outline contrast is governed by SC 1.4.11, not text contrast",
+            "date_modified": "2026-09-18T06:05:00.000Z",
+            "date_published": "2026-09-18T06:04:34.000Z",
+            "author": {
+                "name": "jsabutis",
+                "url": "https://github.com/jsabutis"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/160158213?u=24cc7b7b6e2b8a5b15ed178d43a856ebb7a126ac&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">The Attestation section said keys come from a specific device and that validating the root of trust is frequently unnecessary, both contradicted by the WebAuthn spec: attestation identifies a device model or batch, and verification is what proves a self-contained multi-factor credential. This replaces the paragraph with the spec-cited wording from the issue.</p>\n<p dir=\"auto\">One paragraph, nothing else.</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #45753.\">Closes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5484235103\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45753\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45753/hovercard\" href=\"https://github.com/mdn/content/issues/45753\">#45753</a></p>\n<h2 dir=\"auto\">Verification</h2>\n<ul dir=\"auto\">\n<li>Checked each claim against the cited W3C WebAuthn-3 sections in the issue</li>\n<li>No trailing whitespace; front matter untouched</li>\n</ul>",
+            "url": "https://github.com/mdn/content/pull/45768",
+            "title": "Correct the WebAuthn attestation purpose paragraph",
+            "date_modified": "2026-09-18T06:32:59.000Z",
+            "date_published": "2026-09-18T04:21:48.000Z",
+            "author": {
+                "name": "MeGaurav4",
+                "url": "https://github.com/MeGaurav4"
             }
         },
         {
@@ -75,7 +97,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Fixing issues reported by <a href=\"https://mdn-graph.joshcena.com/warnings\" rel=\"nofollow\">https://mdn-graph.joshcena.com/warnings</a>. This time fixing:</p>\n<ul dir=\"auto\">\n<li>Self-links</li>\n<li>Missing <code class=\"notranslate\">href</code>s</li>\n<li>Broken links</li>\n<li>Broken anchors</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/45752",
             "title": "Fix internal links",
-            "date_modified": "2026-09-17T15:54:50.000Z",
+            "date_modified": "2026-09-18T02:16:42.000Z",
             "date_published": "2026-09-17T06:57:21.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -201,28 +223,6 @@
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF157 adds support for the <a href=\"https://tc39.es/proposal-export-star-default/\" rel=\"nofollow\">Export * default proposal</a> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2065611\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2065611</a></p>\n<p dir=\"auto\">This add an experimental features update.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5448400967\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45699\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45699/hovercard\" href=\"https://github.com/mdn/content/issues/45699\">#45699</a></p>",
-            "url": "https://github.com/mdn/content/pull/45714",
-            "title": "FF158 ExprFeat: JS Export * default proposal",
-            "date_modified": "2026-09-15T01:12:14.000Z",
-            "date_published": "2026-09-15T01:10:37.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF156 updates the behaviour of <code class=\"notranslate\">Promise.try()</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2062293\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2062293</a>.<br>\nThe release note was added already but refers to spec-internal <code class=\"notranslate\">PromiseResolve</code> algorithm.<br>\nTHis updates it to something relevant to coders.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5349393758\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/45504\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/45504/hovercard\" href=\"https://github.com/mdn/content/issues/45504\">#45504</a></p>",
-            "url": "https://github.com/mdn/content/pull/45713",
-            "title": "FF156 Relnote: Clarify Promise.try() change",
-            "date_modified": "2026-09-15T00:43:33.000Z",
-            "date_published": "2026-09-15T00:41:50.000Z",
-            "author": {
-                "name": "hamishwillee",
-                "url": "https://github.com/hamishwillee"
             }
         }
     ]
