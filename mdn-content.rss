@@ -2,11 +2,168 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-21T17:19:56.893Z</updated>
+    <updated>2026-09-21T21:20:05.866Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[build(deps-dev): bump the npm-dev group with 2 updates]]></title>
+        <id>https://github.com/mdn/content/pull/45812</id>
+        <link href="https://github.com/mdn/content/pull/45812"/>
+        <updated>2026-09-21T18:11:11.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps the npm-dev group with 2 updates: <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell">cspell</a> and <a href="https://github.com/sindresorhus/file-type">file-type</a>.</p>
+<p dir="auto">Updates <code class="notranslate">cspell</code> from 10.3.2 to 10.3.3</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/releases">cspell's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.3.3</h2>
+<h2 dir="auto">Fixes</h2>
+
+<h3 dir="auto">fix: Add <code class="notranslate">--json</code> option to check text for use with AI (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9254">#9254</a>)</h3>
+<p dir="auto">This pull request adds support for a <code class="notranslate">--json</code> output mode to the <code class="notranslate">check</code> CLI command, enabling results to be emitted as structured JSON per file. It also introduces comprehensive test coverage for the new JSON output behavior, including error handling and exit code logic.</p>
+<p dir="auto"><strong>CLI Enhancements:</strong></p>
+<ul dir="auto">
+<li>Added a <code class="notranslate">--json</code> flag to the <code class="notranslate">check</code> command, allowing users to receive results in JSON format. This includes proper handling of multiple files and error cases, such as missing files. [1] [2]</li>
+<li>Updated the exit code logic to work with both standard and JSON output, respecting the <code class="notranslate">--no-exit-code</code> flag. [1] [2]</li>
+</ul>
+<p dir="auto"><strong>Implementation Details:</strong></p>
+<ul dir="auto">
+<li>Introduced separate processing functions: <code class="notranslate">processRequestAnsi</code> for standard output and <code class="notranslate">processRequestJSON</code> for JSON output, with the latter aggregating results and errors per file. [1] [2]</li>
+<li>Added a helper function to detect missing files and report them as JSON errors.</li>
+</ul>
+<p dir="auto"><strong>Testing Improvements:</strong></p>
+<ul dir="auto">
+<li>Expanded CLI test coverage to include various <code class="notranslate">--json</code> scenarios, such as files with spelling errors, missing files, and the interaction with <code class="notranslate">--no-exit-code</code>. [1] [2]</li>
+<li>Added utility functions and interfaces in tests to parse and validate the JSON output.</li>
+</ul>
+<hr>
+
+
+<h3 dir="auto">fix: Mark ParsedTags as read only. (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9253">#9253</a>)</h3>
+<p dir="auto">This pull request makes a small but important change to the <code class="notranslate">ParsedText</code> interface in several files, improving type safety by marking the <code class="notranslate">tags</code> property as a read-only type. This ensures that the <code class="notranslate">tags</code> associated with a parsed text segment cannot be modified after creation.</p>
+<ul dir="auto">
+<li>Updated the <code class="notranslate">tags</code> property in the <code class="notranslate">ParsedText</code> interface to use <code class="notranslate">Readonly&lt;ParsedTags&gt;</code> instead of <code class="notranslate">ParsedTags</code>, making the tags immutable in the following files:
+<ul dir="auto">
+<li><code class="notranslate">packages/cspell-types/api/Parser/index.d.mts</code></li>
+<li><code class="notranslate">packages/cspell-types/api/index.d.mts</code></li>
+<li><code class="notranslate">packages/cspell-types/src/Parser/parser.ts</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+
+
+<h3 dir="auto">fix: Make sure Parser and DocumentParser can be used together. (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9252">#9252</a>)</h3>
+<p dir="auto">This pull request enhances the parser interface definitions in the <code class="notranslate">cspell-types</code> package to provide better flexibility and clarity for parser implementations. The main changes introduce optional <code class="notranslate">parseDocument</code> and <code class="notranslate">parse</code> methods to both the <code class="notranslate">Parser</code> and <code class="notranslate">DocumentParser</code> interfaces, across both type declaration and source files.</p>
+<p dir="auto"><strong>Parser interface enhancements:</strong></p>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/CHANGELOG.md">cspell's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.3.3 (2026-09-16)</h2>
+<h3 dir="auto">Fixes</h3>
+
+<h3 dir="auto">fix: Add <code class="notranslate">--json</code> option to check text for use with AI (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9254">#9254</a>)</h3>
+<p dir="auto">This pull request adds support for a <code class="notranslate">--json</code> output mode to the <code class="notranslate">check</code> CLI command, enabling results to be emitted as structured JSON per file. It also introduces comprehensive test coverage for the new JSON output behavior, including error handling and exit code logic.</p>
+<p dir="auto"><strong>CLI Enhancements:</strong></p>
+<ul dir="auto">
+<li>Added a <code class="notranslate">--json</code> flag to the <code class="notranslate">check</code> command, allowing users to receive results in JSON format. This includes proper handling of multiple files and error cases, such as missing files. [1] [2]</li>
+<li>Updated the exit code logic to work with both standard and JSON output, respecting the <code class="notranslate">--no-exit-code</code> flag. [1] [2]</li>
+</ul>
+<p dir="auto"><strong>Implementation Details:</strong></p>
+<ul dir="auto">
+<li>Introduced separate processing functions: <code class="notranslate">processRequestAnsi</code> for standard output and <code class="notranslate">processRequestJSON</code> for JSON output, with the latter aggregating results and errors per file. [1] [2]</li>
+<li>Added a helper function to detect missing files and report them as JSON errors.</li>
+</ul>
+<p dir="auto"><strong>Testing Improvements:</strong></p>
+<ul dir="auto">
+<li>Expanded CLI test coverage to include various <code class="notranslate">--json</code> scenarios, such as files with spelling errors, missing files, and the interaction with <code class="notranslate">--no-exit-code</code>. [1] [2]</li>
+<li>Added utility functions and interfaces in tests to parse and validate the JSON output.</li>
+</ul>
+<hr>
+
+
+<h3 dir="auto">fix: Mark ParsedTags as read only. (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9253">#9253</a>)</h3>
+<p dir="auto">This pull request makes a small but important change to the <code class="notranslate">ParsedText</code> interface in several files, improving type safety by marking the <code class="notranslate">tags</code> property as a read-only type. This ensures that the <code class="notranslate">tags</code> associated with a parsed text segment cannot be modified after creation.</p>
+<ul dir="auto">
+<li>Updated the <code class="notranslate">tags</code> property in the <code class="notranslate">ParsedText</code> interface to use <code class="notranslate">Readonly&lt;ParsedTags&gt;</code> instead of <code class="notranslate">ParsedTags</code>, making the tags immutable in the following files:
+<ul dir="auto">
+<li><code class="notranslate">packages/cspell-types/api/Parser/index.d.mts</code></li>
+<li><code class="notranslate">packages/cspell-types/api/index.d.mts</code></li>
+<li><code class="notranslate">packages/cspell-types/src/Parser/parser.ts</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+
+
+<h3 dir="auto">fix: Make sure Parser and DocumentParser can be used together. (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9252">#9252</a>)</h3>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/e6e01b7294cca7174344b33639c05030100d1f4c"><code class="notranslate">e6e01b7</code></a> v10.3.3</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/54ec4b52e3dc7da9394cf2e802be92079ea9a267"><code class="notranslate">54ec4b5</code></a> chore: Prepare Release v10.3.3 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9251">#9251</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/a52cffca407a0cd2b528d940e92cb73b514ae73b"><code class="notranslate">a52cffc</code></a> fix: Add <code class="notranslate">--json</code> option to check text for use with AI (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9254">#9254</a>)</li>
+<li>See full diff in <a href="https://github.com/streetsidesoftware/cspell/commits/v10.3.3/packages/cspell">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto">Updates <code class="notranslate">file-type</code> from 22.1.0 to 22.1.1</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/sindresorhus/file-type/releases">file-type's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v22.1.1</h2>
+<ul dir="auto">
+<li>Fix streamed OOXML files being detected as zip (<a href="https://redirect.github.com/sindresorhus/file-type/issues/801">#801</a>)  1347414</li>
+</ul>
+<hr>
+<p dir="auto"><a class="commit-link" href="https://github.com/sindresorhus/file-type/compare/v22.1.0...v22.1.1">sindresorhus/file-type@<tt>v22.1.0...v22.1.1</tt></a></p>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/sindresorhus/file-type/commit/32b087c6eaa2c03a083f599cf2f91fe9d1aba452"><code class="notranslate">32b087c</code></a> 22.1.1</li>
+<li><a href="https://github.com/sindresorhus/file-type/commit/1347414c7c0463bf2c190a6593a7e882771add12"><code class="notranslate">1347414</code></a> Fix streamed OOXML files being detected as zip (<a href="https://redirect.github.com/sindresorhus/file-type/issues/801">#801</a>)</li>
+<li>See full diff in <a href="https://github.com/sindresorhus/file-type/compare/v22.1.0...v22.1.1">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt; major version</code> will close this group update PR and stop Dependabot creating any more for the specific dependency's major version (unless you unignore this specific dependency's major version or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt; minor version</code> will close this group update PR and stop Dependabot creating any more for the specific dependency's minor version (unless you unignore this specific dependency's minor version or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt;</code> will close this group update PR and stop Dependabot creating any more for the specific dependency (unless you unignore this specific dependency or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot unignore &lt;dependency name&gt;</code> will remove all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot unignore &lt;dependency name&gt; &lt;ignore condition&gt;</code> will remove the ignore condition of the specified dependency and ignore conditions</li>
+</ul>
+</details>]]></content>
+        <author>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
+        </author>
+        <published>2026-09-21T18:10:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Include textPath compat data on lengthAdjust page]]></title>
         <id>https://github.com/mdn/content/pull/45811</id>
@@ -443,82 +600,6 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
         <published>2026-09-18T04:21:48.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[ci(dependabot): align Dependabot configuration]]></title>
-        <id>https://github.com/mdn/content/pull/45764</id>
-        <link href="https://github.com/mdn/content/pull/45764"/>
-        <updated>2026-09-18T14:54:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Aligns the Dependabot configuration with the MDN defaults:</p>
-<ul dir="auto">
-<li>Sets <code class="notranslate">open-pull-requests-limit: 10</code> on the <code class="notranslate">github-actions</code> entry</li>
-<li>Sets a 3-day cooldown on the <code class="notranslate">github-actions</code> entry and the <code class="notranslate">npm</code> entry</li>
-<li>Groups minor and patch updates in the <code class="notranslate">npm</code> entry</li>
-<li>Excludes <code class="notranslate">@mdn/*</code> from the groups in the <code class="notranslate">npm</code> entry</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Ensures consistent dependency update configuration across all MDN repositories.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">See also: <a href="https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference">https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference</a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4180013698" data-permission-text="Title is private" data-url="https://github.com/mdn/fred/issues/1445" data-hovercard-type="issue" data-hovercard-url="/mdn/fred/issues/1445/hovercard" href="https://github.com/mdn/fred/issues/1445">mdn/fred#1445</a>.</p>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-09-17T20:21:27.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[build(deps-dev): bump file-type from 22.1.0 to 22.1.1]]></title>
-        <id>https://github.com/mdn/content/pull/45762</id>
-        <link href="https://github.com/mdn/content/pull/45762"/>
-        <updated>2026-09-17T14:03:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/sindresorhus/file-type">file-type</a> from 22.1.0 to 22.1.1.</p>
-<details>
-<summary>Release notes</summary>
-<p dir="auto"><em>Sourced from <a href="https://github.com/sindresorhus/file-type/releases">file-type's releases</a>.</em></p>
-<blockquote>
-<h2 dir="auto">v22.1.1</h2>
-<ul dir="auto">
-<li>Fix streamed OOXML files being detected as zip (<a href="https://redirect.github.com/sindresorhus/file-type/issues/801">#801</a>)  1347414</li>
-</ul>
-<hr>
-<p dir="auto"><a class="commit-link" href="https://github.com/sindresorhus/file-type/compare/v22.1.0...v22.1.1">sindresorhus/file-type@<tt>v22.1.0...v22.1.1</tt></a></p>
-</blockquote>
-</details>
-<details>
-<summary>Commits</summary>
-<ul dir="auto">
-<li><a href="https://github.com/sindresorhus/file-type/commit/32b087c6eaa2c03a083f599cf2f91fe9d1aba452"><code class="notranslate">32b087c</code></a> 22.1.1</li>
-<li><a href="https://github.com/sindresorhus/file-type/commit/1347414c7c0463bf2c190a6593a7e882771add12"><code class="notranslate">1347414</code></a> Fix streamed OOXML files being detected as zip (<a href="https://redirect.github.com/sindresorhus/file-type/issues/801">#801</a>)</li>
-<li>See full diff in <a href="https://github.com/sindresorhus/file-type/compare/v22.1.0...v22.1.1">compare view</a></li>
-</ul>
-</details>
-<br>
-<p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/f6886622d2210c78741fb04acac566c655ccdb5845210f8fa0559596aec94e1a/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d66696c652d74797065267061636b6167652d6d616e616765723d6e706d5f616e645f7961726e2670726576696f75732d76657273696f6e3d32322e312e30266e65772d76657273696f6e3d32322e312e31" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=file-type&amp;package-manager=npm_and_yarn&amp;previous-version=22.1.0&amp;new-version=22.1.1" style="max-width: 100%;"></a></p>
-<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
-<hr>
-<details>
-<summary>Dependabot commands and options</summary>
-<br>
-<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
-<ul dir="auto">
-<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
-<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
-<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
-<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
-<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
-<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>
-</ul>
-</details>]]></content>
-        <author>
-            <name>dependabot</name>
-            <email>dependabot@noreply.github.com</email>
-            <uri>https://github.com/apps/dependabot</uri>
-        </author>
-        <published>2026-09-17T14:03:06.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[build(deps-dev): bump @mdn/fred from 2.9.1 to 2.9.2]]></title>
         <id>https://github.com/mdn/content/pull/45761</id>
         <link href="https://github.com/mdn/content/pull/45761"/>
@@ -633,7 +714,7 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
         <title type="html"><![CDATA[Fix internal links]]></title>
         <id>https://github.com/mdn/content/pull/45752</id>
         <link href="https://github.com/mdn/content/pull/45752"/>
-        <updated>2026-09-18T21:58:04.000Z</updated>
+        <updated>2026-09-21T19:09:49.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fixing issues reported by <a href="https://mdn-graph.joshcena.com/warnings" rel="nofollow">https://mdn-graph.joshcena.com/warnings</a>. This time fixing:</p>
 <ul dir="auto">
 <li>Self-links</li>
@@ -647,5 +728,29 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-09-17T06:57:21.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Technical review] BiDi - New script.evaluate page]]></title>
+        <id>https://github.com/mdn/content/pull/45749</id>
+        <link href="https://github.com/mdn/content/pull/45749"/>
+        <updated>2026-09-18T15:11:43.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR adds the <code class="notranslate">script.evaluate</code> command page.</p>
+<p dir="auto">I've also included related updates to two other pages:</p>
+<ul dir="auto">
+<li>In <code class="notranslate">browsingContext.locateNodes</code>, I've added the same sub-section heading in "Description" for  similar content and a few updates to <code class="notranslate">includeShadowTree</code> to match the field in <code class="notranslate">script.evaluate</code>.</li>
+<li>In <code class="notranslate">log.entryAdded</code>, I've changed the <code class="notranslate">callFrames</code> field description to a definition list to match the same field in <code class="notranslate">script.evaluate</code>.</li>
+</ul>
+<p dir="auto">Added one entry to the <code class="notranslate">.vscode/dictionaries/code-entities.txt</code> file so it's recognized by the spellchecker.</p>
+<h3 dir="auto">Spec link</h3>
+<p dir="auto"><a href="https://w3c.github.io/webdriver-bidi/#command-script-evaluate" rel="nofollow">https://w3c.github.io/webdriver-bidi/#command-script-evaluate</a></p>
+<h3 dir="auto">Related issue</h3>
+<p dir="auto">Doc issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5013788640" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/851" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/851/hovercard" href="https://github.com/mdn/mdn/issues/851">mdn/mdn#851</a></p>]]></content>
+        <author>
+            <name>dipikabh</name>
+            <email>dipikabh@noreply.github.com</email>
+            <uri>https://github.com/dipikabh</uri>
+        </author>
+        <published>2026-09-17T04:19:42.000Z</published>
     </entry>
 </feed>
