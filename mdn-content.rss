@@ -2,11 +2,62 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-22T00:20:50.688Z</updated>
+    <updated>2026-09-22T05:33:43.258Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Permissions-Policy - improve guide around inheriting features]]></title>
+        <id>https://github.com/mdn/content/pull/45815</id>
+        <link href="https://github.com/mdn/content/pull/45815"/>
+        <updated>2026-09-22T05:14:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">There is ongoing confusion with how permissions-policy delegation works - such as <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5167209861" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45166" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45166/hovercard" href="https://github.com/mdn/content/pull/45166">#45166</a>. This was an attempt to capture how this works at top level.</p>
+<p dir="auto">The summary basically goes</p>
+<ul dir="auto">
+<li>if a top level document has a Permissions-Policy for a feature, the features allowlist defines the superset of origins that it can delegate to in an iframe.
+<ul dir="auto">
+<li>The feature must also be delegated by the <code class="notranslate">allow</code> attribute - i.e. listed in the attribute or covered by the allowlist of something like <code class="notranslate">*</code>.</li>
+<li>The default allowlist is used for delegation if <code class="notranslate">allow</code> is not specified. So if no allow is specified and the default allowlist is <code class="notranslate">self</code>, a frame that specifies a <code class="notranslate">self</code> origin will automatically get the permission.</li>
+</ul>
+</li>
+<li>But if the top level document does NOT have a  <code class="notranslate">Permissions-Policy</code> for a feature no restrictions are placed on delegation.
+<ul dir="auto">
+<li>Nothing stops you from delegating a permission the parent has to any origin it likes, as long as that is specified in <code class="notranslate">allow</code> (as long as the parent has that permission, which is does by default for everything except <code class="notranslate">unload</code>).</li>
+<li>Note that the default allowslist is still used to define the default origins for granting - i.e. self or <code class="notranslate">*</code>.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a> Hope this is helpful</p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-09-22T05:12:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix permission flow in device orientation example]]></title>
+        <id>https://github.com/mdn/content/pull/45813</id>
+        <link href="https://github.com/mdn/content/pull/45813"/>
+        <updated>2026-09-22T05:17:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/245993535?u=de70d5d6230c7c118d84f2aab984f80def4d6a45&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Update the live device orientation example to request permission from a button click when <code class="notranslate">DeviceOrientationEvent.requestPermission()</code> is available. Show the permission result in the example and start listening only after permission is granted. Browsers without that method can start the example from the same button without a permission request.</p>
+<p dir="auto">Also clarify the separate permission example's comment: exposing the request method does not mean the browser will necessarily prompt.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The previous documentation-only approach in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5528040660" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45809" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45809/hovercard" href="https://github.com/mdn/content/pull/45809">#45809</a> was closed after maintainer feedback. The live example itself needs to request permission and expose the result so readers can distinguish denied access from an unresponsive sensor.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Local checks: MarkdownLint, Prettier, CSpell, changed-file pre-commit hooks, and four executed example behavior tests passed (granted, denied, unsupported method, rejected request). A full Rari page build was not run locally because its executable is missing from this interrupted dependency install; CI will provide that check.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38423.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2891587332" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38423" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38423/hovercard" href="https://github.com/mdn/content/issues/38423">#38423</a><br>
+Follow-up to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5528040660" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45809" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45809/hovercard" href="https://github.com/mdn/content/pull/45809">#45809</a></p>]]></content>
+        <author>
+            <name>harbinresearcher</name>
+            <email>harbinresearcher@noreply.github.com</email>
+            <uri>https://github.com/harbinresearcher</uri>
+        </author>
+        <published>2026-09-22T02:17:36.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[build(deps-dev): bump the npm-dev group with 2 updates]]></title>
         <id>https://github.com/mdn/content/pull/45812</id>
@@ -540,7 +591,7 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
         <title type="html"><![CDATA[Correct the WebAuthn attestation purpose paragraph]]></title>
         <id>https://github.com/mdn/content/pull/45768</id>
         <link href="https://github.com/mdn/content/pull/45768"/>
-        <updated>2026-09-18T06:32:59.000Z</updated>
+        <updated>2026-09-22T05:21:43.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/160158213?u=24cc7b7b6e2b8a5b15ed178d43a856ebb7a126ac&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The Attestation section said keys come from a specific device and that validating the root of trust is frequently unnecessary, both contradicted by the WebAuthn spec: attestation identifies a device model or batch, and verification is what proves a self-contained multi-factor credential. This replaces the paragraph with the spec-cited wording from the issue.</p>
 <p dir="auto">One paragraph, nothing else.</p>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45753.">Closes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5484235103" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45753" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45753/hovercard" href="https://github.com/mdn/content/issues/45753">#45753</a></p>
@@ -705,31 +756,5 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-09-17T01:07:31.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mention new IMSC versions in IMSC guides]]></title>
-        <id>https://github.com/mdn/content/pull/45744</id>
-        <link href="https://github.com/mdn/content/pull/45744"/>
-        <updated>2026-09-17T00:00:10.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39963.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3153159913" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39963" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39963/hovercard" href="https://github.com/mdn/content/issues/39963">#39963</a></p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-09-16T23:58:40.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[API event template: mention that addEventListener and onEvent are not equivalent]]></title>
-        <id>https://github.com/mdn/content/pull/45743</id>
-        <link href="https://github.com/mdn/content/pull/45743"/>
-        <updated>2026-09-18T01:37:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I'm working towards <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2456964846" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/35382" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/35382/hovercard" href="https://github.com/mdn/content/issues/35382">#35382</a>. My plan is to add a note to every single event page saying that the two things are not equivalent. To start, I'm updating the template so we can discuss the wording and the approach. If we think it's a good idea, I can then automatically add this to everything.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-09-16T23:28:19.000Z</published>
     </entry>
 </feed>
