@@ -2,11 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-23T20:47:20.657Z</updated>
+    <updated>2026-09-23T23:17:21.933Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Clarify image load timing and make front matter tests portable]]></title>
+        <id>https://github.com/mdn/content/pull/45831</id>
+        <link href="https://github.com/mdn/content/pull/45831"/>
+        <updated>2026-09-23T22:40:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/276162206?u=eb78468aa14ab57b91ce2c1ea011e5967005d724&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Explain that listeners registered after a resource loads miss its load event, and show the guarded image check suggested in the issue. Set the live example's source after registering its handler so initial loads and the Reload button both work.</p>
+<p dir="auto">A separate test commit builds four expected diagnostic paths with <code class="notranslate">path.join</code> so the existing front matter assertions work on Windows as well as Unix. Error text and content assertions are unchanged.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Readers need to handle images that finish loading before their scripts run without processing the same image twice or treating a failed image as loaded.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Verified the extracted examples in Chrome with eight checks covering a missed late event, already loaded and pending images, duplicate callback prevention, failed and missing sources, and initial and repeated loads. The duplicate event check uses a synthetic event. The local harness serves an image fixture in place of the shared MDN asset.</p>
+<p dir="auto">The page build passed with warnings treated as errors. Repository precommit checks, spelling and diff checks passed. All 12 unit tests pass on Windows after the expected paths were made portable. Signing and hooks remain enabled.</p>
+<p dir="auto">The prepush full documentation build also completed successfully. It reported 698 issues across 241 pages; the focused build of this changed page reported none.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44591.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4762735984" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44591" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44591/hovercard" href="https://github.com/mdn/content/issues/44591">#44591</a></p>]]></content>
+        <author>
+            <name>Michael-WhiteCapData</name>
+            <email>Michael-WhiteCapData@noreply.github.com</email>
+            <uri>https://github.com/Michael-WhiteCapData</uri>
+        </author>
+        <published>2026-09-23T22:39:57.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[rule-inset-cap has two values]]></title>
         <id>https://github.com/mdn/content/pull/45830</id>
@@ -191,21 +214,6 @@
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-09-22T21:48:36.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Restore initial-scale=1 in some examples, say it is still necessary]]></title>
-        <id>https://github.com/mdn/content/pull/45822</id>
-        <link href="https://github.com/mdn/content/pull/45822"/>
-        <updated>2026-09-23T12:27:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45570.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5387621925" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45570" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45570/hovercard" href="https://github.com/mdn/content/issues/45570">#45570</a>.</p>
-<p dir="auto">I have asked multiple rounds for clarification but I have got very little feedback, so I decided to go ahead and frame it my way.</p>
-<p dir="auto">See also <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5336114850" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45479" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45479/hovercard" href="https://github.com/mdn/content/pull/45479">#45479</a>.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-09-22T21:21:38.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Split SW architecture steps into installation & replacement, fix diagrams]]></title>
