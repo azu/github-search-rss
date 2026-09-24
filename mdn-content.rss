@@ -2,16 +2,71 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-24T02:01:22.283Z</updated>
+    <updated>2026-09-24T07:53:57.853Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Add Processing Instructions guide (Fixes #45309)]]></title>
+        <id>https://github.com/mdn/content/pull/45833</id>
+        <link href="https://github.com/mdn/content/pull/45833"/>
+        <updated>2026-09-24T07:24:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/102389071?u=fd0b775e7e974be91ee8255925ca7b5bbbaa63f2&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Adds new guide <code class="notranslate">Web/HTML/Guides/Processing_instructions</code> covering DOM representation (<code class="notranslate">ProcessingInstruction</code> / <code class="notranslate">CharacterData</code>), syntax, XML vs HTML parsing differences (optional trailing <code class="notranslate">?</code>, target regex <code class="notranslate">[A-Za-z_][-_A-Za-z0-9]*</code>, reserved <code class="notranslate">xml</code>/<code class="notranslate">xml-stylesheet</code> to comment), and declarative out-of-order patching with <code class="notranslate">&lt;template for&gt;</code> (<code class="notranslate">&lt;?marker&gt;</code> and <code class="notranslate">&lt;?start&gt;</code>/<code class="notranslate">&lt;?end&gt;</code>). Adds cross-links from <code class="notranslate">Web/API/ProcessingInstruction</code> and <code class="notranslate">Web/HTML/Reference/Elements/template</code>.</p>
+<p dir="auto">Placed under HTML per discussion (Josh-Cena: "shouldn't be in DOM; it should be in HTML") and ddbeck's recommendation in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5204758205" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30292" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30292/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30292">mdn/browser-compat-data#30292</a> - BCD PR intentionally removed per-marker <code class="notranslate">api.ProcessingInstruction.marker-*</code> keys and deferred documentation to prose/guide.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45309.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5245349451" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45309" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45309/hovercard" href="https://github.com/mdn/content/issues/45309">#45309</a>. Currently processing instructions are only documented under the <code class="notranslate">Web/API/ProcessingInstruction</code> reference page (Description section) with no dedicated guide. With Declarative Partial Updates (<code class="notranslate">&lt;template for&gt;</code>) in Chrome 150 making <code class="notranslate">&lt;?start&gt;</code>/<code class="notranslate">&lt;?marker&gt;</code>/<code class="notranslate">&lt;?end&gt;</code> more visible in HTML (<a href="https://developer.chrome.com/blog/declarative-partial-updates#out-of-order_streaming" rel="nofollow">https://developer.chrome.com/blog/declarative-partial-updates#out-of-order_streaming</a>), a discoverable guide explaining what PIs are, how HTML parsing differs from XML, and how they relate to both the DOM API and <code class="notranslate">&lt;template&gt;</code> patching was requested.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>New page: <code class="notranslate">files/en-us/web/html/guides/processing_instructions/index.md</code> (<code class="notranslate">slug: Web/HTML/Guides/Processing_instructions</code>, <code class="notranslate">page-type: guide</code>, <code class="notranslate">sidebar: htmlsidebar</code>, <code class="notranslate">spec-urls: https://html.spec.whatwg.org/multipage/parsing.html#processing-instruction-target-state, https://dom.spec.whatwg.org/#processinginstruction</code>)</li>
+<li>Scope intentionally narrow (PI definition, syntax, DOM, HTML vs XML, template patching, limitations) - not a general HTML/XML rendering guide per reviewer feedback</li>
+<li>No new BCD keys - <code class="notranslate">html.elements.template.for</code> implicitly covers markers as decided in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5204758205" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30292" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30292/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30292">mdn/browser-compat-data#30292</a> (comment <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5204758205" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30292" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30292/hovercard?comment_id=5409628333&amp;comment_type=issue_comment" href="https://github.com/mdn/browser-compat-data/pull/30292#issuecomment-5409628333">mdn/browser-compat-data#30292 (comment)</a>)</li>
+<li>Related spec: <a href="https://html.spec.whatwg.org/multipage/parsing.html#processing-instruction-target-state" rel="nofollow">https://html.spec.whatwg.org/multipage/parsing.html#processing-instruction-target-state</a>, <a href="https://dom.spec.whatwg.org/#processinginstruction" rel="nofollow">https://dom.spec.whatwg.org/#processinginstruction</a>, <a href="https://www.w3.org/TR/xml/#sec-pi" rel="nofollow">https://www.w3.org/TR/xml/#sec-pi</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45309.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5245349451" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45309" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45309/hovercard" href="https://github.com/mdn/content/issues/45309">#45309</a><br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5204758205" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30292" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30292/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30292">mdn/browser-compat-data#30292</a><br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5122474826" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30213" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30213/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30213">mdn/browser-compat-data#30213</a> (precedent for PI <code class="notranslate">data</code> handling)<br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5133312248" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45104" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45104/hovercard" href="https://github.com/mdn/content/pull/45104">#45104</a> (<code class="notranslate">Usage with &lt;template for&gt;</code> example)<br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5248094400" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45315" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45315/hovercard" href="https://github.com/mdn/content/pull/45315">#45315</a> (<code class="notranslate">&lt;template for&gt;</code> content)<br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4524784280" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4073" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/4073/hovercard" href="https://github.com/web-platform-dx/web-features/issues/4073">web-platform-dx/web-features#4073</a> / <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="861719043" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/4265" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/4265/hovercard" href="https://github.com/mdn/content/pull/4265">#4265</a></p>]]></content>
+        <author>
+            <name>Ashish-CodeJourney</name>
+            <email>Ashish-CodeJourney@noreply.github.com</email>
+            <uri>https://github.com/Ashish-CodeJourney</uri>
+        </author>
+        <published>2026-09-24T07:22:53.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Technical review] BiDi - New script.callFunction page]]></title>
+        <id>https://github.com/mdn/content/pull/45832</id>
+        <link href="https://github.com/mdn/content/pull/45832"/>
+        <updated>2026-09-24T05:07:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR adds the <code class="notranslate">script.callFunction</code> command page.</p>
+<ul dir="auto">
+<li>Many parameter and return value fields are the same as in the <code class="notranslate">script.evaluate</code> command (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5482827356" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45749" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45749/hovercard" href="https://github.com/mdn/content/pull/45749">#45749</a>), so their descriptions follow the same pattern.</li>
+<li>There are many in-page links to fields that share names across nested structure. Would help to get another set of eyes to check in preview that they all resolve to the correct target.</li>
+</ul>
+<h3 dir="auto">Spec link</h3>
+<p dir="auto"><a href="https://w3c.github.io/webdriver-bidi/#command-script-callFunction" rel="nofollow">https://w3c.github.io/webdriver-bidi/#command-script-callFunction</a></p>
+<h3 dir="auto">Related issue</h3>
+<p dir="auto">Doc issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5013788640" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/851" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/851/hovercard" href="https://github.com/mdn/mdn/issues/851">mdn/mdn#851</a></p>]]></content>
+        <author>
+            <name>dipikabh</name>
+            <email>dipikabh@noreply.github.com</email>
+            <uri>https://github.com/dipikabh</uri>
+        </author>
+        <published>2026-09-24T05:05:50.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Clarify image load timing and make front matter tests portable]]></title>
         <id>https://github.com/mdn/content/pull/45831</id>
         <link href="https://github.com/mdn/content/pull/45831"/>
-        <updated>2026-09-23T22:40:26.000Z</updated>
+        <updated>2026-09-24T05:51:31.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/276162206?u=eb78468aa14ab57b91ce2c1ea011e5967005d724&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Explain that listeners registered after a resource loads miss its load event, and show the guarded image check suggested in the issue. Set the live example's source after registering its handler so initial loads and the Reload button both work.</p>
 <p dir="auto">A separate test commit builds four expected diagnostic paths with <code class="notranslate">path.join</code> so the existing front matter assertions work on Windows as well as Unix. Error text and content assertions are unchanged.</p>
@@ -34,7 +89,7 @@
         <title type="html"><![CDATA[rule-inset-cap has two values]]></title>
         <id>https://github.com/mdn/content/pull/45830</id>
         <link href="https://github.com/mdn/content/pull/45830"/>
-        <updated>2026-09-23T19:15:57.000Z</updated>
+        <updated>2026-09-24T06:55:57.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Confirmed with the CSSWG that <code class="notranslate">rule-inset-cap</code> accepts two values, setting both constituent properties to the same value. the first value is for <code class="notranslate">*-cap-start</code> and the second is for <code class="notranslate">*-cap-end</code></p>]]></content>
         <author>
             <name>estelle</name>
@@ -206,7 +261,7 @@
         <title type="html"><![CDATA[Add an exmaple for screenshotting with Element Capture]]></title>
         <id>https://github.com/mdn/content/pull/45823</id>
         <link href="https://github.com/mdn/content/pull/45823"/>
-        <updated>2026-09-23T16:20:43.000Z</updated>
+        <updated>2026-09-24T06:59:41.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43826.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4280061537" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43826" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43826/hovercard" href="https://github.com/mdn/content/issues/43826">#43826</a></p>]]></content>
         <author>
             <name>Josh-Cena</name>
@@ -479,55 +534,5 @@ The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Gaps" rel="
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2026-09-18T12:10:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Editorial review: Document window-drag]]></title>
-        <id>https://github.com/mdn/content/pull/45771</id>
-        <link href="https://github.com/mdn/content/pull/45771"/>
-        <updated>2026-09-22T22:44:48.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Chrome 152 adds support for the <code class="notranslate">window-drag</code> CSS property; see <a href="https://chromestatus.com/feature/5201338641285120" rel="nofollow">https://chromestatus.com/feature/5201338641285120</a>.</p>
-<p dir="auto">This PR documents the new property and also adds links to and from other places, including mentioning it on the window controls overlay API landing page.</p>
-<p dir="auto">Note that the demo linked in the docs is not currently there yet, but it will be soon; see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5488296525" data-permission-text="Title is private" data-url="https://github.com/mdn/pwa-examples/issues/48" data-hovercard-type="pull_request" data-hovercard-url="/mdn/pwa-examples/pull/48/hovercard" href="https://github.com/mdn/pwa-examples/pull/48">mdn/pwa-examples#48</a>.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-09-18T09:45:06.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs(css): add an Accessibility section to outline-offset]]></title>
-        <id>https://github.com/mdn/content/pull/45770</id>
-        <link href="https://github.com/mdn/content/pull/45770"/>
-        <updated>2026-09-18T06:06:11.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75755802?u=232cfdb37381645af6e176bf8b8b2a4d1d3a3495&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto"><code class="notranslate">outline</code> and <code class="notranslate">outline-color</code> both carry an Accessibility section. <code class="notranslate">outline-offset</code> does not, even though it is the property in that family that decides whether a focus indicator can be seen at all.</p>
-<p dir="auto">Adds one section covering the two things the offset changes about a focus indicator:</p>
-<ul dir="auto">
-<li><strong>Which background the contrast ratio is measured against.</strong> The page already notes that the space the offset creates is transparent, so the outline is drawn over whatever is behind the element rather than over the element. That means the 3:1 required by <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast" rel="nofollow">SC 1.4.11</a> is measured against that background, and a negative offset moves the outline inside the border edge, over the element's own background, where the answer can differ.</li>
-<li><strong>Whether the indicator survives clipping.</strong> A positive offset can move the outline outside an ancestor that clips overflow, or outside a scroll container, cutting part of it off. That is the practical case behind <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum" rel="nofollow">SC 2.4.11 Focus Not Obscured (Minimum)</a>, and <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance" rel="nofollow">SC 2.4.13 Focus Appearance</a> sets a minimum area for the indicator.</li>
-</ul>
-<p dir="auto">Placed after Description and before Formal definition, matching where <code class="notranslate">outline-color</code> puts its own Accessibility section.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The existing Description explains the mechanism (the gap is transparent) without saying what follows from it for a focus style, which is the main reason authors set this property. Both consequences are commonly missed, and the clipping one is invisible until someone tabs through a scrolling region.</p>]]></content>
-        <author>
-            <name>jsabutis</name>
-            <email>jsabutis@noreply.github.com</email>
-            <uri>https://github.com/jsabutis</uri>
-        </author>
-        <published>2026-09-18T06:05:41.000Z</published>
     </entry>
 </feed>
