@@ -2,11 +2,77 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-25T08:17:07.044Z</updated>
+    <updated>2026-09-25T14:15:44.509Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add @supports to column-height property]]></title>
+        <id>https://github.com/mdn/content/pull/45849</id>
+        <link href="https://github.com/mdn/content/pull/45849"/>
+        <updated>2026-09-25T13:48:48.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">The <code class="notranslate">@supports</code> was missing from the first example.</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2026-09-25T13:07:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Clarify behavior of 'normal' value in row-rule-break]]></title>
+        <id>https://github.com/mdn/content/pull/45848</id>
+        <link href="https://github.com/mdn/content/pull/45848"/>
+        <updated>2026-09-25T12:43:48.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">was broken out into two sentences, but doesn't need to be (needs to be in the column direction)</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2026-09-25T12:42:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSS relative colors: explain channel values outside the output range]]></title>
+        <id>https://github.com/mdn/content/pull/45847</id>
+        <link href="https://github.com/mdn/content/pull/45847"/>
+        <updated>2026-09-25T12:12:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/143684587?u=5439f94a2cf31212e19f179d4defd1344c321579&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Adds a "Channel values outside the output range" subsection to the "Using relative colors" guide, with a worked <code class="notranslate">display-p3</code> example showing that channel values beyond the output function's range are used as they are, not clamped or gamut-mapped.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The guide explains that channel values resolve to <code class="notranslate">&lt;number&gt;</code> values, but not what happens when the origin color lies outside the output function's gamut. Readers who compute <code class="notranslate">rgb()</code> relative colors from wide-gamut origins see values above <code class="notranslate">255</code>, and a <code class="notranslate">color(srgb ...)</code> serialization, with nothing on the page explaining either.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The example is the one <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/romainmenke/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/romainmenke">@romainmenke</a> suggested in the issue, kept inside the display-p3 gamut as recommended there. Values checked in Chromium 151:</p>
+<ul dir="auto">
+<li><code class="notranslate">rgb(from color(display-p3 1 0.5 0.5) r g b)</code> computes to <code class="notranslate">color(srgb 1.07398 0.462581 0.483011)</code>, so <code class="notranslate">r</code> is about <code class="notranslate">273.86</code></li>
+<li><code class="notranslate">rgb(from color(display-p3 1 0.5 0.5) calc(r - 1) g b)</code> computes to <code class="notranslate">color(srgb 1.07006 0.462581 0.483011)</code></li>
+<li>the absolute <code class="notranslate">rgb(272.86 117.96 123.17)</code> computes to <code class="notranslate">rgb(255, 118, 123)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgb(255, 118, 123); height: 8px; width: 8px;"></span></code>, clamped</li>
+</ul>
+<p dir="auto">Spec: <a href="https://drafts.csswg.org/css-color-5/#relative-colors" rel="nofollow">CSS Color 5, relative color syntax</a>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #32704.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2189521620" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/32704" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/32704/hovercard" href="https://github.com/mdn/content/issues/32704">#32704</a><br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2107524745" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/32004" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/32004/hovercard" href="https://github.com/mdn/content/pull/32004">#32004</a></p>]]></content>
+        <author>
+            <name>hipuku</name>
+            <email>hipuku@noreply.github.com</email>
+            <uri>https://github.com/hipuku</uri>
+        </author>
+        <published>2026-09-25T12:11:56.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Update Firefox 157 release notes for WebDriver conforming changes.]]></title>
+        <id>https://github.com/mdn/content/pull/45845</id>
+        <link href="https://github.com/mdn/content/pull/45845"/>
+        <updated>2026-09-25T09:37:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5276969?u=8cddfa087ad4d174b236980e19ecf5254320f529&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Changes for WebDriver conformance for the Firefox 157 release are based on the <a href="https://bugzilla.mozilla.org/buglist.cgi?o2=notequals&amp;v4=%5Bwebdriver%3Arelnote%5D&amp;resolution=FIXED&amp;v1=fixed&amp;f2=cf_status_firefox156&amp;product=Remote%20Protocol&amp;v3=%5Bwptsync%20downstream%5D&amp;f4=status_whiteboard&amp;list_id=18128491&amp;query_format=advanced&amp;o1=equals&amp;o3=notsubstring&amp;component=Agent&amp;component=Marionette&amp;component=WebDriver%20BiDi&amp;columnlist=component%2Cresolution%2Cassigned_to%2Cshort_desc%2Cbug_type%2Cstatus_whiteboard&amp;f1=cf_status_firefox157&amp;o4=substring&amp;v2=fixed&amp;f3=status_whiteboard" rel="nofollow">release-worthy bugs in this list</a>.</p>]]></content>
+        <author>
+            <name>lutien</name>
+            <email>lutien@noreply.github.com</email>
+            <uri>https://github.com/lutien</uri>
+        </author>
+        <published>2026-09-25T09:34:36.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[FF157 Relnote: Export * from module proposal]]></title>
         <id>https://github.com/mdn/content/pull/45843</id>
@@ -40,7 +106,7 @@
         <title type="html"><![CDATA[Bug 1992418 runtime.getVersion support]]></title>
         <id>https://github.com/mdn/content/pull/45841</id>
         <link href="https://github.com/mdn/content/pull/45841"/>
-        <updated>2026-09-24T23:48:43.000Z</updated>
+        <updated>2026-09-25T09:41:05.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">This change addresses the dev-doc-needed requirements of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1992418" rel="nofollow">Bug 1992418</a> "Add runtime.getVersion()", including:</p>
 <ul dir="auto">
@@ -89,7 +155,7 @@
         <title type="html"><![CDATA[Reference for JS magic comments]]></title>
         <id>https://github.com/mdn/content/pull/45838</id>
         <link href="https://github.com/mdn/content/pull/45838"/>
-        <updated>2026-09-24T22:11:52.000Z</updated>
+        <updated>2026-09-25T09:28:22.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">As tracked by the Google team.</p>
 <ul dir="auto">
 <li><a href="https://chromestatus.com/feature/5100466238652416" rel="nofollow">https://chromestatus.com/feature/5100466238652416</a></li>
@@ -405,97 +471,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/rio767</uri>
         </author>
         <published>2026-09-23T05:13:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Split SW architecture steps into installation & replacement, fix diagrams]]></title>
-        <id>https://github.com/mdn/content/pull/45821</id>
-        <link href="https://github.com/mdn/content/pull/45821"/>
-        <updated>2026-09-22T19:26:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #25845.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1650779859" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/25845" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/25845/hovercard" href="https://github.com/mdn/content/issues/25845">#25845</a></p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-09-22T18:14:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Editorial review: Document page-margin-safety @page descriptor]]></title>
-        <id>https://github.com/mdn/content/pull/45819</id>
-        <link href="https://github.com/mdn/content/pull/45819"/>
-        <updated>2026-09-23T12:11:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Chrome 150 adds support for the <a href="https://drafts.csswg.org/css-page-3/#page-margin-safety" rel="nofollow"><code class="notranslate">page-margin-safety</code></a> descriptor of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@page" rel="nofollow"><code class="notranslate">@page</code></a> at-rule. See <a href="https://chromestatus.com/feature/5515971464527872" rel="nofollow">https://chromestatus.com/feature/5515971464527872</a>.</p>
-<p dir="auto">This PR adds a reference page for the descriptor.</p>
-<p dir="auto">Note that the example I wrote does seem to show some discernible difference in the page margins when you press "print", when the <code class="notranslate">@page</code> rule is and isn't included, but I wondered if there was a more obvious way to demonstrate it.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-09-22T15:30:37.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Permissions-Policy - improve guide around inheriting features]]></title>
-        <id>https://github.com/mdn/content/pull/45815</id>
-        <link href="https://github.com/mdn/content/pull/45815"/>
-        <updated>2026-09-22T06:14:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">There is ongoing confusion with how permissions-policy delegation works - such as <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5167209861" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45166" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45166/hovercard" href="https://github.com/mdn/content/pull/45166">#45166</a>. This was an attempt to capture how this works at top level.</p>
-<p dir="auto">The summary basically goes</p>
-<ul dir="auto">
-<li>if a top level document has a Permissions-Policy for a feature, the features allowlist defines the superset of origins that it can delegate to in an iframe.
-<ul dir="auto">
-<li>The feature must also be delegated by the <code class="notranslate">allow</code> attribute - i.e. listed in the attribute or covered by the allowlist of something like <code class="notranslate">*</code>.</li>
-<li>The default allowlist is used for delegation if <code class="notranslate">allow</code> is not specified. So if no allow is specified and the default allowlist is <code class="notranslate">self</code>, a frame that specifies a <code class="notranslate">self</code> origin will automatically get the permission.</li>
-</ul>
-</li>
-<li>But if the top level document does NOT have a  <code class="notranslate">Permissions-Policy</code> for a feature no restrictions are placed on delegation.
-<ul dir="auto">
-<li>Nothing stops you from delegating a permission the parent has to any origin it likes, as long as that is specified in <code class="notranslate">allow</code> (as long as the parent has that permission, which is does by default for everything except <code class="notranslate">unload</code>).</li>
-<li>Note that the default allowslist is still used to define the default origins for granting - i.e. self or <code class="notranslate">*</code>.</li>
-</ul>
-</li>
-</ul>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a> Hope this is helpful</p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-09-22T05:12:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix permission flow in device orientation example]]></title>
-        <id>https://github.com/mdn/content/pull/45813</id>
-        <link href="https://github.com/mdn/content/pull/45813"/>
-        <updated>2026-09-22T17:54:32.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/245993535?u=de70d5d6230c7c118d84f2aab984f80def4d6a45&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Update the live device orientation example to request permission from a button click when <code class="notranslate">DeviceOrientationEvent.requestPermission()</code> is available. Show the permission result in the example and start listening only after permission is granted. Browsers without that method can start the example from the same button without a permission request.</p>
-<p dir="auto">Also clarify the separate permission example's comment: exposing the request method does not mean the browser will necessarily prompt.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The previous documentation-only approach in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5528040660" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45809" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45809/hovercard" href="https://github.com/mdn/content/pull/45809">#45809</a> was closed after maintainer feedback. The live example itself needs to request permission and expose the result so readers can distinguish denied access from an unresponsive sensor.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Local checks: MarkdownLint, Prettier, CSpell, changed-file pre-commit hooks, and four executed example behavior tests passed (granted, denied, unsupported method, rejected request). A full Rari page build was not run locally because its executable is missing from this interrupted dependency install; CI will provide that check.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38423.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2891587332" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38423" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38423/hovercard" href="https://github.com/mdn/content/issues/38423">#38423</a><br>
-Follow-up to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5528040660" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45809" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45809/hovercard" href="https://github.com/mdn/content/pull/45809">#45809</a></p>]]></content>
-        <author>
-            <name>harbinresearcher</name>
-            <email>harbinresearcher@noreply.github.com</email>
-            <uri>https://github.com/harbinresearcher</uri>
-        </author>
-        <published>2026-09-22T02:17:36.000Z</published>
     </entry>
 </feed>
