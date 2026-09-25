@@ -2,11 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-25T19:00:19.161Z</updated>
+    <updated>2026-09-25T22:01:48.780Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove guidance to use display-mode to infer PWA installation status]]></title>
+        <id>https://github.com/mdn/content/pull/45852</id>
+        <link href="https://github.com/mdn/content/pull/45852"/>
+        <updated>2026-09-25T21:58:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Turns out that there's simply no way to tell if a PWA is running as an installed app.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #34928.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2419254063" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/34928" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/34928/hovercard" href="https://github.com/mdn/content/issues/34928">#34928</a>.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-25T21:56:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document that `font-family: cursive` is Comic Sans MS on Windows]]></title>
+        <id>https://github.com/mdn/content/pull/45851</id>
+        <link href="https://github.com/mdn/content/pull/45851"/>
+        <updated>2026-09-25T21:41:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/96150?v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">I've added a one-line note that, on Windows, <code class="notranslate">font-family: cursive</code> means Comic Sans MS.</p>
+
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">It's an unfortunate quirk of the web that Chrome, Edge, Firefox, and Opera all render <code class="notranslate">font-family: cursive</code> using Comic Sans MS on Windows.</p>
+<p dir="auto">MDN indicates that <code class="notranslate">cursive</code> implies that the glyphs would be at least partially connected by joining strokes, but Comic Sans MS doesn't connect any of its glyphs. IMO, Comic Sans MS is not "cursive," at all.</p>
+<p dir="auto">I was caught very much by surprise when I used <code class="notranslate">font-family: cursive</code> and tested on iOS, Android, and macOS, and got Apple Chancery on iOS/macOS and Dancing Script on Android, but got Comic Sans MS on all browsers on Windows. (Comic Sans MS has a casual, comedic vibe. It was very much <em>not</em> what I was going for when I selected <code class="notranslate">font-family: cursive</code>.)</p>
+<p dir="auto">If a note like this had appeared on MDN, it would have saved me some embarrassment.</p>]]></content>
+        <author>
+            <name>dfabulich</name>
+            <email>dfabulich@noreply.github.com</email>
+            <uri>https://github.com/dfabulich</uri>
+        </author>
+        <published>2026-09-25T21:28:28.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Bug 2066620 publicSuffix.isKnownSuffix throws for invalid hostnames]]></title>
         <id>https://github.com/mdn/content/pull/45850</id>
@@ -308,29 +344,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <published>2026-09-24T05:05:50.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Clarify image load timing and make front matter tests portable]]></title>
-        <id>https://github.com/mdn/content/pull/45831</id>
-        <link href="https://github.com/mdn/content/pull/45831"/>
-        <updated>2026-09-24T05:51:31.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/276162206?u=eb78468aa14ab57b91ce2c1ea011e5967005d724&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Explain that listeners registered after a resource loads miss its load event, and show the guarded image check suggested in the issue. Set the live example's source after registering its handler so initial loads and the Reload button both work.</p>
-<p dir="auto">A separate test commit builds four expected diagnostic paths with <code class="notranslate">path.join</code> so the existing front matter assertions work on Windows as well as Unix. Error text and content assertions are unchanged.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Readers need to handle images that finish loading before their scripts run without processing the same image twice or treating a failed image as loaded.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Verified the extracted examples in Chrome with eight checks covering a missed late event, already loaded and pending images, duplicate callback prevention, failed and missing sources, and initial and repeated loads. The duplicate event check uses a synthetic event. The local harness serves an image fixture in place of the shared MDN asset.</p>
-<p dir="auto">The page build passed with warnings treated as errors. Repository precommit checks, spelling and diff checks passed. All 12 unit tests pass on Windows after the expected paths were made portable. Signing and hooks remain enabled.</p>
-<p dir="auto">The prepush full documentation build also completed successfully. It reported 698 issues across 241 pages; the focused build of this changed page reported none.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44591.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4762735984" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44591" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44591/hovercard" href="https://github.com/mdn/content/issues/44591">#44591</a></p>]]></content>
-        <author>
-            <name>Michael-WhiteCapData</name>
-            <email>Michael-WhiteCapData@noreply.github.com</email>
-            <uri>https://github.com/Michael-WhiteCapData</uri>
-        </author>
-        <published>2026-09-23T22:39:57.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Theme manifest key update for Nova]]></title>
         <id>https://github.com/mdn/content/pull/45829</id>
         <link href="https://github.com/mdn/content/pull/45829"/>
@@ -418,41 +431,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <published>2026-09-23T16:53:36.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[docs: document WebTransport server implementation]]></title>
-        <id>https://github.com/mdn/content/pull/45824</id>
-        <link href="https://github.com/mdn/content/pull/45824"/>
-        <updated>2026-09-25T18:19:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/204441915?u=7301c0b8ce7f00f43335a9a80dea41a9893356a3&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Added documentation describing the server-side requirements for WebTransport over HTTP/3    including how the client establishes a session with a server.</p>
-<p dir="auto">Also added links to WebTransport server implementations and examples for Go, Python, Rust, and Node.js.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The WebTransport API documentation explains how a client connects to a server, but did not explain what is required on the server side or what the URL represents.</p>
-<p dir="auto">This adds enough server-side context to help readers understand how a WebTransport connection is established and where to find implementations for different languages, without documenting a complete server implementation.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The WebTransport over HTTP/3 specification is linked from the new server-side documentation, along with server implementation resources for    Go, Python, Rust, and Node.js,</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27533.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1772960825" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/27533" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/27533/hovercard" href="https://github.com/mdn/content/issues/27533">#27533</a></p>]]></content>
-        <author>
-            <name>rio767</name>
-            <email>rio767@noreply.github.com</email>
-            <uri>https://github.com/rio767</uri>
-        </author>
-        <published>2026-09-23T05:13:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Split SW architecture steps into installation & replacement, fix diagrams]]></title>
-        <id>https://github.com/mdn/content/pull/45821</id>
-        <link href="https://github.com/mdn/content/pull/45821"/>
-        <updated>2026-09-22T19:26:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #25845.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1650779859" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/25845" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/25845/hovercard" href="https://github.com/mdn/content/issues/25845">#25845</a></p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-09-22T18:14:59.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Editorial review: Document page-margin-safety @page descriptor]]></title>
         <id>https://github.com/mdn/content/pull/45819</id>
         <link href="https://github.com/mdn/content/pull/45819"/>
@@ -479,5 +457,34 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-09-22T15:30:37.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Permissions-Policy - improve guide around inheriting features]]></title>
+        <id>https://github.com/mdn/content/pull/45815</id>
+        <link href="https://github.com/mdn/content/pull/45815"/>
+        <updated>2026-09-22T06:14:06.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">There is ongoing confusion with how permissions-policy delegation works - such as <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5167209861" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45166" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45166/hovercard" href="https://github.com/mdn/content/pull/45166">#45166</a>. This was an attempt to capture how this works at top level.</p>
+<p dir="auto">The summary basically goes</p>
+<ul dir="auto">
+<li>if a top level document has a Permissions-Policy for a feature, the features allowlist defines the superset of origins that it can delegate to in an iframe.
+<ul dir="auto">
+<li>The feature must also be delegated by the <code class="notranslate">allow</code> attribute - i.e. listed in the attribute or covered by the allowlist of something like <code class="notranslate">*</code>.</li>
+<li>The default allowlist is used for delegation if <code class="notranslate">allow</code> is not specified. So if no allow is specified and the default allowlist is <code class="notranslate">self</code>, a frame that specifies a <code class="notranslate">self</code> origin will automatically get the permission.</li>
+</ul>
+</li>
+<li>But if the top level document does NOT have a  <code class="notranslate">Permissions-Policy</code> for a feature no restrictions are placed on delegation.
+<ul dir="auto">
+<li>Nothing stops you from delegating a permission the parent has to any origin it likes, as long as that is specified in <code class="notranslate">allow</code> (as long as the parent has that permission, which is does by default for everything except <code class="notranslate">unload</code>).</li>
+<li>Note that the default allowslist is still used to define the default origins for granting - i.e. self or <code class="notranslate">*</code>.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a> Hope this is helpful</p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-09-22T05:12:00.000Z</published>
     </entry>
 </feed>
