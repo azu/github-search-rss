@@ -2,11 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-09-26T11:55:03.465Z</updated>
+    <updated>2026-09-26T15:17:47.166Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Chrome 153 supports the publicSuffix extensions API]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30679</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30679"/>
+        <updated>2026-09-26T14:49:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/155710?u=9d554cb458091b1638d601b0577b9e0a56ce0dba&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Support for the browser.publicSuffix was added with Chrome 153, see<br>
+<a href="https://chromiumdash.appspot.com/commit/52aa1573bb40a536a1d2d6ed3f9bc7c8c817fb2d" rel="nofollow">https://chromiumdash.appspot.com/commit/52aa1573bb40a536a1d2d6ed3f9bc7c8c817fb2d</a></p>]]></content>
+        <author>
+            <name>kzar</name>
+            <email>kzar@noreply.github.com</email>
+            <uri>https://github.com/kzar</uri>
+        </author>
+        <published>2026-09-26T14:48:08.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Data for svg.elements.textPath.method]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30677</id>
@@ -25,7 +39,7 @@
         <title type="html"><![CDATA[Bug 2066620 publicSuffix.isKnownSuffix throws for invalid hostnames]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30676</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30676"/>
-        <updated>2026-09-25T17:24:22.000Z</updated>
+        <updated>2026-09-26T14:50:18.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">This change addresses the dev-doc-needed requirements of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2066620" rel="nofollow">Bug 2066620</a> "publicSuffix.isKnownSuffix does not throw for inputs that are invalid host names", documenting the change in behavior.</p>
 <h4 dir="auto">Related issues</h4>
@@ -411,40 +425,5 @@
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-09-22T12:56:21.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add retriable module loading keys]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30604</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30604"/>
-        <updated>2026-09-23T15:37:22.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add some keys representing a new behavior in module loading, where HTTP errors aren't cached, so developers can now retry loading a module that failed to fetch.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">This is a spec change and (I think) one that is impossible to feature detect, so this makes a good fit for a behavioral subfeature.</p>
-<p dir="auto">I didn't test this, but it's well attested through bugs:</p>
-<ul dir="auto">
-<li>Chromium <a href="https://chromiumdash.appspot.com/commit/bef695c64ce4914a752c8d9e61ca1ddf62368d85" rel="nofollow">enabled it in 156</a> (<a href="https://issues.chromium.org/issues/534781954" rel="nofollow">tracking bug</a>).</li>
-<li>WebKit added it with <a href="https://commits.webkit.org/319474@main" rel="nofollow">r319474</a>. The Safari TP release notes don't mention it by name, but it was included in <a href="https://webkit.org/blog/18304/release-notes-for-safari-technology-preview-252/#:~:text=This%20release%20includes%20WebKit%20changes%20between" rel="nofollow">the range of changes given by the 252 release notes</a>. When I tried <a href="https://wpt.live/html/semantics/scripting-1/the-script-element/module/dynamic-import/repeated-imports.any.html" rel="nofollow">the WPT test</a> on Safari 27, it failed.</li>
-<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2055211" title="Don't cache HTTP errors in the module map" rel="nofollow">Firefox bug 2055211</a> shows this shipping in 154.</li>
-</ul>
-<p dir="auto">Setting the spec URL was difficult. There's nothing in the spec that screams that this should work the way it does, but you can see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2283078060" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10327" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10327/hovercard" href="https://github.com/whatwg/html/pull/10327">whatwg/html#10327</a> and tell me if you've got a better idea here.</p>
-<p dir="auto">Lastly, I added three keys since I believe these are the three entry points for this behavior. See <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5226263705" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30304" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30304/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30304">#30304</a> for further discussion.</p>
-
-
-<h4 dir="auto">Related issues</h4>
-<ul dir="auto">
-<li><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30304.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5226263705" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30304" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30304/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30304">#30304</a></li>
-<li>Prompted by <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5411824149" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4335" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/4335/hovercard" href="https://github.com/web-platform-dx/web-features/issues/4335">web-platform-dx/web-features#4335</a></li>
-<li>Spec change: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2283078060" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/10327" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/10327/hovercard" href="https://github.com/whatwg/html/pull/10327">whatwg/html#10327</a></li>
-</ul>
-
-]]></content>
-        <author>
-            <name>ddbeck</name>
-            <email>ddbeck@noreply.github.com</email>
-            <uri>https://github.com/ddbeck</uri>
-        </author>
-        <published>2026-09-21T15:13:25.000Z</published>
     </entry>
 </feed>
