@@ -2,11 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-09-27T15:26:04.935Z</updated>
+    <updated>2026-09-27T19:23:24.998Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Firefox 153 supports local-network and loopback-network permissions]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30685</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30685"/>
+        <updated>2026-09-27T17:25:04.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/236759479?u=6a2b51441b1015f9a4beae865bfcb3f1a2ea9899&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Marks <code class="notranslate">permission_local-network</code> and <code class="notranslate">permission_loopback-network</code> as supported in Firefox 153, and sets <code class="notranslate">experimental: false</code> on both since they now ship in two engines (the linter asks for this).</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Firefox added both names to the <code class="notranslate">PermissionName</code> enum in 150 (<a href="https://bugzil.la/1989920" rel="nofollow">bug 1989920</a>, <a href="https://github.com/mozilla-firefox/firefox/commit/5c72e353c6e03511cb8956542aad30ccc2dab1cf">commit</a>), but <code class="notranslate">Permissions.cpp</code> throws a <code class="notranslate">TypeError</code> for them unless <code class="notranslate">network.lna.blocking</code> is on. That pref's default in <code class="notranslate">StaticPrefList.yaml</code> is <code class="notranslate">@IS_NIGHTLY_BUILD@</code> at the <code class="notranslate">FIREFOX_150_0_RELEASE</code>, <code class="notranslate">151</code> and <code class="notranslate">152</code> tags and <code class="notranslate">true</code> from <code class="notranslate">FIREFOX_153_0_RELEASE</code> on, with no override in <code class="notranslate">firefox.js</code> or <code class="notranslate">all.js</code>. So on release channel <code class="notranslate">navigator.permissions.query({ name: "local-network" })</code> works from 153. The pref is now on by default, so I didn't add flag data. <code class="notranslate">local-network-access</code> stays <code class="notranslate">false</code>: Firefox never added that alias.</p>
+<p dir="auto">I didn't test this in a browser; the version comes from the source above. <code class="notranslate">npm run lint -- api/Permissions.json</code> and prettier are clean.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5587049014" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30678" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30678/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30678">#30678</a>. I left the <code class="notranslate">http.headers.Permissions-Policy</code> entries alone: Firefox still doesn't parse the <code class="notranslate">Permissions-Policy</code> header (<a href="https://bugzil.la/1531012" rel="nofollow">bug 1531012</a> is open, and the header's own Firefox entry is <code class="notranslate">false</code>). The same commit does add <code class="notranslate">local-network</code> / <code class="notranslate">loopback-network</code> to <code class="notranslate">FeaturePolicyUtils.cpp</code>, so they would apply through the iframe <code class="notranslate">allow</code> attribute, but <code class="notranslate">html.elements.iframe.allow</code> has no entries for them yet.</p>]]></content>
+        <author>
+            <name>RizgarOzan</name>
+            <email>RizgarOzan@noreply.github.com</email>
+            <uri>https://github.com/RizgarOzan</uri>
+        </author>
+        <published>2026-09-27T17:24:24.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[WebExtensions] In Chrome unlimitedStorage can not be optional]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30684</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30684"/>
+        <updated>2026-09-27T16:13:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Chromium does not support WebExtension permission <code class="notranslate">unlimitedStorage</code> as an optional permission.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Chromium source code specifies "unlimitedStorage" with  APIPermissionInfo::kFlagCannotBeOptional: <a href="https://github.com/chromium/chromium/blob/main/extensions/common/permissions/extensions_api_permissions.cc">https://github.com/chromium/chromium/blob/main/extensions/common/permissions/extensions_api_permissions.cc</a></p>
+<p dir="auto">We discussed this in <a href="https://github.com/w3c/webextensions/pull/1098/changes#diff-23a273d3b1dcea9e91b12bbbd9213c12cc1a0b489e2e881bac1d336624db9e37R81">WECG meeting here</a>.</p>
+
+
+<p dir="auto">I could not test Safari, so I did not update its entry.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5448776088" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/1087" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/1087/hovercard" href="https://github.com/w3c/webextensions/issues/1087">w3c/webextensions#1087</a></p>
+
+]]></content>
+        <author>
+            <name>bershanskiy</name>
+            <email>bershanskiy@noreply.github.com</email>
+            <uri>https://github.com/bershanskiy</uri>
+        </author>
+        <published>2026-09-27T16:12:44.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Chrome 153 supports the publicSuffix extensions API]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30679</id>
@@ -34,22 +79,6 @@
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-09-25T17:39:15.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Bug 2066620 publicSuffix.isKnownSuffix throws for invalid hostnames]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30676</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30676"/>
-        <updated>2026-09-26T14:50:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">This change addresses the dev-doc-needed requirements of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2066620" rel="nofollow">Bug 2066620</a> "publicSuffix.isKnownSuffix does not throw for inputs that are invalid host names", documenting the change in behavior.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">MDN content changes in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5586129683" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45850" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45850/hovercard" href="https://github.com/mdn/content/pull/45850">mdn/content#45850</a></p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-09-25T17:23:39.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Chrome 150 focusgroup global attribute]]></title>
@@ -402,28 +431,5 @@
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2026-09-22T14:33:28.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 150 page-margin-safety descriptor]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30612</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30612"/>
-        <updated>2026-09-25T16:14:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Chrome 150 adds support for the <a href="https://drafts.csswg.org/css-page-3/#page-margin-safety" rel="nofollow"><code class="notranslate">page-margin-safety</code></a> descriptor of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@page" rel="nofollow"><code class="notranslate">@page</code></a> at-rule. See <a href="https://chromestatus.com/feature/5515971464527872" rel="nofollow">https://chromestatus.com/feature/5515971464527872</a>.</p>
-<p dir="auto">This PR adds a data point for the new descriptor, but I've also taken this opportunity to rearrange the existing data points to make the descriptors and sub-at-rules all sit together by adding some prefixes to the keys.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-09-22T12:56:21.000Z</published>
     </entry>
 </feed>
