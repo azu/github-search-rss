@@ -2,70 +2,109 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-27T22:38:54.078Z</updated>
+    <updated>2026-09-28T01:16:03.329Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Fix leftover margin in fixed info-box CSS example]]></title>
-        <id>https://github.com/mdn/content/pull/45864</id>
-        <link href="https://github.com/mdn/content/pull/45864"/>
-        <updated>2026-09-27T19:11:33.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87746703?u=db99c6798e39924e5bd94704b649cc50930dd631&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
+        <title type="html"><![CDATA[Add "read-only" to property pages whose interfaces already use them (2)]]></title>
+        <id>https://github.com/mdn/content/pull/45875</id>
+        <link href="https://github.com/mdn/content/pull/45875"/>
+        <updated>2026-09-28T01:05:29.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Continuing <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5607833581" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45874" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45874/hovercard" href="https://github.com/mdn/content/pull/45874">#45874</a> —this time focusing on property subpages. This particular PR deals with everything not related to HTML/DOM.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-28T01:03:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add "read-only" to property pages whose interfaces already use them (1)]]></title>
+        <id>https://github.com/mdn/content/pull/45874</id>
+        <link href="https://github.com/mdn/content/pull/45874"/>
+        <updated>2026-09-28T01:05:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Continuing <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5607748789" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45873" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45873/hovercard" href="https://github.com/mdn/content/pull/45873">#45873</a> —this time focusing on property subpages. This particular PR deals with HTML/DOM-related APIs.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-28T01:02:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add missing ReadOnlyInline to pages that already use them]]></title>
+        <id>https://github.com/mdn/content/pull/45873</id>
+        <link href="https://github.com/mdn/content/pull/45873"/>
+        <updated>2026-09-28T00:51:00.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I don't know how dogmatic we are in enforcing that readonly properties are marked as readonly, but it's certainly a bug if a page is already using them and there exist readonly properties that aren't indicated as such, because then readers would assume that their absence means they are not readonly.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-28T00:49:27.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Remove read-only modifiers from properties that are not]]></title>
+        <id>https://github.com/mdn/content/pull/45872</id>
+        <link href="https://github.com/mdn/content/pull/45872"/>
+        <updated>2026-09-28T00:42:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">It might be okay for read-only properties to not be marked as such (our guidelines are murky) but it's never okay for non-readonly properties to be marked as such.</p>
+<p dir="auto">Namely:</p>
 <ul dir="auto">
-<li>Removes <code class="notranslate">margin: 0 auto;</code> from the <code class="notranslate">.info-box</code> sample under <strong>Changes to the existing CSS</strong>.</li>
-<li>The prose already tells learners to drop centering for the fixed-position box; the code block still included it.</li>
+<li>Dictionaries are never readonly (<code class="notranslate">MediaTrackSupportedConstraints</code>)</li>
+<li>Derived class members are protocols and can never be enforced as readonly (<code class="notranslate">AudioWorkletProcessor.parameterDescriptors</code>)</li>
 </ul>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45793.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5518927712" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45793" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45793/hovercard" href="https://github.com/mdn/content/issues/45793">#45793</a></p>
-<h2 dir="auto">Test plan</h2>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Confirm the example under <code class="notranslate">### Changes to the existing CSS</code> no longer includes <code class="notranslate">margin: 0 auto;</code></li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Confirm the surrounding instructions still match the sample</li>
-</ul>]]></content>
+<p dir="auto">...others are just typos. They have never been read-only.</p>]]></content>
         <author>
-            <name>Akshat026</name>
-            <email>Akshat026@noreply.github.com</email>
-            <uri>https://github.com/Akshat026</uri>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
         </author>
-        <published>2026-09-27T19:11:01.000Z</published>
+        <published>2026-09-28T00:40:42.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[fix: mark Element.part as read-only]]></title>
-        <id>https://github.com/mdn/content/pull/45863</id>
-        <link href="https://github.com/mdn/content/pull/45863"/>
-        <updated>2026-09-27T15:35:47.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/259692397?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Marks <code class="notranslate">Element.part</code> as read-only in the <code class="notranslate">Element</code> interface property list, matching the dedicated <code class="notranslate">Element.part</code> documentation.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45860.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5600928406" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45860" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45860/hovercard" href="https://github.com/mdn/content/issues/45860">#45860</a>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The dedicated <code class="notranslate">Element.part</code> page describes the property as read-only, but the <code class="notranslate">Element</code> interface overview was missing the read-only indicator. This change makes the overview consistent with the property documentation.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">This is a documentation-only change.</p>]]></content>
+        <title type="html"><![CDATA[Remove non-existent web API properties]]></title>
+        <id>https://github.com/mdn/content/pull/45871</id>
+        <link href="https://github.com/mdn/content/pull/45871"/>
+        <updated>2026-09-28T00:36:09.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">These properties are never ever found in any browser. They might be typos, copy-paste errors, or simply a misunderstanding.</p>]]></content>
         <author>
-            <name>furkansel-ops</name>
-            <email>furkansel-ops@noreply.github.com</email>
-            <uri>https://github.com/furkansel-ops</uri>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
         </author>
-        <published>2026-09-27T15:35:21.000Z</published>
+        <published>2026-09-28T00:32:05.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Add ReadOnlyInline label to Element.part]]></title>
-        <id>https://github.com/mdn/content/pull/45862</id>
-        <link href="https://github.com/mdn/content/pull/45862"/>
-        <updated>2026-09-27T12:02:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/89024979?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Add the <code class="notranslate">{{ReadOnlyInline}}</code> label to <code class="notranslate">Element.part</code> on the Element interface page, matching sibling read-only properties such as <code class="notranslate">Element.classList</code> and <code class="notranslate">Element.children</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><code class="notranslate">Element.part</code> is a read-only property (like <code class="notranslate">classList</code>, it exposes a <code class="notranslate">DOMTokenList</code>). The listing on the Element page was missing the read-only badge.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45860.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5600928406" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45860" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45860/hovercard" href="https://github.com/mdn/content/issues/45860">#45860</a></p>]]></content>
+        <title type="html"><![CDATA[Fix JS code problems]]></title>
+        <id>https://github.com/mdn/content/pull/45866</id>
+        <link href="https://github.com/mdn/content/pull/45866"/>
+        <updated>2026-09-27T23:19:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR corrects many JS code problems that are code style guide violations.</p>
+<p dir="auto">Note that many of these are to add assignments to variables that are used. I know the examples explicitly say they are incomplete, but making them just a little bit more self-contained is certainly useful, especially if it's not immediately apparent how you can initialize them.</p>]]></content>
         <author>
-            <name>SatvikMishra08</name>
-            <email>SatvikMishra08@noreply.github.com</email>
-            <uri>https://github.com/SatvikMishra08</uri>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
         </author>
-        <published>2026-09-27T12:02:13.000Z</published>
+        <published>2026-09-27T23:18:03.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix CSS code problems]]></title>
+        <id>https://github.com/mdn/content/pull/45865</id>
+        <link href="https://github.com/mdn/content/pull/45865"/>
+        <updated>2026-09-27T22:49:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR corrects many CSS code problems that are either code style guide violations or legitimate bugs.</p>
+<p dir="auto">More context in comments.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-27T22:43:24.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Fix broken links]]></title>
@@ -245,21 +284,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <published>2026-09-25T09:34:36.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[FF157 Relnote: Export * from module proposal]]></title>
-        <id>https://github.com/mdn/content/pull/45843</id>
-        <link href="https://github.com/mdn/content/pull/45843"/>
-        <updated>2026-09-25T14:50:28.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF157 adds support for the <code class="notranslate">export * from "mod"</code> syntax behind a pref and in nightly only in <a href="https://bugzil.la/2065611" rel="nofollow">https://bugzil.la/2065611</a></p>
-<p dir="auto">This adds the release note</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5448400967" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45699" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45699/hovercard" href="https://github.com/mdn/content/issues/45699">#45699</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-09-25T01:04:59.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Synchronize with BCD v8.1.3]]></title>
         <id>https://github.com/mdn/content/pull/45842</id>
         <link href="https://github.com/mdn/content/pull/45842"/>
@@ -302,78 +326,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-09-24T22:10:09.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[tools_menu is also available in contextMenus in Firefox 91+]]></title>
-        <id>https://github.com/mdn/content/pull/45837</id>
-        <link href="https://github.com/mdn/content/pull/45837"/>
-        <updated>2026-09-24T19:46:53.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1365071?u=a28e0813dc14227725639ff1d19a94f36319e285&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-
-<p dir="auto">Fix incorrect claim that <code class="notranslate">tools_menu</code> is unavailable in <code class="notranslate">contextMenus</code> in documentation.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Fix incorrect claim.</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1706398#c11" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1706398#c11</a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5572058448" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30662" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30662/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30662">mdn/browser-compat-data#30662</a></li>
-</ul>]]></content>
-        <author>
-            <name>Rob--W</name>
-            <email>Rob--W@noreply.github.com</email>
-            <uri>https://github.com/Rob--W</uri>
-        </author>
-        <published>2026-09-24T17:25:50.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Rewrite SVG filters guide]]></title>
-        <id>https://github.com/mdn/content/pull/45836</id>
-        <link href="https://github.com/mdn/content/pull/45836"/>
-        <updated>2026-09-24T11:32:42.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Rewrites the existing <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_filters" rel="nofollow">SVG filters guide</a>.</p>
-<ul dir="auto">
-<li>Covers defining and applying a filter, the pipeline, the filter region, the color space, the primitives, and recipes.</li>
-<li>New title and slug: “Applying effects with SVG filters” at <code class="notranslate">Guides/Filters</code>, with “Filters” as the <code class="notranslate">short-title</code>.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Part of the fill the gaps project</p>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5019644895" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/852" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/852/hovercard" href="https://github.com/mdn/mdn/issues/852">mdn/mdn#852</a></li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-09-24T11:30:22.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[added release not for overscroll-behavior chain]]></title>
-        <id>https://github.com/mdn/content/pull/45835</id>
-        <link href="https://github.com/mdn/content/pull/45835"/>
-        <updated>2026-09-27T22:03:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added Firefox release note for <code class="notranslate">overscroll-behavior: chain;</code></li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a href="https://github.com/mdn/content/issues/45696" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45696/hovercard">MDN issue #45696</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/content/pull/45834" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45834/hovercard">Content PR</a></li>
-<li><a href="https://github.com/mdn/browser-compat-data/pull/30518" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30518/hovercard">BCD PR</a></li>
-</ul>]]></content>
-        <author>
-            <name>dletorey</name>
-            <email>dletorey@noreply.github.com</email>
-            <uri>https://github.com/dletorey</uri>
-        </author>
-        <published>2026-09-24T08:50:48.000Z</published>
     </entry>
 </feed>
