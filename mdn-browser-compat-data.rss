@@ -2,16 +2,99 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-09-29T09:12:33.389Z</updated>
+    <updated>2026-09-29T16:11:45.170Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Add vertically-oriented table cells sub-feature to writing-mode]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30702</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30702"/>
+        <updated>2026-09-29T15:58:02.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/83347420?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29241.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4064318473" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29241" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29241/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29241">#29241</a></p>
+<p dir="auto">Following the guidance in the issue, this adds a <code class="notranslate">vertical_oriented_table_cells</code> sub-feature to <code class="notranslate">css.properties.writing-mode</code>, mirroring the existing <code class="notranslate">vertical_oriented_form_controls</code> sub-feature.</p>
+<p dir="auto">Data and sources:</p>
+<ul dir="auto">
+<li><strong>Chrome 92</strong>: verified by testing in the issue; tracking bug referenced via <code class="notranslate">impl_url</code> (<a href="https://crbug.com/40183612" rel="nofollow">crbug.com/40183612</a>).</li>
+<li><strong>Firefox 47</strong>: supports vertical table cells, but rendering is not always correct (see screenshot in the issue), so it is marked as <code class="notranslate">partial_implementation</code>.</li>
+<li><strong>Safari 17.4</strong>: marked as <code class="notranslate">partial_implementation</code>. The change enabling vertical writing modes for table cells (<a href="https://github.com/WebKit/WebKit/commit/0d695812f5b0daef531a9760903457364d2265ff">WebKit commit 0d69581</a>) shipped in the WebKit 618.1.10 branch (Safari 17.4), but the follow-up fix was reverted in <a href="https://bugs.webkit.org/show_bug.cgi?id=266941" rel="nofollow">bug 266941</a> and the tracking bug <a href="https://webkit.org/b/266928" rel="nofollow">266928</a> is still open, so support remains incomplete. The note on the entry explains that vertical writing modes were not applied to <code class="notranslate">th</code> and <code class="notranslate">td</code> elements before Safari 17.4, as requested in the issue.</li>
+<li>All other browsers use <code class="notranslate">mirror</code>.</li>
+</ul>
+<p dir="auto">Questions for reviewers:</p>
+<ol dir="auto">
+<li>Should Firefox's <code class="notranslate">partial_implementation</code> flag start at 47, or is there a later version where rendering is correct?</li>
+<li>The issue title says "iOS &lt; 17", but based on the WebKit commit history, 17.4 seems to be the first version with any (partial) support — Safari iOS therefore mirrors 17.4.</li>
+</ol>
+<h3 dir="auto">Release note</h3>
+<ul dir="auto">
+<li>CSS: Added <code class="notranslate">vertical_oriented_table_cells</code> subfeature to <code class="notranslate">writing-mode</code>.</li>
+</ul>]]></content>
+        <author>
+            <name>CloaRK</name>
+            <email>CloaRK@noreply.github.com</email>
+            <uri>https://github.com/CloaRK</uri>
+        </author>
+        <published>2026-09-29T15:57:20.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Remove HTML setters DocumentType APIs]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30701</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30701"/>
+        <updated>2026-09-29T15:02:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+
+<p dir="auto">While working on the MDN guidance for html-setters (and streaming versions) we noticed there is no use case for the <code class="notranslate">DocumentType</code> APIs, and they don't even do anything! So we've removed them!</p>
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<p dir="auto">See <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5063528426" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/12753" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/12753/hovercard?comment_id=5886872100&amp;comment_type=issue_comment" href="https://github.com/whatwg/html/pull/12753#issuecomment-5886872100">whatwg/html#12753 (comment)</a> where these have been removed from the spec. They will be removed from Chrome shortly, and before unflagging these for general availability.</p>
+<h4 dir="auto">Related issues</h4>
+
+
+<p dir="auto">A follow on from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5249884576" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30328" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30328/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30328">#30328</a></p>
+<p dir="auto">Removing from web-features in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5631339468" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4449" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-dx/web-features/pull/4449/hovercard" href="https://github.com/web-platform-dx/web-features/pull/4449">web-platform-dx/web-features#4449</a></p>]]></content>
+        <author>
+            <name>tunetheweb</name>
+            <email>tunetheweb@noreply.github.com</email>
+            <uri>https://github.com/tunetheweb</uri>
+        </author>
+        <published>2026-09-29T13:27:08.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add subfeatures for `api.Element.pseudo` parameter values]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30700</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30700"/>
+        <updated>2026-09-29T13:25:28.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">The <code class="notranslate">pseudo()</code> method of <code class="notranslate">Element</code> objects has varying support for different values. I've tried to capture this here.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">The behavior here is a the consequence of a spec change, resolved in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4261800498" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/13804" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13804/hovercard?comment_id=4297936996&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/13804#issuecomment-4297936996">w3c/csswg-drafts#13804 (comment)</a>.</p>
+<p dir="auto">I didn't actually test this but I feel reasonably confident given <a href="https://chromiumdash.appspot.com/commit/c1e61b0aebf0c03d81690332f077d14da39efe09" rel="nofollow">https://chromiumdash.appspot.com/commit/c1e61b0aebf0c03d81690332f077d14da39efe09</a> and <a href="https://chromestatus.com/feature/6516055192240128" rel="nofollow">https://chromestatus.com/feature/6516055192240128</a>.</p>
+
+
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5336284266" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4306" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/4306/hovercard" href="https://github.com/web-platform-dx/web-features/issues/4306">web-platform-dx/web-features#4306</a></li>
+</ul>
+
+]]></content>
+        <author>
+            <name>ddbeck</name>
+            <email>ddbeck@noreply.github.com</email>
+            <uri>https://github.com/ddbeck</uri>
+        </author>
+        <published>2026-09-29T13:24:45.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[[Google Privacy Sandbox] Chrome 156 stubs out Fenced Frame API]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30697</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30697"/>
-        <updated>2026-09-29T09:06:48.000Z</updated>
+        <updated>2026-09-29T15:02:28.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
 <h4 dir="auto">Summary</h4>
 
@@ -152,7 +235,7 @@ node scripts/update-browser-releases/index.js --all</p>
         <title type="html"><![CDATA[Data for svg.elements.textPath.method]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30677</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30677"/>
-        <updated>2026-09-28T20:56:49.000Z</updated>
+        <updated>2026-09-29T12:42:14.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5481581871" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45745" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45745/hovercard" href="https://github.com/mdn/content/pull/45745">mdn/content#45745</a>.</p>
 <p dir="auto">I'm not sure how this is supposed to be marked, but IMO it's "partially implemented" and not "not implemented"—it has IDL bindings, the IDL binding returns the right value (<code class="notranslate">stretch</code> vs <code class="notranslate">align</code>), etc.; the property just has no rendering effect.</p>]]></content>
         <author>
@@ -388,28 +471,5 @@ node scripts/update-browser-releases/index.js --all</p>
             <uri>https://github.com/ddbeck</uri>
         </author>
         <published>2026-09-23T17:27:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 133 1-component vertex formats and unorm8x4-bgra]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30634</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30634"/>
-        <updated>2026-09-23T16:17:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-
-<p dir="auto">Chrome 133 adds support for 1-component and unorm8x4-bgra vertex formats. See <a href="https://chromestatus.com/feature/4609840973086720" rel="nofollow">https://chromestatus.com/feature/4609840973086720</a>, and see <a href="https://developer.chrome.com/blog/new-in-webgpu-133#additional_unorm8x4-bgra_and_1-component_vertex_formats" rel="nofollow">https://developer.chrome.com/blog/new-in-webgpu-133#additional_unorm8x4-bgra_and_1-component_vertex_formats</a> for more explanation.</p>
-<p dir="auto">This PR adds data points in appropriate places.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-09-23T16:17:02.000Z</published>
     </entry>
 </feed>
