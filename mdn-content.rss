@@ -2,11 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-09-30T00:50:14.216Z</updated>
+    <updated>2026-09-30T06:06:33.926Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix technical claims on the ARIA document role page]]></title>
+        <id>https://github.com/mdn/content/pull/45931</id>
+        <link href="https://github.com/mdn/content/pull/45931"/>
+        <updated>2026-09-30T02:58:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR corrects several technical claims on the ARIA <code class="notranslate">document</code> role page.</p>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>The example placed a <code class="notranslate">document</code> inside a <code class="notranslate">dialog</code> and called the dialog a composite widget. <code class="notranslate">dialog</code> is a window role, and the spec says the <code class="notranslate">document</code> role only changes assistive technology behavior inside a widget or application. The example now uses <code class="notranslate">application</code>, which matches the spec's own example, and a short note explains why a dialog doesn't need the role.</li>
+<li><code class="notranslate">aria-expanded</code> is not a supported state on the <code class="notranslate">document</code> role, so I removed it from the attribute list and from "Required JavaScript features".</li>
+<li><code class="notranslate">tabindex</code> is an HTML attribute, so I removed it from the ARIA attribute list. The keyboard interactions section now links to it instead.</li>
+<li>Best practices now mentions that <code class="notranslate">tabindex="0"</code> adds the element to the tab order, and that widgets using arrow-key focus management need to let users reach the document content and get back to the widget.</li>
+<li>The comparison with <code class="notranslate">article</code> said <code class="notranslate">document</code> elements have no relation to each other. The spec doesn't say this, and the issue points out it could mislead authors, so I removed the paragraph.</li>
+</ul>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Spec: <a href="https://w3c.github.io/aria/#document" rel="nofollow">document role</a> (supported states do not include <code class="notranslate">aria-expanded</code>) and <a href="https://w3c.github.io/aria/#window_roles" rel="nofollow">window roles</a>.</li>
+<li><code class="notranslate">markdownlint-cli2</code> and <code class="notranslate">prettier --check</code> on the page report 0 issues, and the front-matter linter passes.</li>
+<li>Previewed with <code class="notranslate">npm start</code>: the page renders with no flaws, and the new roving <code class="notranslate">tabindex</code> anchor resolves.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #33746.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2316186464" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/33746" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/33746/hovercard" href="https://github.com/mdn/content/issues/33746">#33746</a></p>]]></content>
+        <author>
+            <name>BaconMan1168</name>
+            <email>BaconMan1168@noreply.github.com</email>
+            <uri>https://github.com/BaconMan1168</uri>
+        </author>
+        <published>2026-09-30T02:55:32.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docs(html): add img controls attribute]]></title>
         <id>https://github.com/mdn/content/pull/45930</id>
@@ -344,19 +374,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/hipuku</uri>
         </author>
         <published>2026-09-25T12:11:56.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Synchronize with BCD v8.1.3]]></title>
-        <id>https://github.com/mdn/content/pull/45842</id>
-        <link href="https://github.com/mdn/content/pull/45842"/>
-        <updated>2026-09-25T00:26:24.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/87750369?u=ccc1f52005708ae16bcb50e325e02145bff0ef7d&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><a href="https://github.com/mdn/browser-compat-data/releases/tag/v8.1.3">BCD release v8.1.3</a></p>
-<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/pepelsbey/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/pepelsbey">@pepelsbey</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/wbamberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/wbamberg">@wbamberg</a></p>]]></content>
-        <author>
-            <name>OnkarRuikar</name>
-            <email>OnkarRuikar@noreply.github.com</email>
-            <uri>https://github.com/OnkarRuikar</uri>
-        </author>
-        <published>2026-09-25T00:24:46.000Z</published>
     </entry>
 </feed>
