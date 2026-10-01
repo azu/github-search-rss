@@ -2,11 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-01T14:57:38.266Z</updated>
+    <updated>2026-10-01T20:03:25.763Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[ci(pr-checks): add aggregate reusable checks]]></title>
+        <id>https://github.com/mdn/content/pull/45948</id>
+        <link href="https://github.com/mdn/content/pull/45948"/>
+        <updated>2026-10-01T19:44:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Update PR checks to run through one aggregate workflow.</p>
+<ul dir="auto">
+<li>Convert the individual check workflows into reusable workflows.</li>
+<li>Select checks by changed files and report a single aggregate result.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Allow one required status check while keeping individual checks selective.</p>
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-10-01T19:19:38.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[docs: clarify user-origin CSS priority in tabs.insertCSS]]></title>
+        <id>https://github.com/mdn/content/pull/45947</id>
+        <link href="https://github.com/mdn/content/pull/45947"/>
+        <updated>2026-10-01T16:42:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/91400591?u=aa767cbf7d32794b5ab4f4a87ed3a84d9d711e51&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Clarify that normal CSS injected with <code class="notranslate">tabs.insertCSS({ cssOrigin: "user" })</code> does not override website author styles, while user-origin declarations marked <code class="notranslate">!important</code> do.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The current wording suggests that selecting <code class="notranslate">"user"</code> alone prevents websites from overriding injected CSS. This can mislead extension authors who omit <code class="notranslate">!important</code>.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The <a href="https://www.w3.org/TR/css-cascade-5/#cascade-sort" rel="nofollow">CSS Cascade Level 5 specification</a> ranks normal author declarations above normal user declarations, and important user declarations above important author declarations.</p>
+<p dir="auto">Documentation-only change. Verified with <code class="notranslate">git diff --check</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3906042721" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43033" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43033/hovercard" href="https://github.com/mdn/content/issues/43033">#43033</a>.</p>]]></content>
+        <author>
+            <name>truongbo17</name>
+            <email>truongbo17@noreply.github.com</email>
+            <uri>https://github.com/truongbo17</uri>
+        </author>
+        <published>2026-10-01T16:41:57.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[build(deps-dev): bump cspell from 10.3.4 to 10.3.5 in the npm-dev group]]></title>
         <id>https://github.com/mdn/content/pull/45945</id>
@@ -164,42 +211,10 @@
         <published>2026-10-01T13:57:25.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Remove unnecessary trailing comma, it is confusing for the reader]]></title>
-        <id>https://github.com/mdn/content/pull/45942</id>
-        <link href="https://github.com/mdn/content/pull/45942"/>
-        <updated>2026-10-01T12:53:09.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1853487?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">This is a minor edit of the using_promises section, I removed an unnecessary, but very confusing comma at the end of a line in a code example.</p>
-<p dir="auto">If I zoom out a bit, this would look like something like:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="doSomethingCritical()
-  .then((result) =&gt; doSomethingOptional(result).then(...).catch(...), )
-  .then(...)
-  .catch(...)
-"><pre class="notranslate"><code class="notranslate">doSomethingCritical()
-  .then((result) =&gt; doSomethingOptional(result).then(...).catch(...), )
-  .then(...)
-  .catch(...)
-
-</code></pre></div>
-<p dir="auto">I think this comma is very confusing at the end.</p>
-<p dir="auto">Also, since there is a catch at the end, the onRejected callback (that would come after this comma) would not be necessary at all.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">I spent significant amount of time to understand why it is there assuming I don't know something, but eventually, I think this was just left there.</p>
-<h3 dir="auto">Additional details</h3>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">I just edited this on GitHub, There is no issue in any tracker that I know of, although I didn't search for it.</p>]]></content>
-        <author>
-            <name>adamtnagy</name>
-            <email>adamtnagy@noreply.github.com</email>
-            <uri>https://github.com/adamtnagy</uri>
-        </author>
-        <published>2026-10-01T12:52:17.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Revise month input documentation for clarity and accuracy]]></title>
         <id>https://github.com/mdn/content/pull/45941</id>
         <link href="https://github.com/mdn/content/pull/45941"/>
-        <updated>2026-10-01T12:31:45.000Z</updated>
+        <updated>2026-10-01T19:43:59.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Updated the description and examples for the month input type, clarified browser support, and improved formatting details.</p>
 <p dir="auto">I only did the first half of the page.</p>]]></content>
         <author>
@@ -238,7 +253,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[setSelectionRange(): document moving the caret]]></title>
         <id>https://github.com/mdn/content/pull/45939</id>
         <link href="https://github.com/mdn/content/pull/45939"/>
-        <updated>2026-10-01T12:15:31.000Z</updated>
+        <updated>2026-10-01T16:45:11.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55624875?u=e2842ce890b78aa7e7187545436f3763a7f83523&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Explains that <code class="notranslate">setSelectionRange()</code> moves the caret when <code class="notranslate">selectionStart</code> and <code class="notranslate">selectionEnd</code> are equal, and adds a "Moving the caret" live example to the <code class="notranslate">HTMLInputElement</code> page where you choose a position and move the caret there. The existing example becomes "Selecting text". The <code class="notranslate">HTMLTextAreaElement</code> page gets the same sentence.</p>
 <h3 dir="auto">Motivation</h3>
@@ -318,27 +333,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-09-30T21:21:48.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docs: remove obsolete Android saveAs note]]></title>
-        <id>https://github.com/mdn/content/pull/45934</id>
-        <link href="https://github.com/mdn/content/pull/45934"/>
-        <updated>2026-09-30T16:26:55.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/276162206?u=eb78468aa14ab57b91ce2c1ea011e5967005d724&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Remove the obsolete Firefox Android note under <code class="notranslate">saveAs</code>. It implies that <code class="notranslate">downloads.download()</code> works when the option is false or omitted, while current compatibility data records the API as removed in Firefox Android 79.</p>
-<p dir="auto">The existing compatibility table retains the historical support range. No compatibility data or desktop behavior is changed.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44412.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4634258980" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44412" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44412/hovercard" href="https://github.com/mdn/content/issues/44412">#44412</a></p>
-<p dir="auto">Evidence:</p>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/browser-compat-data/blob/main/webextensions/api/downloads.json">Current browser compatibility data</a> records Firefox Android support from 48 until removal in 79 and no <code class="notranslate">saveAs</code> support. Checked file blob: <code class="notranslate">4763bd538d6866a58c497575227c85eae338b059</code>.</li>
-<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1538348" rel="nofollow">Mozilla bug 1538348</a> tracks the Android downloads extension API, with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1793214" rel="nofollow">bug 1793214</a> tracking the components integration still open.</li>
-</ul>
-<p dir="auto">Validation: Prettier, Markdown lint, and git diff --check pass. All 12 repository tests pass and the full documentation build succeeds. The build reports 706 issues across 240 files, the same count as the preceding build before this edit; those broader reports were not investigated. Documentation checked against the compatibility data and Mozilla tracking bugs. No Android runtime test performed.</p>]]></content>
-        <author>
-            <name>Michael-WhiteCapData</name>
-            <email>Michael-WhiteCapData@noreply.github.com</email>
-            <uri>https://github.com/Michael-WhiteCapData</uri>
-        </author>
-        <published>2026-09-30T16:25:15.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[docs: clarify session storage clearing when extensions are disabled]]></title>
