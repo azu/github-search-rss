@@ -2,16 +2,114 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-02T06:23:28.599Z</updated>
+    <updated>2026-10-02T13:18:15.353Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[IDBDatabase: make the upgrade example work for existing databases]]></title>
+        <id>https://github.com/mdn/content/pull/45955</id>
+        <link href="https://github.com/mdn/content/pull/45955"/>
+        <updated>2026-10-02T11:20:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55624875?u=e2842ce890b78aa7e7187545436f3763a7f83523&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Reworks the <code class="notranslate">onupgradeneeded</code> handler in the <code class="notranslate">IDBDatabase</code> example so it handles upgrades from an older version, not just first-time creation:</p>
+<ul dir="auto">
+<li>The handler now checks <code class="notranslate">event.oldVersion</code> and applies each upgrade step the user hasn't had yet. Version 1 creates the <code class="notranslate">toDoList</code> store and its date/time indexes; version 2 adds the <code class="notranslate">notified</code> index to the existing store, which it gets from the upgrade transaction (<code class="notranslate">DBOpenRequest.transaction.objectStore()</code>) instead of calling <code class="notranslate">createObjectStore()</code> again.</li>
+<li>The <code class="notranslate">open()</code> call asks for version 2 to match.</li>
+<li>Fixes a <code class="notranslate">node.appendChild</code> typo (the variable is <code class="notranslate">note</code>), plus a missing full stop in a comment.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">As the issue says, the old handler always called <code class="notranslate">createObjectStore("toDoList")</code>, so it only worked when the database didn't exist yet. Bumping the version for anyone with an existing database threw a <code class="notranslate">ConstraintError</code> and aborted the upgrade. I checked this with <code class="notranslate">fake-indexeddb</code>: after creating the database at version 1, the old handler fails on the upgrade to version 2 with <code class="notranslate">ConstraintError</code>, while the new handler produces the same six indexes both for a fresh install at version 2 and for an upgrade from version 1.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">IndexedDB spec, <a href="https://w3c.github.io/IndexedDB/#dom-idbversionchangeevent-oldversion" rel="nofollow"><code class="notranslate">IDBVersionChangeEvent.oldVersion</code></a> (0 for a new database) and <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-transaction" rel="nofollow"><code class="notranslate">IDBOpenDBRequest.transaction</code></a> during an upgrade.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #26638.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1699625073" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/26638" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/26638/hovercard" href="https://github.com/mdn/content/issues/26638">#26638</a></p>]]></content>
+        <author>
+            <name>AsifMahsud</name>
+            <email>AsifMahsud@noreply.github.com</email>
+            <uri>https://github.com/AsifMahsud</uri>
+        </author>
+        <published>2026-10-02T11:19:55.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Change td's within thead into th elements on page "<template> HTML content template element" section Examples / Generating table rows]]></title>
+        <id>https://github.com/mdn/content/pull/45953</id>
+        <link href="https://github.com/mdn/content/pull/45953"/>
+        <updated>2026-10-02T10:01:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/174694834?u=fc3974c48d48e1d8719f870b0ce27a84fe61df7a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">In the page  HTML content template element <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows</a></p><p dir="auto"></p>
+<p dir="auto">in section Examples / Generating table rows on the HTML part of the example, within the table / thead, it has td elements, which are used as table header (th) elements.</p>
+<p dir="auto">My commit changes them from &lt;td&gt; into &lt;th&gt;</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">I'm making these changes because It made me feel uneasy seeing td elements there, when these should have been th elements.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows</a></p>
+<h3 dir="auto">Related issues and pull requests</h3><p></p>]]></content>
+        <author>
+            <name>nholtman</name>
+            <email>nholtman@noreply.github.com</email>
+            <uri>https://github.com/nholtman</uri>
+        </author>
+        <published>2026-10-02T10:01:26.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docs: improve <details> usage and styling notes]]></title>
+        <id>https://github.com/mdn/content/pull/45952</id>
+        <link href="https://github.com/mdn/content/pull/45952"/>
+        <updated>2026-10-02T09:52:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/185269030?u=1fc22565ccf4566b6f734fabaa87e03d9a31cfe4&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
+<ul dir="auto">
+<li>Clarify the <code class="notranslate">&lt;details&gt;</code> usage notes.</li>
+<li>Document <code class="notranslate">::details-content</code> for open/close animations.</li>
+<li>Add a dedicated styling section for <code class="notranslate">&lt;details&gt;</code> and <code class="notranslate">&lt;summary&gt;</code>.</li>
+<li>Use the correct <code class="notranslate">cssxref</code> syntax for <code class="notranslate">&lt;display-listitem&gt;</code>.</li>
+</ul>
+<h2 dir="auto">Related</h2>
+<p dir="auto">Follow-up to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5180397333" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45218" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45218/hovercard" href="https://github.com/mdn/content/pull/45218">#45218</a><br>
+<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42226.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3694297894" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42226" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42226/hovercard" href="https://github.com/mdn/content/issues/42226">#42226</a></p>]]></content>
+        <author>
+            <name>BHUVANSH855</name>
+            <email>BHUVANSH855@noreply.github.com</email>
+            <uri>https://github.com/BHUVANSH855</uri>
+        </author>
+        <published>2026-10-02T09:48:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ [WebExtensions] In Chrome 157+ alarms.clearAll() returns Promise<undefined>]]></title>
+        <id>https://github.com/mdn/content/pull/45951</id>
+        <link href="https://github.com/mdn/content/pull/45951"/>
+        <updated>2026-10-02T09:02:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">Update <code class="notranslate">alarms.clearAll()</code> article to note that Chrome 157+ implements the agreed-upon behavior for <code class="notranslate">alarms.clearAll()</code> to return <code class="notranslate">Promise&lt;undefined&gt;</code>.</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">Keep MDN updated.</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto">Chromium CL 8182627: <a href="https://chromium-review.googlesource.com/c/chromium/src/+/8182627" rel="nofollow">https://chromium-review.googlesource.com/c/chromium/src/+/8182627</a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5377680034" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45554" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45554/hovercard" href="https://github.com/mdn/content/pull/45554">#45554</a><br>
+WECG discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5034727818" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/1055" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/1055/hovercard" href="https://github.com/w3c/webextensions/issues/1055">w3c/webextensions#1055</a></p>]]></content>
+        <author>
+            <name>bershanskiy</name>
+            <email>bershanskiy@noreply.github.com</email>
+            <uri>https://github.com/bershanskiy</uri>
+        </author>
+        <published>2026-10-02T09:00:45.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[New guide: Fetch priority]]></title>
         <id>https://github.com/mdn/content/pull/45950</id>
         <link href="https://github.com/mdn/content/pull/45950"/>
-        <updated>2026-10-02T05:45:07.000Z</updated>
+        <updated>2026-10-02T07:32:39.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds a guide on fetch priority under Web/Performance/Guides, with a sidebar entry and a line on the Performance landing page.</p>
 <h3 dir="auto">Motivation</h3>
@@ -229,13 +327,13 @@
         <title type="html"><![CDATA[Document the HTML/SVG focusgroup attribute]]></title>
         <id>https://github.com/mdn/content/pull/45944</id>
         <link href="https://github.com/mdn/content/pull/45944"/>
-        <updated>2026-10-01T13:59:01.000Z</updated>
+        <updated>2026-10-02T12:30:17.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
 <p dir="auto">Chrome 150 adds support for the <code class="notranslate">focusgroup</code> global attribute, the related <code class="notranslate">focusgroupstart</code> global attribute, and their reflected DOM properties. See <a href="https://chromestatus.com/feature/5637601087193088" rel="nofollow">https://chromestatus.com/feature/5637601087193088</a>.</p>
 <ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <code class="notranslate">focusgroup</code> HTML global attribute</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> <code class="notranslate">focusgroup</code> HTML global attribute</li>
 <li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <code class="notranslate">focusgroupstart</code> HTML global attribute</li>
 <li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <code class="notranslate">focusgroup</code> SVG attribute</li>
 <li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> <code class="notranslate">focusgroupstart</code> SVG attribute</li>
@@ -324,7 +422,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Refine scroll container definition and details]]></title>
         <id>https://github.com/mdn/content/pull/45937</id>
         <link href="https://github.com/mdn/content/pull/45937"/>
-        <updated>2026-10-02T00:13:43.000Z</updated>
+        <updated>2026-10-02T12:30:44.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2555461?u=6d8b4b84b604f555147ecf7c54369888b343356d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Clarified the definition of a scroll container and detailed the behavior of its overflow values. Added information about the scrollport and how content is scrolled.</p>
 <h3 dir="auto">Motivation</h3>
@@ -479,65 +577,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/def00111</uri>
         </author>
         <published>2026-09-29T20:21:54.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Dialog cancel event may not be cancelable]]></title>
-        <id>https://github.com/mdn/content/pull/45927</id>
-        <link href="https://github.com/mdn/content/pull/45927"/>
-        <updated>2026-09-29T20:16:14.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/259692397?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43943.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4335702712" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43943" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43943/hovercard" href="https://github.com/mdn/content/issues/43943">#43943</a></p>]]></content>
-        <author>
-            <name>furkansel-ops</name>
-            <email>furkansel-ops@noreply.github.com</email>
-            <uri>https://github.com/furkansel-ops</uri>
-        </author>
-        <published>2026-09-29T17:11:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF158 Relnote: WebTransport.getStats()]]></title>
-        <id>https://github.com/mdn/content/pull/45924</id>
-        <link href="https://github.com/mdn/content/pull/45924"/>
-        <updated>2026-09-29T02:25:30.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF158 implemented <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats" rel="nofollow"><code class="notranslate">WebTransport.getStats()</code></a> in  <a href="https://bugzil.la/2007202" rel="nofollow">https://bugzil.la/2007202</a></p>
-<p dir="auto">This creates a release note.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617211633" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45893" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45893/hovercard" href="https://github.com/mdn/content/issues/45893">#45893</a></p>
-<p dir="auto">NOTE I am away on holiday and won't be back until late October. If you can make changes to make this PR mergable, please do, and merge it.</p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-09-29T02:23:36.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[WebTransport.getsStats() - fix to current spec]]></title>
-        <id>https://github.com/mdn/content/pull/45923</id>
-        <link href="https://github.com/mdn/content/pull/45923"/>
-        <updated>2026-09-29T02:18:25.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF158 implemented <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats" rel="nofollow"><code class="notranslate">WebTransport.getStats()</code></a> in  <a href="https://bugzil.la/2007202" rel="nofollow">https://bugzil.la/2007202</a></p>
-<p dir="auto">This updates the page to include the current set of stats in the spec, with the exception of <code class="notranslate">bytesSentOverhead</code> which isn't implemented anywhere. The previous proprties were exposed but not readable on any platform so no loss.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617211633" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45893" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45893/hovercard" href="https://github.com/mdn/content/issues/45893">#45893</a></p>
-<p dir="auto">NOTE I am away on holiday and won't be back until late October. If you can make changes to make this PR mergable, please do, and merge it.</p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-09-29T02:16:38.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Make sure forms in live samples don't submit (API/CSS)]]></title>
-        <id>https://github.com/mdn/content/pull/45920</id>
-        <link href="https://github.com/mdn/content/pull/45920"/>
-        <updated>2026-09-28T23:51:47.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4583183827" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44347" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44347/hovercard" href="https://github.com/mdn/content/issues/44347">#44347</a>.</p>
-<p dir="auto">This PR tries to remove all <code class="notranslate">&lt;form&gt;</code> wrappers where we only intend to demonstrate controls. If <code class="notranslate">&lt;form&gt;</code> is needed, then I add a hidden submit handler.</p>
-<p dir="auto">Probably want to review with "Hide whitespace" turned on.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-09-28T23:46:32.000Z</published>
     </entry>
 </feed>
