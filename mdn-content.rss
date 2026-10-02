@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-01T20:03:25.763Z</updated>
+    <updated>2026-10-02T00:17:45.962Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -11,17 +11,19 @@
         <title type="html"><![CDATA[ci(pr-checks): add aggregate reusable checks]]></title>
         <id>https://github.com/mdn/content/pull/45948</id>
         <link href="https://github.com/mdn/content/pull/45948"/>
-        <updated>2026-10-01T19:44:08.000Z</updated>
+        <updated>2026-10-01T20:12:27.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Update PR checks to run through one aggregate workflow.</p>
 <ul dir="auto">
 <li>Convert the individual check workflows into reusable workflows.</li>
 <li>Select checks by changed files and report a single aggregate result.</li>
+<li>Move the <code class="notranslate">concurrency</code> group to the aggregate workflow, so a new push cancels the whole run.</li>
 </ul>
 <h3 dir="auto">Motivation</h3>
 <p dir="auto">Allow one required status check while keeping individual checks selective.</p>
 <h3 dir="auto">Additional details</h3>
-
+<p dir="auto">The branch protection ruleset must switch the required status check from <code class="notranslate">Check Redirects / check-redirects</code> to <code class="notranslate">PR checks / all-checks-passed-or-skipped</code> when this merges. Otherwise the old required check stays pending forever and blocks merges.</p>
+<p dir="auto">Check names in the PR UI change to <code class="notranslate">PR checks / &lt;check&gt; / &lt;job&gt;</code> (e.g. <code class="notranslate">PR checks / lint_content / lint</code>).</p>
 <h3 dir="auto">Related issues and pull requests</h3>
 
 
@@ -214,7 +216,7 @@
         <title type="html"><![CDATA[Revise month input documentation for clarity and accuracy]]></title>
         <id>https://github.com/mdn/content/pull/45941</id>
         <link href="https://github.com/mdn/content/pull/45941"/>
-        <updated>2026-10-01T19:43:59.000Z</updated>
+        <updated>2026-10-01T20:41:45.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Updated the description and examples for the month input type, clarified browser support, and improved formatting details.</p>
 <p dir="auto">I only did the first half of the page.</p>]]></content>
         <author>
@@ -273,7 +275,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Refine scroll container definition and details]]></title>
         <id>https://github.com/mdn/content/pull/45937</id>
         <link href="https://github.com/mdn/content/pull/45937"/>
-        <updated>2026-10-01T13:39:14.000Z</updated>
+        <updated>2026-10-02T00:13:43.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/2555461?u=6d8b4b84b604f555147ecf7c54369888b343356d&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Clarified the definition of a scroll container and detailed the behavior of its overflow values. Added information about the scrollport and how content is scrolled.</p>
 <h3 dir="auto">Motivation</h3>
@@ -295,7 +297,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Remove MediaTrackSettings, inline in MediaStreamTrack.getSettings]]></title>
         <id>https://github.com/mdn/content/pull/45936</id>
         <link href="https://github.com/mdn/content/pull/45936"/>
-        <updated>2026-10-01T00:46:01.000Z</updated>
+        <updated>2026-10-01T20:59:29.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Continuing working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2037928647" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/30961" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/30961/hovercard" href="https://github.com/mdn/content/issues/30961">#30961</a>.</p>
 <p dir="auto">The approach is to condense information from three places: <code class="notranslate">MediaTrackSettings</code> landing page, <code class="notranslate">MediaTrackSettings.[property]</code>, and <code class="notranslate">MediaTrackConstraints.[property]</code>, and coalesce them ALL into a DL on <code class="notranslate">getSettings</code>.</p>
 <p dir="auto">Commits:</p>
@@ -306,6 +308,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
 <li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/2dbd6b8526cbc7728b76d7fb57a772a93157552c/hovercard" href="https://github.com/mdn/content/commit/2dbd6b8526cbc7728b76d7fb57a772a93157552c"><tt>2dbd6b8</tt></a> - create a "See also" that's the union of the see also items of each page, minus links to MediaTrackConstraints or MediaTrackSettings.</li>
 <li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/95f654f26e11f57251589f990097eacd9faaf368/hovercard" href="https://github.com/mdn/content/commit/95f654f26e11f57251589f990097eacd9faaf368"><tt>95f654f</tt></a> - just does one thing: remove line wrapping.</li>
 <li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/faf84b3dec2aaf13e1b08e3c82248b72c0da501f/hovercard" href="https://github.com/mdn/content/commit/faf84b3dec2aaf13e1b08e3c82248b72c0da501f"><tt>faf84b3</tt></a> - remove remaining references to <code class="notranslate">MediaTrackSettings</code>, remove a few value descriptions that are clearly duplicated.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/5fab0f465eb7d7c8780d37006f031162f7a104f8/hovercard" href="https://github.com/mdn/content/commit/5fab0f465eb7d7c8780d37006f031162f7a104f8"><tt>5fab0f4</tt></a> - actually execute the deduplication within <code class="notranslate">getSettings</code>.</li>
 </ul>]]></content>
         <author>
             <name>Josh-Cena</name>
