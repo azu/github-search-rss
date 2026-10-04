@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-04T14:31:15.161Z</updated>
+    <updated>2026-10-04T18:26:22.859Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -163,40 +163,10 @@
         <published>2026-10-02T09:48:35.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[ [WebExtensions] In Chrome 157+ alarms.clearAll() returns Promise<undefined>]]></title>
-        <id>https://github.com/mdn/content/pull/45951</id>
-        <link href="https://github.com/mdn/content/pull/45951"/>
-        <updated>2026-10-02T09:02:26.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-
-<p dir="auto">Update <code class="notranslate">alarms.clearAll()</code> article to note that Chrome 157+ implements the agreed-upon behavior for <code class="notranslate">alarms.clearAll()</code> to return <code class="notranslate">Promise&lt;undefined&gt;</code>.</p>
-<h3 dir="auto">Motivation</h3>
-
-<p dir="auto">Keep MDN updated.</p>
-<h3 dir="auto">Additional details</h3>
-
-<p dir="auto">Chromium CL 8182627: <a href="https://chromium-review.googlesource.com/c/chromium/src/+/8182627" rel="nofollow">https://chromium-review.googlesource.com/c/chromium/src/+/8182627</a></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5377680034" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45554" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45554/hovercard" href="https://github.com/mdn/content/pull/45554">#45554</a><br>
-WECG discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5034727818" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/1055" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/1055/hovercard" href="https://github.com/w3c/webextensions/issues/1055">w3c/webextensions#1055</a></p>]]></content>
-        <author>
-            <name>bershanskiy</name>
-            <email>bershanskiy@noreply.github.com</email>
-            <uri>https://github.com/bershanskiy</uri>
-        </author>
-        <published>2026-10-02T09:00:45.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[New guide: Fetch priority]]></title>
         <id>https://github.com/mdn/content/pull/45950</id>
         <link href="https://github.com/mdn/content/pull/45950"/>
-        <updated>2026-10-02T21:13:10.000Z</updated>
+        <updated>2026-10-04T16:53:50.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds a guide on fetch priority under Web/Performance/Guides, with a sidebar entry and a line on the Performance landing page.</p>
 <h3 dir="auto">Motivation</h3>
@@ -428,5 +398,35 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-09-30T21:21:48.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix technical claims on the ARIA document role page]]></title>
+        <id>https://github.com/mdn/content/pull/45931</id>
+        <link href="https://github.com/mdn/content/pull/45931"/>
+        <updated>2026-10-02T00:52:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/198354403?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR corrects several technical claims on the ARIA <code class="notranslate">document</code> role page.</p>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>The example placed a <code class="notranslate">document</code> inside a <code class="notranslate">dialog</code> and called the dialog a composite widget. <code class="notranslate">dialog</code> is a window role, and the spec says the <code class="notranslate">document</code> role only changes assistive technology behavior inside a widget or application. The example now uses <code class="notranslate">application</code>, which matches the spec's own example, and a short note explains why a dialog doesn't need the role.</li>
+<li><code class="notranslate">aria-expanded</code> is not a supported state on the <code class="notranslate">document</code> role, so I removed it from the attribute list and from "Required JavaScript features".</li>
+<li><code class="notranslate">tabindex</code> is an HTML attribute, so I removed it from the ARIA attribute list. The keyboard interactions section now links to it instead.</li>
+<li>Best practices now mentions that <code class="notranslate">tabindex="0"</code> adds the element to the tab order, and that widgets using arrow-key focus management need to let users reach the document content and get back to the widget.</li>
+<li>The comparison with <code class="notranslate">article</code> said <code class="notranslate">document</code> elements have no relation to each other. The spec doesn't say this, and the issue points out it could mislead authors, so I removed the paragraph.</li>
+</ul>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Spec: <a href="https://w3c.github.io/aria/#document" rel="nofollow">document role</a> (supported states do not include <code class="notranslate">aria-expanded</code>) and <a href="https://w3c.github.io/aria/#window_roles" rel="nofollow">window roles</a>.</li>
+<li><code class="notranslate">markdownlint-cli2</code> and <code class="notranslate">prettier --check</code> on the page report 0 issues, and the front-matter linter passes.</li>
+<li>Previewed with <code class="notranslate">npm start</code>: the page renders with no flaws, and the new roving <code class="notranslate">tabindex</code> anchor resolves.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #33746.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2316186464" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/33746" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/33746/hovercard" href="https://github.com/mdn/content/issues/33746">#33746</a></p>]]></content>
+        <author>
+            <name>BaconMan1168</name>
+            <email>BaconMan1168@noreply.github.com</email>
+            <uri>https://github.com/BaconMan1168</uri>
+        </author>
+        <published>2026-09-30T02:55:32.000Z</published>
     </entry>
 </feed>
