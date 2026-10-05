@@ -2,101 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-04T22:03:49.577Z</updated>
+    <updated>2026-10-05T01:22:00.992Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Update sticky activation docs for cross-navigation carry-over]]></title>
-        <id>https://github.com/mdn/content/pull/45969</id>
-        <link href="https://github.com/mdn/content/pull/45969"/>
-        <updated>2026-10-04T21:38:57.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52391318?u=f6a09bd62b30aba8334ba0c1def5f8d3849dc806&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Update sticky activation docs for cross-navigation carry-over</p>
-<p dir="auto">The HTML Standard now carries sticky activation over to same-origin<br>
-navigations and traversals (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3230789302" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/11454" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/11454/hovercard" href="https://github.com/whatwg/html/pull/11454">whatwg/html#11454</a>). The glossary page said<br>
-the state "lasts for the duration of the session", which no longer<br>
-describes the behaviour, and the comparison section of Features gated<br>
-by user activation made the same claim.</p>
-<ul dir="auto">
-<li>Glossary/Sticky_activation: state that the activation stays enabled<br>
-for the lifetime of the window and is inherited by the new document<br>
-on same-origin navigation and traversal, plus a short section<br>
-covering the carry-over and its scope (navigated frame only, not<br>
-parent frames or iframes).</li>
-<li>Web/Security/Defenses/User_activation: correct the comparison so it<br>
-no longer claims sticky activation ends with the session.</li>
-</ul>
-<p dir="auto">The carry-over is still behind shipping flags, so the new section is<br>
-marked as subject to change until implementations land.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #41241.">Closes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3440197115" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41241" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/41241/hovercard" href="https://github.com/mdn/content/issues/41241">#41241</a></p>
-<blockquote>
-<p dir="auto">This pull request was prepared with the assistance of an AI coding agent and<br>
-has not yet been reviewed by a human.</p>
-</blockquote>]]></content>
-        <author>
-            <name>ump45nose</name>
-            <email>ump45nose@noreply.github.com</email>
-            <uri>https://github.com/ump45nose</uri>
-        </author>
-        <published>2026-10-04T21:38:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Explain what origin reset does to each XR reference space]]></title>
-        <id>https://github.com/mdn/content/pull/45968</id>
-        <link href="https://github.com/mdn/content/pull/45968"/>
-        <updated>2026-10-04T20:50:28.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52391318?u=f6a09bd62b30aba8334ba0c1def5f8d3849dc806&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds an explanation of what an origin reset actually does to each of the four <code class="notranslate">XRReferenceSpace</code> types (<code class="notranslate">bounded-floor</code>, <code class="notranslate">local</code>, <code class="notranslate">local-floor</code>, <code class="notranslate">unbounded</code>) instead of only describing where each one starts.</p>
+        <title type="html"><![CDATA[CSSUnitValue unit property: Fix `%` to `percent` as per spec.]]></title>
+        <id>https://github.com/mdn/content/pull/45972</id>
+        <link href="https://github.com/mdn/content/pull/45972"/>
+        <updated>2026-10-05T00:25:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/34835685?u=e2ff4ec7833b26c17f1a88cdf362c71fce685835&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">The spec details that <code class="notranslate">CSSUnitValue.unit</code> must be the special-cased string <code class="notranslate">'percent'</code> for percentages (as opposed to the units of <code class="notranslate">&lt;dimension&gt;</code> values [e.g. <code class="notranslate">10px</code>] passing through as-is).</p>
+
 <h3 dir="auto">Motivation</h3>
-<p dir="auto">The table previously said only where each type's origin is located, which makes <code class="notranslate">local</code> and <code class="notranslate">local-floor</code> look interchangeable. They are not: resetting the origin in <code class="notranslate">local-floor</code> pins the y axis to the real floor, while resetting in <code class="notranslate">local</code> moves the origin on all three axes and therefore shifts the virtual world vertically. Readers who pick the wrong type get content that floats above or sinks below the real floor, which is one of the most common WebXR AR questions.</p>
+
+<p dir="auto">The article currently misleads readers as to the possible values of the <code class="notranslate">CSSUnitValue.unit</code> property, which this change fixes.</p>
 <h3 dir="auto">Additional details</h3>
-<p dir="auto">The <code class="notranslate">bounded-floor</code>, <code class="notranslate">local</code> and <code class="notranslate">local-floor</code> rewrites describe the reset semantics called out in the WebXR Device API (<code class="notranslate">XRReferenceSpace.reset</code> and the <code class="notranslate">local-floor</code> / <code class="notranslate">bounded-floor</code> type definitions). The <code class="notranslate">unbounded</code> entry is left as-is because reset is not part of its contract.</p>
+
+<p dir="auto"><a href="https://drafts.css-houdini.org/css-typed-om-1/#reify-a-numeric-value" rel="nofollow">CSS Typed OM Level 1 - Reify a numeric value</a></p>
 <h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #33111.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2245060998" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/33111" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/33111/hovercard" href="https://github.com/mdn/content/issues/33111">#33111</a></p>
-<blockquote>
-<p dir="auto">This pull request was prepared with the assistance of an AI coding agent and<br>
-has not yet been reviewed by a human.</p>
-</blockquote>]]></content>
+
+
+
+]]></content>
         <author>
-            <name>ump45nose</name>
-            <email>ump45nose@noreply.github.com</email>
-            <uri>https://github.com/ump45nose</uri>
+            <name>barhatsor</name>
+            <email>barhatsor@noreply.github.com</email>
+            <uri>https://github.com/barhatsor</uri>
         </author>
-        <published>2026-10-04T20:50:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document pinch-zoom behaviour of Touch coordinate properties]]></title>
-        <id>https://github.com/mdn/content/pull/45967</id>
-        <link href="https://github.com/mdn/content/pull/45967"/>
-        <updated>2026-10-04T20:13:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52391318?u=f6a09bd62b30aba8334ba0c1def5f8d3849dc806&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds a note to the <code class="notranslate">Touch</code> interface page explaining that <code class="notranslate">screenX</code>/<code class="notranslate">screenY</code>,<br>
-<code class="notranslate">clientX</code>/<code class="notranslate">clientY</code> and <code class="notranslate">pageX</code>/<code class="notranslate">pageY</code> differ not only in their coordinate origin but also<br>
-in how they react to pinch zooming: the client and page properties are in CSS pixels, while<br>
-the screen properties are in screen-space pixels, so the same drag changes <code class="notranslate">screenX</code>/<code class="notranslate">screenY</code><br>
-by more once the page is zoomed.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The current descriptions only mention the origin of each coordinate system, which is why the<br>
-three properties look interchangeable. Readers writing touch handlers frequently assume they<br>
-can be swapped, which breaks as soon as pinch zoom is involved.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The behaviour is observed in Chrome on Android. It is not stated by the Touch Events<br>
-specification and has not been confirmed across every mobile browser, so the note says so<br>
-explicitly rather than presenting it as guaranteed. Browser quirks are recorded at<br>
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/API/Touch</a>.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36326.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2585492430" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36326" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36326/hovercard" href="https://github.com/mdn/content/issues/36326">#36326</a></p>
-<blockquote>
-<p dir="auto">This pull request was prepared with the assistance of an AI coding agent and has not yet<br>
-been reviewed by a human.</p>
-</blockquote>]]></content>
-        <author>
-            <name>ump45nose</name>
-            <email>ump45nose@noreply.github.com</email>
-            <uri>https://github.com/ump45nose</uri>
-        </author>
-        <published>2026-10-04T20:13:11.000Z</published>
+        <published>2026-10-05T00:23:39.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[`AudioScheduledSourceNode` - fix exception names]]></title>
@@ -257,7 +194,7 @@ been reviewed by a human.</p>
         <title type="html"><![CDATA[New guide: Fetch priority]]></title>
         <id>https://github.com/mdn/content/pull/45950</id>
         <link href="https://github.com/mdn/content/pull/45950"/>
-        <updated>2026-10-04T16:53:50.000Z</updated>
+        <updated>2026-10-04T23:41:47.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds a guide on fetch priority under Web/Performance/Guides, with a sidebar entry and a line on the Performance landing page.</p>
 <h3 dir="auto">Motivation</h3>
@@ -445,5 +382,49 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/AsifMahsud</uri>
         </author>
         <published>2026-10-01T12:15:01.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Remove MediaTrackSettings, inline in MediaStreamTrack.getSettings]]></title>
+        <id>https://github.com/mdn/content/pull/45936</id>
+        <link href="https://github.com/mdn/content/pull/45936"/>
+        <updated>2026-10-05T00:55:00.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Continuing working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2037928647" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/30961" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/30961/hovercard" href="https://github.com/mdn/content/issues/30961">#30961</a>.</p>
+<p dir="auto">The approach is to condense information from three places: <code class="notranslate">MediaTrackSettings</code> landing page, <code class="notranslate">MediaTrackSettings.[property]</code>, and <code class="notranslate">MediaTrackConstraints.[property]</code>, and coalesce them ALL into a DL on <code class="notranslate">getSettings</code>.</p>
+<p dir="auto">Commits:</p>
+<ul dir="auto">
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/3b2838d5d781a9b83173d4413f4be7adf73f9f1d/hovercard" href="https://github.com/mdn/content/commit/3b2838d5d781a9b83173d4413f4be7adf73f9f1d"><tt>3b2838d</tt></a> - execute the delete-and-redirect; mechanical updates to the broken URLs. No content moved yet.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/6933420a7d0d8623762164cc40f82ae3e5c06fa0/hovercard" href="https://github.com/mdn/content/commit/6933420a7d0d8623762164cc40f82ae3e5c06fa0"><tt>6933420</tt></a> - move the DL and intro from <code class="notranslate">MediaTrackSettings</code> landing page over the "Return value". Add the intro and "Value" section from <code class="notranslate">MediaTrackSettings.[property]</code> to every DL item. Absolutely no editorial fixup, so content is duplicated as heck.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/5c10867693da729995d7b1a2782b67ef7d83d7e9/hovercard" href="https://github.com/mdn/content/commit/5c10867693da729995d7b1a2782b67ef7d83d7e9"><tt>5c10867</tt></a> - move any examples from the deleted pages. The other two examples, namely <code class="notranslate">restrictOwnAudio</code> and <code class="notranslate">suppressLocalAudioPlayback</code>, have absolutely nothing to do with <code class="notranslate">getSettings</code> or <code class="notranslate">MediaTrackSettings</code> and are simply dropped.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/2dbd6b8526cbc7728b76d7fb57a772a93157552c/hovercard" href="https://github.com/mdn/content/commit/2dbd6b8526cbc7728b76d7fb57a772a93157552c"><tt>2dbd6b8</tt></a> - create a "See also" that's the union of the see also items of each page, minus links to MediaTrackConstraints or MediaTrackSettings.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/95f654f26e11f57251589f990097eacd9faaf368/hovercard" href="https://github.com/mdn/content/commit/95f654f26e11f57251589f990097eacd9faaf368"><tt>95f654f</tt></a> - just does one thing: remove line wrapping.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/faf84b3dec2aaf13e1b08e3c82248b72c0da501f/hovercard" href="https://github.com/mdn/content/commit/faf84b3dec2aaf13e1b08e3c82248b72c0da501f"><tt>faf84b3</tt></a> - remove remaining references to <code class="notranslate">MediaTrackSettings</code>, remove a few value descriptions that are clearly duplicated.</li>
+<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/5fab0f465eb7d7c8780d37006f031162f7a104f8/hovercard" href="https://github.com/mdn/content/commit/5fab0f465eb7d7c8780d37006f031162f7a104f8"><tt>5fab0f4</tt></a> - actually execute the deduplication within <code class="notranslate">getSettings</code>.</li>
+</ul>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-09-30T21:40:03.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[chore(github): use `.md` extension for PR template]]></title>
+        <id>https://github.com/mdn/content/pull/45935</id>
+        <link href="https://github.com/mdn/content/pull/45935"/>
+        <updated>2026-10-02T23:39:43.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Renames <code class="notranslate">.github/PULL_REQUEST_TEMPLATE</code> to <code class="notranslate">.github/PULL_REQUEST_TEMPLATE.md</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Use the requested file path across repositories.</p>
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5653087027" data-permission-text="Title is private" data-url="https://github.com/mdn/fred/issues/1970" data-hovercard-type="issue" data-hovercard-url="/mdn/fred/issues/1970/hovercard" href="https://github.com/mdn/fred/issues/1970">mdn/fred#1970</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-09-30T21:21:48.000Z</published>
     </entry>
 </feed>
