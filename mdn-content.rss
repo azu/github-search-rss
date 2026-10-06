@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-06T16:21:16.863Z</updated>
+    <updated>2026-10-06T21:20:50.152Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -36,13 +36,18 @@
         <title type="html"><![CDATA[build(filecheck): replace imagemin with sharp]]></title>
         <id>https://github.com/mdn/content/pull/45999</id>
         <link href="https://github.com/mdn/content/pull/45999"/>
-        <updated>2026-10-06T14:16:21.000Z</updated>
+        <updated>2026-10-06T21:07:20.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Update filecheck to compress JPEG, PNG, and GIF images with sharp and optimize SVGs with SVGO directly. Remove imagemin dependencies and temporary compression files.</p>
 <h3 dir="auto">Motivation</h3>
 <p dir="auto">Simplify image compression dependencies and remove standalone binary installation scripts.</p>
 <h3 dir="auto">Additional details</h3>
 <p dir="auto">Regression tests cover format preservation, GIF frames and timing, transparency, EXIF orientation, and file size limits.</p>
+<p dir="auto">Behavior changes compared to imagemin:</p>
+<ul dir="auto">
+<li>JPEG: mozjpeg's <code class="notranslate">cjpeg</code> reused the quality of JPEG input and kept its metadata, so it never flagged a JPEG in this repo. sharp re-encodes at quality 75 with mozjpeg optimizations and applies the EXIF orientation before stripping metadata. A full run over <code class="notranslate">files/</code> newly flags 15 existing files (13 JPEGs, 1 PNG, 1 GIF), which CI only reports once a PR touches them.</li>
+<li>GIF: gifsicle was lossless. sharp re-quantizes frames: 55 of the 58 GIFs in this repo re-encode pixel-identical, the other 3 show small colour shifts or merge a near-duplicate frame while keeping its delay, and none of them exceeds the compression threshold.</li>
+</ul>
 <h3 dir="auto">Related issues and pull requests</h3>
 
 
@@ -271,7 +276,7 @@
         <title type="html"><![CDATA[Update size="1" note for multiple select]]></title>
         <id>https://github.com/mdn/content/pull/45990</id>
         <link href="https://github.com/mdn/content/pull/45990"/>
-        <updated>2026-10-06T09:40:27.000Z</updated>
+        <updated>2026-10-06T20:09:15.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/89024979?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Updates the <code class="notranslate">size="1"</code> paragraph in the "Accessibility concerns" section of the <code class="notranslate">multiple</code> attribute page. It no longer tells authors never to use <code class="notranslate">size="1"</code> on a multiple select, since that's now the opt-in for a drop-down multi-select. It still mentions the old behavior in browsers that haven't shipped this yet, and keeps the advice to tell users that more than one option can be selected.</p>
 <h3 dir="auto">Motivation</h3>
@@ -382,7 +387,7 @@ spec: <a href="https://drafts.csswg.org/css-gaps/#insets-cap-junction" rel="nofo
         <title type="html"><![CDATA[docs: clarify WOFF2 as default web font format]]></title>
         <id>https://github.com/mdn/content/pull/45959</id>
         <link href="https://github.com/mdn/content/pull/45959"/>
-        <updated>2026-10-06T15:05:00.000Z</updated>
+        <updated>2026-10-06T16:30:11.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/201263876?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Description</p>
 <p dir="auto">Updates the Web fonts tutorial to use WOFF2 as the default format for modern browsers. The walkthrough now directs learners to generate WOFF2 only, explains the system-font fallback and performance benefit of minimizing font files, and keeps WOFF as legacy-browser guidance with a browser-compatibility reference.</p>
 <p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45954.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5676356787" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45954" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45954/hovercard" href="https://github.com/mdn/content/issues/45954">#45954</a></p>]]></content>
