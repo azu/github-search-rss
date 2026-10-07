@@ -2,16 +2,150 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-07T14:51:07.019Z</updated>
+    <updated>2026-10-07T20:16:25.009Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[fix(js): correct expected output of four JavaScript examples]]></title>
+        <id>https://github.com/mdn/content/pull/46027</id>
+        <link href="https://github.com/mdn/content/pull/46027"/>
+        <updated>2026-10-07T20:09:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/159103134?u=61598c0021a74530992fa07526d014fe3564b832&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Four JavaScript examples document an expected output that the code in the same code block cannot produce. I ran each block with Node 24 (browsers agree for these cases) to check.</p>
+<p dir="auto"><strong><code class="notranslate">Date.prototype.setSeconds()</code></strong> — <code class="notranslate">files/en-us/web/javascript/reference/global_objects/date/setseconds/index.md</code></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="const event = new Date(&quot;August 19, 1975 23:15:30&quot;);
+event.setSeconds(42);
+console.log(event);
+// Expected output: &quot;Sat Apr 19 1975 23:15:42 GMT+0100 (CET)&quot;   &lt;- says April"><pre class="notranslate"><span class="pl-k">const</span> <span class="pl-s1">event</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Date</span><span class="pl-kos">(</span><span class="pl-s">"August 19, 1975 23:15:30"</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">event</span><span class="pl-kos">.</span><span class="pl-en">setSeconds</span><span class="pl-kos">(</span><span class="pl-c1">42</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">event</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// Expected output: "Sat Apr 19 1975 23:15:42 GMT+0100 (CET)"   &lt;- says April</span></pre></div>
+<p dir="auto"><code class="notranslate">setSeconds()</code> does not change the month. August 19, 1975 is a Tuesday, so the line becomes:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Tue Aug 19 1975 23:15:42 GMT+0100 (CET)"><pre class="notranslate"><code class="notranslate">Tue Aug 19 1975 23:15:42 GMT+0100 (CET)
+</code></pre></div>
+<p dir="auto"><strong><code class="notranslate">handler.construct()</code></strong> — <code class="notranslate">files/en-us/web/javascript/reference/global_objects/proxy/proxy/construct/index.md</code></p>
+<p dir="auto">The trap logs <code class="notranslate">Creating a ${target.name}</code> and the target is the function <code class="notranslate">Monster</code>, so the console shows <code class="notranslate">Creating a Monster</code> — the existing <code class="notranslate">// Expected output: "Creating a monster"</code> has the wrong case.</p>
+<p dir="auto"><strong><code class="notranslate">String.prototype.toLocaleLowerCase()</code></strong> — <code class="notranslate">files/en-us/web/javascript/reference/global_objects/string/tolocalelowercase/index.md</code></p>
+<p dir="auto">Both logged values are template literals that add a prefix, so the expected output of the first line is <code class="notranslate">"EN-US: i̇stanbul"</code> (not <code class="notranslate">"i̇stanbul"</code>) and of the second one <code class="notranslate">"TR: istanbul"</code> (not <code class="notranslate">"istanbul"</code>).</p>
+<p dir="auto"><strong><code class="notranslate">Promise()</code></strong> — <code class="notranslate">files/en-us/web/javascript/reference/global_objects/promise/promise/index.md</code></p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="console.log(promise1);
+// Expected output: [object Promise]"><pre class="notranslate"><span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">promise1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-c">// Expected output: [object Promise]</span></pre></div>
+<p dir="auto"><code class="notranslate">[object Promise]</code> is the result of <code class="notranslate">String(promise1)</code> (or <code class="notranslate">Object.prototype.toString.call(promise1)</code>); <code class="notranslate">console.log</code> prints the promise object itself, which consoles render as <code class="notranslate">Promise {&lt;pending&gt;}</code> (Chrome) or <code class="notranslate">Promise { &lt;state&gt;: "pending" }</code> (Firefox). I used the latter, the form already used on <code class="notranslate">Promise.all()</code>.</p>
+<p dir="auto">Checks: <code class="notranslate">node scripts/front-matter_linter.js</code>, <code class="notranslate">npx markdownlint-cli2</code>, <code class="notranslate">npx prettier -c</code>, <code class="notranslate">npx cspell --config .vscode/cspell.json</code> and <code class="notranslate">npm test</code> — all pass.</p>]]></content>
+        <author>
+            <name>lmliheng</name>
+            <email>lmliheng@noreply.github.com</email>
+            <uri>https://github.com/lmliheng</uri>
+        </author>
+        <published>2026-10-07T20:09:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add rel note for FxA 158 aria-busy support]]></title>
+        <id>https://github.com/mdn/content/pull/46025</id>
+        <link href="https://github.com/mdn/content/pull/46025"/>
+        <updated>2026-10-07T17:45:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Firefox for Android 158 adds support for the aria-busy state; see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=908042" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=908042</a>. AFAICT, support on desktop has been available for a long time; see <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/3/WAI_ARIA_Live_Regions_API_Support" rel="nofollow">https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/3/WAI_ARIA_Live_Regions_API_Support</a>.</p>
+<p dir="auto">This PR adds a rel note for this new addition. It is a bit of a weird one — I didn't think that it should just be put in the HTML section, so I added an accessibility section. Does this seem to make sense?</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617199805" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45886" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45886/hovercard" href="https://github.com/mdn/content/issues/45886">#45886</a></p>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-10-07T17:44:12.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add Fx158 rel note for WebGPU float32-blendable feature]]></title>
+        <id>https://github.com/mdn/content/pull/46024</id>
+        <link href="https://github.com/mdn/content/pull/46024"/>
+        <updated>2026-10-07T17:11:22.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Firefox 158 adds support for the WebGPU <code class="notranslate">float32-blendable</code> feature. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1931630" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1931630</a>.</p>
+<p dir="auto">This PR adds an appropriate note to the Firefox 158 rel notes.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617208477" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45891" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45891/hovercard" href="https://github.com/mdn/content/issues/45891">#45891</a></p>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-10-07T17:09:29.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Replace dead online Wasm assembler links in Wasm concepts guide]]></title>
+        <id>https://github.com/mdn/content/pull/46023</id>
+        <link href="https://github.com/mdn/content/pull/46023"/>
+        <updated>2026-10-07T20:08:45.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/89024979?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The "Porting from C/C++" section of the WebAssembly concepts guide recommends WasmFiddle++ and WasmExplorer, but neither works anymore because their shared backend service (<code class="notranslate">wasmexplorer-service.herokuapp.com</code>) is gone. This replaces them with <a href="https://godbolt.org/" rel="nofollow">Compiler Explorer</a>, which can still compile C or C++ to Wasm in the browser with Clang and <code class="notranslate">--target=wasm32</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46022.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5747726227" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46022" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46022/hovercard" href="https://github.com/mdn/content/issues/46022">#46022</a></p>]]></content>
+        <author>
+            <name>SatvikMishra08</name>
+            <email>SatvikMishra08@noreply.github.com</email>
+            <uri>https://github.com/SatvikMishra08</uri>
+        </author>
+        <published>2026-10-07T16:28:15.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add Fx rel note for Notification.navigate]]></title>
+        <id>https://github.com/mdn/content/pull/46021</id>
+        <link href="https://github.com/mdn/content/pull/46021"/>
+        <updated>2026-10-07T19:22:08.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Firefox 158 ships support for the <code class="notranslate">Notification.navigate</code> property, which also includes the <code class="notranslate">navigate</code> option of the <code class="notranslate">Notification()</code> constructor and <code class="notranslate">ServiceWorkerRegistration.showNotification()</code> method. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2069920" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2069920</a>.</p>
+<p dir="auto">This PR adds a rel note to cover this addition.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617222240" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45900" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45900/hovercard" href="https://github.com/mdn/content/issues/45900">#45900</a></p>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-10-07T15:34:58.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Add rel notes for Fx 158 on-device speech recognition]]></title>
         <id>https://github.com/mdn/content/pull/46019</id>
         <link href="https://github.com/mdn/content/pull/46019"/>
-        <updated>2026-10-07T14:22:40.000Z</updated>
+        <updated>2026-10-07T19:05:02.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -53,7 +187,7 @@
         <title type="html"><![CDATA[Remove "experimental" status and seecompat macro from frontmatter]]></title>
         <id>https://github.com/mdn/content/pull/46015</id>
         <link href="https://github.com/mdn/content/pull/46015"/>
-        <updated>2026-10-07T13:13:55.000Z</updated>
+        <updated>2026-10-07T18:06:49.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">per <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5087365489" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45041" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45041/hovercard?comment_id=4202151823&amp;comment_type=review_comment" href="https://github.com/mdn/content/pull/45041#discussion_r4202151823">#45041 (comment)</a>, we can leave out the status key and the SeeCompatTable macro as they get added when by BCD (<a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/CSS_property_page_template#status" rel="nofollow">template</a>)</p>
 <p dir="auto">This PR removes the status of experimental and the macro from all css properties with both.</p>]]></content>
         <author>
@@ -91,139 +225,6 @@
         <published>2026-10-07T10:54:26.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Fix unbalanced and misplaced parentheses in Web API docs]]></title>
-        <id>https://github.com/mdn/content/pull/46013</id>
-        <link href="https://github.com/mdn/content/pull/46013"/>
-        <updated>2026-10-07T09:32:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52491201?u=b42786e44b729e060623dfa59f38369927cdb787&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Fixes 25 unbalanced or misplaced parentheses across 23 Web API pages: a missing <code class="notranslate">(</code> or <code class="notranslate">)</code>, an extra one, or a <code class="notranslate">)</code> that ended up inside inline code (e.g. <code class="notranslate">(`currentRotation)`</code> → <code class="notranslate">(`currentRotation`)</code>).</p>
-<details><summary>All changes</summary>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>Page</th>
-<th>Reason</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start" rel="nofollow"><code class="notranslate">AudioBufferSourceNode/start</code></a></td>
-<td>stray opening paren before the macro, never closed</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getSelection" rel="nofollow"><code class="notranslate">Document/getSelection</code></a></td>
-<td>extra closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaHidden" rel="nofollow"><code class="notranslate">Element/ariaHidden</code></a></td>
-<td>extra closing paren after link</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications" rel="nofollow"><code class="notranslate">File_API/Using_files_from_web_applications</code></a></td>
-<td>extra closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction" rel="nofollow"><code class="notranslate">IDBTransaction</code></a></td>
-<td>missing closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder" rel="nofollow"><code class="notranslate">MediaRecorder</code></a></td>
-<td>parenthetical never closed</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/active" rel="nofollow"><code class="notranslate">MediaStream/active</code></a></td>
-<td>'(that is, when ...' never closes</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackAudioSourceNode/MediaStreamTrackAudioSourceNode" rel="nofollow"><code class="notranslate">MediaStreamTrackAudioSourceNode/MediaStreamTrackAudioSourceNode</code></a></td>
-<td>'(that is, its kind property ...' never closes</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/registerPaint" rel="nofollow"><code class="notranslate">PaintWorkletGlobalScope/registerPaint</code></a></td>
-<td>'(documented here on the parent class ...' never closes</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/retry" rel="nofollow"><code class="notranslate">PaymentResponse/retry</code></a></td>
-<td>missing closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure/detail" rel="nofollow"><code class="notranslate">PerformanceMeasure/detail</code></a></td>
-<td>missing closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events" rel="nofollow"><code class="notranslate">Pointer_events</code></a></td>
-<td>unclosed '(when ... occurs'; the clause is the main point of the sentence, so drop the paren instead of closing it</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader" rel="nofollow"><code class="notranslate">ReadableStreamBYOBReader</code></a></td>
-<td>extra closing paren after link</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Multi-touch_interaction" rel="nofollow"><code class="notranslate">Touch_events/Multi-touch_interaction</code></a></td>
-<td>extra closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/TrackEvent" rel="nofollow"><code class="notranslate">TrackEvent</code></a></td>
-<td>stray closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Controlling_multiple_parameters_with_ConstantSourceNode" rel="nofollow"><code class="notranslate">Web_Audio_API/Controlling_multiple_parameters_with_ConstantSourceNode</code></a></td>
-<td>parenthetical never closed</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Controlling_multiple_parameters_with_ConstantSourceNode" rel="nofollow"><code class="notranslate">Web_Audio_API/Controlling_multiple_parameters_with_ConstantSourceNode</code></a></td>
-<td>parenthetical never closed</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Simple_synth" rel="nofollow"><code class="notranslate">Web_Audio_API/Simple_synth</code></a></td>
-<td>'(by calling our old friend addEventListener()' never closed</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Basic_2D_animation_example" rel="nofollow"><code class="notranslate">WebGL_API/Basic_2D_animation_example</code></a></td>
-<td>missing closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Basic_2D_animation_example" rel="nofollow"><code class="notranslate">WebGL_API/Basic_2D_animation_example</code></a></td>
-<td>closing paren inside inline code</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices" rel="nofollow"><code class="notranslate">WebGL_API/WebGL_best_practices</code></a></td>
-<td>extra closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API/Using_the_WebVR_API" rel="nofollow"><code class="notranslate">WebVR_API/Using_the_WebVR_API</code></a></td>
-<td>one open, two close</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Bounded_reference_spaces" rel="nofollow"><code class="notranslate">WebXR_Device_API/Bounded_reference_spaces</code></a></td>
-<td>extra closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Targeting" rel="nofollow"><code class="notranslate">WebXR_Device_API/Targeting</code></a></td>
-<td>extra closing paren</td>
-</tr>
-<tr>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRView" rel="nofollow"><code class="notranslate">XRView</code></a></td>
-<td>parenthetical '(such as ... mode' never closed</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-</details>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">These make sentences harder to read, especially when it's unclear where an aside ends.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">For each one, I read the whole sentence to decide whether a paren was missing or extra, and checked the git history where the intent wasn't obvious. In <em>Pointer events</em>, the unclosed <code class="notranslate">(when a pointercancel event occurs</code> is the main point of the sentence rather than an aside, so I removed the <code class="notranslate">(</code> instead of closing it.</p>
-<p dir="auto">No open PR touches these files.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Same kind of fixes as <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5729365847" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45998" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45998/hovercard" href="https://github.com/mdn/content/pull/45998">#45998</a> (CSS) and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5741554546" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46012" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46012/hovercard" href="https://github.com/mdn/content/pull/46012">#46012</a> (Learn).</p>]]></content>
-        <author>
-            <name>kumability</name>
-            <email>kumability@noreply.github.com</email>
-            <uri>https://github.com/kumability</uri>
-        </author>
-        <published>2026-10-07T09:30:21.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Update 'controls' attribute details in img element]]></title>
         <id>https://github.com/mdn/content/pull/46011</id>
         <link href="https://github.com/mdn/content/pull/46011"/>
@@ -252,7 +253,7 @@
         <title type="html"><![CDATA[Update persistent/non-persistent notifications docs]]></title>
         <id>https://github.com/mdn/content/pull/46009</id>
         <link href="https://github.com/mdn/content/pull/46009"/>
-        <updated>2026-10-07T05:17:13.000Z</updated>
+        <updated>2026-10-07T19:37:42.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is basically <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3447591712" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41267" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41267/hovercard" href="https://github.com/mdn/content/pull/41267">#41267</a>, rebased on the current docs.</p>
 <p dir="auto">Since I made <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3447591712" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41267" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41267/hovercard" href="https://github.com/mdn/content/pull/41267">#41267</a>, the notifications docs have acknowledged the difference between persistent and non-persistent notifications, but I thought there was still some clarity that could be added, and some errors still (e.g. persistent notifications are <strong>not</strong> only created from a SW, they can also be created by a web page).</p>
 <p dir="auto">One thing I wasn't sure about was whether <code class="notranslate">click</code>, <code class="notranslate">close</code>, and <code class="notranslate">show</code> are only fired on NP notifications.</p>
@@ -282,13 +283,13 @@
         <title type="html"><![CDATA[chore(content): add allowed broken links list]]></title>
         <id>https://github.com/mdn/content/pull/46007</id>
         <link href="https://github.com/mdn/content/pull/46007"/>
-        <updated>2026-10-07T14:44:22.000Z</updated>
+        <updated>2026-10-07T15:46:31.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Add the shared list of destination slugs Rari can use to suppress broken-link flaws across locales.</p>
 <h3 dir="auto">Motivation</h3>
 <p dir="auto">Suppress known intentional broken-link flaws to reduce noise in Rari reports. This is a step towards <code class="notranslate">mdn/fred#1105</code>.</p>
 <h3 dir="auto">Additional details</h3>
-<p dir="auto">The 375 unique slugs are grouped by best-effort rationale. Three report targets with existing en-US pages are omitted. The file comments describe its cross-locale scope and that <code class="notranslate">fix-flaws</code> should prune stale entries.</p>
+<p dir="auto">The unique slugs are grouped by best-effort rationale. Three report targets with existing en-US pages are omitted. The file comments describe its cross-locale scope and that <code class="notranslate">fix-flaws</code> should prune stale entries.</p>
 <h3 dir="auto">Related issues and pull requests</h3>
 <p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3670953394" data-permission-text="Title is private" data-url="https://github.com/mdn/fred/issues/1105" data-hovercard-type="issue" data-hovercard-url="/mdn/fred/issues/1105/hovercard" href="https://github.com/mdn/fred/issues/1105">mdn/fred#1105</a>.</p>]]></content>
         <author>
@@ -572,82 +573,5 @@ spec: <a href="https://drafts.csswg.org/css-gaps/#insets-cap-junction" rel="nofo
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2026-10-05T09:42:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ci(pr-test): pass file paths as positional arguments to `rari build`]]></title>
-        <id>https://github.com/mdn/content/pull/45964</id>
-        <link href="https://github.com/mdn/content/pull/45964"/>
-        <updated>2026-10-05T04:59:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/15844309?u=008f65848dd592799cd1d72033096baa1cbc88ce&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">pass file paths as positional arguments to <code class="notranslate">rari build</code></p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Follows: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4453885204" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/697" data-hovercard-type="pull_request" data-hovercard-url="/mdn/rari/pull/697/hovercard" href="https://github.com/mdn/rari/pull/697">mdn/rari#697</a></p>
-<p dir="auto">Downstream PR: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5697443925" data-permission-text="Title is private" data-url="https://github.com/mdn/translated-content/issues/39075" data-hovercard-type="pull_request" data-hovercard-url="/mdn/translated-content/pull/39075/hovercard" href="https://github.com/mdn/translated-content/pull/39075">mdn/translated-content#39075</a></p>]]></content>
-        <author>
-            <name>yin1999</name>
-            <email>yin1999@noreply.github.com</email>
-            <uri>https://github.com/yin1999</uri>
-        </author>
-        <published>2026-10-04T08:09:52.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Remove GH polyfill links to baseline features]]></title>
-        <id>https://github.com/mdn/content/pull/45958</id>
-        <link href="https://github.com/mdn/content/pull/45958"/>
-        <updated>2026-10-05T20:43:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">We have well-defined policies on whitelisted polyfill sources (core-js and es-shims), but we also have many ad-hoc polyfill links. While we can probably keep the ones that are still useful, the other ones only add noise and maintenance burden.</p>
-<p dir="auto">In an effort to reduce excessive external links, I'm removing these outdated polyfills whose features are already baseline.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-10-03T00:57:12.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[IDBDatabase: make the upgrade example work for existing databases]]></title>
-        <id>https://github.com/mdn/content/pull/45955</id>
-        <link href="https://github.com/mdn/content/pull/45955"/>
-        <updated>2026-10-02T11:20:22.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55624875?u=e2842ce890b78aa7e7187545436f3763a7f83523&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Reworks the <code class="notranslate">onupgradeneeded</code> handler in the <code class="notranslate">IDBDatabase</code> example so it handles upgrades from an older version, not just first-time creation:</p>
-<ul dir="auto">
-<li>The handler now checks <code class="notranslate">event.oldVersion</code> and applies each upgrade step the user hasn't had yet. Version 1 creates the <code class="notranslate">toDoList</code> store and its date/time indexes; version 2 adds the <code class="notranslate">notified</code> index to the existing store, which it gets from the upgrade transaction (<code class="notranslate">DBOpenRequest.transaction.objectStore()</code>) instead of calling <code class="notranslate">createObjectStore()</code> again.</li>
-<li>The <code class="notranslate">open()</code> call asks for version 2 to match.</li>
-<li>Fixes a <code class="notranslate">node.appendChild</code> typo (the variable is <code class="notranslate">note</code>), plus a missing full stop in a comment.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">As the issue says, the old handler always called <code class="notranslate">createObjectStore("toDoList")</code>, so it only worked when the database didn't exist yet. Bumping the version for anyone with an existing database threw a <code class="notranslate">ConstraintError</code> and aborted the upgrade. I checked this with <code class="notranslate">fake-indexeddb</code>: after creating the database at version 1, the old handler fails on the upgrade to version 2 with <code class="notranslate">ConstraintError</code>, while the new handler produces the same six indexes both for a fresh install at version 2 and for an upgrade from version 1.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">IndexedDB spec, <a href="https://w3c.github.io/IndexedDB/#dom-idbversionchangeevent-oldversion" rel="nofollow"><code class="notranslate">IDBVersionChangeEvent.oldVersion</code></a> (0 for a new database) and <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-transaction" rel="nofollow"><code class="notranslate">IDBOpenDBRequest.transaction</code></a> during an upgrade.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #26638.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1699625073" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/26638" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/26638/hovercard" href="https://github.com/mdn/content/issues/26638">#26638</a></p>]]></content>
-        <author>
-            <name>AsifMahsud</name>
-            <email>AsifMahsud@noreply.github.com</email>
-            <uri>https://github.com/AsifMahsud</uri>
-        </author>
-        <published>2026-10-02T11:19:55.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Change td's within thead into th elements on page "<template> HTML content template element" section Examples / Generating table rows]]></title>
-        <id>https://github.com/mdn/content/pull/45953</id>
-        <link href="https://github.com/mdn/content/pull/45953"/>
-        <updated>2026-10-02T10:01:51.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/174694834?u=fc3974c48d48e1d8719f870b0ce27a84fe61df7a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">In the page  HTML content template element <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows</a></p><p dir="auto"></p>
-<p dir="auto">in section Examples / Generating table rows on the HTML part of the example, within the table / thead, it has td elements, which are used as table header (th) elements.</p>
-<p dir="auto">My commit changes them from &lt;td&gt; into &lt;th&gt;</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">I'm making these changes because It made me feel uneasy seeing td elements there, when these should have been th elements.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template#generating_table_rows</a></p>
-<h3 dir="auto">Related issues and pull requests</h3><p></p>]]></content>
-        <author>
-            <name>nholtman</name>
-            <email>nholtman@noreply.github.com</email>
-            <uri>https://github.com/nholtman</uri>
-        </author>
-        <published>2026-10-02T10:01:26.000Z</published>
     </entry>
 </feed>

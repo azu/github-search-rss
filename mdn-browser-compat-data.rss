@@ -2,11 +2,141 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-10-07T14:51:05.843Z</updated>
+    <updated>2026-10-07T20:16:24.379Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Update SuppressedError specification links to ECMA-262]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30784</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30784"/>
+        <updated>2026-10-07T17:50:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/12343178?u=5709fea5745a389a2ce2bf522e57aef637a62ba1&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Update the specification links for <code class="notranslate">SuppressedError</code>, its constructor, and its <code class="notranslate">error</code> and <code class="notranslate">suppressed</code> properties to ECMA-262.</p>
+<p dir="auto">The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SuppressedError/SuppressedError" rel="nofollow">MDN constructor page</a> currently links to the old async explicit resource management proposal, which still includes an <code class="notranslate">options</code> parameter and an <code class="notranslate">InstallErrorCause</code> step. The <a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-suppressederror" rel="nofollow">current ECMA-262 constructor</a> takes <code class="notranslate">error</code>, <code class="notranslate">suppressed</code>, and <code class="notranslate">message</code>, matching MDN's documented syntax and note about <code class="notranslate">options</code>.</p>
+<p dir="auto"><code class="notranslate">SuppressedError</code> was merged into ECMA-262’s <code class="notranslate">main</code> branch on June 24, 2026, as part of <a href="https://github.com/tc39/ecma262/pull/3000" data-hovercard-type="pull_request" data-hovercard-url="/tc39/ecma262/pull/3000/hovercard">tc39/ecma262#3000</a>, which added Explicit Resource Management. These links should therefore point to the integrated ECMA-262 specification.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>Verified that all four replacement links resolve to existing fragment IDs in ECMA-262.</li>
+<li><code class="notranslate">npm run prepare</code></li>
+<li><code class="notranslate">npm test</code> (passed; ESLint reported 85 warnings and no errors)</li>
+<li><code class="notranslate">git diff --check</code></li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>F3n67u</name>
+            <email>F3n67u@noreply.github.com</email>
+            <uri>https://github.com/F3n67u</uri>
+        </author>
+        <published>2026-10-07T17:27:31.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fx 158 supports WebGPU float32-blendable feature]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30783</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30783"/>
+        <updated>2026-10-07T16:34:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Firefox 158 adds support for the WebGPU <code class="notranslate">float32-blendable</code> feature. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1931630" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1931630</a>.</p>
+<p dir="auto">This PR adds Firefox 158 support to the relevant data point.</p>
+<p dir="auto">The wording of the bug is a bit confusing, but I'm assuming it is supported because the following code lists it as an available feature in both the adapter and the resulting device:</p>
+<div class="highlight highlight-source-js notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="async function init() {
+  if (!navigator.gpu) {
+    throw Error(&quot;WebGPU not supported.&quot;);
+  }
+
+  const adapter = await navigator.gpu.requestAdapter();
+  if (!adapter) {
+    throw Error(&quot;Couldn't request WebGPU adapter.&quot;);
+  }
+
+  for (feature of adapter.features) {
+    console.log(feature);
+  }
+
+  const device = await adapter.requestDevice({
+    requiredFeatures: [&quot;float32-blendable&quot;],
+  });
+
+  console.log(device);
+
+  for (feature of device.features) {
+    console.log(feature);
+  }
+}
+
+init();"><pre class="notranslate"><span class="pl-k">async</span> <span class="pl-k">function</span> <span class="pl-en">init</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">navigator</span><span class="pl-kos">.</span><span class="pl-c1">gpu</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">throw</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">"WebGPU not supported."</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">adapter</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">navigator</span><span class="pl-kos">.</span><span class="pl-c1">gpu</span><span class="pl-kos">.</span><span class="pl-en">requestAdapter</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-c1">!</span><span class="pl-s1">adapter</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">throw</span> <span class="pl-v">Error</span><span class="pl-kos">(</span><span class="pl-s">"Couldn't request WebGPU adapter."</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-s1">feature</span> <span class="pl-k">of</span> <span class="pl-s1">adapter</span><span class="pl-kos">.</span><span class="pl-c1">features</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">feature</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-k">const</span> <span class="pl-s1">device</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">adapter</span><span class="pl-kos">.</span><span class="pl-en">requestDevice</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">requiredFeatures</span>: <span class="pl-kos">[</span><span class="pl-s">"float32-blendable"</span><span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">device</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-s1">feature</span> <span class="pl-k">of</span> <span class="pl-s1">device</span><span class="pl-kos">.</span><span class="pl-c1">features</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">feature</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-en">init</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617208477" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45891" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45891/hovercard" href="https://github.com/mdn/content/issues/45891">mdn/content#45891</a></p>
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-10-07T16:33:37.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add Notifications API `navigate` option]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/30781</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/30781"/>
+        <updated>2026-10-07T18:08:27.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+<h4 dir="auto">Summary</h4>
+<p dir="auto">Firefox 158 adds support for <code class="notranslate">Notification.navigator</code> — the ability to specify a URL to navigate to once a notification is clicked.</p>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5714299430" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30755" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30755/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30755">#30755</a> adds <code class="notranslate">api.Notification.navigate</code> (the property), but there are two more data points required:</p>
+<ul dir="auto">
+<li><code class="notranslate">api.Notification.Notification.navigate</code> (the constructor option)</li>
+<li><code class="notranslate">api.ServiceWorkerRegistration.showNotification.options_navigate_parameter</code> (the service worker <code class="notranslate">showNotification()</code> option)</li>
+</ul>
+<p dir="auto">This PR adds both.</p>
+
+<h4 dir="auto">Test results and supporting details</h4>
+
+
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617222240" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45900" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45900/hovercard" href="https://github.com/mdn/content/issues/45900">mdn/content#45900</a></p>
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-10-07T15:18:22.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add svgView() fragment identifier to SVG <view>]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30779</id>
@@ -90,7 +220,7 @@
         <title type="html"><![CDATA[updated the `<random-key>` values for `random()`]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30756</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/30756"/>
-        <updated>2026-10-07T09:27:21.000Z</updated>
+        <updated>2026-10-07T17:14:40.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">The spec has been updated and new values have been added to simplify the sharing of random values.</p>
 <p dir="auto">Added:</p>
@@ -300,115 +430,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/CloaRK</uri>
         </author>
         <published>2026-09-29T15:57:20.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add subfeatures for `api.Element.pseudo` parameter values]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30700</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30700"/>
-        <updated>2026-10-07T13:04:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64103?u=428d3c27c9cd7efc648e17dfe5a4321c3f8e44d2&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">The <code class="notranslate">pseudo()</code> method of <code class="notranslate">Element</code> objects has varying support for different values. I've tried to capture this here.</p>
-
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">The behavior here is a consequence of a spec change, resolved in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4261800498" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/13804" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13804/hovercard?comment_id=4297936996&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/13804#issuecomment-4297936996">w3c/csswg-drafts#13804 (comment)</a>.</p>
-<p dir="auto">I didn't actually test this but I feel reasonably confident given <a href="https://chromiumdash.appspot.com/commit/c1e61b0aebf0c03d81690332f077d14da39efe09" rel="nofollow">https://chromiumdash.appspot.com/commit/c1e61b0aebf0c03d81690332f077d14da39efe09</a> and <a href="https://chromestatus.com/feature/6516055192240128" rel="nofollow">https://chromestatus.com/feature/6516055192240128</a>.</p>
-
-
-<h4 dir="auto">Related issues</h4>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5336284266" data-permission-text="Title is private" data-url="https://github.com/web-platform-dx/web-features/issues/4306" data-hovercard-type="issue" data-hovercard-url="/web-platform-dx/web-features/issues/4306/hovercard" href="https://github.com/web-platform-dx/web-features/issues/4306">web-platform-dx/web-features#4306</a></li>
-</ul>
-
-]]></content>
-        <author>
-            <name>ddbeck</name>
-            <email>ddbeck@noreply.github.com</email>
-            <uri>https://github.com/ddbeck</uri>
-        </author>
-        <published>2026-09-29T13:24:45.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Google Privacy Sandbox] Chrome 156 stubs out Fenced Frame API]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30697</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30697"/>
-        <updated>2026-10-01T15:23:58.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto"><a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/c9w5uH3eSuo/m/oG9HX5UfCQAJ" rel="nofollow">This message from intent to remove sent on Sept 28:</a></p>
-<blockquote>
-<p dir="auto">We landed the required code in M156. The fenced frame element and window.fence are now stubs starting in M156. We will start the experiment to remove the stubs in M157. Thanks!</p>
-</blockquote>
-<p dir="auto"><a href="https://chromestatus.com/feature/6366274495053824" rel="nofollow">Chrome Status entry (updated recently)</a></p>
-<p dir="auto">This Chromium commit removed Fenced Frames API:</p>
-<ul dir="auto">
-<li><a href="https://chromium-review.googlesource.com/c/chromium/src/+/8144621" rel="nofollow">CL 8144621</a></li>
-<li><a href="https://github.com/chromium/chromium/commit/55fa5f273aed691fbe11a449cabf1943fb284f74">This commit on GitHub</a></li>
-<li><a href="https://github.com/web-platform-tests/wpt/blob/master/fenced-frame/fenced-frame-stub.https.html">WPT test for stubs</a> - this explains all the <code class="notranslate">notes</code> I added.</li>
-</ul>
-
-
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">This is a direct follow-up to my earlier PR deprecating Fenced Frame API <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5161427314" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30242" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30242/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30242">#30242</a><br>
-This is relaed to Shared Storeage API PR I created <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5568937249" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30659" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30659/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30659">#30659</a></p>
-
-]]></content>
-        <author>
-            <name>bershanskiy</name>
-            <email>bershanskiy@noreply.github.com</email>
-            <uri>https://github.com/bershanskiy</uri>
-        </author>
-        <published>2026-09-29T09:06:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Firefox 158 supports WebTransport.getStats()]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30695</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30695"/>
-        <updated>2026-09-29T01:00:48.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF158 implemented <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats" rel="nofollow"><code class="notranslate">WebTransport.getStats()</code></a> in  <a href="https://bugzil.la/2007202" rel="nofollow">https://bugzil.la/2007202</a></p>
-<p dir="auto">This adds <code class="notranslate">return_object_property_*</code> subfeatures for the members of the returned webTransportConnectionStats/WebTransportDatagramStats, based on the Firefox, WebKit and Deno source - thanks to Claude.<br>
-<code class="notranslate">bytesSentOverhead</code> is omitted since no engine returns it (Firefox: <a href="https://bugzil.la/2051624" rel="nofollow">https://bugzil.la/2051624</a>). Deno and Safari don't return anything useful, but they do expose the interfaces and mosty populate them with 0.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617211633" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45893" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45893/hovercard" href="https://github.com/mdn/content/issues/45893">mdn/content#45893</a></p>
-<p dir="auto">NOTE I am away on holiday and won't be back until late October. If you can make changes to make this PR mergable, please do, and merge it.</p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-09-29T01:00:08.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[fix(webextensions): add menus.update property compatibility data]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30694</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30694"/>
-        <updated>2026-09-28T21:25:56.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/185269030?u=1fc22565ccf4566b6f734fabaa87e03d9a31cfe4&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Summary</h3>
-<p dir="auto">Adds the missing compatibility data for the following <code class="notranslate">menus.update()</code> properties:</p>
-<ul dir="auto">
-<li><code class="notranslate">icons</code> — Firefox 64</li>
-<li><code class="notranslate">viewTypes</code> — Firefox 64</li>
-<li><code class="notranslate">visible</code> — Firefox 63</li>
-</ul>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The compatibility data was added after investigating the Firefox WebExtensions implementation and documentation, Firefox release notes, and the related Mozilla Bugzilla issues.</p>
-<p dir="auto">The Firefox version information is based on the following sources:</p>
-<ul dir="auto">
-<li><code class="notranslate">menus.update.visible</code> — Firefox 63, based on Firefox 63 release information and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1482529" rel="nofollow">Bug 1482529</a>.</li>
-<li><code class="notranslate">menus.update.icons</code> — Firefox 64, based on Firefox 64 release information and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1414566" rel="nofollow">Bug 1414566</a>.</li>
-<li><code class="notranslate">menus.update.viewTypes</code> — Firefox 64, based on Firefox 64 release information and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1416839" rel="nofollow">Bug 1416839</a>.</li>
-</ul>
-<p dir="auto">These properties were already part of the <code class="notranslate">menus.update()</code> API surface, but were not represented as individual compatibility subfeatures in BCD.</p>
-<p dir="auto">The three properties have therefore been added as separate subfeatures under <code class="notranslate">webextensions.api.menus.update</code>, following the existing BCD structure for WebExtensions API parameters and properties.</p>
-<p dir="auto">For browser support values outside Firefox, the entries follow the existing BCD compatibility data and mirroring conventions. In particular, <code class="notranslate">safari_ios</code> is represented as <code class="notranslate">mirror</code> for <code class="notranslate">icons</code> and <code class="notranslate">viewTypes</code> where the BCD linter confirms that the value can be automatically mirrored from Safari.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30615.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5544845808" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30615" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30615/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30615">#30615</a></p>]]></content>
-        <author>
-            <name>BHUVANSH855</name>
-            <email>BHUVANSH855@noreply.github.com</email>
-            <uri>https://github.com/BHUVANSH855</uri>
-        </author>
-        <published>2026-09-28T21:25:14.000Z</published>
     </entry>
 </feed>
