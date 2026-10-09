@@ -2,11 +2,133 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-08T20:18:51.086Z</updated>
+    <updated>2026-10-09T00:46:30.204Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix the broken reference to examples in Using readable byte streams]]></title>
+        <id>https://github.com/mdn/content/pull/46067</id>
+        <link href="https://github.com/mdn/content/pull/46067"/>
+        <updated>2026-10-09T00:30:26.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52491201?u=b42786e44b729e060623dfa59f38369927cdb787&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">In <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams" rel="nofollow">Using readable byte streams</a>, the note in "Underlying push source with byte reader" ends with:</p>
+<blockquote>
+<p dir="auto">This is similar to the behavior shown in the "pull: underlying byte source examples.</p>
+</blockquote>
+<p dir="auto">The quote is never closed, and there's no section with that name on the page. This replaces it with links to the two examples that show the behavior the note describes:</p>
+<blockquote>
+<p dir="auto">This is similar to the behavior shown in the <a href="#underlying_pull_source_with_default_reader">Underlying pull source with default reader</a> and <a href="#underlying_pull_source_with_default_reader_and_no_allocation">Underlying pull source with default reader and no allocation</a> examples.</p>
+</blockquote>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Readers can't tell which examples the note means, and the unclosed quote reads like a typo.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The note is about using a byte source with a default reader, with and without automatic buffer allocation. Those are exactly the two examples linked: the first sets <code class="notranslate">autoAllocateChunkSize</code>, and the second doesn't, so data is enqueued. I'm inferring that these are the intended targets from the content of the note; if you had a different section in mind, I'm happy to change the links.</p>
+<p dir="auto">This sentence has been there since the page was first written in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1253462394" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/16818" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/16818/hovercard" href="https://github.com/mdn/content/pull/16818">#16818</a>, so I couldn't find an earlier version to go back to. I linked to the sections the same way the page already does elsewhere.</p>
+<p dir="auto">I checked that no other open PR touches this file.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>kumability</name>
+            <email>kumability@noreply.github.com</email>
+            <uri>https://github.com/kumability</uri>
+        </author>
+        <published>2026-10-09T00:27:14.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Give the two NASA images on Accessibility and spatial patterns distinct alt text]]></title>
+        <id>https://github.com/mdn/content/pull/46066</id>
+        <link href="https://github.com/mdn/content/pull/46066"/>
+        <updated>2026-10-09T00:24:40.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52491201?u=b42786e44b729e060623dfa59f38369927cdb787&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">In <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Accessibility_and_Spatial_Patterns" rel="nofollow">Accessibility and spatial patterns</a>, the two NASA images (<code class="notranslate">yellow_edge_3.gif</code> and <code class="notranslate">yellow_edge_4.gif</code>) had the same three-sentence alt text. This gives each image its own short alt text and moves the shared text into a paragraph below the images, unchanged.</p>
+<ul dir="auto">
+<li><code class="notranslate">yellow_edge_3.gif</code>: "Yellow and black vertical bars on a white background."</li>
+<li><code class="notranslate">yellow_edge_4.gif</code>: "Red and black vertical bars on a gray background."</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">With the same long alt text on both images, screen reader users hear the same three sentences twice and can't tell the two images apart. Sighted readers, on the other hand, never see this text, even though it's the explanation of what the images show.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The shared text is the caption from the NASA article the page cites, <a href="https://web.archive.org/web/20250216024807/https://colorusage.arc.nasa.gov/blue_2.php" rel="nofollow">"Designing With Blue"</a>. There, it appears once below both images, and each image has its own alt text ("Yellow and Black bars against a white background." and "red and black bars on a grey background."). The new alt texts follow those, using "gray" as MDN does. The two alts have been identical since the page was imported in 2020, so this isn't undoing an intentional change.</p>
+<p dir="auto">I checked that no other open PR touches this file.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>kumability</name>
+            <email>kumability@noreply.github.com</email>
+            <uri>https://github.com/kumability</uri>
+        </author>
+        <published>2026-10-09T00:22:55.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document SubtleCrypto key encapsulation methods and ML-KEM]]></title>
+        <id>https://github.com/mdn/content/pull/46065</id>
+        <link href="https://github.com/mdn/content/pull/46065"/>
+        <updated>2026-10-08T22:13:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto"><strong>New pages</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">API/SubtleCrypto/encapsulateKey</code>: The <code class="notranslate">encapsulateKey()</code> method, and the ML-KEM algorithm</li>
+<li><code class="notranslate">API/SubtleCrypto/encapsulateBits</code>: The <code class="notranslate">encapsulateBits()</code> method</li>
+<li><code class="notranslate">API/SubtleCrypto/decapsulateKey</code>: The <code class="notranslate">decapsulateKey()</code> method</li>
+<li><code class="notranslate">API/SubtleCrypto/decapsulateBits</code>: The <code class="notranslate">decapsulateBits()</code> method</li>
+</ul>
+<p dir="auto"><strong>Updated pages</strong></p>
+<ul dir="auto">
+<li><code class="notranslate">API/SubtleCrypto</code>: Added the four methods to the list of instance methods, a section on encapsulating keys, and ML-KEM to the supported algorithms table</li>
+<li><code class="notranslate">API/SubtleCrypto/generateKey</code>: Added ML-KEM, the four new key usages, and an ML-KEM example</li>
+<li><code class="notranslate">API/SubtleCrypto/importKey</code>: Added the <code class="notranslate">raw-public</code> and <code class="notranslate">raw-seed</code> formats, ML-KEM to the other formats, the four new key usages, and an ML-KEM example</li>
+<li><code class="notranslate">API/SubtleCrypto/exportKey</code>: Added the <code class="notranslate">raw-public</code> and <code class="notranslate">raw-seed</code> formats</li>
+<li><code class="notranslate">API/CryptoKey/usages</code>: Added the <code class="notranslate">encapsulateKey</code>, <code class="notranslate">encapsulateBits</code>, <code class="notranslate">decapsulateKey</code> and <code class="notranslate">decapsulateBits</code> usages</li>
+<li><code class="notranslate">API/Web_Crypto_API</code>: Added key encapsulation to the description of <code class="notranslate">SubtleCrypto</code></li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Document methods supported in Chrome 155 and in Firefox Nightly</li>
+<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5448396975" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45694" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45694/hovercard" href="https://github.com/mdn/content/issues/45694">#45694</a></li>
+</ul>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L790">BCD: SubtleCrypto.encapsulateKey</a></li>
+<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L754">BCD: SubtleCrypto.encapsulateBits</a></li>
+<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L190">BCD: SubtleCrypto.decapsulateKey</a></li>
+<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L154">BCD: SubtleCrypto.decapsulateBits</a></li>
+<li><a href="https://wicg.github.io/webcrypto-modern-algos/" rel="nofollow">Spec: Modern Algorithms in the Web Cryptography API</a></li>
+<li><a href="https://bugzil.la/1943614" rel="nofollow">Firefox bug 1943614</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-10-08T22:11:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fx158: Deferred module evaluation]]></title>
+        <id>https://github.com/mdn/content/pull/46064</id>
+        <link href="https://github.com/mdn/content/pull/46064"/>
+        <updated>2026-10-08T21:09:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Added release note for deferred module evaluation (<code class="notranslate">import defer</code> and <code class="notranslate">import.defer()</code>), Nightly only</li>
+<li>Added an experimental features entry for the <code class="notranslate">javascript.options.experimental.defer_import_eval</code> preference</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617210106" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45892" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45892/hovercard" href="https://github.com/mdn/content/issues/45892">#45892</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://bugzil.la/1952263" rel="nofollow">Firefox bug 1952263</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-10-08T21:08:09.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fx158: CSSNumericValue.equals()]]></title>
         <id>https://github.com/mdn/content/pull/46063</id>
@@ -59,34 +181,6 @@
             <uri>https://github.com/pepelsbey</uri>
         </author>
         <published>2026-10-08T19:38:13.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fx158: JPEG XL image format enabled by default]]></title>
-        <id>https://github.com/mdn/content/pull/46061</id>
-        <link href="https://github.com/mdn/content/pull/46061"/>
-        <updated>2026-10-08T20:18:00.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added release notes for JPEG XL support and the <code class="notranslate">image/jxl</code> value in the image <code class="notranslate">Accept</code> header</li>
-<li>Removed the JPEG XL and <code class="notranslate">image/jxl</code> Accept header entries from the experimental features page</li>
-<li>Added a Firefox 158 row to the image values in the list of default Accept values</li>
-<li>Updated JPEG XL browser support on the image types guide for Firefox 158 and Chrome 155</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617216463" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45896" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45896/hovercard" href="https://github.com/mdn/content/issues/45896">#45896</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://bugzil.la/2065096" rel="nofollow">Firefox bug 2065096</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5766287675" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30805" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30805/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30805">mdn/browser-compat-data#30805</a></li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-10-08T17:34:30.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add rel notes and experimental features notes for fx speculation rule…]]></title>
@@ -682,7 +776,7 @@ console.log(event);
         <title type="html"><![CDATA[Update persistent/non-persistent notifications docs]]></title>
         <id>https://github.com/mdn/content/pull/46009</id>
         <link href="https://github.com/mdn/content/pull/46009"/>
-        <updated>2026-10-08T04:11:42.000Z</updated>
+        <updated>2026-10-08T23:40:15.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is basically <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3447591712" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41267" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41267/hovercard" href="https://github.com/mdn/content/pull/41267">#41267</a>, rebased on the current docs.</p>
 <p dir="auto">Since I made <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3447591712" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/41267" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/41267/hovercard" href="https://github.com/mdn/content/pull/41267">#41267</a>, the notifications docs have acknowledged the difference between persistent and non-persistent notifications, but I thought there was still some clarity that could be added, and some errors still (e.g. persistent notifications are <strong>not</strong> only created from a SW, they can also be created by a web page).</p>
 <p dir="auto">One thing I wasn't sure about was whether <code class="notranslate">click</code>, <code class="notranslate">close</code>, and <code class="notranslate">show</code> are only fired on NP notifications.</p>
@@ -727,183 +821,5 @@ console.log(event);
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-10-06T22:53:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[chore(attachments): compress images flagged by sharp-based filecheck]]></title>
-        <id>https://github.com/mdn/content/pull/46004</id>
-        <link href="https://github.com/mdn/content/pull/46004"/>
-        <updated>2026-10-06T22:13:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Compress the 15 images that the sharp-based filecheck reports as compressible, using <code class="notranslate">npm run filecheck -- --save-compression</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Ensure that PRs touching these images do not fail filecheck after the compressor switch.</p>
-<h3 dir="auto">Additional details</h3>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th>File</th>
-<th>Before</th>
-<th>After</th>
-<th>Savings</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code class="notranslate">glossary/bezier_curve/bezier_2_big.gif</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/glossary/bezier_curve/bezier_2_big.gif">150.3 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/glossary/bezier_curve/bezier_2_big.gif">109.1 KB</a></td>
-<td>27%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/css/reference/properties/image-orientation/oriole.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/css/reference/properties/image-orientation/oriole.jpg">88.2 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/css/reference/properties/image-orientation/oriole.jpg">52.8 KB</a></td>
-<td>40%</td>
-</tr>
-<tr>
-<td><code class="notranslate">learn_web_development/core/structuring_content/headings_and_paragraphs/newspaper_small.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/learn_web_development/core/structuring_content/headings_and_paragraphs/newspaper_small.jpg">56.4 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/learn_web_development/core/structuring_content/headings_and_paragraphs/newspaper_small.jpg">40.6 KB</a></td>
-<td>28%</td>
-</tr>
-<tr>
-<td><code class="notranslate">learn_web_development/core/structuring_content/html_images/dinosaur_small.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/learn_web_development/core/structuring_content/html_images/dinosaur_small.jpg">20.4 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/learn_web_development/core/structuring_content/html_images/dinosaur_small.jpg">7.1 KB</a></td>
-<td>65%</td>
-</tr>
-<tr>
-<td><code class="notranslate">games/techniques/3d_on_the_web/webxr/hmds.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/games/techniques/3d_on_the_web/webxr/hmds.jpg">16.9 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/games/techniques/3d_on_the_web/webxr/hmds.jpg">5.9 KB</a></td>
-<td>65%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/mathml/tutorials/for_beginners/text_containers/operator-spacing.png</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/mathml/tutorials/for_beginners/text_containers/operator-spacing.png">15.3 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/mathml/tutorials/for_beginners/text_containers/operator-spacing.png">11.3 KB</a></td>
-<td>26%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/progressive_web_apps/tutorials/cycletracker/manifest_file/debugger_devtools.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/progressive_web_apps/tutorials/cycletracker/manifest_file/debugger_devtools.jpg">12.2 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/progressive_web_apps/tutorials/cycletracker/manifest_file/debugger_devtools.jpg">8.6 KB</a></td>
-<td>30%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/html/reference/elements/map/parrots.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/html/reference/elements/map/parrots.jpg">11.9 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/html/reference/elements/map/parrots.jpg">8.5 KB</a></td>
-<td>28%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/media/guides/formats/video_codecs/stroboscopic-effect.gif</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/media/guides/formats/video_codecs/stroboscopic-effect.gif">9.6 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/media/guides/formats/video_codecs/stroboscopic-effect.gif">4.9 KB</a></td>
-<td>49%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/css/reference/at-rules/@font-face/font-style/garamonditalic.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/css/reference/at-rules/@font-face/font-style/garamonditalic.jpg">8.8 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/css/reference/at-rules/@font-face/font-style/garamonditalic.jpg">3.1 KB</a></td>
-<td>65%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/css/reference/at-rules/@font-face/font-style/garamondartificialstyle.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/css/reference/at-rules/@font-face/font-style/garamondartificialstyle.jpg">8.6 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/css/reference/at-rules/@font-face/font-style/garamondartificialstyle.jpg">3.0 KB</a></td>
-<td>65%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/api/htmlelement/offsetleft/offsetleft.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/api/htmlelement/offsetleft/offsetleft.jpg">8.4 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/api/htmlelement/offsetleft/offsetleft.jpg">5.9 KB</a></td>
-<td>30%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/css/reference/at-rules/@font-face/font-style/garamondunstyled.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/css/reference/at-rules/@font-face/font-style/garamondunstyled.jpg">8.4 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/css/reference/at-rules/@font-face/font-style/garamondunstyled.jpg">2.8 KB</a></td>
-<td>66%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/api/webxr_device_api/lighting/specularlight-titan.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/api/webxr_device_api/lighting/specularlight-titan.jpg">5.4 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/api/webxr_device_api/lighting/specularlight-titan.jpg">2.7 KB</a></td>
-<td>51%</td>
-</tr>
-<tr>
-<td><code class="notranslate">web/api/window/createimagebitmap/50x50.jpg</code></td>
-<td><a href="https://github.com/mdn/content/blob/c82ef871532e8cf9bf8972f8c076d57cd95bb8b2/files/en-us/web/api/window/createimagebitmap/50x50.jpg">1.4 KB</a></td>
-<td><a href="https://github.com/mdn/content/blob/95ac0ebd0953f2846f5446c52207e4e9831dad3b/files/en-us/web/api/window/createimagebitmap/50x50.jpg">909 B</a></td>
-<td>35%</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<p dir="auto">Paths are relative to <code class="notranslate">files/en-us/</code>. Both GIFs decode pixel-identical to the originals. The JPEGs are re-encoded at quality 75; please check them visually via the links above. <code class="notranslate">oriole.jpg</code> keeps its EXIF orientation, which the <code class="notranslate">image-orientation</code> example relies on.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Depends on:</p>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5729930536" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45999" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45999/hovercard" href="https://github.com/mdn/content/pull/45999">#45999</a></li>
-</ul>]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-10-06T21:39:30.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[build(filecheck): replace imagemin with sharp]]></title>
-        <id>https://github.com/mdn/content/pull/45999</id>
-        <link href="https://github.com/mdn/content/pull/45999"/>
-        <updated>2026-10-06T22:12:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Update filecheck to compress JPEG, PNG, and GIF images with sharp and optimize SVGs with SVGO directly. Remove imagemin dependencies and temporary compression files.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Simplify image compression dependencies and remove standalone binary installation scripts.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Regression tests cover format preservation, GIF frames and timing, transparency, EXIF orientation, and file size limits.</p>
-<p dir="auto">Behavior changes compared to imagemin:</p>
-<ul dir="auto">
-<li>JPEG: mozjpeg's <code class="notranslate">cjpeg</code> reused the quality of JPEG input and kept its metadata, so it never flagged a JPEG in this repo. sharp re-encodes at quality 75 with mozjpeg optimizations and applies the EXIF orientation before stripping metadata. A full run over <code class="notranslate">files/</code> newly flags 15 existing files (13 JPEGs, 1 PNG, 1 GIF), which CI only reports once a PR touches them.</li>
-<li>GIF: gifsicle was lossless. sharp re-quantizes frames: 55 of the 58 GIFs in this repo re-encode pixel-identical, the other 3 show small colour shifts or merge a near-duplicate frame while keeping its delay, and none of them exceeds the compression threshold.</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-10-06T14:15:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[added experimental release note for random() CSS Function]]></title>
-        <id>https://github.com/mdn/content/pull/45997</id>
-        <link href="https://github.com/mdn/content/pull/45997"/>
-        <updated>2026-10-07T09:27:34.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added Experimental Features release for <code class="notranslate">random()</code> CSS function</li>
-<li>Added <code class="notranslate">random()</code> CSS function to Firefox 158 release in Experimental Section</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a href="https://github.com/mdn/content/issues/45903" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45903/hovercard">MDN issue #45903</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/content/pull/45729" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45729/hovercard">Content PR</a></li>
-<li><a href="https://github.com/mdn/browser-compat-data/pull/30756" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30756/hovercard">BCD PR</a></li>
-</ul>]]></content>
-        <author>
-            <name>dletorey</name>
-            <email>dletorey@noreply.github.com</email>
-            <uri>https://github.com/dletorey</uri>
-        </author>
-        <published>2026-10-06T13:33:41.000Z</published>
     </entry>
 </feed>
