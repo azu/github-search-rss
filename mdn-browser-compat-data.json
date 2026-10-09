@@ -6,10 +6,21 @@
     "description": "mdn/browser-compat-data update data on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n\n<p dir=\"auto\">Chrome 150 supports <a href=\"https://webgpufundamentals.org/webgpu/lessons/webgpu-immediates.html\" rel=\"nofollow\">WebGPU immediates</a>; see <a href=\"https://chromestatus.com/feature/5199437611794432\" rel=\"nofollow\">https://chromestatus.com/feature/5199437611794432</a>.</p>\n<p dir=\"auto\">The web platform-facing part of this is the <code class=\"notranslate\">setImmediates()</code> method, which has already been added to BCD.</p>\n<p dir=\"auto\">I just thought we might want to add the specific platform support notes, like all other WebGPU entries have; this PR does that.</p>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
+            "url": "https://github.com/mdn/browser-compat-data/pull/30824",
+            "title": "WebGPU setImmediates add support data",
+            "date_modified": "2026-10-09T15:04:14.000Z",
+            "date_published": "2026-10-09T15:03:31.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h4 dir=\"auto\">Summary</h4>\n<p dir=\"auto\">Chrome added support for the CSS <code class=\"notranslate\">ruby-overhang</code> property in version 151; see <a href=\"https://chromestatus.com/feature/6560118298771456\" rel=\"nofollow\">https://chromestatus.com/feature/6560118298771456</a>.</p>\n<p dir=\"auto\">The BCD is already there, although for some reason, Chrome is listed as not supporting the <code class=\"notranslate\">none</code> legacy alias of <code class=\"notranslate\">spaces</code>. I've tested it, and it does, so I'm updating the BCD in this PR.</p>\n\n<h4 dir=\"auto\">Test results and supporting details</h4>\n\n\n<h4 dir=\"auto\">Related issues</h4>\n\n",
             "url": "https://github.com/mdn/browser-compat-data/pull/30823",
             "title": "Chrome 151 supports ruby-overhang: none",
-            "date_modified": "2026-10-09T13:54:46.000Z",
+            "date_modified": "2026-10-09T14:01:36.000Z",
             "date_published": "2026-10-09T13:07:01.000Z",
             "author": {
                 "name": "chrisdavidmills",
@@ -168,17 +179,6 @@
             "author": {
                 "name": "chrisdavidmills",
                 "url": "https://github.com/chrisdavidmills"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h4 dir=\"auto\">Summary</h4>\n<ul dir=\"auto\">\n<li>Adds the <code class=\"notranslate\">svgView()</code> fragment identifier, as in <code class=\"notranslate\">image.svg#svgView(viewBox(0,0,50,50))</code>, with its <code class=\"notranslate\">viewBox()</code>, <code class=\"notranslate\">preserveAspectRatio()</code> and <code class=\"notranslate\">transform()</code> parameters</li>\n<li>Marks <code class=\"notranslate\">transform()</code> as partial in Firefox: it’s applied around the center of the viewport, and after the view box in viewport pixels instead of user units</li>\n<li>Versions follow the parent <code class=\"notranslate\">&lt;view&gt;</code> element and its other subfeatures (I think it’s safe to assume they were implemented at the same time)</li>\n</ul>\n<h4 dir=\"auto\">Test results and supporting details</h4>\n<ul dir=\"auto\">\n<li>Tested in Chrome 154, Firefox 157 and Safari 27 by drawing <code class=\"notranslate\">&lt;img src=\"test.svg#svgView(…)\"&gt;</code> to a canvas and measuring where known shapes land</li>\n<li><code class=\"notranslate\">viewBox()</code>, <code class=\"notranslate\">preserveAspectRatio()</code> and <code class=\"notranslate\">translate()</code> in <code class=\"notranslate\">transform()</code> give the same result in all three</li>\n<li><code class=\"notranslate\">transform(scale(0.5))</code> moves a square at 40,40 to 20,20 in Chrome and Safari, and to 45,45 in Firefox</li>\n<li>WPT: <a href=\"https://wpt.fyi/results/svg/linking/reftests/svgview-transform.html\" rel=\"nofollow\"><code class=\"notranslate\">svgview-transform.html</code></a> and <a href=\"https://wpt.fyi/results/svg/linking/reftests/svgview-viewbox-then-transform.html\" rel=\"nofollow\"><code class=\"notranslate\">svgview-viewbox-then-transform.html</code></a> fail only in Firefox</li>\n<li>Firefox <code class=\"notranslate\">transform()</code> bug: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2066140\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2066140</a></li>\n<li>Firefox 15 implemented <code class=\"notranslate\">&lt;view&gt;</code> and <code class=\"notranslate\">svgView()</code> together: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=512525\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=512525</a></li>\n<li>Safari ignores the fragment when drawing an image to a canvas that was never inserted into the page, which is a canvas bug rather than an <code class=\"notranslate\">svgView()</code> one: <a href=\"https://webkit.org/b/322167\" rel=\"nofollow\">https://webkit.org/b/322167</a></li>\n</ul>\n<h4 dir=\"auto\">Related issues</h4>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5019644895\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/852\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/852/hovercard\" href=\"https://github.com/mdn/mdn/issues/852\">mdn/mdn#852</a></li>\n</ul>",
-            "url": "https://github.com/mdn/browser-compat-data/pull/30779",
-            "title": "Add svgView() fragment identifier to SVG <view>",
-            "date_modified": "2026-10-07T13:13:48.000Z",
-            "date_published": "2026-10-07T13:12:51.000Z",
-            "author": {
-                "name": "pepelsbey",
-                "url": "https://github.com/pepelsbey"
             }
         }
     ]
