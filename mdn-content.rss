@@ -2,11 +2,104 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-10T03:09:13.746Z</updated>
+    <updated>2026-10-10T10:11:44.524Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[IDBDatabase: explain why versionchange should close the connection]]></title>
+        <id>https://github.com/mdn/content/pull/46091</id>
+        <link href="https://github.com/mdn/content/pull/46091"/>
+        <updated>2026-10-10T09:25:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52391318?u=f6a09bd62b30aba8334ba0c1def5f8d3849dc806&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Expands the <code class="notranslate">IDBDatabase: versionchange</code> event page to explain why the event matters: an upgrade or deletion requested from another connection waits until every other connection is closed, closing the connection in the <code class="notranslate">versionchange</code> handler is the usual way to let it proceed, and the requesting side gets a <code class="notranslate">blocked</code> event while connections remain open. Replaces the examples with one that closes the connection in <code class="notranslate">onversionchange</code> and one that handles <code class="notranslate">blocked</code> on the requesting side. The one-line summary on the <code class="notranslate">IDBDatabase</code> page now says the handler should close the database.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1699638033" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/26639" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/26639/hovercard" href="https://github.com/mdn/content/issues/26639">#26639</a> points out that the page barely explains <code class="notranslate">versionchange</code>, even though not handling it leaves another tab's upgrade stuck.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Validation boundary: the behavior described follows the "open a database connection" / "delete a database" steps of the <a href="https://w3c.github.io/IndexedDB/#opening" rel="nofollow">IndexedDB spec</a> (fire <code class="notranslate">versionchange</code> at other connections, fire <code class="notranslate">blocked</code> if any remain open, wait for them to close) and the existing "<a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB#version_changes_while_a_web_app_is_open_in_another_tab" rel="nofollow">Version changes while a web app is open in another tab</a>" section, which the page now links to. I removed claims from an earlier draft about stale tabs silently corrupting data, because I could not source them. I did not run the examples in a browser or build the site locally.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #26639.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1699638033" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/26639" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/26639/hovercard" href="https://github.com/mdn/content/issues/26639">#26639</a></p>
+<hr>
+<p dir="auto">AI assistance disclosure: this change was prepared with the help of an AI coding agent (Grok Bot) and has not been reviewed line by line by the account owner.</p>]]></content>
+        <author>
+            <name>ump45nose</name>
+            <email>ump45nose@noreply.github.com</email>
+            <uri>https://github.com/ump45nose</uri>
+        </author>
+        <published>2026-10-10T09:24:13.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSP default-src: remove Firefox SVG sprite blocking workaround (fixed in Firefox 132)]]></title>
+        <id>https://github.com/mdn/content/pull/46090</id>
+        <link href="https://github.com/mdn/content/pull/46090"/>
+        <updated>2026-10-10T08:17:57.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52391318?u=f6a09bd62b30aba8334ba0c1def5f8d3849dc806&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Removes the "Firefox <code class="notranslate">default-src: none</code> SVG sprite blocking issue" section from the <code class="notranslate">default-src</code> CSP reference page.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">That section documented a Firefox-only workaround for external SVG sprites (<code class="notranslate">&lt;use href="file.svg#id"&gt;</code>) being blocked under <code class="notranslate">default-src 'none'; img-src 'self'</code>. Firefox fixed this in version 132 (<a href="https://bugzil.la/1773976" rel="nofollow">bug 1773976</a>, RESOLVED FIXED, <code class="notranslate">status-firefox132: fixed</code>), and the page already carries a note saying so. The Firefox engineer who landed the fix noted in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1773976#c15" rel="nofollow">comment 15</a> that <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2388257895" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/34592" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/34592/hovercard" href="https://github.com/mdn/content/pull/34592">#34592</a> "should probably be mostly reverted" afterwards.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2388257895" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/34592" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/34592/hovercard" href="https://github.com/mdn/content/pull/34592">#34592</a> also touched <code class="notranslate">content-security-policy/index.md</code> and the CSP practical implementation guide; those parts no longer contain the Firefox SVG sprite text on <code class="notranslate">main</code>, so only this section remained. I searched <code class="notranslate">mdn/content</code> for links to the removed section's anchor and found none. Docs-only; I did not run the local build.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #36745.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2650151500" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36745" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36745/hovercard" href="https://github.com/mdn/content/issues/36745">#36745</a><br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2388257895" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/34592" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/34592/hovercard" href="https://github.com/mdn/content/pull/34592">#34592</a></p>
+<hr>
+<p dir="auto">AI assistance disclosure: this change was prepared with the help of an AI writing/coding assistant and reviewed before submitting.</p>]]></content>
+        <author>
+            <name>ump45nose</name>
+            <email>ump45nose@noreply.github.com</email>
+            <uri>https://github.com/ump45nose</uri>
+        </author>
+        <published>2026-10-10T08:17:38.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[HTMLImageElement.decode(): note behavior with lazy-loaded images]]></title>
+        <id>https://github.com/mdn/content/pull/46089</id>
+        <link href="https://github.com/mdn/content/pull/46089"/>
+        <updated>2026-10-10T08:18:34.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52391318?u=f6a09bd62b30aba8334ba0c1def5f8d3849dc806&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Adds a note to <code class="notranslate">HTMLImageElement.decode()</code> about images with <code class="notranslate">loading="lazy"</code> that have not loaded yet: Firefox rejects the returned promise with an <code class="notranslate">EncodingError</code> <code class="notranslate">DOMException</code> while Chrome does not, and calling <code class="notranslate">decode()</code> from an <code class="notranslate">onload</code> handler works in both.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The page says <code class="notranslate">decode()</code> "can be used to initiate loading of the image", which is misleading for lazy-loaded images that haven't loaded, and readers hit an unexplained <code class="notranslate">EncodingError: Invalid image request.</code> in Firefox.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Behavior as reported in the issue and in <a href="https://stackoverflow.com/questions/65146920/domexception-invalid-image-request" rel="nofollow">https://stackoverflow.com/questions/65146920/domexception-invalid-image-request</a>. I did not run a browser test myself; the note only states the reported Firefox/Chrome difference and the <code class="notranslate">onload</code> workaround the reporter confirmed.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38034.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2839332675" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38034" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38034/hovercard" href="https://github.com/mdn/content/issues/38034">#38034</a></p>
+<hr>
+<p dir="auto">AI assistance disclosure: this change was prepared with the help of an AI writing/coding assistant and reviewed before submitting.</p>]]></content>
+        <author>
+            <name>ump45nose</name>
+            <email>ump45nose@noreply.github.com</email>
+            <uri>https://github.com/ump45nose</uri>
+        </author>
+        <published>2026-10-10T08:16:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Correct human voice lower frequency]]></title>
+        <id>https://github.com/mdn/content/pull/46088</id>
+        <link href="https://github.com/mdn/content/pull/46088"/>
+        <updated>2026-10-10T08:05:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/25646384?u=1408dbb12fe529b486f1297f2865ea625bfa072c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The previous human vocal range numbers are unreasonable and did not have sources. This PR takes the numbers from <a href="https://en.wikipedia.org/wiki/Voice_frequency" rel="nofollow">https://en.wikipedia.org/wiki/Voice_frequency</a> .</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Most businesswomen and all men do not reach 300 Hz much less 500 Hz during normal non-singing talking.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Asserting human 300 Hz lower bound -&gt; include male 90 Hz lower bound</li>
+<li>Clarify it's "harmonic series a.k.a." overtones, following the #Fundamental_frequency section, not just a vague "the waveform"</li>
+<li>Use the narrowband 3,400 Hz not 3 kHz upper limit for "telephone networks"</li>
+<li>Replace the unsourced 500 Hz to 3 kHz range with 300 Hz to 3.4 kHz from a .gov website</li>
+</ul>
+<p dir="auto">I did not touch the 18 kHz upper bounds despite my sibilants and plosives sounding fine when beyond 10 kHz is cut off. I also will not challenge the 300 Hz lower bound despite the "y" vowel F1 formant requiring 235 Hz.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">N/A</p>]]></content>
+        <author>
+            <name>danielzgtg</name>
+            <email>danielzgtg@noreply.github.com</email>
+            <uri>https://github.com/danielzgtg</uri>
+        </author>
+        <published>2026-10-10T06:01:33.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix many problems with Audio API params]]></title>
         <id>https://github.com/mdn/content/pull/46087</id>
@@ -338,123 +431,5 @@
             <uri>https://github.com/kumability</uri>
         </author>
         <published>2026-10-09T00:27:14.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Give the two NASA images on Accessibility and spatial patterns distinct alt text]]></title>
-        <id>https://github.com/mdn/content/pull/46066</id>
-        <link href="https://github.com/mdn/content/pull/46066"/>
-        <updated>2026-10-09T00:24:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52491201?u=b42786e44b729e060623dfa59f38369927cdb787&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">In <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Accessibility_and_Spatial_Patterns" rel="nofollow">Accessibility and spatial patterns</a>, the two NASA images (<code class="notranslate">yellow_edge_3.gif</code> and <code class="notranslate">yellow_edge_4.gif</code>) had the same three-sentence alt text. This gives each image its own short alt text and moves the shared text into a paragraph below the images, unchanged.</p>
-<ul dir="auto">
-<li><code class="notranslate">yellow_edge_3.gif</code>: "Yellow and black vertical bars on a white background."</li>
-<li><code class="notranslate">yellow_edge_4.gif</code>: "Red and black vertical bars on a gray background."</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">With the same long alt text on both images, screen reader users hear the same three sentences twice and can't tell the two images apart. Sighted readers, on the other hand, never see this text, even though it's the explanation of what the images show.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The shared text is the caption from the NASA article the page cites, <a href="https://web.archive.org/web/20250216024807/https://colorusage.arc.nasa.gov/blue_2.php" rel="nofollow">"Designing With Blue"</a>. There, it appears once below both images, and each image has its own alt text ("Yellow and Black bars against a white background." and "red and black bars on a grey background."). The new alt texts follow those, using "gray" as MDN does. The two alts have been identical since the page was imported in 2020, so this isn't undoing an intentional change.</p>
-<p dir="auto">I checked that no other open PR touches this file.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">None.</p>]]></content>
-        <author>
-            <name>kumability</name>
-            <email>kumability@noreply.github.com</email>
-            <uri>https://github.com/kumability</uri>
-        </author>
-        <published>2026-10-09T00:22:55.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document SubtleCrypto key encapsulation methods and ML-KEM]]></title>
-        <id>https://github.com/mdn/content/pull/46065</id>
-        <link href="https://github.com/mdn/content/pull/46065"/>
-        <updated>2026-10-08T22:13:07.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto"><strong>New pages</strong></p>
-<ul dir="auto">
-<li><code class="notranslate">API/SubtleCrypto/encapsulateKey</code>: The <code class="notranslate">encapsulateKey()</code> method, and the ML-KEM algorithm</li>
-<li><code class="notranslate">API/SubtleCrypto/encapsulateBits</code>: The <code class="notranslate">encapsulateBits()</code> method</li>
-<li><code class="notranslate">API/SubtleCrypto/decapsulateKey</code>: The <code class="notranslate">decapsulateKey()</code> method</li>
-<li><code class="notranslate">API/SubtleCrypto/decapsulateBits</code>: The <code class="notranslate">decapsulateBits()</code> method</li>
-</ul>
-<p dir="auto"><strong>Updated pages</strong></p>
-<ul dir="auto">
-<li><code class="notranslate">API/SubtleCrypto</code>: Added the four methods to the list of instance methods, a section on encapsulating keys, and ML-KEM to the supported algorithms table</li>
-<li><code class="notranslate">API/SubtleCrypto/generateKey</code>: Added ML-KEM, the four new key usages, and an ML-KEM example</li>
-<li><code class="notranslate">API/SubtleCrypto/importKey</code>: Added the <code class="notranslate">raw-public</code> and <code class="notranslate">raw-seed</code> formats, ML-KEM to the other formats, the four new key usages, and an ML-KEM example</li>
-<li><code class="notranslate">API/SubtleCrypto/exportKey</code>: Added the <code class="notranslate">raw-public</code> and <code class="notranslate">raw-seed</code> formats</li>
-<li><code class="notranslate">API/CryptoKey/usages</code>: Added the <code class="notranslate">encapsulateKey</code>, <code class="notranslate">encapsulateBits</code>, <code class="notranslate">decapsulateKey</code> and <code class="notranslate">decapsulateBits</code> usages</li>
-<li><code class="notranslate">API/Web_Crypto_API</code>: Added key encapsulation to the description of <code class="notranslate">SubtleCrypto</code></li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Document methods supported in Chrome 155 and in Firefox Nightly</li>
-<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5448396975" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45694" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45694/hovercard" href="https://github.com/mdn/content/issues/45694">#45694</a></li>
-</ul>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L790">BCD: SubtleCrypto.encapsulateKey</a></li>
-<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L754">BCD: SubtleCrypto.encapsulateBits</a></li>
-<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L190">BCD: SubtleCrypto.decapsulateKey</a></li>
-<li><a href="https://github.com/mdn/browser-compat-data/blob/main/api/SubtleCrypto.json#L154">BCD: SubtleCrypto.decapsulateBits</a></li>
-<li><a href="https://wicg.github.io/webcrypto-modern-algos/" rel="nofollow">Spec: Modern Algorithms in the Web Cryptography API</a></li>
-<li><a href="https://bugzil.la/1943614" rel="nofollow">Firefox bug 1943614</a></li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-10-08T22:11:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fx158: Deferred module evaluation]]></title>
-        <id>https://github.com/mdn/content/pull/46064</id>
-        <link href="https://github.com/mdn/content/pull/46064"/>
-        <updated>2026-10-08T21:09:55.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added release note for deferred module evaluation (<code class="notranslate">import defer</code> and <code class="notranslate">import.defer()</code>), Nightly only</li>
-<li>Added an experimental features entry for the <code class="notranslate">javascript.options.experimental.defer_import_eval</code> preference</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617210106" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45892" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45892/hovercard" href="https://github.com/mdn/content/issues/45892">#45892</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://bugzil.la/1952263" rel="nofollow">Firefox bug 1952263</a></li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-10-08T21:08:09.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fx158: CSSNumericValue.equals()]]></title>
-        <id>https://github.com/mdn/content/pull/46063</id>
-        <link href="https://github.com/mdn/content/pull/46063"/>
-        <updated>2026-10-08T19:47:16.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added release note for <code class="notranslate">CSSNumericValue.equals()</code>, behind <code class="notranslate">layout.css.typed-om.enabled</code></li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617230673" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45906" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45906/hovercard" href="https://github.com/mdn/content/issues/45906">#45906</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a href="https://bugzil.la/2074503" rel="nofollow">Firefox bug 2074503</a></li>
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5767833872" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46062" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46062/hovercard" href="https://github.com/mdn/content/pull/46062">#46062</a></li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-10-08T19:45:26.000Z</published>
     </entry>
 </feed>
