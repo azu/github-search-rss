@@ -2,16 +2,170 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-12T06:42:30.048Z</updated>
+    <updated>2026-10-12T16:15:14.393Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Revise scrollbar colors in CSS guide]]></title>
+        <id>https://github.com/mdn/content/pull/46113</id>
+        <link href="https://github.com/mdn/content/pull/46113"/>
+        <updated>2026-10-12T14:34:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Updated scrollbar styling example with new colors that have sufficient contrast.</p>
+<p dir="auto">An A11Y team was looking at this page:</p>
+<p dir="auto"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scrollbars_styling" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scrollbars_styling</a></p>
+<p dir="auto">and noted the red on yellow isn't meeting 1.4.11 contrast requirements of 3 to 1.</p>
+<p dir="auto">They suggested color combo that work (that are interesting):</p>
+<p dir="auto">Teal<br>
+thumb #0B4F4A<br>
+track #5F9E98<br>
+background #FFFFFF</p>
+<p dir="auto">Purple<br>
+thumb #4B0082<br>
+track #9E7FD0<br>
+background #FFFFFF</p>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2026-10-12T14:31:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix GainNode constructor options in advanced Web Audio guide]]></title>
+        <id>https://github.com/mdn/content/pull/46112</id>
+        <link href="https://github.com/mdn/content/pull/46112"/>
+        <updated>2026-10-12T13:21:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/143878990?u=a497d43bf9f6bbe6c308a73145be33c540facb48&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Fix the <code class="notranslate">GainNode</code> constructor options in the Advanced Web Audio API guide to use <code class="notranslate">gain: 1</code> instead of <code class="notranslate">value: 1</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">In the Web Audio API specification, the <code class="notranslate">GainOptions</code> dictionary accepts <code class="notranslate">gain</code> (float), not <code class="notranslate">value</code>. Passing <code class="notranslate">value: 1</code> has no effect because <code class="notranslate">value</code> is not a member of <code class="notranslate">GainOptions</code>. Using <code class="notranslate">gain: 1</code> correctly initializes the gain audio parameter matching the W3C specification and MDN's <code class="notranslate">GainNode()</code> constructor reference.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Reference: <a href="https://www.w3.org/TR/webaudio/#GainNode" rel="nofollow">Web Audio API Specification - GainOptions</a></li>
+<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/GainNode/GainNode" rel="nofollow">MDN GainNode() constructor reference</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46078.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5781287902" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46078" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46078/hovercard" href="https://github.com/mdn/content/issues/46078">#46078</a></p>]]></content>
+        <author>
+            <name>rajpreetcodes</name>
+            <email>rajpreetcodes@noreply.github.com</email>
+            <uri>https://github.com/rajpreetcodes</uri>
+        </author>
+        <published>2026-10-12T13:20:40.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document Sanitizer javascriptURLs and setJavascriptURLs()]]></title>
+        <id>https://github.com/mdn/content/pull/46111</id>
+        <link href="https://github.com/mdn/content/pull/46111"/>
+        <updated>2026-10-12T07:43:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Documented the new <code class="notranslate">Sanitizer.setJavascriptURLs()</code> method</li>
+<li>Documented the <code class="notranslate">javascriptURLs</code> option of <code class="notranslate">SanitizerConfig</code>, with its defaults for the constructor, the safe methods and the unsafe methods</li>
+<li>Updated <code class="notranslate">Sanitizer.removeUnsafe()</code>: it now also sets <code class="notranslate">javascriptURLs</code> to <code class="notranslate">false</code></li>
+<li>Listed the removal of <code class="notranslate">javascript:</code> URLs in the XSS-safe baseline and the default sanitizer configuration, which didn't mention it before</li>
+<li>Added a "JavaScript URLs" section to the usage guide</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617219222" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45898" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45898/hovercard" href="https://github.com/mdn/content/issues/45898">#45898</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://bugzil.la/2068934" rel="nofollow">Firefox bug 2068934</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5334784953" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/12898" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/12898/hovercard" href="https://github.com/whatwg/html/pull/12898">whatwg/html#12898</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5501356867" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30578" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30578/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30578">mdn/browser-compat-data#30578</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5810064030" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46110" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46110/hovercard" href="https://github.com/mdn/content/pull/46110">#46110</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-10-12T07:41:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fx158: Sanitizer javascriptURLs option and setJavascriptURLs()]]></title>
+        <id>https://github.com/mdn/content/pull/46110</id>
+        <link href="https://github.com/mdn/content/pull/46110"/>
+        <updated>2026-10-12T13:55:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Added release note for the <code class="notranslate">javascriptURLs</code> option of the HTML Sanitizer API configuration and the <code class="notranslate">Sanitizer.setJavascriptURLs()</code> method</li>
+<li>The links to <code class="notranslate">Sanitizer.setJavascriptURLs()</code> and <code class="notranslate">SanitizerConfig#javascripturls</code> resolve once the docs PR for these merges</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617219222" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45898" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45898/hovercard" href="https://github.com/mdn/content/issues/45898">#45898</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://bugzil.la/2068934" rel="nofollow">Firefox bug 2068934</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-10-12T07:35:14.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fx158: WebGPU clip-distances feature]]></title>
+        <id>https://github.com/mdn/content/pull/46109</id>
+        <link href="https://github.com/mdn/content/pull/46109"/>
+        <updated>2026-10-12T13:56:17.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Added release note for the WebGPU <code class="notranslate">clip-distances</code> feature, supported on macOS</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617206383" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45890" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45890/hovercard" href="https://github.com/mdn/content/issues/45890">#45890</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://bugzil.la/1931629" rel="nofollow">Firefox bug 1931629</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5809752572" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30844" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30844/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30844">mdn/browser-compat-data#30844</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-10-12T07:08:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fx158: WebRTC encoders respect H.264 and AV1 levels]]></title>
+        <id>https://github.com/mdn/content/pull/46108</id>
+        <link href="https://github.com/mdn/content/pull/46108"/>
+        <updated>2026-10-12T13:56:55.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Added release note for WebRTC video encoders constraining resolution and frame rate to the negotiated H.264 or AV1 level, and the related change to <code class="notranslate">MediaCapabilities.encodingInfo()</code></li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5728386171" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45995" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45995/hovercard" href="https://github.com/mdn/content/issues/45995">#45995</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://bugzil.la/2013936" rel="nofollow">Firefox bug 2013936</a></li>
+<li><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #45995.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5728386171" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45995" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45995/hovercard" href="https://github.com/mdn/content/issues/45995">#45995</a></li>
+</ul>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-10-12T06:49:03.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Fx158: EXT_polygon_offset_clamp WebGL extension]]></title>
         <id>https://github.com/mdn/content/pull/46107</id>
         <link href="https://github.com/mdn/content/pull/46107"/>
-        <updated>2026-10-12T06:41:21.000Z</updated>
+        <updated>2026-10-12T13:57:20.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>Added release note for the <code class="notranslate">EXT_polygon_offset_clamp</code> WebGL extension</li>
@@ -79,7 +233,7 @@
         <title type="html"><![CDATA[Rewrite Digital audio concepts guide]]></title>
         <id>https://github.com/mdn/content/pull/46103</id>
         <link href="https://github.com/mdn/content/pull/46103"/>
-        <updated>2026-10-12T05:25:32.000Z</updated>
+        <updated>2026-10-12T11:47:48.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Follow up from <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5788626366" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46088" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46088/hovercard" href="https://github.com/mdn/content/pull/46088">#46088</a>.</p>
 <p dir="auto">The Digital audio concepts guide is needlessly verbose and repeats the same point multiple times (it looks like multiple people went in and added their own self-contained paragraphs without caring about what's already written). It also sketches over important bits about how audio sampling and digitization work. Most importantly the "Psychoacoustics" section has many factually incorrect bits, or at least bits that don't please my linguist's brain. I've rewritten it to IMO be more technically precise and also has a better leadup on the basics of acoustic physics.</p>]]></content>
         <author>
@@ -120,7 +274,7 @@
         <title type="html"><![CDATA[[Technical review] BiDi script module - `disown`, `addPreloadScript`, `removePreloadScript`]]></title>
         <id>https://github.com/mdn/content/pull/46094</id>
         <link href="https://github.com/mdn/content/pull/46094"/>
-        <updated>2026-10-12T01:29:11.000Z</updated>
+        <updated>2026-10-12T13:15:15.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>
@@ -201,7 +355,7 @@
         <title type="html"><![CDATA[Exceptions. Add missed `DOMException` links]]></title>
         <id>https://github.com/mdn/content/pull/46082</id>
         <link href="https://github.com/mdn/content/pull/46082"/>
-        <updated>2026-10-12T02:36:17.000Z</updated>
+        <updated>2026-10-12T13:43:31.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/9942723?u=7b326e77440db051aa9b862f806a6377d3066e8c&v=4" width="64" height="64" alt=""/><br/>]]></content>
         <author>
             <name>turansky</name>
@@ -255,7 +409,7 @@
         <title type="html"><![CDATA[Update ruby-overhang page to latest state, with spaces value]]></title>
         <id>https://github.com/mdn/content/pull/46076</id>
         <link href="https://github.com/mdn/content/pull/46076"/>
-        <updated>2026-10-09T14:45:31.000Z</updated>
+        <updated>2026-10-12T14:48:11.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -306,157 +460,5 @@
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-10-09T12:12:46.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docs and Fx158 rel note for WebTransport.supportsReliableOnly static …]]></title>
-        <id>https://github.com/mdn/content/pull/46073</id>
-        <link href="https://github.com/mdn/content/pull/46073"/>
-        <updated>2026-10-12T00:47:50.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">…property</p>
-
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Firefox 158 supports the <code class="notranslate">WebTransport.supportsReliableOnly</code> static property; see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2007783" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2007783</a>.</p>
-<p dir="auto">This PR adds a rel note and a reference page for the new property.</p>
-<p dir="auto">I know very little about this API, so I asked Claude to generate a code example for me. I tested it, and it seemed to work as described.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617213435" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45894" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45894/hovercard" href="https://github.com/mdn/content/issues/45894">#45894</a></p>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-10-09T11:15:16.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update Fx158 PerformanceResourceTiming.deliveryType to be more specif…]]></title>
-        <id>https://github.com/mdn/content/pull/46072</id>
-        <link href="https://github.com/mdn/content/pull/46072"/>
-        <updated>2026-10-12T01:20:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">…ic about cache value</p>
-
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">This PR builds on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5759933066" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46044" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46044/hovercard" href="https://github.com/mdn/content/pull/46044">#46044</a>, which added a rel note for <code class="notranslate">PerformanceResourceTiming.deliveryType</code>. This PR updates it to be more specific about the initial release supporting the <code class="notranslate">cache</code> value, which is made more explicit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2071913" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2071913</a>.</p>
-<p dir="auto">I think this improves the sentence structure too.</p>
-<p dir="auto">I've also added a link to the second relevant bug.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5617227676" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45904" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/45904/hovercard" href="https://github.com/mdn/content/issues/45904">#45904</a></p>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-10-09T10:02:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add page for console.context() static method]]></title>
-        <id>https://github.com/mdn/content/pull/46071</id>
-        <link href="https://github.com/mdn/content/pull/46071"/>
-        <updated>2026-10-09T09:43:30.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/126397667?u=3b8d9424f1a16860e2ee3c84887049f89cbaf37c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds a reference page for the non-standard <code class="notranslate">console.context()</code> static method under <code class="notranslate">Web/API/console</code>, and lists it on the <code class="notranslate">console</code> interface page.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><code class="notranslate">console.context()</code> has shipped in Chrome since version 61 and is also exposed in Node.js, but MDN had no page for it. The page explains what the returned object is, that counters and timers are kept separately for each context, and how the label can be used to filter messages in Chrome DevTools.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">I checked the behavior in Chrome 154 and Node.js 22:</p>
-<ul dir="auto">
-<li>The returned object has 22 console methods (<code class="notranslate">log</code>, <code class="notranslate">warn</code>, <code class="notranslate">count</code>, <code class="notranslate">time</code>, <code class="notranslate">timeStamp</code>, and so on) but no <code class="notranslate">context()</code> of its own, and its methods work without a receiver, including in workers.</li>
-<li><code class="notranslate">count("hits")</code> on two different contexts and on <code class="notranslate">console</code> gives three independent counters.</li>
-<li>In Node.js the messages only reach an attached inspector (with a <code class="notranslate">context</code> field like <code class="notranslate">myLogger#1</code> in <code class="notranslate">Runtime.consoleAPICalled</code>), nothing is printed to the terminal.</li>
-</ul>
-<p dir="auto">Sources:</p>
-<ul dir="auto">
-<li>V8 commit that introduced the method (V8 6.1, so Chrome 61): <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/v8/v8/commit/701d79d08ad4/hovercard" href="https://github.com/v8/v8/commit/701d79d08ad4">v8/v8@<tt>701d79d08ad4</tt></a></li>
-<li>Later V8 change that converts the label with ToString: <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/v8/v8/commit/6b4ed4abb15b/hovercard" href="https://github.com/v8/v8/commit/6b4ed4abb15b">v8/v8@<tt>6b4ed4abb15b</tt></a></li>
-<li>DevTools <code class="notranslate">context:</code> filter: <a href="https://github.com/ChromeDevTools/devtools-frontend/blob/main/front_end/panels/console/ConsoleFilter.ts">https://github.com/ChromeDevTools/devtools-frontend/blob/main/front_end/panels/console/ConsoleFilter.ts</a></li>
-<li>Spec proposal: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3091046915" data-permission-text="Title is private" data-url="https://github.com/whatwg/console/issues/244" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/console/pull/244/hovercard" href="https://github.com/whatwg/console/pull/244">whatwg/console#244</a> (issue <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="794976022" data-permission-text="Title is private" data-url="https://github.com/whatwg/console/issues/193" data-hovercard-type="issue" data-hovercard-url="/whatwg/console/issues/193/hovercard" href="https://github.com/whatwg/console/issues/193">whatwg/console#193</a>)</li>
-<li>Firefox: <a href="https://bugzil.la/1948870" rel="nofollow">https://bugzil.la/1948870</a>, WebKit: <a href="https://webkit.org/b/293768" rel="nofollow">https://webkit.org/b/293768</a>, Node.js: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2794011602" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/56634" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/56634/hovercard" href="https://github.com/nodejs/node/issues/56634">nodejs/node#56634</a></li>
-</ul>
-<p dir="auto">The page is marked non-standard since <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3091046915" data-permission-text="Title is private" data-url="https://github.com/whatwg/console/issues/244" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/console/pull/244/hovercard" href="https://github.com/whatwg/console/pull/244">whatwg/console#244</a> is still open, and like the other non-standard console pages (<code class="notranslate">profile()</code>, <code class="notranslate">timeStamp()</code>) it has no Specifications section. If the spec PR lands I'm happy to follow up.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46017.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5746060804" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46017" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46017/hovercard" href="https://github.com/mdn/content/issues/46017">#46017</a></p>
-<p dir="auto"><strong>Depends on:</strong> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5776079988" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30814" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30814/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30814">mdn/browser-compat-data#30814</a> (adds <code class="notranslate">api.console.context_static</code>)</p>]]></content>
-        <author>
-            <name>agnij-dutta</name>
-            <email>agnij-dutta@noreply.github.com</email>
-            <uri>https://github.com/agnij-dutta</uri>
-        </author>
-        <published>2026-10-09T09:43:06.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix `<style>` in `<template>` usage note]]></title>
-        <id>https://github.com/mdn/content/pull/46070</id>
-        <link href="https://github.com/mdn/content/pull/46070"/>
-        <updated>2026-10-09T08:12:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/244772?u=0c109a472bad24e5cf459b88d1e30c867fdbf53e&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><code class="notranslate">template</code> doesn't accept metadata content; <code class="notranslate">&lt;style&gt;</code> is allowed in its template contents because they can include any elements.</p>
-<p dir="auto">Touches the same line as <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5775011635" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46069" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46069/hovercard" href="https://github.com/mdn/content/pull/46069">#46069</a>.</p>]]></content>
-        <author>
-            <name>zcorpan</name>
-            <email>zcorpan@noreply.github.com</email>
-            <uri>https://github.com/zcorpan</uri>
-        </author>
-        <published>2026-10-09T08:10:46.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document `<style>` in `body` as first child with `@scope`]]></title>
-        <id>https://github.com/mdn/content/pull/46069</id>
-        <link href="https://github.com/mdn/content/pull/46069"/>
-        <updated>2026-10-09T08:12:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/244772?u=0c109a472bad24e5cf459b88d1e30c867fdbf53e&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Document <code class="notranslate">&lt;style&gt;</code> in <code class="notranslate">body</code> as the first child of its parent, with style rules inside <code class="notranslate">@scope</code>, and add <code class="notranslate">style</code> to the flow content list.</p>
-<p dir="auto"><strong>Depends on:</strong> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5640222390" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/13007" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/13007/hovercard" href="https://github.com/whatwg/html/pull/13007">whatwg/html#13007</a></p>]]></content>
-        <author>
-            <name>zcorpan</name>
-            <email>zcorpan@noreply.github.com</email>
-            <uri>https://github.com/zcorpan</uri>
-        </author>
-        <published>2026-10-09T08:10:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix the broken reference to examples in Using readable byte streams]]></title>
-        <id>https://github.com/mdn/content/pull/46067</id>
-        <link href="https://github.com/mdn/content/pull/46067"/>
-        <updated>2026-10-09T00:30:26.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/52491201?u=b42786e44b729e060623dfa59f38369927cdb787&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">In <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams" rel="nofollow">Using readable byte streams</a>, the note in "Underlying push source with byte reader" ends with:</p>
-<blockquote>
-<p dir="auto">This is similar to the behavior shown in the "pull: underlying byte source examples.</p>
-</blockquote>
-<p dir="auto">The quote is never closed, and there's no section with that name on the page. This replaces it with links to the two examples that show the behavior the note describes:</p>
-<blockquote>
-<p dir="auto">This is similar to the behavior shown in the <a href="#underlying_pull_source_with_default_reader">Underlying pull source with default reader</a> and <a href="#underlying_pull_source_with_default_reader_and_no_allocation">Underlying pull source with default reader and no allocation</a> examples.</p>
-</blockquote>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Readers can't tell which examples the note means, and the unclosed quote reads like a typo.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">The note is about using a byte source with a default reader, with and without automatic buffer allocation. Those are exactly the two examples linked: the first sets <code class="notranslate">autoAllocateChunkSize</code>, and the second doesn't, so data is enqueued. I'm inferring that these are the intended targets from the content of the note; if you had a different section in mind, I'm happy to change the links.</p>
-<p dir="auto">This sentence has been there since the page was first written in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1253462394" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/16818" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/16818/hovercard" href="https://github.com/mdn/content/pull/16818">#16818</a>, so I couldn't find an earlier version to go back to. I linked to the sections the same way the page already does elsewhere.</p>
-<p dir="auto">I checked that no other open PR touches this file.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">None.</p>]]></content>
-        <author>
-            <name>kumability</name>
-            <email>kumability@noreply.github.com</email>
-            <uri>https://github.com/kumability</uri>
-        </author>
-        <published>2026-10-09T00:27:14.000Z</published>
     </entry>
 </feed>
