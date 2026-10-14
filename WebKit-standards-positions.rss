@@ -2,11 +2,57 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2026-10-14T19:00:44.106Z</updated>
+    <updated>2026-10-14T22:47:15.090Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Sealed form fields (`<sealedinput>` and the `sealed-fields` CSP directive)]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/730</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/730"/>
+        <updated>2026-10-14T22:27:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/12972537?u=4d9a80ccefefcceacb2c1ea74f401096469b4256&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">Sealed form fields (<code class="notranslate">&lt;sealedinput&gt;</code> and the <code class="notranslate">sealed-fields</code> CSP directive)</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5531414561" data-permission-text="Title is private" data-url="https://github.com/WICG/proposals/issues/307" data-hovercard-type="issue" data-hovercard-url="/WICG/proposals/issues/307/hovercard" href="https://github.com/WICG/proposals/issues/307">WICG/proposals#307</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a href="https://github.com/madeit-build/koschei">https://github.com/madeit-build/koschei</a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><a href="https://github.com/madeit-build/koschei/blob/main/docs/specs/explainer.md">https://github.com/madeit-build/koschei/blob/main/docs/specs/explainer.md</a></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5856726342" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1468" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1468/hovercard" href="https://github.com/mozilla/standards-positions/issues/1468">mozilla/standards-positions#1468</a></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Today any script on a page can read a sensitive form value (card number, national ID, API key, medical answer) from the first keystroke, and the value is plaintext at every hop after TLS terminates: CDN, WAF, APM traces, logs.</p>
+<p dir="auto">This proposal adds a form control whose value is encrypted in the browser, via HPKE (RFC 9180), to a public key published by the form's <code class="notranslate">action</code> origin at <code class="notranslate">/.well-known/sealed-input</code>, before page script can observe it. <code class="notranslate">.value</code> returns the envelope, so <code class="notranslate">FormData</code>, constraint validation, and form libraries keep working. Envelopes are bound to the origin, action, and field name, so a ciphertext lifted from one site opens nowhere else. A companion CSP directive, <code class="notranslate">sealed-fields cc-number cc-csc current-password</code>, lets policy seal ordinary inputs by <code class="notranslate">autocomplete</code> token.</p>
+<p dir="auto"><strong>Threat model:</strong> defends against page script, third-party dependencies, extension content scripts, session replay, and TLS-terminating intermediaries. It does not defend against a compromised renderer, and it adds no party that wouldn't already hold the plaintext.</p>
+<p dir="auto"><strong>Precedent:</strong> Apple Pay JS has returned merchant-encrypted payment tokens to page script for a decade, and the Digital Credentials API returns HPKE-encrypted responses the page cannot read. This generalizes that shape to arbitrary fields.</p>
+<p dir="auto"><strong>Implementations:</strong> a polyfill (form-associated custom element sealing inside a recipient-served iframe) and a native implementation in Ladybird (13 patches with engine tests). One server opens envelopes from both. The native work surfaced plaintext channels that had to be closed (<code class="notranslate">cloneNode</code>, type switching, <code class="notranslate">paste</code> events, detach/reinsert, <code class="notranslate">execCommand("undo")</code> replaying edits against the validity bit, and editing history surviving a <code class="notranslate">name</code> or <code class="notranslate">action</code> change):<br>
+<a href="https://github.com/madeit-build/koschei/blob/main/docs/research/native-feasibility-ladybird.md">https://github.com/madeit-build/koschei/blob/main/docs/research/native-feasibility-ladybird.md</a></p>
+<p dir="auto"><strong>Where WebKit input would help most:</strong></p>
+<ol dir="auto">
+<li>Whether the hooks are shaped right for WebKit's text-input and editing architecture (autocorrect, dictation, AutoFill, undo).</li>
+<li>Whether the decoy-field answer in the explainer is sufficient, or whether the element shouldn't ship without the CSP directive.</li>
+<li>Open design questions: <code class="notranslate">input</code> event granularity (per-keystroke events leak length and cadence) and declared derived signals such as card brand.</li>
+</ol>
+<p dir="auto">WICG discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5531414561" data-permission-text="Title is private" data-url="https://github.com/WICG/proposals/issues/307" data-hovercard-type="issue" data-hovercard-url="/WICG/proposals/issues/307/hovercard" href="https://github.com/WICG/proposals/issues/307">WICG/proposals#307</a></p>]]></content>
+        <author>
+            <name>decleezy</name>
+            <email>decleezy@noreply.github.com</email>
+            <uri>https://github.com/decleezy</uri>
+        </author>
+        <published>2026-10-14T22:22:51.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[WebAuthn Conditional UI without autofill]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/729</id>
@@ -698,41 +744,5 @@ Authors commonly want to suppress the underline under leading/trailing spaces in
             <uri>https://github.com/taylor-b</uri>
         </author>
         <published>2026-08-18T19:51:09.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSS text-overflow: <string> value]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/710</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/710"/>
-        <updated>2026-09-01T04:18:46.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/57604817?u=3fda3859643fb4520d409b561d1db3d2a5e7d026&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/nt1m/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/nt1m">@nt1m</a></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">CSS text-overflow: <code class="notranslate">&lt;string&gt;</code> value</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a href="https://www.w3.org/TR/css-overflow-4/#text-overflow" rel="nofollow">https://www.w3.org/TR/css-overflow-4/#text-overflow</a></p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><a href="https://webkit.org/b/27545" rel="nofollow">https://webkit.org/b/27545</a></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">I'd like to ask WebKit's position about text-overflow string value.</p>
-<p dir="auto">Firefox has supported it for several years.<br>
-It will be shipping in Chromium.</p>]]></content>
-        <author>
-            <name>jja08111</name>
-            <email>jja08111@noreply.github.com</email>
-            <uri>https://github.com/jja08111</uri>
-        </author>
-        <published>2026-08-18T05:03:07.000Z</published>
     </entry>
 </feed>
