@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-15T12:14:24.149Z</updated>
+    <updated>2026-10-15T17:26:55.451Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -104,7 +104,7 @@
         <title type="html"><![CDATA[[Technical review] Add BiDi network request lifecycle event pages]]></title>
         <id>https://github.com/mdn/content/pull/46141</id>
         <link href="https://github.com/mdn/content/pull/46141"/>
-        <updated>2026-10-15T09:19:52.000Z</updated>
+        <updated>2026-10-15T13:51:33.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>Added pages for the following events of the <a href="https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/network" rel="nofollow"><code class="notranslate">network</code> module</a>:
@@ -129,9 +129,6 @@
 <p dir="auto">Doc issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5013788640" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/851" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/851/hovercard" href="https://github.com/mdn/mdn/issues/851">mdn/mdn#851</a></p>
 <h3 dir="auto">Compat quirks worth looking into:</h3>
 <ul dir="auto">
-<li><strong>Which event ends a request.</strong> For a <code class="notranslate">fetch()</code> aborted while the body is arriving, Chrome sends <code class="notranslate">responseCompleted</code> and then <code class="notranslate">fetchError</code>, and Firefox only <code class="notranslate">fetchError</code>. For a cross-origin request blocked by CORS, Chrome sends <code class="notranslate">fetchError</code> and Firefox <code class="notranslate">responseCompleted</code>. The <code class="notranslate">responseCompleted</code> and <code class="notranslate">fetchError</code> pages tell clients not to rely on receiving only one of the two events. Is that the right advice, or does the spec mean a request to end with exactly one of them?</li>
-<li><strong><code class="notranslate">isBlocked</code> and <code class="notranslate">intercepts</code> on <code class="notranslate">responseCompleted</code> and <code class="notranslate">fetchError</code>.</strong> "Get the network intercepts" has no phase for either event, so the pages say <code class="notranslate">isBlocked</code> is always <code class="notranslate">false</code> and list <code class="notranslate">intercepts</code> (which BCD has rows for) as never included. Is that the intent?</li>
-<li><strong><code class="notranslate">initiator.type</code>.</strong> The spec no longer sets it, but both browsers still send it, so the pages document it as deprecated.</li>
 <li><strong>Outdated compat data.</strong> BCD and the implementation sheet mark Firefox's <code class="notranslate">errorText</code> on <code class="notranslate">fetchError</code> as unsupported, but Nightly 159 sends it (<code class="notranslate">NS_ERROR_UNKNOWN_HOST</code>, <code class="notranslate">NS_BINDING_ABORTED</code>). They also mark Chrome's <code class="notranslate">userContext</code> as unsupported, but Chrome 155 sends <code class="notranslate">"default"</code>. cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/whimboo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/whimboo">@whimboo</a> and <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/OrKoN/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/OrKoN">@OrKoN</a> for the compat sheet update.</li>
 </ul>]]></content>
         <author>
@@ -145,7 +142,7 @@
         <title type="html"><![CDATA[[Technical review] Add BiDi `network.setCacheBehavior` and `network.setExtraHeaders` pages]]></title>
         <id>https://github.com/mdn/content/pull/46140</id>
         <link href="https://github.com/mdn/content/pull/46140"/>
-        <updated>2026-10-15T09:10:29.000Z</updated>
+        <updated>2026-10-15T13:43:46.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>Added pages for the following commands of the <a href="https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/network" rel="nofollow"><code class="notranslate">network</code> module</a>:
@@ -172,9 +169,7 @@
 <li>BCD marks Firefox's support as partial because it "fails to set Unicode headers" (<a href="https://bugzil.la/1994996" rel="nofollow">bug 1994996</a>). That bug was fixed in Firefox 150, and Nightly 159 sends UTF-8 correctly. cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/whimboo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/whimboo">@whimboo</a> for the compat sheet update.</li>
 </ul>
 </li>
-<li><strong>Invalid Base64.</strong> "Deserialize protocol bytes" doesn't say what happens when forgiving-base64 decode fails. Firefox returns <code class="notranslate">unknown error</code>. The page doesn't list an error for it.</li>
 <li><strong>Spec link for <code class="notranslate">setExtraHeaders</code>.</strong> BCD has no <code class="notranslate">spec_url</code> for <code class="notranslate">webdriver.bidi.network.setExtraHeaders</code> and marks it <code class="notranslate">standard_track: false</code>, unlike <code class="notranslate">setCacheBehavior</code>. cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/whimboo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/whimboo">@whimboo</a> for the compat sheet update. Until BCD has the URL, the page sets <code class="notranslate">spec-urls</code> in its front matter to fill the Specifications table.</li>
-<li><strong>Cache behavior lifetime.</strong> The default cache behavior and the per-context map belong to the remote end, not the session, and are reset only when the last active session ends. The page says "until you change it or until the last active session ends". Is that the right promise, or is "until the session ends" enough?</li>
 </ul>]]></content>
         <author>
             <name>pepelsbey</name>
@@ -323,7 +318,7 @@
         <title type="html"><![CDATA[Technical review: Add docs for WebGPU immediates]]></title>
         <id>https://github.com/mdn/content/pull/46128</id>
         <link href="https://github.com/mdn/content/pull/46128"/>
-        <updated>2026-10-15T11:36:39.000Z</updated>
+        <updated>2026-10-15T15:29:08.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -431,7 +426,7 @@ Spec PR: <a class="issue-link js-issue-link" data-error-text="Failed to load tit
         <title type="html"><![CDATA[New guides: defining CSS rules]]></title>
         <id>https://github.com/mdn/content/pull/46121</id>
         <link href="https://github.com/mdn/content/pull/46121"/>
-        <updated>2026-10-15T11:53:05.000Z</updated>
+        <updated>2026-10-15T12:46:24.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR includes the creation of a new basic guide providing an overview of all the features in the module, and an update to the associated module page</p>
 <ul dir="auto">
 <li>Defining CSS rules</li>
@@ -475,7 +470,7 @@ Spec PR: <a class="issue-link js-issue-link" data-error-text="Failed to load tit
 <li>Publish page counts as <code class="notranslate">content-build-diff</code> and flaw totals as <code class="notranslate">content-build-flaws</code>.</li>
 </ul>
 <p dir="auto">Screenshot:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/495429/671643914-9cd23823-ff16-493e-a87a-63ff115c6c74.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTIwNjY3NjMsIm5iZiI6MTc5MjA2NjQ2MywicGF0aCI6Ii80OTU0MjkvNjcxNjQzOTE0LTljZDIzODIzLWZmMTYtNDkzZS1hODdhLTYzZmYxMTVjNmM3NC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxNVQxMjE0MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZTk4YjY0OWFjYTg0YjQ0Y2I1MjAyYWEzYWFiNjNkZmRiYjIzMGY3YjkzOGE3ODZhMGVkZDBhYTJlNDllNTQ4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ._oGH6ws4P4rG-jweXyCwrS-s8h4DZnjJPgstyvOe2fI"><img width="1628" height="600" alt="image" src="https://private-user-images.githubusercontent.com/495429/671643914-9cd23823-ff16-493e-a87a-63ff115c6c74.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTIwNjY3NjMsIm5iZiI6MTc5MjA2NjQ2MywicGF0aCI6Ii80OTU0MjkvNjcxNjQzOTE0LTljZDIzODIzLWZmMTYtNDkzZS1hODdhLTYzZmYxMTVjNmM3NC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxNVQxMjE0MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZTk4YjY0OWFjYTg0YjQ0Y2I1MjAyYWEzYWFiNjNkZmRiYjIzMGY3YjkzOGE3ODZhMGVkZDBhYTJlNDllNTQ4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ._oGH6ws4P4rG-jweXyCwrS-s8h4DZnjJPgstyvOe2fI" style="max-width: 100%; height: auto; max-height: 600px;; aspect-ratio: 1628 / 600; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/495429/671643914-9cd23823-ff16-493e-a87a-63ff115c6c74.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTIwODU1MTUsIm5iZiI6MTc5MjA4NTIxNSwicGF0aCI6Ii80OTU0MjkvNjcxNjQzOTE0LTljZDIzODIzLWZmMTYtNDkzZS1hODdhLTYzZmYxMTVjNmM3NC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxNVQxNzI2NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ODBmZjg2MTU2ZTM2NzliMmFhMDQwMGQ2ZjRhNjdkYWUzY2JiZGQ4NWI2ZjM2ZWQyMmIyYzc3Y2QyNjBmZTY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.ErMdQMKG5SYddiir1QbDh85BbO1XL3EtaS-_OXMIiGs"><img width="1628" height="600" alt="image" src="https://private-user-images.githubusercontent.com/495429/671643914-9cd23823-ff16-493e-a87a-63ff115c6c74.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTIwODU1MTUsIm5iZiI6MTc5MjA4NTIxNSwicGF0aCI6Ii80OTU0MjkvNjcxNjQzOTE0LTljZDIzODIzLWZmMTYtNDkzZS1hODdhLTYzZmYxMTVjNmM3NC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxNVQxNzI2NTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ODBmZjg2MTU2ZTM2NzliMmFhMDQwMGQ2ZjRhNjdkYWUzY2JiZGQ4NWI2ZjM2ZWQyMmIyYzc3Y2QyNjBmZTY2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.ErMdQMKG5SYddiir1QbDh85BbO1XL3EtaS-_OXMIiGs" style="max-width: 100%; height: auto; max-height: 600px;; aspect-ratio: 1628 / 600; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <h3 dir="auto">Related issues and pull requests</h3>
 
 
