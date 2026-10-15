@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fix both InteractionContentfulPaint examples to observe <code class=\"notranslate\">interaction-contentful-paint</code> and use <code class=\"notranslate\">entry.interactionId</code> when filtering by interaction. Correct the introductory observer description and the PerformanceSoftNavigation interactionId summary.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The plural entry type prevents the examples from observing paints, and the capitalized property prevents matching a soft navigation's interaction ID.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The <a href=\"https://wicg.github.io/soft-navigations/#sec-interaction-contentful-paint-interface\" rel=\"nofollow\">soft navigations specification</a> defines the singular entry type and lowercase property. A local Node harness reproduces the original defects and checks both corrected callbacks with matching and nonmatching entries. Markdown and front-matter lint pass. Chrome interaction testing has not been run.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">No related issue.</p>",
+            "url": "https://github.com/mdn/content/pull/46158",
+            "title": "Fix InteractionContentfulPaint examples and soft navigation interactionId summary",
+            "date_modified": "2026-10-15T06:16:41.000Z",
+            "date_published": "2026-10-15T06:16:17.000Z",
+            "author": {
+                "name": "adityareddy-dev",
+                "url": "https://github.com/adityareddy-dev"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Use a Map consistently in the interactionId example and log the accumulated durations inside the observer callback. Include the interaction ID with each maximum and add context menu and IME composition input to the event table.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The example calls <code class=\"notranslate\">.has()</code> on a plain object, which throws when an interaction is delivered. Its logging loop also runs before the asynchronous observer callback collects any entries.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">The event table follows the <a href=\"https://w3c.github.io/event-timing/#sec-computing-interactionid\" rel=\"nofollow\">Event Timing interactionId algorithm</a>.</p>\n<p dir=\"auto\">Validation: front-matter lint, Markdown lint and a local Node harness for deferred callbacks, zero IDs, grouping and accumulation across deliveries. Local preview served successfully. Chrome interaction testing was not run.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">No related issue. Open PR search for interactionId found no competing change.</p>",
             "url": "https://github.com/mdn/content/pull/46157",
             "title": "Fix the interactionId collection example",
@@ -174,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/50140049?u=d1f6deb8c04128f250df0ed83405f16c3b98e4fb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add implicit/explicit port SOP standards</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">It is not clear if specifying a port is regarded as a differnent origing</p>\n<h3 dir=\"auto\">Additional details</h3>\n",
             "url": "https://github.com/mdn/content/pull/46124",
             "title": "Add implicit/explicit port",
-            "date_modified": "2026-10-13T23:43:32.000Z",
+            "date_modified": "2026-10-15T06:27:26.000Z",
             "date_published": "2026-10-13T13:38:51.000Z",
             "author": {
                 "name": "kingma-sbw",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "HanpuLi",
                 "url": "https://github.com/HanpuLi"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Add a workflow that builds base and PR content sequentially in one job, compares their generated output, and publishes page-change and flaw-count statuses.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Measure whether building both revisions on one runner shortens the comparison workflow while showing the effect of content changes.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Build each revision with its content checkout's <code class=\"notranslate\">@mdn/rari</code> package on the same runner.</li>\n<li>Compare generated page files in place, then upload the HTML report and stats.</li>\n<li>Publish page counts as <code class=\"notranslate\">content-build-diff</code> and flaw totals as <code class=\"notranslate\">content-build-flaws</code>.</li>\n</ul>\n<p dir=\"auto\">Screenshot:</p>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/495429/671643914-9cd23823-ff16-493e-a87a-63ff115c6c74.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTIwMjY0ODgsIm5iZiI6MTc5MjAyNjE4OCwicGF0aCI6Ii80OTU0MjkvNjcxNjQzOTE0LTljZDIzODIzLWZmMTYtNDkzZS1hODdhLTYzZmYxMTVjNmM3NC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxNVQwMTAzMDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YTMyZjBlZDhiNGQ5M2NmNmQxZjRkOTI0YjFhNjRlZGUyMjk3MjI1YTQ3Yzk5YjYxMDZjNjQyODNhZmUyMzdkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.c3v7VajdFXKCqjNnPdoaF8FlFPWIuM4ULRe4N5QAF8c\"><img width=\"1628\" height=\"600\" alt=\"image\" src=\"https://private-user-images.githubusercontent.com/495429/671643914-9cd23823-ff16-493e-a87a-63ff115c6c74.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTIwMjY0ODgsIm5iZiI6MTc5MjAyNjE4OCwicGF0aCI6Ii80OTU0MjkvNjcxNjQzOTE0LTljZDIzODIzLWZmMTYtNDkzZS1hODdhLTYzZmYxMTVjNmM3NC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAxNVQwMTAzMDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YTMyZjBlZDhiNGQ5M2NmNmQxZjRkOTI0YjFhNjRlZGUyMjk3MjI1YTQ3Yzk5YjYxMDZjNjQyODNhZmUyMzdkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.c3v7VajdFXKCqjNnPdoaF8FlFPWIuM4ULRe4N5QAF8c\" style=\"max-width: 100%; height: auto; max-height: 600px;; aspect-ratio: 1628 / 600; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n",
-            "url": "https://github.com/mdn/content/pull/46114",
-            "title": "ci(content): compare PR build output",
-            "date_modified": "2026-10-12T20:39:28.000Z",
-            "date_published": "2026-10-12T17:32:00.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
             }
         }
     ]
