@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-17T19:47:26.420Z</updated>
+    <updated>2026-10-17T21:49:48.740Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -34,29 +34,6 @@
             <uri>https://github.com/d0sboots</uri>
         </author>
         <published>2026-10-17T05:15:43.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Removing outdated accessibility technique (`del`, `ins`, `mark` and `s` elements)]]></title>
-        <id>https://github.com/mdn/content/pull/46185</id>
-        <link href="https://github.com/mdn/content/pull/46185"/>
-        <updated>2026-10-17T01:43:32.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4138486?u=43a6ea26a16dfcc44d25b0aa5bc8d33dd21003b4&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The “Accessibility” chapter for the following four HTML elements contain outdated technique that is no longer appropriate today, so I removed those chapter.</p>
-<ul dir="auto">
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/del#accessibility" rel="nofollow"><code class="notranslate">&lt;del&gt;</code></a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ins#accessibility" rel="nofollow"><code class="notranslate">&lt;ins&gt;</code></a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/mark#accessibility" rel="nofollow"><code class="notranslate">&lt;mark&gt;</code></a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/s#accessibility" rel="nofollow"><code class="notranslate">&lt;s&gt;</code></a></li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Nowadays, even without using technique involving the CSS <code class="notranslate">content</code> property, most screen readers will read them aloud appropriately.</p>
-<p dir="auto">Regarding the <a href="https://adrianroselli.com/2017/12/tweaking-text-level-styles.html" rel="nofollow">December 2017 article</a> by Adrian Roselli (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/aardrian/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/aardrian">@aardrian</a>) referenced here, the author himself says <q>Stop reading it</q>, and and in his <a href="https://adrianroselli.com/2025/04/tweaking-text-level-styles-reprised.html" rel="nofollow">April 2025 article</a>, he concludes,<q>do not use CSS generated content</q>.</p>]]></content>
-        <author>
-            <name>SaekiTominaga</name>
-            <email>SaekiTominaga@noreply.github.com</email>
-            <uri>https://github.com/SaekiTominaga</uri>
-        </author>
-        <published>2026-10-17T01:42:00.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Update InterfaceData based on WebRef]]></title>
@@ -554,5 +531,40 @@ it was moved to level 5</p>
             <uri>https://github.com/chrisdavidmills</uri>
         </author>
         <published>2026-10-13T14:39:35.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[New HTML setters]]></title>
+        <id>https://github.com/mdn/content/pull/46127</id>
+        <link href="https://github.com/mdn/content/pull/46127"/>
+        <updated>2026-10-14T18:48:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/10931297?u=600cfcb4c4e709dfbc66b328147d846ee87b1e51&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+
+<p dir="auto">This documents the static HTML setters as detailed here:<br>
+<a href="https://developer.chrome.com/docs/web-platform/declarative-partial-updates#renewed_html_insertion_and_streaming_methods" rel="nofollow">https://developer.chrome.com/docs/web-platform/declarative-partial-updates#renewed_html_insertion_and_streaming_methods</a></p>
+<p dir="auto">I have excluded the streaming APIs (will follow up with that in a future PR), and also excluded <code class="notranslate">TrustedParserOptions</code> (will follow up with that in a future PR).</p>
+<p dir="auto">This is quite a big PR, but most of it is copied and pasted from the existing <code class="notranslate">setHTML()</code> and <code class="notranslate">setHMTLUnsafe()</code> docs with minor updates.</p>
+<p dir="auto">There is a lot of duplication here though so I'm open to ideas of how to structure this better if we want minimal docs in <code class="notranslate">ShadowRoot</code> and <code class="notranslate">CharacterData</code> versions of these docs and leave the main docs to just the <code class="notranslate">Element</code> versions of these APIs and reference it? Or alternatively we could leave most of the docs in <code class="notranslate">setHTML</code>, <code class="notranslate">setHTMLUnsafe</code> and reference those from the other docs?</p>
+<h3 dir="auto">Motivation</h3>
+
+<p dir="auto">These will be <a href="https://chromestatus.com/feature/5054329641893888" rel="nofollow">released in Chrome 157</a> (they are currently available behind a flag) and have also been merged in to the HTML Living standard (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5063528426" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/12753" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/12753/hovercard" href="https://github.com/whatwg/html/pull/12753">whatwg/html#12753</a>)</p>
+<h3 dir="auto">Additional details</h3>
+
+<p dir="auto">Docs: <a href="https://developer.chrome.com/docs/web-platform/declarative-partial-updates#renewed_html_insertion_and_streaming_methods" rel="nofollow">https://developer.chrome.com/docs/web-platform/declarative-partial-updates#renewed_html_insertion_and_streaming_methods</a><br>
+Chrome Status: <a href="https://chromestatus.com/feature/5054329641893888" rel="nofollow">https://chromestatus.com/feature/5054329641893888</a><br>
+Spec PR: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5063528426" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/12753" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/12753/hovercard" href="https://github.com/whatwg/html/pull/12753">whatwg/html#12753</a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+<p dir="auto">They were already added to BCD in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5249884576" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30328" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30328/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30328">mdn/browser-compat-data#30328</a> and will follow up with spec links when <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5745426411" data-permission-text="Title is private" data-url="https://github.com/w3c/webref/issues/2086" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webref/pull/2086/hovercard" href="https://github.com/w3c/webref/pull/2086">w3c/webref#2086</a> is merged</p>
+]]></content>
+        <author>
+            <name>tunetheweb</name>
+            <email>tunetheweb@noreply.github.com</email>
+            <uri>https://github.com/tunetheweb</uri>
+        </author>
+        <published>2026-10-13T14:05:35.000Z</published>
     </entry>
 </feed>
