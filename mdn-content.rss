@@ -2,11 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-18T11:51:30.008Z</updated>
+    <updated>2026-10-18T15:01:33.414Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Document the mediation option for CredentialsContainer.create()]]></title>
+        <id>https://github.com/mdn/content/pull/46191</id>
+        <link href="https://github.com/mdn/content/pull/46191"/>
+        <updated>2026-10-18T13:13:56.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/344340824?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This adds the <code class="notranslate">mediation</code> option (including <code class="notranslate">"conditional"</code>) to the <code class="notranslate">CredentialsContainer.create()</code> reference page, along with the related <code class="notranslate">NotAllowedError</code> cases and a short example. It also fixes the <code class="notranslate">conditionalCreate</code> description on <code class="notranslate">getClientCapabilities()</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The "Conditional create" section of the Passkeys guide links to <code class="notranslate">CredentialsContainer/create#mediation</code>, but that option wasn't documented on the reference page yet. The <code class="notranslate">conditionalCreate</code> capability was also described as "creating discoverable credentials", which isn't really what it means.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Credential Management, <code class="notranslate">conditional</code> for <code class="notranslate">create()</code>: <a href="https://w3c.github.io/webappsec-credential-management/#dom-credentialmediationrequirement-conditional" rel="nofollow">https://w3c.github.io/webappsec-credential-management/#dom-credentialmediationrequirement-conditional</a></li>
+<li>WebAuthn <code class="notranslate">[[Create]]</code> (conditional mediation is rejected when not same-origin with ancestors): <a href="https://w3c.github.io/webauthn/#sctn-createCredential" rel="nofollow">https://w3c.github.io/webauthn/#sctn-createCredential</a></li>
+<li>Chrome's explainer: <a href="https://developer.chrome.com/docs/identity/webauthn-conditional-create" rel="nofollow">https://developer.chrome.com/docs/identity/webauthn-conditional-create</a></li>
+</ul>
+<p dir="auto">I only listed <code class="notranslate">"conditional"</code> and the default <code class="notranslate">"optional"</code>. The IDL accepts all four values, but the specs only define create()-specific behavior for <code class="notranslate">"conditional"</code>, and I couldn't confirm what browsers do with <code class="notranslate">"silent"</code> or <code class="notranslate">"required"</code> here. There's also no BCD entry yet for <code class="notranslate">mediation</code> on <code class="notranslate">create()</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42516.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3758846446" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42516" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42516/hovercard" href="https://github.com/mdn/content/issues/42516">#42516</a><br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3713512436" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42338" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42338/hovercard" href="https://github.com/mdn/content/pull/42338">#42338</a> and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3908019317" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43039" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/43039/hovercard" href="https://github.com/mdn/content/pull/43039">#43039</a>, which covered the guide and overview parts of the issue.</p>
+<p dir="auto">I used AI assistance while working on this, and I've reviewed and tested everything myself.</p>]]></content>
+        <author>
+            <name>devsummar</name>
+            <email>devsummar@noreply.github.com</email>
+            <uri>https://github.com/devsummar</uri>
+        </author>
+        <published>2026-10-18T13:11:43.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update InterfaceData based on WebRef]]></title>
         <id>https://github.com/mdn/content/pull/46184</id>
@@ -538,23 +565,5 @@ Spec PR: <a class="issue-link js-issue-link" data-error-text="Failed to load tit
             <uri>https://github.com/tunetheweb</uri>
         </author>
         <published>2026-10-13T14:05:35.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add implicit/explicit port]]></title>
-        <id>https://github.com/mdn/content/pull/46124</id>
-        <link href="https://github.com/mdn/content/pull/46124"/>
-        <updated>2026-10-15T06:27:26.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/50140049?u=d1f6deb8c04128f250df0ed83405f16c3b98e4fb&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Add implicit/explicit port SOP standards</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">It is not clear if specifying a port is regarded as a differnent origing</p>
-<h3 dir="auto">Additional details</h3>
-]]></content>
-        <author>
-            <name>kingma-sbw</name>
-            <email>kingma-sbw@noreply.github.com</email>
-            <uri>https://github.com/kingma-sbw</uri>
-        </author>
-        <published>2026-10-13T13:38:51.000Z</published>
     </entry>
 </feed>
