@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-20T19:42:15.389Z</updated>
+    <updated>2026-10-20T22:46:22.818Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -71,7 +71,7 @@
         <title type="html"><![CDATA[Document sanitization during HTML parsing]]></title>
         <id>https://github.com/mdn/content/pull/46211</id>
         <link href="https://github.com/mdn/content/pull/46211"/>
-        <updated>2026-10-20T14:26:37.000Z</updated>
+        <updated>2026-10-20T20:18:46.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/246823946?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Update the HTML Sanitizer API overview and all six Element, ShadowRoot, and Document method references to describe sanitization during parsing rather than a separate pass over the completed DOM. Explain the observable consequences for adjacent text nodes, custom element construction, resource-fetching side effects, and declarative shadow roots, with a focused example showing a replaced <code class="notranslate">&lt;b&gt;</code> producing one text node.</p>
 <p dir="auto">Also correct the default-sanitizer example to pass <code class="notranslate">{ sanitizer: "default" }</code> to <code class="notranslate">setHTMLUnsafe()</code>, fix its inconsistent variable names and whitespace output, and clarify fragment parsing's top-level shadow-template behavior.</p>
@@ -158,24 +158,17 @@
         <title type="html"><![CDATA[Document conditional create]]></title>
         <id>https://github.com/mdn/content/pull/46207</id>
         <link href="https://github.com/mdn/content/pull/46207"/>
-        <updated>2026-10-20T12:31:35.000Z</updated>
+        <updated>2026-10-20T19:49:51.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/432915?v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42516.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3758846446" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42516" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42516/hovercard" href="https://github.com/mdn/content/issues/42516">#42516</a>.</p>
 <p dir="auto">The main questions I have are:</p>
-<ol dir="auto">
-<li>What exactly the conditions are for conditional mediation. The spec is quite opaque here:</li>
-</ol>
+<p dir="auto"><strong>1. What exactly the conditions are for conditional mediation.</strong> The spec is quite opaque here:</p>
 <blockquote>
 <p dir="auto">For <a href="https://www.w3.org/TR/credential-management-1/#dom-credentialscontainer-create" rel="nofollow">create()</a>, if a user has previously consented to credential creation and the user agent knows it recently mediated an authentication, then the create() call may resolve without additional prominent modal interaction. If the user agent did not recently mediate an authentication or does not have consent for credential creation, then the call must throw a "<a href="https://webidl.spec.whatwg.org/#notallowederror" rel="nofollow">NotAllowedError</a>" <a href="https://webidl.spec.whatwg.org/#idl-DOMException" rel="nofollow">DOMException</a>.</p>
 </blockquote>
-<p dir="auto">(<a href="https://w3c.github.io/webappsec-credential-management/#mediation-requirements" rel="nofollow">https://w3c.github.io/webappsec-credential-management/#mediation-requirements</a>). I've glossed this based on Ricky Mondello's talk (<a href="http://www.youtube.com/watch?v=otObbUSxcqs&amp;t=10m50s" rel="nofollow">http://www.youtube.com/watch?v=otObbUSxcqs&amp;t=10m50s</a>) and the web.dev guide (<a href="https://developer.chrome.com/docs/identity/webauthn-conditional-create#how_it_works" rel="nofollow">https://developer.chrome.com/docs/identity/webauthn-conditional-create#how_it_works</a>)</p>
-<ol start="2" dir="auto">
-<li>
-<p dir="auto">What the <code class="notranslate">mediation</code> option to <code class="notranslate">create()</code> means for other credential types, such as passwords. AFAICS the spec says nothing here. Testing suggests that it is just ignored.</p>
-</li>
-<li>
-<p dir="auto">What <code class="notranslate">mediation</code> values other than <code class="notranslate">conditional</code> mean for public key credentials. Again AFAICS they are just ignored, so I've opted not to list them even though they are in the IDL.</p>
-</li>
-</ol>
+<p dir="auto">(<a href="https://w3c.github.io/webappsec-credential-management/#mediation-requirements" rel="nofollow">https://w3c.github.io/webappsec-credential-management/#mediation-requirements</a>).</p>
+<p dir="auto">I've glossed this based on Ricky Mondello's talk (<a href="http://www.youtube.com/watch?v=otObbUSxcqs&amp;t=10m50s" rel="nofollow">http://www.youtube.com/watch?v=otObbUSxcqs&amp;t=10m50s</a>) and the web.dev guide (<a href="https://developer.chrome.com/docs/identity/webauthn-conditional-create#how_it_works" rel="nofollow">https://developer.chrome.com/docs/identity/webauthn-conditional-create#how_it_works</a>)</p>
+<p dir="auto"><strong>2. What the <code class="notranslate">mediation</code> option to <code class="notranslate">create()</code> means for other credential types, such as passwords.</strong> AFAICS the spec says nothing here. Testing suggests that it is just ignored.</p>
+<p dir="auto"><strong>3. What <code class="notranslate">mediation</code> values other than <code class="notranslate">conditional</code> mean for public key credentials.</strong> Again AFAICS they are just ignored, so I've opted not to list them even though they are in the IDL.</p>
 <p dir="auto">Also, I think we should take all this stuff out and into a separate guide page, but in a follow-up, please.</p>]]></content>
         <author>
             <name>wbamberg</name>
@@ -675,7 +668,7 @@ it was moved to level 5</p>
         <title type="html"><![CDATA[Consolidate HTTP CORP guide into security guide, clearly separate resource headers from embedder headers]]></title>
         <id>https://github.com/mdn/content/pull/46167</id>
         <link href="https://github.com/mdn/content/pull/46167"/>
-        <updated>2026-10-19T16:40:36.000Z</updated>
+        <updated>2026-10-20T22:41:51.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42236.">Fix</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3697342839" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42236" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42236/hovercard" href="https://github.com/mdn/content/issues/42236">#42236</a>. Continues <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3700661893" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42267" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/42267/hovercard" href="https://github.com/mdn/content/pull/42267">#42267</a>.</p>
 <p dir="auto">We have two documents that have basically identical structure and identical verbiage (presumably the observatory docs copied us, or we both copied from the spec explainer). I'm consolidating them both into security. I have no preference whether to put it in HTTP or security, but since we already have a central place for all security-related features we might as well use it as much as possible.</p>
 <p dir="auto">The major confusion was around which headers are sent by the embedder and which are sent by the resource, and how COEP/COOP/CORP work together. This rewrite hopefully adds that context.</p>
