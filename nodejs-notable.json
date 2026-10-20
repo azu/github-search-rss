@@ -6,6 +6,17 @@
     "description": "Node.js notable changes on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/52195?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Track the test that owns the current async context with an AsyncLocalStorage instead of a <code class=\"notranslate\">createHook()</code> init/destroy map, so <code class=\"notranslate\">node:test</code> no longer installs async hooks (including promise hooks) for every run.</p>\n<p dir=\"auto\"><code class=\"notranslate\">Test#runInAsyncScope()</code> enters the test's context directly rather than wrapping <code class=\"notranslate\">AsyncResource#runInAsyncScope()</code>, to avoid adding frames to user stack traces. The snapshot changes drop one <code class=\"notranslate\">&lt;node-internal-frames&gt;</code> line, since that frame now lives in the test runner and is filtered out.</p>\n<p dir=\"auto\">Refs: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3723185585\" data-permission-text=\"Title is private\" data-url=\"https://github.com/nodejs/node/issues/61030\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/nodejs/node/pull/61030/hovercard\" href=\"https://github.com/nodejs/node/pull/61030\">#61030</a></p>\n<hr>\n<p dir=\"auto\">AI generated, reviewed by me</p>",
+            "url": "https://github.com/nodejs/node/pull/66795",
+            "title": "test_runner: use AsyncLocalStorage instead of async_hooks",
+            "date_modified": "2026-10-20T14:00:28.000Z",
+            "date_published": "2026-10-16T15:59:48.000Z",
+            "author": {
+                "name": "mcollina",
+                "url": "https://github.com/mcollina"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/18269663?u=2197410af2ccd267740fb3d7f2a275a2ec371fed&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is an automated update of root-certificates to 3.129.</p>",
             "url": "https://github.com/nodejs/node/pull/66496",
             "title": "crypto: update root-certificates to 3.129",
@@ -182,7 +193,7 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds basic syntax highlighting similar to our <code class=\"notranslate\">util.inspect</code>. Highlighting is done using <code class=\"notranslate\">util.inspect.styles</code>, so the coloring is in-tune with inspect, see below:</p>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTI0OTI3MzMsIm5iZiI6MTc5MjQ5MjQzMywicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDIwVDEwMzM1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1NGI4YTNlNmE1NTA4ODc1YmQzZTRhMDYzZDZmZmI0OTVlNDVmOGI3ZjkxZGFlZTUwNzQwOGZlYmY2M2Y5MWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.BCF7rBSlUfUCni7odR_UIk_UDxDVqN6cnRjzPj1OhNc\"><img width=\"1204\" height=\"232\" alt=\"Screenshot 2026-07-18 at 7 37 24 PM\" src=\"https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTI0OTI3MzMsIm5iZiI6MTc5MjQ5MjQzMywicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDIwVDEwMzM1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1NGI4YTNlNmE1NTA4ODc1YmQzZTRhMDYzZDZmZmI0OTVlNDVmOGI3ZjkxZGFlZTUwNzQwOGZlYmY2M2Y5MWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.BCF7rBSlUfUCni7odR_UIk_UDxDVqN6cnRjzPj1OhNc\" style=\"max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a>\n<p dir=\"auto\"><strong>Notable Change</strong>: The REPL now performs syntax highlighting when <code class=\"notranslate\">useColors: true</code></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds basic syntax highlighting similar to our <code class=\"notranslate\">util.inspect</code>. Highlighting is done using <code class=\"notranslate\">util.inspect.styles</code>, so the coloring is in-tune with inspect, see below:</p>\n<a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTI1MTAyNDAsIm5iZiI6MTc5MjUwOTk0MCwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDIwVDE1MjU0MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0MjA5OGQ1OTY3ZDIxODhhOWIyZTc2ZTdlZjA3NTdiNzRiNTQzNzJhMTc2ODIwNzAyMDMyNDA5YWFmOGNhZmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.4kCMV2ciOadHNif3dMte8o9uQ-FbfIgGjENOAzXz2GE\"><img width=\"1204\" height=\"232\" alt=\"Screenshot 2026-07-18 at 7 37 24 PM\" src=\"https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTI1MTAyNDAsIm5iZiI6MTc5MjUwOTk0MCwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjEwMjAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMDIwVDE1MjU0MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0MjA5OGQ1OTY3ZDIxODhhOWIyZTc2ZTdlZjA3NTdiNzRiNTQzNzJhMTc2ODIwNzAyMDMyNDA5YWFmOGNhZmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.4kCMV2ciOadHNif3dMte8o9uQ-FbfIgGjENOAzXz2GE\" style=\"max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px\" class=\"js-gh-image-fallback\"></a>\n<p dir=\"auto\"><strong>Notable Change</strong>: The REPL now performs syntax highlighting when <code class=\"notranslate\">useColors: true</code></p>",
             "url": "https://github.com/nodejs/node/pull/64591",
             "title": "repl: add basic syntax highlighting",
             "date_modified": "2026-09-02T16:42:16.000Z",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "avivkeller",
                 "url": "https://github.com/avivkeller"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/18269663?u=2197410af2ccd267740fb3d7f2a275a2ec371fed&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This is an automated update of root-certificates to 3.123.1.</p>",
-            "url": "https://github.com/nodejs/node/pull/63527",
-            "title": "crypto: update root-certificates to 3.123.1",
-            "date_modified": "2026-09-22T16:11:42.000Z",
-            "date_published": "2026-05-24T01:14:57.000Z",
-            "author": {
-                "name": "nodejs-github-bot",
-                "url": "https://github.com/nodejs-github-bot"
             }
         }
     ]

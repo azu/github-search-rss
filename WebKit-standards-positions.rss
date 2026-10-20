@@ -2,11 +2,53 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/WebKit-standards-positions.rss</id>
     <title>WebKit/standards-positions Issues</title>
-    <updated>2026-10-20T10:33:48.786Z</updated>
+    <updated>2026-10-20T15:25:34.321Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/WebKit-standards-positions.rss"/>
     <subtitle>WebKit/standards-positions Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[The focusreset event]]></title>
+        <id>https://github.com/WebKit/standards-positions/issues/732</id>
+        <link href="https://github.com/WebKit/standards-positions/issues/732"/>
+        <updated>2026-10-20T13:38:27.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/88566?u=046a5e84d9d9f0c92c1d358b010a7f2617678b74&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
+<p dir="auto"><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/rniwa/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/rniwa">@rniwa</a> <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/annevk/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annevk">@annevk</a></p>
+<h3 dir="auto">Title of the proposal</h3>
+<p dir="auto">The <code class="notranslate">focusreset</code> event</p>
+<h3 dir="auto">URL to the spec</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5763980197" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/13050" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/13050/hovercard" href="https://github.com/whatwg/html/pull/13050">whatwg/html#13050</a></p>
+<h3 dir="auto">URL to the spec's repository</h3>
+<p dir="auto"><a href="https://github.com/whatwg/html">https://github.com/whatwg/html</a></p>
+<h3 dir="auto">Issue Tracker URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5249642859" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/12842" data-hovercard-type="issue" data-hovercard-url="/whatwg/html/issues/12842/hovercard" href="https://github.com/whatwg/html/issues/12842">whatwg/html#12842</a></p>
+<h3 dir="auto">Explainer URL</h3>
+<p dir="auto"><a href="https://github.com/noamr/explainers/blob/main/focusreset-explainer.md">https://github.com/noamr/explainers/blob/main/focusreset-explainer.md</a></p>
+<h3 dir="auto">TAG Design Review URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Mozilla standards-positions issue URL</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5942679245" data-permission-text="Title is private" data-url="https://github.com/mozilla/standards-positions/issues/1469" data-hovercard-type="issue" data-hovercard-url="/mozilla/standards-positions/issues/1469/hovercard" href="https://github.com/mozilla/standards-positions/issues/1469">mozilla/standards-positions#1469</a></p>
+<h3 dir="auto">WebKit Bugzilla URL</h3>
+<p dir="auto"><a href="https://bugs.webkit.org/show_bug.cgi?id=327387" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=327387</a></p>
+<h3 dir="auto">Radar URL</h3>
+<p dir="auto"><em>No response</em></p>
+<h3 dir="auto">Description</h3>
+<p dir="auto">When the currently focused element in a document (or one of its ancestors) is removed from the DOM, the HTML Standard's node-remove focus fixup rule synchronously resets the document's focused area to its viewport (<code class="notranslate">document.body</code> / <code class="notranslate">document.documentElement</code>) without firing <code class="notranslate">blur</code> or <code class="notranslate">focusout</code>.</p>
+<p dir="auto">Because no event is fired when focus is lost due to DOM removal, UI component libraries, modal focus traps, and keyboard navigation tools currently rely on expensive or fragile workarounds such as attaching a <code class="notranslate">MutationObserver({ childList: true, subtree: true })</code> to <code class="notranslate">document.body</code> (e.g., Radix UI's <code class="notranslate">FocusScope</code>, <code class="notranslate">focus-trap</code>) or polling <code class="notranslate">document.activeElement</code> via <code class="notranslate">setInterval</code> (e.g., Material UI's <code class="notranslate">FocusTrap</code>, Tridactyl).</p>
+<p dir="auto">This proposal introduces a <code class="notranslate">focusreset</code> event (and <code class="notranslate">onfocusreset</code> event handler IDL attribute) on <code class="notranslate">Document</code>. When a focused element is removed from a document that has focus—resetting focus to the viewport—a focus reset is signaled for that document. In the mutation observer microtask checkpoint (<code class="notranslate">notify mutation observers</code>, immediately after <code class="notranslate">MutationObserver</code> callbacks and <code class="notranslate">slotchange</code> events), if focus has not been explicitly moved to another element and the document still has focus, a <code class="notranslate">focusreset</code> event is fired at <code class="notranslate">Document</code>.</p>
+<p dir="auto">Specification PRs &amp; Tests:</p>
+<ul dir="auto">
+<li>HTML PR: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5763980197" data-permission-text="Title is private" data-url="https://github.com/whatwg/html/issues/13050" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/html/pull/13050/hovercard" href="https://github.com/whatwg/html/pull/13050">whatwg/html#13050</a></li>
+<li>DOM PR: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5828736490" data-permission-text="Title is private" data-url="https://github.com/whatwg/dom/issues/1512" data-hovercard-type="pull_request" data-hovercard-url="/whatwg/dom/pull/1512/hovercard" href="https://github.com/whatwg/dom/pull/1512">whatwg/dom#1512</a></li>
+<li>WPT PR: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5828230574" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/63595" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/63595/hovercard" href="https://github.com/web-platform-tests/wpt/pull/63595">web-platform-tests/wpt#63595</a></li>
+</ul>]]></content>
+        <author>
+            <name>noamr</name>
+            <email>noamr@noreply.github.com</email>
+            <uri>https://github.com/noamr</uri>
+        </author>
+        <published>2026-10-20T13:37:23.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SVG Path Data API: getPathData(), setPathData(), getPathSegmentAtLength()]]></title>
         <id>https://github.com/WebKit/standards-positions/issues/731</id>
@@ -711,39 +753,5 @@ Authors commonly want to suppress the underline under leading/trailing spaces in
             <uri>https://github.com/w07i</uri>
         </author>
         <published>2026-08-21T10:28:22.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[css-scroll-snap-1] Support scroll snap for single-axis scroll containers]]></title>
-        <id>https://github.com/WebKit/standards-positions/issues/712</id>
-        <link href="https://github.com/WebKit/standards-positions/issues/712"/>
-        <updated>2026-09-01T16:09:31.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/23268735?u=b5805d76dd417cc3d16b560e75f0119a1b6c41cc&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">WebKittens</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Title of the proposal</h3>
-<p dir="auto">[css-scroll-snap-1] Support scroll snap for single-axis scroll containers</p>
-<h3 dir="auto">URL to the spec</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5194264975" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/14354" data-hovercard-type="pull_request" data-hovercard-url="/w3c/csswg-drafts/pull/14354/hovercard" href="https://github.com/w3c/csswg-drafts/pull/14354">w3c/csswg-drafts#14354</a></p>
-<h3 dir="auto">URL to the spec's repository</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Issue Tracker URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Explainer URL</h3>
-<p dir="auto"><a href="https://github.com/explainers-by-googlers/single-axis-scroll-snap">https://github.com/explainers-by-googlers/single-axis-scroll-snap</a></p>
-<h3 dir="auto">TAG Design Review URL</h3>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5197257725" data-permission-text="Title is private" data-url="https://github.com/w3ctag/design-reviews/issues/1266" data-hovercard-type="issue" data-hovercard-url="/w3ctag/design-reviews/issues/1266/hovercard" href="https://github.com/w3ctag/design-reviews/issues/1266">w3ctag/design-reviews#1266</a></p>
-<h3 dir="auto">Mozilla standards-positions issue URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">WebKit Bugzilla URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Radar URL</h3>
-<p dir="auto"><em>No response</em></p>
-<h3 dir="auto">Description</h3>
-<p dir="auto">This is an addition to the single-axis scroll container (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4591313010" data-permission-text="Title is private" data-url="https://github.com/WebKit/standards-positions/issues/680" data-hovercard-type="issue" data-hovercard-url="/WebKit/standards-positions/issues/680/hovercard" href="https://github.com/WebKit/standards-positions/issues/680">#680</a>) to clarify the snap behavior of the non-scrollable axis in a single-axis scroll container <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4598267195" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/14018" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/14018/hovercard" href="https://github.com/w3c/csswg-drafts/issues/14018">w3c/csswg-drafts#14018</a></p>]]></content>
-        <author>
-            <name>lcdavid94</name>
-            <email>lcdavid94@noreply.github.com</email>
-            <uri>https://github.com/lcdavid94</uri>
-        </author>
-        <published>2026-08-19T16:16:08.000Z</published>
     </entry>
 </feed>
