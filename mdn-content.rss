@@ -2,11 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-20T00:00:57.777Z</updated>
+    <updated>2026-10-20T05:29:19.731Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Clarify user-defined nature of `<dashed-ident>`s]]></title>
+        <id>https://github.com/mdn/content/pull/46205</id>
+        <link href="https://github.com/mdn/content/pull/46205"/>
+        <updated>2026-10-20T04:01:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5663042?u=374157b7d3db732bd5cba9c356c530e344e78a95&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR contains a 1 line copy change that hopefully clarifies an ambiguity in the <code class="notranslate">&lt;dashed-ident&gt;</code> docs around their user-defined nature.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">I was a little confused when I read the second clause here:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="However, some `&lt;custom-ident&gt;`s are defined by the CSS language itself; `&lt;dashed-ident&gt;`s will never be defined in CSS."><pre class="notranslate"><code class="notranslate">However, some `&lt;custom-ident&gt;`s are defined by the CSS language itself; `&lt;dashed-ident&gt;`s will never be defined in CSS.
+</code></pre></div>
+<p dir="auto">The second clause is echoing the previous clause that mentions <code class="notranslate">the CSS language</code>, but I didn't interpret it that way at first. <code class="notranslate">in CSS</code> feels a bit too generic to me: is it referring to the CSS language, or CSS in general, the latter of which would include user-authored CSS.</p>
+<p dir="auto">I feel like contrasting against the first clause by stating that dashed idents will always be defined by the user helps highlight the difference and avoids this confusion.</p>
+<p dir="auto">That being said, maybe it was worded this way for a nuanced reason that I'm not aware of, so please provide feedback if that's the case.</p>]]></content>
+        <author>
+            <name>askoufis</name>
+            <email>askoufis@noreply.github.com</email>
+            <uri>https://github.com/askoufis</uri>
+        </author>
+        <published>2026-10-20T03:58:04.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[[Technical review] Add BiDi network intercept command pages]]></title>
         <id>https://github.com/mdn/content/pull/46203</id>
@@ -666,45 +687,5 @@ it was moved to level 5</p>
             <uri>https://github.com/pepelsbey</uri>
         </author>
         <published>2026-10-14T12:10:12.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Technical review] Add BiDi `network.setCacheBehavior` and `network.setExtraHeaders` pages]]></title>
-        <id>https://github.com/mdn/content/pull/46140</id>
-        <link href="https://github.com/mdn/content/pull/46140"/>
-        <updated>2026-10-19T20:08:19.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Added pages for the following commands of the <a href="https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/network" rel="nofollow"><code class="notranslate">network</code> module</a>:
-<ul dir="auto">
-<li><code class="notranslate">network.setCacheBehavior</code></li>
-<li><code class="notranslate">network.setExtraHeaders</code></li>
-</ul>
-</li>
-<li>Added a "Request modifiers" section to the <code class="notranslate">network</code> module landing page.</li>
-</ul>
-<p dir="auto">Every example was run against Firefox Nightly 159 and Chrome 155 (through ChromeDriver) with a local server, and both browsers behaved the same unless noted below.</p>
-<h3 dir="auto">Spec links</h3>
-<ul dir="auto">
-<li><a href="https://w3c.github.io/webdriver-bidi/#command-network-setCacheBehavior" rel="nofollow">https://w3c.github.io/webdriver-bidi/#command-network-setCacheBehavior</a></li>
-<li><a href="https://w3c.github.io/webdriver-bidi/#command-network-setExtraHeaders" rel="nofollow">https://w3c.github.io/webdriver-bidi/#command-network-setExtraHeaders</a></li>
-</ul>
-<h3 dir="auto">Related issue</h3>
-<p dir="auto">Doc issue: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5013788640" data-permission-text="Title is private" data-url="https://github.com/mdn/mdn/issues/851" data-hovercard-type="issue" data-hovercard-url="/mdn/mdn/issues/851/hovercard" href="https://github.com/mdn/mdn/issues/851">mdn/mdn#851</a></p>
-<h3 dir="auto">Compat quirks worth looking into:</h3>
-<ul dir="auto">
-<li><strong>Compat data for the <code class="notranslate">headers</code> parameter of <code class="notranslate">network.setExtraHeaders</code>:</strong>
-<ul dir="auto">
-<li>Chrome 155 returns <code class="notranslate">unsupported operation</code> ("Only string headers values are supported") for a <code class="notranslate">"base64"</code> header value (<a href="https://github.com/GoogleChromeLabs/chromium-bidi/blob/a51bc3b3be6d68eadeb4dbaabcad6e315e111ad6/src/bidiMapper/modules/network/NetworkProcessor.ts#L742-L746">chromium-bidi source</a>), and sends non-ASCII characters in a <code class="notranslate">"string"</code> value as Latin-1 (<code class="notranslate">é</code> as <code class="notranslate">e9</code>) rather than UTF-8 (seen in my test run). Firefox follows the spec on both. BCD shows Chrome's support as complete. cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/OrKoN/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/OrKoN">@OrKoN</a> for the compat sheet update.</li>
-<li>BCD marks Firefox's support as partial because it "fails to set Unicode headers" (<a href="https://bugzil.la/1994996" rel="nofollow">bug 1994996</a>). That bug was fixed in Firefox 150, and Nightly 159 sends UTF-8 correctly. cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/whimboo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/whimboo">@whimboo</a> for the compat sheet update.</li>
-</ul>
-</li>
-<li><strong>Spec link for <code class="notranslate">setExtraHeaders</code>.</strong> BCD has no <code class="notranslate">spec_url</code> for <code class="notranslate">webdriver.bidi.network.setExtraHeaders</code> and marks it <code class="notranslate">standard_track: false</code>, unlike <code class="notranslate">setCacheBehavior</code>. cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/whimboo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/whimboo">@whimboo</a> for the compat sheet update. Until BCD has the URL, the page sets <code class="notranslate">spec-urls</code> in its front matter to fill the Specifications table.</li>
-</ul>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-10-14T11:29:56.000Z</published>
     </entry>
 </feed>
