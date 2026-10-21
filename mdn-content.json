@@ -6,6 +6,28 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/1473787?u=7210392191d873eea4effccad9bcb96e3a6dd00e&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Update the “How To Use SSH Over An HTTP Proxy” reference on the HTTP CONNECT page to use an Internet Archive snapshot.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The original link is dead. Using the archived page keeps the reference accessible to readers.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Archived URL: <a href=\"https://web.archive.org/web/20260704212227/https://www.dimoulis.net/posts/ssh-over-proxy/\" rel=\"nofollow\">https://web.archive.org/web/20260704212227/https://www.dimoulis.net/posts/ssh-over-proxy/</a></p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
+            "url": "https://github.com/mdn/content/pull/46221",
+            "title": "Fix dead reference link on HTTP CONNECT page",
+            "date_modified": "2026-10-21T05:57:50.000Z",
+            "date_published": "2026-10-21T05:57:22.000Z",
+            "author": {
+                "name": "wroever",
+                "url": "https://github.com/wroever"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/100893747?u=308bbfdfc1a1f984a378e94f4939ac5c55af011c&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Updated the \"Identifying allowed request methods\" section in the HTTP OPTIONS method documentation to use <a href=\"https://httpbin.org\" rel=\"nofollow\">https://httpbin.org</a> instead of <a href=\"https://example.org\" rel=\"nofollow\">https://example.org</a>. Updated the illustrative HTTP response and clarified that response status codes and headers depend on the server's implementation and configuration.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The previous example showed a 204 No Content response and an Allow header that could not be reproduced using the documented curl command against <a href=\"https://example.org\" rel=\"nofollow\">https://example.org</a>. This change uses an alternative endpoint to make the example clearer and removes the outdated response details.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Only the \"Identifying allowed request methods\" section in files/en-us/web/http/reference/methods/options/index.md was changed. No unrelated documentation files were modified.</p>\n<p dir=\"auto\">Related issues and pull requests</p>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #46204.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5934469542\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46204\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46204/hovercard\" href=\"https://github.com/mdn/content/issues/46204\">#46204</a></p>",
+            "url": "https://github.com/mdn/content/pull/46220",
+            "title": "Fix inaccurate OPTIONS method example",
+            "date_modified": "2026-10-21T05:39:07.000Z",
+            "date_published": "2026-10-21T05:08:38.000Z",
+            "author": {
+                "name": "Khogendrarupini",
+                "url": "https://github.com/Khogendrarupini"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/198354403?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR removes the claim that Firefox won't put pages with <code class=\"notranslate\">beforeunload</code> listeners in the bfcache, along with the same claim on the <code class=\"notranslate\">sendBeacon()</code> and <code class=\"notranslate\">pagehide</code> pages.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>The <code class=\"notranslate\">beforeunload</code> usage notes said Firefox excludes pages with <code class=\"notranslate\">beforeunload</code> listeners from the bfcache. Firefox has allowed these pages in the bfcache since version 116, so I removed the bullet. That left a one-item list, so I turned it into a paragraph. I also removed the sentence saying that listening sparingly minimizes the effect on performance, since the removed bullet was the only reason given for it.</li>\n<li>The \"Legacy events\" section of the <code class=\"notranslate\">sendBeacon()</code> page had a separate line saying Firefox excludes pages with <code class=\"notranslate\">beforeunload</code> handlers, which I removed. The comparison with <code class=\"notranslate\">pagehide</code> now only mentions <code class=\"notranslate\">unload</code>.</li>\n<li>The <code class=\"notranslate\">pagehide</code> page said <code class=\"notranslate\">pagehide</code> is compatible with the bfcache \"unlike the <code class=\"notranslate\">unload</code> and <code class=\"notranslate\">beforeunload</code> events\". It now only mentions <code class=\"notranslate\">unload</code>.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Firefox bugs: <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1837045\" rel=\"nofollow\">1837045</a> (enabled in release, Firefox 116) and <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1741671\" rel=\"nofollow\">1741671</a> (enabled in Nightly).</li>\n<li>The <code class=\"notranslate\">docshell.shistory.bfcache.ship_allow_beforeunload_listeners</code> pref now defaults to <code class=\"notranslate\">true</code> on all platforms in Firefox's current source.</li>\n<li><code class=\"notranslate\">markdownlint-cli2</code> and <code class=\"notranslate\">prettier --check</code> report 0 issues on the changed files, and the front-matter linter passes.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #46214.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5942505821\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46214\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46214/hovercard\" href=\"https://github.com/mdn/content/issues/46214\">#46214</a></p>",
             "url": "https://github.com/mdn/content/pull/46218",
             "title": "fix(api): remove outdated Firefox beforeunload bfcache claims",
@@ -58,17 +80,6 @@
             "author": {
                 "name": "Stackforge-07",
                 "url": "https://github.com/Stackforge-07"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Firefox Nightly 159 adds support for the MathMLAnchorElement download, ping, rel, relList, and referrerPolicy properties; see <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2064612\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2064612</a>.</p>\n<p dir=\"auto\">This PR:</p>\n<ul dir=\"auto\">\n<li>Adds reference pages for each of the new IDL properties.</li>\n<li>Adds an entry to the MathML <code class=\"notranslate\">&lt;a&gt;</code> element reference page for each attribute that is reflected by the new properties.</li>\n<li>Adds experimental features and Fx 159 rel note entries for the new additions.</li>\n<li>Clears up a few weird related things (e.g. there was an entry in the exp features page that said the MathML <code class=\"notranslate\">&lt;a&gt;</code> element was added later than the MathMLAnchorElement interface, which makes no sense. Looking at the bugs, this looked to be wrong, so I deleted it).</li>\n</ul>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/46209",
-            "title": "Firefox 159 MathMLAnchorElement new properties",
-            "date_modified": "2026-10-20T17:27:52.000Z",
-            "date_published": "2026-10-20T10:45:02.000Z",
-            "author": {
-                "name": "chrisdavidmills",
-                "url": "https://github.com/chrisdavidmills"
             }
         },
         {
@@ -130,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">As a follow-up to the comment in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5792018539\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46094\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/46094/hovercard?comment_id=4292582060&amp;comment_type=review_comment\" href=\"https://github.com/mdn/content/pull/46094#discussion_r4292582060\">#46094 (comment)</a>, I felt the need to update <code class=\"notranslate\">script.evaluate</code> to:</p>\n<ul dir=\"auto\">\n<li>Clarify that returning a handle requires: <code class=\"notranslate\">resultOwnership</code> set to <code class=\"notranslate\">root</code> <strong><em>and</em></strong> a value that supports a handle.</li>\n<li>Explicitly state the types of returned values that support handles. The text previously only stated when the <code class=\"notranslate\">handle</code> field is omitted.</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/46201",
             "title": "WebDriver BiDi `script.evaluate`: Clarify handle support",
-            "date_modified": "2026-10-20T17:47:44.000Z",
+            "date_modified": "2026-10-21T06:42:31.000Z",
             "date_published": "2026-10-19T18:13:12.000Z",
             "author": {
                 "name": "dipikabh",
@@ -212,17 +223,6 @@
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #42236.\">Fix</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3697342839\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42236\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/42236/hovercard\" href=\"https://github.com/mdn/content/issues/42236\">#42236</a>. Continues <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"3700661893\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/42267\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/42267/hovercard\" href=\"https://github.com/mdn/content/pull/42267\">#42267</a>.</p>\n<p dir=\"auto\">We have two documents that have basically identical structure and identical verbiage (presumably the observatory docs copied us, or we both copied from the spec explainer). I'm consolidating them both into security. I have no preference whether to put it in HTTP or security, but since we already have a central place for all security-related features we might as well use it as much as possible.</p>\n<p dir=\"auto\">The major confusion was around which headers are sent by the embedder and which are sent by the resource, and how COEP/COOP/CORP work together. This rewrite hopefully adds that context.</p>\n<p dir=\"auto\">Co-Authored-By: ajayojha <a href=\"mailto:oojhaajay@gmail.com\">oojhaajay@gmail.com</a></p>",
-            "url": "https://github.com/mdn/content/pull/46167",
-            "title": "Consolidate HTTP CORP guide into security guide, clearly separate resource headers from embedder headers",
-            "date_modified": "2026-10-20T22:41:51.000Z",
-            "date_published": "2026-10-15T21:03:43.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
             }
         }
     ]
