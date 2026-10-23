@@ -2,11 +2,159 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-10-23T15:30:51.287Z</updated>
+    <updated>2026-10-23T19:36:47.688Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Other Spec Review: WebAuthn Cross-Device Fallback URL Extension]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1293</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1293"/>
+        <updated>2026-10-23T17:31:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/32895139?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
+<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3857184004" data-permission-text="Title is private" data-url="https://github.com/w3c/webauthn/issues/2380" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webauthn/pull/2380/hovercard" href="https://github.com/w3c/webauthn/pull/2380">w3c/webauthn#2380</a></p>
+<h3 dir="auto">Explainer</h3>
+<p dir="auto"><a href="https://github.com/w3c/webauthn/blob/main/explainers/cross-device-fallback-url.md">https://github.com/w3c/webauthn/blob/main/explainers/cross-device-fallback-url.md</a></p>
+<h3 dir="auto">Links</h3>
+<ul dir="auto">
+<li>Previous early design review, if any: N/A</li>
+<li>An introduction to the feature, aimed at unfamiliar audiences: During cross-device (hybrid transport) WebAuthn authentication—where a user scans a QR code or connects to a mobile device (authenticator) from a desktop client—the mobile device may not have a matching passkey for the Relying Party (RP). Today, this leads to a dead-end experience on the mobile device, forcing the user to abandon the mobile flow and return to the desktop to try another sign-in method. The <code class="notranslate">crossDeviceFallbackUrl</code> extension allows the RP to specify a same-site HTTPS fallback URL in <code class="notranslate">navigator.credentials.get()</code> options so the remote authenticator device can offer to transition the user directly into an alternative authentication or onboarding flow on that device.</li>
+<li>A description of the problems that end-users were facing before this proposal: Users scanning a hybrid transport QR code with a phone that lacks the expected passkey hit a dead end on their mobile device with no guided way to recover or sign in on that device.</li>
+<li>Alternatives considered: Relying solely on client-side timeout/cancellation on the desktop page; or allowing custom URI schemes vs. restricting to HTTPS URLs that are same-site with the RP ID (restricted to same-site HTTPS URLs and checked against CSP to prevent abuse).</li>
+<li>Examples of how to use the proposal to solve the end-users' problems: Passing <code class="notranslate">extensions: { crossDeviceFallbackUrl: "..." }</code> inside <code class="notranslate">publicKey</code> options to <code class="notranslate">navigator.credentials.get()</code>.</li>
+<li>What do the end-users experience with this proposal: When a user initiates hybrid authentication and their mobile device does not have a matching passkey for the RP, the mobile OS/authenticator UI can offer an option to open the RP-provided fallback URL in the mobile browser (and inform the client that the fallback URL was processed via <code class="notranslate">WebAuthnOperationException</code>).</li>
+<li>User research you did to validate the problem and/or design, if any: N/A</li>
+<li>Web Platform Tests: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4527878162" data-permission-text="Title is private" data-url="https://github.com/web-platform-tests/wpt/issues/60190" data-hovercard-type="pull_request" data-hovercard-url="/web-platform-tests/wpt/pull/60190/hovercard" href="https://github.com/web-platform-tests/wpt/pull/60190">web-platform-tests/wpt#60190</a></li>
+</ul>
+<h3 dir="auto">The specification</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
+</ul>
+<details><summary>Security and Privacy Self-Review Questionnaire</summary>
+<h2 dir="auto">Security and Privacy Self-Review Questionnaire</h2>
+<h3 dir="auto">2.1. What information does this feature expose, and for what purposes?</h3>
+<p dir="auto">This feature allows a Relying Party (RP) to pass a fallback URL (<code class="notranslate">crossDeviceFallbackUrl</code>) from the client to a remote authenticator over a hybrid transport connection during <code class="notranslate">navigator.credentials.get()</code>. If no matching passkey is available on the remote authenticator and the user explicitly chooses to follow the fallback flow on that device, the authenticator informs the client that the fallback URL was invoked by rejecting the <code class="notranslate">navigator.credentials.get()</code> promise with a <code class="notranslate">WebAuthnOperationException</code>. This benefits the user by preventing a dead-end experience on their mobile device and allowing the desktop client UI to update appropriately once the user transitions to the mobile fallback URL.</p>
+<ol dir="auto">
+<li><strong>What information does your spec expose to the <em>first party</em> that the <em>first party</em> cannot currently easily determine?</strong><br>
+Only two pieces of information:
+<ul dir="auto">
+<li>Via <code class="notranslate">PublicKeyCredential.getClientCapabilities()</code>, whether the client supports the <code class="notranslate">extension:crossDeviceFallbackUrl</code> extension.</li>
+<li>Via <code class="notranslate">WebAuthnOperationException</code>, that the user explicitly interacted with the remote hybrid authenticator and opted to open the RP-provided fallback URL instead of completing a WebAuthn assertion. (Note: if the RP includes a session identifier in the fallback URL, the RP would already learn this as soon as the mobile browser loads the fallback URL).</li>
+</ul>
+</li>
+<li><strong>What information does your spec expose to <em>third parties</em> that <em>third parties</em> cannot currently easily determine?</strong><br>
+None. Cross-origin iframes cannot invoke <code class="notranslate">navigator.credentials.get()</code> unless explicitly delegated via the <code class="notranslate">publickey-credentials-get</code> Permissions Policy, and the <code class="notranslate">crossDeviceFallbackUrl</code> must be same-site with the effective <code class="notranslate">rpId</code>.</li>
+<li><strong>What <em>potentially identifying information</em> does your spec expose to the <em>first party</em> that the <em>first party</em> can already access?</strong><br>
+None.</li>
+<li><strong>What <em>potentially identifying information</em> does your spec expose to <em>third parties</em> that <em>third parties</em> can already access?</strong><br>
+None.</li>
+</ol>
+<h3 dir="auto">2.2. Do features in your specification expose the minimum amount of information necessary to implement the intended functionality?</h3>
+<p dir="auto">Yes. The extension only sends a single validated HTTPS URL over the hybrid tunnel and only returns a signal (<code class="notranslate">WebAuthnOperationException</code>) when the user actively chooses to invoke the fallback URL on the remote authenticator. It does not expose why no passkey matched, what credentials exist on the remote device, or any hardware/OS details of the remote device.</p>
+<h3 dir="auto">2.3. Do the features in your specification expose personal information, personally-identifiable information (PII), or information derived from either?</h3>
+<p dir="auto">No. No personal information or PII is exposed by this extension.</p>
+<h3 dir="auto">2.4. How do the features in your specification deal with sensitive information?</h3>
+<p dir="auto">The extension itself does not expose sensitive user information. Because an RP might include session context or authentication tokens in the query parameters of <code class="notranslate">crossDeviceFallbackUrl</code>, the URL is only transmitted over an end-to-end encrypted, proximity-verified CTAP hybrid transport tunnel after explicit user action (such as scanning a QR code), and the client enforces Content Security Policy (CSP) checks on the URL to prevent XSS exfiltration.</p>
+<h3 dir="auto">2.5. Does data exposed by your specification carry related but distinct information that may not be obvious to users?</h3>
+<p dir="auto">No.</p>
+<h3 dir="auto">2.6. Do the features in your specification introduce state that persists across browsing sessions?</h3>
+<p dir="auto">No. The extension is stateless and scoped to a single <code class="notranslate">navigator.credentials.get()</code> authentication ceremony.</p>
+<h3 dir="auto">2.7. Do the features in your specification expose information about the underlying platform to origins?</h3>
+<p dir="auto">Only a boolean capability entry (<code class="notranslate">extension:crossDeviceFallbackUrl</code>) in <code class="notranslate">PublicKeyCredential.getClientCapabilities()</code>, which is uniform across all users of a supporting browser version and adds no user-specific fingerprinting entropy.</p>
+<h3 dir="auto">2.8. Does this specification allow an origin to send data to the underlying platform?</h3>
+<p dir="auto">Yes. It allows an origin to pass a URL string (<code class="notranslate">crossDeviceFallbackUrl</code>) to the WebAuthn client, which forwards it over hybrid transport to the remote authenticator to potentially open in the remote device's browser.<br>
+To mitigate risks of arbitrary URI scheme abuse (such as <code class="notranslate">javascript:</code>, <code class="notranslate">file:</code>, <code class="notranslate">data:</code>, <code class="notranslate">blob:</code>, or custom app schemes), open redirects, or XSS data exfiltration:</p>
+<ul dir="auto">
+<li>The client parses and validates the URL and requires the scheme to be <code class="notranslate">https:</code>.</li>
+<li>The URL's origin must be same-site with the effective <code class="notranslate">rpId</code> of the request.</li>
+<li>The client runs Content Security Policy (CSP) checks against the URL so an XSS attacker cannot use <code class="notranslate">crossDeviceFallbackUrl</code> to bypass CSP restrictions.</li>
+<li>The URL is only forwarded to authenticators over <code class="notranslate">hybrid</code> transport.</li>
+</ul>
+<h3 dir="auto">2.9. Do features in this specification enable access to device sensors?</h3>
+<p dir="auto">No.</p>
+<h3 dir="auto">2.10. Do features in this specification enable new script execution/loading mechanisms?</h3>
+<p dir="auto">No.</p>
+<h3 dir="auto">2.11. Do features in this specification allow an origin to access other devices?</h3>
+<p dir="auto">WebAuthn already supports communicating with a user's remote authenticator via CTAP2.2 hybrid transport with explicit user mediation (scanning a QR code or confirming a notification on a linked device). This extension does not introduce any new device discovery or connection mechanisms; it only piggybacks a validated same-site HTTPS URL onto an existing user-mediated hybrid request.</p>
+<h3 dir="auto">2.12. Do features in this specification allow an origin some measure of control over a user agent’s native UI?</h3>
+<p dir="auto">On the remote authenticator device, if no matching passkey is found, the platform authenticator UI may present an option for the user to open the RP-provided fallback URL in their mobile browser. The native UI remains fully under the control of the platform/authenticator, requires explicit user confirmation before navigating to the URL, and clearly attributes the destination.</p>
+<h3 dir="auto">2.13. What temporary identifiers do the features in this specification create or expose to the web?</h3>
+<p dir="auto">None are created or exposed by the user agent or authenticator. (RPs may include their own short-lived session identifier in the fallback URL query string to correlate the fallback flow).</p>
+<h3 dir="auto">2.14. How does this specification distinguish between behavior in first-party and third-party contexts?</h3>
+<p dir="auto">It inherits WebAuthn's existing third-party restrictions: <code class="notranslate">navigator.credentials.get()</code> in cross-origin iframes is blocked by default unless explicitly enabled via the <code class="notranslate">publickey-credentials-get</code> Permissions Policy, and <code class="notranslate">crossDeviceFallbackUrl</code> must be same-site with the effective <code class="notranslate">rpId</code>.</p>
+<h3 dir="auto">2.15. How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</h3>
+<p dir="auto">It behaves identically in Private Browsing / Incognito mode as in normal mode, persists no state on the client, and does not allow correlating a user's activity across normal and private browsing sessions.</p>
+<h3 dir="auto">2.16. Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</h3>
+<p dir="auto">Yes. PR #2380 adds dedicated Security and Privacy Considerations for the <code class="notranslate">crossDeviceFallbackUrl</code> extension to the WebAuthn specification, detailing URL validation, CSP enforcement, and cross-device phishing/social engineering considerations.</p>
+<h3 dir="auto">2.17. Do features in your specification enable origins to downgrade default security protections?</h3>
+<p dir="auto">No.</p>
+<h3 dir="auto">2.18. What happens when a document that uses your feature is kept alive in BFCache (instead of getting destroyed) after navigation, and potentially gets reused on future navigations back to the document?</h3>
+<p dir="auto">Standard WebAuthn lifetime rules apply: if a document ceases to be fully active (including entering BFCache), any in-flight <code class="notranslate">navigator.credentials.get()</code> request is aborted.</p>
+<h3 dir="auto">2.19. What happens when a document that uses your feature gets disconnected?</h3>
+<p dir="auto">If the document becomes disconnected (no longer fully active), any pending WebAuthn operation is immediately aborted.</p>
+<h3 dir="auto">2.20. Does your spec define when and how new kinds of errors should be raised?</h3>
+<p dir="auto">Yes:</p>
+<ul dir="auto">
+<li><strong>Client-side validation errors:</strong> If <code class="notranslate">crossDeviceFallbackUrl</code> is not a valid URL, does not use the <code class="notranslate">https:</code> scheme, is not same-site with the effective <code class="notranslate">rpId</code>, or violates the document's CSP, the client rejects the request before contacting any authenticator. Because validation depends only on inputs provided by the page itself, this does not leak any system or user state.</li>
+<li><strong>Operation exception (<code class="notranslate">WebAuthnOperationException</code>):</strong> When the remote authenticator processes the fallback URL in response to explicit user action on the remote device, the client rejects the promise with <code class="notranslate">WebAuthnOperationException</code>. Because this only occurs after explicit user mediation on the remote device, it cannot be used for silent probing.</li>
+</ul>
+<h3 dir="auto">2.21. Does your feature allow sites to learn about the user’s use of assistive technology?</h3>
+<p dir="auto">No.</p>
+<h3 dir="auto">2.22. What should this questionnaire have asked?</h3>
+<p dir="auto">N/A</p>
+</details>
+<h3 dir="auto">Where and by whom is the work is being done?</h3>
+<ul dir="auto">
+<li>GitHub repo: <a href="https://github.com/w3c/webauthn">https://github.com/w3c/webauthn</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/harshlal028/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/harshlal028">@harshlal028</a>, Google</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/kreichgauer/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/kreichgauer">@kreichgauer</a>, Google</li>
+<li><a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/timcappalli/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/timcappalli">@timcappalli</a>, Okta</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: Google / W3C Web Authentication Working Group</li>
+<li>This work is being funded by: Google</li>
+<li>Primary standards group developing this feature: W3C Web Authentication Working Group (in coordination with FIDO Alliance CTAP / Hybrid Working Group)</li>
+<li>Incubation and standards groups that have discussed the design:
+<ul dir="auto">
+<li>W3C Web Authentication WG (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3519071248" data-permission-text="Title is private" data-url="https://github.com/w3c/webauthn/issues/2341" data-hovercard-type="issue" data-hovercard-url="/w3c/webauthn/issues/2341/hovercard" href="https://github.com/w3c/webauthn/issues/2341">w3c/webauthn#2341</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3857184004" data-permission-text="Title is private" data-url="https://github.com/w3c/webauthn/issues/2380" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webauthn/pull/2380/hovercard" href="https://github.com/w3c/webauthn/pull/2380">w3c/webauthn#2380</a>)</li>
+<li>FIDO Alliance FIDO2 / CTAP Technical Working Group (fido-alliance/fido-2-specs#1755, fido-alliance/fido-2-specs#1761)</li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">Feedback so far</h3>
+<ul dir="auto">
+<li>Multi-stakeholder feedback:
+<ul dir="auto">
+<li>Chromium comments: Positive; prototyped behind flag (commit 55da8e2).</li>
+<li>Mozilla comments: Discussed in WebAuthn WG calls and reviewed in PR #2380.</li>
+<li>WebKit comments: Reviewed in PR #2380 by Apple WebAuthn WG members (<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/pascoej/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/pascoej">@pascoej</a>).</li>
+</ul>
+</li>
+<li>Major unresolved issues with or opposition to this specification: None blocking this extension. Future enhancements to bind the fallback URL session to the hybrid tunnel are tracked separately in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5390738059" data-permission-text="Title is private" data-url="https://github.com/w3c/webauthn/issues/2478" data-hovercard-type="issue" data-hovercard-url="/w3c/webauthn/issues/2478/hovercard" href="https://github.com/w3c/webauthn/issues/2478">w3c/webauthn#2478</a>.</li>
+<li>Status/issue trackers for implementations:
+<ul dir="auto">
+<li>Chromium: <a href="https://issues.chromium.org/issues/509934168" rel="nofollow">https://issues.chromium.org/issues/509934168</a></li>
+<li>Gecko: WPT sync bug 2042911</li>
+<li>WebKit: TBD</li>
+</ul>
+</li>
+</ul>
+<h3 dir="auto">You should also know that...</h3>
+<p dir="auto">The wire protocol and remote authenticator behavior for carrying and handling the fallback URL over hybrid transport are specified in the FIDO CTAP specification (<code class="notranslate">crossDeviceFallbackUrl</code>), while WebAuthn PR #2380 defines the client/authenticator extension inputs, URL validation (HTTPS, same-site with <code class="notranslate">rpId</code>, CSP compliance), and exception handling (<code class="notranslate">WebAuthnOperationException</code>).</p>
+
+<hr>
+<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1293" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1293</a></p>]]></content>
+        <author>
+            <name>harshlal028</name>
+            <email>harshlal028@noreply.github.com</email>
+            <uri>https://github.com/harshlal028</uri>
+        </author>
+        <published>2026-10-23T17:17:46.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Other Spec Review: SVG Path Data API: getPathData(), setPathData(), getPathSegmentAtLength()]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1292</id>
@@ -1091,93 +1239,5 @@ ready: </li>
             <uri>https://github.com/josegta701-del</uri>
         </author>
         <published>2026-09-03T19:52:21.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[WG New Spec: VCALM v1.0]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1273</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1273"/>
-        <updated>2026-10-16T17:46:54.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/8096163?u=917d15870813b939806f09c562ec034ab98a8d72&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
-<p dir="auto"><a href="https://w3c.github.io/vcalm/" rel="nofollow">https://w3c.github.io/vcalm/</a></p>
-<h3 dir="auto">Explainer</h3>
-<p dir="auto"><a href="https://w3c.github.io/vcalm/#introduction" rel="nofollow">https://w3c.github.io/vcalm/#introduction</a></p>
-<h3 dir="auto">Links</h3>
-<ul dir="auto">
-<li>The WG's request for this TAG review: <strong><a href="https://www.w3.org/2026/08/12-vcwg-minutes.html#ResolutionSummary" rel="nofollow">https://www.w3.org/2026/08/12-vcwg-minutes.html#ResolutionSummary</a></strong></li>
-<li>Previous early design review, if any: <strong>No previous review.</strong></li>
-<li>An introduction to the feature, aimed at unfamiliar audiences: <strong><a href="https://w3c.github.io/vcalm/#introduction" rel="nofollow">https://w3c.github.io/vcalm/#introduction</a></strong></li>
-<li>A description of the problems that end-users were facing before this proposal: <strong><a href="https://w3c.github.io/vcalm/#introduction" rel="nofollow">https://w3c.github.io/vcalm/#introduction</a> (prior to the conception of the VCALM specification, the verifiable credential data model had no well-defined APIs to exchange credentials between multiple roles in the three-party model and manage the entire lifecycle of the credentials in a manner that encourages competition and prevents vendor lock-in)</strong></li>
-<li>Alternatives considered: <strong><a href="https://w3c.github.io/vcalm/#relationship-to-other-specifications" rel="nofollow">https://w3c.github.io/vcalm/#relationship-to-other-specifications</a></strong></li>
-<li>Examples of how to use the proposal to solve the end-users' problems:
-<ul dir="auto">
-<li><strong><a href="https://w3c.github.io/vcalm/#exchange-examples" rel="nofollow">https://w3c.github.io/vcalm/#exchange-examples</a></strong></li>
-<li><strong><a href="https://w3c.github.io/vcalm/#initiating-interactions" rel="nofollow">https://w3c.github.io/vcalm/#initiating-interactions</a></strong></li>
-</ul>
-</li>
-<li>What do the end-users experience with this proposal:
-<ul dir="auto">
-<li><strong><a href="https://w3c.github.io/vcalm/#introduction" rel="nofollow">https://w3c.github.io/vcalm/#introduction</a></strong></li>
-<li><strong><a href="https://w3c.github.io/vcalm/#architecture-overview" rel="nofollow">https://w3c.github.io/vcalm/#architecture-overview</a></strong></li>
-<li><strong><a href="https://w3c.github.io/vcalm/#exchange-examples" rel="nofollow">https://w3c.github.io/vcalm/#exchange-examples</a></strong></li>
-<li><strong><a href="https://w3c.github.io/vcalm/#initiating-interactions" rel="nofollow">https://w3c.github.io/vcalm/#initiating-interactions</a></strong></li>
-</ul>
-</li>
-<li>User research you did to validate the problem and/or design, if any: <strong>Feedback and extensive discussion from production deployments (CA DMV, National Association of Convenience Stores, Conexxus standards work, TruAge) and pilot programs (DHS “plugfest” series, Interoperability “plugfest” series co-organized by Jobs for the Future (JFF) and the Verifiable Credentials for Education W3C task force (VC EDU), California Career Passport usability studies, US First Responders, US Vital Records)</strong></li>
-<li>Test Suite: <strong>N/A. This will be created when transitioning into CR. The expectation will be to follow existing pattern for VC test suites at <a href="https://github.com/w3c/vcalm-test-suite">https://github.com/w3c/vcalm-test-suite</a> resulting in additions to the VC ecosystem conformance dashboard: <a href="https://canivc.com/" rel="nofollow">https://canivc.com/</a></strong></li>
-</ul>
-<h3 dir="auto">The specification</h3>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
-</ul>
-<h3 dir="auto">Where and by whom is the work is being done?</h3>
-<ul dir="auto">
-<li>GitHub repo: <strong><a href="https://github.com/w3c/vcalm">https://github.com/w3c/vcalm</a></strong></li>
-<li>Primary contacts:
-<ul dir="auto">
-<li><strong>Kayode Ezike (<a href="https://github.com/kezike">@kezike</a>), Gobekli, Editor/Author</strong></li>
-<li><strong>Patrick St. Louis (<a href="https://github.com/PatStLouis">@PatStLouis</a>), Open Security and Identity, Editor/Author</strong></li>
-<li><strong>Ivan Herman (<a href="https://github.com/iherman">@iherman</a>), W3C, Staff Contact</strong></li>
-<li><strong>Phil Archer (<a href="https://github.com/philarcher">@philarcher</a>), GS1, VCWG Chair</strong></li>
-</ul>
-</li>
-<li>Organization/project driving the specification: <strong>National Association of Convenience Stores, Conexxus, TruAge, California DMV, Skybridge Skills, US DHS Science and Technology, Digital Credentials Consortium, Digital Bazaar, Gobekli, California Career Passport, and multiple other W3C VCWG Members and credentialing initiatives</strong></li>
-<li>This work is being funded by: <strong>National Association of Convenience Stores, California DMV, Conexxus, Digital Bazaar, Digital Credentials Consortium</strong></li>
-<li>Primary standards group developing this feature: <strong>W3C Verifiable Credentials Working Group</strong></li>
-<li>Incubation and standards groups that have discussed the design:
-<ul dir="auto">
-<li><strong>W3C Credentials Community Group</strong></li>
-<li><strong>W3C JSON-LD Community Group</strong></li>
-<li><strong>W3C JSON-LD Working Group</strong></li>
-<li><strong>US Federal Agencies</strong></li>
-<li><strong>Internet Identity Workshop</strong></li>
-<li><strong>Rebooting the Web of Trust</strong></li>
-</ul>
-</li>
-</ul>
-<h3 dir="auto">Feedback so far</h3>
-<ul dir="auto">
-<li>Active horizontal reviews: <strong><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4264161566" data-permission-text="Title is private" data-url="https://github.com/w3c/vcalm/issues/627" data-hovercard-type="issue" data-hovercard-url="/w3c/vcalm/issues/627/hovercard" href="https://github.com/w3c/vcalm/issues/627">w3c/vcalm#627</a></strong></li>
-<li>Multi-stakeholder feedback:
-<ul dir="auto">
-<li><strong>Years of incubation in the W3C Credentials Community Group (CCG)</strong></li>
-<li><strong>Active processing of issues: <a href="https://github.com/w3c/vcalm/issues">https://github.com/w3c/vcalm/issues</a></strong></li>
-<li><strong>Feedback and extensive discussion from production deployments (CA DMV, National Association of Convenience Stores, Conexxus standards work, TruAge) and pilot programs (DHS “plugfest” series, Interoperability “plugfest” series co-organized by Jobs for the Future (JFF) and the Verifiable Credentials for Education W3C task force (VC EDU), California Career Passport usability studies, US First Responders, US Vital Records)</strong></li>
-</ul>
-</li>
-<li>Major unresolved issues with or opposition to this specification: <strong>No major unresolved issues</strong></li>
-<li>Status/issue trackers for implementations: <strong>None yet</strong></li>
-</ul>
-<h3 dir="auto">You should also know that...</h3>
-<p dir="auto"><strong>We are planning to enter Candidate Recommendation as soon as we have received horizontal reviews and responded to requests for changes. This is one of the reviews that is gating our entrance into Candidate Recommendation. Our goal is to enter Candidate Recommendation during W3C TPAC 2026.</strong></p>
-
-<hr>
-<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1273" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1273</a></p>]]></content>
-        <author>
-            <name>kezike</name>
-            <email>kezike@noreply.github.com</email>
-            <uri>https://github.com/kezike</uri>
-        </author>
-        <published>2026-09-02T03:00:42.000Z</published>
     </entry>
 </feed>
