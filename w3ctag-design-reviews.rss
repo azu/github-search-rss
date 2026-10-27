@@ -2,11 +2,122 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss</id>
     <title>w3ctag/design-reviews Design Issues</title>
-    <updated>2026-10-27T01:40:39.027Z</updated>
+    <updated>2026-10-27T06:57:59.227Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/w3ctag-design-reviews.rss"/>
     <subtitle>w3ctag/design-reviews Design Issues on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[WG New Spec: SHACL 1.2 Inference Rules]]></title>
+        <id>https://github.com/w3ctag/design-reviews/issues/1294</id>
+        <link href="https://github.com/w3ctag/design-reviews/issues/1294"/>
+        <updated>2026-10-27T02:41:41.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7321872?u=05b15f5227ae88d133d93c825978ae71ee8ecfe1&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Specification</h3>
+<p dir="auto"><a href="https://w3c.github.io/data-shapes/shacl12-inference-rules/" rel="nofollow">https://w3c.github.io/data-shapes/shacl12-inference-rules/</a></p>
+<h3 dir="auto">Explainer</h3>
+<p dir="auto"><a href="https://w3c.github.io/data-shapes/shacl12-inference-rules/#abstract" rel="nofollow">https://w3c.github.io/data-shapes/shacl12-inference-rules/#abstract</a></p>
+<h3 dir="auto">Links</h3>
+<ul dir="auto">
+<li>
+<p dir="auto">The WG's request for this TAG review: <a href="https://www.w3.org/2026/10/26-data-shapes-minutes.html#fee4" rel="nofollow">https://www.w3.org/2026/10/26-data-shapes-minutes.html#fee4</a></p>
+</li>
+<li>
+<p dir="auto">Previous early design review, if any: N/A</p>
+</li>
+<li>
+<p dir="auto">An introduction to the feature, aimed at unfamiliar audiences:</p>
+</li>
+</ul>
+<p dir="auto">SHACL defines an RDF vocabulary to describe shapes - collections of constraints that apply to a set of nodes. Shapes can be associated with nodes using a flexible target mechanism, e.g. for all instances of a class. One focus area of SHACL is data validation. However, the same principles of describing data patterns in shapes can also be exploited for other purposes. SHACL inference rules build on SHACL to form a light-weight RDF vocabulary for the exchange of rules that can be used to derive inferred RDF triples from existing asserted triples.</p>
+<p dir="auto">The SHACL rules feature defined in this document includes a general framework using the properties such as sh:rule and sh:condition, plus an extension mechanism for specific rule types. This document defines two such rule types: SHACL SPARQL rules and triple rules. This document also defines a declarative mechanism for SPARQL rule templates.</p>
+<ul dir="auto">
+<li>A description of the problems that end-users were facing before this proposal:</li>
+</ul>
+<p dir="auto">SHACL has long been used for generating new triples, principally via the mechanisms described in 2017's <a href="https://www.w3.org/TR/shacl-af/#rules" rel="nofollow">SHACL Advanced Features</a> Working Group Note. This specification improves on, slightly extends and formalises SHACL AF.</p>
+<ul dir="auto">
+<li>Alternatives considered:</li>
+</ul>
+<p dir="auto">To do nothing and keep using SHACL AF. This was deemed unacceptable since we have had innovation in the area of additional rule types that can be used with SHACL, e.g. <a href="https://www.w3.org/TR/sparql-rl/" rel="nofollow">SPARQL RL</a>. We needed to ensure that SHACL reasoning and SPARQL RL etc. were compatible.</p>
+<ul dir="auto">
+<li>Examples of how to use the proposal to solve the end-users' problems:</li>
+</ul>
+<ol dir="auto">
+<li>query targetting</li>
+</ol>
+<p dir="auto">Use a SPARQL CONSTRUCT query like this to generate the area of a rectangle:</p>
+<div class="highlight highlight-source-sparql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="CONSTRUCT {
+	$this ex:area ?area .
+}
+WHERE {
+	$this ex:width ?width .
+	$this ex:height ?height .
+	BIND (?width * ?height AS ?area) .
+}"><pre class="notranslate"><span class="pl-k">CONSTRUCT</span> {
+	$this ex:area <span class="pl-c1">?area</span> .
+}
+<span class="pl-k">WHERE</span> {
+	$this ex:width <span class="pl-c1">?width</span> .
+	$this ex:height <span class="pl-c1">?height</span> .
+	BIND (<span class="pl-c1">?width</span> <span class="pl-c1">*</span> <span class="pl-c1">?height</span> <span class="pl-k">AS</span> <span class="pl-c1">?area</span>) .
+}</pre></div>
+<p dir="auto">Wrap that SPARQL query in logic that refines the targetting of only particular rectangles using SHACL.</p>
+<ol start="2" dir="auto">
+<li>Rule ordering / once</li>
+</ol>
+<p dir="auto">Wrap a SPARQL CONSTRUCT statement in a <code class="notranslate">sh:SPARQLRule</code> statement that allows it to be run only once by setting <code class="notranslate">sh:runOnce true</code>.</p>
+<ul dir="auto">
+<li>What do the end-users experience with this proposal:</li>
+</ul>
+<p dir="auto">An extension to the SPARQL vocabulary allowing for the expression of simple triple-pattern rules, SPARQL rules or other kinds of rules such as SPARQL RL rules.</p>
+<ul dir="auto">
+<li>User research you did to validate the problem and/or design, if any:</li>
+</ul>
+<p dir="auto">We formalised the approach taken in SHACL Advanced Features and considered what the inclusion of other forms of rules would require, not just the triple patter and SPARQL rules provided for directly in the document. This was forced by the creation of SPARQL RL but the approach taken will allow other forms of rules too, such as N3.</p>
+<ul dir="auto">
+<li>Web Platform Tests:  N/A</li>
+</ul>
+<h3 dir="auto">The specification</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes Security and Privacy Considerations sections based on answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
+</ul>
+<h3 dir="auto">Where and by whom is the work is being done?</h3>
+<ul dir="auto">
+<li>GitHub repo: <a href="https://github.com/w3c/data-shapes/">https://github.com/w3c/data-shapes/</a></li>
+<li>Primary contacts:
+<ul dir="auto">
+<li>Holger Knublauch <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/HolgerKnublauch/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/HolgerKnublauch">@HolgerKnublauch</a>, Top Quadrant, lead editor</li>
+<li>Nicholas Car <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/nicholascar/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/nicholascar">@nicholascar</a>, KurrawongAI, WG co-chair</li>
+<li>Matt Goldberg <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/mgberg/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/mgberg">@mgberg</a>, Corning, editor</li>
+<li>Scott Henninger <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/scotthenninger/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/scotthenninger">@scotthenninger</a>, JPMorgan Chase &amp; Co., editor</li>
+<li>Livio Robaldo <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/liviorobaldo/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/liviorobaldo">@liviorobaldo</a>, Swansea University, editor</li>
+<li>Simon Steyskal <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/simonstey/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/simonstey">@simonstey</a>, Siemens AG, editor</li>
+</ul>
+</li>
+<li>Organization/project driving the specification: editors' organizations</li>
+<li>This work is being funded by: -</li>
+<li>Primary standards group developing this feature: <a href="https://www.w3.org/groups/wg/data-shapes/" rel="nofollow">Data Shapes WG</a></li>
+<li>Incubation and standards groups that have discussed the design: only Data Shapes WG. Review by RDF WG has been asked for</li>
+</ul>
+<h3 dir="auto">Feedback so far</h3>
+<ul dir="auto">
+<li>Active horizontal reviews: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5754635589" data-permission-text="Title is private" data-url="https://github.com/w3c/data-shapes/issues/1314" data-hovercard-type="issue" data-hovercard-url="/w3c/data-shapes/issues/1314/hovercard" href="https://github.com/w3c/data-shapes/issues/1314">w3c/data-shapes#1314</a></li>
+<li>Multi-stakeholder feedback: N/A (not relevant to browsers</li>
+<li>Major unresolved issues with or opposition to this specification: None</li>
+<li>Status/issue trackers for implementations: <a href="https://github.com/w3c/data-shapes/tree/gh-pages/shacl12-test-suite">https://github.com/w3c/data-shapes/tree/gh-pages/shacl12-test-suite</a></li>
+</ul>
+<h3 dir="auto">You should also know that...</h3>
+<p dir="auto"><em>No response</em></p>
+
+<hr>
+<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1294" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1294</a></p>]]></content>
+        <author>
+            <name>nicholascar</name>
+            <email>nicholascar@noreply.github.com</email>
+            <uri>https://github.com/nicholascar</uri>
+        </author>
+        <published>2026-10-27T02:41:38.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Other Spec Review: WebAuthn Cross-Device Fallback URL Extension]]></title>
         <id>https://github.com/w3ctag/design-reviews/issues/1293</id>
@@ -1179,65 +1290,5 @@ ready: WICG for the imperative API, CSSWG for the declarative API.</li>
             <uri>https://github.com/w3cbot</uri>
         </author>
         <published>2026-09-07T10:46:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Incubation:]]></title>
-        <id>https://github.com/w3ctag/design-reviews/issues/1274</id>
-        <link href="https://github.com/w3ctag/design-reviews/issues/1274"/>
-        <updated>2026-09-06T20:09:09.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/324623960?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Explainer</h3>
-<p dir="auto">https://</p>
-<h3 dir="auto">The explainer</h3>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes the information requested by the <a href="https://w3ctag.github.io/explainer-explainer/#introduction" rel="nofollow">Explainer Explainer</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Follows the <a href="https://www.w3.org/TR/design-principles/" rel="nofollow">Web Platform Design Principles</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Includes or links to answers to the <a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="nofollow">Security/Privacy Questionnaire</a>.</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> Describes user research you did to validate the problem and/or design.</li>
-</ul>
-<h3 dir="auto">Where and by whom is the work is being done?</h3>
-<ul dir="auto">
-<li>GitHub repo:</li>
-<li>Primary contacts:
-<ul dir="auto">
-<li>$name (@-mention), $organization/s, $role in developing feature</li>
-<li>
-
-</li>
-</ul>
-</li>
-<li>Organization/project driving the design:</li>
-<li>This work is being funded by:</li>
-<li>Incubation and standards groups that have discussed the design:
-<ul dir="auto">
-<li>{{ABC CG}} </li>
-<li>{{DEF WG}}</li>
-</ul>
-</li>
-<li>Standards group(s) that you expect to discuss and/or adopt this work when it's<br>
-ready: </li>
-</ul>
-<h3 dir="auto">Feedback so far</h3>
-<ul dir="auto">
-<li>Multi-stakeholder feedback:
-<ul dir="auto">
-<li>Chromium comments:</li>
-<li>Mozilla comments: <a href="https://github.com/mozilla/standards-positions/issues/NNN">https://github.com/mozilla/standards-positions/issues/NNN</a> </li>
-<li>WebKit comments: <a href="https://github.com/WebKit/standards-positions/issues/NNN">https://github.com/WebKit/standards-positions/issues/NNN</a> </li>
-<li>{{...include feedback/review from developers, implementers, civil society, and others}}</li>
-</ul>
-</li>
-<li>Major unresolved issues with or opposition to this design:</li>
-</ul>
-<h3 dir="auto">You should also know that...</h3>
-<p dir="auto"><em>No response</em></p>
-
-<hr>
-<p dir="auto">Track conversations at <a href="https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1274" rel="nofollow">https://tag-github-bot.w3.org/gh/w3ctag/design-reviews/1274</a></p>]]></content>
-        <author>
-            <name>josegta701-del</name>
-            <email>josegta701-del@noreply.github.com</email>
-            <uri>https://github.com/josegta701-del</uri>
-        </author>
-        <published>2026-09-03T19:52:21.000Z</published>
     </entry>
 </feed>
