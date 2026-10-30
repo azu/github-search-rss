@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-10-30T09:13:23.121Z</updated>
+    <updated>2026-10-30T16:20:42.811Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
@@ -101,102 +101,24 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
         <title type="html"><![CDATA[Update strict_min_version in the browser_specific_settings example]]></title>
         <id>https://github.com/mdn/content/pull/46329</id>
         <link href="https://github.com/mdn/content/pull/46329"/>
-        <updated>2026-10-30T01:15:38.000Z</updated>
+        <updated>2026-10-30T14:31:45.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/302326616?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The first example on the <code class="notranslate">browser_specific_settings</code> page declares <code class="notranslate">data_collection_permissions</code> together with <code class="notranslate">"strict_min_version": "58.0"</code>. That combination is not valid: <code class="notranslate">data_collection_permissions</code> is only supported from Firefox 140 on desktop and Firefox for Android 142, so AMO reports "Manifest key not supported by the specified minimum Firefox version" for such a manifest.</p>
-<p dir="auto">This updates the example so it is self-consistent: <code class="notranslate">gecko.strict_min_version</code> is now <code class="notranslate">140.0</code>, and a <code class="notranslate">gecko_android</code> block with <code class="notranslate">strict_min_version</code> <code class="notranslate">142.0</code> is added for the Android requirement. Only that example is changed.</p>
+<p dir="auto">The first example on the <code class="notranslate">browser_specific_settings</code> page declares <code class="notranslate">data_collection_permissions</code> together with <code class="notranslate">"strict_min_version": "58.0"</code>. That combination is not valid: <code class="notranslate">data_collection_permissions</code> requires Firefox 140, so AMO reports "Manifest key not supported by the specified minimum Firefox version" for such a manifest.</p>
+<p dir="auto">This PR:</p>
+<ul dir="auto">
+<li>sets <code class="notranslate">gecko.strict_min_version</code> to <code class="notranslate">140.0</code> in that first example;</li>
+<li>updates the "all possible keys" example: adds the <code class="notranslate">gecko_android</code> key and brings the versions up to date (details in the review thread).</li>
+</ul>
 <h3 dir="auto">Motivation</h3>
-<p dir="auto">Readers copy this example into their manifests and then hit signing warnings. <span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44136.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4459683888" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44136" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44136/hovercard" href="https://github.com/mdn/content/issues/44136">#44136</a>.</p>
+<p dir="auto">Readers copy these examples into their manifests and then hit signing warnings. <span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #44136.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4459683888" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/44136" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/44136/hovercard" href="https://github.com/mdn/content/issues/44136">#44136</a>.</p>
 <h3 dir="auto">Additional details</h3>
-<p dir="auto">Versions come from browser-compat-data (<code class="notranslate">webextensions.manifest.browser_specific_settings.gecko.data_collection_permissions</code>: Firefox 140, Firefox for Android 142).</p>]]></content>
+<p dir="auto">Versions come from browser-compat-data (<code class="notranslate">data_collection_permissions</code>: Firefox 140, Firefox for Android 142; <code class="notranslate">gecko_android</code>: Firefox for Android 113) and the root-certificate note on this page (128.0).</p>]]></content>
         <author>
             <name>monarchsofchaos004-gif</name>
             <email>monarchsofchaos004-gif@noreply.github.com</email>
             <uri>https://github.com/monarchsofchaos004-gif</uri>
         </author>
         <published>2026-10-30T01:15:14.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[chore(deps): bump fast-uri from 3.1.7 to 3.1.9]]></title>
-        <id>https://github.com/mdn/content/pull/46328</id>
-        <link href="https://github.com/mdn/content/pull/46328"/>
-        <updated>2026-10-29T23:12:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/fastify/fast-uri">fast-uri</a> from 3.1.7 to 3.1.9.</p>
-<details>
-<summary>Release notes</summary>
-<p dir="auto"><em>Sourced from <a href="https://github.com/fastify/fast-uri/releases">fast-uri's releases</a>.</em></p>
-<blockquote>
-<h2 dir="auto">v3.1.9</h2>
-<h2 dir="auto">Security</h2>
-<p dir="auto">This security release fixes four URI parsing and normalization vulnerabilities in fast-uri 3.x. Applications that process untrusted URI input should upgrade to v3.1.9.</p>
-<ul dir="auto">
-<li><strong>Medium — URI scheme spoofing through percent-encoded schemes</strong> (<a href="https://github.com/fastify/fast-uri/security/advisories/GHSA-w74x-v6f9-j3xg">GHSA-w74x-v6f9-j3xg</a>, <a title="CVE-2026-110306" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-w74x-v6f9-j3xg/hovercard" href="https://github.com/advisories/GHSA-w74x-v6f9-j3xg">CVE-2026-110306</a>): percent-encoded scheme input is now rejected instead of being decoded into a live scheme.</li>
-<li><strong>Medium — Host confusion during domain-host canonicalization</strong> (<a href="https://github.com/fastify/fast-uri/security/advisories/GHSA-wjr9-j795-jxcr">GHSA-wjr9-j795-jxcr</a>, <a title="CVE-2026-110180" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-wjr9-j795-jxcr/hovercard" href="https://github.com/advisories/GHSA-wjr9-j795-jxcr">CVE-2026-110180</a>): malformed domain hosts containing ambiguous delimiters or stripped control characters are now rejected instead of being silently rewritten.</li>
-<li><strong>Low — Incorrect relative-reference normalization</strong> (<a href="https://github.com/fastify/fast-uri/security/advisories/GHSA-xhq7-xmqj-769h">GHSA-xhq7-xmqj-769h</a>, <a title="CVE-2026-110095" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-xhq7-xmqj-769h/hovercard" href="https://github.com/advisories/GHSA-xhq7-xmqj-769h">CVE-2026-110095</a>): dot-segment removal now preserves the resolution semantics of relative references.</li>
-<li><strong>Low — Scheme injection in suffix references</strong> (<a href="https://github.com/fastify/fast-uri/security/advisories/GHSA-333x-w4r6-6crp">GHSA-333x-w4r6-6crp</a>, <a title="CVE-2026-110725" data-hovercard-type="advisory" data-hovercard-url="/advisories/GHSA-333x-w4r6-6crp/hovercard" href="https://github.com/advisories/GHSA-333x-w4r6-6crp">CVE-2026-110725</a>): first-segment colons in path-only suffix references are now escaped so the output is not reparsed as a scheme.</li>
-</ul>
-<p dir="auto">Upgrade with:</p>
-<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="npm install fast-uri@3.1.9"><pre class="notranslate">npm install fast-uri@3.1.9</pre></div>
-<p dir="auto">Thanks to <a href="https://github.com/zekth"><code class="notranslate">@​zekth</code></a> for reporting the scheme, host, and relative-reference issues, and to <a href="https://github.com/UlisesGascon"><code class="notranslate">@​UlisesGascon</code></a> for finding the suffix-reference issue and reviewing the remediations.</p>
-<h2 dir="auto">What's Changed</h2>
-<ul dir="auto">
-<li>ci: enable trusted publishing releases (v3.x) by <a href="https://github.com/mcollina"><code class="notranslate">@​mcollina</code></a> in <a href="https://redirect.github.com/fastify/fast-uri/pull/229">fastify/fast-uri#229</a></li>
-</ul>
-<p dir="auto"><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/fastify/fast-uri/compare/v3.1.8...v3.1.9">fastify/fast-uri@<tt>v3.1.8...v3.1.9</tt></a></p>
-<h2 dir="auto">v3.1.8</h2>
-<h2 dir="auto"><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Security Warning</h2>
-<p dir="auto">This security release fixes the following medium-severity security advisory:</p>
-<ul dir="auto">
-<li><a href="https://github.com/fastify/fast-uri/security/advisories/GHSA-hrr3-gc8f-f4qj">GHSA-hrr3-gc8f-f4qj</a> — inconsistent host case normalization via percent-encoded octets</li>
-</ul>
-<p dir="auto">Users of the v3.x release line should upgrade to v3.1.8.</p>
-<p dir="auto"><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/fastify/fast-uri/compare/v3.1.7...v3.1.8">fastify/fast-uri@<tt>v3.1.7...v3.1.8</tt></a></p>
-</blockquote>
-</details>
-<details>
-<summary>Commits</summary>
-<ul dir="auto">
-<li><a href="https://github.com/fastify/fast-uri/commit/0def70338a0fa2f12a10c83ae8eafc2139ae9a07"><code class="notranslate">0def703</code></a> Bumped v3.1.9</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/a1d0da2f5c703244027c1b204c1aebd0516da338"><code class="notranslate">a1d0da2</code></a> test: generate only relative path references</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/9eb8759a9825c046f57f7f695f1944bc39b88abd"><code class="notranslate">9eb8759</code></a> fix: preserve relative paths in suffix and relative resolution</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/54c30f75891b74e5a4393b44be9ea7ba43dd1e4b"><code class="notranslate">54c30f7</code></a> docs: note suffix-reference authority ambiguity</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/39e6493c1356f30a0084171627eb266786e1620e"><code class="notranslate">39e6493</code></a> fix: escape a first-segment colon in suffix references</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/745183c1d9d98d113bed8a57bb1c9ceaf0147b7a"><code class="notranslate">745183c</code></a> test: cover first-segment colon in suffix references</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/ddfc6a51122dfce0365655f04479fc3adb7f6b3c"><code class="notranslate">ddfc6a5</code></a> fix(SEC-03): reject non reg-name characters in domain hosts</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/d86a8d29f45187819dac2d4fe171c35e3e488264"><code class="notranslate">d86a8d2</code></a> fix: keep a colon-first segment behind "./" in relative normalization</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/eb483b5da2580bdecb8af644bbfee878d5424850"><code class="notranslate">eb483b5</code></a> test: cover colon-first relative references in normalization</li>
-<li><a href="https://github.com/fastify/fast-uri/commit/b110a3571c37dfcf9d1c72ce2e2e178c78d1a424"><code class="notranslate">b110a35</code></a> fix(SEC-02): preserve meaning of relative references during normalization</li>
-<li>Additional commits viewable in <a href="https://github.com/fastify/fast-uri/compare/v3.1.7...v3.1.9">compare view</a></li>
-</ul>
-</details>
-<details>
-<summary>Maintainer changes</summary>
-<p dir="auto">This version was pushed to npm by <a href="https://www.npmjs.com/~GitHub%20Actions" rel="nofollow">GitHub Actions</a>, a new releaser for fast-uri since your current version.</p>
-</details>
-<br>
-<p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/2e56845e4d6d73bd4468c84e13414cffc8a4b0b203b0c71c4542c3c8813584a9/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d666173742d757269267061636b6167652d6d616e616765723d6e706d5f616e645f7961726e2670726576696f75732d76657273696f6e3d332e312e37266e65772d76657273696f6e3d332e312e39" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=fast-uri&amp;package-manager=npm_and_yarn&amp;previous-version=3.1.7&amp;new-version=3.1.9" style="max-width: 100%;"></a></p>
-<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
-<hr>
-<details>
-<summary>Dependabot commands and options</summary>
-<br>
-<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
-<ul dir="auto">
-<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
-<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
-<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
-<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
-<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
-<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)<br>
-You can disable automated security fix PRs for this repo from the <a href="https://github.com/mdn/content/network/alerts">Security Alerts page</a>.</li>
-</ul>
-</details>]]></content>
-        <author>
-            <name>dependabot</name>
-            <email>dependabot@noreply.github.com</email>
-            <uri>https://github.com/apps/dependabot</uri>
-        </author>
-        <published>2026-10-29T23:11:59.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[updated release note on named-feature for firefox]]></title>
@@ -538,5 +460,24 @@ You can disable automated security fix PRs for this repo from the <a href="https
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-10-27T03:54:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FF160 Relnote: WebTransport.responseHeaders and constructor headers option]]></title>
+        <id>https://github.com/mdn/content/pull/46302</id>
+        <link href="https://github.com/mdn/content/pull/46302"/>
+        <updated>2026-10-27T03:22:39.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF160 release note for addition of <code class="notranslate">WebTransport.responseHeaders</code> and <code class="notranslate">WebTransport()</code> constructor <code class="notranslate">headers</code> option.</p>
+<p dir="auto">These were added in <a href="https://bugzil.la/2033220" rel="nofollow">https://bugzil.la/2033220</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2081470" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2081470</a></p>
+<p dir="auto">For more information see:</p>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044203781" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46279" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46279/hovercard" href="https://github.com/mdn/content/issues/46279">#46279</a></li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044213361" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46284" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46284/hovercard" href="https://github.com/mdn/content/issues/46284">#46284</a></li>
+</ul>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-10-27T03:21:07.000Z</published>
     </entry>
 </feed>
