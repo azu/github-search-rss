@@ -2,11 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-01T14:01:18.964Z</updated>
+    <updated>2026-11-01T19:15:35.490Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix fps calculation in requestVideoFrameCallback() canvas example]]></title>
+        <id>https://github.com/mdn/content/pull/46349</id>
+        <link href="https://github.com/mdn/content/pull/46349"/>
+        <updated>2026-11-01T15:47:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/122612964?u=99af4da33a72a569f2bcb0e0eb5e1826ed30c1b2&v=4" width="64" height="64" alt=""/><br/>
+<h3 dir="auto">Description</h3>
+<p dir="auto">Fixes the frame rate shown by the "Drawing video frames on a canvas" example on the <code class="notranslate">HTMLVideoElement.requestVideoFrameCallback()</code> page. The frame rate is now calculated from the <code class="notranslate">presentedFrames</code> and <code class="notranslate">mediaTime</code> metadata properties instead of counting callbacks against the <code class="notranslate">now</code> timestamp, and the measurement restarts on <code class="notranslate">seeking</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The old calculation started its timer at the first callback, which fires as soon as the first frame loads, before the video is played. Time spent before pressing play, time spent paused, and seeking were all counted, so the displayed value was wrong. For the 29.97 fps sample video it showed values between roughly 11 and 18 fps.</p>
+<p dir="auto">With this change it shows 29.970 consistently while playing, after pausing and resuming, after seeking while paused, and when replaying after the video has ended. The HTML and CSS of the example are unchanged.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto"><code class="notranslate">seeking</code> is used rather than <code class="notranslate">seeked</code> because in Chrome the callback for the frame at the new position can run before or after <code class="notranslate">seeked</code>, but always after <code class="notranslate">seeking</code>.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46316.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6074624320" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46316" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46316/hovercard" href="https://github.com/mdn/content/issues/46316">#46316</a></p>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6073909466" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46314" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46314/hovercard" href="https://github.com/mdn/content/pull/46314">#46314</a>, which reported the same problem. This is a smaller alternative that keeps the existing HTML and CSS unchanged.</p>]]></content>
+        <author>
+            <name>AhamadAlii</name>
+            <email>AhamadAlii@noreply.github.com</email>
+            <uri>https://github.com/AhamadAlii</uri>
+        </author>
+        <published>2026-11-01T15:46:11.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JS reference pages, minor nits (2)]]></title>
         <id>https://github.com/mdn/content/pull/46344</id>
@@ -573,33 +596,5 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
             <uri>https://github.com/pepelsbey</uri>
         </author>
         <published>2026-10-27T16:28:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document max*In*Stage limit adjustments and update relate Fx rel notes]]></title>
-        <id>https://github.com/mdn/content/pull/46309</id>
-        <link href="https://github.com/mdn/content/pull/46309"/>
-        <updated>2026-10-28T14:28:53.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Firefox 159 fixes a bug whereby previously, max<em>In</em>Stage limits (see <a href="https://developer.mozilla.org/en-US/docs/Web/API/GPUSupportedLimits" rel="nofollow"><code class="notranslate">GPUSupportedLimits</code></a>) were adjusted to the values of max<em>Per</em>Stage limits, but those adjustments were not correctly reported in the device limits.</p>
-<p dir="auto">Those adjustments are now correctly reported. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006720" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2006720</a>, particularly the comments from <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006720#c26" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2006720#c26</a> onward.</p>
-<p dir="auto">This PR updates the 151 and 159 rel notes to accurately document the situation at each stage. It also adds a section to the GPUSupportedLimits page to explain this adjustment. It's a bit of a weird situation, and hard to understand, and I've tried my best based on the info I've been given.</p>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>chrisdavidmills</name>
-            <email>chrisdavidmills@noreply.github.com</email>
-            <uri>https://github.com/chrisdavidmills</uri>
-        </author>
-        <published>2026-10-27T09:50:40.000Z</published>
     </entry>
 </feed>
