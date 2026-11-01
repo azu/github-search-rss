@@ -2,11 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-10-31T22:00:25.696Z</updated>
+    <updated>2026-11-01T00:46:06.029Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Correct Chromium inter-character ruby support]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31005</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31005"/>
+        <updated>2026-10-31T22:04:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/128292743?u=3e557f09456339e289afa5d06625e4c955e0a4e6&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Marks <code class="notranslate">ruby-position: inter-character</code> as unsupported in Chrome and removes the inaccurate prefixed-support note. Mirrored Chromium-based entries follow the existing data model.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>Chromium's <a href="https://github.com/chromium/chromium/blob/fb096c0011f9d50f0a264a9376420cdea9c421e3/third_party/blink/renderer/core/css/properties/longhands/longhands_custom.cc">current parser</a> accepts <code class="notranslate">over</code> and <code class="notranslate">under</code> and rejects <code class="notranslate">inter-character</code>. The <a href="https://github.com/chromium/chromium/blob/84.0.4147.89/third_party/blink/renderer/core/css/css_properties.json5">Chrome 84 property definitions</a> list only <code class="notranslate">before</code> and <code class="notranslate">after</code> for the prefixed property.</li>
+<li>Formatting and data lint passed on an isolated older repository snapshot with the same changed file. The unit tests passed with equivalent PowerShell environment variables; <code class="notranslate">npm test</code> itself stopped on Windows because its unit-test script uses Unix environment-variable syntax.</li>
+<li>I did not run browser tests.</li>
+</ul>
+<p dir="auto">Prepared with Codex assistance.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30993.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6086054917" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30993" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30993/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30993">#30993</a>.</p>]]></content>
+        <author>
+            <name>Marwan-verse</name>
+            <email>Marwan-verse@noreply.github.com</email>
+            <uri>https://github.com/Marwan-verse</uri>
+        </author>
+        <published>2026-10-31T22:02:44.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Firefox 160: WebTransport.exportKeyingMaterial() outputLength parameter]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/30999</id>
@@ -331,34 +354,5 @@ Safari: no support.</p>
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-10-20T15:02:49.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add FontFace.sizeAdjust compatibility data]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30922</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30922"/>
-        <updated>2026-10-20T07:38:11.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/246823946?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add compatibility data for <code class="notranslate">FontFace.sizeAdjust</code>, the JavaScript property corresponding to the <code class="notranslate">@font-face</code> size-adjust descriptor. Record Chrome 92, Firefox 92, and Safari 17, with derived browsers mirrored.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<ul dir="auto">
-<li><code class="notranslate">npm test</code> passed: formatting/type checks, data lint, and all 347 unit tests.</li>
-<li>Reviewed the final diff separately and checked implementation/release evidence:
-<ul dir="auto">
-<li>Chromium <a href="https://github.com/chromium/chromium/blob/92.0.4515.107/third_party/blink/renderer/core/css/font_face.idl">92 FontFace IDL</a> gates the property on CSSFontFaceSizeAdjust. The flag changes from <code class="notranslate">test</code> in <a href="https://github.com/chromium/chromium/blob/91.0.4472.114/third_party/blink/renderer/platform/runtime_enabled_features.json5">91</a> to <code class="notranslate">stable</code> in <a href="https://github.com/chromium/chromium/blob/92.0.4515.107/third_party/blink/renderer/platform/runtime_enabled_features.json5">92</a>.</li>
-<li>Gecko <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1698495" rel="nofollow">bug 1698495</a> includes the WebIDL implementation; the <a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/RLqcyCotcdo/m/KRrrCfQGDQAJ" rel="nofollow">shipping announcement</a> identifies Firefox 92 as the default-enabled release.</li>
-<li>WebKit <a href="https://github.com/WebKit/WebKit/commit/97f82bc0e98c7ae32a6a0b24ded9ead1400583c8">implementation commit</a> adds the FontFace property and constructor descriptor and enables the shared feature flag. <a href="https://webkit.org/blog/14445/webkit-features-in-safari-17-0/" rel="nofollow">Safari 17 release notes</a> confirm the shipping release.</li>
-</ul>
-</li>
-<li>The <a href="https://drafts.csswg.org/css-font-loading/#fontface-interface" rel="nofollow">current specification</a> includes <code class="notranslate">sizeAdjust</code> in FontFace's IDL, but has no dedicated property anchor, so this links to the interface section.</li>
-<li>Omit <code class="notranslate">mdn_url</code> until the accompanying reference page is published.</li>
-</ul>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2626145687" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36587" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36587/hovercard" href="https://github.com/mdn/content/issues/36587">mdn/content#36587</a>. This is the BCD-first change requested in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2626145687" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/36587" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/36587/hovercard?comment_id=6284527496&amp;comment_type=issue_comment" href="https://github.com/mdn/content/issues/36587#issuecomment-6284527496">mdn/content#36587 (comment)</a>; documentation follows separately.</p>]]></content>
-        <author>
-            <name>Stackforge-07</name>
-            <email>Stackforge-07@noreply.github.com</email>
-            <uri>https://github.com/Stackforge-07</uri>
-        </author>
-        <published>2026-10-20T07:37:30.000Z</published>
     </entry>
 </feed>
