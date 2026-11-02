@@ -2,34 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-01T23:11:58.274Z</updated>
+    <updated>2026-11-02T03:09:13.260Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
-    <entry>
-        <title type="html"><![CDATA[Fix fps calculation in requestVideoFrameCallback() canvas example]]></title>
-        <id>https://github.com/mdn/content/pull/46349</id>
-        <link href="https://github.com/mdn/content/pull/46349"/>
-        <updated>2026-11-01T15:47:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/122612964?u=99af4da33a72a569f2bcb0e0eb5e1826ed30c1b2&v=4" width="64" height="64" alt=""/><br/>
-<h3 dir="auto">Description</h3>
-<p dir="auto">Fixes the frame rate shown by the "Drawing video frames on a canvas" example on the <code class="notranslate">HTMLVideoElement.requestVideoFrameCallback()</code> page. The frame rate is now calculated from the <code class="notranslate">presentedFrames</code> and <code class="notranslate">mediaTime</code> metadata properties instead of counting callbacks against the <code class="notranslate">now</code> timestamp, and the measurement restarts on <code class="notranslate">seeking</code>.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The old calculation started its timer at the first callback, which fires as soon as the first frame loads, before the video is played. Time spent before pressing play, time spent paused, and seeking were all counted, so the displayed value was wrong. For the 29.97 fps sample video it showed values between roughly 11 and 18 fps.</p>
-<p dir="auto">With this change it shows 29.970 consistently while playing, after pausing and resuming, after seeking while paused, and when replaying after the video has ended. The HTML and CSS of the example are unchanged.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto"><code class="notranslate">seeking</code> is used rather than <code class="notranslate">seeked</code> because in Chrome the callback for the frame at the new position can run before or after <code class="notranslate">seeked</code>, but always after <code class="notranslate">seeking</code>.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46316.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6074624320" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46316" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46316/hovercard" href="https://github.com/mdn/content/issues/46316">#46316</a></p>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6073909466" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46314" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46314/hovercard" href="https://github.com/mdn/content/pull/46314">#46314</a>, which reported the same problem. This is a smaller alternative that keeps the existing HTML and CSS unchanged.</p>]]></content>
-        <author>
-            <name>AhamadAlii</name>
-            <email>AhamadAlii@noreply.github.com</email>
-            <uri>https://github.com/AhamadAlii</uri>
-        </author>
-        <published>2026-11-01T15:46:11.000Z</published>
-    </entry>
     <entry>
         <title type="html"><![CDATA[JS reference pages, minor nits (2)]]></title>
         <id>https://github.com/mdn/content/pull/46344</id>
@@ -47,7 +24,7 @@
         <title type="html"><![CDATA[JS reference pages, minor nits (1)]]></title>
         <id>https://github.com/mdn/content/pull/46343</id>
         <link href="https://github.com/mdn/content/pull/46343"/>
-        <updated>2026-10-31T05:36:42.000Z</updated>
+        <updated>2026-11-02T02:34:44.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Fix little nits about grammar and correctness.</p>]]></content>
         <author>
             <name>Josh-Cena</name>
@@ -60,7 +37,7 @@
         <title type="html"><![CDATA[Rewrite Representing dates & times guide into proper Temporal guide]]></title>
         <id>https://github.com/mdn/content/pull/46342</id>
         <link href="https://github.com/mdn/content/pull/46342"/>
-        <updated>2026-10-30T23:14:03.000Z</updated>
+        <updated>2026-11-02T00:51:34.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">With all browsers shipping <code class="notranslate">Temporal</code>, I think it's high time we start having a proper guide for <code class="notranslate">Temporal</code>.</p>
 <p dir="auto">Note that I have copied over the TC39 cookbook doc, and only did a cursory look over its content, without much adaptation/simplifying. I think this doc would be useful as-is.</p>]]></content>
         <author>
@@ -277,10 +254,10 @@ Also limited the smartquotes stack to 1000 unmatched openers.</li>
         <title type="html"><![CDATA[WebTransport.exportKeyingMaterial(): editorial review fixes]]></title>
         <id>https://github.com/mdn/content/pull/46336</id>
         <link href="https://github.com/mdn/content/pull/46336"/>
-        <updated>2026-10-30T06:34:03.000Z</updated>
+        <updated>2026-11-01T23:53:24.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Firefox 160 adds the required <code class="notranslate">outputLength</code> parameter (matching the spec) in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2079306" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2079306</a>.</p>
 <p dir="auto">This updates the docs with very minor changes to address IDL changes.<br>
-The rest of the changes are grammatical suggestions and clarifications from Claude which I thought were improvements over my grammar:</p>
+The rest of the changes are grammatical suggestions and clarifications from Claude (using the MDN review skill) which I thought were improvements over my grammar:</p>
 <ul dir="auto">
 <li>Remove "optional" for the now-required <code class="notranslate">context</code> parameter</li>
 <li>Correct HMAC-SHA256 key length claim (typical, not required)</li>
@@ -290,7 +267,6 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
 <li>Point HMAC link at the HMAC section of SubtleCrypto.sign()</li>
 <li>Update See also with related reference pages and guide</li>
 </ul>
-<p dir="auto">This adds the release note.</p>
 <p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044207520" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46281" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46281/hovercard" href="https://github.com/mdn/content/issues/46281">#46281</a></p>]]></content>
         <author>
             <name>hamishwillee</name>
@@ -534,7 +510,7 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
         <title type="html"><![CDATA[Update web/api/htmlvideoelement/requestvideoframecallback/index.md]]></title>
         <id>https://github.com/mdn/content/pull/46314</id>
         <link href="https://github.com/mdn/content/pull/46314"/>
-        <updated>2026-10-30T02:05:38.000Z</updated>
+        <updated>2026-11-02T00:46:58.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27765032?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This edit corrects page's example application which unfortunately produces a garbled output for fps. To compute fps, the edited app uses a metadata.presentedFrames field data instead of local var paintCount used by original code and incremented manually in each callback function call. The fps calculation is restricted to the first-time playback; video controls are disabled for this run to simplify the logic of calculation. Metadata are presented as in original app.</p>
 
 
@@ -596,5 +572,33 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
             <uri>https://github.com/pepelsbey</uri>
         </author>
         <published>2026-10-27T16:28:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document max*In*Stage limit adjustments and update relate Fx rel notes]]></title>
+        <id>https://github.com/mdn/content/pull/46309</id>
+        <link href="https://github.com/mdn/content/pull/46309"/>
+        <updated>2026-10-28T14:28:53.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">Firefox 159 fixes a bug whereby previously, max<em>In</em>Stage limits (see <a href="https://developer.mozilla.org/en-US/docs/Web/API/GPUSupportedLimits" rel="nofollow"><code class="notranslate">GPUSupportedLimits</code></a>) were adjusted to the values of max<em>Per</em>Stage limits, but those adjustments were not correctly reported in the device limits.</p>
+<p dir="auto">Those adjustments are now correctly reported. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006720" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2006720</a>, particularly the comments from <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006720#c26" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2006720#c26</a> onward.</p>
+<p dir="auto">This PR updates the 151 and 159 rel notes to accurately document the situation at each stage. It also adds a section to the GPUSupportedLimits page to explain this adjustment. It's a bit of a weird situation, and hard to understand, and I've tried my best based on the info I've been given.</p>
+
+<h3 dir="auto">Motivation</h3>
+
+<h3 dir="auto">Additional details</h3>
+
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>chrisdavidmills</name>
+            <email>chrisdavidmills@noreply.github.com</email>
+            <uri>https://github.com/chrisdavidmills</uri>
+        </author>
+        <published>2026-10-27T09:50:40.000Z</published>
     </entry>
 </feed>

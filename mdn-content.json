@@ -6,17 +6,6 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/122612964?u=99af4da33a72a569f2bcb0e0eb5e1826ed30c1b2&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixes the frame rate shown by the \"Drawing video frames on a canvas\" example on the <code class=\"notranslate\">HTMLVideoElement.requestVideoFrameCallback()</code> page. The frame rate is now calculated from the <code class=\"notranslate\">presentedFrames</code> and <code class=\"notranslate\">mediaTime</code> metadata properties instead of counting callbacks against the <code class=\"notranslate\">now</code> timestamp, and the measurement restarts on <code class=\"notranslate\">seeking</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The old calculation started its timer at the first callback, which fires as soon as the first frame loads, before the video is played. Time spent before pressing play, time spent paused, and seeking were all counted, so the displayed value was wrong. For the 29.97 fps sample video it showed values between roughly 11 and 18 fps.</p>\n<p dir=\"auto\">With this change it shows 29.970 consistently while playing, after pausing and resuming, after seeking while paused, and when replaying after the video has ended. The HTML and CSS of the example are unchanged.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\"><code class=\"notranslate\">seeking</code> is used rather than <code class=\"notranslate\">seeked</code> because in Chrome the callback for the frame at the new position can run before or after <code class=\"notranslate\">seeked</code>, but always after <code class=\"notranslate\">seeking</code>.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #46316.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6074624320\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46316\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46316/hovercard\" href=\"https://github.com/mdn/content/issues/46316\">#46316</a></p>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6073909466\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46314\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/46314/hovercard\" href=\"https://github.com/mdn/content/pull/46314\">#46314</a>, which reported the same problem. This is a smaller alternative that keeps the existing HTML and CSS unchanged.</p>",
-            "url": "https://github.com/mdn/content/pull/46349",
-            "title": "Fix fps calculation in requestVideoFrameCallback() canvas example",
-            "date_modified": "2026-11-01T15:47:35.000Z",
-            "date_published": "2026-11-01T15:46:11.000Z",
-            "author": {
-                "name": "AhamadAlii",
-                "url": "https://github.com/AhamadAlii"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Fix little nits about grammar and correctness.</p>",
             "url": "https://github.com/mdn/content/pull/46344",
             "title": "JS reference pages, minor nits (2)",
@@ -31,7 +20,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Fix little nits about grammar and correctness.</p>",
             "url": "https://github.com/mdn/content/pull/46343",
             "title": "JS reference pages, minor nits (1)",
-            "date_modified": "2026-10-31T05:36:42.000Z",
+            "date_modified": "2026-11-02T02:34:44.000Z",
             "date_published": "2026-10-31T05:34:47.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -42,7 +31,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">With all browsers shipping <code class=\"notranslate\">Temporal</code>, I think it's high time we start having a proper guide for <code class=\"notranslate\">Temporal</code>.</p>\n<p dir=\"auto\">Note that I have copied over the TC39 cookbook doc, and only did a cursory look over its content, without much adaptation/simplifying. I think this doc would be useful as-is.</p>",
             "url": "https://github.com/mdn/content/pull/46342",
             "title": "Rewrite Representing dates & times guide into proper Temporal guide",
-            "date_modified": "2026-10-30T23:14:03.000Z",
+            "date_modified": "2026-11-02T00:51:34.000Z",
             "date_published": "2026-10-30T23:11:14.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -83,10 +72,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Firefox 160 adds the required <code class=\"notranslate\">outputLength</code> parameter (matching the spec) in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2079306\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2079306</a>.</p>\n<p dir=\"auto\">This updates the docs with very minor changes to address IDL changes.<br>\nThe rest of the changes are grammatical suggestions and clarifications from Claude which I thought were improvements over my grammar:</p>\n<ul dir=\"auto\">\n<li>Remove \"optional\" for the now-required <code class=\"notranslate\">context</code> parameter</li>\n<li>Correct HMAC-SHA256 key length claim (typical, not required)</li>\n<li>Fix example intro: it signs an existing token, it doesn't create one</li>\n<li>Add use case to intro, and split Description into subsections</li>\n<li>Clarify wording, remove directional language, and use MitM/HTTP/3 consistently</li>\n<li>Point HMAC link at the HMAC section of SubtleCrypto.sign()</li>\n<li>Update See also with related reference pages and guide</li>\n</ul>\n<p dir=\"auto\">This adds the release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6044207520\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46281\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46281/hovercard\" href=\"https://github.com/mdn/content/issues/46281\">#46281</a></p>",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Firefox 160 adds the required <code class=\"notranslate\">outputLength</code> parameter (matching the spec) in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2079306\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2079306</a>.</p>\n<p dir=\"auto\">This updates the docs with very minor changes to address IDL changes.<br>\nThe rest of the changes are grammatical suggestions and clarifications from Claude (using the MDN review skill) which I thought were improvements over my grammar:</p>\n<ul dir=\"auto\">\n<li>Remove \"optional\" for the now-required <code class=\"notranslate\">context</code> parameter</li>\n<li>Correct HMAC-SHA256 key length claim (typical, not required)</li>\n<li>Fix example intro: it signs an existing token, it doesn't create one</li>\n<li>Add use case to intro, and split Description into subsections</li>\n<li>Clarify wording, remove directional language, and use MitM/HTTP/3 consistently</li>\n<li>Point HMAC link at the HMAC section of SubtleCrypto.sign()</li>\n<li>Update See also with related reference pages and guide</li>\n</ul>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6044207520\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46281\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46281/hovercard\" href=\"https://github.com/mdn/content/issues/46281\">#46281</a></p>",
             "url": "https://github.com/mdn/content/pull/46336",
             "title": "WebTransport.exportKeyingMaterial(): editorial review fixes",
-            "date_modified": "2026-10-30T06:34:03.000Z",
+            "date_modified": "2026-11-01T23:53:24.000Z",
             "date_published": "2026-10-30T06:32:36.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -207,7 +196,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/27765032?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">This edit corrects page's example application which unfortunately produces a garbled output for fps. To compute fps, the edited app uses a metadata.presentedFrames field data instead of local var paintCount used by original code and incremented manually in each callback function call. The fps calculation is restricted to the first-time playback; video controls are disabled for this run to simplify the logic of calculation. Metadata are presented as in original app.</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This edit corrects page's example application which unfortunately produces a garbled output for fps. To compute fps, the edited app uses a metadata.presentedFrames field data instead of local var paintCount used by original code and incremented manually in each callback function call. The fps calculation is restricted to the first-time playback; video controls are disabled for this run to simplify the logic of calculation. Metadata are presented as in original app.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The original example on this page fails to compute frame-per-sec value for a video clip viewed. The calculation on the page produces a garbled output. This bug is trivially corrected with the help of metadata info, but the code becomes complicated if the purpose is to compute fps on the fly while accommodating every user action as pause-seek-replay. So, I restricted the fps calculation to an undisturbed first-time playback that runs from the beginning to the end of the media. To present the most of information, I log the calculation results to the page for every frame of the media which admittingly helps user understand the procedure more clearly. The metadata printout, as in the original application, accompanies this first-time and further playback runs to help the user study how user action reveal itself in the metadata content.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/46314",
             "title": "Update web/api/htmlvideoelement/requestvideoframecallback/index.md",
-            "date_modified": "2026-10-30T02:05:38.000Z",
+            "date_modified": "2026-11-02T00:46:58.000Z",
             "date_published": "2026-10-28T06:35:25.000Z",
             "author": {
                 "name": "vasilich-tregub",
@@ -223,6 +212,17 @@
             "author": {
                 "name": "pepelsbey",
                 "url": "https://github.com/pepelsbey"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/47647?u=2fbfc431a85d357f00c0146d5e55b425b7f00a3d&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Firefox 159 fixes a bug whereby previously, max<em>In</em>Stage limits (see <a href=\"https://developer.mozilla.org/en-US/docs/Web/API/GPUSupportedLimits\" rel=\"nofollow\"><code class=\"notranslate\">GPUSupportedLimits</code></a>) were adjusted to the values of max<em>Per</em>Stage limits, but those adjustments were not correctly reported in the device limits.</p>\n<p dir=\"auto\">Those adjustments are now correctly reported. See <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2006720\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2006720</a>, particularly the comments from <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2006720#c26\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2006720#c26</a> onward.</p>\n<p dir=\"auto\">This PR updates the 151 and 159 rel notes to accurately document the situation at each stage. It also adds a section to the GPUSupportedLimits page to explain this adjustment. It's a bit of a weird situation, and hard to understand, and I've tried my best based on the info I've been given.</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
+            "url": "https://github.com/mdn/content/pull/46309",
+            "title": "Document max*In*Stage limit adjustments and update relate Fx rel notes",
+            "date_modified": "2026-10-28T14:28:53.000Z",
+            "date_published": "2026-10-27T09:50:40.000Z",
+            "author": {
+                "name": "chrisdavidmills",
+                "url": "https://github.com/chrisdavidmills"
             }
         }
     ]
