@@ -2,11 +2,88 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-11-03T02:45:07.759Z</updated>
+    <updated>2026-11-03T10:13:53.460Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Mark the Device Posture API as unsupported in WebView Android]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31033</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31033"/>
+        <updated>2026-11-03T06:41:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">WebView Android doesn't expose the Device Posture API, so this sets <code class="notranslate">webview_android</code> to <code class="notranslate">false</code> for <code class="notranslate">api.Navigator.devicePosture</code> and <code class="notranslate">api.DevicePosture</code> (and its <code class="notranslate">type</code> and <code class="notranslate">change_event</code>) instead of mirroring Chrome.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Chromium turns the API off for WebView in <a href="https://github.com/chromium/chromium/blob/2ae93f9b43b9bb8d54e382a9257ef950feaa308c/android_webview/browser/aw_field_trials.cc#L269-L272"><code class="notranslate">aw_field_trials.cc</code></a>:</p>
+<div class="highlight highlight-source-c++ notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="// Disable device posture API as the framework implementation causes
+// AwContents to leak in apps that don't call destroy().
+aw_feature_overrides.DisableFeature(blink::features::kDevicePosture);"><pre class="notranslate"><span class="pl-c"><span class="pl-c">//</span> Disable device posture API as the framework implementation causes</span>
+<span class="pl-c"><span class="pl-c">//</span> AwContents to leak in apps that don't call destroy().</span>
+aw_feature_overrides.DisableFeature(blink::features::<span class="pl-c1">kDevicePosture</span>);</pre></div>
+<p dir="auto">That line landed in May 2024 (<a href="https://chromium-review.googlesource.com/c/chromium/src/+/5548161" rel="nofollow">CL 5548161</a>, crbug.com/335314107), before Chrome 132 shipped the API, so WebView never had it. This matches the test in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6037013277" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30973" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30973/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30973">#30973</a>: <code class="notranslate">'devicePosture' in navigator</code> is <code class="notranslate">false</code> in WebView 155 and <code class="notranslate">true</code> in Chrome on the same phone.</p>
+<p dir="auto">I left the <code class="notranslate">device-posture</code> media feature as it is, since <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6037013277" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30973" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30973/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30973">#30973</a> shows it working in WebView.</p>
+<p dir="auto">The same Chromium change also turns off <code class="notranslate">kViewportSegments</code>, so <code class="notranslate">api.Viewport.segments</code> may have the same problem in WebView. I haven't tested that one.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30973.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6037013277" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30973" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30973/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30973">#30973</a></p>]]></content>
+        <author>
+            <name>Manishram-ai</name>
+            <email>Manishram-ai@noreply.github.com</email>
+            <uri>https://github.com/Manishram-ai</uri>
+        </author>
+        <published>2026-11-03T06:39:53.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FF160 WebTransport() constructor headers option]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31031</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31031"/>
+        <updated>2026-11-03T03:38:05.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Firefox 160 added support for the <code class="notranslate">headers</code> option of the <code class="notranslate">WebTransport()</code> constructor in <a href="https://bugzil.la/2081470" rel="nofollow">https://bugzil.la/2081470</a>.</p>
+<p dir="auto">It is the request-side companion to <code class="notranslate">WebTransport.responseHeaders</code> (<a href="https://bugzil.la/2033220" rel="nofollow">https://bugzil.la/2033220</a>), which <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6163914682" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31022" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31022/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31022">#31022</a> added</p>
+<p dir="auto">This PR adds <code class="notranslate">api.WebTransport.WebTransport.options_headers_parameter</code>. In every engine the option shipped in the same change as <code class="notranslate">responseHeaders</code>, so the data matches that feature:</p>
+<ul dir="auto">
+<li>Chrome: 157. A single runtime flag, <code class="notranslate">WebTransportHeaders</code>, gates both members. It was <a href="https://github.com/chromium/chromium/commit/a190973f9bc8">made stable</a> ("Enables WebTransportOptions.headers and WebTransport.responseHeaders by default") when <code class="notranslate">chrome/VERSION</code> was 157.<br>
+Note, chromestatus says 156 <a href="https://chromestatus.com/feature/5194104408506368" rel="nofollow">https://chromestatus.com/feature/5194104408506368</a></li>
+<li>Safari: <code class="notranslate">preview</code>. Both were added in the same <a href="https://github.com/WebKit/WebKit/commit/89c464cce8ce">WebKit commit</a>. Safari iOS is <code class="notranslate">false</code>, the same as <code class="notranslate">responseHeaders</code>.</li>
+</ul>
+<p dir="auto">Related docs work can be tracked in</p>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044203781" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46279" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46279/hovercard" href="https://github.com/mdn/content/issues/46279">mdn/content#46279</a> and</li>
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044213361" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46284" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46284/hovercard" href="https://github.com/mdn/content/issues/46284">mdn/content#46284</a></li>
+</ul>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-11-03T03:35:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FF160 WebTransport BYOB datagram readers and datagramsReadableType option]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31030</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31030"/>
+        <updated>2026-11-03T03:19:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Firefox 160 added support for BYOB readers on WebTransport datagrams in <a href="https://bugzil.la/2007755" rel="nofollow">https://bugzil.la/2007755</a>. You opt in by passing the new <code class="notranslate">datagramsReadableType: "bytes"</code> option to the <code class="notranslate">WebTransport()</code> constructor (<a href="https://github.com/mozilla-firefox/firefox/commit/ed18ee733f16">Gecko commit</a>).</p>
+<p dir="auto">This PR:</p>
+<ul dir="auto">
+<li>Sets <code class="notranslate">api.WebTransportDatagramDuplexStream.byob_readers</code> to Firefox 160.</li>
+<li>Adds <code class="notranslate">api.WebTransport.WebTransport.options_datagramsReadableType_parameter</code>. The values for other browsers come from their source:
+<ul dir="auto">
+<li>Chrome: <code class="notranslate">false</code>. The option is in the <a href="https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/modules/webtransport/web_transport_options.idl" rel="nofollow">IDL</a> but behind the <code class="notranslate">WebTransportDatagramsReadableType</code> runtime flag, which is still <code class="notranslate">experimental</code>. Chrome's datagram readable stream has always been a byte stream, so its existing <code class="notranslate">byob_readers</code> data is unchanged.</li>
+<li>Safari: <code class="notranslate">preview</code>. WebKit shipped this option as <code class="notranslate">datagramsReadableMode</code> in 26.4 and <a href="https://bugs.webkit.org/show_bug.cgi?id=319830" rel="nofollow">renamed it</a> to <code class="notranslate">datagramsReadableType</code> in July 2026. The Safari 27.2 branch (<code class="notranslate">safari-7625.2.8</code>) still has the old name.</li>
+<li>Deno: omitted, because Deno doesn't implement the option.</li>
+</ul>
+</li>
+<li>Fixes <code class="notranslate">spec_url</code> on <code class="notranslate">api.WebTransport.byob_readers</code> and <code class="notranslate">api.WebTransport.createUnidirectionalStream.byob_readers</code>. Both cover BYOB on streams, not datagrams, so they now point to <code class="notranslate">#example-stream-byob</code> instead of <code class="notranslate">#example-datagrams-byob</code>.</li>
+</ul>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044193690" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46274" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46274/hovercard" href="https://github.com/mdn/content/issues/46274">mdn/content#46274</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-11-03T03:18:27.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add web extension data for icon_variants in Safari 18.2 and Chrome, and correct menus.update.icons.]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31029</id>
@@ -344,84 +421,5 @@ Safari 18: <a class="commit-link" data-hovercard-type="commit" data-hovercard-ur
             <uri>https://github.com/Marwan-verse</uri>
         </author>
         <published>2026-10-31T22:02:44.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Firefox 160: WebTransport.exportKeyingMaterial() outputLength parameter]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30999</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30999"/>
-        <updated>2026-10-30T05:47:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Firefox 160 makes the <code class="notranslate">context</code> parameter of <code class="notranslate">exportKeyingMaterial()</code> required and adds the required <code class="notranslate">outputLength</code> parameter, matching the spec in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2079306" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2079306</a>.</p>
-<p dir="auto">Firefox 155-159 implemented an earlier draft: <code class="notranslate">context</code> was optional and the output was fixed at 32 bytes.</p>
-<p dir="auto">What I've done is added a subfeature <code class="notranslate">outputLength_parameter</code> for the new parameter.</p>
-<p dir="auto">I've marked FF155-159 support as partial_implementation with a note that attempts to capture this. Note that it isn't "really" partial  - it was correct (I think) at the point it was submitted. However its only been around for 5 releases so this feels a bit like a significant spec completion and hence grounds to indicate the first version as partial. Happy to remove that if you want.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044207520" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46281" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46281/hovercard" href="https://github.com/mdn/content/issues/46281">mdn/content#46281</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-10-30T05:46:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add WEBGL_polygon_mode WebGL extension]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30996</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30996"/>
-        <updated>2026-10-29T10:45:52.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add WEBGL_polygon_mode WebGL extension</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Collector v10.21.1<br>
-Safari 17.4:  <a href="https://webkit.org/blog/15063/webkit-features-in-safari-17-4/#webgl" rel="nofollow">https://webkit.org/blog/15063/webkit-features-in-safari-17-4/#webgl</a></p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">None.</p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2026-10-29T10:44:50.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add focus-without-user-activation compatibility data]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30991</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30991"/>
-        <updated>2026-10-28T14:00:29.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/128292743?u=3e557f09456339e289afa5d06625e4c955e0a4e6&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Adds compatibility data for the <code class="notranslate">focus-without-user-activation</code> Permissions Policy and notes Chromium's different default allowlist. Chrome is recorded as <code class="notranslate">preview</code>: Canary 158.0.8127.2 enabled the feature by default, while Dev 158.0.8117.2 still marked it experimental.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<ul dir="auto">
-<li><code class="notranslate">npm test</code> passed on the contribution branch.</li>
-<li><a href="https://chromium.googlesource.com/chromium/src/+/681cd621e82e606d7536eae8ea2576afb3c7d65c/third_party/blink/renderer/platform/runtime_enabled_features.json5" rel="nofollow">Chrome Canary runtime configuration</a> and <a href="https://chromium.googlesource.com/chromium/src/+/4f9bd52e089070d5916e47f120f5848c9b04c3f4/third_party/blink/renderer/platform/runtime_enabled_features.json5" rel="nofollow">Dev runtime configuration</a> show the difference.</li>
-<li><a href="https://chromium.googlesource.com/chromium/src/+/681cd621e82e606d7536eae8ea2576afb3c7d65c/services/network/public/cpp/permissions_policy/permissions_policy_features.json5" rel="nofollow">Chromium's policy definition</a> uses an all-origins default; the <a href="https://html.spec.whatwg.org/multipage/infrastructure.html#focus-without-user-activation-feature" rel="nofollow">HTML Standard</a> specifies <code class="notranslate">self</code>.</li>
-<li>Firefox and Safari entries follow the existing parent header data; I did not run fresh browser tests.</li>
-</ul>
-<p dir="auto">Prepared with OpenAI Codex assistance.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30985.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6069037030" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30985" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30985/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30985">#30985</a>.</p>]]></content>
-        <author>
-            <name>Marwan-verse</name>
-            <email>Marwan-verse@noreply.github.com</email>
-            <uri>https://github.com/Marwan-verse</uri>
-        </author>
-        <published>2026-10-28T13:59:31.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add WEBGL_render_shared_exponent WebGL extension]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/30988</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/30988"/>
-        <updated>2026-10-28T08:40:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add WEBGL_render_shared_exponent WebGL extension</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Collector v10.21.1<br>
-Safari: <a href="https://developer.apple.com/documentation/safari-release-notes/safari-18-release-notes#WebGL" rel="nofollow">https://developer.apple.com/documentation/safari-release-notes/safari-18-release-notes#WebGL</a></p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">None.</p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2026-10-28T08:40:15.000Z</published>
     </entry>
 </feed>
