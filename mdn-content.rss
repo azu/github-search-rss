@@ -2,11 +2,79 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-03T23:45:22.353Z</updated>
+    <updated>2026-11-04T03:44:24.880Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add a guide on specifying icons for web extensions]]></title>
+        <id>https://github.com/mdn/content/pull/46374</id>
+        <link href="https://github.com/mdn/content/pull/46374"/>
+        <updated>2026-11-04T02:49:09.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Adds a guide on specifying icons for web extensions: choosing image formats and icon sizes, providing icons for dark mode and in more than one format with <code class="notranslate">icon_variants</code>, and how Safari displays the action icon. Updates the existing icon references to point to the guide, and removes the size guidance they repeated, including Firefox-specific wording that applied to every browser.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Icon advice was spread across the <code class="notranslate">icons</code>, <code class="notranslate">action</code>, <code class="notranslate">browser_action</code> and <code class="notranslate">page_action</code> pages and two tutorials, and described Firefox behavior as if it applied to every browser. Safari's handling of the action icon, including the removal of transparent borders, wasn't documented.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Follows the review on <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6174192944" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46363" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46363/hovercard" href="https://github.com/mdn/content/pull/46363">#46363</a>, which this replaces.</li>
+<li>Specification draft for <code class="notranslate">icon_variants</code>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5950262602" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/1134" data-hovercard-type="pull_request" data-hovercard-url="/w3c/webextensions/pull/1134/hovercard" href="https://github.com/w3c/webextensions/pull/1134">w3c/webextensions#1134</a></li>
+<li>Sizes were read from the Chromium and Firefox sources and from Safari.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43790.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4263260465" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43790" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43790/hovercard" href="https://github.com/mdn/content/issues/43790">#43790</a></p>
+<p dir="auto"><strong>Depends on:</strong> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6174195138" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46364" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46364/hovercard" href="https://github.com/mdn/content/pull/46364">#46364</a></p>]]></content>
+        <author>
+            <name>xeenon</name>
+            <email>xeenon@noreply.github.com</email>
+            <uri>https://github.com/xeenon</uri>
+        </author>
+        <published>2026-11-04T02:42:47.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix EventCounts examples and clarify Event Timing duration thresholds]]></title>
+        <id>https://github.com/mdn/content/pull/46373</id>
+        <link href="https://github.com/mdn/content/pull/46373"/>
+        <updated>2026-11-04T00:46:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Fix the <code class="notranslate">EventCounts</code> loop examples and add two threshold details to the <code class="notranslate">PerformanceEventTiming</code> page: the <code class="notranslate">first-input</code> entry ignores the duration threshold, and <code class="notranslate">durationThreshold</code> doesn't change which entries are buffered.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The <code class="notranslate">EventCounts</code> and <code class="notranslate">performance.eventCounts</code> examples loop with <code class="notranslate">for (entry of ...)</code> and never declare <code class="notranslate">entry</code>, which throws a <code class="notranslate">ReferenceError</code> in strict mode and modules. They now destructure <code class="notranslate">[type, count]</code>.</p>
+<p dir="auto">The <code class="notranslate">PerformanceEventTiming</code> page shows <code class="notranslate">durationThreshold: 16</code> together with <code class="notranslate">buffered: true</code>, which reads like you get past events down to 16ms. You don't. Buffered entries still use the 104ms default, and only entries observed after the call use the lower threshold. The page also says entries need a duration of 104ms or more without mentioning that <code class="notranslate">first-input</code> is always reported.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Both threshold details are from the <a href="https://w3c.github.io/event-timing/#sec-event-timing-first-input" rel="nofollow">Event Timing spec</a>: the first input entry "is reported even if it does not exceed a provided durationThreshold, and is buffered even if it does not exceed the default duration threshold of 104ms", and setting a threshold "does not change the entries that are buffered".</p>
+<p dir="auto">I ran both <code class="notranslate">EventCounts</code> examples in strict mode against a <code class="notranslate">Map</code> stub. Before the change both throw, after it they run. Prettier and Markdown lint pass.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">No related issue.</p>]]></content>
+        <author>
+            <name>adityareddy-dev</name>
+            <email>adityareddy-dev@noreply.github.com</email>
+            <uri>https://github.com/adityareddy-dev</uri>
+        </author>
+        <published>2026-11-04T00:44:49.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix LayoutShiftAttribution examples]]></title>
+        <id>https://github.com/mdn/content/pull/46372</id>
+        <link href="https://github.com/mdn/content/pull/46372"/>
+        <updated>2026-11-04T00:24:16.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/82123567?u=1f8b3707dc36d7419004483efb0465c8ec52519e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Fix the <code class="notranslate">LayoutShiftAttribution</code> examples so they run. The interface example now uses the variable it declares, and the <code class="notranslate">node</code>, <code class="notranslate">currentRect</code> and <code class="notranslate">previousRect</code> examples check <code class="notranslate">sources.length</code> before reading <code class="notranslate">sources[0]</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The interface example declares <code class="notranslate">mostImpactfulSource</code> and then logs <code class="notranslate">largestShiftSource</code>, which throws a <code class="notranslate">ReferenceError</code> on the first entry that has sources. The three property examples test <code class="notranslate">if (sources)</code>, but <code class="notranslate">sources</code> is always an array, so an entry with no sources throws a <code class="notranslate">TypeError</code> on <code class="notranslate">sources[0]</code>.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">In the <a href="https://wicg.github.io/layout-instability/#dom-layoutshift-sources" rel="nofollow">Layout Instability spec</a>, <code class="notranslate">sources</code> is a <code class="notranslate">FrozenArray</code> with up to five attributions, and the spec's own <a href="https://wicg.github.io/layout-instability/#example" rel="nofollow">usage example</a> checks <code class="notranslate">entry.sources.length &gt; 0</code> before using <code class="notranslate">entry.sources[0]</code>.</p>
+<p dir="auto">I ran each example in a small Node harness with one entry that has no sources and one that has two. Before the change all four throw. After it they log the expected values. Prettier and Markdown lint pass.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">No related issue.</p>]]></content>
+        <author>
+            <name>adityareddy-dev</name>
+            <email>adityareddy-dev@noreply.github.com</email>
+            <uri>https://github.com/adityareddy-dev</uri>
+        </author>
+        <published>2026-11-04T00:22:56.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Edge doesn't support JPEG XL yet as of version 156]]></title>
         <id>https://github.com/mdn/content/pull/46369</id>
@@ -68,7 +136,7 @@
         <title type="html"><![CDATA[Document `icon_variants` for web extensions]]></title>
         <id>https://github.com/mdn/content/pull/46364</id>
         <link href="https://github.com/mdn/content/pull/46364"/>
-        <updated>2026-11-03T19:53:20.000Z</updated>
+        <updated>2026-11-04T02:48:45.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds the <code class="notranslate">manifest.json/icon_variants</code> page. Documents <code class="notranslate">icon_variants</code> in the <code class="notranslate">action</code>, <code class="notranslate">browser_action</code> and <code class="notranslate">page_action</code> keys, <code class="notranslate">variants</code> in <code class="notranslate">action.setIcon()</code> and <code class="notranslate">browserAction.setIcon()</code>, and <code class="notranslate">iconVariants</code> in <code class="notranslate">menus.create()</code> and <code class="notranslate">menus.update()</code>. Fixes two links in <code class="notranslate">action.setIcon()</code> that pointed to <code class="notranslate">browser_action</code>.</p>
 <h3 dir="auto">Motivation</h3>
@@ -82,36 +150,13 @@
 </ul>
 <h3 dir="auto">Related issues and pull requests</h3>
 <p dir="auto"><strong>Depends on:</strong> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6174128428" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31029" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31029/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31029">mdn/browser-compat-data#31029</a></p>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6174192944" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46363" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46363/hovercard" href="https://github.com/mdn/content/pull/46363">#46363</a></p>]]></content>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6195208376" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46374" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46374/hovercard" href="https://github.com/mdn/content/pull/46374">#46374</a></p>]]></content>
         <author>
             <name>xeenon</name>
             <email>xeenon@noreply.github.com</email>
             <uri>https://github.com/xeenon</uri>
         </author>
         <published>2026-11-03T01:16:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Make icon size guidance browser-neutral and document how Safari draws the action icon]]></title>
-        <id>https://github.com/mdn/content/pull/46363</id>
-        <link href="https://github.com/mdn/content/pull/46363"/>
-        <updated>2026-11-03T18:40:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Makes the icon size guidance on the <code class="notranslate">icons</code>, <code class="notranslate">action</code>, <code class="notranslate">browser_action</code> and <code class="notranslate">page_action</code> pages apply to every browser. Adds tables of the sizes browsers display, and documents how Safari draws the action icon.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The pages described icon selection and screen density as Firefox behavior. Safari's handling of the action icon, including the removal of transparent borders and the tinting based on page access, was not documented.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>The selection rule and sizes were read from the Chromium and Firefox sources and from Safari.</li>
-<li>Background on Safari's icon handling: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2952371226" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/795" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/795/hovercard" href="https://github.com/w3c/webextensions/issues/795">w3c/webextensions#795</a>.</li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43790.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4263260465" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43790" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43790/hovercard" href="https://github.com/mdn/content/issues/43790">#43790</a></p>]]></content>
-        <author>
-            <name>xeenon</name>
-            <email>xeenon@noreply.github.com</email>
-            <uri>https://github.com/xeenon</uri>
-        </author>
-        <published>2026-11-03T01:15:48.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[[Technical review] Add BiDi bluetooth pages: `disableSimulation`, `handleRequestDevicePrompt`, `simulateAdapter`]]></title>
@@ -459,55 +504,5 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
             <uri>https://github.com/nektro</uri>
         </author>
         <published>2026-10-29T04:28:49.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clarify the role of flex formatting contexts]]></title>
-        <id>https://github.com/mdn/content/pull/46317</id>
-        <link href="https://github.com/mdn/content/pull/46317"/>
-        <updated>2026-11-03T13:53:43.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/61937205?u=414ab578a552e13877c6d1b2fef647a3afe0b6ef&v=4" width="64" height="64" alt=""/><br/>
-
-<h3 dir="auto">Description</h3>
-<p dir="auto">Clarify that preventing floats from intruding and preventing margin collapse are related to the flex formatting context established by a flex container.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Refer to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Block_formatting_context#:~:text=Flex%20and%20grid,suppress%20margin%20collapsing" rel="nofollow">https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Block_formatting_context#:~:text=Flex%20and%20grid,suppress%20margin%20collapsing</a>.</p>
-<p dir="auto">Because these two sentences appear close together, readers may assume that establishing a containing block is what prevents floats from intruding and margins from collapsing. However, these behaviors are actually due to the flex formatting context established by a flex container, not the containing block itself.</p>
-<p dir="auto">Would it be better to explicitly state that a flex container establishes a flex formatting context to avoid confusion? 🤔</p>
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>patienry</name>
-            <email>patienry@noreply.github.com</email>
-            <uri>https://github.com/patienry</uri>
-        </author>
-        <published>2026-10-28T09:30:09.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add CSS filter() function reference page]]></title>
-        <id>https://github.com/mdn/content/pull/46315</id>
-        <link href="https://github.com/mdn/content/pull/46315"/>
-        <updated>2026-10-30T07:20:24.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/237005693?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds a reference page for the CSS <code class="notranslate">filter()</code> image function, covering its syntax, parameters, examples, and related documentation.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">This addresses issue <a href="https://github.com/mdn/content/issues/46003" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46003/hovercard">#46003</a>, which identifies the missing MDN reference documentation for the CSS <code class="notranslate">filter()</code> image function.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>Adds the page metadata, including the specification URL and browser compatibility reference.</li>
-<li>Includes examples for applying filters to background images, combining filter functions, and providing a fallback.</li>
-<li>Links to related CSS filter documentation.</li>
-</ul>
-<p dir="auto">This is a documentation-only change. The page and its compatibility metadata should be reviewed against the current specification and browser compatibility data.</p>]]></content>
-        <author>
-            <name>digvijayduggu98-cmd</name>
-            <email>digvijayduggu98-cmd@noreply.github.com</email>
-            <uri>https://github.com/digvijayduggu98-cmd</uri>
-        </author>
-        <published>2026-10-28T07:11:36.000Z</published>
     </entry>
 </feed>
