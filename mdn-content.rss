@@ -2,11 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-05T07:30:02.969Z</updated>
+    <updated>2026-11-05T15:53:22.851Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[WebGPU examples: remove TypeScript type annotations from JavaScript code]]></title>
+        <id>https://github.com/mdn/content/pull/46382</id>
+        <link href="https://github.com/mdn/content/pull/46382"/>
+        <updated>2026-11-05T10:05:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/231518665?u=040162e1301a1ee482220b4543fb346662e7853e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Five WebGPU example snippets, taken from the WebGPU Samples (which are written in TypeScript), still have TypeScript type annotations inside <code class="notranslate">js</code> code blocks:</p>
+<ul dir="auto">
+<li><code class="notranslate">function recordRenderPass(passEncoder: GPURenderBundleEncoder | GPURenderPassEncoder)</code> on the <code class="notranslate">GPUDevice.createRenderBundleEncoder()</code>, <code class="notranslate">GPURenderBundle</code> and <code class="notranslate">GPURenderBundleEncoder</code> pages</li>
+<li><code class="notranslate">const renderPassDescriptor: GPURenderPassDescriptor = {</code> on the <code class="notranslate">GPUTexture.createView()</code> and <code class="notranslate">GPUTextureView</code> pages</li>
+</ul>
+<p dir="auto">This removes the annotations. For <code class="notranslate">recordRenderPass()</code> I kept the type information as a comment, because the point of that example is that the same function records commands into either kind of encoder.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The annotations are syntax errors in JavaScript, so a reader who copies one of these snippets gets a <code class="notranslate">SyntaxError</code>. Prettier also can't parse these blocks, so they are skipped when the Markdown is formatted.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">I found these by parsing every <code class="notranslate">js</code> code block in <code class="notranslate">files/en-us</code> with Prettier's Babel parser. Apart from blocks that are invalid on purpose (<code class="notranslate">example-bad</code> blocks, the JavaScript error reference pages, and live samples split across several blocks), these five were the only ones that failed to parse. They all parse now. markdownlint, Prettier and the front-matter linter pass on the changed files.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">None that I found.</p>]]></content>
+        <author>
+            <name>itsnjstyle27</name>
+            <email>itsnjstyle27@noreply.github.com</email>
+            <uri>https://github.com/itsnjstyle27</uri>
+        </author>
+        <published>2026-11-05T10:02:40.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Layout Shift name returns empty string]]></title>
         <id>https://github.com/mdn/content/pull/46381</id>
@@ -44,7 +69,7 @@
         <title type="html"><![CDATA[Add an example of arranging items around a circle to cos()]]></title>
         <id>https://github.com/mdn/content/pull/46380</id>
         <link href="https://github.com/mdn/content/pull/46380"/>
-        <updated>2026-11-04T19:30:59.000Z</updated>
+        <updated>2026-11-05T12:40:27.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/160742734?u=a429f13cb3984f4e1f704e174d6101ff9fc1675e&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds a new example, "Arranging items around a circle", to the Examples section of the cos() page. It places six numbered items in a ring using cos() and sin() with a radius and an item count.</p>
 <h3 dir="auto">Motivation</h3>
@@ -208,7 +233,7 @@
         <title type="html"><![CDATA[Document `icon_variants` for web extensions]]></title>
         <id>https://github.com/mdn/content/pull/46364</id>
         <link href="https://github.com/mdn/content/pull/46364"/>
-        <updated>2026-11-04T16:45:44.000Z</updated>
+        <updated>2026-11-05T15:52:52.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds the <code class="notranslate">manifest.json/icon_variants</code> page. Documents <code class="notranslate">icon_variants</code> in the <code class="notranslate">action</code>, <code class="notranslate">browser_action</code> and <code class="notranslate">page_action</code> keys, <code class="notranslate">variants</code> in <code class="notranslate">action.setIcon()</code> and <code class="notranslate">browserAction.setIcon()</code>, and <code class="notranslate">iconVariants</code> in <code class="notranslate">menus.create()</code> and <code class="notranslate">menus.update()</code>. Fixes two links in <code class="notranslate">action.setIcon()</code> that pointed to <code class="notranslate">browser_action</code>.</p>
 <h3 dir="auto">Motivation</h3>
@@ -234,7 +259,7 @@
         <title type="html"><![CDATA[[Technical review] Add BiDi bluetooth pages: `disableSimulation`, `handleRequestDevicePrompt`, `simulateAdapter`]]></title>
         <id>https://github.com/mdn/content/pull/46356</id>
         <link href="https://github.com/mdn/content/pull/46356"/>
-        <updated>2026-11-03T15:36:46.000Z</updated>
+        <updated>2026-11-05T15:51:15.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <ul dir="auto">
 <li>Added pages for the following commands of the <a href="https://developer.mozilla.org/en-US/docs/Web/WebDriver/Reference/BiDi/Modules/bluetooth" rel="nofollow"><code class="notranslate">bluetooth</code> module</a>:
@@ -289,7 +314,7 @@
 </ul>
 </li>
 </ul>
-<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/OrKoN/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/OrKoN">@OrKoN</a> for the compat sheet update.</p>]]></content>
+<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/sadym-chromium/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/sadym-chromium">@sadym-chromium</a> for the compat sheet update.</p>]]></content>
         <author>
             <name>pepelsbey</name>
             <email>pepelsbey@noreply.github.com</email>
@@ -459,30 +484,5 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-10-30T03:44:51.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[updated release note on named-feature for firefox]]></title>
-        <id>https://github.com/mdn/content/pull/46326</id>
-        <link href="https://github.com/mdn/content/pull/46326"/>
-        <updated>2026-11-02T23:18:34.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<ul dir="auto">
-<li>Updated Nightly by default on Experimental features</li>
-<li>Added experimental note to Firefox 160 release notes</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Working on <a href="https://github.com/mdn/content/issues/46280" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46280/hovercard">MDN issue #46280</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li>N/A</li>
-</ul>]]></content>
-        <author>
-            <name>dletorey</name>
-            <email>dletorey@noreply.github.com</email>
-            <uri>https://github.com/dletorey</uri>
-        </author>
-        <published>2026-10-29T16:32:49.000Z</published>
     </entry>
 </feed>
