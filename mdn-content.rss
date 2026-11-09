@@ -2,31 +2,100 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-09T00:14:10.957Z</updated>
+    <updated>2026-11-09T07:22:55.404Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Fix: add Grsync to proper-names dictionary]]></title>
-        <id>https://github.com/mdn/content/pull/46405</id>
-        <link href="https://github.com/mdn/content/pull/46405"/>
-        <updated>2026-11-08T22:06:50.000Z</updated>
+        <title type="html"><![CDATA[FF160 Web Speech API: speech recognition docs fixes]]></title>
+        <id>https://github.com/mdn/content/pull/46413</id>
+        <link href="https://github.com/mdn/content/pull/46413"/>
+        <updated>2026-11-09T07:10:15.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF160 ships the speech recognition side of the Web Speech API on desktop, with on-device recognition (<a href="https://bugzil.la/2080908" rel="nofollow">https://bugzil.la/2080908</a>).</p>
+<p dir="auto">This reviews the speech recognition docs against the spec, BCD, and the Firefox and Chromium implementations, and fixes the problems found:</p>
+<ul dir="auto">
+<li>Broken links: <code class="notranslate">available()</code>/<code class="notranslate">install()</code> cross-links and two "on-device" demo links that pointed at the non-on-device demo</li>
+<li><code class="notranslate">SpeechRecognitionAlternative.confidence</code> and <code class="notranslate">transcript</code> named the wrong interface</li>
+<li><code class="notranslate">install()</code>: added <code class="notranslate">NotAllowedError</code> (transient activation, Permissions Policy), documented <code class="notranslate">processLocally</code>, and removed the incorrect "only takes <code class="notranslate">langs</code>" claim (also in the guide)</li>
+<li>Where recognition runs: the browser chooses by default, and setting <code class="notranslate">processLocally</code> to <code class="notranslate">false</code> doesn't force a cloud service (Firefox has none)</li>
+<li>A missing language pack fires an <code class="notranslate">error</code> event with <code class="notranslate">service-not-allowed</code> (per spec), not a thrown <code class="notranslate">language-not-supported</code></li>
+<li>Permissions Policy: <code class="notranslate">available()</code> resolves to <code class="notranslate">unavailable</code> and <code class="notranslate">install()</code> rejects with <code class="notranslate">NotAllowedError</code> (Chrome and Firefox agree; the spec doesn't say)</li>
+<li><code class="notranslate">available()</code>: added a download-masking note, and put the multi-language status rules in spec order</li>
+<li><code class="notranslate">start()</code> and <code class="notranslate">stop()</code> don't return results; added <code class="notranslate">start()</code>'s missing <code class="notranslate">InvalidStateError</code> cases; the <code class="notranslate">result</code> event also fires for interim results</li>
+<li>Alternatives are possible matches for what the user said, not single words; grammars have no effect on recognition</li>
+<li><code class="notranslate">SpeechRecognitionResultList</code>: the continuous-mode description on the overview was backwards</li>
+<li>Guide example fixes: <code class="notranslate">let voices</code>, <code class="notranslate">map()</code>/<code class="notranslate">join()</code> (not <code class="notranslate">forEach()</code>), and <code class="notranslate">— DEFAULT</code></li>
+</ul>
+<p dir="auto">Related BCD: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6278827053" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31080" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31080/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31080">mdn/browser-compat-data#31080</a></p>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044211319" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46283" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46283/hovercard" href="https://github.com/mdn/content/issues/46283">#46283</a></p>
+<p dir="auto">🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-11-09T07:08:51.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix: correct grammar and article usage in radio input documentation]]></title>
+        <id>https://github.com/mdn/content/pull/46412</id>
+        <link href="https://github.com/mdn/content/pull/46412"/>
+        <updated>2026-11-09T06:53:34.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/97598943?u=cd9a00667ac696f00f22df916bc5609963b33f4f&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds \Grsync\ to .vscode/dictionaries/proper-names.txt\ in alphabetical order.</p>
+<p dir="auto">Fix small grammatical errors and article usage in the <code class="notranslate">&lt;input type="radio"&gt;</code> documentation (<code class="notranslate">files/en-us/web/html/reference/elements/input/radio/index.md</code>):</p>
+<ul dir="auto">
+<li>Add missing "the" in "giving each of the radio buttons"</li>
+<li>Remove duplicated "the" in "included in the form's submitted data"</li>
+<li>Add missing "the" in "include the <code class="notranslate">checked</code> attribute"</li>
+</ul>
 <h3 dir="auto">Motivation</h3>
-<p dir="auto">\Grsync\ is a well-known GUI frontend for rsync mentioned in \iles/en-us/learn_web_development/getting_started/your_first_website/publishing_your_website/index.md\ alongside \Acrosync. Without this dictionary entry, <br>
-pm run lint:typos\ flags \Grsync\ as an unknown word.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Verified with <br>
-px cspell\ and <br>
-pm test\ locally.</p>]]></content>
+<p dir="auto">Improves clarity and grammatical correctness of the radio input documentation.</p>]]></content>
         <author>
             <name>abdul-karim-mia</name>
             <email>abdul-karim-mia@noreply.github.com</email>
             <uri>https://github.com/abdul-karim-mia</uri>
         </author>
-        <published>2026-11-08T22:06:31.000Z</published>
+        <published>2026-11-09T06:52:16.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FF160 Relnote/ExprF: Web Speech API on-device speech recognition]]></title>
+        <id>https://github.com/mdn/content/pull/46410</id>
+        <link href="https://github.com/mdn/content/pull/46410"/>
+        <updated>2026-11-09T06:06:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF160 supports the on-device recognition features of the web speech API in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2080908" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2080908</a></p>
+<p dir="auto">This adds the release note and removes the experimental features note.<br>
+Note that the implementation provides IDL for all the properties/methods but not all of them are implemented.<br>
+I chose not to mention this - e.g. for <code class="notranslate">SpeechRecognition.phrases</code> and <code class="notranslate">SpeechRecognition.unspokenPunctuation</code> property, and the <code class="notranslate">quality</code> option of  <code class="notranslate">SpeechRecognition.available()</code> and <code class="notranslate">install()"</code>.</p>
+<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044211319" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46283" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46283/hovercard" href="https://github.com/mdn/content/issues/46283">#46283</a></p>]]></content>
+        <author>
+            <name>hamishwillee</name>
+            <email>hamishwillee@noreply.github.com</email>
+            <uri>https://github.com/hamishwillee</uri>
+        </author>
+        <published>2026-11-09T06:03:30.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix: correct grammar in HTML Sanitizer API overview]]></title>
+        <id>https://github.com/mdn/content/pull/46407</id>
+        <link href="https://github.com/mdn/content/pull/46407"/>
+        <updated>2026-11-09T00:58:18.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/97598943?u=cd9a00667ac696f00f22df916bc5609963b33f4f&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Fix two minor grammatical typos in <code class="notranslate">files/en-us/web/api/html_sanitizer_api/index.md</code>:</p>
+<ol dir="auto">
+<li>"The sanitizer objects defines" -&gt; "The sanitizer object defines" (subject-verb agreement).</li>
+<li>"inserted into as a subtree of the <code class="notranslate">ShadowRoot</code>" -&gt; "inserted as a subtree of the <code class="notranslate">ShadowRoot</code>" (removed extraneous <code class="notranslate">into</code>, matching the <code class="notranslate">ShadowRoot.setHTML()</code> description above).</li>
+</ol>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Improves grammar and consistency in the HTML Sanitizer API overview page.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5838769006" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46132" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46132/hovercard" href="https://github.com/mdn/content/issues/46132">#46132</a></p>]]></content>
+        <author>
+            <name>abdul-karim-mia</name>
+            <email>abdul-karim-mia@noreply.github.com</email>
+            <uri>https://github.com/abdul-karim-mia</uri>
+        </author>
+        <published>2026-11-09T00:56:42.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[docs(WebXR): clarify local and floor reference spaces]]></title>
@@ -133,7 +202,7 @@ pm test\ locally.</p>]]></content>
 <p dir="auto">Nevertheless, even in the Firefox case I feel the example is too similar to the previous one to be relevant.</p>
 <p dir="auto">Still, I am prepared to drop that commit if requested, or to replace it with an updated second example that <em>does</em> demonstrate the <code class="notranslate">hyphens</code> property in a way that's sufficiently novel. (I have no such example in mind, though. Suggestions welcome from anyone who feels it's an imperative.)</p>
 <h4 dir="auto">Firefox (left) vs. Chrome (right)</h4>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/538020/697524549-96e7e6ba-ba67-4cc8-a247-3e667f19ab04.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQxODM1NTAsIm5iZiI6MTc5NDE4MzI1MCwicGF0aCI6Ii81MzgwMjAvNjk3NTI0NTQ5LTk2ZTdlNmJhLWJhNjctNGNjOC1hMjQ3LTNlNjY3ZjE5YWIwNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTEwOVQwMDE0MTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03N2IzN2RhYjk4MDU3YmU0YmRjNTI3YTA2Nzg0MGI5MWMzOTZhNjRlZWE2ZmUyMWI4ZWVkNjg4MzFhNjMzZWUzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.YjCuDPjEtpKuD8-cfqzsYY_vynFQJa1VjLByhwEV7pM"><img width="1119" height="635" alt="image" src="https://private-user-images.githubusercontent.com/538020/697524549-96e7e6ba-ba67-4cc8-a247-3e667f19ab04.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQxODM1NTAsIm5iZiI6MTc5NDE4MzI1MCwicGF0aCI6Ii81MzgwMjAvNjk3NTI0NTQ5LTk2ZTdlNmJhLWJhNjctNGNjOC1hMjQ3LTNlNjY3ZjE5YWIwNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTEwOVQwMDE0MTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03N2IzN2RhYjk4MDU3YmU0YmRjNTI3YTA2Nzg0MGI5MWMzOTZhNjRlZWE2ZmUyMWI4ZWVkNjg4MzFhNjMzZWUzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.YjCuDPjEtpKuD8-cfqzsYY_vynFQJa1VjLByhwEV7pM" style="max-width: 100%; height: auto; max-height: 635px;; aspect-ratio: 1119 / 635; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/538020/697524549-96e7e6ba-ba67-4cc8-a247-3e667f19ab04.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQyMDkyNzUsIm5iZiI6MTc5NDIwODk3NSwicGF0aCI6Ii81MzgwMjAvNjk3NTI0NTQ5LTk2ZTdlNmJhLWJhNjctNGNjOC1hMjQ3LTNlNjY3ZjE5YWIwNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTEwOVQwNzIyNTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kMTNkNzNhNzJkZmI4NzNmNWZlZjY4MzhjZGEzYjVhMTAzMzczZjk1NDJhYzI2MGQ4OTczNzdhZDJlZGIyNDU4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.kfuOCr-Hqx57K6uxsHJvyrQAycMGQuVMVzGkS9rVczQ"><img width="1119" height="635" alt="image" src="https://private-user-images.githubusercontent.com/538020/697524549-96e7e6ba-ba67-4cc8-a247-3e667f19ab04.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQyMDkyNzUsIm5iZiI6MTc5NDIwODk3NSwicGF0aCI6Ii81MzgwMjAvNjk3NTI0NTQ5LTk2ZTdlNmJhLWJhNjctNGNjOC1hMjQ3LTNlNjY3ZjE5YWIwNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTEwOVQwNzIyNTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kMTNkNzNhNzJkZmI4NzNmNWZlZjY4MzhjZGEzYjVhMTAzMzczZjk1NDJhYzI2MGQ4OTczNzdhZDJlZGIyNDU4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.kfuOCr-Hqx57K6uxsHJvyrQAycMGQuVMVzGkS9rVczQ" style="max-width: 100%; height: auto; max-height: 635px;; aspect-ratio: 1119 / 635; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <h3 dir="auto">Related issues and pull requests</h3>
 
 
@@ -145,21 +214,6 @@ pm test\ locally.</p>]]></content>
             <uri>https://github.com/ferdnyc</uri>
         </author>
         <published>2026-11-06T13:10:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF160 Relnote: WebTransport.anticipatedConcurrentIncoming{Uni|Bi}directionStreams]]></title>
-        <id>https://github.com/mdn/content/pull/46387</id>
-        <link href="https://github.com/mdn/content/pull/46387"/>
-        <updated>2026-11-08T23:28:20.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF160 adds support for <code class="notranslate">WebTransport.anticipatedConcurrentIncomingUnidirectionalStreams</code> and <code class="notranslate">anticipatedConcurrentIncomingBidirectionalStreams</code> properties and their setter options in the <code class="notranslate">WebTransport()</code> constructor.</p>
-<p dir="auto">This adds the release note.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044195868" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46275" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46275/hovercard" href="https://github.com/mdn/content/issues/46275">#46275</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-06T02:11:33.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[build(deps-dev): bump node from 24.22.1 to 26]]></title>
@@ -486,38 +540,5 @@ The rest of the changes are grammatical suggestions and clarifications from Clau
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-10-30T06:32:36.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[WebTransport: anticipatedConcurrentIncoming*Streams properties and options]]></title>
-        <id>https://github.com/mdn/content/pull/46334</id>
-        <link href="https://github.com/mdn/content/pull/46334"/>
-        <updated>2026-10-30T04:59:47.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This adds docs for <code class="notranslate">WebTransport.anticipatedConcurrentIncomingUnidirectionalStreams</code> and <code class="notranslate">anticipatedConcurrentIncomingBidirectionalStreams</code> properties and their setter options in the <code class="notranslate">WebTransport()</code> constructor.</p>
-<p dir="auto">This is currently in Safari and might be going into FF160.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044195868" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46275" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46275/hovercard" href="https://github.com/mdn/content/issues/46275">#46275</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-10-30T04:58:21.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[WebTransportDatagramDuplexStream: incoming/outgoingMaxBufferedDatagrams]]></title>
-        <id>https://github.com/mdn/content/pull/46333</id>
-        <link href="https://github.com/mdn/content/pull/46333"/>
-        <updated>2026-10-30T03:46:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This adds pages for the <code class="notranslate">incomingMaxBufferedDatagrams</code> and <code class="notranslate">outgoingMaxBufferedDatagrams</code> properties, which replace the non-standard <code class="notranslate">incomingHighWaterMark</code> and <code class="notranslate">outgoingHighWaterMark</code> properties in the specification.</p>
-<ul dir="auto">
-<li>The pages are added to the parent interface.</li>
-<li>This also corrects the old properties and notes the new properties to use. The correction is required because the old pages work in the same way. The spec change was the name, because these properties are not high/low watermarks.</li>
-</ul>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6044201670" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46278" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46278/hovercard" href="https://github.com/mdn/content/issues/46278">#46278</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-10-30T03:44:51.000Z</published>
     </entry>
 </feed>
