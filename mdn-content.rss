@@ -2,11 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-11T16:44:07.195Z</updated>
+    <updated>2026-11-11T23:11:50.058Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix SuppressedError nesting in the `using` error handling example]]></title>
+        <id>https://github.com/mdn/content/pull/46479</id>
+        <link href="https://github.com/mdn/content/pull/46479"/>
+        <updated>2026-11-11T21:02:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64033349?u=9b3bc2f7d4b7adfdf06558fde91d3eeb18a9da8d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The error structure shown after the <code class="notranslate">CantDisposeMe</code> example doesn't match what the code throws. Resources are disposed in reverse order, so the error from <code class="notranslate">resource1</code> ends up as the outer <code class="notranslate">.error</code>, the one from <code class="notranslate">resource2</code> as the inner <code class="notranslate">.error</code>, and the original error from the main block as the innermost <code class="notranslate">.suppressed</code>.</p>
+<p dir="auto">Verified with Node 24 (<code class="notranslate">v24.20.0</code>), running the example exactly as written on the page:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="SuppressedError: An error was suppressed during disposal
+  error: Error: Can't dispose resource1
+  suppressed: SuppressedError: An error was suppressed during disposal
+    error: Error: Can't dispose resource2
+    suppressed: Error: Error in main block"><pre lang="plain" class="notranslate"><code class="notranslate">SuppressedError: An error was suppressed during disposal
+  error: Error: Can't dispose resource1
+  suppressed: SuppressedError: An error was suppressed during disposal
+    error: Error: Can't dispose resource2
+    suppressed: Error: Error in main block
+</code></pre></div>
+<p dir="auto">The following paragraph ("Each additional error is added as the <code class="notranslate">error</code> property…") is still accurate, so only the code block changes.</p>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46477.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6324099138" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46477" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46477/hovercard" href="https://github.com/mdn/content/issues/46477">#46477</a></p>]]></content>
+        <author>
+            <name>JorgeRojas2712</name>
+            <email>JorgeRojas2712@noreply.github.com</email>
+            <uri>https://github.com/JorgeRojas2712</uri>
+        </author>
+        <published>2026-11-11T21:02:04.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Extend URL constructor examples]]></title>
         <id>https://github.com/mdn/content/pull/46478</id>
@@ -222,7 +248,7 @@
         <title type="html"><![CDATA[[WebExtensions] Document alarms.create({name})]]></title>
         <id>https://github.com/mdn/content/pull/46457</id>
         <link href="https://github.com/mdn/content/pull/46457"/>
-        <updated>2026-11-11T16:33:59.000Z</updated>
+        <updated>2026-11-11T16:55:44.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/45960703?v=4" width="64" height="64" alt=""/><br/>
 
 <h3 dir="auto">Description</h3>
@@ -616,35 +642,5 @@ radial-gradient(ellipse 100% 25% at 0% 50%, red, blue)"><pre class="notranslate"
             <uri>https://github.com/veersingh2007chauhan-cmyk</uri>
         </author>
         <published>2026-11-07T20:46:00.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix `entries()` methods]]></title>
-        <id>https://github.com/mdn/content/pull/46392</id>
-        <link href="https://github.com/mdn/content/pull/46392"/>
-        <updated>2026-11-07T18:22:49.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/649348?u=f9d3a0e27ad6727798ececf8936ed59540489c25&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Three fixes that are all sort of related to <code class="notranslate">entries()</code> methods:</p>
-<ul dir="auto">
-<li>Fix <code class="notranslate">XRInputSourceArray.entries()</code> to yield index-value pairs. The example should now actually work.</li>
-<li>Fix examples for <code class="notranslate">RTCStatsReport</code> iterator methods. These were looking up a property of a non-existent <code class="notranslate">report</code> object - the actual object is called <code class="notranslate">stat</code>.</li>
-<li>Fix return value for <code class="notranslate">FontFaceSet.entries()</code>. The documentation appears to have been derived from <code class="notranslate">CustomStateSet.entries()</code>, but wasn't properly updated for <code class="notranslate">FontFaceSet</code>.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Fix these articles to align with what the iterator methods actually return.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">See the specs:</p>
-<ul dir="auto">
-<li><a href="https://immersive-web.github.io/webxr/#xrinputsourcearray" rel="nofollow">https://immersive-web.github.io/webxr/#xrinputsourcearray</a></li>
-<li><a href="https://w3c.github.io/webrtc-pc/#rtcstatsreport-object" rel="nofollow">https://w3c.github.io/webrtc-pc/#rtcstatsreport-object</a></li>
-<li><a href="https://drafts.csswg.org/css-font-loading/#FontFaceSet-interface" rel="nofollow">https://drafts.csswg.org/css-font-loading/#FontFaceSet-interface</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">N/A</p>]]></content>
-        <author>
-            <name>MattiasBuelens</name>
-            <email>MattiasBuelens@noreply.github.com</email>
-            <uri>https://github.com/MattiasBuelens</uri>
-        </author>
-        <published>2026-11-07T18:21:32.000Z</published>
     </entry>
 </feed>
