@@ -2,42 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-11T23:11:50.058Z</updated>
+    <updated>2026-11-12T04:44:30.799Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
-        <title type="html"><![CDATA[Fix SuppressedError nesting in the `using` error handling example]]></title>
-        <id>https://github.com/mdn/content/pull/46479</id>
-        <link href="https://github.com/mdn/content/pull/46479"/>
-        <updated>2026-11-11T21:02:35.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/64033349?u=9b3bc2f7d4b7adfdf06558fde91d3eeb18a9da8d&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The error structure shown after the <code class="notranslate">CantDisposeMe</code> example doesn't match what the code throws. Resources are disposed in reverse order, so the error from <code class="notranslate">resource1</code> ends up as the outer <code class="notranslate">.error</code>, the one from <code class="notranslate">resource2</code> as the inner <code class="notranslate">.error</code>, and the original error from the main block as the innermost <code class="notranslate">.suppressed</code>.</p>
-<p dir="auto">Verified with Node 24 (<code class="notranslate">v24.20.0</code>), running the example exactly as written on the page:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="SuppressedError: An error was suppressed during disposal
-  error: Error: Can't dispose resource1
-  suppressed: SuppressedError: An error was suppressed during disposal
-    error: Error: Can't dispose resource2
-    suppressed: Error: Error in main block"><pre lang="plain" class="notranslate"><code class="notranslate">SuppressedError: An error was suppressed during disposal
-  error: Error: Can't dispose resource1
-  suppressed: SuppressedError: An error was suppressed during disposal
-    error: Error: Can't dispose resource2
-    suppressed: Error: Error in main block
-</code></pre></div>
-<p dir="auto">The following paragraph ("Each additional error is added as the <code class="notranslate">error</code> property…") is still accurate, so only the code block changes.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46477.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6324099138" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46477" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46477/hovercard" href="https://github.com/mdn/content/issues/46477">#46477</a></p>]]></content>
+        <title type="html"><![CDATA[Add windowId to runtime.MessageSender]]></title>
+        <id>https://github.com/mdn/content/pull/46481</id>
+        <link href="https://github.com/mdn/content/pull/46481"/>
+        <updated>2026-11-12T00:46:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Documents the <code class="notranslate">windowId</code> property of <code class="notranslate">runtime.MessageSender</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Extensions can only get the window of a sender through <code class="notranslate">sender.tab.windowId</code>, which needs a tab. <code class="notranslate">windowId</code> is also set for senders such as popups and sidebars. Firefox 160 supports it and Safari is adding it.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Proposal: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5360665662" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/1077" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/1077/hovercard" href="https://github.com/w3c/webextensions/issues/1077">w3c/webextensions#1077</a></li>
+<li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2072133" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2072133</a></li>
+<li>Safari: <a href="https://webkit.org/b/329185" rel="nofollow">https://webkit.org/b/329185</a></li>
+<li>Chrome: <a href="https://crbug.com/579968332" rel="nofollow">https://crbug.com/579968332</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46480.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6338951852" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46480" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46480/hovercard" href="https://github.com/mdn/content/issues/46480">#46480</a>.<br>
+Relates to the compatibility data issue <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6339028899" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31107" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/31107/hovercard" href="https://github.com/mdn/browser-compat-data/issues/31107">mdn/browser-compat-data#31107</a>.</p>]]></content>
         <author>
-            <name>JorgeRojas2712</name>
-            <email>JorgeRojas2712@noreply.github.com</email>
-            <uri>https://github.com/JorgeRojas2712</uri>
+            <name>xeenon</name>
+            <email>xeenon@noreply.github.com</email>
+            <uri>https://github.com/xeenon</uri>
         </author>
-        <published>2026-11-11T21:02:04.000Z</published>
+        <published>2026-11-12T00:46:07.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Extend URL constructor examples]]></title>
         <id>https://github.com/mdn/content/pull/46478</id>
         <link href="https://github.com/mdn/content/pull/46478"/>
-        <updated>2026-11-11T10:48:44.000Z</updated>
+        <updated>2026-11-12T02:31:25.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/20287307?u=6182deb004e8808582133b35b947d2a69ab038fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Adding an example for URL constructor with <code class="notranslate">url</code> and <code class="notranslate">base</code> being absolute URLs to highlight the special case.</p>
 <h3 dir="auto">Description</h3>
 <p dir="auto">I added one more example to the <code class="notranslate">URL</code> constructor documentation to highlight how it handles the case when both, <code class="notranslate">url</code> and <code class="notranslate">base</code> are absolute URLs.</p>
@@ -185,40 +185,10 @@
         <published>2026-11-10T23:46:53.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Move SVG attribute elements section before examples]]></title>
-        <id>https://github.com/mdn/content/pull/46459</id>
-        <link href="https://github.com/mdn/content/pull/46459"/>
-        <updated>2026-11-10T23:09:13.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Move the "Elements" section before "Examples" on 6 SVG attribute pages, to match the majority order used by the other SVG attribute pages. On <code class="notranslate">clip-rule</code>, also move "Usage notes" after "Examples".</p>
-<ul dir="auto">
-<li>Pages: <code class="notranslate">class</code>, <code class="notranslate">clip-rule</code>, <code class="notranslate">patterncontentunits</code>, <code class="notranslate">patterntransform</code>, <code class="notranslate">patternunits</code>, <code class="notranslate">preserveaspectratio</code>.</li>
-</ul>
-<h3 dir="auto">Motivation</h3>
-<ul dir="auto">
-<li>Make SVG attribute pages follow the majority section order.</li>
-<li>187 of 210 SVG attribute pages already follow it. This PR and a companion PR cover the remaining 23.</li>
-<li>The writing guide has no page-type template for SVG attribute pages, so the existing pages set the order.</li>
-</ul>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Sections are moved as-is; their content is unchanged.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6311629740" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46458" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46458/hovercard" href="https://github.com/mdn/content/pull/46458">#46458</a>, which moves the "Usage notes" section on the other 17 pages. The two PRs touch different files and can merge in either order.</p>
-
-
-]]></content>
-        <author>
-            <name>caugner</name>
-            <email>caugner@noreply.github.com</email>
-            <uri>https://github.com/caugner</uri>
-        </author>
-        <published>2026-11-10T16:56:22.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Move SVG attribute usage notes after examples]]></title>
         <id>https://github.com/mdn/content/pull/46458</id>
         <link href="https://github.com/mdn/content/pull/46458"/>
-        <updated>2026-11-10T23:09:01.000Z</updated>
+        <updated>2026-11-12T04:32:55.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Move the "Usage notes" section after "Examples" on 17 SVG attribute pages, to match the majority order used by the other SVG attribute pages.</p>
 <ul dir="auto">
@@ -642,5 +612,35 @@ radial-gradient(ellipse 100% 25% at 0% 50%, red, blue)"><pre class="notranslate"
             <uri>https://github.com/veersingh2007chauhan-cmyk</uri>
         </author>
         <published>2026-11-07T20:46:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fix `entries()` methods]]></title>
+        <id>https://github.com/mdn/content/pull/46392</id>
+        <link href="https://github.com/mdn/content/pull/46392"/>
+        <updated>2026-11-07T18:22:49.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/649348?u=f9d3a0e27ad6727798ececf8936ed59540489c25&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Three fixes that are all sort of related to <code class="notranslate">entries()</code> methods:</p>
+<ul dir="auto">
+<li>Fix <code class="notranslate">XRInputSourceArray.entries()</code> to yield index-value pairs. The example should now actually work.</li>
+<li>Fix examples for <code class="notranslate">RTCStatsReport</code> iterator methods. These were looking up a property of a non-existent <code class="notranslate">report</code> object - the actual object is called <code class="notranslate">stat</code>.</li>
+<li>Fix return value for <code class="notranslate">FontFaceSet.entries()</code>. The documentation appears to have been derived from <code class="notranslate">CustomStateSet.entries()</code>, but wasn't properly updated for <code class="notranslate">FontFaceSet</code>.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Fix these articles to align with what the iterator methods actually return.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">See the specs:</p>
+<ul dir="auto">
+<li><a href="https://immersive-web.github.io/webxr/#xrinputsourcearray" rel="nofollow">https://immersive-web.github.io/webxr/#xrinputsourcearray</a></li>
+<li><a href="https://w3c.github.io/webrtc-pc/#rtcstatsreport-object" rel="nofollow">https://w3c.github.io/webrtc-pc/#rtcstatsreport-object</a></li>
+<li><a href="https://drafts.csswg.org/css-font-loading/#FontFaceSet-interface" rel="nofollow">https://drafts.csswg.org/css-font-loading/#FontFaceSet-interface</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">N/A</p>]]></content>
+        <author>
+            <name>MattiasBuelens</name>
+            <email>MattiasBuelens@noreply.github.com</email>
+            <uri>https://github.com/MattiasBuelens</uri>
+        </author>
+        <published>2026-11-07T18:21:32.000Z</published>
     </entry>
 </feed>
