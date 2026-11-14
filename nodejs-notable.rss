@@ -2,11 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-11-14T18:34:23.643Z</updated>
+    <updated>2026-11-14T22:47:41.576Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[module: remove async module customization hooks]]></title>
+        <id>https://github.com/nodejs/node/pull/67090</id>
+        <link href="https://github.com/nodejs/node/pull/67090"/>
+        <updated>2026-11-14T22:00:31.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/456802?u=55a029ca7659fa56e1422d8f8b619cdba6a33bac&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Removes <code class="notranslate">module.register()</code> (DEP0205), the <code class="notranslate">--experimental-loader</code> and <code class="notranslate">--loader</code> flags, and the machinery that supported them: the loader hooks worker thread, the hooks proxy, the async module customization hook chains for resolving and loading, the internal worker class used to run the loader thread, and the asynchronous module job linking. Module customization is now provided only by <code class="notranslate">module.registerHooks()</code>, which runs synchronously on the thread that loads the modules.</p>
+<ul dir="auto">
+<li>The ES module loader always loads and links modules synchronously; the promise handling and the re-invented <code class="notranslate">require()</code> for imported CommonJS are gone. <code class="notranslate">import()</code> still defers evaluation to a later microtask.</li>
+<li><code class="notranslate">worker_threads.isInternalThread</code> is kept and always <code class="notranslate">false</code>; removing it is left for a semver-major change.</li>
+<li>DEP0205 stays in <code class="notranslate">deprecations.md</code> as End-of-Life. <code class="notranslate">ERR_ASYNC_LOADER_REQUEST_NEVER_SETTLED</code> and <code class="notranslate">ERR_LOADER_CHAIN_INCOMPLETE</code> move to Legacy in <code class="notranslate">errors.md</code>.</li>
+<li>Tests that only exercised the async hooks are removed; new tests cover <code class="notranslate">require()</code> after a failed <code class="notranslate">import()</code> and that <code class="notranslate">import()</code> does not evaluate the module before returning.</li>
+<li><code class="notranslate">REPLACEME</code> placeholders for the version are left for landing.</li>
+</ul>
+<h2 dir="auto">Notable change</h2>
+<p dir="auto">Suggested text for the release notes:</p>
+<h4 dir="auto">Removal of <code class="notranslate">module.register()</code> and <code class="notranslate">--experimental-loader</code></h4>
+<p dir="auto"><code class="notranslate">module.register()</code> (DEP0205) and the <code class="notranslate">--experimental-loader</code> and <code class="notranslate">--loader</code> flags have been removed, together with the separate thread that ran asynchronous module customization hooks. Module customization is now provided by <a href="https://nodejs.org/api/module.html#moduleregisterhooksoptions" rel="nofollow"><code class="notranslate">module.registerHooks()</code></a>, which runs synchronously on the thread that loads the modules. It has been available since v22.15.0 and v23.5.0.</p>
+<p dir="auto">What changes for existing code:</p>
+<ul dir="auto">
+<li><code class="notranslate">module.register</code> is no longer exported. In CommonJS it is <code class="notranslate">undefined</code>, so feature detection such as <code class="notranslate">if (module.register)</code> keeps working, and in ES modules <code class="notranslate">import { register } from 'node:module'</code> fails with a <code class="notranslate">SyntaxError</code> because the export no longer exists.</li>
+<li><code class="notranslate">--experimental-loader</code> and <code class="notranslate">--loader</code> are no longer recognized options, so Node.js exits with a “bad option” error when they are passed.</li>
+<li>Hooks that relied on a separate thread, for example to <code class="notranslate">await</code> asynchronous work, need to do that work another way.</li>
+</ul>]]></content>
+        <author>
+            <name>GeoffreyBooth</name>
+            <email>GeoffreyBooth@noreply.github.com</email>
+            <uri>https://github.com/GeoffreyBooth</uri>
+        </author>
+        <published>2026-10-28T18:42:51.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[test_runner: use AsyncLocalStorage instead of async_hooks]]></title>
         <id>https://github.com/nodejs/node/pull/66795</id>
@@ -595,7 +625,7 @@ Assisted-by: Opencode/Opus</p>]]></content>
         <link href="https://github.com/nodejs/node/pull/64591"/>
         <updated>2026-09-02T16:42:16.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Adds basic syntax highlighting similar to our <code class="notranslate">util.inspect</code>. Highlighting is done using <code class="notranslate">util.inspect.styles</code>, so the coloring is in-tune with inspect, see below:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQ2ODE1NjMsIm5iZiI6MTc5NDY4MTI2MywicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMTE0VDE4MzQyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZkNDRkNGNhMDY3ZDY0N2VhZjQ2NjA4YzUxZTYxZDc1YTQyNWU3ZDk0YzY5MTBhZmJjYjdkMzg0ZWIxNzZmZmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.iQhH2M3PA0ifjMBO9JRRvrWESHRPs3DlnXu7RDE4kEI"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQ2ODE1NjMsIm5iZiI6MTc5NDY4MTI2MywicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMTE0VDE4MzQyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZkNDRkNGNhMDY3ZDY0N2VhZjQ2NjA4YzUxZTYxZDc1YTQyNWU3ZDk0YzY5MTBhZmJjYjdkMzg0ZWIxNzZmZmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.iQhH2M3PA0ifjMBO9JRRvrWESHRPs3DlnXu7RDE4kEI" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQ2OTY3NjEsIm5iZiI6MTc5NDY5NjQ2MSwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMTE0VDIyNDc0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcyMGE3ZWM4MmJlMzVkZjA4YzU5YjViODk5MTc4YjU3MTJmZjRjYjAzODNmMTRhMmI3ZWFiOGRlNTg1NjMwZjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.-MYiyMEyLKayHcACQl6IceGWwEhvGGgvxeR9WhUttX8"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTQ2OTY3NjEsIm5iZiI6MTc5NDY5NjQ2MSwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjExMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMTE0VDIyNDc0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcyMGE3ZWM4MmJlMzVkZjA4YzU5YjViODk5MTc4YjU3MTJmZjRjYjAzODNmMTRhMmI3ZWFiOGRlNTg1NjMwZjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.-MYiyMEyLKayHcACQl6IceGWwEhvGGgvxeR9WhUttX8" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
 <p dir="auto"><strong>Notable Change</strong>: The REPL now performs syntax highlighting when <code class="notranslate">useColors: true</code></p>]]></content>
         <author>
             <name>avivkeller</name>
@@ -622,79 +652,5 @@ Assisted-by: Opencode/Opus</p>]]></content>
             <uri>https://github.com/MoLow</uri>
         </author>
         <published>2026-07-09T09:58:25.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[repl: use inspector over vm]]></title>
-        <id>https://github.com/nodejs/node/pull/64034</id>
-        <link href="https://github.com/nodejs/node/pull/64034"/>
-        <updated>2026-08-03T17:23:51.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR switches the REPL from <code class="notranslate">node:vm</code> to <code class="notranslate">node:inspector</code>, moving it from a synchronous to an asynchronous evaluator. This brings the following improvements:</p>
-<ol dir="auto">
-<li><strong>Top-level <code class="notranslate">await</code> is now natively supported</strong> by the inspector, so <code class="notranslate">--no-experimental-repl-await</code> is no longer accepted. This also resolves a known limitation where TLA would invalidate the lexical scoping of <code class="notranslate">const</code> declarations.</li>
-<li><strong>Static imports</strong> such as <code class="notranslate">import ... from '...'</code> are now transformed into real dynamic imports and executed, rather than throwing <code class="notranslate">Cannot use import statement outside a module</code> with a hint to rewrite the import manually. This isn't strictly required by removing <code class="notranslate">node:vm</code>, but the change makes it easier. I can split this into a separate PR if preferred.</li>
-<li><strong>Several <code class="notranslate">node:vm</code> issues are resolved</strong> (see the list below), and users can now attach process listeners without breaking the REPL.</li>
-<li><strong>Errors are more detailed</strong>: for example, showing the specific line in a <code class="notranslate">.load</code>-ed file where an error was thrown.</li>
-</ol>
-<hr>
-<p dir="auto">This is a semver-major change; see the reasons listed in the notable changes section.</p>
-<hr>
-<h2 dir="auto">Removed Tests</h2>
-<ul dir="auto">
-<li><code class="notranslate">addons/repl-domain-abort</code>, <code class="notranslate">parallel/test-repl-domain.js</code>: We no longer rely on the <code class="notranslate">domain</code> module, so testing it is no longer needed.
-<ul dir="auto">
-<li><code class="notranslate">parallel/test-repl-no-terminal-restore-process-listeners.js</code>: An extension of the above — we no longer modify the ability to set process listeners.</li>
-<li><code class="notranslate">parallel/test-repl-uncaught-exception-async.js</code> / <code class="notranslate">parallel/test-repl-uncaught-exception.js</code> / <code class="notranslate">parallel/test-repl-tab-complete-nested-repls.js</code>: An extension of the above; this test case no longer throws an error.</li>
-</ul>
-</li>
-<li><code class="notranslate">known_issues/test-repl-require-context.js</code>: This known issue has been resolved.</li>
-<li><code class="notranslate">parallel/test-repl-top-level-await.js</code>: No need to test TLA — it's supported natively by the inspector.
-<ul dir="auto">
-<li><code class="notranslate">parallel/test-repl-preprocess-top-level-await.js</code>: An extension of the above; the REPL no longer pre-processes top-level await.</li>
-</ul>
-</li>
-<li><code class="notranslate">parallel/test-repl-preview-without-inspector.js</code>: The REPL no longer works without the inspector.</li>
-<li><code class="notranslate">parallel/test-util-sigint-watchdog.js</code>: This tested code that has been removed as part of this migration.</li>
-<li><code class="notranslate">pseudo-tty/repl-dumb-tty.js</code>: There's currently no way to conditionally run these tests (run only when inspector is available).</li>
-</ul>
-<hr>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #64523.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4894850535" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/64523" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/64523/hovercard" href="https://github.com/nodejs/node/issues/64523">#64523</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes pull request #64534.">Closes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4903099007" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/64534" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/64534/hovercard" href="https://github.com/nodejs/node/pull/64534">#64534</a></p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39387.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="944593839" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/39387" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/39387/hovercard" href="https://github.com/nodejs/node/issues/39387">#39387</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes pull request #39392.">Closes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="944860329" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/39392" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/39392/hovercard" href="https://github.com/nodejs/node/pull/39392">#39392</a></p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #61390.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3816256697" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/61390" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/61390/hovercard" href="https://github.com/nodejs/node/issues/61390">#61390</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #63126.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4384148767" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/63126" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/63126/hovercard" href="https://github.com/nodejs/node/issues/63126">#63126</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38503.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="873817650" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/38503" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/38503/hovercard" href="https://github.com/nodejs/node/issues/38503">#38503</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #37445.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="812156809" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/37445" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/37445/hovercard" href="https://github.com/nodejs/node/issues/37445">#37445</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38145.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="852990775" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/38145" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/38145/hovercard" href="https://github.com/nodejs/node/issues/38145">#38145</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #33369.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="616727557" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/33369" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/33369/hovercard" href="https://github.com/nodejs/node/issues/33369">#33369</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #48131.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1720974409" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/48131" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/48131/hovercard" href="https://github.com/nodejs/node/issues/48131">#48131</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #8309.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="173643775" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/8309" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/8309/hovercard" href="https://github.com/nodejs/node/issues/8309">#8309</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39689.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="963027497" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/39689" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/39689/hovercard" href="https://github.com/nodejs/node/issues/39689">#39689</a><br>
-<span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #18931.">Fixes</span>: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="299303438" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/18931" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/18931/hovercard" href="https://github.com/nodejs/node/issues/18931">#18931</a></p>
-<hr>
-<h1 dir="auto">Notable Change</h1>
-<p dir="auto">The REPL has been re-implemented on top of the V8 Inspector (<code class="notranslate">node:inspector</code>) rather than <code class="notranslate">node:vm</code>. This moves the REPL from a synchronous to an asynchronous evaluator and resolves long-standing design quirks that stemmed from the <code class="notranslate">vm</code>-based design:</p>
-<ul dir="auto">
-<li>Because the inspector natively supports top-level <code class="notranslate">await</code>, the <code class="notranslate">--no-experimental-repl-await</code> flag is no longer accepted, and top-level <code class="notranslate">await</code> no longer corrupts the lexical scoping of <code class="notranslate">const</code>/<code class="notranslate">let</code> declarations. Additionally, statements that would normally return a <code class="notranslate">Promise</code> are now awaited until they settle.</li>
-<li>Lines such as <code class="notranslate">import { readFile } from 'node:fs/promises'</code> are now transformed into real dynamic imports and executed.</li>
-<li><code class="notranslate">_</code> and <code class="notranslate">_error</code> are available even in REPLs with a modified context.</li>
-<li>Users can now add listeners (e.g. <code class="notranslate">uncaughtException</code>) without disrupting evaluation.</li>
-<li>Throwing inside <code class="notranslate">queueMicrotask</code>/timer callbacks, and <code class="notranslate">vm</code> async timeouts, no longer take down the process.</li>
-<li>Certain side-effect free Proxy's, Getters, and other non-static properties can be tab/auto-completed.</li>
-<li><strong>And more</strong></li>
-</ul>
-<h3 dir="auto">Breaking changes</h3>
-<p dir="auto">In addition to the removal of <code class="notranslate">--no-experimental-repl-await</code> and similar <code class="notranslate">await</code> changes noted above:</p>
-<ul dir="auto">
-<li>Because errors now surface through the inspector, their output (including the added detail) can differ from previous releases. Code or tests that match on exact REPL error or stack-trace text may need to be updated.</li>
-<li>The caret/offset indicator that pointed at the precise location of a <code class="notranslate">SyntaxError</code> is no longer emitted in the main REPL; this information is still available programmatically in the stack trace.</li>
-<li>V8's Inspector does not carry RegExp matches over to the global object <em>across</em> multiple evaluations.</li>
-</ul>]]></content>
-        <author>
-            <name>avivkeller</name>
-            <email>avivkeller@noreply.github.com</email>
-            <uri>https://github.com/avivkeller</uri>
-        </author>
-        <published>2026-06-20T21:46:39.000Z</published>
     </entry>
 </feed>
