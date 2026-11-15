@@ -6,14 +6,25 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/58374592?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">replaced element-shared with element-scoped</p>\n\n\n<h3 dir=\"auto\">Description</h3>\n\n<h3 dir=\"auto\">Motivation</h3>\n\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/46525",
-            "title": "Update index.md",
-            "date_modified": "2026-11-14T20:08:23.000Z",
-            "date_published": "2026-11-14T20:08:01.000Z",
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixes the <code class=\"notranslate\">encodeURIComponent(set1)</code> output in the comparison example on the <code class=\"notranslate\">encodeURI()</code> page.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The comment shows <code class=\"notranslate\">%3B%2C%2F%3F%3A%40%26%3D%2B%24%23</code>, with the comma's <code class=\"notranslate\">%2C</code> near the start, but <code class=\"notranslate\">encodeURIComponent</code> keeps the input order, so for <code class=\"notranslate\">\";/?:@&amp;=+$,#\"</code> it returns <code class=\"notranslate\">%3B%2F%3F%3A%40%26%3D%2B%24%2C%23</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Checked in Node 24.</p>",
+            "url": "https://github.com/mdn/content/pull/46528",
+            "title": "Fix the encodeURIComponent() output in the encodeURI() example",
+            "date_modified": "2026-11-15T07:55:01.000Z",
+            "date_published": "2026-11-15T07:51:39.000Z",
             "author": {
-                "name": "suethepooh",
-                "url": "https://github.com/suethepooh"
+                "name": "ragib-mrb",
+                "url": "https://github.com/ragib-mrb"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Makes the <code class=\"notranslate\">getDay()</code> example on the reference page return the same day in every time zone.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><code class=\"notranslate\">new Date(\"1995-02-14\")</code> is a date-only string, so it's parsed as midnight UTC. <code class=\"notranslate\">getDay()</code> uses local time, so the example prints \"Monday\" in time zones behind UTC (like the Americas) and \"Tuesday\" everywhere else, and Feb 14, 1995 was actually a Tuesday. Using <code class=\"notranslate\">\"1995-02-14T00:00:00\"</code> parses it as local time, so it's Tuesday everywhere. I updated the three output comments to match (Tuesday / Dienstag).</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Checked in Node 24 with <code class=\"notranslate\">TZ=America/New_York</code> (prints 1 / Monday before, 2 / Tuesday after) and <code class=\"notranslate\">TZ=Asia/Kolkata</code>.</p>",
+            "url": "https://github.com/mdn/content/pull/46527",
+            "title": "Fix the getDay() example returning a time zone dependent day",
+            "date_modified": "2026-11-15T07:54:25.000Z",
+            "date_published": "2026-11-15T07:51:36.000Z",
+            "author": {
+                "name": "ragib-mrb",
+                "url": "https://github.com/ragib-mrb"
             }
         },
         {
@@ -80,17 +91,6 @@
             "author": {
                 "name": "estelle",
                 "url": "https://github.com/estelle"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/97598943?u=cd9a00667ac696f00f22df916bc5609963b33f4f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #46493.\">Closes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6353819118\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46493\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46493/hovercard\" href=\"https://github.com/mdn/content/issues/46493\">#46493</a></p>\n<h3 dir=\"auto\">Summary of changes</h3>\n<ol dir=\"auto\">\n<li><strong>Clarify <code class=\"notranslate\">srcData: null</code> allocation</strong>:\n<ul dir=\"auto\">\n<li>In <code class=\"notranslate\">WebGLRenderingContext.texImage2D()</code> and <code class=\"notranslate\">WebGL2RenderingContext.texImage3D()</code>, explicit mention is added that <code class=\"notranslate\">srcData</code> may be <code class=\"notranslate\">null</code> to allocate texture storage without uploading pixels. WebGL implementations initialize this allocated storage to zeros to prevent information leakage.</li>\n</ul>\n</li>\n<li><strong>Correct uncompressed texture parameter descriptions</strong>:\n<ul dir=\"auto\">\n<li>In <code class=\"notranslate\">texImage2D</code>, <code class=\"notranslate\">texSubImage2D</code>, <code class=\"notranslate\">texImage3D</code>, and <code class=\"notranslate\">texSubImage3D</code>, <code class=\"notranslate\">srcData</code> was described as <em>\"containing the compressed texture data\"</em>. That wording was a copy-paste remnant from <code class=\"notranslate\">compressedTexImage2D</code> / <code class=\"notranslate\">compressedTexImage3D</code>. These methods handle uncompressed image/pixel data, so the description now accurately specifies <em>\"containing the image pixel data\"</em>.</li>\n</ul>\n</li>\n</ol>\n<h3 dir=\"auto\">Verification</h3>\n<ul dir=\"auto\">\n<li>Ran <code class=\"notranslate\">npx prettier -c</code> on all 4 modified files (Passed).</li>\n<li>Ran <code class=\"notranslate\">npx markdownlint-cli2</code> on all 4 modified files (Passed — 0 issues).</li>\n<li>Ran <code class=\"notranslate\">npx cspell</code> on all 4 modified files (Passed — 0 issues).</li>\n<li>Ran <code class=\"notranslate\">npm test</code> (<code class=\"notranslate\">node --test</code>) — all 27 tests across 4 suites passed (0 failures).</li>\n</ul>",
-            "url": "https://github.com/mdn/content/pull/46515",
-            "title": "docs(webgl): clarify srcData allows null to allocate storage and fix uncompressed texture descriptions",
-            "date_modified": "2026-11-13T22:27:37.000Z",
-            "date_published": "2026-11-13T15:24:01.000Z",
-            "author": {
-                "name": "abdul-karim-mia",
-                "url": "https://github.com/abdul-karim-mia"
             }
         },
         {
