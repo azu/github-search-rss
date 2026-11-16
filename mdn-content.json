@@ -6,10 +6,98 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/67571830?u=d2e959c65b429b33fa270b2c410d6917c02adc89&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Corrects the TLS handshake and total round-trip counts. A full TLS 1.3 handshake takes one round trip and TLS 1.2 takes two, so TCP plus TLS takes two or three round trips after DNS resolution, not five.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1767545375\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27461\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27461/hovercard\" href=\"https://github.com/mdn/content/pull/27461\">#27461</a> changed the TLS handshake from \"three\" to \"five\" round trips, matching the five TLS arrows in the diagram. But those arrows are messages, not round trips. A round trip is one message to the server plus its reply. For a new TCP connection with a full TLS handshake:</p>\n<ul dir=\"auto\">\n<li><strong>TCP:</strong> one round trip. The client sends its next data right after the final ACK, without waiting.</li>\n<li><strong>TLS 1.3:</strong> one round trip.</li>\n<li><strong>TLS 1.2:</strong> two round trips.</li>\n</ul>\n<p dir=\"auto\">Session resumption, connection reuse and HTTP/3 can need fewer round trips. I've covered only the simple case.</p>\n<p dir=\"auto\"><strong>Diagram:</strong> <code class=\"notranslate\">ssl.jpg</code> shows the TLS 1.2 messages in the wrong order. It draws the client's Finished after the server's, but the client sends Finished in the same flight as ClientKeyExchange, before the server's Finished. Should the image be removed in this PR, or replaced in a follow-up?</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc9293.html#section-3.5\" rel=\"nofollow\">RFC 9293 §3.5</a>, Figure 6: TCP three-way handshake</li>\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc9846.html#section-2\" rel=\"nofollow\">RFC 9846 §2</a>, Figure 1: TLS 1.3 full handshake</li>\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc5246.html#section-7.3\" rel=\"nofollow\">RFC 5246 §7.3</a>, Figure 1: TLS 1.2 full handshake (obsoleted, but still the TLS 1.2 specification)</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Relates to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1767545375\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/27461\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/27461/hovercard\" href=\"https://github.com/mdn/content/pull/27461\">#27461</a></p>",
+            "url": "https://github.com/mdn/content/pull/46542",
+            "title": "fix: TLS and total round-trip counts in \"How browsers work\"",
+            "date_modified": "2026-11-16T10:15:40.000Z",
+            "date_published": "2026-11-16T07:41:20.000Z",
+            "author": {
+                "name": "arpit-agr",
+                "url": "https://github.com/arpit-agr"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Move the Examples section after Associated roles, directly before Specifications, on 18 ARIA attribute pages. Also move Associated interfaces before Associated roles on <code class=\"notranslate\">aria-checked</code>.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Keep Examples, Specifications, and See also as the last sections, so all other content comes before them.</li>\n<li>18 of the 20 attribute pages with an Examples section place it right after Description, ahead of the Values and Associated sections. This is not the majority order, which would move 2 pages instead, but it separates the main reference content from the closing sections.</li>\n<li><code class=\"notranslate\">aria-checked</code> was the only one of 47 pages with Associated roles before Associated interfaces.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Sections are moved as-is; their content is unchanged.</p>\n<p dir=\"auto\">The <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/ARIA_Page_Template\" rel=\"nofollow\">ARIA page template</a> places Examples directly after Description and doesn't cover the Values and Associated sections, so it would need a follow-up update.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6354337050\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46494\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46494/hovercard\" href=\"https://github.com/mdn/content/issues/46494\">#46494</a>.</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6355250407\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/888\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/888/hovercard\" href=\"https://github.com/mdn/mdn/issues/888\">mdn/mdn#888</a>.</p>\n<p dir=\"auto\">Supersedes <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6354690380\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46497\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/46497/hovercard\" href=\"https://github.com/mdn/content/pull/46497\">#46497</a>.</p>",
+            "url": "https://github.com/mdn/content/pull/46541",
+            "title": "Move Examples after Associated roles on ARIA attribute pages",
+            "date_modified": "2026-11-16T10:04:47.000Z",
+            "date_published": "2026-11-16T07:22:21.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Move the Accessibility section before Formal definition on 2 CSS shorthand property pages.</p>\n<ul dir=\"auto\">\n<li>Pages: <code class=\"notranslate\">background</code>, <code class=\"notranslate\">overflow</code>.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Make CSS shorthand property pages follow the majority section order.</li>\n<li>4 of the 6 pages with both sections already follow it. This PR brings the remaining 2 in line.</li>\n<li>The <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/CSS_property_page_template\" rel=\"nofollow\">CSS property page template</a> uses the same order.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Sections are moved as-is; their content is unchanged.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6355250407\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/888\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/888/hovercard\" href=\"https://github.com/mdn/mdn/issues/888\">mdn/mdn#888</a>.</p>",
+            "url": "https://github.com/mdn/content/pull/46540",
+            "title": "Move Accessibility before Formal definition on CSS shorthand property pages",
+            "date_modified": "2026-11-16T10:04:09.000Z",
+            "date_published": "2026-11-16T07:22:19.000Z",
+            "author": {
+                "name": "caugner",
+                "url": "https://github.com/caugner"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 enables cross-document view transitions and render blocking in Nightly (<a href=\"https://bugzil.la/2084340\" rel=\"nofollow\">https://bugzil.la/2084340</a>).</p>\n<p dir=\"auto\">This reviews the cross-document view transitions and render-blocking docs against the spec, WPT and BCD. Pretty much throwing Claude at it and then checking the validation makes sense.</p>\n<p dir=\"auto\">So far:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">@view-transition</code>: the <code class=\"notranslate\">types</code> descriptor is space-separated (<code class=\"notranslate\">&lt;custom-ident&gt;+</code>, not <code class=\"notranslate\">#</code>). Also fixed in the Using types guide.</li>\n<li><code class=\"notranslate\">@view-transition</code>: <code class=\"notranslate\">push</code>/<code class=\"notranslate\">replace</code> navigations started by script also get a view transition; only navigations from the browser UI (address bar, bookmarks) are excluded</li>\n<li><code class=\"notranslate\">@view-transition</code>: the <code class=\"notranslate\">types</code> descriptor applies only to the document that contains the rule, so the types need to be declared in both documents</li>\n<li><code class=\"notranslate\">PageSwapEvent()</code>: <code class=\"notranslate\">init</code> and its members are optional, and both members default to <code class=\"notranslate\">null</code></li>\n<li><code class=\"notranslate\">PageSwapEvent.viewTransition</code>: named the wrong interface</li>\n</ul>\n<p dir=\"auto\">Related BCD: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6413493764\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/31150\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/31150/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/31150\">mdn/browser-compat-data#31150</a></p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311671552\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46469\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46469/hovercard\" href=\"https://github.com/mdn/content/issues/46469\">#46469</a></p>",
+            "url": "https://github.com/mdn/content/pull/46539",
+            "title": "FF161 Cross-document view transitions: docs fixes",
+            "date_modified": "2026-11-16T06:29:48.000Z",
+            "date_published": "2026-11-16T06:26:42.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 adds support for the <code class=\"notranslate\">referrerpolicy</code> attribute and <code class=\"notranslate\">referrerPolicy</code> property on SVG <code class=\"notranslate\">&lt;image&gt;</code>, <code class=\"notranslate\">&lt;script&gt;</code> and <code class=\"notranslate\">&lt;feImage&gt;</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2079321\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2079321</a></p>\n<p dir=\"auto\">This:</p>\n<ul dir=\"auto\">\n<li>Updates the SVG <code class=\"notranslate\">referrerpolicy</code> attribute page to cover <code class=\"notranslate\">&lt;a&gt;</code>, <code class=\"notranslate\">&lt;feImage&gt;</code>, <code class=\"notranslate\">&lt;image&gt;</code> and <code class=\"notranslate\">&lt;script&gt;</code>, with an example for each. It also says that the document's policy is used if the attribute isn't set or is invalid, and changes the default value from <code class=\"notranslate\">strict-origin-when-cross-origin</code> to <em>none</em> to match.</li>\n<li>Adds <code class=\"notranslate\">referrerPolicy</code> pages for <code class=\"notranslate\">SVGImageElement</code>, <code class=\"notranslate\">SVGScriptElement</code> and <code class=\"notranslate\">SVGFEImageElement</code>, and rewrites <code class=\"notranslate\">SVGAElement.referrerPolicy</code> to match. The values are described once, on the attribute page. <code class=\"notranslate\">SVGAElement.referrerPolicy</code> previously linked to the HTML <code class=\"notranslate\">&lt;a&gt;</code> attribute.</li>\n<li>Adds the attribute and properties to the element and interface pages.</li>\n<li>Adds an \"Integration with SVG\" section to the <code class=\"notranslate\">Referrer-Policy</code> header page.</li>\n</ul>\n<p dir=\"auto\"><code class=\"notranslate\">&lt;feImage&gt;</code> support is non-standard: the SVG WG resolved to add <code class=\"notranslate\">referrerpolicy</code> to <code class=\"notranslate\">image</code> and <code class=\"notranslate\">script</code> only (<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5354645999\" data-permission-text=\"Title is private\" data-url=\"https://github.com/w3c/svgwg/issues/1171\" data-hovercard-type=\"issue\" data-hovercard-url=\"/w3c/svgwg/issues/1171/hovercard\" href=\"https://github.com/w3c/svgwg/issues/1171\">w3c/svgwg#1171</a>).</p>\n<p dir=\"auto\">BCD in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6414348186\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/31151\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/31151/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/31151\">mdn/browser-compat-data#31151</a></p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311665493\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46466\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46466/hovercard\" href=\"https://github.com/mdn/content/issues/46466\">#46466</a></p>",
+            "url": "https://github.com/mdn/content/pull/46536",
+            "title": "FF161 SVG referrerpolicy on image, script and feImage",
+            "date_modified": "2026-11-16T06:20:39.000Z",
+            "date_published": "2026-11-16T05:52:59.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 adds support for the <code class=\"notranslate\">referrerpolicy</code> attribute and <code class=\"notranslate\">referrerPolicy</code> property on SVG <code class=\"notranslate\">&lt;image&gt;</code>, <code class=\"notranslate\">&lt;script&gt;</code> and <code class=\"notranslate\">&lt;feImage&gt;</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2079321\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2079321</a></p>\n<p dir=\"auto\">This adds the release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311665493\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46466\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46466/hovercard\" href=\"https://github.com/mdn/content/issues/46466\">#46466</a></p>",
+            "url": "https://github.com/mdn/content/pull/46535",
+            "title": "FF161 Relnote: SVG referrerpolicy on image, script and feImage",
+            "date_modified": "2026-11-16T10:04:11.000Z",
+            "date_published": "2026-11-16T05:51:18.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Adds an Exceptions section to the <code class=\"notranslate\">Response()</code> constructor page.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\"><code class=\"notranslate\">new Response(\"\", { status: 204 })</code> throws a TypeError because an empty string is not a null body, but the page lists no exceptions, so people hit this with no explanation. Out-of-range statuses also throw a RangeError that isn't documented.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Spec: <a href=\"https://fetch.spec.whatwg.org/#initialize-a-response\" rel=\"nofollow\">https://fetch.spec.whatwg.org/#initialize-a-response</a>. Checked each case in Node 24.</p>",
+            "url": "https://github.com/mdn/content/pull/46534",
+            "title": "Add the missing exceptions to the Response() constructor",
+            "date_modified": "2026-11-16T05:31:18.000Z",
+            "date_published": "2026-11-16T05:28:41.000Z",
+            "author": {
+                "name": "ragib-mrb",
+                "url": "https://github.com/ragib-mrb"
+            }
+        },
+        {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 enables cross-document view transitions and render blocking in Nightly in <a href=\"https://bugzil.la/2084340\" rel=\"nofollow\">https://bugzil.la/2084340</a></p>\n<p dir=\"auto\">This:</p>\n<ul dir=\"auto\">\n<li>Adds an experimental features entry for cross-document view transitions (<code class=\"notranslate\">dom.viewTransitions.cross-document.enabled</code>).</li>\n<li>Adds <code class=\"notranslate\">&lt;link rel=\"expect\"&gt;</code> (<a href=\"https://bugzil.la/2053279\" rel=\"nofollow\">https://bugzil.la/2053279</a>) and <code class=\"notranslate\">PerformanceResourceTiming.renderBlockingStatus</code> to the existing render blocking entry. Both are behind <code class=\"notranslate\">dom.element.blocking.enabled</code>.</li>\n<li>Adds both features to the Firefox 161 experimental web features release notes.</li>\n</ul>\n<p dir=\"auto\">Both prefs are enabled on all channels in 162 in <a href=\"https://bugzil.la/2088945\" rel=\"nofollow\">https://bugzil.la/2088945</a>, so these entries will move to the 162 release notes then.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311671552\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46469\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46469/hovercard\" href=\"https://github.com/mdn/content/issues/46469\">#46469</a></p>",
+            "url": "https://github.com/mdn/content/pull/46533",
+            "title": "FF161 Relnote/ExprF: Cross-document view transitions and render blocking in Nightly",
+            "date_modified": "2026-11-16T04:08:55.000Z",
+            "date_published": "2026-11-16T03:35:37.000Z",
+            "author": {
+                "name": "hamishwillee",
+                "url": "https://github.com/hamishwillee"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Current Django docs no longer say a custom user model is \"highly recommended\" for new projects: <a href=\"https://docs.djangoproject.com/en/6.1/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project\" rel=\"nofollow\">https://docs.djangoproject.com/en/6.1/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project</a></p>\n<p dir=\"auto\">This softens the note in Part 8 to match, and links to the custom user model docs.</p>\n<p dir=\"auto\">Related to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"1355633995\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/20125\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/20125/hovercard\" href=\"https://github.com/mdn/content/issues/20125\">#20125</a> and <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5967614202\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46226\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/46226/hovercard\" href=\"https://github.com/mdn/content/pull/46226\">#46226</a>.</p>",
             "url": "https://github.com/mdn/content/pull/46532",
             "title": "Django Part 8: soften custom user model recommendation",
-            "date_modified": "2026-11-16T01:20:33.000Z",
+            "date_modified": "2026-11-16T10:04:14.000Z",
             "date_published": "2026-11-16T01:20:00.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -17,21 +105,10 @@
             }
         },
         {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fixes the <code class=\"notranslate\">encodeURIComponent(set1)</code> output in the comparison example on the <code class=\"notranslate\">encodeURI()</code> page.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The comment shows <code class=\"notranslate\">%3B%2C%2F%3F%3A%40%26%3D%2B%24%23</code>, with the comma's <code class=\"notranslate\">%2C</code> near the start, but <code class=\"notranslate\">encodeURIComponent</code> keeps the input order, so for <code class=\"notranslate\">\";/?:@&amp;=+$,#\"</code> it returns <code class=\"notranslate\">%3B%2F%3F%3A%40%26%3D%2B%24%2C%23</code>.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Checked in Node 24.</p>",
-            "url": "https://github.com/mdn/content/pull/46528",
-            "title": "Fix the encodeURIComponent() output in the encodeURI() example",
-            "date_modified": "2026-11-15T07:55:01.000Z",
-            "date_published": "2026-11-15T07:51:39.000Z",
-            "author": {
-                "name": "ragib-mrb",
-                "url": "https://github.com/ragib-mrb"
-            }
-        },
-        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/97598943?u=cd9a00667ac696f00f22df916bc5609963b33f4f&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #46513.\">Closes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6372010114\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46513\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46513/hovercard\" href=\"https://github.com/mdn/content/issues/46513\">#46513</a></p>\n<h3 dir=\"auto\">Summary of changes</h3>\n<p dir=\"auto\">In <code class=\"notranslate\">files/en-us/web/api/css_custom_highlight_api/index.md</code>:</p>\n<ul dir=\"auto\">\n<li>Updated the \"Create ranges\" section to note that text ranges can be defined using either <code class=\"notranslate\">Range</code> or <code class=\"notranslate\">StaticRange</code> objects.</li>\n<li>Added a note explaining the performance trade-offs:\n<ul dir=\"auto\">\n<li>Live <code class=\"notranslate\">Range</code> instances automatically track boundary mutations, but maintaining large numbers of live ranges across subsequent DOM updates can incur notable performance overhead.</li>\n<li><code class=\"notranslate\">StaticRange</code> instances are lightweight and do not observe DOM mutations, making them ideal when highlights are static or when managing large collections of ranges (e.g. search query results), provided the application manually refreshes or recreates ranges if the underlying DOM changes.</li>\n</ul>\n</li>\n</ul>\n<h3 dir=\"auto\">Verification</h3>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">npx prettier -c files/en-us/web/api/css_custom_highlight_api/index.md</code> (passed)</li>\n<li><code class=\"notranslate\">npx markdownlint-cli2 files/en-us/web/api/css_custom_highlight_api/index.md</code> (passed - 0 issues)</li>\n<li><code class=\"notranslate\">npx cspell files/en-us/web/api/css_custom_highlight_api/index.md</code> (passed - 0 issues)</li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/46520",
             "title": "docs(css_custom_highlight_api): mention StaticRange for highlights that outlive DOM changes",
-            "date_modified": "2026-11-14T09:33:24.000Z",
+            "date_modified": "2026-11-16T10:04:23.000Z",
             "date_published": "2026-11-14T09:32:59.000Z",
             "author": {
                 "name": "abdul-karim-mia",
@@ -42,7 +119,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds pages for two emulation module commands:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">emulation.setLocaleOverride</code></li>\n<li><code class=\"notranslate\">emulation.setTimezoneOverride</code></li>\n</ul>\n<h3 dir=\"auto\">Spec links</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-emulation-setLocaleOverride\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-emulation-setLocaleOverride</a></li>\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-emulation-setTimezoneOverride\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-emulation-setTimezoneOverride</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Project tracker: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5013788640\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/851\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/851/hovercard\" href=\"https://github.com/mdn/mdn/issues/851\">mdn/mdn#851</a></p>\n<p dir=\"auto\">Previous <code class=\"notranslate\">emulation</code> command PR:</p>\n<ul dir=\"auto\">\n<li><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6355453905\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46498\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/46498/hovercard\" href=\"https://github.com/mdn/content/pull/46498\">#46498</a></li>\n</ul>",
             "url": "https://github.com/mdn/content/pull/46517",
             "title": "[Technical review] BiDi emulation module - `setLocaleOverride` and  `setTimezoneOverride` commands",
-            "date_modified": "2026-11-13T19:42:23.000Z",
+            "date_modified": "2026-11-16T10:04:19.000Z",
             "date_published": "2026-11-13T19:42:01.000Z",
             "author": {
                 "name": "dipikabh",
@@ -86,7 +163,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 adds support for <code class=\"notranslate\">NavigationTransition.to</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1991959\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1991959</a></p>\n<p dir=\"auto\">This improves the docs for the feature:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">NavigationTransition.to</code>: says what the property is for, adds a Description section, and replaces the example (which used an undefined variable) with one that reports which navigation failed.</li>\n<li><code class=\"notranslate\">NavigationDestination</code>: mentions that it's also returned by <code class=\"notranslate\">NavigationTransition.to</code>, and <code class=\"notranslate\">id</code>/<code class=\"notranslate\">index</code>/<code class=\"notranslate\">key</code> describe the <code class=\"notranslate\">traverse</code> condition without tying it to <code class=\"notranslate\">NavigateEvent.navigationType</code>.</li>\n</ul>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311654840\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46461\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46461/hovercard\" href=\"https://github.com/mdn/content/issues/46461\">#46461</a></p>",
             "url": "https://github.com/mdn/content/pull/46509",
             "title": "FF161 NavigationTransition.to: docs fixes",
-            "date_modified": "2026-11-13T06:11:26.000Z",
+            "date_modified": "2026-11-16T10:04:30.000Z",
             "date_published": "2026-11-13T06:10:53.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -97,7 +174,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 adds support for <code class=\"notranslate\">NavigationTransition.to</code> in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1991959\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1991959</a></p>\n<p dir=\"auto\">This adds the release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311654840\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46461\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46461/hovercard\" href=\"https://github.com/mdn/content/issues/46461\">#46461</a></p>",
             "url": "https://github.com/mdn/content/pull/46508",
             "title": "FF161 Relnote: NavigationTransition.to",
-            "date_modified": "2026-11-13T06:11:10.000Z",
+            "date_modified": "2026-11-16T10:04:36.000Z",
             "date_published": "2026-11-13T06:10:49.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -108,7 +185,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 enables support for Clipboard API web custom formats (MIME types prefixed with <code class=\"notranslate\">web </code>) by default in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2053725\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2053725</a></p>\n<p dir=\"auto\">Summary below, but mostly this is better cross-linking.</p>\n<p dir=\"auto\">This fixes some gaps in the custom formats docs:</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">ClipboardItem()</code>, <code class=\"notranslate\">ClipboardItem</code>, <code class=\"notranslate\">ClipboardItem.types</code>, <code class=\"notranslate\">ClipboardItem.getType()</code> and <code class=\"notranslate\">ClipboardItem.supports()</code> now mention and link to custom formats.</li>\n<li><code class=\"notranslate\">Clipboard.write()</code>: <code class=\"notranslate\">NotAllowedError</code> also covers unsupported types, including a <code class=\"notranslate\">web </code> type that isn't a correctly structured MIME type.</li>\n<li>Clipboard API overview: security note that custom format data may have been written by another site or application.</li>\n<li>Minor: a typo, and <code class=\"notranslate\">reload(true)</code> → <code class=\"notranslate\">reload()</code> in the examples.</li>\n</ul>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311659002\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46463\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46463/hovercard\" href=\"https://github.com/mdn/content/issues/46463\">#46463</a></p>",
             "url": "https://github.com/mdn/content/pull/46506",
             "title": "FF161 Clipboard API web custom formats: docs fixes",
-            "date_modified": "2026-11-13T05:33:09.000Z",
+            "date_modified": "2026-11-16T10:04:30.000Z",
             "date_published": "2026-11-13T05:31:11.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -119,7 +196,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 enables support for Clipboard API web custom formats (MIME types prefixed with <code class=\"notranslate\">web </code>) by default in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2053725\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2053725</a></p>\n<p dir=\"auto\">This adds the release note and removes the experimental features note.<br>\nNote that FF161 only allows custom formats to be read by a page that is same-origin with the page that wrote them (<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2086505\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2086505</a>), so the release note mentions this.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311659002\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46463\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46463/hovercard\" href=\"https://github.com/mdn/content/issues/46463\">#46463</a></p>",
             "url": "https://github.com/mdn/content/pull/46505",
             "title": "FF161 Relnote/ExprF: Clipboard API web custom formats",
-            "date_modified": "2026-11-13T04:36:45.000Z",
+            "date_modified": "2026-11-16T10:04:34.000Z",
             "date_published": "2026-11-13T04:35:50.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -130,7 +207,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 adds support for the <code class=\"notranslate\">setParameterOptions</code> parameter of <code class=\"notranslate\">RTCRtpSender.setParameters()</code>, which can be used to request key frames, in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2057265\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2057265</a></p>\n<p dir=\"auto\">This adds docs for the parameter and its <code class=\"notranslate\">encodingOptions</code>/<code class=\"notranslate\">keyFrame</code> properties, the new <code class=\"notranslate\">InvalidModificationError</code> case, a Description section, and an example.</p>\n<p dir=\"auto\">It also rewrites the existing Description text on getting parameters before setting them because I found it hard to parse.</p>\n<p dir=\"auto\">BCD in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6363449029\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/31124\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/browser-compat-data/pull/31124/hovercard\" href=\"https://github.com/mdn/browser-compat-data/pull/31124\">mdn/browser-compat-data#31124</a></p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311661128\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46464\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46464/hovercard\" href=\"https://github.com/mdn/content/issues/46464\">#46464</a></p>",
             "url": "https://github.com/mdn/content/pull/46504",
             "title": "FF161 RTCRtpSender.setParameters() setParameterOptions keyFrame option",
-            "date_modified": "2026-11-13T04:18:43.000Z",
+            "date_modified": "2026-11-16T10:04:40.000Z",
             "date_published": "2026-11-13T04:17:34.000Z",
             "author": {
                 "name": "hamishwillee",
@@ -141,88 +218,11 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/5368500?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">FF161 adds support for the <code class=\"notranslate\">setParameterOptions</code> parameter of <code class=\"notranslate\">RTCRtpSender.setParameters()</code>, which can be used to request a key frame, in <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=2057265\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=2057265</a></p>\n<p dir=\"auto\">This adds the release note.</p>\n<p dir=\"auto\">Related docs work can be tracked in <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6311661128\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46464\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46464/hovercard\" href=\"https://github.com/mdn/content/issues/46464\">#46464</a></p>",
             "url": "https://github.com/mdn/content/pull/46503",
             "title": "FF161 Relnote: RTCRtpSender.setParameters() setParameterOptions keyFrame",
-            "date_modified": "2026-11-13T03:28:46.000Z",
+            "date_modified": "2026-11-16T10:04:41.000Z",
             "date_published": "2026-11-13T03:23:34.000Z",
             "author": {
                 "name": "hamishwillee",
                 "url": "https://github.com/hamishwillee"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/432915?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Follow-up to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6326799492\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46478\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/content/pull/46478/hovercard\" href=\"https://github.com/mdn/content/pull/46478\">#46478</a>.</p>\n<p dir=\"auto\">I thought the examples in this page were badly organized, hard to understand and contained duplicates.</p>",
-            "url": "https://github.com/mdn/content/pull/46502",
-            "title": "Better examples",
-            "date_modified": "2026-11-16T00:08:42.000Z",
-            "date_published": "2026-11-13T03:16:23.000Z",
-            "author": {
-                "name": "wbamberg",
-                "url": "https://github.com/wbamberg"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/8007967?u=3a2e6d2d0f9eadb86a8dc9d00da7a11dcc52b513&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Very small change to the language in the values for <code class=\"notranslate\">stroke-width</code> to make it more clear. If I had to assume I think the original \"see above\" came from duplicating docs from similar pages like <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke-dashoffset#values\" rel=\"nofollow\"><code class=\"notranslate\">stroke-dashoffset</code></a> which orders it's values like <code class=\"notranslate\">&lt;number&gt;</code>, <code class=\"notranslate\">&lt;length&gt;</code> <code class=\"notranslate\">&lt;percentage&gt;</code> which <em>would</em> mean number is \"above\"</p>\n\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Confusing to read as is, \"see above where?\"</p>",
-            "url": "https://github.com/mdn/content/pull/46500",
-            "title": "Fix directional language in value description",
-            "date_modified": "2026-11-12T18:51:37.000Z",
-            "date_published": "2026-11-12T18:51:11.000Z",
-            "author": {
-                "name": "jjspace",
-                "url": "https://github.com/jjspace"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/23019147?u=4c0de81596ced64dc067dea5686f7ca2912db0cb&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">This PR adds the page for <code class=\"notranslate\">emulation.setGeolocationOverride</code> command, with corresponding updates to the module overview page and the sidebar.</p>\n<div class=\"markdown-alert markdown-alert-note\" dir=\"auto\"><p class=\"markdown-alert-title\" dir=\"auto\"><svg data-component=\"Octicon\" class=\"octicon octicon-info mr-2\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z\"></path></svg>Note</p><p dir=\"auto\">The <a href=\"https://github.com/mdn/browser-compat-data/blob/2f32d3386b55a5486c698377ff372e6148a556d6/webdriver/bidi/emulation.json#L47\">Firefox note in BCD</a> explicitly states that the global configuration is not yet supported.<br>\nMy testing in Chrome shows the same limitation: omitting both scope selectors returns <code class=\"notranslate\">invalid argument</code>: “Either user contexts or browsing contexts must be provided”. However, there's no such note for Chrome in BCD.</p>\n<p dir=\"auto\">The current version of the page aligns with the spec to say that session-wide overrides are applied when neither <code class=\"notranslate\">contexts</code> nor <code class=\"notranslate\">userContexts</code> is specified. Let me know if this needs to be changed to the implemented behaviour instead.</p>\n</div>\n<h3 dir=\"auto\">Spec link</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://w3c.github.io/webdriver-bidi/#command-emulation-setGeolocationOverride\" rel=\"nofollow\">https://w3c.github.io/webdriver-bidi/#command-emulation-setGeolocationOverride</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Project tracker: <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5013788640\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/851\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/851/hovercard\" href=\"https://github.com/mdn/mdn/issues/851\">mdn/mdn#851</a></p>",
-            "url": "https://github.com/mdn/content/pull/46498",
-            "title": "[Technical review] BiDi emulation module - `setGeolocationOverride` command",
-            "date_modified": "2026-11-13T19:06:15.000Z",
-            "date_published": "2026-11-12T17:32:32.000Z",
-            "author": {
-                "name": "dipikabh",
-                "url": "https://github.com/dipikabh"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Reorder sections on 3 ARIA attribute pages to match the majority of ARIA attribute pages.</p>\n<ul dir=\"auto\">\n<li><code class=\"notranslate\">aria-invalid</code>, <code class=\"notranslate\">aria-keyshortcuts</code>: move Example before Values.</li>\n<li><code class=\"notranslate\">aria-checked</code>: move Associated interfaces before Associated roles.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Make ARIA attribute pages follow the majority section order.</li>\n<li>50 of 53 pages already follow it. This PR brings the remaining 3 in line.</li>\n<li>The <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/ARIA_Page_Template\" rel=\"nofollow\">ARIA page template</a> also places Examples directly after Description. It doesn't cover the Values and Associated sections.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Sections are moved as-is; their content is unchanged.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Related to <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6354337050\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/46494\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/46494/hovercard\" href=\"https://github.com/mdn/content/issues/46494\">#46494</a>.</p>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6355250407\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/888\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/888/hovercard\" href=\"https://github.com/mdn/mdn/issues/888\">mdn/mdn#888</a>.</p>",
-            "url": "https://github.com/mdn/content/pull/46497",
-            "title": "Reorder sections on ARIA attribute pages",
-            "date_modified": "2026-11-12T19:47:18.000Z",
-            "date_published": "2026-11-12T16:50:35.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/11516302?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/>\n\n<h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Fix the description to match the code.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The description is different from the code.</p>\n<h3 dir=\"auto\">Additional details</h3>\n\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
-            "url": "https://github.com/mdn/content/pull/46492",
-            "title": "Fix the description to match the code",
-            "date_modified": "2026-11-12T13:02:56.000Z",
-            "date_published": "2026-11-12T12:59:55.000Z",
-            "author": {
-                "name": "mfuji09",
-                "url": "https://github.com/mfuji09"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Reorder sections on 3 aria role pages to match the majority of ARIA role pages. The aria page template uses the same order.</p>\n<ul dir=\"auto\">\n<li>Pages: <code class=\"notranslate\">tablist_role</code>, <code class=\"notranslate\">timer_role</code>, <code class=\"notranslate\">tab_role</code>.</li>\n</ul>\n<h3 dir=\"auto\">Motivation</h3>\n<ul dir=\"auto\">\n<li>Make ARIA role pages follow the majority section order, which the aria page template also uses.</li>\n<li>87 of 90 pages already follow it. This PR brings the remaining 3 in line.</li>\n<li>The <a href=\"https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Page_structures/Page_types/ARIA_Page_Template\" rel=\"nofollow\">ARIA page template</a> uses the same order.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<p dir=\"auto\">Sections are moved as-is; their content is unchanged.</p>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">Part of <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6355250407\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/mdn/issues/888\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/mdn/issues/888/hovercard\" href=\"https://github.com/mdn/mdn/issues/888\">mdn/mdn#888</a>.</p>\n\n\n",
-            "url": "https://github.com/mdn/content/pull/46488",
-            "title": "Reorder sections on ARIA role pages",
-            "date_modified": "2026-11-12T20:47:23.000Z",
-            "date_published": "2026-11-12T09:42:26.000Z",
-            "author": {
-                "name": "caugner",
-                "url": "https://github.com/caugner"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/141590436?v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Corrects the <code class=\"notranslate\">code</code> parameter docs for <code class=\"notranslate\">WebSocket.close()</code>. When <code class=\"notranslate\">close()</code> is called without a <code class=\"notranslate\">code</code>, the close frame is sent with no status code, so the server sees <code class=\"notranslate\">1005</code> (\"No Status Received\"), not <code class=\"notranslate\">1000</code>. The page now also explains that the <code class=\"notranslate\">code</code> of the browser's <code class=\"notranslate\">close</code> event is taken from the server's reply.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">The page currently says an omitted <code class=\"notranslate\">code</code> is set to <code class=\"notranslate\">1000</code> for a normal closure. No code is sent at all. Readers who rely on the current text (for example, checking for <code class=\"notranslate\">1000</code> on the server) get unexpected results. The browser-side <code class=\"notranslate\">code</code> also depends on how the server replies, which the page didn't mention.</p>\n<p dir=\"auto\">I verified this in Chrome and Firefox, and with Node's built-in <code class=\"notranslate\">WebSocket</code>, against a raw server that logs the exact close frame it receives:</p>\n<ul dir=\"auto\">\n<li>In all cases, the client's close frame had an empty payload (no status code).</li>\n<li>The <code class=\"notranslate\">close</code> event <code class=\"notranslate\">code</code> mirrors the server's reply: <code class=\"notranslate\">1005</code> when the server echoes the empty frame, <code class=\"notranslate\">1000</code> when the server replies with <code class=\"notranslate\">1000</code>, and <code class=\"notranslate\">1006</code> (<code class=\"notranslate\">wasClean: false</code>) when the server drops the connection without replying.</li>\n</ul>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li><a href=\"https://websockets.spec.whatwg.org/#dom-websocket-close\" rel=\"nofollow\">WHATWG WebSockets spec, <code class=\"notranslate\">close()</code></a>: if neither <code class=\"notranslate\">code</code> nor <code class=\"notranslate\">reason</code> is present, \"the WebSocket Close message must not have a body\".</li>\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc6455#section-7.1.5\" rel=\"nofollow\">RFC 6455 §7.1.5</a>: the connection close code is the status code in the first close frame <em>received</em>. If that frame contains no status code, the close code is considered to be <code class=\"notranslate\">1005</code>.</li>\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc6455#section-5.5.1\" rel=\"nofollow\">RFC 6455 §5.5.1</a>: an endpoint replying to a close frame typically echoes the status code it received.</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\">None.</p>",
-            "url": "https://github.com/mdn/content/pull/46475",
-            "title": "Fix default close code for WebSocket.close() with no arguments",
-            "date_modified": "2026-11-11T00:57:10.000Z",
-            "date_published": "2026-11-11T00:56:46.000Z",
-            "author": {
-                "name": "xbloodyknight",
-                "url": "https://github.com/xbloodyknight"
             }
         }
     ]
