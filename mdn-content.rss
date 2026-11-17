@@ -2,11 +2,409 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-17T12:35:56.017Z</updated>
+    <updated>2026-11-17T21:25:46.107Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[CSS: use {{CSSInfo}} for color-interpolation]]></title>
+        <id>https://github.com/mdn/content/pull/46572</id>
+        <link href="https://github.com/mdn/content/pull/46572"/>
+        <updated>2026-11-17T19:43:02.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4141737?u=25dd3f0d0b83d1d2767f18f8174addda8438e066&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Replaces the hand-written formal-definition table on the <code class="notranslate">color-interpolation</code> page with <code class="notranslate">{{CSSInfo}}</code>, now that mdn-data has the property (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6411038217" data-permission-text="Title is private" data-url="https://github.com/mdn/data/issues/1121" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1121/hovercard" href="https://github.com/mdn/data/pull/1121">mdn/data#1121</a>, released in mdn-data 2.38.0).</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The hand-written table was wrong in two places:</p>
+<ul dir="auto">
+<li><strong>Default value:</strong> it said <code class="notranslate">auto</code>. The <a href="https://w3c.github.io/svgwg/svg2-draft/painting.html#ColorInterpolationProperty" rel="nofollow">SVG 2 definition</a> gives <code class="notranslate">sRGB</code>, and so do Chromium (<code class="notranslate">css_properties.json5</code>), Gecko (<code class="notranslate">longhands.toml</code>) and WebKit (<code class="notranslate">CSSProperties.json</code>). WPT's <code class="notranslate">svg/painting/inheritance.svg</code> tests it. The page's own <code class="notranslate">sRGB</code> entry already says it's the default.</li>
+<li><strong>Applies to:</strong> it listed only <code class="notranslate">&lt;linearGradient&gt;</code> and <code class="notranslate">&lt;radialGradient&gt;</code>. The spec says container elements, graphics elements, gradient elements, <code class="notranslate">&lt;use&gt;</code> and <code class="notranslate">&lt;animate&gt;</code>.</li>
+</ul>
+<p dir="auto"><code class="notranslate">{{CSSInfo}}</code> also adds the rows the table didn't have, such as inherited, percentages and computed value.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">Built the page locally with rari 1.3.0, which pulled mdn-data 2.38.0. The rendered table shows initial value <code class="notranslate">sRGB</code>, applies to "Container elements, graphics elements, gradient elements, <code class="notranslate">&lt;use&gt;</code>, and <code class="notranslate">&lt;animate&gt;</code> in <code class="notranslate">&lt;svg&gt;</code>", inherited yes, computed value as specified, and animation type discrete.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6411038217" data-permission-text="Title is private" data-url="https://github.com/mdn/data/issues/1121" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1121/hovercard" href="https://github.com/mdn/data/pull/1121">mdn/data#1121</a> adds <code class="notranslate">color-interpolation</code> to mdn-data.</li>
+</ul>]]></content>
+        <author>
+            <name>arronei</name>
+            <email>arronei@noreply.github.com</email>
+            <uri>https://github.com/arronei</uri>
+        </author>
+        <published>2026-11-17T18:03:46.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ci(pr-check-lint_content): print linted merge + base-branch hint on failure]]></title>
+        <id>https://github.com/mdn/content/pull/46571</id>
+        <link href="https://github.com/mdn/content/pull/46571"/>
+        <updated>2026-11-17T18:45:34.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Update the content lint workflow to print the linted merge commit and a hint to merge <code class="notranslate">main</code> when linting fails.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Make it easier to understand lint failures caused by combining the PR with newer changes on <code class="notranslate">main</code>, which don't reproduce on the PR branch.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The workflow lints <code class="notranslate">refs/pull/&lt;n&gt;/merge</code>. In <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5183803738" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45225" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45225/hovercard" href="https://github.com/mdn/content/pull/45225">#45225</a>, <code class="notranslate">main</code> had meanwhile gained its own <code class="notranslate">named-feature()</code> section, so the merge result contained a duplicate heading (MD024 on line 173) that didn't exist in the PR branch.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5183803738" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45225" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45225/hovercard" href="https://github.com/mdn/content/pull/45225">#45225</a></p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-11-17T17:51:01.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Technical review] Add WebDriver Classic Navigate To and Get Current URL pages]]></title>
+        <id>https://github.com/mdn/content/pull/46570</id>
+        <link href="https://github.com/mdn/content/pull/46570"/>
+        <updated>2026-11-17T16:41:45.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Added pages for the following commands of the <a href="https://w3c.github.io/webdriver/#navigation" rel="nofollow">Navigation</a> chapter of WebDriver Classic:</p>
+<ul dir="auto">
+<li>Get Current URL</li>
+<li>Navigate To</li>
+</ul>
+<h3 dir="auto">Spec links</h3>
+<ul dir="auto">
+<li><a href="https://w3c.github.io/webdriver/#navigate-to" rel="nofollow">https://w3c.github.io/webdriver/#navigate-to</a></li>
+<li><a href="https://w3c.github.io/webdriver/#get-current-url" rel="nofollow">https://w3c.github.io/webdriver/#get-current-url</a></li>
+</ul>
+<h3 dir="auto">Compat quirks worth looking into:</h3>
+<h4 dir="auto">Chrome</h4>
+<ul dir="auto">
+<li><strong>Navigate To and invalid certificates.</strong> With <code class="notranslate">acceptInsecureCerts</code> set to <code class="notranslate">false</code>, navigating to a page with a self-signed certificate returned <code class="notranslate">null</code> and loaded the "Privacy error" interstitial, where the spec returns <code class="notranslate">insecure certificate</code> (seen in my test run, headless and headed). BCD shows Navigate To as supported since Chrome 65 with no note about this.</li>
+<li><strong>Outdated <code class="notranslate">w3c</code> note.</strong> BCD's Chrome entries for both commands say to include <code class="notranslate">{"goog:chromeOptions": {"w3c": true}}</code> in the capabilities. My test sessions didn't set it, and both commands returned W3C responses.</li>
+</ul>
+<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/sadym-chromium/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/sadym-chromium">@sadym-chromium</a> for the BCD update.</p>]]></content>
+        <author>
+            <name>pepelsbey</name>
+            <email>pepelsbey@noreply.github.com</email>
+            <uri>https://github.com/pepelsbey</uri>
+        </author>
+        <published>2026-11-17T16:38:38.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[46462 margin trim ff release]]></title>
+        <id>https://github.com/mdn/content/pull/46569</id>
+        <link href="https://github.com/mdn/content/pull/46569"/>
+        <updated>2026-11-17T16:36:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Added <code class="notranslate">margin-trim</code> to Firefox Experimental features</li>
+<li>Added <code class="notranslate">margin-trim</code> to Firefox 161 release notes Experimental features section</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a href="https://github.com/mdn/content/issues/46462" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46462/hovercard">MDN Issue #46462</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/content/pull/46568" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46568/hovercard">Content PR</a></li>
+<li><a href="https://github.com/mdn/browser-compat-data/pull/31170" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31170/hovercard">BCD PR</a></li>
+<li><a href="https://github.com/mdn/data/pull/1123" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1123/hovercard">Data PR</a></li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-11-17T16:26:50.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Updated `margin-trim` property]]></title>
+        <id>https://github.com/mdn/content/pull/46568</id>
+        <link href="https://github.com/mdn/content/pull/46568"/>
+        <updated>2026-11-17T16:31:34.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Updated the description of <code class="notranslate">margin-trim</code></li>
+<li>Added Try It example</li>
+<li>removed the <code class="notranslate">inline-*</code> values</li>
+<li>Updated the example to use <code class="notranslate">block-start</code> value</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a href="https://github.com/mdn/content/issues/46462" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46462/hovercard">MDN Issue #46462</a></li>
+<li><a href="https://github.com/w3c/csswg-drafts/commit/16a494b33c886b64488c5c724d5bcbcac2b55ead">PR where inline was removed from spec</a></li>
+<li><a href="https://github.com/w3c/csswg-drafts/issues/13731#issuecomment-5190616401" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13731/hovercard">W3C discussion about removing inline</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/browser-compat-data/pull/31170" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31170/hovercard">BCD PR</a></li>
+<li><a href="https://github.com/mdn/content/pull/46569" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46569/hovercard">Firefox Release PR</a></li>
+<li><a href="https://github.com/mdn/data/pull/1123" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1123/hovercard">Data PR</a></li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-11-17T16:26:48.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Explain locked bodies in Request and Response clone()]]></title>
+        <id>https://github.com/mdn/content/pull/46567</id>
+        <link href="https://github.com/mdn/content/pull/46567"/>
+        <updated>2026-11-17T14:57:06.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Both clone() pages only mention a body that has already been used. Acquiring a body reader also makes cloning throw TypeError, even before the first read and while bodyUsed remains false.</p>
+<p dir="auto">Document the locked-body case and explain the getReader() trigger on both Request and Response. This follows Fetch's clone algorithms and its definition of an unusable body:<br>
+<a href="https://fetch.spec.whatwg.org/#dom-request-clone" rel="nofollow">https://fetch.spec.whatwg.org/#dom-request-clone</a><br>
+<a href="https://fetch.spec.whatwg.org/#dom-response-clone" rel="nofollow">https://fetch.spec.whatwg.org/#dom-response-clone</a></p>
+<p dir="auto">Checked in Node 24.22.0 for both interfaces: an unread locked body throws, releasing the unread reader lock allows cloning, and a consumed body still throws. Targeted Prettier and git diff --check pass. No browser or full content build run.</p>]]></content>
+        <author>
+            <name>ragib-mrb</name>
+            <email>ragib-mrb@noreply.github.com</email>
+            <uri>https://github.com/ragib-mrb</uri>
+        </author>
+        <published>2026-11-17T14:52:53.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[build(deps-dev): bump the npm-dev group with 3 updates]]></title>
+        <id>https://github.com/mdn/content/pull/46565</id>
+        <link href="https://github.com/mdn/content/pull/46565"/>
+        <updated>2026-11-17T19:08:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps the npm-dev group with 3 updates: <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell">cspell</a>, <a href="https://github.com/DavidAnson/markdownlint-cli2">markdownlint-cli2</a> and <a href="https://github.com/prettier/prettier">prettier</a>.</p>
+<p dir="auto">Updates <code class="notranslate">cspell</code> from 10.4.1 to 10.5.0</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/releases">cspell's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.5.0</h2>
+<h2 dir="auto">Features</h2>
+
+<h3 dir="auto">feat: Skip nested git worktrees by default (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9604">#9604</a>)</h3>
+<h2 dir="auto">Summary</h2>
+<p dir="auto">cspell now skips git worktrees inside the root folder, such as <code class="notranslate">.worktrees/feature</code> or <code class="notranslate">.claude/worktrees/feature</code>. A worktree is another checkout of the same repository, often of another branch, so its files are not the files being checked.</p>
+<p dir="auto">A new preset in <code class="notranslate">ignorePathPresets</code>, <code class="notranslate">nestedWorktrees</code>, can disable this.</p>
+<p dir="auto">Fixes <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9515">#9515</a></p>
+<h2 dir="auto">Feature</h2>
+<p dir="auto">A repository with a worktree of its <code class="notranslate">feature</code> branch, made with <code class="notranslate">git worktree add worktrees/feature feature</code>:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="project/
+  README.md
+  worktrees/
+    feature/
+      README.md"><pre lang="text" class="notranslate"><code class="notranslate">project/
+  README.md
+  worktrees/
+    feature/
+      README.md
+</code></pre></div>
+<p dir="auto">Before, running cspell in <code class="notranslate">project/</code> checked both copies of <code class="notranslate">README.md</code>:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cspell .
+README.md:3:21 - Unknown word (finshed) fix: (finished)
+worktrees/feature/README.md:3:21 - Unknown word (finshed) fix: (finished)
+CSpell: Files checked: 2, Issues found: 2 in 2 files."><pre lang="text" class="notranslate"><code class="notranslate">$ cspell .
+README.md:3:21 - Unknown word (finshed) fix: (finished)
+worktrees/feature/README.md:3:21 - Unknown word (finshed) fix: (finished)
+CSpell: Files checked: 2, Issues found: 2 in 2 files.
+</code></pre></div>
+<p dir="auto">After, it checks only the repository's own <code class="notranslate">README.md</code>:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cspell .
+README.md:3:21 - Unknown word (finshed) fix: (finished)
+CSpell: Files checked: 1, Issues found: 1 in 1 file."><pre lang="text" class="notranslate"><code class="notranslate">$ cspell .
+README.md:3:21 - Unknown word (finshed) fix: (finished)
+CSpell: Files checked: 1, Issues found: 1 in 1 file.
+</code></pre></div>
+<p dir="auto">Running cspell in <code class="notranslate">worktrees/feature/</code> still checks that worktree.</p>
+<p dir="auto">To check nested worktrees again:</p>
+<p dir="auto"><strong><code class="notranslate">cspell.json</code></strong></p>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/CHANGELOG.md">cspell's changelog</a>.</em></p>
+<blockquote>
+<ul dir="auto">
+<li>10.4.1: the locale is <code class="notranslate">fr</code> only. English words in the file are reported as unknown.</li>
+<li>Now: the locales are <code class="notranslate">fr,en</code> again.</li>
+</ul>
+<p dir="auto">The fix for comment closers (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9496">#9496</a>) and the fix for locales that aren't valid (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9501">#9501</a>) still hold. Each of these gives <code class="notranslate">en</code>, or <code class="notranslate">fr,en</code> for the last one, because text after the locales that isn't a locale doesn't become one:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="&lt;!-- cspell:locale en --&gt;
+/* cspell:locale en*/
+cspell:locale fr,en -- the rest"><pre lang="text" class="notranslate"><code class="notranslate">&lt;!-- cspell:locale en --&gt;
+/* cspell:locale en*/
+cspell:locale fr,en -- the rest
+</code></pre></div>
+
+<p dir="auto">A directive's text runs to the end of the line. Before, the locale list was split only on spaces and commas, and the list was cut at the first piece that didn't look like a locale. A piece like <code class="notranslate">en`</code> failed that check, so the list stopped at <code class="notranslate">fr</code>.</p>
+<p dir="auto">Now the list ends at the first character that can't be part of a locale or a separator, such as a backtick or <code class="notranslate">*/</code>, or at <code class="notranslate">--</code>, as in <code class="notranslate">--&gt;</code>. The rest is then split into pieces, and the list still ends at the first piece that isn't a locale.</p>
+
+<hr>
+
+
+<h3 dir="auto">fix: Make <code class="notranslate">[!…]</code> in globs match characters that are not listed (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9622">#9622</a>)</h3>
+<h2 dir="auto">Summary</h2>
+<p dir="auto">A <code class="notranslate">[!…]</code> bracket in a glob now matches any character that is <em>not</em> listed, as it does in git and shell globs. Before, <code class="notranslate">e[!a].txt</code> in <code class="notranslate">.gitignore</code> (with <code class="notranslate">useGitignore</code>) or <code class="notranslate">ignorePaths</code> matched <code class="notranslate">ea.txt</code> and <code class="notranslate">e!.txt</code> and skipped <code class="notranslate">eb.txt</code>, so cspell checked the files you meant to ignore and ignored the files you meant to check.</p>
+<ul dir="auto">
+<li>Applies to <code class="notranslate">ignorePaths</code>, <code class="notranslate">.gitignore</code> files read with <code class="notranslate">useGitignore</code>, <code class="notranslate">files</code>, and the <code class="notranslate">filename</code> globs in <code class="notranslate">overrides</code>.</li>
+<li><code class="notranslate">[^…]</code> already worked and is unchanged.</li>
+</ul>
+<p dir="auto">Fixes <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9621">#9621</a></p>
+
+<ul dir="auto">
+<li><code class="notranslate">cspell-glob</code> now asks picomatch to read globs in POSIX mode. The only change this makes is that <code class="notranslate">[!</code> starts a negated bracket, like <code class="notranslate">[^</code>.</li>
+<li>Include mode gets the same fix, so <code class="notranslate">[!a]</code> means the same thing in <code class="notranslate">files</code> and in <code class="notranslate">ignorePaths</code>.</li>
+</ul>
+
+<hr>
+
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/dfdca73443b0f0a9ca3fc3c64513798047542aee"><code class="notranslate">dfdca73</code></a> v10.5.0</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/919de9488fb5bf94be47f3ec33e29e2dc38fbee4"><code class="notranslate">919de94</code></a> chore: Prepare Release v10.5.0 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9559">#9559</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/44354ed9532d571493620f78c7fdc9e059db0c08"><code class="notranslate">44354ed</code></a> refactor: Deprecate <code class="notranslate">workaroundPicomatchBug</code>, no longer needed (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9613">#9613</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/115b0acea258d674e12f11e0bc463fa7bb942b88"><code class="notranslate">115b0ac</code></a> fix: Check files in a folder whose name starts with a space (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9608">#9608</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/b0f441cea521f28f3a39392804c9eb81856ab08b"><code class="notranslate">b0f441c</code></a> fix: Check folders named on the command line with <code class="notranslate">#</code> or a leading space (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9610">#9610</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/c13d384f97ad15be4b26e683959426811896b907"><code class="notranslate">c13d384</code></a> feat: Skip nested git worktrees by default (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9604">#9604</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/040ba312e095f2980f6b3c84ddb648a0e438235a"><code class="notranslate">040ba31</code></a> fix: Glob symbols in a config folder's name no longer match other folders (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9">#9</a>...</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/b83797bd6d59acba145c2cb5b2d74eb207125d54"><code class="notranslate">b83797b</code></a> feat: Add <code class="notranslate">ignorePathPresets</code> and skip git's own files by default (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9600">#9600</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/914979c95fb1fccab88d402b3ac0f93e23d75251"><code class="notranslate">914979c</code></a> fix: allow globs with <code class="notranslate">--file</code> again (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9601">#9601</a>)</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/8a11421e7c644657d74536118264d3c985157c16"><code class="notranslate">8a11421</code></a> ci: Workflow Bot -- Update ALL Dependencies (main) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9587">#9587</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/streetsidesoftware/cspell/commits/v10.5.0/packages/cspell">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto">Updates <code class="notranslate">markdownlint-cli2</code> from 0.24.0 to 0.24.1</p>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/DavidAnson/markdownlint-cli2/blob/main/CHANGELOG.md">markdownlint-cli2's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto">0.24.1</h2>
+<ul dir="auto">
+<li>Update dependencies (including <code class="notranslate">markdownlint</code>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/c01a1853c19b175aee6a09f24e2ad9b748c485ad"><code class="notranslate">c01a185</code></a> Update to version 0.24.1.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/8a5e8b38dcf8c525534acc64a5d9b0842459e639"><code class="notranslate">8a5e8b3</code></a> Add new custom rule markdownlint-rule-spellcheck to Dockerfile-rules.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/1073aef5f973a3ab53ecda110cc115168e9601f4"><code class="notranslate">1073aef</code></a> Bump eslint from 10.13.0 to 10.14.0</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/3b494d55f2ee89c99d0dd92a983877df0d64f8f3"><code class="notranslate">3b494d5</code></a> Update dependency: markdownlint to 0.42.1.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/cec7b2b0cae9f7cddbc751b1fd51a8f7f47b1787"><code class="notranslate">cec7b2b</code></a> Address new ESLint issues from previous commit.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/571cd89d42fa8226ff8220f4bb2ab667b5df74c9"><code class="notranslate">571cd89</code></a> Bump eslint-plugin-unicorn from 78.0.0 to 79.0.0</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/9de9f664b2551a1c9555ce06a501c83d4f5a96c4"><code class="notranslate">9de9f66</code></a> Bump execa from 10.2.0 to 10.2.1</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/23931406396f7e7be37ea4059583276630fe58ab"><code class="notranslate">2393140</code></a> Bump eslint-plugin-jsdoc from 65.4.0 to 65.4.2</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/495452351925665018204e5f5bbbdfab4f6c64c3"><code class="notranslate">4954523</code></a> Bump eslint-plugin-jsdoc from 65.3.15 to 65.4.0</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/584bd1f302fd1a1c6ec9951ec0e8df977bed7707"><code class="notranslate">584bd1f</code></a> Bump eslint-plugin-jsdoc from 65.3.11 to 65.3.15</li>
+<li>Additional commits viewable in <a href="https://github.com/DavidAnson/markdownlint-cli2/compare/v0.24.0...v0.24.1">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto">Updates <code class="notranslate">prettier</code> from 3.9.10 to 3.10.1</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/prettier/prettier/releases">prettier's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">3.10.1</h2>
+<ul dir="auto">
+<li>GraphQL: Fix empty selection set with comments (<a href="https://redirect.github.com/prettier/prettier/pull/20504">#20504</a> by <a href="https://github.com/fisker"><code class="notranslate">@​fisker</code></a>)</li>
+</ul>
+<p dir="auto">🔗 <a href="https://github.com/prettier/prettier/blob/3.10.1/CHANGELOG.md#3101">Changelog</a></p>
+<h2 dir="auto">3.10.0</h2>
+<p dir="auto"><a href="https://github.com/prettier/prettier/compare/3.9.10...3.10.0">diff</a></p>
+<p dir="auto">🔗 <a href="https://prettier.io/blog/2026/11/11/3.10.0" rel="nofollow">Prettier 3.10: New Flow syntax, new JavaScript syntax, and new plugin powered by Yuku</a></p>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/prettier/prettier/blob/main/CHANGELOG.md">prettier's changelog</a>.</em></p>
+<blockquote>
+<h1 dir="auto">3.10.1</h1>
+<p dir="auto"><a href="https://github.com/prettier/prettier/compare/3.10.0...3.10.1">diff</a></p>
+<h4 dir="auto">GraphQL: Fix empty selection set with comments (<a href="https://redirect.github.com/prettier/prettier/pull/20504">#20504</a> by <a href="https://github.com/fisker"><code class="notranslate">@​fisker</code></a>)</h4>
+
+<div class="highlight highlight-source-graphql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Input
+fragment F on Query {
+  # x
+}
+Prettier 3.10.0
+Error: Comment &quot;x&quot; was not printed. Please report this error!
+Prettier 3.10.1
+fragment F on Query {
+x
+}"><pre class="notranslate"><span class="pl-c"># Input</span>
+<span class="pl-k">fragment</span> <span class="pl-en">F</span> <span class="pl-k">on</span> <span class="pl-c1">Query</span> {
+<span class="pl-c">  # x</span>
+}
+<span class="pl-en">Prettier</span> 3.10.0
+<span class="pl-en">Error</span>: <span class="pl-en">Comment</span> <span class="pl-c">"x"</span> <span class="pl-en">was</span> <span class="pl-en">not</span> <span class="pl-en">printed</span>. <span class="pl-en">Please</span> <span class="pl-en">report</span> <span class="pl-en">this</span> <span class="pl-en">error</span>!
+<span class="pl-en">Prettier</span> 3.10.1
+<span class="pl-k">fragment</span> <span class="pl-en">F</span> <span class="pl-k">on</span> <span class="pl-c1">Query</span> {
+<span class="pl-v">x</span>
+}</pre></div><p dir="auto"></p>
+<h1 dir="auto">3.10.0</h1>
+<p dir="auto"><a href="https://github.com/prettier/prettier/compare/3.9.10...3.10.0">diff</a></p>
+<p dir="auto">🔗 <a href="https://prettier.io/blog/2026/11/11/3.10.0" rel="nofollow">Release Notes</a></p>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/prettier/prettier/commit/deda65fd47c285b974e2a4397f26a33cfc1746b8"><code class="notranslate">deda65f</code></a> Release 3.10.1</li>
+<li><a href="https://github.com/prettier/prettier/commit/190cbd55f733cd8e1af0457aa3bfccc2e18bad42"><code class="notranslate">190cbd5</code></a> Fix GraphQL empty selection set with comments (<a href="https://redirect.github.com/prettier/prettier/issues/20504">#20504</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/8cd4ec1248fd8aa6ff8578caaf2fbc45ac52d042"><code class="notranslate">8cd4ec1</code></a> Restore release script</li>
+<li><a href="https://github.com/prettier/prettier/commit/c01e24daa45b81d7073b8903b4ece29971fbf753"><code class="notranslate">c01e24d</code></a> Bump Prettier dependency to 3.10.0</li>
+<li><a href="https://github.com/prettier/prettier/commit/bfa3b07039318b5c92e33bf48d2accef174711cd"><code class="notranslate">bfa3b07</code></a> Clean changelog_unreleased</li>
+<li><a href="https://github.com/prettier/prettier/commit/3e2241f541d01758b79b4d02166bf644cf9b518e"><code class="notranslate">3e2241f</code></a> Comment out the finished steps</li>
+<li><a href="https://github.com/prettier/prettier/commit/932d100a088b106996a79112abb77083451aebee"><code class="notranslate">932d100</code></a> Fix release script</li>
+<li><a href="https://github.com/prettier/prettier/commit/4a7addba5ec24fc2fa6efdf13b5965943c265994"><code class="notranslate">4a7addb</code></a> Add blog post for v3.10 (<a href="https://redirect.github.com/prettier/prettier/issues/20490">#20490</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/b688380af847b008d9951d794b2990a59048922f"><code class="notranslate">b688380</code></a> Release 3.10.0</li>
+<li><a href="https://github.com/prettier/prettier/commit/901fdfa8f1ac83418580a3abdebf75fc01fdfc99"><code class="notranslate">901fdfa</code></a> Release <code class="notranslate">@​prettier/plugin-hermes</code><a href="https://github.com/0"><code class="notranslate">@​0</code></a>.2.4, <code class="notranslate">@​prettier/plugin-oxc</code><a href="https://github.com/0"><code class="notranslate">@​0</code></a>.2.4, and <a href="https://github.com/prett"><code class="notranslate">@​prett</code></a>...</li>
+<li>Additional commits viewable in <a href="https://github.com/prettier/prettier/compare/3.9.10...3.10.1">compare view</a></li>
+</ul>
+</details>
+<br>
+<details>
+<summary>Most Recent Ignore Conditions Applied to This Pull Request</summary>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Dependency Name</th>
+<th>Ignore Conditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prettier</td>
+<td>[&gt;= 3.9.7.a, &lt; 3.9.8]</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+</details>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt; major version</code> will close this group update PR and stop Dependabot creating any more for the specific dependency's major version (unless you unignore this specific dependency's major version or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt; minor version</code> will close this group update PR and stop Dependabot creating any more for the specific dependency's minor version (unless you unignore this specific dependency's minor version or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt;</code> will close this group update PR and stop Dependabot creating any more for the specific dependency (unless you unignore this specific dependency or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot unignore &lt;dependency name&gt;</code> will remove all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot unignore &lt;dependency name&gt; &lt;ignore condition&gt;</code> will remove the ignore condition of the specified dependency and ignore conditions</li>
+</ul>
+</details>]]></content>
+        <author>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
+        </author>
+        <published>2026-11-17T14:03:06.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update CSS values and units guide function lists]]></title>
         <id>https://github.com/mdn/content/pull/46564</id>
@@ -26,7 +424,7 @@
         <title type="html"><![CDATA[Document Cross-Origin-Opener-Policy-Report-Only header]]></title>
         <id>https://github.com/mdn/content/pull/46563</id>
         <link href="https://github.com/mdn/content/pull/46563"/>
-        <updated>2026-11-17T08:39:46.000Z</updated>
+        <updated>2026-11-17T14:40:09.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/79165529?u=43a28f8bdde2a5d9ee9e0861d3d4ea22e7715ad8&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
 <ul dir="auto">
 <li>Add the reference page for the <code class="notranslate">Cross-Origin-Opener-Policy-Report-Only</code> HTTP response header (<code class="notranslate">files/en-us/web/http/reference/headers/cross-origin-opener-policy-report-only/index.md</code>), wired to <code class="notranslate">browser-compat: http.headers.Cross-Origin-Opener-Policy-Report-Only</code>.</li>
@@ -58,7 +456,7 @@
         <title type="html"><![CDATA[FF161 Relnote/ExprF: quotes: match-parent in Nightly]]></title>
         <id>https://github.com/mdn/content/pull/46562</id>
         <link href="https://github.com/mdn/content/pull/46562"/>
-        <updated>2026-11-17T06:24:56.000Z</updated>
+        <updated>2026-11-17T18:29:42.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 adds support for the <code class="notranslate">match-parent</code> value of <code class="notranslate">quotes</code> in Nightly in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1752382" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1752382</a></p>
 <p dir="auto">This:</p>
 <ul dir="auto">
@@ -90,52 +488,6 @@
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-11-17T06:21:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update the Chrome notes on returning a Promise from runtime.onMessage listeners]]></title>
-        <id>https://github.com/mdn/content/pull/46560</id>
-        <link href="https://github.com/mdn/content/pull/46560"/>
-        <updated>2026-11-17T03:56:08.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The <code class="notranslate">runtime.onMessage</code> and <code class="notranslate">runtime.onMessageExternal</code> pages and the background scripts guide say Chrome doesn't support returning a Promise from a message listener. Chrome supports it from Chrome 148, or Chrome 152 for extensions that include a DevTools page, so this updates those four spots to say that and keeps <code class="notranslate">sendResponse</code> as the option for earlier versions.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Readers who follow the current notes avoid the Promise pattern even though Chrome, Firefox and Safari all support it now. The new wording matches what the WebExtensions API overview already says about the <code class="notranslate">browser</code> namespace in Chrome 148 and 152.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Chrome's <a href="https://developer.chrome.com/docs/extensions/develop/concepts/browser-namespace#async-sendmessage" rel="nofollow">browser namespace docs</a> say "In Chrome 148, <code class="notranslate">runtime.onMessage</code> listeners can return a <code class="notranslate">Promise</code> directly". In Chromium, this is behind the <code class="notranslate">ExtensionBrowserNamespaceAndPolyfillSupport</code> feature, which became enabled by default in 148 (<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/6f12cd13f85c/hovercard" href="https://github.com/chromium/chromium/commit/6f12cd13f85c">chromium/chromium@<tt>6f12cd13f85c</tt></a>), and the DevTools page exception was removed in 152 (<a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/edec8032d45f/hovercard" href="https://github.com/chromium/chromium/commit/edec8032d45f">chromium/chromium@<tt>edec8032d45f</tt></a>). The same code handles <code class="notranslate">onMessageExternal</code>.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5090186547" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30194" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30194/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30194">mdn/browser-compat-data#30194</a></p>]]></content>
-        <author>
-            <name>Manishram-ai</name>
-            <email>Manishram-ai@noreply.github.com</email>
-            <uri>https://github.com/Manishram-ai</uri>
-        </author>
-        <published>2026-11-17T03:52:43.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JS reference pages, minor nits (4)]]></title>
-        <id>https://github.com/mdn/content/pull/46559</id>
-        <link href="https://github.com/mdn/content/pull/46559"/>
-        <updated>2026-11-17T08:52:56.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Mostly grammatical. A few factual errors.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-11-17T03:27:23.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JS reference pages, minor nits (3)]]></title>
-        <id>https://github.com/mdn/content/pull/46558</id>
-        <link href="https://github.com/mdn/content/pull/46558"/>
-        <updated>2026-11-17T09:15:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Mostly grammatical. A few factual errors.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-11-17T02:59:49.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Fill in stub example sections (3)]]></title>
@@ -193,7 +545,7 @@
         <title type="html"><![CDATA[New PluralRules features: notation/compactDisplay, lossless number format]]></title>
         <id>https://github.com/mdn/content/pull/46551</id>
         <link href="https://github.com/mdn/content/pull/46551"/>
-        <updated>2026-11-17T10:18:16.000Z</updated>
+        <updated>2026-11-17T20:29:51.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6380654782" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46518" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46518/hovercard" href="https://github.com/mdn/content/issues/46518">#46518</a>. Documenting two normative changes:</p>
 <ol dir="auto">
 <li>The <code class="notranslate">notation</code> and <code class="notranslate">compactDisplay</code> options <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2970067461" data-permission-text="Title is private" data-url="https://github.com/tc39/ecma402/issues/989" data-hovercard-type="pull_request" data-hovercard-url="/tc39/ecma402/pull/989/hovercard" href="https://github.com/tc39/ecma402/pull/989">tc39/ecma402#989</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="780844389" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/1019" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/1019/hovercard" href="https://github.com/mdn/content/pull/1019">#1019</a>, <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="781284106" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/1032" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/1032/hovercard" href="https://github.com/mdn/content/pull/1032">#1032</a></li>
@@ -210,7 +562,7 @@
         <title type="html"><![CDATA[Reference for stage 4 intl-locale-info (new stuff)]]></title>
         <id>https://github.com/mdn/content/pull/46549</id>
         <link href="https://github.com/mdn/content/pull/46549"/>
-        <updated>2026-11-17T11:14:30.000Z</updated>
+        <updated>2026-11-17T21:11:48.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Part of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6380654782" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46518" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46518/hovercard" href="https://github.com/mdn/content/issues/46518">#46518</a>. This documents the missing parts of <a href="https://github.com/tc39/proposal-intl-locale-info">https://github.com/tc39/proposal-intl-locale-info</a>, in its final form of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2680655569" data-permission-text="Title is private" data-url="https://github.com/tc39/ecma402/issues/942" data-hovercard-type="pull_request" data-hovercard-url="/tc39/ecma402/pull/942/hovercard" href="https://github.com/tc39/ecma402/pull/942">tc39/ecma402#942</a>. Specifically it adds these normative changes:</p>
 <ol dir="auto">
 <li>Removal of <code class="notranslate">minimalDays</code> from spec (still documented because still implemented; BCD present)</li>
@@ -224,26 +576,6 @@
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-11-16T21:38:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix junction endpoints links on the row-rule-inset-junction pages]]></title>
-        <id>https://github.com/mdn/content/pull/46548</id>
-        <link href="https://github.com/mdn/content/pull/46548"/>
-        <updated>2026-11-17T11:48:57.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">The <code class="notranslate">row-rule-inset-junction-start</code> and <code class="notranslate">row-rule-inset-junction-end</code> pages each link to <code class="notranslate">#understanding_junction_start</code> or <code class="notranslate">#understanding_junction_end</code> twice, but the section on both pages is "Understanding junction endpoints", so its anchor is <code class="notranslate">#understanding_junction_endpoints</code>. This points the four links at that anchor, which is what the <code class="notranslate">column-rule-inset-junction-*</code> pages already use.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">Clicking those links doesn't scroll anywhere right now.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">On the live pages the only matching id is <code class="notranslate">understanding_junction_endpoints</code>, and there's no element with <code class="notranslate">understanding_junction_start</code> or <code class="notranslate">understanding_junction_end</code>.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">The pages were added in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5709789602" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45978" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45978/hovercard" href="https://github.com/mdn/content/pull/45978">#45978</a>.</p>]]></content>
-        <author>
-            <name>Manishram-ai</name>
-            <email>Manishram-ai@noreply.github.com</email>
-            <uri>https://github.com/Manishram-ai</uri>
-        </author>
-        <published>2026-11-16T19:10:43.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[build(deps-dev): bump the npm-dev group with 2 updates]]></title>
@@ -302,17 +634,25 @@
 <p dir="auto"><a href="https://github.com/prettier/prettier/compare/3.10.0...3.10.1">diff</a></p>
 <h4 dir="auto">GraphQL: Fix empty selection set with comments (<a href="https://redirect.github.com/prettier/prettier/pull/20504">#20504</a> by <a href="https://github.com/fisker"><code class="notranslate">@​fisker</code></a>)</h4>
 
-<pre lang="gql" class="notranslate"><code class="notranslate"># Input
+<div class="highlight highlight-source-graphql notranslate position-relative overflow-auto" dir="auto" data-snippet-clipboard-copy-content="# Input
 fragment F on Query {
   # x
 }
-<h1 dir="auto">Prettier 3.10.0</h1>
-<p dir="auto">Error: Comment "x" was not printed. Please report this error!</p>
-<h1 dir="auto">Prettier 3.10.1</h1>
-<p dir="auto">fragment F on Query {</p>
-<h1 dir="auto">x</h1>
-</code><p dir="auto"><code class="notranslate">}<br>
-</code></p></pre><p dir="auto"></p>
+Prettier 3.10.0
+Error: Comment &quot;x&quot; was not printed. Please report this error!
+Prettier 3.10.1
+fragment F on Query {
+x
+}"><pre class="notranslate"><span class="pl-c"># Input</span>
+<span class="pl-k">fragment</span> <span class="pl-en">F</span> <span class="pl-k">on</span> <span class="pl-c1">Query</span> {
+<span class="pl-c">  # x</span>
+}
+<span class="pl-en">Prettier</span> 3.10.0
+<span class="pl-en">Error</span>: <span class="pl-en">Comment</span> <span class="pl-c">"x"</span> <span class="pl-en">was</span> <span class="pl-en">not</span> <span class="pl-en">printed</span>. <span class="pl-en">Please</span> <span class="pl-en">report</span> <span class="pl-en">this</span> <span class="pl-en">error</span>!
+<span class="pl-en">Prettier</span> 3.10.1
+<span class="pl-k">fragment</span> <span class="pl-en">F</span> <span class="pl-k">on</span> <span class="pl-c1">Query</span> {
+<span class="pl-v">x</span>
+}</pre></div><p dir="auto"></p>
 <h1 dir="auto">3.10.0</h1>
 <p dir="auto"><a href="https://github.com/prettier/prettier/compare/3.9.10...3.10.0">diff</a></p>
 <p dir="auto">🔗 <a href="https://prettier.io/blog/2026/11/11/3.10.0" rel="nofollow">Release Notes</a></p>
@@ -377,32 +717,6 @@ fragment F on Query {
         <published>2026-11-16T14:30:38.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[highlight "roving tabindex"]]></title>
-        <id>https://github.com/mdn/content/pull/46545</id>
-        <link href="https://github.com/mdn/content/pull/46545"/>
-        <updated>2026-11-17T11:57:22.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is a term used elsewhere, and we define it here. so we can link the term to this section</p>
-
-
-<h3 dir="auto">Description</h3>
-
-<h3 dir="auto">Motivation</h3>
-
-<h3 dir="auto">Additional details</h3>
-
-<h3 dir="auto">Related issues and pull requests</h3>
-
-
-
-]]></content>
-        <author>
-            <name>estelle</name>
-            <email>estelle@noreply.github.com</email>
-            <uri>https://github.com/estelle</uri>
-        </author>
-        <published>2026-11-16T13:03:26.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Clarify that webRequest.HttpHeaders names can repeat]]></title>
         <id>https://github.com/mdn/content/pull/46544</id>
         <link href="https://github.com/mdn/content/pull/46544"/>
@@ -463,46 +777,5 @@ fragment F on Query {
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-11-16T06:26:42.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF161 SVG referrerpolicy on image, script and feImage]]></title>
-        <id>https://github.com/mdn/content/pull/46536</id>
-        <link href="https://github.com/mdn/content/pull/46536"/>
-        <updated>2026-11-16T06:20:39.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 adds support for the <code class="notranslate">referrerpolicy</code> attribute and <code class="notranslate">referrerPolicy</code> property on SVG <code class="notranslate">&lt;image&gt;</code>, <code class="notranslate">&lt;script&gt;</code> and <code class="notranslate">&lt;feImage&gt;</code> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2079321" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2079321</a></p>
-<p dir="auto">This:</p>
-<ul dir="auto">
-<li>Updates the SVG <code class="notranslate">referrerpolicy</code> attribute page to cover <code class="notranslate">&lt;a&gt;</code>, <code class="notranslate">&lt;feImage&gt;</code>, <code class="notranslate">&lt;image&gt;</code> and <code class="notranslate">&lt;script&gt;</code>, with an example for each. It also says that the document's policy is used if the attribute isn't set or is invalid, and changes the default value from <code class="notranslate">strict-origin-when-cross-origin</code> to <em>none</em> to match.</li>
-<li>Adds <code class="notranslate">referrerPolicy</code> pages for <code class="notranslate">SVGImageElement</code>, <code class="notranslate">SVGScriptElement</code> and <code class="notranslate">SVGFEImageElement</code>, and rewrites <code class="notranslate">SVGAElement.referrerPolicy</code> to match. The values are described once, on the attribute page. <code class="notranslate">SVGAElement.referrerPolicy</code> previously linked to the HTML <code class="notranslate">&lt;a&gt;</code> attribute.</li>
-<li>Adds the attribute and properties to the element and interface pages.</li>
-<li>Adds an "Integration with SVG" section to the <code class="notranslate">Referrer-Policy</code> header page.</li>
-</ul>
-<p dir="auto"><code class="notranslate">&lt;feImage&gt;</code> support is non-standard: the SVG WG resolved to add <code class="notranslate">referrerpolicy</code> to <code class="notranslate">image</code> and <code class="notranslate">script</code> only (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5354645999" data-permission-text="Title is private" data-url="https://github.com/w3c/svgwg/issues/1171" data-hovercard-type="issue" data-hovercard-url="/w3c/svgwg/issues/1171/hovercard" href="https://github.com/w3c/svgwg/issues/1171">w3c/svgwg#1171</a>).</p>
-<p dir="auto">BCD in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6414348186" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31151" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31151/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31151">mdn/browser-compat-data#31151</a></p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6311665493" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46466" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46466/hovercard" href="https://github.com/mdn/content/issues/46466">#46466</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-16T05:52:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add the missing exceptions to the Response() constructor]]></title>
-        <id>https://github.com/mdn/content/pull/46534</id>
-        <link href="https://github.com/mdn/content/pull/46534"/>
-        <updated>2026-11-16T19:09:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Adds an Exceptions section to the <code class="notranslate">Response()</code> constructor page.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto"><code class="notranslate">new Response("", { status: 204 })</code> throws a TypeError because an empty string is not a null body, but the page lists no exceptions, so people hit this with no explanation. Out-of-range statuses also throw a RangeError that isn't documented.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Spec: <a href="https://fetch.spec.whatwg.org/#initialize-a-response" rel="nofollow">https://fetch.spec.whatwg.org/#initialize-a-response</a>. Checked each case in Node 24.</p>]]></content>
-        <author>
-            <name>ragib-mrb</name>
-            <email>ragib-mrb@noreply.github.com</email>
-            <uri>https://github.com/ragib-mrb</uri>
-        </author>
-        <published>2026-11-16T05:28:41.000Z</published>
     </entry>
 </feed>

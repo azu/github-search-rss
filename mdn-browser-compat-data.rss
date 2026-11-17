@@ -2,16 +2,76 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-11-17T12:35:54.671Z</updated>
+    <updated>2026-11-17T21:25:45.267Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
     <entry>
+        <title type="html"><![CDATA[Safari 26.4 changes devicePixelRatio on page zoom]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31172</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31172"/>
+        <updated>2026-11-17T18:01:14.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Safari 26.4 fixed <code class="notranslate">devicePixelRatio</code> so that page zoom changes it for the main frame. The data still marks every Safari version as partial with the "does not change when the page is zoomed" note, so this adds a full support statement for 26.4 and keeps the note for Safari 3 to 26.3.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">The Safari 26.4 release notes include "Fixed <code class="notranslate">devicePixelRatio</code> so that page zoom now affects the main frame consistently with iframes, keeping their values synchronized. (163857955)". That radar is <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/WebKit/WebKit/commit/bdfffc7361a6/hovercard" href="https://github.com/WebKit/WebKit/commit/bdfffc7361a6">WebKit/WebKit@<tt>bdfffc7361a6</tt></a> (303397@main, bug 301807), which changes <code class="notranslate">LocalFrame::frameScaleFactor()</code> so page zoom applies to the main frame too. WebKit trunk was at 624.1.4 when it landed, Safari 26.3 shipped 623.2.7 and Safari 26.4 shipped 624.1.16.</p>
+<p dir="auto">A comment on <a href="https://webkit.org/b/124862" rel="nofollow">bug 124862</a> reports the value changing with zoom in Safari 26.5, and <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6183398093" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31039" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/31039/hovercard" href="https://github.com/mdn/browser-compat-data/issues/31039">#31039</a> has the same result in Safari 27.2.</p>
+<p dir="auto">Zooming still doesn't fire <code class="notranslate">change</code> on a <code class="notranslate">(resolution: &lt;n&gt;dppx)</code> media query (bug 317839), so the monitoring example on the MDN page doesn't work in Safari. That's about the media query rather than this property, so I left it out here.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #31039.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6183398093" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31039" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/31039/hovercard" href="https://github.com/mdn/browser-compat-data/issues/31039">#31039</a></p>]]></content>
+        <author>
+            <name>Manishram-ai</name>
+            <email>Manishram-ai@noreply.github.com</email>
+            <uri>https://github.com/Manishram-ai</uri>
+        </author>
+        <published>2026-11-17T17:59:43.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[removed the inline values for margin-trim and added ff nightly support]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31170</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31170"/>
+        <updated>2026-11-17T16:31:37.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<ul dir="auto">
+<li>Removed the following values, as they have been removed from the spec:
+<ul dir="auto">
+<li><code class="notranslate">inline</code></li>
+<li><code class="notranslate">inline-end</code></li>
+<li><code class="notranslate">inline-start</code></li>
+</ul>
+</li>
+<li>Added Firefox preview support</li>
+</ul>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>Tested with these CodePens:
+<ul dir="auto">
+<li><a href="https://codepen.io/editor/CodeRedDigital/pen/01a1e9db-67ac-720b-9803-5b8ff4a9da0f" rel="nofollow">margin-trim paragrpahs</a></li>
+<li><a href="https://codepen.io/editor/CodeRedDigital/pen/01a1e974-2737-71d9-95ab-d4222c74977e" rel="nofollow">margin-trim lists</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/w3c/csswg-drafts/commit/16a494b33c886b64488c5c724d5bcbcac2b55ead">PR where inline was removed from spec</a></li>
+<li><a href="https://github.com/w3c/csswg-drafts/issues/13731#issuecomment-5190616401" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13731/hovercard">W3C discussion about removing inline</a></li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/content/pull/46568" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46568/hovercard">Content PR</a></li>
+<li><a href="https://github.com/mdn/content/pull/46569" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46569/hovercard">Firefox Release PR</a></li>
+<li><a href="https://github.com/mdn/data/pull/1123" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1123/hovercard">Data PR</a></li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-11-17T16:26:52.000Z</published>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Remove `background-repeat-{x,y}` CSS properties]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31169</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/31169"/>
-        <updated>2026-11-17T12:12:51.000Z</updated>
+        <updated>2026-11-17T12:45:03.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">Removes <code class="notranslate">css.properties.background-repeat-x</code> and <code class="notranslate">css.properties.background-repeat-y</code>, which are irrelevant per the <a href="https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/README.md#removal-of-irrelevant-features">removal guidelines</a>: Chrome removed them in 120 (2023-12-05), Safari in 15 (2021-09-20), and Firefox never supported them.</p>
 <h4 dir="auto">Test results and supporting details</h4>
@@ -26,32 +86,6 @@
             <uri>https://github.com/caugner</uri>
         </author>
         <published>2026-11-17T12:11:37.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Chrome 148 supports Promise responses in runtime.onMessage and onMessageExternal]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31164</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31164"/>
-        <updated>2026-11-17T03:53:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Chrome 148 lets <code class="notranslate">runtime.onMessage</code> and <code class="notranslate">runtime.onMessageExternal</code> listeners respond by returning a <code class="notranslate">Promise</code>, so this replaces <code class="notranslate">version_added: false</code> for Chrome in both <code class="notranslate">return_promise</code> entries. From Chrome 148 to 151 this was turned off for extensions that declare a <code class="notranslate">devtools_page</code>, and Chrome 152 removed that exception, so 148 to 151 is a partial statement with a note.</p>
-<p dir="auto">This picks up <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5704251971" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30739" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30739/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30739">#30739</a>, which its author closed to stay under the open PR limit.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">I didn't test this in Chrome. The data comes from Chromium's source at the release tags and from Chrome's docs.</p>
-<ul dir="auto">
-<li>The behavior is gated on the <code class="notranslate">ExtensionBrowserNamespaceAndPolyfillSupport</code> feature in <code class="notranslate">extensions/common/extension_features.cc</code>. It's <code class="notranslate">FEATURE_DISABLED_BY_DEFAULT</code> at the <code class="notranslate">147.0.7727.117</code> tag and <code class="notranslate">FEATURE_ENABLED_BY_DEFAULT</code> at <code class="notranslate">148.0.7778.49</code>. The switch is <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/6f12cd13f85c/hovercard" href="https://github.com/chromium/chromium/commit/6f12cd13f85c">chromium/chromium@<tt>6f12cd13f85c</tt></a>, which Chromium Dash shows first in 148.0.7751.0.</li>
-<li>At <code class="notranslate">148.0.7778.49</code>, <code class="notranslate">IsExtensionBrowserNamespaceAndPolyfillSupportEnabledForExtension()</code> in <code class="notranslate">extensions/renderer/polyfill_util.cc</code> also requires the extension to have no <code class="notranslate">devtools_page</code>, and <code class="notranslate">one_time_message_handler.cc</code> only takes a returned <code class="notranslate">Promise</code> as the response when that check passes. The same code path handles <code class="notranslate">onMessage</code> and <code class="notranslate">onMessageExternal</code>.</li>
-<li><a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/edec8032d45f/hovercard" href="https://github.com/chromium/chromium/commit/edec8032d45f">chromium/chromium@<tt>edec8032d45f</tt></a> removed the DevTools exception. Chromium Dash shows it first in 152.0.7965.0, and the <code class="notranslate">151.0.7922.176</code> tag still has the <code class="notranslate">devtools_page</code> check.</li>
-<li>Chrome's <a href="https://developer.chrome.com/docs/extensions/develop/concepts/browser-namespace#async-sendmessage" rel="nofollow">browser namespace docs</a> say "In Chrome 148, <code class="notranslate">runtime.onMessage</code> listeners can return a <code class="notranslate">Promise</code> directly".</li>
-</ul>
-<p dir="auto">About the comment that it already worked in 147, <code class="notranslate">testing/variations/fieldtrial_testing_config.json</code> at the 147 tag has an <code class="notranslate">ExtensionBrowserNamespaceAndPolyfillSupport</code> trial with Enabled and Disabled groups, so some 147 users got it early. Following the randomized trials guideline, I went with 148.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30194.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5090186547" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30194" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30194/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30194">#30194</a></p>]]></content>
-        <author>
-            <name>Manishram-ai</name>
-            <email>Manishram-ai@noreply.github.com</email>
-            <uri>https://github.com/Manishram-ai</uri>
-        </author>
-        <published>2026-11-17T03:52:15.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add Intl.Locale.firstDayOfWeek, minimalDays removals, and Intl.PluralRules notation/compactDisplay]]></title>
@@ -169,22 +203,6 @@
             <uri>https://github.com/BHUVANSH855</uri>
         </author>
         <published>2026-11-16T12:35:57.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[WebExt] Safari devtools.inspectedWindow.eval() options support correction]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31154</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31154"/>
-        <updated>2026-11-16T17:09:58.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Corrects details for <code class="notranslate">contextSecurityOrigin</code> and <code class="notranslate">useContentScriptContext</code> options for the <code class="notranslate">devtools.inspectedWindow.eval</code> command. These options were indicated as available for Safari 16, but they aren't implemented. Implementation is tracked in <a href="https://bugs.webkit.org/show_bug.cgi?id=269349" rel="nofollow">https://bugs.webkit.org/show_bug.cgi?id=269349</a>.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Identified in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1817074396" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/28131" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/28131/hovercard?comment_id=5912625080&amp;comment_type=review" href="https://github.com/mdn/content/pull/28131#pullrequestreview-5912625080">mdn/content#28131 (review)</a></p>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-11-16T08:19:52.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Firefox relaxed referrer policies: partial from 100, not removed in 92]]></title>
