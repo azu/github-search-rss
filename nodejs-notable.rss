@@ -2,11 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/nodejs-notable.rss</id>
     <title>Node.js notable changes</title>
-    <updated>2026-11-18T20:57:46.627Z</updated>
+    <updated>2026-11-19T02:11:26.862Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/nodejs-notable.rss"/>
     <subtitle>Node.js notable changes on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[tls: docs-deprecate TLS renegotiation, add allowRenegotiation opt-in]]></title>
+        <id>https://github.com/nodejs/node/pull/67532</id>
+        <link href="https://github.com/nodejs/node/pull/67532"/>
+        <updated>2026-11-18T22:40:02.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1526883?u=ef4ddb58af6e4150c04da585e79482504abd1402&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I think we should deprecate TLS renegotiation support, disable it by default soon, and aim to eventually mostly remove it.</p>
+<p dir="auto">Quick refresher: renegotiation is a TLS 1.2 feature (not in 1.3) where the client or server can ask the other peer to change the configuration of an existing connection, redo the handshake, and then continue with that new configuration on the old TLS connection. Today we support this in all 4 directions by default: initiating renegotiation for both clients &amp; servers, and accepting remote requests for renegotiation from clients or servers.</p>
+<p dir="auto">Steps would be:</p>
+<ul dir="auto">
+<li>Docs deprecate default support for all 4 cases in current versions (this PR).</li>
+<li>Flip the default to disabled for all 4 cases, in v27.
+<ul dir="auto">
+<li>When the default is overridden to enable it, show a deprecation warning in 3/4 of the cases - this will be removed completely in future.</li>
+<li>Keep the 4th case with no warning, but opt-in only: clients accepting server-initiated renegotiations (this is useful for legacy server support).</li>
+</ul>
+</li>
+<li>Later on (v28 at the earliest) remove the other 3 cases entirely leaving only opt-in client support for accepting server requests.</li>
+</ul>
+<p dir="auto">I think we should drop this because:</p>
+<ul dir="auto">
+<li>It's hard to secure, both for us (see recent CVEs) and for end users using these APIs. Renegotiation means an existing TLS connection's authorization state &amp; configuration can change silently any time, e.g. in the middle of HTTP request processing. I strongly suspect very little code in the wild is aware of this or handling it correctly.</li>
+<li>There's nearly no good reasons to do it nowadays. Changing security params during a connection is quite unusual &amp; suspicious imo. The only somewhat reasonable case is to add client authentication to an active connection. Some servers apparently do use that (when you send an HTTP request that needs auth, renegotiate to require mTLS auth) but I think we can support that one case in isolation (opt-in) and drop the rest. Modern clients &amp; protocols just reconnect with the new configuration instead.</li>
+<li>It's already being removed (or has never been implemented at all, in new stacks) in most modern stacks elsewhere:
+<ul dir="auto">
+<li>TLS 1.3 dropped it, replacing it with post-handshake authentication (PHA) which implements certificate auth and nothing else. We don't support PHA, and we shouldn't start now - similarly to renegotiation, active connections dynamically changing auth status is risky.</li>
+<li>HTTP/2 forbids renegotiation and PHA. HTTP/3 doesn't support TLS 1.2 at all, and forbids PHA in TLS 1.3.</li>
+<li>Browsers support this only for HTTP/1.1 on TLS 1.2, only for accepting the server-initiated legacy case. None support PHA by default.</li>
+<li>BoringSSL disables all renegotiation by default, only supports accepting the server-initiated case with opt-in.</li>
+<li>OpenSSL disabled client-initiated renegotiation by default in 3.0.0 - we currently override that default to actively enable it in every case.</li>
+<li>Go crypto/tls has never supported initiating renegotiation, and only supports clients accepting server-initiated request to renegotiate (same legacy server case). Also doesn't support PHA.</li>
+<li>Rustls doesn't support rengotiation or PHA.</li>
+</ul>
+</li>
+<li>Because of this, it's already very rarely used. You can't use it with modern TLS, modern HTTP, or modern clients, so the existing scope is fairly limited.
+<ul dir="auto">
+<li>One counter-example I did find is Kibana, who do use it, but not for its real purpose: AFAICT they renegotiate connections just to force the client to resend the same client certificate, so they can get the full chain for authentication, because when resuming a TLS connection they don't have the old chain available (just the leaf). I've outlined some better alternatives to this <a href="https://github.com/nodejs/node/issues/36926" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/36926/hovercard">here</a>. This is already non-functional for them today with TLS 1.3 and/or HTTP/2+.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">We did previously discuss this 10 years ago: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="156878677" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/6983" data-hovercard-type="issue" data-hovercard-url="/nodejs/node/issues/6983/hovercard" href="https://github.com/nodejs/node/issues/6983">#6983</a>. At the time it was challenging, but in the meantime I think the ecosystem consensus has changed, and most of the remaining use cases have become unsupported everywhere else. Only the one use case remains, exclusively for accessing specific legacy server configurations.</p>
+<p dir="auto">This PR does nothing breaking for now, it's just laying the groundwork, which we'll want to backport to v26 too:</p>
+<ul dir="auto">
+<li>Docs deprecation for the relevant APIs.</li>
+<li>Add a new <code class="notranslate">allowRenegotiation</code> option for clients &amp; servers to explicitly enable/disable renegotiation from options. Defaults to <code class="notranslate">true</code> for now, will flip to <code class="notranslate">false</code> for v27 imminently.</li>
+<li>A new <code class="notranslate">--pending-deprecation</code> warning if you use renegotiation, except for clients that set <code class="notranslate">allowRenegotiation: true</code> and just accept server-initiated requests.</li>
+</ul>
+<hr>
+<h2 dir="auto">Notable change:</h2>
+<p dir="auto">TLS 1.2 renegotiation, which allows either peer to redo the handshake and change the configuration of an existing connection, is now deprecated (DEP0213). It is hard to use securely, is forbidden by HTTP/2, and was removed entirely in TLS 1.3.</p>
+<p dir="auto">A new <code class="notranslate">allowRenegotiation</code> option for <code class="notranslate">tls.connect()</code> and <code class="notranslate">tls.createServer()</code> controls whether renegotiation is enabled on connections. It defaults to <code class="notranslate">true</code> for now, but renegotiation will be disabled by default in a future major release such that enabling this explicitly will be required. In a subsequent major release, it is likely to be removed entirely, except for opt-in support for clients to accept received renegotiation requests from legacy servers. Run with <code class="notranslate">--pending-deprecation</code> to find affected code.</p>]]></content>
+        <author>
+            <name>pimterry</name>
+            <email>pimterry@noreply.github.com</email>
+            <uri>https://github.com/pimterry</uri>
+        </author>
+        <published>2026-11-16T22:26:15.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[module: remove async module customization hooks]]></title>
         <id>https://github.com/nodejs/node/pull/67090</id>
@@ -631,20 +688,5 @@ Assisted-by: Opencode/Opus</p>]]></content>
             <uri>https://github.com/nodejs-github-bot</uri>
         </author>
         <published>2026-07-24T12:59:43.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[repl: add basic syntax highlighting]]></title>
-        <id>https://github.com/nodejs/node/pull/64591</id>
-        <link href="https://github.com/nodejs/node/pull/64591"/>
-        <updated>2026-09-02T16:42:16.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/38299977?u=88aefc5a0e292a8e7147d1941c70fcc8a4153da6&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Adds basic syntax highlighting similar to our <code class="notranslate">util.inspect</code>. Highlighting is done using <code class="notranslate">util.inspect.styles</code>, so the coloring is in-tune with inspect, see below:</p>
-<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTUwMzU3NjYsIm5iZiI6MTc5NTAzNTQ2NiwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjExMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMTE4VDIwNTc0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc3MjdkNzE4YWYyZWIyMWJmMDdhM2RiZGRjNDgwZjE2ZmNhNjRlZmRhZDA0ZDJkNGY4ZmZjMWExMGMwMzc2ZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.bu9wcYWP8YmCZGEHH5nS0T-ZXotSu5XS2S97nMuYZag"><img width="1204" height="232" alt="Screenshot 2026-07-18 at 7 37 24 PM" src="https://private-user-images.githubusercontent.com/38299977/623614952-01b76e5a-3143-4900-85e9-b4029bf797e7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTUwMzU3NjYsIm5iZiI6MTc5NTAzNTQ2NiwicGF0aCI6Ii8zODI5OTk3Ny82MjM2MTQ5NTItMDFiNzZlNWEtMzE0My00OTAwLTg1ZTktYjQwMjliZjc5N2U3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjExMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYxMTE4VDIwNTc0NlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc3MjdkNzE4YWYyZWIyMWJmMDdhM2RiZGRjNDgwZjE2ZmNhNjRlZmRhZDA0ZDJkNGY4ZmZjMWExMGMwMzc2ZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.bu9wcYWP8YmCZGEHH5nS0T-ZXotSu5XS2S97nMuYZag" style="max-width: 100%; height: auto; max-height: 232px;; aspect-ratio: 1204 / 232; background-color: var(--bgColor-muted); border-radius: 6px" class="js-gh-image-fallback"></a>
-<p dir="auto"><strong>Notable Change</strong>: The REPL now performs syntax highlighting when <code class="notranslate">useColors: true</code></p>]]></content>
-        <author>
-            <name>avivkeller</name>
-            <email>avivkeller@noreply.github.com</email>
-            <uri>https://github.com/avivkeller</uri>
-        </author>
-        <published>2026-07-19T02:38:15.000Z</published>
     </entry>
 </feed>

@@ -2,11 +2,194 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-18T20:57:45.782Z</updated>
+    <updated>2026-11-19T02:11:26.135Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Fix IntegrityViolationReport and Integrity-Policy examples and prose]]></title>
+        <id>https://github.com/mdn/content/pull/46592</id>
+        <link href="https://github.com/mdn/content/pull/46592"/>
+        <updated>2026-11-19T01:03:09.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241046?u=cd3b17b6fb822d049976b087e5b8494c47d3d240&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Integrity Violation documentation has inaccurately, most likely due to being outdated.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Fixing this is important for accuracy. My motivation is I noticed issues when comparing to observed behaviour and specifications.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Update destination on IntegrityViolationReport to allow "script" or "style" per W3C SRI (#destination).</li>
+<li>Fix Structured Fields syntax in IntegrityViolationReport's Reporting-Endpoints (quoted strings) and Integrity-Policy (space-separated inner list) examples per RFC 9651.</li>
+<li>Fix server report payload examples on both pages to use a JSON array (application/reports+json) with numeric age and user_agent per W3C Reporting API (#serialize-reports).</li>
+<li>Fix crossorigin attribute spelling and IntegrityViolationReportBody reference.</li>
+</ul>
+<h4 dir="auto">Specifications:</h4>
+<ul dir="auto">
+<li><a href="https://w3c.github.io/webappsec-subresource-integrity/#destination" rel="nofollow">https://w3c.github.io/webappsec-subresource-integrity/#destination</a></li>
+<li><a href="https://w3c.github.io/reporting/#serialize-reports" rel="nofollow">https://w3c.github.io/reporting/#serialize-reports</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9651#section-3.1.1" rel="nofollow">https://www.rfc-editor.org/rfc/rfc9651#section-3.1.1</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9651#section-3.3.3" rel="nofollow">https://www.rfc-editor.org/rfc/rfc9651#section-3.3.3</a></li>
+</ul>
+<h4 dir="auto">Captured browser report examples:</h4>
+<ul dir="auto">
+<li><a href="https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/chrome-156/2026-11-01-site-with-violations-composite.json#L143-L154">https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/chrome-156/2026-11-01-site-with-violations-composite.json#L143-L154</a></li>
+<li><a href="https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/firefox-159/2026-11-01-site-with-violations.json#L6-L17">https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/firefox-159/2026-11-01-site-with-violations.json#L6-L17</a></li>
+<li><a href="https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/safari-27/2026-11-18-site-with-violations-composite.json#L6-L19">https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/safari-27/2026-11-18-site-with-violations-composite.json#L6-L19</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+
+
+
+]]></content>
+        <author>
+            <name>ccouzens</name>
+            <email>ccouzens@noreply.github.com</email>
+            <uri>https://github.com/ccouzens</uri>
+        </author>
+        <published>2026-11-18T23:48:34.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add the message_serialization manifest key page]]></title>
+        <id>https://github.com/mdn/content/pull/46591</id>
+        <link href="https://github.com/mdn/content/pull/46591"/>
+        <updated>2026-11-19T01:51:50.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Adds a page for the <code class="notranslate">message_serialization</code> manifest key and updates the Chrome bullet in "Data cloning algorithm" on the Chrome incompatibilities page.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Chrome 148 supports the key and Safari Technology Preview 257 adds it. With <code class="notranslate">"structured_clone"</code>, an extension sends messages with the structured clone algorithm instead of JSON. The page covers the values, the default, the differences from JSON serialization (<code class="notranslate">toJSON()</code>, function values, <code class="notranslate">Proxy</code>, class instances), an example that keeps <code class="notranslate">toJSON()</code> while opted in, and how Chrome and Safari handle mismatched formats and messages from web pages. The Chrome bullet previously said Chrome may switch to structured cloning in the future.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3754490738" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/931" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/931/hovercard" href="https://github.com/w3c/webextensions/issues/931">w3c/webextensions#931</a></li>
+<li><a href="https://developer.chrome.com/docs/extensions/whats-new" rel="nofollow">https://developer.chrome.com/docs/extensions/whats-new</a></li>
+<li><a href="https://webkit.org/b/330104" rel="nofollow">https://webkit.org/b/330104</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46590.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6478753045" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46590" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46590/hovercard" href="https://github.com/mdn/content/issues/46590">#46590</a></p>
+<p dir="auto"><strong>Depends on:</strong> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6478491084" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31193" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31193/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31193">mdn/browser-compat-data#31193</a>, which adds the <code class="notranslate">webextensions.manifest.message_serialization</code> compatibility data the page's <code class="notranslate">{{Compat}}</code> macro reads.</p>]]></content>
+        <author>
+            <name>xeenon</name>
+            <email>xeenon@noreply.github.com</email>
+            <uri>https://github.com/xeenon</uri>
+        </author>
+        <published>2026-11-18T23:39:17.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SVG begin: note that accessKey() is unsupported and fix the keyboard example]]></title>
+        <id>https://github.com/mdn/content/pull/46589</id>
+        <link href="https://github.com/mdn/content/pull/46589"/>
+        <updated>2026-11-18T22:02:44.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/71122807?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The <code class="notranslate">begin</code> attribute page described <code class="notranslate">&lt;accessKey-value&gt;</code> as a working value and had a live "Accesskey example" that does nothing in any browser. This PR:</p>
+<ul dir="auto">
+<li>adds a note under <code class="notranslate">&lt;accessKey-value&gt;</code> that no browser supports it, and how to start an animation from the keyboard instead;</li>
+<li>replaces the broken example with a working "Keyboard example": the <code class="notranslate">&lt;animate&gt;</code> element gets <code class="notranslate">id="grow"</code> and <code class="notranslate">begin="indefinite"</code>, and a <code class="notranslate">keydown</code> listener calls <code class="notranslate">beginElement()</code> when <kbd>s</kbd> is pressed. This is the alternative suggested in the issue. The rest of the example (rectangle, label, grid) is unchanged.</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Readers who copy the example or try the live sample get an animation that never starts, with no explanation.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">As researched in the issue:</p>
+<ul dir="auto">
+<li>Firefox removed <code class="notranslate">accessKey()</code> in Firefox 59 (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1423098" rel="nofollow">bug 1423098</a>).</li>
+<li>WebKit and Chromium parse <code class="notranslate">accesskey(</code> but never connect it to keyboard input (<code class="notranslate">// FIXME: accesskey() support.</code> in both). They also match only the lowercase spelling, so <code class="notranslate">accessKey(s)</code> is treated as an event name that never fires.</li>
+</ul>
+<p dir="auto">I left the <code class="notranslate">spec-urls</code> front matter (<code class="notranslate">svgwg.org</code>) unchanged. Sibling pages such as <code class="notranslate">end</code> use the same host, and the front-matter linter validates spec URLs, so changing that host is probably better as a separate, site-wide change.</p>
+<p dir="auto">Checked locally: <code class="notranslate">prettier@3.10.1 -c</code> and <code class="notranslate">markdownlint-cli2@0.24.1</code> with the repository's config both pass.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46580.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6459503837" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46580" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46580/hovercard" href="https://github.com/mdn/content/issues/46580">#46580</a></p>
+<p dir="auto">🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>]]></content>
+        <author>
+            <name>ArthDubey1011</name>
+            <email>ArthDubey1011@noreply.github.com</email>
+            <uri>https://github.com/ArthDubey1011</uri>
+        </author>
+        <published>2026-11-18T22:02:10.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[build(deps-dev): bump @mdn/fred from 2.11.0 to 2.11.1]]></title>
+        <id>https://github.com/mdn/content/pull/46588</id>
+        <link href="https://github.com/mdn/content/pull/46588"/>
+        <updated>2026-11-18T21:22:38.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps <a href="https://github.com/mdn/fred">@mdn/fred</a> from 2.11.0 to 2.11.1.</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/mdn/fred/releases">@​mdn/fred's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v2.11.1</h2>
+<h2 dir="auto"><a href="https://github.com/mdn/fred/compare/v2.11.0...v2.11.1">2.11.1</a> (2026-11-18)</h2>
+<h3 dir="auto">Miscellaneous</h3>
+<ul dir="auto">
+<li><strong>deps:</strong> bump <code class="notranslate">@​mdn/rari</code> from 1.2.2 to 1.3.0 (<a href="https://redirect.github.com/mdn/fred/issues/2096">#2096</a>) (<a href="https://github.com/mdn/fred/commit/6c0db0da3165cb3bf12f2d79bd08bf50d9b23a2e">6c0db0d</a>)</li>
+<li><strong>deps:</strong> bump <code class="notranslate">@​mdn/watify</code> from 1.1.11 to 1.1.12 (<a href="https://redirect.github.com/mdn/fred/issues/2080">#2080</a>) (<a href="https://github.com/mdn/fred/commit/7aded86c1eeae60013c8e7da7876fea7794ade63">7aded86</a>)</li>
+<li><strong>menu:</strong> update menu entries (<a href="https://redirect.github.com/mdn/fred/issues/2089">#2089</a>) (<a href="https://github.com/mdn/fred/commit/7f4ae840be56742c8c939ea12d6eb84887ea65a8">7f4ae84</a>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/mdn/fred/blob/main/CHANGELOG.md">@​mdn/fred's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto"><a href="https://github.com/mdn/fred/compare/v2.11.0...v2.11.1">2.11.1</a> (2026-11-18)</h2>
+<h3 dir="auto">Miscellaneous</h3>
+<ul dir="auto">
+<li><strong>deps:</strong> bump <code class="notranslate">@​mdn/rari</code> from 1.2.2 to 1.3.0 (<a href="https://redirect.github.com/mdn/fred/issues/2096">#2096</a>) (<a href="https://github.com/mdn/fred/commit/6c0db0da3165cb3bf12f2d79bd08bf50d9b23a2e">6c0db0d</a>)</li>
+<li><strong>deps:</strong> bump <code class="notranslate">@​mdn/watify</code> from 1.1.11 to 1.1.12 (<a href="https://redirect.github.com/mdn/fred/issues/2080">#2080</a>) (<a href="https://github.com/mdn/fred/commit/7aded86c1eeae60013c8e7da7876fea7794ade63">7aded86</a>)</li>
+<li><strong>menu:</strong> update menu entries (<a href="https://redirect.github.com/mdn/fred/issues/2089">#2089</a>) (<a href="https://github.com/mdn/fred/commit/7f4ae840be56742c8c939ea12d6eb84887ea65a8">7f4ae84</a>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/fred/commit/e1a3a1bc305fd39b49b45add71ea07550bce448a"><code class="notranslate">e1a3a1b</code></a> chore(main): release 2.11.1 (<a href="https://redirect.github.com/mdn/fred/issues/2081">#2081</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/ffae36c32630da4e0a222b1222091aeb97ca692e"><code class="notranslate">ffae36c</code></a> ci(deps): bump anthropics/claude-code-action from 1.0.269 to 1.0.276 (<a href="https://redirect.github.com/mdn/fred/issues/2095">#2095</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/c446d43716abef505a01f1cf5fd20d6946beaa21"><code class="notranslate">c446d43</code></a> ci(deps): bump peter-evans/create-pull-request from 8.1.2 to 8.1.3 (<a href="https://redirect.github.com/mdn/fred/issues/2094">#2094</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/6c0db0da3165cb3bf12f2d79bd08bf50d9b23a2e"><code class="notranslate">6c0db0d</code></a> chore(deps): bump <code class="notranslate">@​mdn/rari</code> from 1.2.2 to 1.3.0 (<a href="https://redirect.github.com/mdn/fred/issues/2096">#2096</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/c865a0a1ef5f33e1fc54fd012602e7364af74daa"><code class="notranslate">c865a0a</code></a> build(deps-dev): bump the npm-dev group across 1 directory with 8 updates (<a href="https://redirect.github.com/mdn/fred/issues/2">#2</a>...</li>
+<li><a href="https://github.com/mdn/fred/commit/7f4ae840be56742c8c939ea12d6eb84887ea65a8"><code class="notranslate">7f4ae84</code></a> chore(menu): update menu entries (<a href="https://redirect.github.com/mdn/fred/issues/2089">#2089</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/75f6aeeb11170370cfc8e50d5f26cee96b20c474"><code class="notranslate">75f6aee</code></a> perf(ssr): render in worker threads (<a href="https://redirect.github.com/mdn/fred/issues/2083">#2083</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/1b7d057a0de6fe7116076e94f46ad64ce50f576f"><code class="notranslate">1b7d057</code></a> ci(bundle-size): split build + analyze jobs (<a href="https://redirect.github.com/mdn/fred/issues/2071">#2071</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/5896c10be7cc26abeef4a497b9a94906af573e1e"><code class="notranslate">5896c10</code></a> build(deps-dev): bump the npm-dev group with 2 updates (<a href="https://redirect.github.com/mdn/fred/issues/2085">#2085</a>)</li>
+<li><a href="https://github.com/mdn/fred/commit/11ed6eaf22ff41e89bf8f60b61aaf5970c84e48f"><code class="notranslate">11ed6ea</code></a> build(deps-dev): bump <code class="notranslate">@​mdn/browser-compat-data</code> from 8.1.8 to 8.1.9 (<a href="https://redirect.github.com/mdn/fred/issues/2086">#2086</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/mdn/fred/compare/v2.11.0...v2.11.1">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto"><a href="https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores"><img src="https://camo.githubusercontent.com/31846866b8dc4c50e1e1f224439adaf9fb132c13222a32d0e65165205704e867/68747470733a2f2f646570656e6461626f742d6261646765732e6769746875626170702e636f6d2f6261646765732f636f6d7061746962696c6974795f73636f72653f646570656e64656e63792d6e616d653d406d646e2f66726564267061636b6167652d6d616e616765723d6e706d5f616e645f7961726e2670726576696f75732d76657273696f6e3d322e31312e30266e65772d76657273696f6e3d322e31312e31" alt="Dependabot compatibility score" data-canonical-src="https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=@mdn/fred&amp;package-manager=npm_and_yarn&amp;previous-version=2.11.0&amp;new-version=2.11.1" style="max-width: 100%;"></a></p>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore this major version</code> will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this minor version</code> will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore this dependency</code> will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)</li>
+</ul>
+</details>]]></content>
+        <author>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
+        </author>
+        <published>2026-11-18T21:22:09.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add corner cases for four arithmetic operators]]></title>
+        <id>https://github.com/mdn/content/pull/46586</id>
+        <link href="https://github.com/mdn/content/pull/46586"/>
+        <updated>2026-11-18T21:35:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Noticed a small documentation gap. Exponentiation and remainder already mention this. Also added a section talking about non-associativity to advertise for <code class="notranslate">Math.sumPrecise()</code></p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-11-18T21:07:46.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Remove version references from the Extend the developer tools article]]></title>
         <id>https://github.com/mdn/content/pull/46585</id>
@@ -44,7 +227,7 @@
         <title type="html"><![CDATA[build(deps-dev): bump cspell from 10.5.0 to 10.5.1 in the npm-dev group]]></title>
         <id>https://github.com/mdn/content/pull/46584</id>
         <link href="https://github.com/mdn/content/pull/46584"/>
-        <updated>2026-11-18T14:03:15.000Z</updated>
+        <updated>2026-11-18T21:17:12.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps the npm-dev group with 1 update: <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell">cspell</a>.</p>
 <p dir="auto">Updates <code class="notranslate">cspell</code> from 10.5.0 to 10.5.1</p>
 <details>
@@ -411,106 +594,5 @@ CSpell: Files checked: 1, Issues found: 1 in 1 file.
             <uri>https://github.com/dletorey</uri>
         </author>
         <published>2026-11-17T16:26:48.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Explain locked bodies in Request and Response clone()]]></title>
-        <id>https://github.com/mdn/content/pull/46567</id>
-        <link href="https://github.com/mdn/content/pull/46567"/>
-        <updated>2026-11-17T14:57:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/36569722?u=919b278a71956b9b30fea93a71dd49a50e81b168&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Both clone() pages only mention a body that has already been used. Acquiring a body reader also makes cloning throw TypeError, even before the first read and while bodyUsed remains false.</p>
-<p dir="auto">Document the locked-body case and explain the getReader() trigger on both Request and Response. This follows Fetch's clone algorithms and its definition of an unusable body:<br>
-<a href="https://fetch.spec.whatwg.org/#dom-request-clone" rel="nofollow">https://fetch.spec.whatwg.org/#dom-request-clone</a><br>
-<a href="https://fetch.spec.whatwg.org/#dom-response-clone" rel="nofollow">https://fetch.spec.whatwg.org/#dom-response-clone</a></p>
-<p dir="auto">Checked in Node 24.22.0 for both interfaces: an unread locked body throws, releasing the unread reader lock allows cloning, and a consumed body still throws. Targeted Prettier and git diff --check pass. No browser or full content build run.</p>]]></content>
-        <author>
-            <name>ragib-mrb</name>
-            <email>ragib-mrb@noreply.github.com</email>
-            <uri>https://github.com/ragib-mrb</uri>
-        </author>
-        <published>2026-11-17T14:52:53.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update CSS values and units guide function lists]]></title>
-        <id>https://github.com/mdn/content/pull/46564</id>
-        <link href="https://github.com/mdn/content/pull/46564"/>
-        <updated>2026-11-17T09:45:54.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1795135?u=8b4759f2d0964426ac6f2aeacf061ad1ee0e24db&v=4" width="64" height="64" alt=""/><br/><p dir="auto">type() is supported in all 3 browsers as part of attr().</p>
-<p dir="auto">calc-mix(), random-item() are in Safari 27.3.</p>
-<p dir="auto">integrity() is supported by Chrome and WebKit trunk</p>]]></content>
-        <author>
-            <name>nt1m</name>
-            <email>nt1m@noreply.github.com</email>
-            <uri>https://github.com/nt1m</uri>
-        </author>
-        <published>2026-11-17T09:44:31.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document Cross-Origin-Opener-Policy-Report-Only header]]></title>
-        <id>https://github.com/mdn/content/pull/46563</id>
-        <link href="https://github.com/mdn/content/pull/46563"/>
-        <updated>2026-11-17T14:40:09.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/79165529?u=43a28f8bdde2a5d9ee9e0861d3d4ea22e7715ad8&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
-<ul dir="auto">
-<li>Add the reference page for the <code class="notranslate">Cross-Origin-Opener-Policy-Report-Only</code> HTTP response header (<code class="notranslate">files/en-us/web/http/reference/headers/cross-origin-opener-policy-report-only/index.md</code>), wired to <code class="notranslate">browser-compat: http.headers.Cross-Origin-Opener-Policy-Report-Only</code>.</li>
-<li>Document its directives (<code class="notranslate">unsafe-none</code>, <code class="notranslate">same-origin</code>, <code class="notranslate">same-origin-allow-popups</code>), the <code class="notranslate">report-to</code> parameter, <code class="notranslate">disposition: "reporting"</code> JSON report behavior, and note that <code class="notranslate">noopener-allow-popups</code> applies only to the enforced header per the WHATWG HTML Standard (Section 7.1.3).</li>
-<li>Link <code class="notranslate">Cross-Origin-Opener-Policy-Report-Only</code> from <code class="notranslate">Cross-Origin-Opener-Policy</code> and list it under Security on the HTTP headers reference overview page.</li>
-<li>Add the <code class="notranslate">coop</code> entry under reporting server endpoints on <code class="notranslate">Web/API/Reporting_API</code>.</li>
-</ul>
-<h2 dir="auto">Motivation</h2>
-<p dir="auto">Closes the missing reference documentation for <code class="notranslate">Cross-Origin-Opener-Policy-Report-Only</code>, whose browser compatibility data (<code class="notranslate">http/headers/Cross-Origin-Opener-Policy-Report-Only.json</code>) is already present in <code class="notranslate">mdn/browser-compat-data</code>.</p>
-<h2 dir="auto">Related issues</h2>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #39432.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3045492578" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/39432" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/39432/hovercard" href="https://github.com/mdn/content/issues/39432">#39432</a></p>
-<h2 dir="auto">Verification</h2>
-<p dir="auto">Checked locally after final edits:</p>
-<ul dir="auto">
-<li><code class="notranslate">node scripts/front-matter_linter.js</code> (0 errors)</li>
-<li><code class="notranslate">npx markdownlint-cli2</code> (0 issues)</li>
-<li><code class="notranslate">npx prettier --check</code> (passes)</li>
-<li><code class="notranslate">npx cspell --no-progress --gitignore --config .vscode/cspell.json</code> (0 issues)</li>
-<li><code class="notranslate">node --test</code> (27/27 passed)</li>
-</ul>]]></content>
-        <author>
-            <name>xsagul</name>
-            <email>xsagul@noreply.github.com</email>
-            <uri>https://github.com/xsagul</uri>
-        </author>
-        <published>2026-11-17T08:39:16.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF161 Relnote/ExprF: quotes: match-parent in Nightly]]></title>
-        <id>https://github.com/mdn/content/pull/46562</id>
-        <link href="https://github.com/mdn/content/pull/46562"/>
-        <updated>2026-11-17T18:29:42.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 adds support for the <code class="notranslate">match-parent</code> value of <code class="notranslate">quotes</code> in Nightly in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1752382" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1752382</a></p>
-<p dir="auto">This:</p>
-<ul dir="auto">
-<li>Adds an experimental features entry for <code class="notranslate">quotes: match-parent</code> (<code class="notranslate">layout.css.quotes.match-parent.enabled</code>).</li>
-<li>Adds it to the Firefox 161 experimental web features release notes.</li>
-</ul>
-<p dir="auto">The <code class="notranslate">quotes#match-parent</code> links go to the value added in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6438779996" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46561" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46561/hovercard" href="https://github.com/mdn/content/pull/46561">#46561</a>.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6311652878" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46460" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46460/hovercard" href="https://github.com/mdn/content/issues/46460">#46460</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-17T06:22:03.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF161 quotes: match-parent docs]]></title>
-        <id>https://github.com/mdn/content/pull/46561</id>
-        <link href="https://github.com/mdn/content/pull/46561"/>
-        <updated>2026-11-17T06:24:44.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 adds support for the <code class="notranslate">match-parent</code> value of <code class="notranslate">quotes</code> in Nightly in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1752382" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1752382</a></p>
-<p dir="auto">This adds <code class="notranslate">match-parent</code> to the <code class="notranslate">quotes</code> page: the syntax, a value definition, and an example comparing <code class="notranslate">auto</code> and <code class="notranslate">match-parent</code> for nested quotes in different languages, with and without custom quotation marks.</p>
-<p dir="auto">The spec still calls this value <code class="notranslate">bikeshed-this</code>. The CSSWG resolved to name it <code class="notranslate">match-parent</code> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="687390650" data-permission-text="Title is private" data-url="https://github.com/w3c/csswg-drafts/issues/5478" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/5478/hovercard?comment_id=6496640997&amp;comment_type=issue_comment" href="https://github.com/w3c/csswg-drafts/issues/5478#issuecomment-6496640997">w3c/csswg-drafts#5478 (comment)</a>, but the spec hasn't been updated yet, so the formal syntax shows <code class="notranslate">bikeshed-this</code> for now.</p>
-<p dir="auto">BCD in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6437584376" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31166" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31166/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31166">mdn/browser-compat-data#31166</a></p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6311652878" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46460" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46460/hovercard" href="https://github.com/mdn/content/issues/46460">#46460</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-17T06:21:59.000Z</published>
     </entry>
 </feed>
