@@ -2,11 +2,82 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-19T19:13:55.034Z</updated>
+    <updated>2026-11-20T01:29:18.868Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[SVGTransform: note that browsers return SVGMatrix and fix the setMatrix() example]]></title>
+        <id>https://github.com/mdn/content/pull/46607</id>
+        <link href="https://github.com/mdn/content/pull/46607"/>
+        <updated>2026-11-20T01:11:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">The <code class="notranslate">SVGTransform.matrix</code> page now has a note that browsers return an SVG 1.1 <code class="notranslate">SVGMatrix</code> rather than a <code class="notranslate">DOMMatrix</code>, using the same wording style as the <code class="notranslate">SVGRect</code> note on the <code class="notranslate">getBBox()</code> page. On the <code class="notranslate">setMatrix()</code> page, the parameter no longer says "a live DOMMatrix", there's a note that Chromium only accepts an <code class="notranslate">SVGMatrix</code>, and the example creates its matrix with <code class="notranslate">createSVGMatrix()</code> instead of <code class="notranslate">new DOMMatrix()</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The <code class="notranslate">setMatrix()</code> example throws in Chrome with <code class="notranslate">TypeError: Failed to execute 'setMatrix' on 'SVGTransform': parameter 1 is not of type 'SVGMatrix'.</code> The <code class="notranslate">matrix</code> page says the value is a <code class="notranslate">DOMMatrix</code>, but <code class="notranslate">transform.matrix instanceof DOMMatrix</code> is <code class="notranslate">false</code>, and the object has no <code class="notranslate">m11</code>, <code class="notranslate">is2D</code>, or <code class="notranslate">multiplySelf()</code>, so code written against <code class="notranslate">DOMMatrix</code> breaks.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">I ran the examples from both pages in Chrome 157. The <code class="notranslate">matrix</code> examples work as written. The old <code class="notranslate">setMatrix()</code> example throws the error above, and with <code class="notranslate">createSVGMatrix()</code> it logs <code class="notranslate">SVGMatrix { a: 1, b: 0, c: 0, d: 1, e: 50, f: 50 }</code>.</p>
+<p dir="auto">I couldn't run Firefox or Safari here, so for those I went by their IDL. Gecko's <code class="notranslate">SVGTransform.webidl</code> and WebKit's <code class="notranslate">SVGTransform.idl</code> both declare <code class="notranslate">readonly attribute SVGMatrix matrix</code> with a separate <code class="notranslate">SVGMatrix</code> interface, and their <code class="notranslate">setMatrix()</code> takes a <code class="notranslate">DOMMatrix2DInit</code>, so a <code class="notranslate">DOMMatrix</code> or plain object works there. Blink uses <code class="notranslate">SVGMatrix</code> for both, with a TODO to move to <code class="notranslate">DOMMatrix</code>: <a href="https://github.com/chromium/chromium/blob/a973c71e533a3e968b4849d69d730f8f97c17c2d/third_party/blink/renderer/core/svg/svg_transform.idl#L38-L43">https://github.com/chromium/chromium/blob/a973c71e533a3e968b4849d69d730f8f97c17c2d/third_party/blink/renderer/core/svg/svg_transform.idl#L38-L43</a></p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42849.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3838256694" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42849" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42849/hovercard" href="https://github.com/mdn/content/issues/42849">#42849</a><br>
+Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5391918403" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45581" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45581/hovercard" href="https://github.com/mdn/content/pull/45581">#45581</a></p>]]></content>
+        <author>
+            <name>Manishram-ai</name>
+            <email>Manishram-ai@noreply.github.com</email>
+            <uri>https://github.com/Manishram-ai</uri>
+        </author>
+        <published>2026-11-20T01:10:04.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Document constructors whose .prototype properties are instances]]></title>
+        <id>https://github.com/mdn/content/pull/46606</id>
+        <link href="https://github.com/mdn/content/pull/46606"/>
+        <updated>2026-11-20T01:06:07.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This information is present on Inheritance_and_the_prototype_chain but it's slightly wrong (<code class="notranslate">RegExp.prototype</code> is no longer a <code class="notranslate">RegExp</code> object) and also everything in guide must also be in reference.</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-11-20T00:08:30.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[WebExt] Add the XDG per-user location for native manifests on Linux]]></title>
+        <id>https://github.com/mdn/content/pull/46605</id>
+        <link href="https://github.com/mdn/content/pull/46605"/>
+        <updated>2026-11-20T00:03:54.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/80066674?u=c370f8992f3d2622c14fafc9495e9fce341dddf2&v=4" width="64" height="64" alt=""/><br/>
+
+<h3 dir="auto">Description</h3>
+<p dir="auto">On Linux, the per-user section of the Native manifests page now lists <code class="notranslate">~/.config/mozilla</code> as the first location Firefox checks, with <code class="notranslate">~/.mozilla</code> as the fallback when no valid manifest is found there.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Firefox can keep its profile in <code class="notranslate">~/.config/mozilla</code>, and readers who follow the page today put manifests only in <code class="notranslate">~/.mozilla</code>.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The lookup change is in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2005167" rel="nofollow">bug 2005167</a> (<a href="https://phabricator.services.mozilla.com/D337349" rel="nofollow">D337349</a>), which isn't in a Firefox release yet.</p>
+<p dir="auto">Please merge this with the Firefox release that includes it.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #42996.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3886736466" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/42996" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/42996/hovercard" href="https://github.com/mdn/content/issues/42996">#42996</a></p>]]></content>
+        <author>
+            <name>h3nc4</name>
+            <email>h3nc4@noreply.github.com</email>
+            <uri>https://github.com/h3nc4</uri>
+        </author>
+        <published>2026-11-20T00:02:08.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add "Parameters" and "Return value" to all Operator pages]]></title>
+        <id>https://github.com/mdn/content/pull/46603</id>
+        <link href="https://github.com/mdn/content/pull/46603"/>
+        <updated>2026-11-19T22:26:51.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">They are very rarely added, but they are really important for understanding the precedence rules!</p>]]></content>
+        <author>
+            <name>Josh-Cena</name>
+            <email>Josh-Cena@noreply.github.com</email>
+            <uri>https://github.com/Josh-Cena</uri>
+        </author>
+        <published>2026-11-19T21:47:03.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update Firefox 161 release notes for WebDriver conforming changes]]></title>
         <id>https://github.com/mdn/content/pull/46601</id>
@@ -117,7 +188,7 @@
         <title type="html"><![CDATA[Fix IntegrityViolationReport and Integrity-Policy examples and prose]]></title>
         <id>https://github.com/mdn/content/pull/46592</id>
         <link href="https://github.com/mdn/content/pull/46592"/>
-        <updated>2026-11-19T18:08:33.000Z</updated>
+        <updated>2026-11-19T23:53:01.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241046?u=cd3b17b6fb822d049976b087e5b8494c47d3d240&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Integrity Violation documentation has some inaccuracies, most likely due to being outdated.</p>
 <h3 dir="auto">Motivation</h3>
@@ -158,7 +229,7 @@
         <title type="html"><![CDATA[Add the message_serialization manifest key page]]></title>
         <id>https://github.com/mdn/content/pull/46591</id>
         <link href="https://github.com/mdn/content/pull/46591"/>
-        <updated>2026-11-19T01:51:50.000Z</updated>
+        <updated>2026-11-19T22:12:20.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Adds a page for the <code class="notranslate">message_serialization</code> manifest key and updates the Chrome bullet in "Data cloning algorithm" on the Chrome incompatibilities page.</p>
 <h3 dir="auto">Motivation</h3>
@@ -340,90 +411,5 @@
             <uri>https://github.com/nt1m</uri>
         </author>
         <published>2026-11-17T23:26:47.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document CSS `outline-offset: inset`]]></title>
-        <id>https://github.com/mdn/content/pull/46574</id>
-        <link href="https://github.com/mdn/content/pull/46574"/>
-        <updated>2026-11-17T22:59:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1795135?u=8b4759f2d0964426ac6f2aeacf061ad1ee0e24db&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Supported in Safari 27.3.</p>
-<p dir="auto">Specified at: <a href="https://drafts.csswg.org/css-ui/#valdef-outline-offset-inset" rel="nofollow">https://drafts.csswg.org/css-ui/#valdef-outline-offset-inset</a></p>]]></content>
-        <author>
-            <name>nt1m</name>
-            <email>nt1m@noreply.github.com</email>
-            <uri>https://github.com/nt1m</uri>
-        </author>
-        <published>2026-11-17T22:31:59.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document CSS `background-clip: border-area text`]]></title>
-        <id>https://github.com/mdn/content/pull/46573</id>
-        <link href="https://github.com/mdn/content/pull/46573"/>
-        <updated>2026-11-17T22:59:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1795135?u=8b4759f2d0964426ac6f2aeacf061ad1ee0e24db&v=4" width="64" height="64" alt=""/><br/><p dir="auto">This is supported in Chrome, and in trunk WebKit.</p>
-<p dir="auto"><a href="https://drafts.csswg.org/css-backgrounds-4/#background-clip" rel="nofollow">https://drafts.csswg.org/css-backgrounds-4/#background-clip</a></p>]]></content>
-        <author>
-            <name>nt1m</name>
-            <email>nt1m@noreply.github.com</email>
-            <uri>https://github.com/nt1m</uri>
-        </author>
-        <published>2026-11-17T22:30:55.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CSS: use {{CSSInfo}} for color-interpolation]]></title>
-        <id>https://github.com/mdn/content/pull/46572</id>
-        <link href="https://github.com/mdn/content/pull/46572"/>
-        <updated>2026-11-17T19:43:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/4141737?u=25dd3f0d0b83d1d2767f18f8174addda8438e066&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Replaces the hand-written formal-definition table on the <code class="notranslate">color-interpolation</code> page with <code class="notranslate">{{CSSInfo}}</code>, now that mdn-data has the property (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6411038217" data-permission-text="Title is private" data-url="https://github.com/mdn/data/issues/1121" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1121/hovercard" href="https://github.com/mdn/data/pull/1121">mdn/data#1121</a>, released in mdn-data 2.38.0).</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The hand-written table was wrong in two places:</p>
-<ul dir="auto">
-<li><strong>Default value:</strong> it said <code class="notranslate">auto</code>. The <a href="https://w3c.github.io/svgwg/svg2-draft/painting.html#ColorInterpolationProperty" rel="nofollow">SVG 2 definition</a> gives <code class="notranslate">sRGB</code>, and so do Chromium (<code class="notranslate">css_properties.json5</code>), Gecko (<code class="notranslate">longhands.toml</code>) and WebKit (<code class="notranslate">CSSProperties.json</code>). WPT's <code class="notranslate">svg/painting/inheritance.svg</code> tests it. The page's own <code class="notranslate">sRGB</code> entry already says it's the default.</li>
-<li><strong>Applies to:</strong> it listed only <code class="notranslate">&lt;linearGradient&gt;</code> and <code class="notranslate">&lt;radialGradient&gt;</code>. The spec says container elements, graphics elements, gradient elements, <code class="notranslate">&lt;use&gt;</code> and <code class="notranslate">&lt;animate&gt;</code>.</li>
-</ul>
-<p dir="auto"><code class="notranslate">{{CSSInfo}}</code> also adds the rows the table didn't have, such as inherited, percentages and computed value.</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto">Built the page locally with rari 1.3.0, which pulled mdn-data 2.38.0. The rendered table shows initial value <code class="notranslate">sRGB</code>, applies to "Container elements, graphics elements, gradient elements, <code class="notranslate">&lt;use&gt;</code>, and <code class="notranslate">&lt;animate&gt;</code> in <code class="notranslate">&lt;svg&gt;</code>", inherited yes, computed value as specified, and animation type discrete.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<ul dir="auto">
-<li><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6411038217" data-permission-text="Title is private" data-url="https://github.com/mdn/data/issues/1121" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1121/hovercard" href="https://github.com/mdn/data/pull/1121">mdn/data#1121</a> adds <code class="notranslate">color-interpolation</code> to mdn-data.</li>
-</ul>]]></content>
-        <author>
-            <name>arronei</name>
-            <email>arronei@noreply.github.com</email>
-            <uri>https://github.com/arronei</uri>
-        </author>
-        <published>2026-11-17T18:03:46.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Technical review] Add WebDriver Classic Navigate To and Get Current URL pages]]></title>
-        <id>https://github.com/mdn/content/pull/46570</id>
-        <link href="https://github.com/mdn/content/pull/46570"/>
-        <updated>2026-11-17T16:41:45.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105274?u=173310b843e2751843265438af8cfb79eda02039&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Added pages for the following commands of the <a href="https://w3c.github.io/webdriver/#navigation" rel="nofollow">Navigation</a> chapter of WebDriver Classic:</p>
-<ul dir="auto">
-<li>Get Current URL</li>
-<li>Navigate To</li>
-</ul>
-<h3 dir="auto">Spec links</h3>
-<ul dir="auto">
-<li><a href="https://w3c.github.io/webdriver/#navigate-to" rel="nofollow">https://w3c.github.io/webdriver/#navigate-to</a></li>
-<li><a href="https://w3c.github.io/webdriver/#get-current-url" rel="nofollow">https://w3c.github.io/webdriver/#get-current-url</a></li>
-</ul>
-<h3 dir="auto">Compat quirks worth looking into:</h3>
-<h4 dir="auto">Chrome</h4>
-<ul dir="auto">
-<li><strong>Navigate To and invalid certificates.</strong> With <code class="notranslate">acceptInsecureCerts</code> set to <code class="notranslate">false</code>, navigating to a page with a self-signed certificate returned <code class="notranslate">null</code> and loaded the "Privacy error" interstitial, where the spec returns <code class="notranslate">insecure certificate</code> (seen in my test run, headless and headed). BCD shows Navigate To as supported since Chrome 65 with no note about this.</li>
-<li><strong>Outdated <code class="notranslate">w3c</code> note.</strong> BCD's Chrome entries for both commands say to include <code class="notranslate">{"goog:chromeOptions": {"w3c": true}}</code> in the capabilities. My test sessions didn't set it, and both commands returned W3C responses.</li>
-</ul>
-<p dir="auto">/cc <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/sadym-chromium/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/sadym-chromium">@sadym-chromium</a> for the BCD update.</p>]]></content>
-        <author>
-            <name>pepelsbey</name>
-            <email>pepelsbey@noreply.github.com</email>
-            <uri>https://github.com/pepelsbey</uri>
-        </author>
-        <published>2026-11-17T16:38:38.000Z</published>
     </entry>
 </feed>
