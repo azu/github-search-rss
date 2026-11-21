@@ -2,11 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-11-21T07:48:52.150Z</updated>
+    <updated>2026-11-21T15:43:44.916Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add srcdoc, data: and blob: subfeatures to iframe loading]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31220</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31220"/>
+        <updated>2026-11-21T08:28:29.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/74147463?u=693ff618ad82ea329388dc5566b7dd0a386a3eba&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Adds <code class="notranslate">blob_url</code>, <code class="notranslate">data_url</code> and <code class="notranslate">srcdoc</code> subfeatures to <code class="notranslate">html.elements.iframe.loading</code>, as proposed in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5983782761" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30950" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30950/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30950">#30950</a>. The spec runs the lazy loading steps for <code class="notranslate">srcdoc</code> and for every URL scheme, but Chromium only lazy-loads http(s) URLs, and WebKit doesn't lazy-load <code class="notranslate">blob:</code> URLs.</p>
+<p dir="auto">The names follow <code class="notranslate">webdriver.bidi.network.getData.data_url</code>. I left the new keys untagged, so the <code class="notranslate">loading-lazy</code> web feature keeps its Baseline status until the web-features maintainers decide how to map them.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto"><code class="notranslate">npm test</code> passes.</p>
+<p dir="auto">Manual test: a page with four <code class="notranslate">loading="lazy"</code> iframes 30,000 px below the viewport (same-origin http, <code class="notranslate">srcdoc</code>, <code class="notranslate">data:</code> and <code class="notranslate">blob:</code>). It records which iframes load before the window <code class="notranslate">load</code> event and which still haven't loaded 3 seconds later.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th></th>
+<th>http(s)</th>
+<th><code class="notranslate">srcdoc</code></th>
+<th><code class="notranslate">data:</code></th>
+<th><code class="notranslate">blob:</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome 157</td>
+<td>lazy</td>
+<td>loads at once</td>
+<td>loads at once</td>
+<td>loads at once</td>
+</tr>
+<tr>
+<td>Safari 26.4</td>
+<td>lazy</td>
+<td>lazy</td>
+<td>lazy</td>
+<td>loads at once</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Firefox isn't installed here, so its data comes from the sources below.</p>
+<p dir="auto">Sources:</p>
+<ul dir="auto">
+<li>Chromium, <code class="notranslate">false</code>: <code class="notranslate">IsFrameLazyLoadable()</code> returns false for anything but http(s) URLs (<a href="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/html_frame_owner_element.cc" rel="nofollow">html_frame_owner_element.cc</a>). The open bug (<a href="https://crbug.com/40703417" rel="nofollow">crbug.com/40703417</a>) only names <code class="notranslate">srcdoc</code>, so <code class="notranslate">impl_url</code> is only on that row.</li>
+<li>Firefox 121: iframe lazy loading shipped in 121, when <code class="notranslate">dom.iframe_lazy_loading.enabled</code> became <code class="notranslate">true</code> by default (<a href="https://hg.mozilla.org/releases/mozilla-release/file/FIREFOX_121_0_RELEASE/modules/libpref/init/StaticPrefList.yaml#l4779" rel="nofollow">StaticPrefList.yaml at FIREFOX_121_0_RELEASE</a>, nightly only in 120). Firefox's WPT expectations at that tag have no <code class="notranslate">iframe-loading-lazy.html.ini</code> (<a href="https://hg.mozilla.org/releases/mozilla-release/file/FIREFOX_121_0_RELEASE/testing/web-platform/meta/html/semantics/embedded-content/the-iframe-element/" rel="nofollow">meta directory</a>), so all five subtests, including the <code class="notranslate">srcdoc</code>, <code class="notranslate">data:</code> and <code class="notranslate">blob:</code> ones, were expected to pass. Those subtests have been in WPT since July 2020 (<a href="https://github.com/web-platform-tests/wpt/commit/37281cb3688020685cd2d651a37234736eb262a4">web-platform-tests/wpt@37281cb</a>).</li>
+<li>Safari 16.4 for <code class="notranslate">srcdoc</code> and <code class="notranslate">data:</code>, <code class="notranslate">false</code> for <code class="notranslate">blob:</code>: WebKit stopped restricting iframe lazy loading to http(s) URLs in July 2022 (<a href="https://github.com/WebKit/WebKit/commit/fb16c32ad4fc21ecc04a45b295cdde23dd605d2a">252852@main</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=243225" rel="nofollow">bug 243225</a>), before iframe lazy loading shipped in 16.4, the parent's version. WebKit's expected results for the WPT haven't changed since that commit: <code class="notranslate">srcdoc</code> and <code class="notranslate">data:</code> pass, and <code class="notranslate">blob:</code> fails (<a href="https://github.com/WebKit/WebKit/blob/main/LayoutTests/imported/w3c/web-platform-tests/html/semantics/embedded-content/the-iframe-element/iframe-loading-lazy-expected.txt">iframe-loading-lazy-expected.txt</a>). The manual test on Safari 26.4 matches.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30950.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5983782761" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30950" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30950/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30950">#30950</a></p>]]></content>
+        <author>
+            <name>VanshajPoonia</name>
+            <email>VanshajPoonia@noreply.github.com</email>
+            <uri>https://github.com/VanshajPoonia</uri>
+        </author>
+        <published>2026-11-21T08:27:50.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Element.gesture[change|end|start] events are all supported on macOS Safari]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31217</id>
@@ -770,32 +824,5 @@ I used this <a href="https://github.com/ccouzens/browser-reporting-api-observabi
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-11-16T05:43:16.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF161 SVG image, script and feImage referrerpolicy]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31151</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31151"/>
-        <updated>2026-11-20T15:53:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 adds support for the <code class="notranslate">referrerpolicy</code> attribute and <code class="notranslate">referrerPolicy</code> property on SVG <code class="notranslate">&lt;image&gt;</code>, <code class="notranslate">&lt;script&gt;</code> and <code class="notranslate">&lt;feImage&gt;</code> in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2079321" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2079321</a></p>
-<p dir="auto">The collector added <code class="notranslate">api.SVGScriptElement.referrerPolicy</code> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6180738715" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31035" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31035/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31035">#31035</a>. This adds the remaining features:</p>
-<ul dir="auto">
-<li><code class="notranslate">api.SVGImageElement.referrerPolicy</code></li>
-<li><code class="notranslate">api.SVGFEImageElement.referrerPolicy</code> (non-standard: Filter Effects doesn't define <code class="notranslate">referrerpolicy</code>, see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5354645999" data-permission-text="Title is private" data-url="https://github.com/w3c/svgwg/issues/1171" data-hovercard-type="issue" data-hovercard-url="/w3c/svgwg/issues/1171/hovercard" href="https://github.com/w3c/svgwg/issues/1171">w3c/svgwg#1171</a>)</li>
-<li><code class="notranslate">svg.elements.image.referrerpolicy</code></li>
-<li><code class="notranslate">svg.elements.script.referrerpolicy</code></li>
-<li><code class="notranslate">svg.elements.feImage.referrerpolicy</code> (non-standard)</li>
-</ul>
-<p dir="auto">Claude states this, but I have not verified it:</p>
-<ul dir="auto">
-<li>Chrome: 113 for <code class="notranslate">svg.elements.image.referrerpolicy</code> only. Chrome's image loader reads <code class="notranslate">referrerpolicy</code> from whatever element it loads for, which includes SVG <code class="notranslate">&lt;image&gt;</code>, since <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/chromium/chromium/commit/4971c867d974/hovercard" href="https://github.com/chromium/chromium/commit/4971c867d974">chromium/chromium@<tt>4971c867d974</tt></a> (<code class="notranslate">refs/heads/main@{#1112277}</code>). Chrome has no <code class="notranslate">SVGImageElement.referrerPolicy</code> property. The test results in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5354645999" data-permission-text="Title is private" data-url="https://github.com/w3c/svgwg/issues/1171" data-hovercard-type="issue" data-hovercard-url="/w3c/svgwg/issues/1171/hovercard" href="https://github.com/w3c/svgwg/issues/1171">w3c/svgwg#1171</a> show Chrome applies the attribute on <code class="notranslate">&lt;image&gt;</code> but not <code class="notranslate">&lt;script&gt;</code> or <code class="notranslate">&lt;feImage&gt;</code>, and Safari applies it on none of them.</li>
-<li>Firefox ignores <code class="notranslate">no-referrer-when-downgrade</code>, <code class="notranslate">origin-when-cross-origin</code> and <code class="notranslate">unsafe-url</code> for cross-site requests from Firefox 100 (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1761826" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=1761826</a>). This adds those subfeatures with Firefox as partial, and corrects the existing <code class="notranslate">svg.elements.a</code> data, which had them removed in 92.</li>
-</ul>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6311665493" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46466" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46466/hovercard" href="https://github.com/mdn/content/issues/46466">mdn/content#46466</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-16T04:43:36.000Z</published>
     </entry>
 </feed>
