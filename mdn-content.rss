@@ -2,11 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-20T18:05:09.325Z</updated>
+    <updated>2026-11-21T00:25:31.395Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove unsupported fangsong keyword from font-family and <generic-family>]]></title>
+        <id>https://github.com/mdn/content/pull/46621</id>
+        <link href="https://github.com/mdn/content/pull/46621"/>
+        <updated>2026-11-20T20:20:56.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Removes the bare <code class="notranslate">fangsong</code> keyword from the <code class="notranslate">font-family</code> page (syntax block, values list, and the live example) and from the <code class="notranslate">&lt;generic-family&gt;</code> page (values list and the syntax line).</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">No browser treats <code class="notranslate">fangsong</code> as a generic family keyword. It only does something on systems that happen to have a font named "FangSong" installed (Windows does), so the live example falls back to the default font everywhere else. The current spec doesn't have a bare <code class="notranslate">fangsong</code> keyword either. CSS Fonts 4 now uses <code class="notranslate">generic(fangsong)</code>, which no browser supports yet, so I left that out too.</p>
+<p dir="auto">BCD already dropped <code class="notranslate">fangsong</code>, <code class="notranslate">kai</code>, <code class="notranslate">khmer-mul</code> and <code class="notranslate">nastaliq</code> from <code class="notranslate">css.properties.font-family</code> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4067860451" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29246" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29246/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29246">mdn/browser-compat-data#29246</a>), so these pages were the last place still listing it.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>None of the engines has it in their generic family keyword list: Chromium <code class="notranslate">css_value_keywords.json5</code>, WebKit <code class="notranslate">CSSValueKeywords.in</code>, and Gecko's <code class="notranslate">GenericFontFamily</code> enum in <code class="notranslate">servo/components/style/values/computed/font.rs</code> all stop at <code class="notranslate">serif</code>, <code class="notranslate">sans-serif</code>, <code class="notranslate">cursive</code>, <code class="notranslate">fantasy</code>, <code class="notranslate">monospace</code>, <code class="notranslate">system-ui</code> and <code class="notranslate">math</code>.</li>
+<li>In Chrome 156, <code class="notranslate">el.style.fontFamily = '"fangsong"'</code> reads back as <code class="notranslate">fangsong</code> (no quotes), while <code class="notranslate">"serif"</code> and <code class="notranslate">"math"</code> keep their quotes. So Chrome parses it as an ordinary family name, not a keyword.</li>
+<li>CSS Fonts 4 changes list: "Consistently use generic(fangsong) instead of fangsong, as the generic font family name."</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #43412.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4063297756" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/43412" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/43412/hovercard" href="https://github.com/mdn/content/issues/43412">#43412</a></p>]]></content>
+        <author>
+            <name>Manishram-ai</name>
+            <email>Manishram-ai@noreply.github.com</email>
+            <uri>https://github.com/Manishram-ai</uri>
+        </author>
+        <published>2026-11-20T20:19:01.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[chore(l10n): add labels for baseline link icons]]></title>
         <id>https://github.com/mdn/content/pull/46620</id>
@@ -128,7 +153,7 @@ The module page already links to these pages.</p>]]></content>
         <title type="html"><![CDATA[Document Array Initializer]]></title>
         <id>https://github.com/mdn/content/pull/46613</id>
         <link href="https://github.com/mdn/content/pull/46613"/>
-        <updated>2026-11-20T16:28:06.000Z</updated>
+        <updated>2026-11-20T19:09:17.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I'm auditing our JS docs against the ES spec to see which features are undocumented. I'm identifying some pretty glaring holes in our references. It's not that we don't need these pages; we already have places that would benefit from linking to them but have to link to guides or learning articles instead.</p>]]></content>
         <author>
             <name>Josh-Cena</name>
@@ -136,19 +161,6 @@ The module page already links to these pages.</p>]]></content>
             <uri>https://github.com/Josh-Cena</uri>
         </author>
         <published>2026-11-20T06:39:18.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Document CallExpression]]></title>
-        <id>https://github.com/mdn/content/pull/46612</id>
-        <link href="https://github.com/mdn/content/pull/46612"/>
-        <updated>2026-11-20T17:09:40.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I'm auditing our JS docs against the ES spec to see which features are undocumented. I'm identifying some pretty glaring holes in our references. It's not that we don't need these pages; we already have places that would benefit from linking to them but have to link to guides or learning articles instead.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-11-20T06:14:53.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add note about function length where param optionality differs]]></title>
@@ -239,7 +251,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Add "Parameters" and "Return value" to all Operator pages]]></title>
         <id>https://github.com/mdn/content/pull/46603</id>
         <link href="https://github.com/mdn/content/pull/46603"/>
-        <updated>2026-11-20T17:34:05.000Z</updated>
+        <updated>2026-11-20T19:13:24.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">They are very rarely added, but they are really important for understanding the precedence rules!</p>]]></content>
         <author>
             <name>Josh-Cena</name>
@@ -358,7 +370,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Fix IntegrityViolationReport and Integrity-Policy examples and prose]]></title>
         <id>https://github.com/mdn/content/pull/46592</id>
         <link href="https://github.com/mdn/content/pull/46592"/>
-        <updated>2026-11-20T12:42:44.000Z</updated>
+        <updated>2026-11-20T18:31:01.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241046?u=cd3b17b6fb822d049976b087e5b8494c47d3d240&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Integrity Violation documentation has some inaccuracies, most likely due to being outdated.</p>
 <h3 dir="auto">Motivation</h3>

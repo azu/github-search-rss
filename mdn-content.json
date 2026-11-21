@@ -6,6 +6,17 @@
     "description": "mdn/content update content on GitHub",
     "items": [
         {
+            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Removes the bare <code class=\"notranslate\">fangsong</code> keyword from the <code class=\"notranslate\">font-family</code> page (syntax block, values list, and the live example) and from the <code class=\"notranslate\">&lt;generic-family&gt;</code> page (values list and the syntax line).</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">No browser treats <code class=\"notranslate\">fangsong</code> as a generic family keyword. It only does something on systems that happen to have a font named \"FangSong\" installed (Windows does), so the live example falls back to the default font everywhere else. The current spec doesn't have a bare <code class=\"notranslate\">fangsong</code> keyword either. CSS Fonts 4 now uses <code class=\"notranslate\">generic(fangsong)</code>, which no browser supports yet, so I left that out too.</p>\n<p dir=\"auto\">BCD already dropped <code class=\"notranslate\">fangsong</code>, <code class=\"notranslate\">kai</code>, <code class=\"notranslate\">khmer-mul</code> and <code class=\"notranslate\">nastaliq</code> from <code class=\"notranslate\">css.properties.font-family</code> (<a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4067860451\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/browser-compat-data/issues/29246\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/browser-compat-data/issues/29246/hovercard\" href=\"https://github.com/mdn/browser-compat-data/issues/29246\">mdn/browser-compat-data#29246</a>), so these pages were the last place still listing it.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>None of the engines has it in their generic family keyword list: Chromium <code class=\"notranslate\">css_value_keywords.json5</code>, WebKit <code class=\"notranslate\">CSSValueKeywords.in</code>, and Gecko's <code class=\"notranslate\">GenericFontFamily</code> enum in <code class=\"notranslate\">servo/components/style/values/computed/font.rs</code> all stop at <code class=\"notranslate\">serif</code>, <code class=\"notranslate\">sans-serif</code>, <code class=\"notranslate\">cursive</code>, <code class=\"notranslate\">fantasy</code>, <code class=\"notranslate\">monospace</code>, <code class=\"notranslate\">system-ui</code> and <code class=\"notranslate\">math</code>.</li>\n<li>In Chrome 156, <code class=\"notranslate\">el.style.fontFamily = '\"fangsong\"'</code> reads back as <code class=\"notranslate\">fangsong</code> (no quotes), while <code class=\"notranslate\">\"serif\"</code> and <code class=\"notranslate\">\"math\"</code> keep their quotes. So Chrome parses it as an ordinary family name, not a keyword.</li>\n<li>CSS Fonts 4 changes list: \"Consistently use generic(fangsong) instead of fangsong, as the generic font family name.\"</li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n<p dir=\"auto\"><span class=\"issue-keyword tooltipped tooltipped-se\" aria-label=\"This pull request closes issue #43412.\">Fixes</span> <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"4063297756\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/content/issues/43412\" data-hovercard-type=\"issue\" data-hovercard-url=\"/mdn/content/issues/43412/hovercard\" href=\"https://github.com/mdn/content/issues/43412\">#43412</a></p>",
+            "url": "https://github.com/mdn/content/pull/46621",
+            "title": "Remove unsupported fangsong keyword from font-family and <generic-family>",
+            "date_modified": "2026-11-20T20:20:56.000Z",
+            "date_published": "2026-11-20T20:19:01.000Z",
+            "author": {
+                "name": "Manishram-ai",
+                "url": "https://github.com/Manishram-ai"
+            }
+        },
+        {
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/755354?u=7e7c1abdb78aea9b0b6b14e40544503f72b34789&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">Adds labels for icons <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"6514997675\" data-permission-text=\"Title is private\" data-url=\"https://github.com/mdn/rari/issues/1060\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/mdn/rari/pull/1060/hovercard\" href=\"https://github.com/mdn/rari/pull/1060\">mdn/rari#1060</a> introduces.</p>",
             "url": "https://github.com/mdn/content/pull/46620",
             "title": "chore(l10n): add labels for baseline link icons",
@@ -64,19 +75,8 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I'm auditing our JS docs against the ES spec to see which features are undocumented. I'm identifying some pretty glaring holes in our references. It's not that we don't need these pages; we already have places that would benefit from linking to them but have to link to guides or learning articles instead.</p>",
             "url": "https://github.com/mdn/content/pull/46613",
             "title": "Document Array Initializer",
-            "date_modified": "2026-11-20T16:28:06.000Z",
+            "date_modified": "2026-11-20T19:09:17.000Z",
             "date_published": "2026-11-20T06:39:18.000Z",
-            "author": {
-                "name": "Josh-Cena",
-                "url": "https://github.com/Josh-Cena"
-            }
-        },
-        {
-            "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">I'm auditing our JS docs against the ES spec to see which features are undocumented. I'm identifying some pretty glaring holes in our references. It's not that we don't need these pages; we already have places that would benefit from linking to them but have to link to guides or learning articles instead.</p>",
-            "url": "https://github.com/mdn/content/pull/46612",
-            "title": "Document CallExpression",
-            "date_modified": "2026-11-20T17:09:40.000Z",
-            "date_published": "2026-11-20T06:14:53.000Z",
             "author": {
                 "name": "Josh-Cena",
                 "url": "https://github.com/Josh-Cena"
@@ -141,7 +141,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><p dir=\"auto\">They are very rarely added, but they are really important for understanding the precedence rules!</p>",
             "url": "https://github.com/mdn/content/pull/46603",
             "title": "Add \"Parameters\" and \"Return value\" to all Operator pages",
-            "date_modified": "2026-11-20T17:34:05.000Z",
+            "date_modified": "2026-11-20T19:13:24.000Z",
             "date_published": "2026-11-19T21:47:03.000Z",
             "author": {
                 "name": "Josh-Cena",
@@ -218,7 +218,7 @@
             "content_html": "<img src=\"https://avatars.githubusercontent.com/u/241046?u=cd3b17b6fb822d049976b087e5b8494c47d3d240&v=4\" width=\"64\" height=\"64\" alt=\"\"/><br/><h3 dir=\"auto\">Description</h3>\n<p dir=\"auto\">Integrity Violation documentation has some inaccuracies, most likely due to being outdated.</p>\n<h3 dir=\"auto\">Motivation</h3>\n<p dir=\"auto\">Fixing this is important for accuracy. My motivation is I noticed issues when comparing to observed behaviour and specifications.</p>\n<h3 dir=\"auto\">Additional details</h3>\n<ul dir=\"auto\">\n<li>Update destination on IntegrityViolationReport to allow \"script\" or \"style\" per W3C SRI (#destination).</li>\n<li>Fix Structured Fields syntax in IntegrityViolationReport's Reporting-Endpoints (quoted strings) and Integrity-Policy (space-separated inner list) examples per RFC 9651.</li>\n<li>Fix server report payload examples on both pages to use a JSON array (application/reports+json) with numeric age and user_agent per W3C Reporting API (#serialize-reports).</li>\n<li>Fix crossorigin attribute spelling and IntegrityViolationReportBody reference.</li>\n</ul>\n<h4 dir=\"auto\">Specifications:</h4>\n<ul dir=\"auto\">\n<li><a href=\"https://w3c.github.io/webappsec-subresource-integrity/#destination\" rel=\"nofollow\">https://w3c.github.io/webappsec-subresource-integrity/#destination</a></li>\n<li><a href=\"https://w3c.github.io/reporting/#serialize-reports\" rel=\"nofollow\">https://w3c.github.io/reporting/#serialize-reports</a></li>\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc9651#section-3.1.1\" rel=\"nofollow\">https://www.rfc-editor.org/rfc/rfc9651#section-3.1.1</a></li>\n<li><a href=\"https://www.rfc-editor.org/rfc/rfc9651#section-3.3.3\" rel=\"nofollow\">https://www.rfc-editor.org/rfc/rfc9651#section-3.3.3</a></li>\n</ul>\n<h4 dir=\"auto\">Captured browser report examples:</h4>\n<ul dir=\"auto\">\n<li><a href=\"https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/chrome-156/2026-11-01-site-with-violations-composite.json#L143-L154\">https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/chrome-156/2026-11-01-site-with-violations-composite.json#L143-L154</a></li>\n<li><a href=\"https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/firefox-159/2026-11-01-site-with-violations.json#L6-L17\">https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/firefox-159/2026-11-01-site-with-violations.json#L6-L17</a></li>\n<li><a href=\"https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/safari-27/2026-11-18-site-with-violations-composite.json#L6-L19\">https://github.com/ccouzens/browser-reporting-api-observability-ingester/blob/e4a4bc117966783f3e8403b1e9682c0c5bab5478/projects/example-reports/safari-27/2026-11-18-site-with-violations-composite.json#L6-L19</a></li>\n</ul>\n<h3 dir=\"auto\">Related issues and pull requests</h3>\n\n\n\n",
             "url": "https://github.com/mdn/content/pull/46592",
             "title": "Fix IntegrityViolationReport and Integrity-Policy examples and prose",
-            "date_modified": "2026-11-20T12:42:44.000Z",
+            "date_modified": "2026-11-20T18:31:01.000Z",
             "date_published": "2026-11-18T23:48:34.000Z",
             "author": {
                 "name": "ccouzens",

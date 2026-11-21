@@ -2,11 +2,39 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-11-20T18:05:07.950Z</updated>
+    <updated>2026-11-21T00:25:30.680Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Add `options.type` parameter to PerformanceObserver.observe()]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31215</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31215"/>
+        <updated>2026-11-20T20:19:37.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/120339761?u=b8485fb99548a1d5517497bf2e0a0b93f42d1abd&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Adds <code class="notranslate">api.PerformanceObserver.observe.options_type_parameter</code>. The method shipped with <code class="notranslate">entryTypes</code> only, and <code class="notranslate">observe({ type: "..." })</code> came later, so the current data (Safari 11, Chrome 52, Firefox 57) overstates support for code that uses <code class="notranslate">type</code>.</p>
+<p dir="auto">I named it <code class="notranslate">options_type_parameter</code> instead of <code class="notranslate">type_parameter</code>, following the guideline for properties of parameter objects (same as <code class="notranslate">options_capture_parameter</code> on <code class="notranslate">addEventListener()</code>).</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Versions follow what <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/caugner/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/caugner">@caugner</a> found in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2557255410" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/24584" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/24584/hovercard" href="https://github.com/mdn/browser-compat-data/issues/24584">#24584</a>, and I checked each one against the source:</p>
+<ul dir="auto">
+<li>Chrome 74: "[PerformanceObserver] Ship |type| in PerformanceObserverInit" (e80ce141047415c1412c5c300f5ff206e45aa8b7), first in 74.0.3690.0 per chromiumdash.</li>
+<li>Firefox 68: bug 1539006, target milestone mozilla68.</li>
+<li>Safari 14: WebKit d37ab8ceef1841fad029605443a7177f805299fd (bug 209216), WebKit 610.1.24. Safari 13.1 is 609.1.20 and Safari 14 is 610.1.28.</li>
+<li>Node.js 16.0.0: <code class="notranslate">lib/perf_hooks.js</code> in v15.14.0 only reads <code class="notranslate">entryTypes</code>; <code class="notranslate">lib/internal/perf/observe.js</code> in v16.0.0 reads <code class="notranslate">type</code> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="797330752" data-permission-text="Title is private" data-url="https://github.com/nodejs/node/issues/37136" data-hovercard-type="pull_request" data-hovercard-url="/nodejs/node/pull/37136/hovercard" href="https://github.com/nodejs/node/pull/37136">nodejs/node#37136</a>).</li>
+<li>Deno 2.7: the first <code class="notranslate">PerformanceObserver</code> in <code class="notranslate">ext/web/15_performance.js</code> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3824546713" data-permission-text="Title is private" data-url="https://github.com/denoland/deno/issues/31875" data-hovercard-type="pull_request" data-hovercard-url="/denoland/deno/pull/31875/hovercard" href="https://github.com/denoland/deno/pull/31875">denoland/deno#31875</a>) already handles <code class="notranslate">type</code>, so same as the parent.</li>
+<li>Bun 1.0.22: <code class="notranslate">src/bun.js/bindings/webcore/PerformanceObserver.cpp</code> at <code class="notranslate">bun-v1.0.22</code> already handles <code class="notranslate">init.type</code>, so same as the parent.</li>
+</ul>
+<p dir="auto"><code class="notranslate">observe({ type: "mark" })</code> delivers entries in Node 22 and Bun 1.3.11. <code class="notranslate">npm run lint</code> on the file passes and <code class="notranslate">lint:fix</code> makes no changes.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #24584.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2557255410" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/24584" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/24584/hovercard" href="https://github.com/mdn/browser-compat-data/issues/24584">#24584</a></p>]]></content>
+        <author>
+            <name>Manishram-ai</name>
+            <email>Manishram-ai@noreply.github.com</email>
+            <uri>https://github.com/Manishram-ai</uri>
+        </author>
+        <published>2026-11-20T20:18:59.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mark kernelUnitLength on feConvolveMatrix and feDiffuseLighting as deprecated]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31201</id>
@@ -316,7 +344,7 @@ I used this <a href="https://github.com/ccouzens/browser-reporting-api-observabi
         <title type="html"><![CDATA[Update data for Safari Technology Preview 257, and add message_serialization.]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31193</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/31193"/>
-        <updated>2026-11-20T16:28:51.000Z</updated>
+        <updated>2026-11-20T19:06:45.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto">Updates the web extension data and some web platform data for Safari Technology Preview 257, and adds the <code class="notranslate">message_serialization</code> manifest key.</p>
 <ul dir="auto">
@@ -522,7 +550,7 @@ I used this <a href="https://github.com/ccouzens/browser-reporting-api-observabi
         <title type="html"><![CDATA[Firefox supports WebGPU in service workers from 148]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31176</id>
         <link href="https://github.com/mdn/browser-compat-data/pull/31176"/>
-        <updated>2026-11-18T10:34:37.000Z</updated>
+        <updated>2026-11-20T22:28:06.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/114113246?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
 <p dir="auto"><a href="https://www.firefox.com/en-US/firefox/148.0/releasenotes/" rel="nofollow">Firefox supports WebGPU in service workers from version 148.</a> Remove the note about the service worker restriction everywhere it appears. I have not replaced it with a note stating that support started in 148, to me that doesn't seem like an important enough point to be worth cluttering all of these pages with the note. But I can add it if desired.</p>
 <p dir="auto">There were two instances of the alternate note text "Supported on Windows only, in all contexts except for service workers." One of these was <code class="notranslate">GPUDevice.importExternalTexture</code>, where that note was correct when added, but is no longer correct. I removed it and replaced it with the full standard set of WebGPU notes (but support starts in Firefox 144, not Firefox 141).</p>
@@ -765,23 +793,5 @@ I used this <a href="https://github.com/ccouzens/browser-reporting-api-observabi
             <uri>https://github.com/Elchi3</uri>
         </author>
         <published>2026-11-13T09:29:16.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add PerformanceObserver options]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31131</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31131"/>
-        <updated>2026-11-19T17:48:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add buffered and type sub features to PerformanceObserver.observe.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Results from the Collector based on newly added tests, see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5544346416" data-permission-text="Title is private" data-url="https://github.com/openwebdocs/mdn-bcd-collector/issues/3400" data-hovercard-type="pull_request" data-hovercard-url="/openwebdocs/mdn-bcd-collector/pull/3400/hovercard" href="https://github.com/openwebdocs/mdn-bcd-collector/pull/3400">openwebdocs/mdn-bcd-collector#3400</a></p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29426.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4220711544" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29426" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29426/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29426">#29426</a></p>]]></content>
-        <author>
-            <name>Elchi3</name>
-            <email>Elchi3@noreply.github.com</email>
-            <uri>https://github.com/Elchi3</uri>
-        </author>
-        <published>2026-11-13T09:11:33.000Z</published>
     </entry>
 </feed>
