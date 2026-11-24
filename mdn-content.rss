@@ -2,11 +2,284 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-23T13:48:06.221Z</updated>
+    <updated>2026-11-24T01:19:44.859Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Sec-Fetch-Dest: explain values for navigations through a service worker]]></title>
+        <id>https://github.com/mdn/content/pull/46678</id>
+        <link href="https://github.com/mdn/content/pull/46678"/>
+        <updated>2026-11-23T19:53:00.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/563511?u=08fbf2bca76b05ddbd5d3fa454fef5aab6c763aa&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">This PR fixes the <code class="notranslate">document</code> directive on the <code class="notranslate">Sec-Fetch-Dest</code> page.<br>
+It no longer says "user-initiated".<br>
+It also adds a section about navigations that pass through a service worker.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">A <code class="notranslate">document</code> request is not always user-initiated.<br>
+User activation is what <code class="notranslate">Sec-Fetch-User</code> reports.</p>
+<p dir="auto">Servers often use <code class="notranslate">Sec-Fetch-Dest: document</code> to detect top-level navigations.<br>
+This breaks when a service worker forwards the navigation with <code class="notranslate">event.respondWith(fetch(event.request))</code>.<br>
+The new section explains what the server sees in that case and how to keep the destination.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>A passthrough fetch sends <code class="notranslate">Sec-Fetch-Dest: empty</code> for top-level navigations and for iframe navigations.</li>
+<li>Chrome and Safari send <code class="notranslate">Sec-Fetch-Mode: navigate</code> for that fetch.</li>
+<li>Firefox sends <code class="notranslate">Sec-Fetch-Mode: same-origin</code> for that fetch. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2035038" rel="nofollow">Bugzilla 2035038</a>.</li>
+<li>The WPT test <code class="notranslate">service-workers/service-worker/navigation-headers.https.html</code> expects <code class="notranslate">navigate</code> / <code class="notranslate">empty</code> for passthrough iframe navigations.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li>Spec discussion: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3599881413" data-permission-text="Title is private" data-url="https://github.com/w3c/ServiceWorker/issues/1803" data-hovercard-type="issue" data-hovercard-url="/w3c/ServiceWorker/issues/1803/hovercard" href="https://github.com/w3c/ServiceWorker/issues/1803">w3c/ServiceWorker#1803</a></li>
+</ul>]]></content>
+        <author>
+            <name>fbuecklers</name>
+            <email>fbuecklers@noreply.github.com</email>
+            <uri>https://github.com/fbuecklers</uri>
+        </author>
+        <published>2026-11-23T19:50:57.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[created the text-autospace-size property]]></title>
+        <id>https://github.com/mdn/content/pull/46671</id>
+        <link href="https://github.com/mdn/content/pull/46671"/>
+        <updated>2026-11-23T18:25:36.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<ul dir="auto">
+<li>Created the <code class="notranslate">text-autospace-size</code> CSS property page</li>
+<li>Added See Also link on <code class="notranslate">text-autospace</code> CSS property page</li>
+</ul>
+<h3 dir="auto">Motivation</h3>
+<ul dir="auto">
+<li>Working on <a href="https://github.com/mdn/content/issues/46471" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46471/hovercard">MDN Issue #46471</a></li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/browser-compat-data/pull/31237" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31237/hovercard">BCD PR</a></li>
+<li><a href="https://github.com/mdn/data/pull/1125" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1125/hovercard">Data PR</a></li>
+<li><a href="https://github.com/mdn/content/pull/46672" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46672/hovercard">Firefox Release PR</a></li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-11-23T17:27:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[fix(l10n): link banners to translated compat IDs]]></title>
+        <id>https://github.com/mdn/content/pull/46670</id>
+        <link href="https://github.com/mdn/content/pull/46670"/>
+        <updated>2026-11-23T16:42:13.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Update the compat links in the deprecated, secure context and "see compat table" banners in <code class="notranslate">L10n-Template.json</code> to the localized compat heading IDs for es, ja, ko, pt-BR and ru.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">Make the banner links resolve on translated pages, where the compat heading has a localized ID instead of <code class="notranslate">browser_compatibility</code>.</p>
+<h3 dir="auto">Additional details</h3>
+<p dir="auto">The IDs are the most common compat heading per locale in translated-content (es, ja, ko, pt-BR, ru) and de. en-US, de, fr, zh-CN and zh-TW already matched.</p>
+<p dir="auto">Pages with a non-standard compat heading or several <code class="notranslate">{{Compat}}</code> tables still get a dead link. Fixing those needs a change in rari.</p>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Related to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6560521021" data-permission-text="Title is private" data-url="https://github.com/mdn/rari/issues/1066" data-hovercard-type="issue" data-hovercard-url="/mdn/rari/issues/1066/hovercard" href="https://github.com/mdn/rari/issues/1066">mdn/rari#1066</a>.</p>]]></content>
+        <author>
+            <name>caugner</name>
+            <email>caugner@noreply.github.com</email>
+            <uri>https://github.com/caugner</uri>
+        </author>
+        <published>2026-11-23T16:40:42.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Update filter effects documentation with new entries]]></title>
+        <id>https://github.com/mdn/content/pull/46669</id>
+        <link href="https://github.com/mdn/content/pull/46669"/>
+        <updated>2026-11-23T16:59:23.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/69888?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Added new filter-related properties, functions, and SVG elements to the documentation.</p>
+<ul dir="auto">
+<li>4 properties were missing or mislabeled</li>
+<li>See also included stuff in the spec.</li>
+<li>filter() function was missing (doc is being added in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6074359862" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46315" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46315/hovercard" href="https://github.com/mdn/content/pull/46315">#46315</a></li>
+</ul>]]></content>
+        <author>
+            <name>estelle</name>
+            <email>estelle@noreply.github.com</email>
+            <uri>https://github.com/estelle</uri>
+        </author>
+        <published>2026-11-23T15:15:14.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[build(deps-dev): bump the npm-dev group with 2 updates]]></title>
+        <id>https://github.com/mdn/content/pull/46668</id>
+        <link href="https://github.com/mdn/content/pull/46668"/>
+        <updated>2026-11-23T14:03:35.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/in/29110?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Bumps the npm-dev group with 2 updates: <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell">cspell</a> and <a href="https://github.com/DavidAnson/markdownlint-cli2">markdownlint-cli2</a>.</p>
+<p dir="auto">Updates <code class="notranslate">cspell</code> from 10.5.1 to 10.5.2</p>
+<details>
+<summary>Release notes</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/releases">cspell's releases</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.5.2</h2>
+<h2 dir="auto">Fixes</h2>
+
+<h3 dir="auto">fix: <code class="notranslate">--gitignore</code> skips nested repositories in ignored folders again (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9648">#9648</a>)</h3>
+<h2 dir="auto">Summary</h2>
+<p dir="auto">With <code class="notranslate">--gitignore</code> (<code class="notranslate">useGitignore</code>), cspell again skips a git repository kept in a folder that <code class="notranslate">.gitignore</code> excludes, such as a tool's cache of cloned dependencies. Since 10.4.0, these files were checked. A submodule in an ignored folder is still checked, as git does.</p>
+<p dir="auto">Fixes <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9645">#9645</a></p>
+<h2 dir="auto">Before and after</h2>
+<p dir="auto">A project with a clone in an ignored cache folder, and a submodule in an ignored <code class="notranslate">vendor/</code> folder:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="project/
+  .gitignore     .cache/ and vendor/
+  .gitmodules    lists vendor/lib
+  README.md
+  .cache/dep/    a clone, with its own .git
+  vendor/lib/    a submodule"><pre lang="text" class="notranslate"><code class="notranslate">project/
+  .gitignore     .cache/ and vendor/
+  .gitmodules    lists vendor/lib
+  README.md
+  .cache/dep/    a clone, with its own .git
+  vendor/lib/    a submodule
+</code></pre></div>
+<p dir="auto">Before, cspell checked the clone:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cspell lint --gitignore --dot &quot;**/*.md&quot;
+.cache/dep/NOTES.md:1:1 - Unknown word (Thsi) fix: (This)
+.cache/dep/NOTES.md:1:9 - Unknown word (misspeled) fix: (misspelled)
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 3, Issues found: 4 in 2 files."><pre lang="text" class="notranslate"><code class="notranslate">$ cspell lint --gitignore --dot "**/*.md"
+.cache/dep/NOTES.md:1:1 - Unknown word (Thsi) fix: (This)
+.cache/dep/NOTES.md:1:9 - Unknown word (misspeled) fix: (misspelled)
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 3, Issues found: 4 in 2 files.
+</code></pre></div>
+<p dir="auto">After, it skips the clone and checks the submodule:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cspell lint --gitignore --dot &quot;**/*.md&quot;
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 2, Issues found: 2 in 1 file."><pre lang="text" class="notranslate"><code class="notranslate">$ cspell lint --gitignore --dot "**/*.md"
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 2, Issues found: 2 in 1 file.
+</code></pre></div>
+<p dir="auto">What to know:</p>
+<ul dir="auto">
+<li>A repository in an ignored folder is skipped with all its files, unless <code class="notranslate">.gitmodules</code> lists it as a submodule.</li>
+<li>A repository added with plain <code class="notranslate">git add</code>, without a <code class="notranslate">.gitmodules</code> entry, is skipped too.</li>
+</ul>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/streetsidesoftware/cspell/blob/main/packages/cspell/CHANGELOG.md">cspell's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto">v10.5.2 (2026-11-18)</h2>
+<h3 dir="auto">Fixes</h3>
+
+<h3 dir="auto">fix: <code class="notranslate">--gitignore</code> skips nested repositories in ignored folders again (<a href="https://redirect.github.com/streetsidesoftware/cspell/pull/9648">#9648</a>)</h3>
+<h2 dir="auto">Summary</h2>
+<p dir="auto">With <code class="notranslate">--gitignore</code> (<code class="notranslate">useGitignore</code>), cspell again skips a git repository kept in a folder that <code class="notranslate">.gitignore</code> excludes, such as a tool's cache of cloned dependencies. Since 10.4.0, these files were checked. A submodule in an ignored folder is still checked, as git does.</p>
+<p dir="auto">Fixes <a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9645">#9645</a></p>
+<h2 dir="auto">Before and after</h2>
+<p dir="auto">A project with a clone in an ignored cache folder, and a submodule in an ignored <code class="notranslate">vendor/</code> folder:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="project/
+  .gitignore     .cache/ and vendor/
+  .gitmodules    lists vendor/lib
+  README.md
+  .cache/dep/    a clone, with its own .git
+  vendor/lib/    a submodule"><pre lang="text" class="notranslate"><code class="notranslate">project/
+  .gitignore     .cache/ and vendor/
+  .gitmodules    lists vendor/lib
+  README.md
+  .cache/dep/    a clone, with its own .git
+  vendor/lib/    a submodule
+</code></pre></div>
+<p dir="auto">Before, cspell checked the clone:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cspell lint --gitignore --dot &quot;**/*.md&quot;
+.cache/dep/NOTES.md:1:1 - Unknown word (Thsi) fix: (This)
+.cache/dep/NOTES.md:1:9 - Unknown word (misspeled) fix: (misspelled)
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 3, Issues found: 4 in 2 files."><pre lang="text" class="notranslate"><code class="notranslate">$ cspell lint --gitignore --dot "**/*.md"
+.cache/dep/NOTES.md:1:1 - Unknown word (Thsi) fix: (This)
+.cache/dep/NOTES.md:1:9 - Unknown word (misspeled) fix: (misspelled)
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 3, Issues found: 4 in 2 files.
+</code></pre></div>
+<p dir="auto">After, it skips the clone and checks the submodule:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="$ cspell lint --gitignore --dot &quot;**/*.md&quot;
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 2, Issues found: 2 in 1 file."><pre lang="text" class="notranslate"><code class="notranslate">$ cspell lint --gitignore --dot "**/*.md"
+vendor/lib/NOTES.md:1:1 - Unknown word (Anothr) fix: (Another)
+vendor/lib/NOTES.md:1:8 - Unknown word (typpo) fix: (typo)
+CSpell: Files checked: 2, Issues found: 2 in 1 file.
+</code></pre></div>
+<p dir="auto">What to know:</p>
+
+</blockquote>
+<p dir="auto">... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/34132d2613f8c557c3abddd0fb6919c8bec223de"><code class="notranslate">34132d2</code></a> v10.5.2</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/commit/29dafad5960de794dfb3e5f37ab79dbc09afddb7"><code class="notranslate">29dafad</code></a> chore: Prepare Release v10.5.2 (auto-deploy) (<a href="https://github.com/streetsidesoftware/cspell/tree/HEAD/packages/cspell/issues/9636">#9636</a>)</li>
+<li>See full diff in <a href="https://github.com/streetsidesoftware/cspell/commits/v10.5.2/packages/cspell">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto">Updates <code class="notranslate">markdownlint-cli2</code> from 0.24.1 to 0.24.2</p>
+<details>
+<summary>Changelog</summary>
+<p dir="auto"><em>Sourced from <a href="https://github.com/DavidAnson/markdownlint-cli2/blob/main/CHANGELOG.md">markdownlint-cli2's changelog</a>.</em></p>
+<blockquote>
+<h2 dir="auto">0.24.2</h2>
+<ul dir="auto">
+<li>Update dependencies (including <code class="notranslate">markdownlint</code>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul dir="auto">
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/d4df4cec471ce155946474590d7b95920f623ccb"><code class="notranslate">d4df4ce</code></a> Update to version 0.24.2.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/a35aa01c4304d924572fe539800f7a90f1d55cdd"><code class="notranslate">a35aa01</code></a> Add test case for config/options objects with null prototype (as produced by ...</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/198fbd543efe88c0c5f7004ee282d066d6dfc14b"><code class="notranslate">198fbd5</code></a> Update dependency: markdownlint to 0.42.2.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/577efbc147f8a2d548cf5908fc3f107d5db0ea21"><code class="notranslate">577efbc</code></a> Bump concurrently from 10.0.6 to 10.0.7</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/6ddd178cbe14c86574b1adab52cbc37321af04b0"><code class="notranslate">6ddd178</code></a> Bump eslint-plugin-jsdoc from 65.4.4 to 65.4.5</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/903e8f587fb12906b62b5f0f8122af1678031303"><code class="notranslate">903e8f5</code></a> Update indirect playwright dependencies.</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/e3dc5bc99aaf61d47819dc987e91bc17c8d01271"><code class="notranslate">e3dc5bc</code></a> Bump <code class="notranslate">@​playwright/test</code> from 1.64.1 to 1.65.0</li>
+<li><a href="https://github.com/DavidAnson/markdownlint-cli2/commit/e907060ad6ec333baf0ba00e494884f2b0323644"><code class="notranslate">e907060</code></a> Bump eslint-plugin-jsdoc from 65.4.2 to 65.4.4</li>
+<li>See full diff in <a href="https://github.com/DavidAnson/markdownlint-cli2/compare/v0.24.1...v0.24.2">compare view</a></li>
+</ul>
+</details>
+<br>
+<p dir="auto">Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting <code class="notranslate">@dependabot rebase</code>.</p>
+<hr>
+<details>
+<summary>Dependabot commands and options</summary>
+<br>
+<p dir="auto">You can trigger Dependabot actions by commenting on this PR:</p>
+<ul dir="auto">
+<li><code class="notranslate">@dependabot rebase</code> will rebase this PR</li>
+<li><code class="notranslate">@dependabot recreate</code> will recreate this PR, overwriting any edits that have been made to it</li>
+<li><code class="notranslate">@dependabot show &lt;dependency name&gt; ignore conditions</code> will show all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt; major version</code> will close this group update PR and stop Dependabot creating any more for the specific dependency's major version (unless you unignore this specific dependency's major version or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt; minor version</code> will close this group update PR and stop Dependabot creating any more for the specific dependency's minor version (unless you unignore this specific dependency's minor version or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot ignore &lt;dependency name&gt;</code> will close this group update PR and stop Dependabot creating any more for the specific dependency (unless you unignore this specific dependency or upgrade to it yourself)</li>
+<li><code class="notranslate">@dependabot unignore &lt;dependency name&gt;</code> will remove all of the ignore conditions of the specified dependency</li>
+<li><code class="notranslate">@dependabot unignore &lt;dependency name&gt; &lt;ignore condition&gt;</code> will remove the ignore condition of the specified dependency and ignore conditions</li>
+</ul>
+</details>]]></content>
+        <author>
+            <name>dependabot</name>
+            <email>dependabot@noreply.github.com</email>
+            <uri>https://github.com/apps/dependabot</uri>
+        </author>
+        <published>2026-11-23T14:03:09.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Fix formatting issues/grammar in CSS landing/index page documentation]]></title>
         <id>https://github.com/mdn/content/pull/46667</id>
@@ -60,27 +333,10 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <published>2026-11-23T11:12:41.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Fix spelling in JavaScript division and multiplication pages]]></title>
-        <id>https://github.com/mdn/content/pull/46645</id>
-        <link href="https://github.com/mdn/content/pull/46645"/>
-        <updated>2026-11-23T10:55:27.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/185269030?u=1fc22565ccf4566b6f734fabaa87e03d9a31cfe4&v=4" width="64" height="64" alt=""/><br/><h2 dir="auto">Summary</h2>
-<ul dir="auto">
-<li>Correct <code class="notranslate">infinitestimally</code> to <code class="notranslate">infinitesimally</code> in the division and multiplication operator pages.</li>
-</ul>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46635.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6549526108" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46635" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46635/hovercard" href="https://github.com/mdn/content/issues/46635">#46635</a></p>]]></content>
-        <author>
-            <name>BHUVANSH855</name>
-            <email>BHUVANSH855@noreply.github.com</email>
-            <uri>https://github.com/BHUVANSH855</uri>
-        </author>
-        <published>2026-11-23T10:53:53.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Move commented-out Examples headings on 2 ARIA role pages]]></title>
         <id>https://github.com/mdn/content/pull/46643</id>
         <link href="https://github.com/mdn/content/pull/46643"/>
-        <updated>2026-11-23T10:41:15.000Z</updated>
+        <updated>2026-11-23T14:11:48.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/495429?u=9d0bf7e5c07194485c7f81827005599ecced9712&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">Move the commented-out <code class="notranslate">## Examples</code> placeholder after the commented-out Best practices placeholder on 2 ARIA role pages.</p>
 <ul dir="auto">
@@ -106,7 +362,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[Update description of initialValue in reduce()]]></title>
         <id>https://github.com/mdn/content/pull/46642</id>
         <link href="https://github.com/mdn/content/pull/46642"/>
-        <updated>2026-11-23T09:50:13.000Z</updated>
+        <updated>2026-11-23T17:54:09.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1612152?u=c364c8ddb8e3c925f174e8034ee28df43f40330e&v=4" width="64" height="64" alt=""/><br/><p dir="auto">Clarified behavior of initialValue in reduce() function.</p>
 <h3 dir="auto">Description</h3>
 <p dir="auto">Explain the type of the <code class="notranslate">initialValue</code> as well as result.</p>
@@ -172,7 +428,7 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
         <title type="html"><![CDATA[CSSTranslate: fix pages and add examples]]></title>
         <id>https://github.com/mdn/content/pull/46639</id>
         <link href="https://github.com/mdn/content/pull/46639"/>
-        <updated>2026-11-23T06:19:52.000Z</updated>
+        <updated>2026-11-23T23:36:23.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This updates <code class="notranslate">CSSTranslate</code>, its constructor, and its <code class="notranslate">x</code>, <code class="notranslate">y</code>, and <code class="notranslate">z</code> properties (<a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API" rel="nofollow">CSS Typed OM API</a>) to match the spec, and replaces the "To do" stub examples.</p>
 <ul dir="auto">
 <li>Fix the API link (it pointed to the CSSOM docs), and say it represents any translation function, not just <code class="notranslate">translate()</code>.</li>
@@ -194,42 +450,6 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/hamishwillee</uri>
         </author>
         <published>2026-11-23T06:12:08.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fix resolved URL in import map literal matching example]]></title>
-        <id>https://github.com/mdn/content/pull/46638</id>
-        <link href="https://github.com/mdn/content/pull/46638"/>
-        <updated>2026-11-23T03:08:42.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/302326616?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">In the "Literal matching" example of the import maps section, the page is at <code class="notranslate">https://example.com/welcome</code> (no trailing slash), so <code class="notranslate">./shapes/square.js</code> resolves to <code class="notranslate">https://example.com/shapes/square.js</code>, not <code class="notranslate">https://example.com/welcome/shapes/square.js</code>. This fixes that first URL; the following sentence about <code class="notranslate">https://example.com/welcome/</code> already had the right one.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The two sentences currently give the same URL for two different base URLs, which hides the point the paragraph is making about the trailing slash. The fixed URL also matches the one a few lines below ("The module at <code class="notranslate">https://example.com/shapes/square.js</code> will now be requested").</p>
-<h3 dir="auto">Additional details</h3>
-<p dir="auto"><code class="notranslate">new URL("./shapes/square.js", "https://example.com/welcome").href</code> gives <code class="notranslate">https://example.com/shapes/square.js</code>.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46630.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6542727488" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46630" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46630/hovercard" href="https://github.com/mdn/content/issues/46630">#46630</a></p>]]></content>
-        <author>
-            <name>monarchsofchaos004-gif</name>
-            <email>monarchsofchaos004-gif@noreply.github.com</email>
-            <uri>https://github.com/monarchsofchaos004-gif</uri>
-        </author>
-        <published>2026-11-23T03:07:17.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF161 Relnote/ExprF: CSS Typed OM]]></title>
-        <id>https://github.com/mdn/content/pull/46636</id>
-        <link href="https://github.com/mdn/content/pull/46636"/>
-        <updated>2026-11-23T11:33:23.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 enables the CSS Typed Object Model API by default in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2089681" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2089681</a></p>
-<p dir="auto">This adds the release note and removes the experimental features note.<br>
-The experimental features note for  "CSS numeric factory functions exposed in workers and worklets" entry remains because it's still behind its own preference.</p>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6486639146" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46594" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46594/hovercard" href="https://github.com/mdn/content/issues/46594">#46594</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-23T00:12:42.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Add shared attribute links to SVG element pages]]></title>
@@ -258,32 +478,6 @@ The experimental features note for  "CSS numeric factory functions exposed in wo
             <uri>https://github.com/BHUVANSH855</uri>
         </author>
         <published>2026-11-22T19:16:23.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update PlayCanvas guides for engine 2.x and the current Editor]]></title>
-        <id>https://github.com/mdn/content/pull/46629</id>
-        <link href="https://github.com/mdn/content/pull/46629"/>
-        <updated>2026-11-23T12:21:31.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/697563?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Updates the three PlayCanvas pages under Games &gt; 3D on the web for PlayCanvas engine 2.x and the current Editor, and replaces all Editor screenshots.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The pages were written for a much older engine and Editor. The engine tutorial loads a non-module build, uses the legacy <code class="notranslate">model</code> component, and links to a download URL that serves an outdated build. The Editor tutorial describes a UI that no longer exists. Readers following either one today hit outdated or broken steps.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li><strong>Engine tutorial:</strong> loads PlayCanvas 2.24.2 as an ES module (import map or npm), switches to <code class="notranslate">render</code> components, handles canvas resizing, adds an optional WebGPU section, and fixes the live samples. Both samples were tested in Chrome with WebGL 2 and WebGPU.</li>
-<li><strong>Editor tutorial:</strong> steps rewritten for the current Editor. All screenshots were recaptured from a real run-through and compressed with <code class="notranslate">filecheck --save-compression</code>; the outdated login and project-page images are removed.</li>
-<li><strong>Overview pages:</strong> mention WebGL 2/WebGPU, the MIT license, CDN/npm usage, and the React and Web Components wrappers; links updated.</li>
-</ul>
-<p dir="auto">Disclosure: I work on PlayCanvas.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto">None.</p>
-<p dir="auto">🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>]]></content>
-        <author>
-            <name>willeastcott</name>
-            <email>willeastcott@noreply.github.com</email>
-            <uri>https://github.com/willeastcott</uri>
-        </author>
-        <published>2026-11-22T10:22:56.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[Remove unsupported fangsong keyword from font-family and <generic-family>]]></title>
@@ -428,23 +622,10 @@ The module page already links to these pages.</p>]]></content>
         <published>2026-11-20T11:02:28.000Z</published>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Document Array Initializer]]></title>
-        <id>https://github.com/mdn/content/pull/46613</id>
-        <link href="https://github.com/mdn/content/pull/46613"/>
-        <updated>2026-11-20T19:09:17.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">I'm auditing our JS docs against the ES spec to see which features are undocumented. I'm identifying some pretty glaring holes in our references. It's not that we don't need these pages; we already have places that would benefit from linking to them but have to link to guides or learning articles instead.</p>]]></content>
-        <author>
-            <name>Josh-Cena</name>
-            <email>Josh-Cena@noreply.github.com</email>
-            <uri>https://github.com/Josh-Cena</uri>
-        </author>
-        <published>2026-11-20T06:39:18.000Z</published>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Add note about function length where param optionality differs]]></title>
         <id>https://github.com/mdn/content/pull/46610</id>
         <link href="https://github.com/mdn/content/pull/46610"/>
-        <updated>2026-11-20T03:28:02.000Z</updated>
+        <updated>2026-11-23T16:39:47.000Z</updated>
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/55398995?u=9f6a9837c9879eceb0abde487a338b92d4e206fc&v=4" width="64" height="64" alt=""/><br/><p dir="auto">3 years ago I asked <a href="https://github.com/orgs/mdn/discussions/201">https://github.com/orgs/mdn/discussions/201</a>. It never got a decisive conclusion. I decided it's not worth formally defining and MDN should be free to define optionality however the readers would perceive it. However, we should document the methods' <code class="notranslate">length</code> where its value is not derived from our notion of optionality, because that's actually an observable part of its behavior.</p>]]></content>
         <author>
             <name>Josh-Cena</name>

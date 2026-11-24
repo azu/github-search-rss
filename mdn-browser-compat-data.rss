@@ -2,11 +2,440 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss</id>
     <title>mdn/browser-compat-data update data</title>
-    <updated>2026-11-23T13:48:05.102Z</updated>
+    <updated>2026-11-24T01:19:43.671Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-browser-compat-data.rss"/>
     <subtitle>mdn/browser-compat-data update data on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove irrelevant `api.PushSubscription.subscriptionId`]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31247</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31247"/>
+        <updated>2026-11-24T00:54:42.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/71961814?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto"><code class="notranslate">api.PushSubscription.subscriptionId</code> claims Chrome support from 42 with no removal, so through the mirrors it also shows as supported in current Chrome Android, Opera, Opera Android and Samsung Internet. Chrome removed the attribute in Chrome 45 (2015), and Chromium-based Edge never had it. Once the Chrome removal is recorded (<code class="notranslate">"version_removed": "45"</code>, plus <code class="notranslate">"version_removed": "79"</code> for Edge), <code class="notranslate">npm run lint</code> reports:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Obsolete - 4 problems (1 error, 0 warnings, 3 infos):
+  ✖ api.PushSubscription.subscriptionId - Error → feature was implemented and has since been removed from all browsers dating back two or more years ago."><pre class="notranslate"><code class="notranslate">Obsolete - 4 problems (1 error, 0 warnings, 3 infos):
+  ✖ api.PushSubscription.subscriptionId - Error → feature was implemented and has since been removed from all browsers dating back two or more years ago.
+</code></pre></div>
+<p dir="auto">Firefox, Safari and WebView never supported it. Under the removal of irrelevant features guideline, this PR removes the feature instead of recording the removal.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>Chromium commit <a href="https://github.com/chromium/chromium/commit/64e7ce39c2fde66087e527fb8932ec97e3b7d358">64e7ce39c2fd</a> (<a href="https://codereview.chromium.org/1148763005" rel="nofollow">CL 1148763005</a>, Blink r196315, landed 2015-06-02), "Remove support for PushSubscription.subscriptionId.", deletes <code class="notranslate">[DeprecateAs=PushSubscriptionId] readonly attribute DOMString subscriptionId;</code> from <code class="notranslate">PushSubscription.idl</code>. Its description says: "The subscriptionId property has been included in endpoint for Chrome 44, and is to be removed in Chrome 45".</li>
+<li>Release mapping. Here is <code class="notranslate">PushSubscription.idl</code> at the Blink revision each release's <code class="notranslate">DEPS</code> pins:
+<ul dir="auto">
+<li><a href="https://chromium.googlesource.com/chromium/blink/+/35997cdedc0ee157adfff78fe124d4227c58f973/Source/modules/push_messaging/PushSubscription.idl" rel="nofollow">44.0.2403.157</a> (last Chrome 44 stable) still has the <code class="notranslate">subscriptionId</code> attribute.</li>
+<li><a href="https://chromium.googlesource.com/chromium/blink/+/abaaf1d0b6b6483140b5dca34e80fc259833ddf7/Source/modules/push_messaging/PushSubscription.idl" rel="nofollow">45.0.2454.0</a> (the M45 branch) does not.</li>
+</ul>
+</li>
+<li>The blink-dev <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/6OK5qm491Eg" rel="nofollow">Intent to Remove: PushSubscription.subscriptionId and "gcm_user_visible_only" in the Manifest</a> (approved with three LGTMs, May 2015) says: "In Chrome 44, implementations should only be using the endpoint, but the subscriptionId was still exposed." and "In Chrome 45, we intent to only support the endpoint and PushSubscriptionOptions dictionary."</li>
+<li>I checked Chromium 156 and Firefox 157. In both, <code class="notranslate">'subscriptionId' in PushSubscription.prototype</code> is <code class="notranslate">false</code>. <code class="notranslate">Object.getOwnPropertyNames(PushSubscription.prototype)</code> is <code class="notranslate">endpoint,expirationTime,options,getKey,toJSON,unsubscribe,constructor</code> in Chromium.</li>
+<li>Edge: Edge 79 is based on Chromium 79, long after the removal. I did not verify the existing Edge 17 data (it was a guess in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1776555795" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/20238" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/20238/hovercard" href="https://github.com/mdn/browser-compat-data/pull/20238">#20238</a>). Edge 18 was the last EdgeHTML release, so either way no current browser has had the feature for years.</li>
+<li><code class="notranslate">npm test</code> passes (format, lint, unit tests). The lint output keeps only the 3 obsolete infos that were already there.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">None. The MDN page <a href="https://developer.mozilla.org/docs/Web/API/PushSubscription/subscriptionId" rel="nofollow">PushSubscription: subscriptionId property</a> (<code class="notranslate">browser-compat: api.PushSubscription.subscriptionId</code>) needs removing from mdn/content too.</p>]]></content>
+        <author>
+            <name>alphaNumericEntity</name>
+            <email>alphaNumericEntity@noreply.github.com</email>
+            <uri>https://github.com/alphaNumericEntity</uri>
+        </author>
+        <published>2026-11-24T00:54:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[WebExt] Simplify multiple version support statements]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31246</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31246"/>
+        <updated>2026-11-23T22:54:43.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">This change simplifies multiple version support statements to notes, in line with usual practice.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">Also see <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6478491084" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31193" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31193/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31193">#31193</a></p>]]></content>
+        <author>
+            <name>rebloor</name>
+            <email>rebloor@noreply.github.com</email>
+            <uri>https://github.com/rebloor</uri>
+        </author>
+        <published>2026-11-23T22:53:59.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Updates for Chrome 158 release]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31245</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31245"/>
+        <updated>2026-11-23T22:02:52.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Mark features as shipping in 158 instead of 159.<br>
+Previously, these couldn't be observed as shipping in 158 beta, but they are now part of the 158 release.</p>
+<p dir="auto">Install element: <a href="https://chromestatus.com/feature/5152834368700416" rel="nofollow">https://chromestatus.com/feature/5152834368700416</a><br>
+Router timing: <a href="https://chromestatus.com/feature/5172259800088576" rel="nofollow">https://chromestatus.com/feature/5172259800088576</a></p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Collector v10.21.4</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2026-11-23T22:02:09.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Updates for Firefox 162 beta]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31244</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31244"/>
+        <updated>2026-11-23T21:45:54.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The <a href="https://collector.openwebdocs.org/" rel="nofollow">https://collector.openwebdocs.org/</a> project (v10.21.4) found new features shipping in Firefox 162 beta which was released today. Currently, the collector covers about 90% of BCD, so the following list might not be exhaustive. Also, if a feature is in Nightly/behind flags, it is not considered here. If a feature is missing, one reason can be that the IDL is not yet in a specification or in webref.</p>
+<p dir="auto">Firefox 162 stable releases on December 8, 2026. This PR needs to be merged before/with the BCD release on December 3, 2026.</p>
+<hr>
+<p dir="auto">With this PR, BCD will consider the following features as shipping in Firefox 162:</p>
+<ul dir="auto">
+<li>api.CSSViewTransitionRule</li>
+<li>api.CSSViewTransitionRule.navigation</li>
+<li>api.CSSViewTransitionRule.types</li>
+<li>api.HTMLElement.headingOffset</li>
+<li>api.HTMLElement.headingReset</li>
+<li>api.HTMLLinkElement.blocking</li>
+<li>api.HTMLScriptElement.blocking</li>
+<li>api.HTMLStyleElement.blocking</li>
+<li>api.PageRevealEvent</li>
+<li>api.PageRevealEvent.PageRevealEvent</li>
+<li>api.PageRevealEvent.viewTransition</li>
+<li>api.PageSwapEvent</li>
+<li>api.PageSwapEvent.PageSwapEvent</li>
+<li>api.PageSwapEvent.activation</li>
+<li>api.PageSwapEvent.viewTransition</li>
+<li>api.PerformanceResourceTiming.renderBlockingStatus</li>
+<li>api.RTCPeerConnection.RTCPeerConnection.configuration_iceCandidatePoolSize_parameter</li>
+<li>api.Window.pagereveal_event</li>
+<li>api.Window.pageswap_event</li>
+<li>api.Window.pushManager</li>
+<li>css.at-rules.view-transition</li>
+<li>css.properties.background-clip.border-area</li>
+<li>css.properties.background.border-area</li>
+<li>css.properties.position-visibility.anchor-valid</li>
+<li>css.properties.position-visibility.anchor-visible</li>
+<li>html.elements.link.blocking</li>
+<li>html.elements.script.blocking</li>
+<li>html.elements.style.blocking</li>
+<li>html.global_attributes.headingoffset</li>
+<li>html.global_attributes.headingreset</li>
+</ul>
+<hr>
+<p dir="auto">See also <a href="https://www.firefox.com/en-US/firefox/162.0beta/releasenotes/" rel="nofollow">https://www.firefox.com/en-US/firefox/162.0beta/releasenotes/</a></p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2026-11-23T21:45:12.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[add `MouseEvent.mozInputSource`]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31243</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31243"/>
+        <updated>2026-11-23T21:09:03.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/184854696?u=e72bab7ff4e418792fc7e3d920d6622f65ba609a&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">adds the missing <code class="notranslate">api.MouseEvent.mozInputSource</code>. it's a firefox-only non-standard property, so chrome and safari are <code class="notranslate">false</code>.</p>
+<ul dir="auto">
+<li><code class="notranslate">version_added: "4"</code>, from caugner's bisect in the issue (<code class="notranslate">nsIDOMNSMouseEvent.idl</code> in firefox 4)</li>
+<li><code class="notranslate">deprecated: true</code>: since firefox 117 (bug 1564391) using it logs "MouseEvent.mozInputSource is deprecated. Use PointerEvent.pointerType instead." firefox is the only implementer so this fits the "notice from all implementing browsers" rule</li>
+<li><code class="notranslate">standard_track: false</code>, same as other <code class="notranslate">moz</code> features like <code class="notranslate">Window.mozInnerScreenX</code></li>
+</ul>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>still exposed to web content: <code class="notranslate">dom/webidl/MouseEvent.webidl</code> in mozilla-central has <code class="notranslate">[NeedsCallerType, Deprecated="MozInputSource", BinaryName="inputSource"] readonly attribute unsigned short mozInputSource;</code> with no pref gate</li>
+<li><code class="notranslate">npm run lint</code> and the pre-push checks pass</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27335.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3245391558" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/27335" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/27335/hovercard" href="https://github.com/mdn/browser-compat-data/issues/27335">#27335</a></p>]]></content>
+        <author>
+            <name>zubeyralmaho</name>
+            <email>zubeyralmaho@noreply.github.com</email>
+            <uri>https://github.com/zubeyralmaho</uri>
+        </author>
+        <published>2026-11-23T21:08:02.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add window.browser]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31242</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31242"/>
+        <updated>2026-11-23T20:55:25.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Add window.browser, <a href="https://w3c.github.io/webextensions/specification/window.browser.html#dom-window-browser" rel="nofollow">https://w3c.github.io/webextensions/specification/window.browser.html#dom-window-browser</a></p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Collector v10.21.4.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">None.</p>
+<h4 dir="auto">Notes</h4>
+<p dir="auto">Maybe WebExtensions subject matter experts could review this one? I beliebe Chrome and Firefox might have this as <code class="notranslate">window.chrome</code>?</p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2026-11-23T20:54:44.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add FontFace.width]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31241</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31241"/>
+        <updated>2026-11-23T20:40:54.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Add FontFace.width, <a href="https://drafts.csswg.org/css-font-loading/#dom-fontface-width" rel="nofollow">https://drafts.csswg.org/css-font-loading/#dom-fontface-width</a></p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Collector v 10.21.4.</p>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto">None.</p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2026-11-23T20:40:12.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[added bcd for text-autospace-size]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31237</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31237"/>
+        <updated>2026-11-23T17:37:33.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/286386?u=bc4894b945491e0834d2306dade7fef748ddf698&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<ul dir="auto">
+<li>Created the <code class="notranslate">text-autospace-size</code> property and added Firefox Support</li>
+</ul>
+<h4 dir="auto">Test results and supporting details</h4>
+<ul dir="auto">
+<li>Tested with <a href="https://codepen.io/editor/CodeRedDigital/pen/01a1ea6b-e3d0-7514-832d-c09124c3171d" rel="nofollow">text-autospace-size tests codepen</a> in:
+<ul dir="auto">
+<li>Firefox Nightly 162 - no flag</li>
+<li>Firefox Beta 161 - <code class="notranslate">layout.css.text-autospace-size.enabled</code> flag</li>
+</ul>
+</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<ul dir="auto">
+<li><a href="https://github.com/mdn/content/pull/46671" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46671/hovercard">Content PR</a></li>
+<li><a href="https://github.com/mdn/data/pull/1125" data-hovercard-type="pull_request" data-hovercard-url="/mdn/data/pull/1125/hovercard">Data PR</a></li>
+<li><a href="https://github.com/mdn/content/pull/46672" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/46672/hovercard">Firefox Release PR</a></li>
+</ul>]]></content>
+        <author>
+            <name>dletorey</name>
+            <email>dletorey@noreply.github.com</email>
+            <uri>https://github.com/dletorey</uri>
+        </author>
+        <published>2026-11-23T17:28:22.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Updates for Safari TP 257]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31236</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31236"/>
+        <updated>2026-11-23T15:26:54.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/349114?u=1185d4fc45f5ff4c4a592b30a4dd2bb5cd1b7128&v=4" width="64" height="64" alt=""/><br/><p dir="auto">The <a href="https://collector.openwebdocs.org/" rel="nofollow">https://collector.openwebdocs.org/</a> project (v10.21.2) found new features shipping in Safari Technical Preview 257 on macOS 27 which was released yesterday. Currently, the collector covers about 90% of BCD, so the following list might not be exhaustive.</p>
+<p dir="auto">Release notes: <a href="https://webkit.org/blog/18652/release-notes-for-safari-technology-preview-257/" rel="nofollow">https://webkit.org/blog/18652/release-notes-for-safari-technology-preview-257/</a></p>
+<p dir="auto">css.properties.-webkit-tap-highlight-color</p>
+<p dir="auto">api.AudioWorklet.port</p>
+<p dir="auto">api.SVGAElement.hash<br>
+api.SVGAElement.host<br>
+api.SVGAElement.hostname<br>
+api.SVGAElement.origin<br>
+api.SVGAElement.password<br>
+api.SVGAElement.pathname<br>
+api.SVGAElement.port<br>
+api.SVGAElement.protocol<br>
+api.SVGAElement.referrerPolicy<br>
+api.SVGAElement.search<br>
+api.SVGAElement.username</p>
+<p dir="auto">api.Navigator.xr<br>
+api.WebGL2RenderingContext.makeXRCompatible<br>
+api.WebGLRenderingContext.makeXRCompatible<br>
+api.XRBoundedReferenceSpace<br>
+api.XRBoundedReferenceSpace.boundsGeometry<br>
+api.XRFrame<br>
+api.XRFrame.fillJointRadii<br>
+api.XRFrame.fillPoses<br>
+api.XRFrame.getJointPose<br>
+api.XRFrame.getPose<br>
+api.XRFrame.getViewerPose<br>
+api.XRFrame.session<br>
+api.XRHand<br>
+api.XRHand.entries<br>
+api.XRHand.forEach<br>
+api.XRHand.get<br>
+api.XRHand.keys<br>
+api.XRHand.size<br>
+api.XRHand.values<br>
+api.XRHand.@<a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/iterator/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/iterator">@iterator</a><br>
+api.XRInputSource<br>
+api.XRInputSource.gamepad<br>
+api.XRInputSource.gripSpace<br>
+api.XRInputSource.hand<br>
+api.XRInputSource.handedness<br>
+api.XRInputSource.profiles<br>
+api.XRInputSource.targetRayMode<br>
+api.XRInputSource.targetRaySpace<br>
+api.XRInputSourceArray<br>
+api.XRInputSourceArray.entries<br>
+api.XRInputSourceArray.forEach<br>
+api.XRInputSourceArray.keys<br>
+api.XRInputSourceArray.length<br>
+api.XRInputSourceArray.values<br>
+api.XRInputSourceArray.@<a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/iterator/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/iterator">@iterator</a><br>
+api.XRInputSourceEvent<br>
+api.XRInputSourceEvent.XRInputSourceEvent<br>
+api.XRInputSourceEvent.frame<br>
+api.XRInputSourceEvent.inputSource<br>
+api.XRInputSourcesChangeEvent<br>
+api.XRInputSourcesChangeEvent.XRInputSourcesChangeEvent<br>
+api.XRInputSourcesChangeEvent.added<br>
+api.XRInputSourcesChangeEvent.removed<br>
+api.XRInputSourcesChangeEvent.session<br>
+api.XRJointPose<br>
+api.XRJointPose.radius<br>
+api.XRJointSpace<br>
+api.XRJointSpace.jointName<br>
+api.XRLayer<br>
+api.XRPose<br>
+api.XRPose.emulatedPosition<br>
+api.XRPose.transform<br>
+api.XRReferenceSpace<br>
+api.XRReferenceSpace.getOffsetReferenceSpace<br>
+api.XRReferenceSpace.reset_event<br>
+api.XRReferenceSpaceEvent<br>
+api.XRReferenceSpaceEvent.XRReferenceSpaceEvent<br>
+api.XRReferenceSpaceEvent.referenceSpace<br>
+api.XRReferenceSpaceEvent.transform<br>
+api.XRRenderState<br>
+api.XRRenderState.baseLayer<br>
+api.XRRenderState.depthFar<br>
+api.XRRenderState.depthNear<br>
+api.XRRenderState.inlineVerticalFieldOfView<br>
+api.XRRenderState.passthroughFullyObscured<br>
+api.XRRigidTransform<br>
+api.XRRigidTransform.XRRigidTransform<br>
+api.XRRigidTransform.inverse<br>
+api.XRRigidTransform.matrix<br>
+api.XRRigidTransform.orientation<br>
+api.XRRigidTransform.position<br>
+api.XRSession<br>
+api.XRSession.cancelAnimationFrame<br>
+api.XRSession.enabledFeatures<br>
+api.XRSession.end<br>
+api.XRSession.end_event<br>
+api.XRSession.inputSources<br>
+api.XRSession.inputsourceschange_event<br>
+api.XRSession.renderState<br>
+api.XRSession.requestAnimationFrame<br>
+api.XRSession.requestReferenceSpace<br>
+api.XRSession.select_event<br>
+api.XRSession.selectend_event<br>
+api.XRSession.selectstart_event<br>
+api.XRSession.squeeze_event<br>
+api.XRSession.squeezeend_event<br>
+api.XRSession.squeezestart_event<br>
+api.XRSession.updateRenderState<br>
+api.XRSession.visibilitychange_event<br>
+api.XRSession.visibilityState<br>
+api.XRSessionEvent<br>
+api.XRSessionEvent.XRSessionEvent<br>
+api.XRSessionEvent.session<br>
+api.XRSpace<br>
+api.XRSystem<br>
+api.XRSystem.devicechange_event<br>
+api.XRSystem.isSessionSupported<br>
+api.XRSystem.requestSession<br>
+api.XRView<br>
+api.XRView.eye<br>
+api.XRView.projectionMatrix<br>
+api.XRView.recommendedViewportScale<br>
+api.XRView.requestViewportScale<br>
+api.XRView.transform<br>
+api.XRViewerPose<br>
+api.XRViewerPose.views<br>
+api.XRViewport<br>
+api.XRViewport.height<br>
+api.XRViewport.width<br>
+api.XRViewport.x<br>
+api.XRViewport.y<br>
+api.XRWebGLLayer<br>
+api.XRWebGLLayer.XRWebGLLayer<br>
+api.XRWebGLLayer.antialias<br>
+api.XRWebGLLayer.framebuffer<br>
+api.XRWebGLLayer.framebufferHeight<br>
+api.XRWebGLLayer.framebufferWidth<br>
+api.XRWebGLLayer.getNativeFramebufferScaleFactor_static<br>
+api.XRWebGLLayer.getViewport<br>
+api.XRWebGLLayer.ignoreDepthValues</p>]]></content>
+        <author>
+            <name>Elchi3</name>
+            <email>Elchi3@noreply.github.com</email>
+            <uri>https://github.com/Elchi3</uri>
+        </author>
+        <published>2026-11-23T15:26:06.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add MouseEvent.webkitForce]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31235</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31235"/>
+        <updated>2026-11-23T14:15:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/74147463?u=693ff618ad82ea329388dc5566b7dd0a386a3eba&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Adds <code class="notranslate">api.MouseEvent.webkitForce</code>, the non-standard Force Touch property. Safari 9, <code class="notranslate">false</code> everywhere else, and not standard track. The shape follows the existing <code class="notranslate">Element</code> <code class="notranslate">webkitmouseforce*</code> events.</p>
+<p dir="auto">The two constants named in the issue, <code class="notranslate">WEBKIT_FORCE_AT_MOUSE_DOWN</code> and <code class="notranslate">WEBKIT_FORCE_AT_FORCE_MOUSE_DOWN</code>, are left out because the <a href="https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/api.md#constants">API guidelines</a> say not to add data for constants.</p>
+<p dir="auto">Safari on iOS mirrors Safari (so iOS 9). That differs from the force events, which are <code class="notranslate">false</code> on iOS because they never fire there. The property itself is on <code class="notranslate">MouseEvent</code> in every WebKit port. See the sources below.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">Following the research in the issue:</p>
+<ul dir="auto">
+<li>WebKit <a href="https://github.com/WebKit/WebKit/commit/5b920c8b2dc84c3c2bd216cb46b864f9d9614e90">5b920c8</a> (May 2015, <a href="https://bugs.webkit.org/show_bug.cgi?id=145065" rel="nofollow">bug 145065</a>) renamed <code class="notranslate">MouseEvent.force</code> to <code class="notranslate">webkitForce</code> and added the two constants. That commit is WebKit <a href="https://github.com/WebKit/WebKit/blob/5b920c8b2dc84c3c2bd216cb46b864f9d9614e90/Source/WebCore/Configurations/Version.xcconfig#L24-L26">601.1.33</a>. Safari 8 is 538.35 and Safari 9 is 601.1.56 in <code class="notranslate">browsers/safari.json</code>.</li>
+<li>At the Safari 9 release tag, the attribute is in <a href="https://github.com/WebKit/WebKit/blob/Safari-601.1.56/Source/WebCore/dom/MouseEvent.idl">MouseEvent.idl</a> behind <code class="notranslate">Conditional=MOUSE_FORCE_EVENTS</code>. <a href="https://github.com/WebKit/WebKit/blob/Safari-601.1.56/Source/WTF/wtf/FeatureDefines.h#L610-L612">FeatureDefines.h</a> turns <code class="notranslate">ENABLE_MOUSE_FORCE_EVENTS</code> on by default for every port, with no iOS override and nothing in <code class="notranslate">FeatureDefines.xcconfig</code>.</li>
+<li>Today the attribute has no condition at all (<a href="https://github.com/WebKit/WebKit/blob/cc99e26850ddc35b3f4a103dbc184e90be8badb6/Source/WebCore/dom/MouseEvent.idl#L45">MouseEvent.idl at cc99e26</a>).</li>
+<li>Safari 26.4 on macOS 26.4.1: <code class="notranslate">'webkitForce' in MouseEvent.prototype</code> is <code class="notranslate">true</code>, and <code class="notranslate">new MouseEvent('click').webkitForce</code> is <code class="notranslate">0</code>.</li>
+</ul>
+<p dir="auto">I couldn't test Safari on iOS, so the iOS version comes from the build flags above.</p>
+<p dir="auto">Checks:</p>
+<ul dir="auto">
+<li><code class="notranslate">npm run lint -- api/MouseEvent.json</code>: all data passed linting.</li>
+<li><code class="notranslate">npm test</code>: 349 tests pass, 0 lint errors.</li>
+<li><code class="notranslate">npm run build</code>: Safari, Safari on iOS and WebView on iOS all resolve to <code class="notranslate">"9"</code>.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #27334.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3245371989" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/27334" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/27334/hovercard" href="https://github.com/mdn/browser-compat-data/issues/27334">#27334</a></p>]]></content>
+        <author>
+            <name>VanshajPoonia</name>
+            <email>VanshajPoonia@noreply.github.com</email>
+            <uri>https://github.com/VanshajPoonia</uri>
+        </author>
+        <published>2026-11-23T14:14:52.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Add macOS 26 note to dynamic-range-limit in Safari]]></title>
+        <id>https://github.com/mdn/browser-compat-data/pull/31234</id>
+        <link href="https://github.com/mdn/browser-compat-data/pull/31234"/>
+        <updated>2026-11-23T14:15:30.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/74147463?u=693ff618ad82ea329388dc5566b7dd0a386a3eba&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
+<p dir="auto">Adds the note <code class="notranslate">Requires macOS 26 or later.</code> to Safari for <code class="notranslate">css.properties.dynamic-range-limit</code> and its <code class="notranslate">standard</code> and <code class="notranslate">no-limit</code> values. These are the three entries with Safari support. <code class="notranslate">constrained</code> and <code class="notranslate">dynamic-range-limit-mix()</code> are <code class="notranslate">false</code> in Safari and stay as they are.</p>
+<p dir="auto">As agreed in the issue, this is a note without <code class="notranslate">partial_implementation</code>. The behaviour depends on the OS having HDR support, which is the exception in the "Operating system limitations" guideline.</p>
+<p dir="auto">Safari on iOS gets its own <code class="notranslate">{"version_added": "26"}</code> statement instead of <code class="notranslate">mirror</code>. Otherwise the build would copy the macOS note to iOS. I didn't add an iOS note, because Safari 26 on iOS only ships with iOS 26, so the note would add nothing. WebView on iOS still mirrors Safari on iOS. If you would rather have <code class="notranslate">Requires iOS 26 or later.</code> on iOS too, like <code class="notranslate">font-variation-settings</code> has for iOS 11, I can add it.</p>
+<h4 dir="auto">Test results and supporting details</h4>
+<p dir="auto">WebKit only exposes the property when the HDR display setting is on:</p>
+<ul dir="auto">
+<li><code class="notranslate">dynamic-range-limit</code> has <code class="notranslate">"settings-flag": "supportHDRDisplayEnabled"</code> in <a href="https://github.com/WebKit/WebKit/blob/cc99e26850ddc35b3f4a103dbc184e90be8badb6/Source/WebCore/css/CSSProperties.json#L5342-L5353">CSSProperties.json</a>.</li>
+<li><code class="notranslate">SupportHDRDisplayEnabled</code> defaults to <code class="notranslate">ENABLE(SUPPORT_HDR_DISPLAY_BY_DEFAULT)</code> in <a href="https://github.com/WebKit/WebKit/blob/cc99e26850ddc35b3f4a103dbc184e90be8badb6/Source/WTF/Scripts/Preferences/UnifiedWebPreferences.yaml#L6365-L6375">UnifiedWebPreferences.yaml</a>.</li>
+<li><code class="notranslate">ENABLE_SUPPORT_HDR_DISPLAY_BY_DEFAULT</code> is set for <code class="notranslate">PLATFORM(MAC) &amp;&amp; __MAC_OS_X_VERSION_MIN_REQUIRED &gt;= 260000</code>, and for all of iOS and visionOS, in <a href="https://github.com/WebKit/WebKit/blob/cc99e26850ddc35b3f4a103dbc184e90be8badb6/Source/WTF/wtf/PlatformEnableCocoa.h#L1223-L1227">PlatformEnableCocoa.h</a>.</li>
+</ul>
+<p dir="auto">This matches what the reporter found in the issue: <code class="notranslate">CSS.supports("dynamic-range-limit: standard")</code> is <code class="notranslate">false</code> in Safari 26 on macOS 15.</p>
+<p dir="auto">Checks:</p>
+<ul dir="auto">
+<li><code class="notranslate">npm run lint -- css/properties/dynamic-range-limit.json</code>: all data passed linting.</li>
+<li><code class="notranslate">npm test</code>: 349 tests pass, 0 lint errors.</li>
+<li><code class="notranslate">npm run build</code>: Safari has the note, and Safari on iOS and WebView on iOS resolve to <code class="notranslate">{"version_added": "26"}</code> with no note.</li>
+</ul>
+<h4 dir="auto">Related issues</h4>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29077.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3960221551" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29077" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29077/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29077">#29077</a></p>]]></content>
+        <author>
+            <name>VanshajPoonia</name>
+            <email>VanshajPoonia@noreply.github.com</email>
+            <uri>https://github.com/VanshajPoonia</uri>
+        </author>
+        <published>2026-11-23T14:14:47.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[html.elements.option.label - clean up firefox notes]]></title>
         <id>https://github.com/mdn/browser-compat-data/pull/31233</id>
@@ -32,28 +461,6 @@
             <uri>https://github.com/zubeyralmaho</uri>
         </author>
         <published>2026-11-23T11:12:43.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FF161 CSS Typed OM enabled by default]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31227</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31227"/>
-        <updated>2026-11-23T01:03:18.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/5368500?v=4" width="64" height="64" alt=""/><br/><p dir="auto">FF161 enables the CSS Typed Object Model API by default on desktop and Android in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2089681" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2089681</a>. Bit of a late addition :-(</p>
-<p dir="auto">This updates the Firefox data for all the Typed OM features from <code class="notranslate">preview</code> to 161, and removes the <code class="notranslate">impl_url</code> (<a href="https://bugzil.la/1278697" rel="nofollow">https://bugzil.la/1278697</a>).<br>
-It also sets <code class="notranslate">experimental</code> to <code class="notranslate">false</code> for the <code class="notranslate">CSSMathMax()</code>, <code class="notranslate">CSSMathMin()</code>, <code class="notranslate">CSSMathProduct()</code> and <code class="notranslate">CSSMathSum()</code> constructors, which are now supported in two engines.</p>
-<p dir="auto">The color value interfaces (<code class="notranslate">CSSColorValue</code>, <code class="notranslate">CSSRGB</code>, and so on) aren't in BCD, and stay disabled behind <code class="notranslate">layout.css.typed-om-color.enabled</code>.</p>
-<p dir="auto">Claude states this, but I have not verified it:</p>
-<ul dir="auto">
-<li>The collector missed this in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6305978168" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31094" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31094/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31094">#31094</a> because the patch was uplifted after beta 1. It's first in <code class="notranslate">FIREFOX_161_0b3_RELEASE</code>.</li>
-<li>No Typed OM feature is left with Firefox <code class="notranslate">preview</code> or <code class="notranslate">false</code>, including <code class="notranslate">Element.computedStyleMap()</code>, <code class="notranslate">CSSStyleRule.styleMap</code>, and <code class="notranslate">attributeStyleMap</code> on <code class="notranslate">HTMLElement</code>, <code class="notranslate">MathMLElement</code> and <code class="notranslate">SVGElement</code>.</li>
-</ul>
-<p dir="auto">Related docs work can be tracked in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6486639146" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46594" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46594/hovercard" href="https://github.com/mdn/content/issues/46594">mdn/content#46594</a></p>]]></content>
-        <author>
-            <name>hamishwillee</name>
-            <email>hamishwillee@noreply.github.com</email>
-            <uri>https://github.com/hamishwillee</uri>
-        </author>
-        <published>2026-11-23T01:01:35.000Z</published>
     </entry>
     <entry>
         <title type="html"><![CDATA[integrity-violation report: style destination behind Firefox pref]]></title>
@@ -244,515 +651,5 @@ It also sets <code class="notranslate">experimental</code> to <code class="notra
             <uri>https://github.com/Manishram-ai</uri>
         </author>
         <published>2026-11-19T18:09:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update Safari 26 and Firefox 149 support for Integrity-Policy reporting]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31195</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31195"/>
-        <updated>2026-11-21T06:04:02.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/241046?u=cd3b17b6fb822d049976b087e5b8494c47d3d240&v=4" width="64" height="64" alt=""/><br/>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Document Safari and Firefox support for Integrity-Policy reporting</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<details>
-<summary>Test results</summary>
-<h5 dir="auto">Safari 26.2 desktop</h5>
-<h6 dir="auto">reporting endpoint</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[
-    {
-      &quot;body&quot;: {
-        &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-        &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js&quot;,
-        &quot;destination&quot;: &quot;script&quot;,
-        &quot;reportOnly&quot;: true
-      },
-      &quot;user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15&quot;,
-      &quot;destination&quot;: &quot;default&quot;,
-      &quot;type&quot;: &quot;integrity-violation&quot;,
-      &quot;age&quot;: 0,
-      &quot;attempts&quot;: 0,
-      &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;
-    }
-  ]"><pre class="notranslate"><code class="notranslate">[
-    {
-      "body": {
-        "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-        "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js",
-        "destination": "script",
-        "reportOnly": true
-      },
-      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15",
-      "destination": "default",
-      "type": "integrity-violation",
-      "age": 0,
-      "attempts": 0,
-      "url": "https://swing-sega-logs-hero.trycloudflare.com/"
-    }
-  ]
-</code></pre></div>
-<h6 dir="auto">page body</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[
-  {
-    &quot;type&quot;: &quot;integrity-violation&quot;,
-    &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-    &quot;body&quot;: {
-      &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-      &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js&quot;,
-      &quot;destination&quot;: &quot;script&quot;,
-      &quot;reportOnly&quot;: true
-    }
-  }
-]"><pre class="notranslate"><code class="notranslate">[
-  {
-    "type": "integrity-violation",
-    "url": "https://swing-sega-logs-hero.trycloudflare.com/",
-    "body": {
-      "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-      "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js",
-      "destination": "script",
-      "reportOnly": true
-    }
-  }
-]
-</code></pre></div>
-<h5 dir="auto">Safari 18.6 Desktop</h5>
-<h6 dir="auto">reporting endpoint</h6>
-<p dir="auto">NA</p>
-<h6 dir="auto">page body</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Waiting for integrity-violation reports..."><pre class="notranslate"><code class="notranslate">Waiting for integrity-violation reports...
-</code></pre></div>
-<h5 dir="auto">Safari 26.0 iPhone</h5>
-<h6 dir="auto">reporting endpoint</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[
-    {
-      &quot;body&quot;: {
-        &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-        &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js&quot;,
-        &quot;destination&quot;: &quot;script&quot;,
-        &quot;reportOnly&quot;: true
-      },
-      &quot;user_agent&quot;: &quot;Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1&quot;,
-      &quot;destination&quot;: &quot;default&quot;,
-      &quot;type&quot;: &quot;integrity-violation&quot;,
-      &quot;age&quot;: 0,
-      &quot;attempts&quot;: 0,
-      &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;
-    }
-  ]"><pre class="notranslate"><code class="notranslate">[
-    {
-      "body": {
-        "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-        "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js",
-        "destination": "script",
-        "reportOnly": true
-      },
-      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1",
-      "destination": "default",
-      "type": "integrity-violation",
-      "age": 0,
-      "attempts": 0,
-      "url": "https://swing-sega-logs-hero.trycloudflare.com/"
-    }
-  ]
-</code></pre></div>
-<h6 dir="auto">page body</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[
-  {
-    &quot;type&quot;: &quot;integrity-violation&quot;,
-    &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-    &quot;body&quot;: {
-      &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-      &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js&quot;,
-      &quot;destination&quot;: &quot;script&quot;,
-      &quot;reportOnly&quot;: true
-    }
-  }
-]"><pre class="notranslate"><code class="notranslate">[
-  {
-    "type": "integrity-violation",
-    "url": "https://swing-sega-logs-hero.trycloudflare.com/",
-    "body": {
-      "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-      "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js",
-      "destination": "script",
-      "reportOnly": true
-    }
-  }
-]
-</code></pre></div>
-<h5 dir="auto">Safari 18.5 iPhone</h5>
-<h6 dir="auto">reporting endpoint</h6>
-<p dir="auto">NA</p>
-<h6 dir="auto">page body</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="Waiting for integrity-violation reports..."><pre class="notranslate"><code class="notranslate">Waiting for integrity-violation reports...
-</code></pre></div>
-<h5 dir="auto">Firefox 148 Desktop</h5>
-<h6 dir="auto">reporting endpoint</h6>
-<p dir="auto">NA</p>
-<h6 dir="auto">page body</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="ReportingObserver is not supported"><pre class="notranslate"><code class="notranslate">ReportingObserver is not supported
-</code></pre></div>
-<h5 dir="auto">Firefox 149 Desktop</h5>
-<h6 dir="auto">reporting endpoint</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[
-    {
-      &quot;age&quot;: 14,
-      &quot;type&quot;: &quot;integrity-violation&quot;,
-      &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-      &quot;user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0&quot;,
-      &quot;body&quot;: {
-        &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-        &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js&quot;,
-        &quot;destination&quot;: &quot;script&quot;,
-        &quot;reportOnly&quot;: true
-      }
-    },
-    {
-      &quot;age&quot;: 13,
-      &quot;type&quot;: &quot;integrity-violation&quot;,
-      &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-      &quot;user_agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0&quot;,
-      &quot;body&quot;: {
-        &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-        &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js&quot;,
-        &quot;destination&quot;: &quot;script&quot;,
-        &quot;reportOnly&quot;: true
-      }
-    }
-]"><pre class="notranslate"><code class="notranslate">[
-    {
-      "age": 14,
-      "type": "integrity-violation",
-      "url": "https://swing-sega-logs-hero.trycloudflare.com/",
-      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0",
-      "body": {
-        "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-        "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js",
-        "destination": "script",
-        "reportOnly": true
-      }
-    },
-    {
-      "age": 13,
-      "type": "integrity-violation",
-      "url": "https://swing-sega-logs-hero.trycloudflare.com/",
-      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:149.0) Gecko/20100101 Firefox/149.0",
-      "body": {
-        "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-        "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh5O.js",
-        "destination": "script",
-        "reportOnly": true
-      }
-    }
-]
-</code></pre></div>
-<h6 dir="auto">page body</h6>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto" data-snippet-clipboard-copy-content="[
-  {
-    &quot;type&quot;: &quot;integrity-violation&quot;,
-    &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-    &quot;body&quot;: {
-      &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-      &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js&quot;,
-      &quot;destination&quot;: &quot;script&quot;,
-      &quot;reportOnly&quot;: true
-    }
-  },
-  {
-    &quot;type&quot;: &quot;integrity-violation&quot;,
-    &quot;url&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-    &quot;body&quot;: {
-      &quot;documentURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/&quot;,
-      &quot;blockedURL&quot;: &quot;https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js&quot;,
-      &quot;destination&quot;: &quot;script&quot;,
-      &quot;reportOnly&quot;: true
-    }
-  }
-]"><pre class="notranslate"><code class="notranslate">[
-  {
-    "type": "integrity-violation",
-    "url": "https://swing-sega-logs-hero.trycloudflare.com/",
-    "body": {
-      "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-      "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js",
-      "destination": "script",
-      "reportOnly": true
-    }
-  },
-  {
-    "type": "integrity-violation",
-    "url": "https://swing-sega-logs-hero.trycloudflare.com/",
-    "body": {
-      "documentURL": "https://swing-sega-logs-hero.trycloudflare.com/",
-      "blockedURL": "https://swing-sega-logs-hero.trycloudflare.com/assets/index-C6TRIh50.js",
-      "destination": "script",
-      "reportOnly": true
-    }
-  }
-]
-</code></pre></div>
-</details>
-<details><summary>Test Summary</summary>
-<ul dir="auto">
-<li>api.ReportingObserver.ReportingObserver.options_parameter.types_property.integrity-violation: set safari version_added to "26" (safari_ios mirrors).</li>
-<li>http.headers.Integrity-Policy &amp; http.headers.Integrity-Policy-Report-Only: add firefox version_added "149" for full support and set version_removed "149" on the "145" partial_implementation entry (endpoints ignored).</li>
-</ul>
-<p dir="auto">Testing:</p>
-<ul dir="auto">
-<li>Validated with Integrity-Policy-Report-Only: blocked-destinations=(script style), endpoints=(default) and Reporting-Endpoints: default="/reports", observing both in-page ReportingObserver ({ types: ["integrity-violation"], buffered: true }) and POST delivery to the reporting endpoint.</li>
-<li>Safari 18.5 (iOS) and 18.6 (macOS): no reports observed or delivered.</li>
-<li>Safari 26.0 (iOS) and 26.2 (macOS): integrity-violation reports observed in ReportingObserver and delivered to Reporting-Endpoints.</li>
-<li>Firefox 148 (macOS): ReportingObserver not supported and no report delivered.</li>
-<li>Firefox 149 (macOS): integrity-violation reports observed in ReportingObserver and delivered to Reporting-Endpoints (Integrity-Policy shares the same reporting path per Firefox 149 release notes).</li>
-<li>Across all tested browsers, reports were observed for script but not style (blocked-destinations_style left unchanged).</li>
-</ul>
-</details>
-<p dir="auto">Test method:</p>
-<p dir="auto">I used real time testing on <a href="https://app.lambdatest.com/" rel="nofollow">https://app.lambdatest.com/</a>.<br>
-I used this <a href="https://github.com/ccouzens/browser-reporting-api-observability-ingester/tree/8430336217702322cf97fd0407bc9b139646b90c/projects/site-with-violations">test server</a> designed to trigger the violations</p>
-<p dir="auto">References:</p>
-<ul dir="auto">
-<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/145" rel="nofollow">https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/145</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/149" rel="nofollow">https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/149</a></li>
-<li><a href="https://bugzil.la/1984973" rel="nofollow">https://bugzil.la/1984973</a></li>
-<li><a href="https://bugzil.la/1976074" rel="nofollow">https://bugzil.la/1976074</a></li>
-<li><a href="https://bugzil.la/2008916" rel="nofollow">https://bugzil.la/2008916</a></li>
-<li><a href="https://developer.apple.com/documentation/safari-release-notes/safari-26-release-notes" rel="nofollow">https://developer.apple.com/documentation/safari-release-notes/safari-26-release-notes</a></li>
-</ul>]]></content>
-        <author>
-            <name>ccouzens</name>
-            <email>ccouzens@noreply.github.com</email>
-            <uri>https://github.com/ccouzens</uri>
-        </author>
-        <published>2026-11-19T00:59:32.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Update data for Safari Technology Preview 257, and add message_serialization.]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31193</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31193"/>
-        <updated>2026-11-20T19:06:45.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/190589?u=f533e20910aae6e8ef669d6ccf02c94d3ca93d5c&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Updates the web extension data and some web platform data for Safari Technology Preview 257, and adds the <code class="notranslate">message_serialization</code> manifest key.</p>
-<ul dir="auto">
-<li><code class="notranslate">manifest.message_serialization</code>: Chrome 148, Firefox not supported, Safari <code class="notranslate">preview</code> (<a href="https://webkit.org/b/330104" rel="nofollow">https://webkit.org/b/330104</a>). Chrome announced it in <a href="https://developer.chrome.com/docs/extensions/whats-new" rel="nofollow">https://developer.chrome.com/docs/extensions/whats-new</a>.</li>
-<li><code class="notranslate">runtime.MessageSender.windowId</code>: Safari <code class="notranslate">preview</code>, with the <code class="notranslate">impl_url</code> kept (<a href="https://webkit.org/b/329185" rel="nofollow">https://webkit.org/b/329185</a>).</li>
-<li><code class="notranslate">action.getPopup()</code>, <code class="notranslate">browserAction.getPopup()</code> and <code class="notranslate">pageAction.getPopup()</code>: Safari is partial, because it returns the popup path as given instead of a full extension URL (<a href="https://webkit.org/b/329391" rel="nofollow">https://webkit.org/b/329391</a>). The fix is in Safari Technology Preview 257, so the partial entry ends at <code class="notranslate">preview</code>.</li>
-<li><code class="notranslate">declarativeNetRequest.RuleAction.requestHeaders.header</code>: Safari is partial, because it accepts only a fixed list of standard header names (<a href="https://webkit.org/b/290922" rel="nofollow">https://webkit.org/b/290922</a>). The partial entry ends at <code class="notranslate">preview</code> (Safari Technology Preview 257). The restriction applies from 16.4: <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1655304634" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/372" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/372/hovercard" href="https://github.com/w3c/webextensions/issues/372">w3c/webextensions#372</a> reports <code class="notranslate">The header </code>Sec-GPC<code class="notranslate"> is not recognized.</code> in April 2023, and Chromium (a deny list, per that issue) and Firefox 113 accept custom header names.</li>
-<li>Enums exposed on the <code class="notranslate">browser.*</code> namespaces in Safari Technology Preview 257 (<a href="https://webkit.org/b/329161" rel="nofollow">https://webkit.org/b/329161</a>): <code class="notranslate">declarativeNetRequest.ResourceType</code>, <code class="notranslate">extension.ViewType</code>, <code class="notranslate">menus.ContextType</code> and <code class="notranslate">ItemType</code>, <code class="notranslate">runtime.OnInstalledReason</code>, <code class="notranslate">PlatformArch</code> and <code class="notranslate">PlatformOs</code>, <code class="notranslate">tabs.TabStatus</code> and <code class="notranslate">WindowType</code>, and <code class="notranslate">windows.CreateType</code>, <code class="notranslate">WindowState</code> and <code class="notranslate">WindowType</code>. Safari accepted the values, but the enums were not exposed, so each supported entry gets a <code class="notranslate">preview</code> entry and a partial entry that ends at <code class="notranslate">preview</code>, like <code class="notranslate">scripting.ExecutionWorld</code>. The <code class="notranslate">safari_ios</code> entries that differ from Safari are partial with the same note, because there is no iOS preview. This is verified for the WebKit-based implementation (Safari 18.0 onward). The earlier 14 to 17 range follows the <code class="notranslate">ExecutionWorld</code> entries and is not checked. <code class="notranslate">cookies.SameSiteStatus</code> and <code class="notranslate">declarativeNetRequest.UnsupportedRegexReason</code> have no BCD entry, and every <code class="notranslate">webRequest.ResourceType</code> value is already <code class="notranslate">false</code>.</li>
-<li><code class="notranslate">action.isEnabled()</code> with a bare tab identifier (<code class="notranslate">isEnabled.details_integer</code>): Safari <code class="notranslate">preview</code> (<a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1923244533" data-permission-text="Title is private" data-url="https://github.com/w3c/webextensions/issues/463" data-hovercard-type="issue" data-hovercard-url="/w3c/webextensions/issues/463/hovercard" href="https://github.com/w3c/webextensions/issues/463">w3c/webextensions#463</a>).</li>
-<li><code class="notranslate">AudioWorklet.port</code> and <code class="notranslate">AudioWorkletGlobalScope.port</code>: Safari <code class="notranslate">preview</code> (<a href="https://webkit.org/b/299386" rel="nofollow">https://webkit.org/b/299386</a>).</li>
-<li>WebGPU dual-source blending, the <code class="notranslate">dual-source-blending</code> feature and its use in <code class="notranslate">GPUDevice.createRenderPipeline()</code> and <code class="notranslate">createRenderPipelineAsync()</code>: Safari <code class="notranslate">preview</code> (<a href="https://webkit.org/b/329950" rel="nofollow">https://webkit.org/b/329950</a>).</li>
-</ul>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto"><code class="notranslate">npm run lint -- webextensions</code> passes.</p>
-<ul dir="auto">
-<li><a href="https://webkit.org/blog/18652/release-notes-for-safari-technology-preview-257/" rel="nofollow">https://webkit.org/blog/18652/release-notes-for-safari-technology-preview-257/</a></li>
-</ul>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #31192.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6478487369" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31192" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/31192/hovercard" href="https://github.com/mdn/browser-compat-data/issues/31192">#31192</a>.</p>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #31057.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6220734861" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31057" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/31057/hovercard" href="https://github.com/mdn/browser-compat-data/issues/31057">#31057</a>. The <code class="notranslate">icon_variants</code> changes for Safari Technology Preview 257 are in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6250771018" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31072" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31072/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31072">#31072</a>.</p>]]></content>
-        <author>
-            <name>xeenon</name>
-            <email>xeenon@noreply.github.com</email>
-            <uri>https://github.com/xeenon</uri>
-        </author>
-        <published>2026-11-18T23:02:11.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Add note on StorageManager.estimate() usage scope in Firefox before 158]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31191</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31191"/>
-        <updated>2026-11-18T22:01:56.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/105445818?v=4" width="64" height="64" alt=""/><br/><p dir="auto">Before Firefox 158 (bug 1374970), usage was the combined usage of all origins of the same site instead of the calling origin's own usage.</p>
-
-<h4 dir="auto">Summary</h4>
-
-<h4 dir="auto">Test results and supporting details</h4>
-
-
-<h4 dir="auto">Related issues</h4>
-
-]]></content>
-        <author>
-            <name>hsingh-moz</name>
-            <email>hsingh-moz@noreply.github.com</email>
-            <uri>https://github.com/hsingh-moz</uri>
-        </author>
-        <published>2026-11-18T22:00:41.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Note that Safari 27 disables `display` transitions for popovers and `<dialog>`]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31190</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31190"/>
-        <updated>2026-11-18T20:55:11.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75755802?u=232cfdb37381645af6e176bf8b8b2a4d1d3a3495&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Adds a Safari note to <code class="notranslate">css.properties.display.is_animatable</code>: since Safari 27, <code class="notranslate">display</code> transitions are disabled for popovers and <code class="notranslate">&lt;dialog&gt;</code> elements. Support stays at 18 with no <code class="notranslate">partial_implementation</code>, as suggested in the issue, since WebKit disabled this on purpose while the spec questions are open. Safari on iOS inherits the note through <code class="notranslate">mirror</code>.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">WebKit <a href="https://webkit.org/b/311648" rel="nofollow">bug 311648</a>, "Disable display property transitions for popover &amp; ", is resolved fixed by <a href="https://commits.webkit.org/310725@main" rel="nofollow">310725@main</a> on 2026-04-07, with the test <code class="notranslate">LayoutTests/transitions/no-display-transition-top-layer.html</code>. The commit cites <a href="https://github.com/w3c/csswg-drafts/issues/13595" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13595/hovercard">w3c/csswg-drafts#13595</a> and <a href="https://github.com/w3c/csswg-drafts/issues/13200" data-hovercard-type="issue" data-hovercard-url="/w3c/csswg-drafts/issues/13200/hovercard">w3c/csswg-drafts#13200</a>. It landed while WebKit was at 625.1.14, which puts it in Safari 27 (625.1.29); Safari 26.6 shipped 624.4.5 and does not have it.</p>
-<p dir="auto"><code class="notranslate">node lint/lint.js css/properties/display.json</code>: all data passed linting.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30560.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5484708683" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30560" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30560/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30560">#30560</a></p>]]></content>
-        <author>
-            <name>jsabutis</name>
-            <email>jsabutis@noreply.github.com</email>
-            <uri>https://github.com/jsabutis</uri>
-        </author>
-        <published>2026-11-18T20:53:39.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[SpeechSynthesisUtterance: Fix boundary event support for desktop Chrome]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31189</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31189"/>
-        <updated>2026-11-18T19:10:55.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75256866?u=65ad8936a8397061cf376b72356f5b95ecf27fd9&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Remove <code class="notranslate">partial_implementation</code> from desktop Chrome for <code class="notranslate">api.SpeechSynthesisUtterance.boundary_event</code>, keeping it and its note for <code class="notranslate">chrome_android</code> only.</p>
-<p dir="auto">This re-opens <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5703559894" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30734" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30734/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30734">#30734</a>, which I closed to stay within the three-open-PR limit.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<ul dir="auto">
-<li><a href="https://crbug.com/40715888" rel="nofollow">Chromium issue 40715888</a> ("SpeechSynthesisUtterance.onboundary does not fire") has OS set to Android, and the report states the event fires on desktop Chrome but not on Chrome for Android.</li>
-<li>In <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3604566480" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28419" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28419/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28419">#28419</a>, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/caugner/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/caugner">@caugner</a> pointed to the blame for <code class="notranslate">onboundary</code> in Blink's <code class="notranslate">speech_synthesis_utterance.idl</code> and noted it is plausible that desktop Chrome has supported the event since 33.</li>
-<li><code class="notranslate">chrome_android</code> keeps <code class="notranslate">partial_implementation</code> rather than <code class="notranslate">version_added: false</code>, per the "Non-functional defined names imply <code class="notranslate">partial_implementation</code>" guideline.</li>
-<li><code class="notranslate">oculus</code> still mirrors <code class="notranslate">chrome_android</code>, so it is unchanged.</li>
-<li><code class="notranslate">npm run lint</code> passes.</li>
-</ul>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #28419.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3604566480" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/28419" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/28419/hovercard" href="https://github.com/mdn/browser-compat-data/issues/28419">#28419</a></p>]]></content>
-        <author>
-            <name>mustafacicek-eee</name>
-            <email>mustafacicek-eee@noreply.github.com</email>
-            <uri>https://github.com/mustafacicek-eee</uri>
-        </author>
-        <published>2026-11-18T19:09:40.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[share_target: Note lack of support on Linux for Chrome]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31188</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31188"/>
-        <updated>2026-11-18T19:09:21.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75256866?u=65ad8936a8397061cf376b72356f5b95ecf27fd9&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Add a note to <code class="notranslate">manifests.webapp.share_target</code> that Chrome does not support Web Share Target on Linux. Edge picks up the note through mirroring.</p>
-<p dir="auto">This re-opens <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5704825146" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30742" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30742/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30742">#30742</a>, which I closed to stay within the three-open-PR limit.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Chromium has no Web Share integration on Linux, since there is no native share system there (see <a href="https://issues.chromium.org/issues/40542648" rel="nofollow">Chromium issue 40542648</a>, OS: Linux, status: New). The same bug is already cited for <code class="notranslate">navigator.share</code>.</p>
-<p dir="auto">As discussed in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4708021456" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29889" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29889/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29889">#29889</a>, this is an operating system limitation, which falls under the exception in the "Operating system limitations imply <code class="notranslate">partial_implementation</code>" guideline, so this adds a note only, without <code class="notranslate">partial_implementation</code>.</p>
-<p dir="auto"><code class="notranslate">npm run lint</code> passes.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #29889.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="4708021456" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/29889" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/29889/hovercard" href="https://github.com/mdn/browser-compat-data/issues/29889">#29889</a></p>]]></content>
-        <author>
-            <name>mustafacicek-eee</name>
-            <email>mustafacicek-eee@noreply.github.com</email>
-            <uri>https://github.com/mustafacicek-eee</uri>
-        </author>
-        <published>2026-11-18T19:08:13.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clear-Site-Data: Mark cookies directive as partial in Safari]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31187</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31187"/>
-        <updated>2026-11-18T17:55:36.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/75256866?u=65ad8936a8397061cf376b72356f5b95ecf27fd9&v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto">Mark <code class="notranslate">http.headers.Clear-Site-Data.cookies</code> as <code class="notranslate">partial_implementation: true</code> in Safari, with a note that only cookies matching the response host are cleared.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<ul dir="auto">
-<li>Tracked in <a href="https://bugs.webkit.org/show_bug.cgi?id=325085" rel="nofollow">WebKit bug 325085</a>, which is still open: <code class="notranslate">Clear-Site-Data: "cookies"</code> does not clear cookies set with a <code class="notranslate">Domain</code> attribute. The spec requires clearing cookies for the registrable domain including subdomains.</li>
-<li><code class="notranslate">npm run lint</code> and Prettier pass locally.</li>
-</ul>
-<p dir="auto">This replaces <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5703646937" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30735" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/30735/hovercard" href="https://github.com/mdn/browser-compat-data/pull/30735">#30735</a>, which I closed earlier to stay within the three-open-PR limit.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #30649.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5561726736" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/30649" data-hovercard-type="issue" data-hovercard-url="/mdn/browser-compat-data/issues/30649/hovercard" href="https://github.com/mdn/browser-compat-data/issues/30649">#30649</a></p>]]></content>
-        <author>
-            <name>mustafacicek-eee</name>
-            <email>mustafacicek-eee@noreply.github.com</email>
-            <uri>https://github.com/mustafacicek-eee</uri>
-        </author>
-        <published>2026-11-18T17:54:02.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[devtools.panels Safari support corrections]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31186</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31186"/>
-        <updated>2026-11-19T17:53:49.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/7352080?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto"><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1817083912" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/20403" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/20403/hovercard" href="https://github.com/mdn/browser-compat-data/pull/20403">#20403</a> set Safari to 16 for these features. Safari 16's release notes do announce Web Inspector Extensions, but no Apple source names any of these APIs. Safari's extension APIs are defined in WebKit's IDL files, and none of these features appear there. Apple's documentation doesn't mention any of them either.</p>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto"><strong><code class="notranslate">devtools.panels</code>: <code class="notranslate">Button</code>, <code class="notranslate">ExtensionPanel.createStatusBarButton</code>, <code class="notranslate">openResource</code>, <code class="notranslate">setOpenResourceHandler</code>, <code class="notranslate">sources</code></strong></p>
-<ul dir="auto">
-<li><a href="https://github.com/WebKit/WebKit/blob/9fea36ebc8f5d9bd116ccdbc2e7130eeb02217b3/Source/WebKit/WebProcess/Extensions/Interfaces/WebExtensionAPIDevToolsPanels.idl#L29-L36"><code class="notranslate">WebExtensionAPIDevToolsPanels.idl</code>  L29–36</a>:  <code class="notranslate">devtools.panels</code>  defines only  <code class="notranslate">create()</code>,  <code class="notranslate">themeName</code>  and  <code class="notranslate">onThemeChanged</code>. It has no  <code class="notranslate">openResource()</code>,  <code class="notranslate">setOpenResourceHandler()</code>,  <code class="notranslate">sources</code>  or  <code class="notranslate">Button</code>.</li>
-<li><a href="https://github.com/WebKit/WebKit/blob/9fea36ebc8f5d9bd116ccdbc2e7130eeb02217b3/Source/WebKit/WebProcess/Extensions/Interfaces/WebExtensionAPIDevToolsExtensionPanel.idl#L29-L34"><code class="notranslate">WebExtensionAPIDevToolsExtensionPanel.idl</code>  L29–34</a>:  <code class="notranslate">ExtensionPanel</code>  defines only  <code class="notranslate">onShown</code>  and  <code class="notranslate">onHidden</code>. It has no  <code class="notranslate">createStatusBarButton()</code>, so Safari can't create a  <code class="notranslate">Button</code>  object.</li>
-<li>A search of the WebKit repository finds no  <code class="notranslate">createStatusBarButton</code>  and no  <code class="notranslate">Button</code>  interface for devtools extensions.</li>
-<li><a href="https://github.com/WebKit/WebKit/blob/9fea36ebc8f5d9bd116ccdbc2e7130eeb02217b3/Source/WebInspectorUI/UserInterface/Controllers/WebInspectorExtensionController.js"><code class="notranslate">WebInspectorExtensionController.js</code></a>: Web Inspector's extension controller handles extension tabs (create, navigate, show, hide, evaluate script, reload). It has nothing for opening resources, a sources panel or status bar buttons.</li>
-</ul>
-<p dir="auto"><strong><code class="notranslate">devtools.inspectedWindow</code>: <code class="notranslate">Resource</code> (and its <code class="notranslate">getContent</code>, <code class="notranslate">setContent</code>, <code class="notranslate">url</code>), <code class="notranslate">getResources</code>, <code class="notranslate">onResourceAdded</code>, <code class="notranslate">onResourceContentCommitted</code></strong></p>
-<ul dir="auto">
-<li><a href="https://github.com/WebKit/WebKit/blob/9fea36ebc8f5d9bd116ccdbc2e7130eeb02217b3/Source/WebKit/WebProcess/Extensions/Interfaces/WebExtensionAPIDevToolsInspectedWindow.idl#L37-L44"><code class="notranslate">WebExtensionAPIDevToolsInspectedWindow.idl</code>  L37–44</a>:  <code class="notranslate">inspectedWindow</code>  defines only  <code class="notranslate">eval()</code>,  <code class="notranslate">reload()</code>  and  <code class="notranslate">tabId</code>. It has no  <code class="notranslate">Resource</code>  type, no  <code class="notranslate">getResources()</code>  and no resource events.</li>
-</ul>
-<p dir="auto"><strong><code class="notranslate">devtools.inspectedWindow.eval()</code> option <code class="notranslate">scriptExecutionContext</code></strong></p>
-<ul dir="auto">
-<li><a href="https://github.com/WebKit/WebKit/blob/9fea36ebc8f5d9bd116ccdbc2e7130eeb02217b3/Source/WebKit/WebProcess/Extensions/Interfaces/WebExtensionAPIDevToolsInspectedWindow.idl#L26-L28"><code class="notranslate">WebExtensionAPIDevToolsInspectedWindow.idl</code>  L26–28</a>: the eval options dictionary declares only  <code class="notranslate">frameURL</code>.</li>
-<li><a href="https://github.com/WebKit/WebKit/blob/9fea36ebc8f5d9bd116ccdbc2e7130eeb02217b3/Source/WebKit/WebProcess/Extensions/API/Cocoa/WebExtensionAPIDevToolsInspectedWindowCocoa.mm#L48-L56"><code class="notranslate">WebExtensionAPIDevToolsInspectedWindowCocoa.mm</code>  L48–56</a>: the implementation accepts only  <code class="notranslate">frameURLKey</code>. Other options are ignored. The same applies to  <code class="notranslate">contextSecurityOrigin</code>  and  <code class="notranslate">useContentScriptContext</code>, which <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6417146967" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31154" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31154/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31154">#31154</a> corrects.</li>
-</ul>
-<p dir="auto"><strong>Apple sources checked</strong> (none mention any of these features):</p>
-<ul dir="auto">
-<li>Safari release notes for 15.4, 16.0–16.5, 17.0 and 18.0. Safari 16.0 says only "Added support for Safari Web Inspector Extensions."</li>
-<li><a href="https://webkit.org/blog/13152/webkit-features-in-safari-16-0/" rel="nofollow">WebKit features in Safari 16.0</a></li>
-<li><a href="https://developer.apple.com/videos/play/wwdc2022/10100/" rel="nofollow">WWDC22 session 10100, "Create Safari Web Inspector Extensions"</a>. It names only  <code class="notranslate">devtools.panels.create</code>,  <code class="notranslate">devtools.inspectedWindow.eval</code>  (with  <code class="notranslate">frameURL</code>),  <code class="notranslate">devtools.network.onNavigated</code>  and the theme APIs.</li>
-<li><a href="https://developer.apple.com/documentation/safariservices/adding-a-web-development-tool-to-safari-web-inspector" rel="nofollow">Adding a web development tool to Safari Web Inspector</a></li>
-<li><a href="https://developer.apple.com/documentation/safariservices/assessing-your-safari-web-extension-s-browser-compatibility" rel="nofollow">Assessing your Safari web extension's browser compatibility</a></li>
-</ul>]]></content>
-        <author>
-            <name>rebloor</name>
-            <email>rebloor@noreply.github.com</email>
-            <uri>https://github.com/rebloor</uri>
-        </author>
-        <published>2026-11-18T16:42:51.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Updated status of WebGPU optional features in Firefox]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31177</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31177"/>
-        <updated>2026-11-18T10:40:51.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/114113246?v=4" width="64" height="64" alt=""/><br/><p dir="auto">This PR is on top of <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6455644278" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31176" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31176/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31176">#31176</a>. The changes intended for this PR are in the second commit.</p>
-<h4 dir="auto">Summary</h4>
-<p dir="auto">Updates the status of WebGPU optional features in Firefox:</p>
-<ul dir="auto">
-<li>The following features were listed as not supported, but were actually supported prior to the initial Firefox release with WebGPU support (141): <code class="notranslate">depth-clip-control</code>, <code class="notranslate">depth32float-stencil8</code>, <code class="notranslate">texture-compression-bc</code>, <code class="notranslate">texture-compression-etc2</code>, <code class="notranslate">texture-compression-astc</code>, <code class="notranslate">timestamp-query</code>, <code class="notranslate">indirect-first-instance</code>, <code class="notranslate">shader-f16</code>, <code class="notranslate">rg11b10ufloat-renderable</code>, <code class="notranslate">bgra8unorm-storage</code>, <code class="notranslate">float32-filterable</code>.</li>
-<li>As a consequence of adding support in a second implementation, <code class="notranslate">status.experimental</code> changes to <code class="notranslate">false</code> for <code class="notranslate">float32-filterable</code> and <code class="notranslate">texture-compression-bc</code>.</li>
-<li><code class="notranslate">dual-source-blending</code> was already correctly reported as 155+; this PR adds the standard notes about platform limitations.</li>
-<li><code class="notranslate">clip-distances</code>, <code class="notranslate">float32-blendable</code> already correctly reported 158+.</li>
-<li><code class="notranslate">texture-component-swizzle</code> is in <a href="https://phabricator.services.mozilla.com/D343350" rel="nofollow">https://phabricator.services.mozilla.com/D343350</a> and can be added if this PR is still open when it lands.</li>
-</ul>
-<h4 dir="auto">Test results and supporting details</h4>
-<p dir="auto">Ran <code class="notranslate">npm test</code>.</p>
-<h4 dir="auto">Related issues</h4>
-<p dir="auto">Can generally be found via <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2073767" rel="nofollow">Bug 2073767 - [meta] Optional WebGPU features</a>.</p>]]></content>
-        <author>
-            <name>andyleiserson</name>
-            <email>andyleiserson@noreply.github.com</email>
-            <uri>https://github.com/andyleiserson</uri>
-        </author>
-        <published>2026-11-18T00:09:40.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Firefox supports WebGPU in service workers from 148]]></title>
-        <id>https://github.com/mdn/browser-compat-data/pull/31176</id>
-        <link href="https://github.com/mdn/browser-compat-data/pull/31176"/>
-        <updated>2026-11-20T22:28:06.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/114113246?v=4" width="64" height="64" alt=""/><br/><h4 dir="auto">Summary</h4>
-<p dir="auto"><a href="https://www.firefox.com/en-US/firefox/148.0/releasenotes/" rel="nofollow">Firefox supports WebGPU in service workers from version 148.</a> Remove the note about the service worker restriction everywhere it appears. I have not replaced it with a note stating that support started in 148, to me that doesn't seem like an important enough point to be worth cluttering all of these pages with the note. But I can add it if desired.</p>
-<p dir="auto">There were two instances of the alternate note text "Supported on Windows only, in all contexts except for service workers." One of these was <code class="notranslate">GPUDevice.importExternalTexture</code>, where that note was correct when added, but is no longer correct. I removed it and replaced it with the full standard set of WebGPU notes (but support starts in Firefox 144, not Firefox 141).</p>
-<p dir="auto">The other instance was in the data for the <code class="notranslate">GPUPipelineError</code> message parameter being optional. I am not aware of any reason this differs from the rest of the WebGPU items, so I replaced it with the standard set of WebGPU notes.</p>
-<p dir="auto">I also deleted "Supported on Windows only, in all contexts except for service workers." from the <code class="notranslate">OS_NOTES</code> list in <code class="notranslate">scripts/build/mirror.js</code>.</p>
-<p dir="auto">CC <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/ErichDonGubler/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ErichDonGubler">@ErichDonGubler</a></p>
-<h4 dir="auto">Test results and supporting details</h4>
-<ul dir="auto">
-<li>Ran <code class="notranslate">npm test</code></li>
-<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1942431" rel="nofollow">Bug 1942431 - Remove Nightly gate on WebGPU in service workers</a></li>
-</ul>]]></content>
-        <author>
-            <name>andyleiserson</name>
-            <email>andyleiserson@noreply.github.com</email>
-            <uri>https://github.com/andyleiserson</uri>
-        </author>
-        <published>2026-11-17T22:40:39.000Z</published>
     </entry>
 </feed>
