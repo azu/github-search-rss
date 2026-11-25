@@ -2,11 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-24T21:39:56.394Z</updated>
+    <updated>2026-11-25T04:39:55.926Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Remove the PushSubscription.subscriptionId page]]></title>
+        <id>https://github.com/mdn/content/pull/46706</id>
+        <link href="https://github.com/mdn/content/pull/46706"/>
+        <updated>2026-11-25T02:32:29.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/71961814?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Removes the <code class="notranslate">PushSubscription.subscriptionId</code> page, with a redirect to the <code class="notranslate">PushSubscription</code> interface page, and removes the remaining references to the property:</p>
+<ul dir="auto">
+<li>The property's entry in the <code class="notranslate">PushSubscription</code> instance properties list.</li>
+<li>A <code class="notranslate">console.log(pushSubscription.subscriptionId)</code> line in the <code class="notranslate">ServiceWorkerRegistration.pushManager</code> example.</li>
+<li>A code comment in the <code class="notranslate">PushManager.getSubscription()</code> example that said "the latest subscriptionId". The code below it sends the whole subscription.</li>
+</ul>
+<p dir="auto">The page was removed with <code class="notranslate">npm run content delete</code>, which also added the redirect and updated <code class="notranslate">_wikihistory.json</code>.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The feature was removed from browser-compat-data as irrelevant in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6572097970" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31247" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31247/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31247">mdn/browser-compat-data#31247</a>, so the <code class="notranslate">api.PushSubscription.subscriptionId</code> key this page uses goes away with the next BCD release. That PR is labelled <code class="notranslate">needs content update</code>. Chrome removed the attribute in Chrome 45 (2015), and Firefox and Safari never supported it. The released BCD data still lists Chrome 42 with no removal; <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6572097970" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31247" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31247/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31247">mdn/browser-compat-data#31247</a> has the evidence for the Chrome 45 removal. The page was already marked deprecated and non-standard, and it told readers to use <code class="notranslate">endpoint</code> instead.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li>Chromium commit <a href="https://github.com/chromium/chromium/commit/64e7ce39c2fde66087e527fb8932ec97e3b7d358">64e7ce39c2fd</a>, "Remove support for PushSubscription.subscriptionId.".</li>
+<li>The <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/6OK5qm491Eg" rel="nofollow">Intent to Remove</a> on blink-dev.</li>
+<li>This follows the same steps as <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="5482464842" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/45747" data-hovercard-type="pull_request" data-hovercard-url="/mdn/content/pull/45747/hovercard" href="https://github.com/mdn/content/pull/45747">#45747</a> (<code class="notranslate">FetchEvent.replacesClientId</code>).</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto">Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6572097970" data-permission-text="Title is private" data-url="https://github.com/mdn/browser-compat-data/issues/31247" data-hovercard-type="pull_request" data-hovercard-url="/mdn/browser-compat-data/pull/31247/hovercard" href="https://github.com/mdn/browser-compat-data/pull/31247">mdn/browser-compat-data#31247</a>.</p>]]></content>
+        <author>
+            <name>alphaNumericEntity</name>
+            <email>alphaNumericEntity@noreply.github.com</email>
+            <uri>https://github.com/alphaNumericEntity</uri>
+        </author>
+        <published>2026-11-25T02:31:02.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Add accordion example for CSS Cookbook]]></title>
         <id>https://github.com/mdn/content/pull/46702</id>
@@ -576,7 +606,7 @@ The <code class="notranslate">FetchEvent</code> example shows how such a service
         <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/184854696?u=e72bab7ff4e418792fc7e3d920d6622f65ba609a&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
 <p dir="auto">removes the "firefox <code class="notranslate">default-src: none</code> svg sprite blocking issue" section from the <code class="notranslate">default-src</code> page.</p>
 <h3 dir="auto">Motivation</h3>
-<p dir="auto">the section is about a firefox bug that got fixed in firefox 132 (bug <a class="commit-link" data-hovercard-type="commit" data-hovercard-url="https://github.com/mdn/content/commit/177397630a7e09e66b454e8121ae4584a1d75730/hovercard" href="https://github.com/mdn/content/commit/177397630a7e09e66b454e8121ae4584a1d75730"><tt>1773976</tt></a>). since then firefox applies <code class="notranslate">img-src</code> to svg <code class="notranslate">&lt;use href&gt;</code> loads like other browsers, so <code class="notranslate">default-src 'none'; img-src 'self'</code> just works and the workaround isn't needed anymore. the page already has a note saying it's fixed, which makes the section confusing to read.</p>
+<p dir="auto">the section is about a firefox bug that got fixed in firefox 132 (bug 1773976). since then firefox applies <code class="notranslate">img-src</code> to svg <code class="notranslate">&lt;use href&gt;</code> loads like other browsers, so <code class="notranslate">default-src 'none'; img-src 'self'</code> just works and the workaround isn't needed anymore. the page already has a note saying it's fixed, which makes the section confusing to read.</p>
 <h3 dir="auto">Additional details</h3>
 <p dir="auto">i checked it in a current firefox nightly with a small local server:</p>
 <ul dir="auto">
@@ -614,23 +644,5 @@ Relates to <a class="issue-link js-issue-link" data-error-text="Failed to load t
             <uri>https://github.com/theking2</uri>
         </author>
         <published>2026-11-23T09:47:05.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Clarify that image.decode() waits for loading]]></title>
-        <id>https://github.com/mdn/content/pull/46641</id>
-        <link href="https://github.com/mdn/content/pull/46641"/>
-        <updated>2026-11-23T08:51:41.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/27736882?v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">Clarifies that <code class="notranslate">HTMLImageElement.decode()</code> waits for an image to load and decode rather than initiating the image request itself. Also explains how this works with lazy-loaded images.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">The previous wording could suggest that calling <code class="notranslate">decode()</code> triggers image loading. This update follows the clarification discussed in the issue.</p>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #38034.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2839332675" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/38034" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/38034/hovercard" href="https://github.com/mdn/content/issues/38034">#38034</a></p>]]></content>
-        <author>
-            <name>YousefStudio</name>
-            <email>YousefStudio@noreply.github.com</email>
-            <uri>https://github.com/YousefStudio</uri>
-        </author>
-        <published>2026-11-23T08:50:06.000Z</published>
     </entry>
 </feed>
