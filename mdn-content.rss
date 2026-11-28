@@ -2,11 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://azu.github.io/github-search-rss/mdn-content.rss</id>
     <title>mdn/content update content</title>
-    <updated>2026-11-28T02:19:08.005Z</updated>
+    <updated>2026-11-28T11:02:32.120Z</updated>
     <generator>github-search-rss</generator>
     <link rel="alternate" href="https://azu.github.io/github-search-rss/mdn-content.rss"/>
     <subtitle>mdn/content update content on GitHub</subtitle>
     <rights>github-search-rss</rights>
+    <entry>
+        <title type="html"><![CDATA[Optimizing canvas: recommend ImageBitmap for pre-rendered images]]></title>
+        <id>https://github.com/mdn/content/pull/46741</id>
+        <link href="https://github.com/mdn/content/pull/46741"/>
+        <updated>2026-11-28T05:01:24.000Z</updated>
+        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/199657909?u=2f39f109163b15bedfae5f0d061ece488f34d520&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
+<p dir="auto">Updates the "Pre-render similar primitives or repeating objects on an offscreen canvas" tip in the Optimizing canvas guide: when the pre-rendered image doesn't change, turn it into an <code class="notranslate">ImageBitmap</code> with <code class="notranslate">OffscreenCanvas.transferToImageBitmap()</code> and draw the bitmap instead of the canvas, and call <code class="notranslate">ImageBitmap.close()</code> when it's no longer needed. Also adds a short tip on preparing images ahead of time with <code class="notranslate">createImageBitmap()</code>, including in workers.</p>
+<h3 dir="auto">Motivation</h3>
+<p dir="auto">The guide only suggested drawing an offscreen canvas on every frame. <code class="notranslate">ImageBitmap</code> is made for this: the HTML spec describes it as a bitmap image that "can be painted to a canvas without undue latency", and its content can't change once it's created. As the issue explains, Firefox's accelerated Canvas2D re-sends a source canvas's pixels on every <code class="notranslate">drawImage()</code> call, but uploads an <code class="notranslate">ImageBitmap</code> only once.</p>
+<p dir="auto">The old code example also only created an empty canvas and drew it, so I replaced it with one that pre-renders a shape into an <code class="notranslate">OffscreenCanvas</code> and draws the resulting bitmap.</p>
+<h3 dir="auto">Additional details</h3>
+<ul dir="auto">
+<li><code class="notranslate">ImageBitmap</code> interface: <a href="https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#the-imagebitmap-interface" rel="nofollow">https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#the-imagebitmap-interface</a></li>
+<li><code class="notranslate">createImageBitmap()</code> steps (the <code class="notranslate">Blob</code> branch reads and decodes in parallel): <a href="https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-createimagebitmap" rel="nofollow">https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-createimagebitmap</a></li>
+<li><code class="notranslate">close()</code>: <a href="https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-imagebitmap-close" rel="nofollow">https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-imagebitmap-close</a></li>
+<li><code class="notranslate">transferToImageBitmap()</code> replaces the canvas bitmap with a blank one: <a href="https://html.spec.whatwg.org/multipage/canvas.html#dom-offscreencanvas-transfertoimagebitmap" rel="nofollow">https://html.spec.whatwg.org/multipage/canvas.html#dom-offscreencanvas-transfertoimagebitmap</a></li>
+<li>Firefox bug linked from the issue: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2097484" rel="nofollow">https://bugzilla.mozilla.org/show_bug.cgi?id=2097484</a>. It's still UNCONFIRMED, so the page doesn't name a browser or give any timings.</li>
+<li>The <code class="notranslate">transferToImageBitmap()</code> reference page suggests drawing the <code class="notranslate">OffscreenCanvas</code> directly if you only need to copy it once. This tip is about content that's drawn many times, so I left that page as it is.</li>
+</ul>
+<p dir="auto">How I checked it:</p>
+<ul dir="auto">
+<li>Ran both code examples in Chrome 158. After <code class="notranslate">transferToImageBitmap()</code>, the bitmap is 64×64, the offscreen canvas is blank, and the bitmap can be drawn more than once. After <code class="notranslate">close()</code>, its size is 0×0 and <code class="notranslate">drawImage()</code> throws <code class="notranslate">InvalidStateError</code>. <code class="notranslate">createImageBitmap()</code> on a fetched <code class="notranslate">Blob</code> worked on the main thread and in a worker, and the bitmap transferred back to the main thread and drew correctly.</li>
+<li>markdownlint, Prettier, the front-matter linter and cspell pass on the changed file. <code class="notranslate">rari build</code> on the page finds no flaws, and the page renders in the local preview.</li>
+</ul>
+<h3 dir="auto">Related issues and pull requests</h3>
+<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #46707.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="6597001599" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/46707" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/46707/hovercard" href="https://github.com/mdn/content/issues/46707">#46707</a></p>]]></content>
+        <author>
+            <name>imeerkhurram</name>
+            <email>imeerkhurram@noreply.github.com</email>
+            <uri>https://github.com/imeerkhurram</uri>
+        </author>
+        <published>2026-11-28T04:57:49.000Z</published>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Update InterfaceData based on WebRef]]></title>
         <id>https://github.com/mdn/content/pull/46740</id>
@@ -587,29 +620,5 @@ CSpell: Files checked: 2, Issues found: 2 in 1 file.
             <uri>https://github.com/estelle</uri>
         </author>
         <published>2026-11-24T12:35:20.000Z</published>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Permissions-Policy: focus-without-user-activation]]></title>
-        <id>https://github.com/mdn/content/pull/46688</id>
-        <link href="https://github.com/mdn/content/pull/46688"/>
-        <updated>2026-11-24T17:46:34.000Z</updated>
-        <content type="html"><![CDATA[<img src="https://avatars.githubusercontent.com/u/1152698?u=5ce323090a48b425ec70128365c96809699959f7&v=4" width="64" height="64" alt=""/><br/><h3 dir="auto">Description</h3>
-<p dir="auto">This PR adds a new page to document the new <code class="notranslate">Permissions-Policy: focus-without-user-activation</code> directive which allows a document to prevent embedded iframes from stealing the focus programmatically.</p>
-<h3 dir="auto">Motivation</h3>
-<p dir="auto">This is a new web platform feature that needs to be documented on MDN.</p>
-<h3 dir="auto">Additional details</h3>
-<ul dir="auto">
-<li>Microsoft Edge 158 release notes: <a href="https://learn.microsoft.com/en-us/microsoft-edge/web-platform/release-notes/158#permissions-policy-focus-without-user-activation" rel="nofollow">https://learn.microsoft.com/en-us/microsoft-edge/web-platform/release-notes/158#permissions-policy-focus-without-user-activation</a></li>
-<li>Chromestatus entry: <a href="https://chromestatus.com/feature/5179186249465856" rel="nofollow">https://chromestatus.com/feature/5179186249465856</a></li>
-<li>Spec: <a href="https://html.spec.whatwg.org/#focus-without-user-activation-feature" rel="nofollow">https://html.spec.whatwg.org/#focus-without-user-activation-feature</a></li>
-</ul>
-<h3 dir="auto">Related issues and pull requests</h3>
-<p dir="auto"><span class="issue-keyword tooltipped tooltipped-se" aria-label="This pull request closes issue #37532.">Fixes</span> <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2771621832" data-permission-text="Title is private" data-url="https://github.com/mdn/content/issues/37532" data-hovercard-type="issue" data-hovercard-url="/mdn/content/issues/37532/hovercard" href="https://github.com/mdn/content/issues/37532">#37532</a>.</p>]]></content>
-        <author>
-            <name>captainbrosset</name>
-            <email>captainbrosset@noreply.github.com</email>
-            <uri>https://github.com/captainbrosset</uri>
-        </author>
-        <published>2026-11-24T09:34:22.000Z</published>
     </entry>
 </feed>
